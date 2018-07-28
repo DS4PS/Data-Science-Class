@@ -10,6 +10,32 @@ This example is built using the following R markdown files:
 * Unit-03-Merging-Data.Rmd 
 * Unit-04-Analysis-with-Groups.Rmd 
 
+The *index.Rmd* file is the only abnormal Rmd file. It contains the basic info about the book (title, author, etc.) and whatever text is included on the introduction to the text. Here is the current *index.Rmd* file:
+
+```
+--- 
+title: "Foundations of Data Science I"
+author: "Jesse Lecy"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+site: bookdown::bookdown_site
+output: bookdown::gitbook
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+description: "This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook."
+---
+
+# Prerequisites
+
+This is a _sample_ book written in **Markdown**. You can use anything that Pandoc's Markdown supports, e.g., a math equation $a^2 + b^2 = c^2$.
+
+Remember each Rmd file contains one and only one chapter, and a chapter is defined by the first-level heading `#`.
+
+To compile this example to PDF, you need XeLaTeX. You are recommended to install TinyTeX (which includes XeLaTeX): <https://yihui.name/tinytex/>.
+
+```
+
 # YAML Files
 
 The **bookdown** package uses a couple of YAML files to set build parameters. All of these settings are documented in the help file, but we can use the same files for most cases.
