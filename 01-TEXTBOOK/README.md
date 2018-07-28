@@ -36,6 +36,11 @@ To compile this example to PDF, you need XeLaTeX. You are recommended to install
 
 ```
 
+The images are all in the "figures" folder.
+
+The rest of the files are provided by a Bookdown template. You don't need to understand the details, but they need to be included in the folder when you compile the Rmd files into the book.
+
+
 # YAML Files
 
 The **bookdown** package uses a couple of YAML files to set build parameters. All of these settings are documented in the help file, but we can use the same files for most cases.
