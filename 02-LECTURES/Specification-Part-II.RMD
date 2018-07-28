@@ -1,0 +1,1198 @@
+---
+title: "Specification Part II"
+output:
+  html_document:
+    df_print: paged
+    theme: cerulean
+    highlight: haddock
+    toc: yes
+    toc_float: yes
+    code_fold: hide
+
+---
+
+
+
+
+
+```{r setup, include=FALSE}
+
+knitr::opts_chunk$set(echo = TRUE, message=F, warning=F, fig.width = 10)
+
+library( stargazer )
+
+```
+
+
+
+# INTERACTIONS
+
+This lecture introduces an important concept in regression analysis called an "interaction". 
+
+As we will see, this regression technique is important in Program Evaluation because it is used to test for program effects when we don't have the luxery of a true randomized experiment (treatment and control groups are identical except for the treatment), but we do have a strong research design (a treatment and comparision group, and both pre and post-treatment measures). 
+
+This type of design is called a difference-in-difference model. It is one of the most robust and flexible quasi-experimental designs that we have. We can analyze difference-in-difference data using a standard OLS regression model with interactions.
+
+
+
+
+
+
+# RESEARCH DESIGN OVERVIEW
+
+Let's start with a basic example of a tutoring program within a school. We have test scores from two groups of boys in 3rd grade at a local elementary school. It has been determined that some of the boys have received inadequate preparation for the current math curriculum, so they have been offered additional tutoring. The other boys receive regular classroom instruction throughout the year. The average scores for each group in the pre and post periods look like this:
+
+
+```{r}
+
+T1 <- 55
+T2 <- 85
+CF <- 75
+C1 <- 75
+C2 <- 95
+
+palette( c( adjustcolor( "steelblue", alpha.f=1), adjustcolor( "darkred", alpha.f=1)  ) )
+
+plot( c(0,1,0,1), c(T1,T2,C1,C2), bty="n",
+      xlim=c(-0.5,2), ylim=c(50,100),
+      col=c(1,1,2,2), pch=19, cex=6, 
+      xaxt="n", yaxt="n",
+      xlab="", ylab="", main="Performance on Exam Measuring Proficiency in Arithmetic" )
+
+
+
+segments( x0=0, x1=1, y0=C1, y1=C2, col=2, lwd=2 )
+segments( x0=0, x1=1, y0=T1, y1=T2, col=1, lwd=2 )
+
+text( c(0,1,0,1), c(T1,T2,C1,C2), c(T1,T2,C1,C2), cex=1.5, col="white" )
+
+axis( side=1, at=c(0,1), 
+      labels=c("End of 2nd Grade",
+      "End of 3rd Grade" ) )
+
+text( 1.1, T2, "Treatment Group", col="Steelblue", pos=4, cex=1.5 )
+text( 1.1, C2, "Comparison Group", col="darkred", pos=4, cex=1.5 )
+
+
+```
+
+
+
+
+
+
+#### Gains Realized by Comparison Group (The First Difference)
+
+
+As we try to measure the impact of a specific program we have to keep in mind that other factors may influence outcomes over time. These are often referred to as secular trends, or changes that we expect to see independent of the intervention.
+
+$$ \textrm{Trend} = C2 - C1 = 95 - 75 = 20 $$
+
+
+#### Gains Realized by the Treatment Group (The Second Difference)
+
+If we want to determine program impact we can measure the change in the treatment group based upon our outcome level before receiving the treatment and after receiving the treatment. This shows total change over the treatment period. It will also contain both changes attributable to program impact, as well as general changes attributable to trend.
+
+$$ \textrm{Treatment Group Gains} = T2 - T1 = 85 - 55 = 30$$
+
+
+#### Realized Gains Minus Expected Gains (Diff-in-Diff)
+
+In order to isolate program impacts we must subtract out the gains that we would expect the treatment group to make independent of the program. The total gain minus the gain from trend is called the difference-in-difference estimate.
+
+$$ \textrm{Treatment Gains - Trend} = (T2 - T1) - (C2 - C1) = 30 - 20 = 10 $$
+In this case we can see that the tutoring program is leading to gains of an extra ten points more than what we would expect from a typical third grader over the year not enrolled in the program.
+
+
+## The Counterfactual
+
+Any time we measure the impact of a program we must compare the final state of the treatment group to some other state of the world. The sensible question is to ask, what would this group look like if it had not received the treatment?
+
+> The counterfactual tells us what the treatment group would look like if there was no program impact.
+
+If we have the luxury of performing a randomized experiment then from the statistical standpoint the control group embodies the counterfactual. If randomized is done successfully the only difference between the treatment and control group will be, on average, whether the members received the treatment or not. This simplifies our lives because after the study we can attibute all of the differences in group means to the program effects.
+
+```{r}
+
+T1 <- 20
+T2 <- 50
+CF <- 35
+C1 <- 20
+C2 <- 35
+
+palette( c( adjustcolor( "steelblue", alpha.f=1), adjustcolor( "darkred", alpha.f=1)  ) )
+
+plot( c(-0.1,1,0.1,1), c(T1,T2,C1,C2), bty="n",
+      xlim=c(-0.5,2), ylim=c(10,60),
+      col=c(1,1,2,2), pch=19, cex=6, 
+      xaxt="n", yaxt="n",
+      xlab="", ylab="", main="Performance on Exam Measuring Proficiency in Arithmetic" )
+
+
+
+segments( x0=0.1, x1=1, y0=C1, y1=C2, col=2, lwd=2 )
+segments( x0=-0.1, x1=1, y0=T1, y1=T2, col=1, lwd=2 )
+
+text( c(-0.1,1,0.1,1), c(T1,T2,C1,C2), c(T1,T2,C1,C2), cex=1.5, col="white" )
+
+axis( side=1, at=c(0,1), 
+      labels=c("End of 2nd Grade",
+      "End of 3rd Grade" ) )
+
+text( 1.1, T2, "Treatment Group", col="Steelblue", pos=4, cex=1.5 )
+text( 1.1, C2, " Comparison Group", col="darkred", pos=4, cex=1.5 )
+text( -0.2, T1, "C1 = T1", col="black", pos=2, cex=1.5 )
+
+
+# Counterfactual
+
+text( 1.1, CF-5, "(The Counterfactual)", col="black", pos=4, cex=1.5 )
+
+
+```
+
+In most cases, however, we do not have the opportunity or ability to conduct a true experiment. Instead, we need to create a reasonable comparision group that we can use for counterfactual analysis, and we can use this group to observe changes we expect to see indepedent of the treatment. This is the first difference, or the trend in the example above.
+
+Since our treatment group and our comparison group might not have identical pre-treatment characteristics the counterfactual must account for these differences. The proper way to think about this is:
+
+$$ \textrm{Counterfactual} = T1 + Trend $$
+
+
+
+```{r, fig.height=6}
+
+T1 <- 55
+T2 <- 85
+CF <- 75
+C1 <- 75
+C2 <- 95
+
+palette( c( adjustcolor( "steelblue", alpha.f=1), adjustcolor( "darkred", alpha.f=1)  ) )
+
+plot( c(0,1,0,1), c(T1,T2,C1,C2), bty="n",
+      xlim=c(-0.5,2), ylim=c(50,100),
+      col=c(1,1,2,2), pch=19, cex=6, 
+      xaxt="n", yaxt="n",
+      xlab="", ylab="", main="Performance on Exam Measuring Proficiency in Arithmetic" )
+
+
+
+segments( x0=0, x1=1, y0=C1, y1=C2, col=2, lwd=2 )
+segments( x0=0, x1=1, y0=T1, y1=T2, col=1, lwd=2 )
+
+text( c(0,1,0,1), c(T1,T2,C1,C2), c(T1,T2,C1,C2), cex=1.5, col="white" )
+
+axis( side=1, at=c(0,1), 
+      labels=c("End of 2nd Grade",
+      "End of 3rd Grade" ) )
+
+text( 1.1, T2, "Treatment Group", col="steelblue", pos=4, cex=1.5 )
+text( 1.1, C2, "Comparison Group", col="darkred", pos=4, cex=1.5 )
+
+
+# Counterfactual
+
+cf.col <- "black"
+
+points( 1, CF, cex=6, col=cf.col )
+segments( x0=0.1, x1=0.9, y0=T1+1, y1=CF-1, col=cf.col, lwd=1, lty=2 )
+text( 1, CF, CF, col=cf.col, cex=1.5 )
+text( 1.1, CF, "Counterfactual", col=cf.col, pos=4, cex=1.5 )
+
+
+```
+
+
+Any time we calculate a program treatment effect there is an explicit or an implied counterfactual. The problematic evaluations are usually ones in which they are unclear about the counterfactual in the study.
+
+
+
+
+
+# DIFFERENCE-IN-DIFFERENCE MODELS
+
+The formal difference-in-difference estimate uses a regression model to examine program effects. It is a slightly odd regression because all of the variables in the model are dummy variables. The model is written as follows:
+
+$$ Y = b_{0} + b_{1} \cdot Treat + b_{2} \cdot Post + b_{3} \cdot Treat \cdot Post + e $$
+
+The data looks something like this:
+
+```{r}
+
+library( pander )
+
+y <- c("y1","y2","y3","y4","")
+intercept <- c(1,1,1,1,"A")
+treat <- c(0,0,1,1,"B")
+post <- c(0,1,0,1,"C")
+treat_post <- c(0,0,0,1,"D")
+
+dat <- data.frame( y, intercept, treat, post, treat_post ) 
+
+pander( dat )
+
+```
+
+In this example, y1 to y4 represent some measured level of the outcome. The intercept in the model is a vector of all 1's. And each other variable is a dummy variable. Note that the last term in this model, *treat_post* is an interaction effect. It is created by multiplying the variables *treat* and *post*.
+
+#### Example
+
+Let's consider the following case:
+
+```{r}
+
+
+T1 <- 35
+T2 <- 65
+C1 <- 20
+C2 <- 30
+
+palette( c( adjustcolor( "steelblue", alpha.f=1), adjustcolor( "darkred", alpha.f=1)  ) )
+
+plot( c(0,1,0,1), c(T1,T2,C1,C2), bty="n",
+      xlim=c(-0.5,2), ylim=c(10,70),
+      col=c(1,1,2,2), pch=19, cex=6, 
+      xaxt="n", xlab="", ylab="", yaxt="n" )
+
+segments( x0=0, x1=1, y0=C1, y1=C2, col=2, lwd=2 )
+segments( x0=0, x1=1, y0=T1, y1=T2, col=1, lwd=2 )
+
+text( c(0,1,0,1), c(T1,T2,C1,C2), c(T1,T2,C1,C2), cex=1.5, col="white" )
+
+axis( side=1, at=c(0,1), 
+      labels=c("Before Intervention ( time=1 )",
+      "After Intervention ( time=2 )" ) )
+
+text( 1.1, T2, "Treatment Group", col=1, pos=4, cex=1.5 )
+text( 1.1, C2, "Comparison Group", col=2, pos=4, cex=1.5 )
+
+```
+
+
+Now let us estimate this model using our difference-in-difference regression, which gives us the following results:
+
+
+```{r, results='asis'}
+
+
+T1 <- rep(35,100)
+T2 <- rep(65,100)
+C1 <- rep(20,100)
+C2 <- rep(30,100)
+
+
+moxy <- c(C1,C2,T1,T2)
+treat <- rep( c(0,1), each=200 )
+post <- rep( c(0,1,0,1), each=100 )
+
+T1 <- as.numeric( treat == 1 & post == 0 )
+T2 <- as.numeric( treat == 1 & post == 1 )
+C1 <- as.numeric( treat == 0 & post == 0 ) 
+C2 <- as.numeric( treat == 0 & post == 1 )
+
+
+
+# library( memisc )
+
+m0 <- lm( moxy ~ C1 + C2 + T1 + T2 - 1 )
+
+m1 <- lm( moxy ~ treat )
+
+m2 <- lm( moxy ~ post )
+
+m3 <- lm( moxy ~ treat + post )
+
+m4 <- lm( moxy ~ treat + post + treat*post )
+
+# mtable( m1, m2, m3, m4 )
+
+
+stargazer( m4, type='html', digits=0,
+           omit.stat=c("f","rsq","adj.rsq","ser"),
+           intercept.bottom = FALSE,
+           covariate.labels = c("b0: Intercept (A)", "b1: Treatment Group (B)",
+                                "b2: Post-Period (C)", "b3: Treat x Post (D)" ) )
+
+
+
+
+```
+
+
+It takes a little bit of knowledge to make sense of the results. The important insight is that each coefficient represents a component of the outcome, so you need to add components together to get the actual group means.
+
+The other important insight is that each coefficient represents a distinctive statistical test. 
+
+Recall that we can conduct a t-test using a regression model by including a dummy variable. The coefficient in the regression model will represent the group mean difference, and the significance level will be identical to a normal t-test. 
+
+When you test a difference in means between two groups it is called a contrast. Since we have multiple dummy variables in our model we have multiple contrasts. To understand each test you must understand the implied reference group of each test.
+
+
+```{r, fig.height=8, fig.width=10}
+
+
+T1 <- 35
+T2 <- 65
+C1 <- 20
+C2 <- 30
+CF <- 45
+
+
+
+palette( c( adjustcolor( "steelblue", alpha.f=1), adjustcolor( "darkred", alpha.f=1)  ) )
+
+plot( c(0,1,0,1), c(T1,T2,C1,C2), bty="n",
+      xlim=c(-0.5,2), ylim=c(10,70),
+      col="gray", pch=19, cex=6, 
+      xaxt="n", xlab="", ylab="", yaxt="n" )
+
+segments( x0=0, x1=1, y0=C1, y1=C2, col="gray", lwd=2 )
+segments( x0=0, x1=1, y0=T1, y1=T2, col="gray", lwd=2 )
+
+text( c(0,1,0,1), c(T1,T2,C1,C2), c(T1,T2,C1,C2), cex=1.5, col="white" )
+
+axis( side=1, at=c(0,1), 
+      labels=c("Before Intervention ( Time=1 )",
+      "After Intervention ( Time=2 )" ) )
+
+text( 1.1, T2, "A + B + C + D", col="darkorange3", pos=4, cex=1.5 )
+text( 1.1, C2, "A + C", col="darkorange3", pos=4, cex=1.5 )
+text( -0.1, C1, "A", col="darkorange3", pos=2, cex=1.5 )
+text( -0.1, T1, "A + B", col="darkorange3", pos=2, cex=1.5 )
+
+
+
+# Counterfactual
+
+cf.col <- "black"
+
+points( 1, CF, cex=6, col=cf.col )
+segments( x0=0.1, x1=0.9, y0=T1+1, y1=CF-1, col=cf.col, lwd=1, lty=2 )
+text( 1, CF, CF, col=cf.col, cex=1.5 )
+text( 1.1, CF, "A + B + C (counterfactual)", col="darkorange3", pos=4, cex=1.5 )
+
+```
+
+
+### Interpretation
+
+For example, the Comparison Group during the first period of the study has a mean outcome of 20. Since we have included a dummy variable representing our Treatment Group in the model, the omitted category is the Comparison Group, so it ends up in the intercept $b_{0}$ in our regression model. Similarly, since we have a dummy variable representing the Post-Intervention time period, the omitted category is Pre-Intervention, which also defaults to the intercept. A on the diagram above then represents the non-Treatment, non-Post Intervention group, or the Comparison Group in the Pre-Intervention period.
+
+Similar to other regression models, each coefficient has an associated level of significance. Similar to other regressions we have run, this level of significance represents a hypothesis test of whether the coefficient is equal to zero. In the typical case with a continuous numerical measure, if the slope is equal to zero it represents no relationship. In this case it is a t-test of whether the mean of the base group is equal to zero.
+
+The Comparison Group during the second time period has a mean outcome of 30. We don't have a coefficient for Comparison Group Time=2 specifically in our model, so we must construct the group mean from other coefficients. We can see that the group can be represented by adding up A + C on the diagram, or adding the coefficient $b_{2}$ to the intercept (10 + 20) to arrive at the group mean of 30.
+
+Similarly, we can find the group mean for the Treatment Group at Time=1 by adding the coefficient $b_{1}$ to the base group, 20 + 15, to get 35. This is represented by A + B in the diagram above.
+
+Let's pause for a moment and consider the statistical significant associated with coefficients $b_{1}$ and $b_{2}$. Here is where the reference group becomes important. Since each coefficient represents the difference between the group mean and the reference group, the hypothesis is a test of whether the outcome in those groups differ.
+
+Since $b_{1}$ is 15, the coefficient represents a test of whether $T1 - C1 = 0$. In other words, did the Treatment and Comparison groups differ significantly in the first time period? 
+
+Since $b_{2}$ is 10, the coefficient represents a test of whether $C2 - C1 = 0$. In other words, did the Comparison group change significantly between the first and second time periods? 
+
+Now the last contrast is the tricky one. To make sense of this one we need to think about the reference group for this contrast. Note that we can create a Post-Test Treatment group by adding $b_{0} + b_{1} + b_{2}$ (A + B + C on the diagram), but this only comes to 20 + 10 + 15, or 45. The actual mean outcome measured for group T2 is 65. So how do we arrive at this number?
+
+Recall that $b_{3}$ represents the coefficient from an *interaction* effect. The interpretation is an interaction is that the whole is greater than the sum of the parts. When an interaction is present, we observe an impact larger than the impact of two independent direct effects (the gains from being in the Treatment group, and the expected gains from the secular trend, in this case). 
+
+The measure $b_{0} + b_{1} + b_{2}$ tells us where we should expect the group mean of T2 to reside (the counterfactual), and the coefficient $b_{3}$ tells us whether the actual group mean is different, i.e. whether we experiences a treatment effect from this program. We see in the model that $b_{3}=20$, meaning the observed group mean is 20 points higher than we would expect if the treatment did not work.
+
+
+
+
+
+#### Summary of Hypothesis Tests
+
+Is the Comparison Group in Time=1 different from zero?  
+
+* Coefficient $b_{0}$ 
+* $Null: C1 = 0$
+
+
+Is the Treatment Group different from the Comparison Group in Time=1?  
+
+* Coefficient $b_{1}$ 
+* $Null: T1 - C1 = 0$
+
+
+Is the Comparision Group in Time=2 different than the Comparison Group in Time=1? I.e. is there a secular trend?
+
+* Coefficient $b_{2}$ 
+* $Null: C2 - C1 = 0$
+
+
+Is the Treatment Group in Time=2 different from the counterfactual? Does the program have impact?
+
+* Coefficient $b_{3}$ 
+* $Null: (T2-T1) - (C2-C1) = 0$
+
+
+
+## Three Cases
+
+Let us consider three cases where statistical significance might be of interest.
+
+```{r, fig.height=4}
+
+par( mfrow=c(1,3), mar=c(2,0,2,0) )
+
+
+T1 <- 30
+T2 <- 40
+C1 <- 20
+C2 <- 20
+
+palette( c( adjustcolor( "steelblue", alpha.f=1), adjustcolor( "darkred", alpha.f=1)  ) )
+
+plot( c(0,1,0,1), c(T1,T2,C1,C2), bty="n",
+      xlim=c(-0.5,1.5), ylim=c(19,41),
+      col=c(1,1,2,2), pch=19, cex=6, 
+      xaxt="n", xlab="", ylab="", yaxt="n",
+      main="CASE 1: NO TREND", cex.main=1.5 )
+
+segments( x0=0, x1=1, y0=C1, y1=C2, col=2, lwd=2 )
+segments( x0=0, x1=1, y0=T1, y1=T2, col=1, lwd=2 )
+
+text( c(0,1,0,1), c(T1,T2,C1,C2), c(T1,T2,C1,C2), cex=1.5, col="white" )
+
+axis( side=1, at=c(0,1), 
+      labels=c("Time=1","Time=2" ) )
+
+text( 1.2, T2, "TG", col=1, pos=4, cex=1.5 )
+text( 1.2, C2, "CG", col=2, pos=4, cex=1.5 )
+
+
+
+
+
+
+
+
+
+
+
+T1 <- 20
+T2 <- 40
+C1 <- 20
+C2 <- 25
+
+
+palette( c( adjustcolor( "steelblue", alpha.f=1), adjustcolor( "darkred", alpha.f=1)  ) )
+
+plot( c(-0.1,1,0.1,1), c(T1,T2,C1,C2), bty="n",
+      xlim=c(-0.5,1.5), ylim=c(19,41),
+      col=c(1,1,2,2), pch=19, cex=6, 
+      xaxt="n", yaxt="n",
+      xlab="", ylab="", 
+      main="CASE 2: NO INITIAL DIFFERENCES", cex.main=1.5 )
+
+
+
+segments( x0=0.1, x1=1, y0=C1, y1=C2, col=2, lwd=2 )
+segments( x0=-0.1, x1=1, y0=T1, y1=T2, col=1, lwd=2 )
+
+text( c(-0.1,1,0.1,1), c(T1,T2,C1,C2), c(T1,T2,C1,C2), cex=1.5, col="white" )
+
+axis( side=1, at=c(0,1), 
+      labels=c("Time=1","Time=2" ) )
+
+text( 1.2, T2, "TG", col="Steelblue", pos=4, cex=1.5 )
+text( 1.2, C2, " CG", col="darkred", pos=4, cex=1.5 )
+
+
+
+
+
+
+
+
+T1 <- 30
+T2 <- 40
+C1 <- 20
+C2 <- 30
+
+
+palette( c( adjustcolor( "steelblue", alpha.f=1), adjustcolor( "darkred", alpha.f=1)  ) )
+
+plot( c(0,1,0,1), c(T1,T2,C1,C2), bty="n",
+      xlim=c(-0.5,1.5), ylim=c(19,41),
+      col=c(1,1,2,2), pch=19, cex=6, 
+      xaxt="n", xlab="", ylab="", yaxt="n",
+      main="CASE 3: NO PROGRAM EFFECTS", cex.main=1.5 )
+
+segments( x0=0, x1=1, y0=C1, y1=C2, col=2, lwd=2 )
+segments( x0=0, x1=1, y0=T1, y1=T2, col=1, lwd=2 )
+
+text( c(0,1,0,1), c(T1,T2,C1,C2), c(T1,T2,C1,C2), cex=1.5, col="white" )
+
+axis( side=1, at=c(0,1), 
+      labels=c("Time=1","Time=2" ) )
+
+text( 1.2, T2, "TG", col=1, pos=4, cex=1.5 )
+text( 1.2, C2, "CG", col=2, pos=4, cex=1.5 )
+
+
+```
+
+The regression results would be as follows:
+
+
+```{r, results='asis'}
+
+
+      
+T1 <- seq(20,40)
+T2 <- seq(30,50)
+C1 <- seq(10,30)
+C2 <- seq(10,30)
+
+
+moxy <- c(C1,C2,T1,T2)
+treat <- rep( c(0,1), each=42 )
+post <- rep( c(0,1,0,1), each=21 )
+
+
+m1 <- lm( moxy ~ treat + post + treat*post )
+
+
+
+
+
+T1 <- seq(10,30)
+T2 <- seq(30,50)
+C1 <- seq(10,30)
+C2 <- seq(15,35)
+
+
+moxy <- c(C1,C2,T1,T2)
+treat <- rep( c(0,1), each=42 )
+post <- rep( c(0,1,0,1), each=21 )
+
+
+m2 <- lm( moxy ~ treat + post + treat*post )
+
+
+
+
+
+T1 <- seq(20,40)
+T2 <- seq(30,50)
+C1 <- seq(10,30)
+C2 <- seq(20,40)
+
+
+moxy <- c(C1,C2,T1,T2)
+treat <- rep( c(0,1), each=42 )
+post <- rep( c(0,1,0,1), each=21 )
+
+
+m3<- lm( moxy ~ treat + post + treat*post )
+
+
+# mtable( m1, m2, m3, m4 )
+
+
+stargazer( m1, m2, m3, type='html', digits=1,
+           omit.stat=c("f","rsq","adj.rsq","ser"),
+           intercept.bottom = FALSE,
+           covariate.labels = c("Intercept (A)", "Treatment Group (B)",
+                                "Post-Period (C)", "Treat x Post (D)" ) )
+
+
+
+
+```
+
+
+Note the lack of significance for the specific hypotheses in each case.
+
+Case 1: When $b_{2}$ is not significant, it tells us there is no secular trend in the data.
+
+Case 2: When $b_{1}$ is not significant, it tells us there is no different between the measured outcomes of the treatment and comparison groups during the first time period.
+
+Case 3: When $b_{3}$ is not significant, it tells us that all gains observed in the treatment group are coming from the secular trend and not the program.
+
+
+# MULTIPLE TREATMENT GROUPS
+
+Sometimes your study may contain multiple treatment groups. 
+
+
+
+```{r, fig.height=6}
+
+A1 <- 30
+A2 <- 50
+B1 <- 20
+B2 <- 40
+C1 <- 25
+C2 <- 30
+
+par( mar=c(2,0,0,0) )
+
+palette( c( adjustcolor( "steelblue", alpha.f=1), 
+            adjustcolor( "darkred", alpha.f=1), 
+            adjustcolor( "darkgreen", alpha.f=1)  ) )
+
+plot( c(0,1,0,1,0,1), c(A1,A2,B1,B2,C1,C2), bty="n",
+      xlim=c(-0.5,2.5), ylim=c(5,60),
+      col=c(1,1,2,2,3,3), pch=19, cex=6, 
+      xaxt="n", xlab="", ylab="", yaxt="n",
+      main="", cex.main=1.5 )
+
+segments( x0=0, x1=1, y0=A1, y1=A2, col=1, lwd=2 )
+segments( x0=0, x1=1, y0=B1, y1=B2, col=2, lwd=2 )
+segments( x0=0, x1=1, y0=C1, y1=C2, col=3, lwd=2 )
+
+text( c(0,1,0,1,0,1), c(A1,A2,B1,B2,C1,C2), c(A1,A2,B1,B2,C1,C2), cex=1.5, col="white" )
+
+axis( side=1, at=c(0,1), 
+      labels=c("Time=1","Time=2" ) )
+
+text( 1.1, A2, "Treatment A", col=1, pos=4, cex=1.5 )
+text( 1.1, B2, "Treatment B", col=2, pos=4, cex=1.5 )
+text( 1.1, C2, "Treatment C", col=3, pos=4, cex=1.5 )
+```
+
+
+
+In order to specify the regression we again must omit one group, which will become the reference group in the study. In this case we will omit Treatement C as the reference group.
+
+
+```{r, results='asis'}
+
+
+      
+A1 <- seq(20,40)
+A2 <- seq(40,60)
+B1 <- seq(10,30)
+B2 <- seq(30,50)
+C1 <- seq(15,35)
+C2 <- seq(20,40)
+
+
+moxy <- c(A1,A2,B1,B2,C1,C2)
+GroupA <- rep( c(1,0,0), each=42 )
+GroupB <- rep( c(0,1,0), each=42 )
+GroupC <- rep( c(0,0,1), each=42 )
+post <- rep( c(0,1,0,1,0,1), each=21 )
+
+
+m1 <- lm( moxy ~ post + GroupA + GroupB  + GroupA*post + GroupB*post )
+
+
+
+stargazer( m1, type='html', digits=1,
+           omit.stat=c("f","rsq","adj.rsq","ser"),
+           intercept.bottom = FALSE,
+           covariate.labels = c("b0: Intercept", "b1: Post","b2: Treatment A",
+                                "b3: Treatment B", "b4: A x Post", "b5: B x Post" ) )
+
+
+
+
+```
+
+
+Note that you will again build group means from their component parts. For example, Treatment A can be represented as $b_{0} + b_{2}$ in period one, and $b_{0} + b_{1} + b_{2} + b_{4}$ for period two.
+
+The main thing to note is that the counterfactual has now become the gains that you expect in the omitted group. It makes sense in this case to omit the group with the least gains because then you can interpret the program effects $b_{3}$ or $b_{4}$ as gains you expect over the least effective treatment option. 
+
+Note that the coefficient $b_{1}$ associated with the Post-Treatment period is no longer interpretted as trend.
+
+
+
+
+# INTERACTIONS WITH SLOPES
+
+The difference-in-difference model can be extended to circumstances where we have multiple treatments, but instead of moving from only two scenarios of no treatment (time=1) to treatment (time=2), we move from low levels of treatment to high levels of treatment. In other words, our treatment represents a continuous variable, not a binary one, and we are back in the world of regression slopes.
+
+We can adapt our difference-in-difference framework to accomodate these types of interaction models as well. Let's consider an example where we have developed three types of hybrid corns and we are trying to understand how these new varieties will respond to our fertilizer.
+
+
+```{r}
+
+# CORN AND FERTILIZER
+# 
+# x <- 1:100
+# 
+# noise <- 10
+# 
+# a <- rnorm(100,80,noise)
+# b <- 50 + 0.5*x + rnorm(100,0,noise)
+# c <- 70 - 0.2*x + rnorm(100,0,noise)
+# 
+# height <- c(a,b,c)
+# fertilizer <- c(x,x,x)
+# type <- rep(c("A","B","C"), each=100 )
+# 
+# dumA <- rep(c(1,0,0), each=100 )
+# dumB <- rep(c(0,1,0), each=100 )
+# dumC <- rep(c(0,0,1), each=100 )
+# 
+# 
+# dat <- data.frame( height, fertilizer, type, dumA, dumB, dumC )
+# dput( dat )
+
+dat <- structure(list(height = c(84.8823787863356, 81.5829092827922, 
+83.4358298812005, 68.8213813370342, 80.8573826988571, 81.0485785565725, 
+88.8857686962154, 67.4189815507121, 85.4846932501355, 79.1577369416566, 
+78.2993167540349, 89.7933037672656, 79.4348323819615, 87.0181042120402, 
+63.3293715508304, 79.9901210974918, 77.0084283923124, 72.670113845791, 
+68.0693315237495, 83.7859371546024, 72.660163675786, 81.4830473791962, 
+83.9726151402696, 72.8360914249101, 85.6090734101838, 62.9303955130078, 
+83.5368406107726, 84.5482977407981, 77.4071442646381, 72.8074859688982, 
+87.0662289714936, 80.3971392134386, 66.9336441762908, 84.9232513036697, 
+89.6423128335747, 75.6763347362126, 93.4366444311655, 93.1617226959905, 
+79.941207432285, 91.692662719636, 77.7238517623639, 87.4654268265086, 
+78.6805895699465, 75.1644556195101, 75.6718043547623, 80.519869597366, 
+93.7301317360083, 77.5216114259395, 74.1949843913591, 68.4631333832147, 
+87.3467313753704, 59.3910066747935, 95.6363774254989, 70.8597247318124, 
+85.1351710866197, 88.898951939707, 52.9799474197325, 86.3520340212514, 
+98.0171037573458, 91.0388449399764, 94.5122710476539, 81.0519227548362, 
+72.1587878286064, 92.1313239943173, 77.1222509395568, 73.1832240433087, 
+75.2115529661401, 73.0752584720694, 102.998693836452, 87.3833635435993, 
+84.4835113682223, 67.0279693251612, 80.2499865865405, 64.047238122541, 
+79.2304111786643, 65.6274312281287, 92.0154134463608, 71.7040631770878, 
+84.2671803952524, 82.7445717938349, 76.7968017854077, 76.9274821487821, 
+76.8453038230027, 65.7343029138455, 88.5595455326386, 73.5533683716934, 
+88.9075453127298, 72.7338468339089, 67.1160502773331, 82.3528712900471, 
+81.39365256705, 77.8697226260968, 97.2335263430491, 66.0471049310953, 
+74.3271382097975, 72.7329880114981, 81.7925960061676, 104.159100652603, 
+83.4430577365359, 77.3707113815548, 47.9385604964476, 58.9451970749953, 
+24.1836649407961, 66.8539292293009, 53.700789296629, 30.5850419601878, 
+63.7995489870215, 46.7560503185648, 44.0953071126681, 53.8076975480534, 
+39.7221035268199, 60.5171986486279, 64.7704204109699, 51.3735414233767, 
+67.3648041654176, 51.0880911703089, 71.7133674728028, 52.8999218424257, 
+51.7960003102119, 76.6106604547903, 46.6800654639816, 51.8899241665381, 
+68.527159250387, 59.4177866065241, 58.6838812628026, 68.6150736726941, 
+69.9051400226362, 70.3026680724838, 73.1112180507804, 84.5909683591189, 
+69.6178295173195, 54.8129279473636, 69.2417783693849, 60.0262259801884, 
+51.4938077079337, 58.2264970214344, 76.8660015653262, 71.5770761515984, 
+74.4143563258048, 83.153070467207, 66.0039448126792, 75.2898958505998, 
+83.7526479128678, 73.0052247140854, 72.7152139520076, 57.6639453173779, 
+83.2275055181584, 67.8953058607738, 72.556503961615, 75.9052262955136, 
+78.7059869776771, 79.020681851063, 73.1227462954383, 83.1694896378462, 
+80.9205822069283, 91.8692872790137, 97.0511234669594, 93.2838886616587, 
+97.2521351384681, 74.718905381375, 95.3900272750528, 76.9327777433571, 
+82.4304491847519, 80.8546990585036, 64.0153921294703, 87.5643368390667, 
+64.6106517667271, 75.6347026108747, 83.0250502500081, 101.544757165672, 
+93.4210554366665, 70.5892467704152, 85.8348471424181, 93.7222845339933, 
+86.9941388769178, 93.7079612495396, 95.342601927069, 84.6943030394871, 
+69.9730468475575, 94.546382590391, 93.3449257304082, 88.4367447133578, 
+87.1911985466493, 67.559672731354, 98.5345310388681, 115.986776214713, 
+71.6341554770594, 91.5199232584766, 91.8536372261783, 101.059347823138, 
+103.399775524026, 85.8213963870544, 96.2708392227436, 100.028690695035, 
+107.144553795847, 89.3597878512095, 103.541326219623, 78.9700199176571, 
+113.982632411562, 107.625087757413, 89.9126377667416, 54.8229207404254, 
+54.6035948085297, 82.5514847245402, 73.0343256375068, 93.3173553260807, 
+64.984443099106, 66.4277115062336, 68.3292117272704, 72.4088478887834, 
+63.7950527795539, 66.2776307101463, 75.0214844442367, 70.1668453359196, 
+67.8007577076108, 74.2405936701403, 70.220102083018, 46.4810310012535, 
+77.9567783555546, 62.8939538760101, 49.6368430644073, 70.0458427398281, 
+66.8571253978177, 83.1181956411808, 67.0673103577867, 81.7452720900802, 
+65.783241573369, 49.961073862091, 70.5797981073745, 54.6789750180432, 
+50.6926868153297, 69.3674308610539, 72.4010383901166, 70.3657412983627, 
+56.6747649676527, 69.8127628562313, 61.9721499681155, 40.3182877125587, 
+54.3730203880657, 67.2569324044038, 62.2575573821627, 68.4527885694622, 
+50.3924523992186, 69.3740545224647, 63.7541904196657, 48.0785562212759, 
+41.0906431036671, 66.1800053465102, 54.7319086953628, 71.8631452290731, 
+71.280046340787, 64.7936783952698, 60.1330789833191, 59.1325262819609, 
+68.7489867240966, 53.7309133824955, 49.7316488928809, 52.5710941985547, 
+57.6200798444466, 65.999164817474, 58.344285223883, 57.0597806287222, 
+59.3909019564334, 73.9208410772179, 48.9457546429752, 56.8586842846536, 
+63.6150378086077, 74.3389285776052, 58.1935540939292, 74.6470972995062, 
+51.4785251089264, 27.4796538477468, 50.6878145763362, 64.4329366401115, 
+80.1626808323705, 56.086147608325, 51.1363096663025, 47.9704527248218, 
+60.4038614626171, 54.2391589067078, 61.9879996620603, 58.8507191129675, 
+57.7721512893066, 50.6630949018672, 58.8914330530957, 40.4277908824916, 
+60.4966216806365, 46.8917121573842, 55.1956922279556, 53.8927256101175, 
+59.9249164879124, 70.4795404780817, 60.9539190008761, 41.8756896121901, 
+48.9133262561279, 54.0290643459507, 43.7303576681297, 31.8734735442469, 
+52.9242016968811, 66.8564025890661), fertilizer = c(1L, 2L, 3L, 
+4L, 5L, 6L, 7L, 8L, 9L, 10L, 11L, 12L, 13L, 14L, 15L, 16L, 17L, 
+18L, 19L, 20L, 21L, 22L, 23L, 24L, 25L, 26L, 27L, 28L, 29L, 30L, 
+31L, 32L, 33L, 34L, 35L, 36L, 37L, 38L, 39L, 40L, 41L, 42L, 43L, 
+44L, 45L, 46L, 47L, 48L, 49L, 50L, 51L, 52L, 53L, 54L, 55L, 56L, 
+57L, 58L, 59L, 60L, 61L, 62L, 63L, 64L, 65L, 66L, 67L, 68L, 69L, 
+70L, 71L, 72L, 73L, 74L, 75L, 76L, 77L, 78L, 79L, 80L, 81L, 82L, 
+83L, 84L, 85L, 86L, 87L, 88L, 89L, 90L, 91L, 92L, 93L, 94L, 95L, 
+96L, 97L, 98L, 99L, 100L, 1L, 2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L, 
+10L, 11L, 12L, 13L, 14L, 15L, 16L, 17L, 18L, 19L, 20L, 21L, 22L, 
+23L, 24L, 25L, 26L, 27L, 28L, 29L, 30L, 31L, 32L, 33L, 34L, 35L, 
+36L, 37L, 38L, 39L, 40L, 41L, 42L, 43L, 44L, 45L, 46L, 47L, 48L, 
+49L, 50L, 51L, 52L, 53L, 54L, 55L, 56L, 57L, 58L, 59L, 60L, 61L, 
+62L, 63L, 64L, 65L, 66L, 67L, 68L, 69L, 70L, 71L, 72L, 73L, 74L, 
+75L, 76L, 77L, 78L, 79L, 80L, 81L, 82L, 83L, 84L, 85L, 86L, 87L, 
+88L, 89L, 90L, 91L, 92L, 93L, 94L, 95L, 96L, 97L, 98L, 99L, 100L, 
+1L, 2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L, 10L, 11L, 12L, 13L, 14L, 
+15L, 16L, 17L, 18L, 19L, 20L, 21L, 22L, 23L, 24L, 25L, 26L, 27L, 
+28L, 29L, 30L, 31L, 32L, 33L, 34L, 35L, 36L, 37L, 38L, 39L, 40L, 
+41L, 42L, 43L, 44L, 45L, 46L, 47L, 48L, 49L, 50L, 51L, 52L, 53L, 
+54L, 55L, 56L, 57L, 58L, 59L, 60L, 61L, 62L, 63L, 64L, 65L, 66L, 
+67L, 68L, 69L, 70L, 71L, 72L, 73L, 74L, 75L, 76L, 77L, 78L, 79L, 
+80L, 81L, 82L, 83L, 84L, 85L, 86L, 87L, 88L, 89L, 90L, 91L, 92L, 
+93L, 94L, 95L, 96L, 97L, 98L, 99L, 100L), type = structure(c(1L, 
+1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 
+1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 
+1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 
+1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 
+1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 
+1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 
+1L, 1L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 
+2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 
+2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 
+2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 
+2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 
+2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 
+2L, 2L, 2L, 2L, 2L, 2L, 2L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 
+3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 
+3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 
+3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 
+3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 
+3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 
+3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L), .Label = c("A", 
+"B", "C"), class = "factor"), dumA = c(1, 1, 1, 1, 1, 1, 1, 1, 
+1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), dumB = c(0, 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 
+1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+0, 0, 0, 0, 0), dumC = c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 
+1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)), .Names = c("height", 
+"fertilizer", "type", "dumA", "dumB", "dumC"), row.names = c(NA, 
+-300L), class = "data.frame")
+
+height <- dat$height
+fertilizer <- dat$fertilizer
+type <- dat$type
+dumA <- dat$dumA
+dumB <- dat$dumB
+dumC <- dat$dumC
+
+
+```
+
+
+## One Slope - One Intercept Model
+
+Let's start with a basic model and build up to a more complicated model. We can first test whether the fertilizer has any impact on corn growth, ignoring the different types of hybrids for now:
+
+```{r}
+
+
+
+
+
+plot( fertilizer, height, col=gray(0.5,0.5), bty="n", cex=2, pch=19,
+      xlab="Fertilizer Intensity", ylab="Height of Corn", 
+      main="Effect of Fertilizer on Corn Growth: Three Hybrid Types")
+
+abline( lm( height ~ fertilizer ), col="darkred", lwd=2 )
+
+
+
+
+
+
+```
+
+
+We can see that we have a positive slope, which is statistically significant. So our fertilize does seem to have a positive effect on the corn.
+
+
+```{r, results='asis'}
+
+
+m.00 <- lm( height ~ fertilizer )
+
+
+stargazer( m.00, type="html", 
+           digits=2, omit.stat = c("ser") )
+
+      
+```
+
+
+
+
+## Three Types of Hybrids
+
+
+Let's now consider the strength of each type of hybrid.
+
+```{r}
+
+
+palette( c( adjustcolor( "forestgreen", alpha.f=0.5), 
+            adjustcolor( "darkorange3", alpha.f=0.5),
+            adjustcolor( "darkmagenta", alpha.f=0.5) ) )
+            
+plot( fertilizer, height, col=factor(type), pch=19, bty="n", cex=2,
+      xlab="Fertilizer Intensity", ylab="Height of Corn", 
+      main="Effect of Fertilizer on Corn Growth: Three Hybrid Types")
+
+
+```
+
+
+## One Slope - Three Intercepts
+
+Let's extend our original model slightly by still examinig the impact of fertilizer on corn height, but let's allow each variety to have its own intercept term. We can do this by adding a dummy variable for each hybrid type.
+
+
+```{r, results='asis'}
+
+
+m.01 <- lm( height ~ fertilizer + dumA + dumB )
+m.02 <- lm( height ~ fertilizer + dumB + dumC )
+m.03 <- lm( height ~ fertilizer + dumC + dumA )
+m.04 <- lm( height ~ fertilizer + dumA + dumB + dumC - 1 )
+
+
+par( mar=c(4,2,2,0) )
+
+palette( c( adjustcolor( "forestgreen", alpha.f=0.1), 
+            adjustcolor( "darkorange3", alpha.f=0.1),
+            adjustcolor( "darkmagenta", alpha.f=0.1) ) )
+            
+plot( fertilizer, height, col=factor(type), bty="n", pch=19, cex=2, xlim=c(-5,110),
+      xlab="Fertilizer Intensity", ylab="", yaxt="n",
+      main="Effect of Fertilizer on Corn Growth: Three Hybrid Types")
+
+title( ylab="Height of Corn", line=1 )
+
+intA <- round( coefficients(m.04)[2], 0 )
+intB <- round( coefficients(m.04)[3], 0 )
+intC <- round( coefficients(m.04)[4], 0 )
+
+abline( a=intA, b=coefficients(m.04)[1], col=adjustcolor( "forestgreen", alpha.f=0.7), lwd=3 )
+abline( a=intB, b=coefficients(m.04)[1], col=adjustcolor( "darkorange3", alpha.f=0.7), lwd=3 )
+abline( a=intC, b=coefficients(m.04)[1], col=adjustcolor( "darkmagenta", alpha.f=0.7), lwd=3 )
+
+text( -3, intA, intA, pos=3, col=adjustcolor( "forestgreen", alpha.f=1) )
+text( -3, intB, intB, pos=1, col=adjustcolor( "darkorange3", alpha.f=1) )
+text( -3, intC, intC, pos=1, col=adjustcolor( "darkmagenta", alpha.f=1) )
+
+text( 107, intA+100*coefficients(m.04)[1], "Type A", pos=3, col=adjustcolor( "forestgreen", alpha.f=1) )
+text( 107, intB+100*coefficients(m.04)[1], "Type B", pos=1, col=adjustcolor( "darkorange3", alpha.f=1) )
+text( 107, intC+100*coefficients(m.04)[1], "Type C", pos=1, col=adjustcolor( "darkmagenta", alpha.f=1) )
+
+abline( v=0, lty=2, col=gray(0.5,0.5) )
+
+
+
+
+```
+
+
+
+
+
+```{r, results='asis'}
+
+
+stargazer( m.01, m.02, m.03, m.04, type="html", 
+           digits=2, 
+          omit.stat=c("f","adj.rsq","ser"),
+           intercept.bottom = FALSE ) 
+
+```
+
+The main thing to note is that this model is more flexible as it does not assume that each type will grow to the same height in the absence of fertilizer (the intercept is where X crosses zero, or where no fertilizer is provided in this case). 
+
+We again omit one case. Each dummy variable represents the height that a particular variety will achieve above and beyond the omitted group. If we change the group that we omit it will change the global and group-specific intercept terms in the model, but if you do the math in each case it should result in the same intercept for each group no matter which category is omitted. Rather, it just changes the reference point.
+
+Note, though, that this model one contains one slope. This forces the regression to assume that all varieties of hybrid will respond the same to the fertilizer. This might not be a good assumption, so we can relax this below.
+
+
+
+
+## Three Slopes - Three Intercepts
+
+If we want to make our model a little more flexible we can add interaction terms. In the previous cases we interacted the post-treatment period with the treatment category to identify program impacts. In this case we can interact the level of treatment with the corn type in order to determine the unique reponse of each hybrid to the fertilizer.
+
+
+```{r, results='asis'}
+
+
+
+m.05 <- lm( height ~ fertilizer + dumA + dumB + fertilizer*dumA + fertilizer*dumB )
+m.06 <- lm( height ~ fertilizer + dumB + dumC + fertilizer*dumB + fertilizer*dumC )
+m.07 <- lm( height ~ fertilizer + dumA + dumC + fertilizer*dumA + fertilizer*dumC )
+
+
+
+par( mar=c(4,2,2,0) )
+
+palette( c( adjustcolor( "forestgreen", alpha.f=0.1), 
+            adjustcolor( "darkorange3", alpha.f=0.1),
+            adjustcolor( "darkmagenta", alpha.f=0.1) ) )
+            
+plot( fertilizer, height, col=factor(type), bty="n", pch=19, cex=2, xlim=c(-5,110),
+      xlab="Fertilizer Intensity", ylab="", yaxt="n",
+      main="Effect of Fertilizer on Corn Growth: Three Hybrid Types")
+
+title( ylab="Height of Corn", line=1 )
+
+intC <- round( coefficients(m.05)[1], 0 )
+intA <- intC + round( coefficients(m.05)[3], 0 )
+intB <- intC + round( coefficients(m.05)[4], 0 )
+
+
+slopeC <- coefficients(m.05)[2]
+slopeA <- slopeC + coefficients(m.05)[5]
+slopeB <- slopeC + coefficients(m.05)[6]
+
+
+abline( a=intA, b=slopeA, col=adjustcolor( "forestgreen", alpha.f=0.7), lwd=3 )
+abline( a=intB, b=slopeB, col=adjustcolor( "darkorange3", alpha.f=0.7), lwd=3 )
+abline( a=intC, b=slopeC, col=adjustcolor( "darkmagenta", alpha.f=0.7), lwd=3 )
+
+text( -3, intA, intA, pos=3, col=adjustcolor( "forestgreen", alpha.f=1) )
+text( -3, intB, intB, pos=1, col=adjustcolor( "darkorange3", alpha.f=1) )
+text( -3, intC, intC, pos=1, col=adjustcolor( "darkmagenta", alpha.f=1) )
+
+text( 107, intA+slopeA, "Type A", pos=3, col=adjustcolor( "forestgreen", alpha.f=1) )
+text( 107, intB+100*slopeB, "Type B", pos=1, col=adjustcolor( "darkorange3", alpha.f=1) )
+text( 107, intC+100*slopeC, "Type C", pos=3, col=adjustcolor( "darkmagenta", alpha.f=1) )
+
+abline( v=0, lty=2, col=gray(0.5,0.5) )
+
+
+
+```
+
+
+```{r, results='asis'}
+
+stargazer( m.04, m.05, m.06, m.07, type="html", 
+           digits=2, 
+           omit.stat=c("f","adj.rsq","ser"),
+           intercept.bottom = FALSE )        
+```
+
+
+We now have a model that can be used to test whether each hybrid type responds to fertilizer differently.
+
+Similar to the difference-in-difference models, in order to calculate the slope for each group we need to add the group-specific slope component to the main slope, which is associated with the omitted category.
+
+Again, not that if you change the reference category you will change the specific model coefficients. But no matter which category is omitted the models should produce the same group slopes.
+
+You need to take care to interpret statistical significance in reference to the omitted category. For example, corn Type A does not seem responsive to this particular fertilizer (the slope is 0). Type C has a negative response. If we omit Type C from the regression model then the global slope will represent the response of the omitted category, and the coefficient for the fertilizer Type A interaction will tell us whether the slope differs from the reference group. Since A does differ from C both are signiifcant. But if we omit Type A, now the reference slope is approximately 0, which will not be statistically significant. 
+
+This shows us that the statistical significance of the interaction terms relate to how they difference from the reference group, not whether they differ from zero.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{css}
+p {
+color: black;
+margin: 0 0 20px 0;
+}
+
+td {
+    padding: 3px 10px 3px 10px;
+    text-align: center;
+}
+
+table
+{ 
+    margin-left: auto;
+    margin-right: auto;
+    margin-top:80px;
+    margin-bottom:100px;
+}
+
+h1, h2{
+  margin-top:100px;
+  margin-bottom:20px;
+}
+
+H5{
+    text-align: center;
+    color: gray;
+    font-size:0.8em;
+}
+
+img {
+    max-width: 90%;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top:30px;
+    margin-bottom:20px;
+}
+
+pre {
+  overflow-x: auto;
+}
+
+pre code {
+   display: block; 
+   padding: 0.5em;
+   margin-bottom:20px;
+}
+
+code {
+  font-size: 92%;
+  border: 10px solid #F8F8F8;
+  margin-bottom: 2px;
+}
+
+code[class] {
+  background-color: #F8F8F8;
+}
+
+```
+

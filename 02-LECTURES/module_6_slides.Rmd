@@ -1,0 +1,134 @@
+---
+title: "Unit 6"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+## Unit 6
+
+Explaining Variance
+
+
+
+
+
+## Explaining The Variance
+
+The variance can be split up into components of several parts. Intuitively, if you consider a regression model that has two independent variables, $x_1$ and $x_2$. This would imply that the dependent variable, $y$, would have variances from two components that can help explain how the independent variables are related to it.
+
+
+## Explaining The Variance
+
+Two components of the variance are the regression sum of squares, RSS, and the error sum of squares, ESS. Eq's. 6.1 and 6.2 show the equations that are used to calculate RSS and ESS. Finally there are the total sum of squares, TSS, which is simply adding RSS and ESS together.
+
+Eq. 6.1
+
+$RSS = \Sigma(\hat{y_i} - \bar{y})^2$
+
+Eq. 6.2
+
+$ESS = \Sigma(y_i - \hat{y_1})^2$
+
+Eq. 6.3
+
+$TSS = \Sigma(y_i - \bar{y})^2 = RSS + ESS$
+
+
+## R-Squared
+
+One important measurement in statistics and explaining the variance is R-squared or $R^2$. Basically $R^2$ is the percentage of the variance explained by independent variables or the regression model. This can be seen in Eq. 6.4 by seeing it is simply the ratio of the explained variance or simplified to the explained sum of squares divided by the total sum of squares. This will always give us a value between 0 and 1, which also reflects the ratio or percentage. Because we are using how much the regression explains the explained sum of squares is the same as the regression sum of squares or $RSS$.
+
+Eq. 6.4
+
+$R^2 = RSS/TSS$
+
+
+
+## R-Squared
+
+Because it is a percentage, sometimes it is easier to use Eq. 6.5. This comes directly from the factor that the ratio and percentage measured by Eq. 6.4 must add to 1. 
+
+Eq. 6.5
+
+$R^2 = ESS/TSS$
+
+
+
+## Hand Calculation Of The Regression
+
+Below shows the data you previously used to calculate the variance in Unit 2. The data set shows the grades of 5 students of a quiz with a maximum of 10 points. The entire data set is represented by $Y$. This time we are representing that data with $Y$ because we will treat this as the dependent variable. The data set $X$ will now be used for the hours spent studying for the quiz. 
+
+$Y = [10, 8, 9, 6, 10]$
+
+$X  = [5, 2, 3, 3, 6]$
+
+
+
+## Hand Calculation Of The Regression
+
+As an exercise please use the data above to calculate the slope, intercept, predicted Y, residual, and sum of squared errors for the regression. You can use the equations we just showed and have seen earlier. In addition show the following:
+
+a.	Show that the sum of squared errors becomes the numerator in the standard error of the slope
+b.	Calculate the regression sum of squares (difference between observed and predicted value)
+c.	Calculate the total sum of squared errors $\Sigma(y_2 - \bar{y})^2$ and show that this is the raw variance instead of the average variance
+d.	Calculate the R-square as RSS/TSS and 1 - ESS/TSS.
+e.	Emphasize that RSS + ESS = TSS, or explained variance plus unexplained variance is equal to total variance.
+
+
+## Partitioning The Variance Of Y
+
+Now that we have introduced how to calculate the different sum of squares we will discuss the partitioning of the variance. When taking any equation you can add and subtract the same value or same additional variable and the original equation stays the same. Eq. 6.6 shows a generall example of this. We simply add and subtract $C$ and therefore does not change the result of the original equation of $A + B$.
+
+
+Eq. 6.6
+
+$A + B = A + C - C + B$
+
+
+## Partitioning The Variance Of Y
+
+Recall that part of calculating the variance involves the deviations of the actual data from the mean. Therefore we can use the deviation as an approximation to represent the variance. Eqq. 6.7 shows the deviation. Just as in Eq. 6.6 we can add and subtract the value of $\hat{y_i}$. Eq. 6.8. This will apprimately represent the variance of $y$.
+
+
+Eq. 6.7
+
+$y_i - \bar{y}$
+
+Eq. 6.8
+
+$y_i - \hat{y} + \hat{y} - \bar{y}$
+
+
+## Partitioning The Variance Of Y
+
+If you look closely at Eq. 6.8 you can see that this is now actually a part of the residual sum of squares, Eq. 6.9, and and the regression or explained sum of squares, 6.10.
+
+Eq. 6.9: Residual
+
+$y_i - \hat{y}$
+
+Eq. 6.10: Regression/Explained
+
+$\hat{y} - \bar{y}$
+
+
+
+
+## The Relationship Of R-Squared And Partitioned Variance
+
+Because $R^2$ is the regression or explained sum of squares devided by the total sum of squares we can use the partitioned variance to calculate $R^2$. Recall that the total sum of squares is simply the residual sum of squares plus the regression sum of squares. Therefore, from that partition of the variance we have the regression or explaned sum of squares and the residual sum of squares. These are all of the components that are needed to calculate $R^2$ with Eq. 6.4. Another measurement is r, or the correlation. This shows how two variables correlate positively, correlate negatively or not correlated at all. This is related to the covariance. $R^2$ is simply the square of r.
+
+
+## Looking Forward
+
+-We will discuss Bellentine Diagrams and how they relate to correlation.
+
+-We will use the diagrams to visualize the partitioning of the variance now that we have introduced the mathematics.
+
+-We will discuss how the variance of each variable and the size of the circles in the diagrams represent variance. 
+
