@@ -36,4 +36,7 @@
 ### READINGS
 
 Teetor, P. (2011). *R cookbook: Proven recipes for data analysis, statistics, and graphics*. " O'Reilly Media, Inc.". 
+
+Wooldridge, J. M. (2015). *Introductory econometrics: A modern approach*. Nelson Education.
+
 <br>
