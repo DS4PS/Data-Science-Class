@@ -1,10 +1,11 @@
 # Course Content
 
-## TEXTBOOK
+### TEXTBOOK
 
 [Table of Contents](01-TEXTBOOK/docs/index.html)
+<br>
 
-## LECTURE NOTES
+### LECTURE NOTES
 
 * Unit 01  
 * [Unit 02](02-LECTURES/module_2_slides.html)  
@@ -13,26 +14,26 @@
 * [Unit 05](02-LECTURES/module_5_slides.html)  
 * [Unit 05](02-LECTURES/module_6_slides.html)  
 * [Unit 07](02-LECTURES/Specification-Part-II.html)  
-  
-  
+<br>  
  
 
-
-## LABS
+### LABS
 
 * Lab 01 
 * Lab 02 
 * Lab 03 
+<br>
 
 
-## READINGS
 
-Teetor, P. (2011). *R cookbook: Proven recipes for data analysis, statistics, and graphics*. " O'Reilly Media, Inc.". 
- 
-
-## PRACTICE EXAMS
+### PRACTICE EXAMS
 
 * Exam 01 
 * Exam 02 
+<br>
 
 
+### READINGS
+
+Teetor, P. (2011). *R cookbook: Proven recipes for data analysis, statistics, and graphics*. " O'Reilly Media, Inc.". 
+<br>
