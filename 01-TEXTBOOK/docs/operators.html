@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Foundations of Data Science I</title>
+  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook.">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Foundations of Data Science I" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Foundations of Data Science I" />
+  
+  <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+<meta name="author" content="Jesse Lecy">
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="data-structures.html">
+<link rel="next" href="merging-data.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="custom.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Data Science I</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prerequisites</a></li>
+<li class="chapter" data-level="2" data-path="introduction-to-r.html"><a href="introduction-to-r.html"><i class="fa fa-check"></i><b>2</b> Introduction to R</a><ul>
+<li class="chapter" data-level="2.1" data-path="introduction-to-r.html"><a href="introduction-to-r.html#navigation"><i class="fa fa-check"></i><b>2.1</b> Navigation</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="introduction-to-r.html"><a href="introduction-to-r.html#setting-your-working-directory"><i class="fa fa-check"></i><b>2.1.1</b> Setting Your Working Directory</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="introduction-to-r.html"><a href="introduction-to-r.html#commenting-code"><i class="fa fa-check"></i><b>2.2</b> Commenting Code</a></li>
+<li class="chapter" data-level="2.3" data-path="introduction-to-r.html"><a href="introduction-to-r.html#help"><i class="fa fa-check"></i><b>2.3</b> Help</a></li>
+<li class="chapter" data-level="2.4" data-path="introduction-to-r.html"><a href="introduction-to-r.html#install-programs-packages"><i class="fa fa-check"></i><b>2.4</b> Install Programs (packages)</a></li>
+<li class="chapter" data-level="2.5" data-path="introduction-to-r.html"><a href="introduction-to-r.html#accessing-built-in-datasets-in-r"><i class="fa fa-check"></i><b>2.5</b> Accessing Built-In Datasets in R</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="introduction-to-r.html"><a href="introduction-to-r.html#basic-data-operations"><i class="fa fa-check"></i><b>2.5.1</b> Basic Data Operations</a></li>
+<li class="chapter" data-level="2.5.2" data-path="introduction-to-r.html"><a href="introduction-to-r.html#using-the-lahman-data"><i class="fa fa-check"></i><b>2.5.2</b> Using the Lahman Data</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="introduction-to-r.html"><a href="introduction-to-r.html#master-table"><i class="fa fa-check"></i><b>2.6</b> <strong>MASTER TABLE</strong></a><ul>
+<li class="chapter" data-level="2.6.1" data-path="introduction-to-r.html"><a href="introduction-to-r.html#example-analysis"><i class="fa fa-check"></i><b>2.6.1</b> Example Analysis</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="data-structures.html"><a href="data-structures.html"><i class="fa fa-check"></i><b>3</b> Data Structures</a><ul>
+<li class="chapter" data-level="3.1" data-path="data-structures.html"><a href="data-structures.html#vectors"><i class="fa fa-check"></i><b>3.1</b> Vectors</a></li>
+<li class="chapter" data-level="3.2" data-path="data-structures.html"><a href="data-structures.html#casting"><i class="fa fa-check"></i><b>3.2</b> Casting</a></li>
+<li class="chapter" data-level="3.3" data-path="data-structures.html"><a href="data-structures.html#the-combine-function"><i class="fa fa-check"></i><b>3.3</b> The Combine Function</a></li>
+<li class="chapter" data-level="3.4" data-path="data-structures.html"><a href="data-structures.html#numeric-vectors"><i class="fa fa-check"></i><b>3.4</b> Numeric Vectors</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="data-structures.html"><a href="data-structures.html#integers-are-simple-numeric-vectors"><i class="fa fa-check"></i><b>3.4.1</b> Integers Are Simple Numeric Vectors</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="data-structures.html"><a href="data-structures.html#character-vectors"><i class="fa fa-check"></i><b>3.5</b> Character Vectors</a></li>
+<li class="chapter" data-level="3.6" data-path="data-structures.html"><a href="data-structures.html#logical-vectors"><i class="fa fa-check"></i><b>3.6</b> Logical Vectors</a></li>
+<li class="chapter" data-level="3.7" data-path="data-structures.html"><a href="data-structures.html#factors"><i class="fa fa-check"></i><b>3.7</b> Factors</a></li>
+<li class="chapter" data-level="3.8" data-path="data-structures.html"><a href="data-structures.html#generating-vectors"><i class="fa fa-check"></i><b>3.8</b> Generating Vectors</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="operators.html"><a href="operators.html"><i class="fa fa-check"></i><b>4</b> Operators</a><ul>
+<li class="chapter" data-level="4.1" data-path="operators.html"><a href="operators.html#datasets"><i class="fa fa-check"></i><b>4.1</b> Datasets</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="operators.html"><a href="operators.html#data-frames"><i class="fa fa-check"></i><b>4.1.1</b> Data Frames</a></li>
+<li class="chapter" data-level="4.1.2" data-path="operators.html"><a href="operators.html#matrices"><i class="fa fa-check"></i><b>4.1.2</b> Matrices</a></li>
+<li class="chapter" data-level="4.1.3" data-path="operators.html"><a href="operators.html#lists"><i class="fa fa-check"></i><b>4.1.3</b> Lists</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="operators.html"><a href="operators.html#subsets"><i class="fa fa-check"></i><b>4.2</b> Subsets</a></li>
+<li class="chapter" data-level="4.3" data-path="operators.html"><a href="operators.html#variable-transformations"><i class="fa fa-check"></i><b>4.3</b> Variable Transformations</a></li>
+<li class="chapter" data-level="4.4" data-path="operators.html"><a href="operators.html#missing-values-nas"><i class="fa fa-check"></i><b>4.4</b> Missing Values: NA’s</a></li>
+<li class="chapter" data-level="4.5" data-path="operators.html"><a href="operators.html#the-attach-function"><i class="fa fa-check"></i><b>4.5</b> The ‘attach’ Function</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="merging-data.html"><a href="merging-data.html"><i class="fa fa-check"></i><b>5</b> Merging Data</a><ul>
+<li class="chapter" data-level="5.1" data-path="merging-data.html"><a href="merging-data.html#packages-used-in-this-chapter"><i class="fa fa-check"></i><b>5.1</b> Packages Used in This Chapter</a></li>
+<li class="chapter" data-level="5.2" data-path="merging-data.html"><a href="merging-data.html#relational-databases"><i class="fa fa-check"></i><b>5.2</b> Relational Databases</a></li>
+<li class="chapter" data-level="5.3" data-path="merging-data.html"><a href="merging-data.html#set-theory"><i class="fa fa-check"></i><b>5.3</b> Set Theory</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="merging-data.html"><a href="merging-data.html#set-theory-functions"><i class="fa fa-check"></i><b>5.3.1</b> Set Theory Functions</a></li>
+<li class="chapter" data-level="5.3.2" data-path="merging-data.html"><a href="merging-data.html#set-theory-using-logical-operators"><i class="fa fa-check"></i><b>5.3.2</b> Set Theory Using Logical Operators</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="merging-data.html"><a href="merging-data.html#merging-data-1"><i class="fa fa-check"></i><b>5.4</b> Merging Data</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="merging-data.html"><a href="merging-data.html#the-by.x-and-by.y-arguments"><i class="fa fa-check"></i><b>5.4.1</b> The by.x and by.y Arguments</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="merging-data.html"><a href="merging-data.html#non-unique-observations-in-id-variables"><i class="fa fa-check"></i><b>5.5</b> Non-Unique Observations in ID Variables</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="merging-data.html"><a href="merging-data.html#example-of-incorrect-merge"><i class="fa fa-check"></i><b>5.5.1</b> Example of Incorrect Merge</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="merging-data.html"><a href="merging-data.html#the-in-function"><i class="fa fa-check"></i><b>5.6</b> The %in% function</a></li>
+<li class="chapter" data-level="5.7" data-path="merging-data.html"><a href="merging-data.html#the-match-function"><i class="fa fa-check"></i><b>5.7</b> The Match Function</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="analysis-with-groups-in-r.html"><a href="analysis-with-groups-in-r.html"><i class="fa fa-check"></i><b>6</b> Analysis with Groups in R</a><ul>
+<li class="chapter" data-level="6.0.1" data-path="analysis-with-groups-in-r.html"><a href="analysis-with-groups-in-r.html#packages-used-in-this-chapter-1"><i class="fa fa-check"></i><b>6.0.1</b> Packages Used in this Chapter</a></li>
+<li class="chapter" data-level="6.0.2" data-path="analysis-with-groups-in-r.html"><a href="analysis-with-groups-in-r.html#hypothetical-experimental-data"><i class="fa fa-check"></i><b>6.0.2</b> Hypothetical Experimental Data</a></li>
+<li class="chapter" data-level="6.1" data-path="analysis-with-groups-in-r.html"><a href="analysis-with-groups-in-r.html#group-structure"><i class="fa fa-check"></i><b>6.1</b> Group Structure</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="analysis-with-groups-in-r.html"><a href="analysis-with-groups-in-r.html#what-are-groups"><i class="fa fa-check"></i><b>6.1.1</b> What Are Groups?</a></li>
+<li class="chapter" data-level="6.1.2" data-path="analysis-with-groups-in-r.html"><a href="analysis-with-groups-in-r.html#main-take-away"><i class="fa fa-check"></i><b>6.1.2</b> Main Take-Away</a></li>
+<li class="chapter" data-level="6.1.3" data-path="analysis-with-groups-in-r.html"><a href="analysis-with-groups-in-r.html#example"><i class="fa fa-check"></i><b>6.1.3</b> Example</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="analysis-with-groups-in-r.html"><a href="analysis-with-groups-in-r.html#analysis-by-group"><i class="fa fa-check"></i><b>6.2</b> Analysis by Group</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="analysis-with-groups-in-r.html"><a href="analysis-with-groups-in-r.html#highest-ave-player-salary"><i class="fa fa-check"></i><b>6.2.1</b> Highest Ave Player Salary</a></li>
+<li class="chapter" data-level="6.2.2" data-path="analysis-with-groups-in-r.html"><a href="analysis-with-groups-in-r.html#most-players-paid-over-5-million"><i class="fa fa-check"></i><b>6.2.2</b> Most Players Paid Over $5 Million</a></li>
+<li class="chapter" data-level="6.2.3" data-path="analysis-with-groups-in-r.html"><a href="analysis-with-groups-in-r.html#fielding-positions"><i class="fa fa-check"></i><b>6.2.3</b> Fielding Positions</a></li>
+<li class="chapter" data-level="6.2.4" data-path="analysis-with-groups-in-r.html"><a href="analysis-with-groups-in-r.html#country-of-birth"><i class="fa fa-check"></i><b>6.2.4</b> Country of Birth</a></li>
+<li class="chapter" data-level="6.2.5" data-path="analysis-with-groups-in-r.html"><a href="analysis-with-groups-in-r.html#pay-raises"><i class="fa fa-check"></i><b>6.2.5</b> Pay Raises</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://webapp4.asu.edu/programs/t5/majorinfo/ASU00/PPPGEMS/graduate/false" target="blank">ASU</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Foundations of Data Science I</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="operators" class="section level1">
+<h1><span class="header-section-number">Chapter 4</span> Operators</h1>
+<p>Logical operators are the most basic type of data programming and the core of many types of data analysis. Most of the time we are not conducting fancy statistics, we just want to identify members of a group (print all of the females from the study), or describe things that belong to a subset of the data (compare the average price of houses with garages to houses without garages).</p>
+<p>In order to accomplish these simple tasks we need to use logic statements. A logic statement answers the question, does an observation belong to a group.</p>
+<p>Many times groups are simple. Show me all of the professions that make over $100k a year, for example.</p>
+<p>Sometimes groups are complex. Identify the African American children from a specific zip code in Chicago that live in households with single mothers.</p>
+<p>You will use nine basic logical operators:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Operator</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>&lt;</td>
+<td>less than</td>
+</tr>
+<tr class="even">
+<td>&lt;=</td>
+<td>less than or equal to</td>
+</tr>
+<tr class="odd">
+<td>&gt;</td>
+<td>greater than</td>
+</tr>
+<tr class="even">
+<td>&gt;=</td>
+<td>greater than or equal to</td>
+</tr>
+<tr class="odd">
+<td>==</td>
+<td>exactly equal to</td>
+</tr>
+<tr class="even">
+<td>!=</td>
+<td>not equal to</td>
+</tr>
+<tr class="odd">
+<td>x | y</td>
+<td>x OR y</td>
+</tr>
+<tr class="even">
+<td>x &amp; y</td>
+<td>x AND y</td>
+</tr>
+<tr class="odd">
+<td>!</td>
+<td>opposite of</td>
+</tr>
+</tbody>
+</table>
+<p>Logical operators create logical vectors, a vector that contains only TRUE or FALSE. The TRUE means that the observation belongs to the group, FALSE means it does not.</p>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb188-1" data-line-number="1">x1 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">7</span>,<span class="dv">9</span>,<span class="dv">1</span>,<span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb188-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb188-3" data-line-number="3">x2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;male&quot;</span>,<span class="st">&quot;male&quot;</span>,<span class="st">&quot;female&quot;</span>,<span class="st">&quot;female&quot;</span>)</a>
+<a class="sourceLine" id="cb188-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb188-5" data-line-number="5">x3 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;treatment&quot;</span>,<span class="st">&quot;control&quot;</span>,<span class="st">&quot;treatment&quot;</span>,<span class="st">&quot;control&quot;</span>)</a>
+<a class="sourceLine" id="cb188-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb188-7" data-line-number="7">x1 <span class="op">&gt;</span><span class="st"> </span><span class="dv">7</span></a></code></pre></div>
+<pre><code>## [1] FALSE  TRUE FALSE FALSE</code></pre>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb190-1" data-line-number="1">x1 <span class="op">&gt;=</span><span class="st"> </span><span class="dv">7</span></a></code></pre></div>
+<pre><code>## [1]  TRUE  TRUE FALSE FALSE</code></pre>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb192-1" data-line-number="1">x1 <span class="op">==</span><span class="st"> </span><span class="dv">9</span></a></code></pre></div>
+<pre><code>## [1] FALSE  TRUE FALSE FALSE</code></pre>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb194-1" data-line-number="1">x1 =<span class="st"> </span><span class="dv">9</span>  <span class="co"># don&#39;t use a single equals operator!  it overwrites your variable</span></a>
+<a class="sourceLine" id="cb194-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb194-3" data-line-number="3">x1</a></code></pre></div>
+<pre><code>## [1] 9</code></pre>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb196-1" data-line-number="1">x1 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">7</span>,<span class="dv">9</span>,<span class="dv">1</span>,<span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb196-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb196-3" data-line-number="3">x1 <span class="op">==</span><span class="st"> </span><span class="dv">9</span> <span class="op">|</span><span class="st"> </span>x1 <span class="op">==</span><span class="st"> </span><span class="dv">1</span></a></code></pre></div>
+<pre><code>## [1] FALSE  TRUE  TRUE FALSE</code></pre>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb198-1" data-line-number="1"><span class="co"># x2 == male  # this will not work because male is not enclosed with quotes</span></a>
+<a class="sourceLine" id="cb198-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb198-3" data-line-number="3">x2 <span class="op">==</span><span class="st"> &quot;female&quot;</span></a></code></pre></div>
+<pre><code>## [1] FALSE FALSE  TRUE  TRUE</code></pre>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb200-1" data-line-number="1">x2 <span class="op">==</span><span class="st"> &quot;female&quot;</span> <span class="op">&amp;</span><span class="st"> </span>x3 <span class="op">==</span><span class="st"> &quot;treatment&quot;</span></a></code></pre></div>
+<pre><code>## [1] FALSE FALSE  TRUE FALSE</code></pre>
+<p>Note that we use operators to create logical vectors where TRUE designates observation that belong to the defined group, and FALSE designates observations outside the group. We use these logical vectors in three ways:</p>
+<ol style="list-style-type: decimal">
+<li>We can create a selector variable that is used for subsets. When a logical vector is passed to the subset function it will keep all observations with a TRUE value, and drop observations with a FALSE value.</li>
+</ol>
+<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb202-1" data-line-number="1">x1</a></code></pre></div>
+<pre><code>## [1] 7 9 1 2</code></pre>
+<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb204-1" data-line-number="1">x1 <span class="op">&gt;</span><span class="st"> </span><span class="dv">5</span></a></code></pre></div>
+<pre><code>## [1]  TRUE  TRUE FALSE FALSE</code></pre>
+<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb206-1" data-line-number="1">keep.these &lt;-<span class="st"> </span>x1 <span class="op">&gt;</span><span class="st"> </span><span class="dv">5</span></a>
+<a class="sourceLine" id="cb206-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb206-3" data-line-number="3">x1[ keep.these ]</a></code></pre></div>
+<pre><code>## [1] 7 9</code></pre>
+<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb208-1" data-line-number="1"><span class="co"># you can create a selector variable with one variable, and apply it to another</span></a>
+<a class="sourceLine" id="cb208-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb208-3" data-line-number="3">x2[ keep.these ]  <span class="co"># sex of observations where x1 &gt; 5</span></a></code></pre></div>
+<pre><code>## [1] &quot;male&quot; &quot;male&quot;</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>Logical vectors give us an easy way to count things within defined groups.</li>
+</ol>
+<p>We can apply a <strong>sum()</strong> function to a logical vector, and the result will be a tally of all of the TRUE cases.</p>
+<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb210-1" data-line-number="1"><span class="co"># how many females do we have in our study?</span></a>
+<a class="sourceLine" id="cb210-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb210-3" data-line-number="3"><span class="kw">sum</span>( x2 <span class="op">==</span><span class="st"> &quot;female&quot;</span> )</a></code></pre></div>
+<pre><code>## [1] 2</code></pre>
+<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb212-1" data-line-number="1"><span class="co"># how many females do we have in our treatment group?</span></a>
+<a class="sourceLine" id="cb212-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb212-3" data-line-number="3"><span class="kw">sum</span>( x2 <span class="op">==</span><span class="st"> &quot;female&quot;</span> <span class="op">&amp;</span><span class="st"> </span>x3 <span class="op">==</span><span class="st"> &quot;treatment&quot;</span> )</a></code></pre></div>
+<pre><code>## [1] 1</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li>We use selector variables to replace observations with new values using the assignment operator. This is similar to a find and replace operation.</li>
+</ol>
+<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb214-1" data-line-number="1">x7 &lt;-<span class="st"> </span><span class="kw">c</span>( <span class="st">&quot;mole&quot;</span>,<span class="st">&quot;mouse&quot;</span>,<span class="st">&quot;shrew&quot;</span>,<span class="st">&quot;mouse&quot;</span>,<span class="st">&quot;rat&quot;</span>,<span class="st">&quot;shrew&quot;</span>)</a>
+<a class="sourceLine" id="cb214-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb214-3" data-line-number="3"><span class="co"># the lab assistant incorrectly identified the shrews</span></a>
+<a class="sourceLine" id="cb214-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb214-5" data-line-number="5">x7</a></code></pre></div>
+<pre><code>## [1] &quot;mole&quot;  &quot;mouse&quot; &quot;shrew&quot; &quot;mouse&quot; &quot;rat&quot;   &quot;shrew&quot;</code></pre>
+<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb216-1" data-line-number="1">x7[ x7 <span class="op">==</span><span class="st"> &quot;shrew&quot;</span> ] &lt;-<span class="st"> &quot;possum&quot;</span></a>
+<a class="sourceLine" id="cb216-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb216-3" data-line-number="3">x7</a></code></pre></div>
+<pre><code>## [1] &quot;mole&quot;   &quot;mouse&quot;  &quot;possum&quot; &quot;mouse&quot;  &quot;rat&quot;    &quot;possum&quot;</code></pre>
+<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb218-1" data-line-number="1"><span class="co"># we don&#39;t know if linda received the treatment</span></a>
+<a class="sourceLine" id="cb218-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb218-3" data-line-number="3">x3 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;adam&quot;</span>,<span class="st">&quot;jamal&quot;</span>,<span class="st">&quot;linda&quot;</span>,<span class="st">&quot;sriti&quot;</span>)</a>
+<a class="sourceLine" id="cb218-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb218-5" data-line-number="5">x4 &lt;-<span class="st"> </span><span class="kw">c</span>( <span class="st">&quot;treatment&quot;</span>,<span class="st">&quot;control&quot;</span>,<span class="st">&quot;treatment&quot;</span>,<span class="st">&quot;control&quot;</span>)</a>
+<a class="sourceLine" id="cb218-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb218-7" data-line-number="7">x4[ x3 <span class="op">==</span><span class="st"> &quot;linda&quot;</span> ] &lt;-<span class="st"> </span><span class="ot">NA</span></a>
+<a class="sourceLine" id="cb218-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb218-9" data-line-number="9">x4</a></code></pre></div>
+<pre><code>## [1] &quot;treatment&quot; &quot;control&quot;   NA          &quot;control&quot;</code></pre>
+<p>The <strong>!</strong> operator is a special case, where it is not used to define a new logical vector, but rather it swaps the values of an existing logical vector.</p>
+<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb220-1" data-line-number="1">x1</a></code></pre></div>
+<pre><code>## [1] 7 9 1 2</code></pre>
+<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb222-1" data-line-number="1">these &lt;-<span class="st"> </span>x1 <span class="op">&gt;</span><span class="st"> </span><span class="dv">5</span></a>
+<a class="sourceLine" id="cb222-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb222-3" data-line-number="3">these</a></code></pre></div>
+<pre><code>## [1]  TRUE  TRUE FALSE FALSE</code></pre>
+<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb224-1" data-line-number="1"><span class="op">!</span><span class="st"> </span>these</a></code></pre></div>
+<pre><code>## [1] FALSE FALSE  TRUE  TRUE</code></pre>
+<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb226-1" data-line-number="1"><span class="op">!</span><span class="st"> </span><span class="ot">TRUE</span></a></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb228-1" data-line-number="1"><span class="op">!</span><span class="st"> </span><span class="ot">FALSE</span></a></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div id="datasets" class="section level2">
+<h2><span class="header-section-number">4.1</span> Datasets</h2>
+<p>When we combine multiple vectors together, we now have a dataset. There are three main types that we will use in this class.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Class</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>data frame</td>
+<td>A typical data set comprised of several variables</td>
+</tr>
+<tr class="even">
+<td>matrix</td>
+<td>A data set comprised of only numbers, used for matrix math</td>
+</tr>
+<tr class="odd">
+<td>list</td>
+<td>The grab bag of data structures - several vectors held together</td>
+</tr>
+</tbody>
+</table>
+<div id="data-frames" class="section level3">
+<h3><span class="header-section-number">4.1.1</span> Data Frames</h3>
+<p>The most familiar spreadsheet-type data structure is called a data frame in R. It consists of rows, which represent observations, and columns, which represent variables.</p>
+<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb230-1" data-line-number="1"><span class="kw">data</span>( USArrests )</a>
+<a class="sourceLine" id="cb230-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb230-3" data-line-number="3"><span class="kw">dim</span>( USArrests )   <span class="co"># number of rows by number of columns</span></a></code></pre></div>
+<pre><code>## [1] 50  4</code></pre>
+<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb232-1" data-line-number="1"><span class="kw">names</span>( USArrests )   <span class="co"># variable names or column names</span></a></code></pre></div>
+<pre><code>## [1] &quot;Murder&quot;   &quot;Assault&quot;  &quot;UrbanPop&quot; &quot;Rape&quot;</code></pre>
+<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb234-1" data-line-number="1"><span class="kw">row.names</span>( USArrests )</a></code></pre></div>
+<pre><code>##  [1] &quot;Alabama&quot;        &quot;Alaska&quot;         &quot;Arizona&quot;        &quot;Arkansas&quot;      
+##  [5] &quot;California&quot;     &quot;Colorado&quot;       &quot;Connecticut&quot;    &quot;Delaware&quot;      
+##  [9] &quot;Florida&quot;        &quot;Georgia&quot;        &quot;Hawaii&quot;         &quot;Idaho&quot;         
+## [13] &quot;Illinois&quot;       &quot;Indiana&quot;        &quot;Iowa&quot;           &quot;Kansas&quot;        
+## [17] &quot;Kentucky&quot;       &quot;Louisiana&quot;      &quot;Maine&quot;          &quot;Maryland&quot;      
+## [21] &quot;Massachusetts&quot;  &quot;Michigan&quot;       &quot;Minnesota&quot;      &quot;Mississippi&quot;   
+## [25] &quot;Missouri&quot;       &quot;Montana&quot;        &quot;Nebraska&quot;       &quot;Nevada&quot;        
+## [29] &quot;New Hampshire&quot;  &quot;New Jersey&quot;     &quot;New Mexico&quot;     &quot;New York&quot;      
+## [33] &quot;North Carolina&quot; &quot;North Dakota&quot;   &quot;Ohio&quot;           &quot;Oklahoma&quot;      
+## [37] &quot;Oregon&quot;         &quot;Pennsylvania&quot;   &quot;Rhode Island&quot;   &quot;South Carolina&quot;
+## [41] &quot;South Dakota&quot;   &quot;Tennessee&quot;      &quot;Texas&quot;          &quot;Utah&quot;          
+## [45] &quot;Vermont&quot;        &quot;Virginia&quot;       &quot;Washington&quot;     &quot;West Virginia&quot; 
+## [49] &quot;Wisconsin&quot;      &quot;Wyoming&quot;</code></pre>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb236-1" data-line-number="1"><span class="kw">head</span>( USArrests )  <span class="co"># print first six rows of the data</span></a></code></pre></div>
+<pre><code>##            Murder Assault UrbanPop Rape
+## Alabama      13.2     236       58 21.2
+## Alaska       10.0     263       48 44.5
+## Arizona       8.1     294       80 31.0
+## Arkansas      8.8     190       50 19.5
+## California    9.0     276       91 40.6
+## Colorado      7.9     204       78 38.7</code></pre>
+</div>
+<div id="matrices" class="section level3">
+<h3><span class="header-section-number">4.1.2</span> Matrices</h3>
+<p>A matrix is also a rectangular data object that consists of collections of vectors, but it is special in the sense that it only has numeric vectors and no variable names.</p>
+<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb238-1" data-line-number="1">mat &lt;-<span class="st"> </span><span class="kw">matrix</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">20</span>, <span class="dt">nrow=</span><span class="dv">5</span> )</a>
+<a class="sourceLine" id="cb238-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb238-3" data-line-number="3">mat</a></code></pre></div>
+<pre><code>##      [,1] [,2] [,3] [,4]
+## [1,]    1    6   11   16
+## [2,]    2    7   12   17
+## [3,]    3    8   13   18
+## [4,]    4    9   14   19
+## [5,]    5   10   15   20</code></pre>
+<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb240-1" data-line-number="1"><span class="kw">names</span>( mat )</a></code></pre></div>
+<pre><code>## NULL</code></pre>
+<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb242-1" data-line-number="1"><span class="kw">dim</span>( mat )</a></code></pre></div>
+<pre><code>## [1] 5 4</code></pre>
+<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb244-1" data-line-number="1"><span class="kw">as.data.frame</span>( mat )  <span class="co"># creates variable names</span></a></code></pre></div>
+<pre><code>##   V1 V2 V3 V4
+## 1  1  6 11 16
+## 2  2  7 12 17
+## 3  3  8 13 18
+## 4  4  9 14 19
+## 5  5 10 15 20</code></pre>
+<p>These are used almost exclusively for matrix algebra operations, which are fundamental to mathematical statistics. We will not use matrices in this course.</p>
+</div>
+<div id="lists" class="section level3">
+<h3><span class="header-section-number">4.1.3</span> Lists</h3>
+<p>The list is the most flexible data structure. It is created by sticking a bunch of unrelated vectors or datasets together. For example, when you run a regression you generate a bunch of interesting information. This information is saved as a list.</p>
+<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb246-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">100</span></a>
+<a class="sourceLine" id="cb246-2" data-line-number="2">y &lt;-<span class="st"> </span><span class="dv">2</span><span class="op">*</span>x <span class="op">+</span><span class="st"> </span><span class="kw">rnorm</span>( <span class="dv">100</span>, <span class="dv">0</span>, <span class="dv">10</span>)</a>
+<a class="sourceLine" id="cb246-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb246-4" data-line-number="4">m<span class="fl">.01</span> &lt;-<span class="st"> </span><span class="kw">lm</span>( y <span class="op">~</span><span class="st"> </span>x )</a>
+<a class="sourceLine" id="cb246-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb246-6" data-line-number="6"><span class="kw">names</span>( m<span class="fl">.01</span> )</a></code></pre></div>
+<pre><code>##  [1] &quot;coefficients&quot;  &quot;residuals&quot;     &quot;effects&quot;       &quot;rank&quot;         
+##  [5] &quot;fitted.values&quot; &quot;assign&quot;        &quot;qr&quot;            &quot;df.residual&quot;  
+##  [9] &quot;xlevels&quot;       &quot;call&quot;          &quot;terms&quot;         &quot;model&quot;</code></pre>
+<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb248-1" data-line-number="1">m<span class="fl">.01</span><span class="op">$</span>coefficients</a></code></pre></div>
+<pre><code>## (Intercept)           x 
+##   0.7221786   2.0140803</code></pre>
+<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb250-1" data-line-number="1">m<span class="fl">.01</span><span class="op">$</span>residuals</a></code></pre></div>
+<pre><code>##            1            2            3            4            5 
+## -11.81395348   0.56630797  24.90352454  -1.37224957 -13.46797712 
+##            6            7            8            9           10 
+## -11.03427856  -2.13533414  14.38235514  -9.88814537   5.37914198 
+##           11           12           13           14           15 
+##   0.49657534  12.63302272 -26.48211030  11.13332738  31.07036313 
+##           16           17           18           19           20 
+##  -7.79555531 -10.18035658  -2.46867617  22.35706992  -2.97454084 
+##           21           22           23           24           25 
+##   8.69538895 -10.43638899  -6.90999182  -6.62739364  11.38436923 
+##           26           27           28           29           30 
+##   1.48603487  -7.40643567 -14.73764286   3.82855855   9.16955646 
+##           31           32           33           34           35 
+## -17.72422203 -13.61993533   0.47994680  15.52123635 -10.32787112 
+##           36           37           38           39           40 
+##   1.20766141  10.48011082  -1.09444480  -3.01951708   4.49115411 
+##           41           42           43           44           45 
+##  -8.40324922   6.82215973   1.12959371  -2.15360344 -13.38540450 
+##           46           47           48           49           50 
+##   8.64680645  -1.82646081   0.76315026 -18.79659930   5.62301491 
+##           51           52           53           54           55 
+##   4.77851699  -4.62224431   0.13011777   9.77436402  16.55329118 
+##           56           57           58           59           60 
+##   5.43731853  -5.09191483 -12.71676101   0.05265385  15.10669607 
+##           61           62           63           64           65 
+##   3.26686112  -3.94731681   3.76472484   3.26252079  -2.35873152 
+##           66           67           68           69           70 
+##   2.06229384   5.98847555  -4.69902573  10.71094008   1.59506614 
+##           71           72           73           74           75 
+##  -2.64952985   4.37062338 -21.04267406  -2.92296654  -5.02686783 
+##           76           77           78           79           80 
+##  -5.29633329  -5.23064982  13.92775083   8.64409280  -2.34263660 
+##           81           82           83           84           85 
+##  14.10309605   2.15875097 -13.49644593  -9.31851980  13.48007902 
+##           86           87           88           89           90 
+## -21.38727938 -17.07365780   0.85352651  -1.85928339   4.51391301 
+##           91           92           93           94           95 
+##  11.45593385  -8.87075963   0.24836035   1.42280331   6.76143960 
+##           96           97           98           99          100 
+##  -5.87476027  10.53524160  13.95235188  -6.95794218  -2.69359603</code></pre>
+<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb252-1" data-line-number="1">m<span class="fl">.01</span><span class="op">$</span>call</a></code></pre></div>
+<pre><code>## lm(formula = y ~ x)</code></pre>
+<p>These output are all related to the model we have run, so they are kept organized by the list so they can be used for various further steps like comparing models or checking for model fit.</p>
+<p>A data frame is a bit more rigid that a list in that you cannot combine elements that do not have the same dimsions.</p>
+<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb254-1" data-line-number="1"><span class="co"># new.dataframe &lt;- data.frame( m.01$coefficients, m.01$residuals, m.01$call )</span></a>
+<a class="sourceLine" id="cb254-2" data-line-number="2"><span class="co">#</span></a>
+<a class="sourceLine" id="cb254-3" data-line-number="3"><span class="co"># these will fail because the vectors have different lengths </span></a></code></pre></div>
+</div>
+</div>
+<div id="subsets" class="section level2">
+<h2><span class="header-section-number">4.2</span> Subsets</h2>
+<p>The subset operators <strong>[ ]</strong> are one of the most common you will use in R.</p>
+<p>The primary rule of subsets is to use a data operator to create a logical selector vector, and use that to generate subsets. Any observation that corresponds to TRUE will be retained, any observation that corresponds to FALSE will be dropped.</p>
+<p>For vectors, you need to specify a single dimension.</p>
+<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb255-1" data-line-number="1">x1 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">167</span>,<span class="dv">185</span>,<span class="dv">119</span>,<span class="dv">142</span>)</a>
+<a class="sourceLine" id="cb255-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb255-3" data-line-number="3">x2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;adam&quot;</span>,<span class="st">&quot;jamal&quot;</span>,<span class="st">&quot;linda&quot;</span>,<span class="st">&quot;sriti&quot;</span>)</a>
+<a class="sourceLine" id="cb255-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb255-5" data-line-number="5">x3 &lt;-<span class="st"> </span><span class="kw">factor</span>( <span class="kw">c</span>(<span class="st">&quot;male&quot;</span>,<span class="st">&quot;male&quot;</span>,<span class="st">&quot;female&quot;</span>,<span class="st">&quot;female&quot;</span>) )</a>
+<a class="sourceLine" id="cb255-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb255-7" data-line-number="7">x4 &lt;-<span class="st"> </span><span class="kw">c</span>( <span class="st">&quot;treatment&quot;</span>,<span class="st">&quot;control&quot;</span>,<span class="st">&quot;treatment&quot;</span>,<span class="st">&quot;control&quot;</span> )</a>
+<a class="sourceLine" id="cb255-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb255-9" data-line-number="9">dat &lt;-<span class="st"> </span><span class="kw">data.frame</span>( <span class="dt">name=</span>x2, <span class="dt">sex=</span>x3, <span class="dt">treat=</span>x4, <span class="dt">strength=</span>x1 )</a>
+<a class="sourceLine" id="cb255-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb255-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb255-12" data-line-number="12">these &lt;-<span class="st"> </span>x1 <span class="op">&gt;</span><span class="st"> </span><span class="dv">140</span>     <span class="co"># selector vector</span></a>
+<a class="sourceLine" id="cb255-13" data-line-number="13"></a>
+<a class="sourceLine" id="cb255-14" data-line-number="14">these</a></code></pre></div>
+<pre><code>## [1]  TRUE  TRUE FALSE  TRUE</code></pre>
+<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb257-1" data-line-number="1">x1[ these ]</a></code></pre></div>
+<pre><code>## [1] 167 185 142</code></pre>
+<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb259-1" data-line-number="1">x2[ these ]</a></code></pre></div>
+<pre><code>## [1] &quot;adam&quot;  &quot;jamal&quot; &quot;sriti&quot;</code></pre>
+<p>For data frames, you need two dimensions (rows and columns). The two dimensions are seperated by a comma, and if you leave one blank you will not drop anything.</p>
+<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb261-1" data-line-number="1"><span class="co"># dat[  row position ,  column position  ]</span></a>
+<a class="sourceLine" id="cb261-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb261-3" data-line-number="3">dat </a></code></pre></div>
+<pre><code>##    name    sex     treat strength
+## 1  adam   male treatment      167
+## 2 jamal   male   control      185
+## 3 linda female treatment      119
+## 4 sriti female   control      142</code></pre>
+<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb263-1" data-line-number="1">these &lt;-<span class="st"> </span>dat<span class="op">$</span>treat <span class="op">==</span><span class="st"> &quot;treatment&quot;</span></a>
+<a class="sourceLine" id="cb263-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb263-3" data-line-number="3">dat[ these , ]   <span class="co"># all data in the treatment group</span></a></code></pre></div>
+<pre><code>##    name    sex     treat strength
+## 1  adam   male treatment      167
+## 3 linda female treatment      119</code></pre>
+<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb265-1" data-line-number="1">dat[ , <span class="kw">c</span>(<span class="st">&quot;name&quot;</span>,<span class="st">&quot;sex&quot;</span>) ]  <span class="co"># select two columns of data</span></a></code></pre></div>
+<pre><code>##    name    sex
+## 1  adam   male
+## 2 jamal   male
+## 3 linda female
+## 4 sriti female</code></pre>
+<div class="sourceCode" id="cb267"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb267-1" data-line-number="1"><span class="co"># to keep a subset as a separate dataset</span></a>
+<a class="sourceLine" id="cb267-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb267-3" data-line-number="3">dat.women &lt;-<span class="st"> </span>dat[ dat<span class="op">$</span>sex <span class="op">==</span><span class="st"> &quot;female&quot;</span> , ]</a>
+<a class="sourceLine" id="cb267-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb267-5" data-line-number="5">dat.women</a></code></pre></div>
+<pre><code>##    name    sex     treat strength
+## 3 linda female treatment      119
+## 4 sriti female   control      142</code></pre>
+<p>Note the rules listed above about subsetting factors. After applying a subset, they will retain all of the original levels, even when they are not longer useful. You need to drop the unused levels if you would like them to be omitted from functions that use the factor levels for analysis.</p>
+<div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb269-1" data-line-number="1">df &lt;-<span class="st"> </span><span class="kw">data.frame</span>( <span class="dt">letters=</span>LETTERS[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>], <span class="dt">numbers=</span><span class="kw">seq</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>) )</a>
+<a class="sourceLine" id="cb269-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb269-3" data-line-number="3"><span class="kw">levels</span>( df<span class="op">$</span>letters )</a></code></pre></div>
+<pre><code>## [1] &quot;A&quot; &quot;B&quot; &quot;C&quot; &quot;D&quot; &quot;E&quot;</code></pre>
+<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb271-1" data-line-number="1">sub.df &lt;-<span class="st"> </span>df[ <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, ]</a>
+<a class="sourceLine" id="cb271-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb271-3" data-line-number="3">sub.df<span class="op">$</span>letters</a></code></pre></div>
+<pre><code>## [1] A B C
+## Levels: A B C D E</code></pre>
+<div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb273-1" data-line-number="1"><span class="kw">levels</span>( sub.df<span class="op">$</span>letters )</a></code></pre></div>
+<pre><code>## [1] &quot;A&quot; &quot;B&quot; &quot;C&quot; &quot;D&quot; &quot;E&quot;</code></pre>
+<div class="sourceCode" id="cb275"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb275-1" data-line-number="1"><span class="kw">droplevels</span>( sub.df<span class="op">$</span>letters )</a></code></pre></div>
+<pre><code>## [1] A B C
+## Levels: A B C</code></pre>
+<div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb277-1" data-line-number="1">sub.df<span class="op">$</span>letters &lt;-<span class="st"> </span><span class="kw">droplevels</span>( sub.df<span class="op">$</span>letters )</a></code></pre></div>
+</div>
+<div id="variable-transformations" class="section level2">
+<h2><span class="header-section-number">4.3</span> Variable Transformations</h2>
+<p>When we create a new variable from existing variables, it is called a ‘transformation’. This is very common in data science. Crime is measures by the number of assults <em>per 100,000 people</em>, for example (crime / pop). A batting average is the number of hits divided by the number of at bats.</p>
+<p>In R, mathematical operations are <em>vectorized</em>, which means that operations are performed on the entire vector all at once. This makes transformations fast and easy.</p>
+<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb278-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10</span></a>
+<a class="sourceLine" id="cb278-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb278-3" data-line-number="3">x <span class="op">+</span><span class="st"> </span><span class="dv">5</span></a></code></pre></div>
+<pre><code>##  [1]  6  7  8  9 10 11 12 13 14 15</code></pre>
+<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb280-1" data-line-number="1">x <span class="op">*</span><span class="st"> </span><span class="dv">5</span></a></code></pre></div>
+<pre><code>##  [1]  5 10 15 20 25 30 35 40 45 50</code></pre>
+<p>R uses a convention called “recycling”, which means that it will re-use elements of a vector if necessary. In the example below the x vector has 10 elements, but the y vector only has 5 elements. When we run out of y, we just start over from the beginning. This is powerful in some instances, but can be dangerous in others if you don’t realize that that it is happening.</p>
+<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb282-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10</span></a>
+<a class="sourceLine" id="cb282-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb282-3" data-line-number="3">y &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">5</span></a>
+<a class="sourceLine" id="cb282-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb282-5" data-line-number="5">x <span class="op">+</span><span class="st"> </span>y</a></code></pre></div>
+<pre><code>##  [1]  2  4  6  8 10  7  9 11 13 15</code></pre>
+<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb284-1" data-line-number="1">x <span class="op">*</span><span class="st"> </span>y</a></code></pre></div>
+<pre><code>##  [1]  1  4  9 16 25  6 14 24 36 50</code></pre>
+<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb286-1" data-line-number="1"><span class="co"># the colors are recycled</span></a>
+<a class="sourceLine" id="cb286-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb286-3" data-line-number="3"><span class="kw">plot</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">col=</span><span class="kw">c</span>(<span class="st">&quot;red&quot;</span>,<span class="st">&quot;blue&quot;</span>), <span class="dt">pch=</span><span class="dv">19</span>, <span class="dt">cex=</span><span class="dv">3</span> )</a></code></pre></div>
+<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-62-1.png" width="768" /></p>
+<p>Here is an example of recycling gone wrong:</p>
+<div class="sourceCode" id="cb287"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb287-1" data-line-number="1">x1 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">167</span>,<span class="dv">185</span>,<span class="dv">119</span>,<span class="dv">142</span>)</a>
+<a class="sourceLine" id="cb287-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb287-3" data-line-number="3">x2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;adam&quot;</span>,<span class="st">&quot;jamal&quot;</span>,<span class="st">&quot;linda&quot;</span>,<span class="st">&quot;sriti&quot;</span>)</a>
+<a class="sourceLine" id="cb287-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb287-5" data-line-number="5">x3 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;male&quot;</span>,<span class="st">&quot;male&quot;</span>,<span class="st">&quot;female&quot;</span>,<span class="st">&quot;female&quot;</span>)</a>
+<a class="sourceLine" id="cb287-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb287-7" data-line-number="7">x4 &lt;-<span class="st"> </span><span class="kw">c</span>( <span class="st">&quot;treatment&quot;</span>,<span class="st">&quot;contro&quot;</span>,<span class="st">&quot;treatment&quot;</span>,<span class="st">&quot;control&quot;</span> )</a>
+<a class="sourceLine" id="cb287-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb287-9" data-line-number="9">dat &lt;-<span class="st"> </span><span class="kw">data.frame</span>( <span class="dt">name=</span>x2, <span class="dt">sex=</span>x3, <span class="dt">treat=</span>x4, <span class="dt">strength=</span>x1 )</a>
+<a class="sourceLine" id="cb287-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb287-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb287-12" data-line-number="12"><span class="co"># create a subset of data of all female study participants</span></a>
+<a class="sourceLine" id="cb287-13" data-line-number="13"></a>
+<a class="sourceLine" id="cb287-14" data-line-number="14">dat<span class="op">$</span>sex <span class="op">==</span><span class="st"> &quot;female&quot;</span></a></code></pre></div>
+<pre><code>## [1] FALSE FALSE  TRUE  TRUE</code></pre>
+<div class="sourceCode" id="cb289"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb289-1" data-line-number="1">these &lt;-<span class="st"> </span>dat<span class="op">$</span>sex <span class="op">==</span><span class="st"> &quot;female&quot;</span></a>
+<a class="sourceLine" id="cb289-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb289-3" data-line-number="3">dat[ these, ]  <span class="co"># correct subset</span></a></code></pre></div>
+<pre><code>##    name    sex     treat strength
+## 3 linda female treatment      119
+## 4 sriti female   control      142</code></pre>
+<div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb291-1" data-line-number="1"><span class="co"># same thing, but i mess is up - the female element is recycled in the overwrite</span></a>
+<a class="sourceLine" id="cb291-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb291-3" data-line-number="3">dat<span class="op">$</span>sex =<span class="st"> &quot;female&quot;</span>    <span class="co"># whoops just over-wrote my data! should be double equal</span></a>
+<a class="sourceLine" id="cb291-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb291-5" data-line-number="5">these &lt;-<span class="st"> </span>dat<span class="op">$</span>sex <span class="op">==</span><span class="st"> &quot;female&quot;</span> </a>
+<a class="sourceLine" id="cb291-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb291-7" data-line-number="7">dat[ these , ]</a></code></pre></div>
+<pre><code>##    name    sex     treat strength
+## 1  adam female treatment      167
+## 2 jamal female    contro      185
+## 3 linda female treatment      119
+## 4 sriti female   control      142</code></pre>
+</div>
+<div id="missing-values-nas" class="section level2">
+<h2><span class="header-section-number">4.4</span> Missing Values: NA’s</h2>
+<p>Missing values are coded differently in each data analysis program. SPSS uses a period, for example. In R, missing values are coded as “NA”.</p>
+<p>The important thing to note is that R wants to make sure you know there are missing values if you are conducting analysis. As a result, it will give you the answer of “NA” when you try to do math with a vector that includes a missing value. You have to ask it explicitly to ignore the missing value.</p>
+<div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb293-1" data-line-number="1">x5 &lt;-<span class="st"> </span><span class="kw">c</span>( <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span> )</a>
+<a class="sourceLine" id="cb293-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb293-3" data-line-number="3">x5</a></code></pre></div>
+<pre><code>## [1] 1 2 3 4</code></pre>
+<div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb295-1" data-line-number="1"><span class="kw">sum</span>( x5 )</a></code></pre></div>
+<pre><code>## [1] 10</code></pre>
+<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb297-1" data-line-number="1"><span class="kw">mean</span>( x5 )</a></code></pre></div>
+<pre><code>## [1] 2.5</code></pre>
+<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb299-1" data-line-number="1">x5 &lt;-<span class="st"> </span><span class="kw">c</span>( <span class="dv">1</span>, <span class="dv">2</span>, <span class="ot">NA</span>, <span class="dv">4</span> )</a>
+<a class="sourceLine" id="cb299-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb299-3" data-line-number="3">x5</a></code></pre></div>
+<pre><code>## [1]  1  2 NA  4</code></pre>
+<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb301-1" data-line-number="1"><span class="co"># should missing values be treated as zeros or dropped? </span></a>
+<a class="sourceLine" id="cb301-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb301-3" data-line-number="3"><span class="kw">sum</span>( x5 )</a></code></pre></div>
+<pre><code>## [1] NA</code></pre>
+<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb303-1" data-line-number="1"><span class="kw">mean</span>( x5 )</a></code></pre></div>
+<pre><code>## [1] NA</code></pre>
+<div class="sourceCode" id="cb305"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb305-1" data-line-number="1"><span class="kw">sum</span>( x5, <span class="dt">na.rm=</span>T )   <span class="co"># na.rm=T argument drops missing values</span></a></code></pre></div>
+<pre><code>## [1] 7</code></pre>
+<div class="sourceCode" id="cb307"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb307-1" data-line-number="1"><span class="kw">mean</span>( x5, <span class="dt">na.rm=</span>T )  <span class="co"># na.rm=T argument drops missing values</span></a></code></pre></div>
+<pre><code>## [1] 2.333333</code></pre>
+<p>You cannot use the <em>==</em> operator to identify missing values in a dataset. There is a special <strong>is.na()</strong> function to locate all of the missing values in a vector.</p>
+<div class="sourceCode" id="cb309"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb309-1" data-line-number="1">x5</a></code></pre></div>
+<pre><code>## [1]  1  2 NA  4</code></pre>
+<div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb311-1" data-line-number="1">x5 <span class="op">==</span><span class="st"> </span><span class="ot">NA</span>    <span class="co"># this does not do what you want</span></a></code></pre></div>
+<pre><code>## [1] NA NA NA NA</code></pre>
+<div class="sourceCode" id="cb313"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb313-1" data-line-number="1"><span class="kw">is.na</span>( x5 )    <span class="co"># much better</span></a></code></pre></div>
+<pre><code>## [1] FALSE FALSE  TRUE FALSE</code></pre>
+<div class="sourceCode" id="cb315"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb315-1" data-line-number="1"><span class="op">!</span><span class="st"> </span><span class="kw">is.na</span>( x5 )  <span class="co"># if you want to create a selector vector to drop missing values </span></a></code></pre></div>
+<pre><code>## [1]  TRUE  TRUE FALSE  TRUE</code></pre>
+<div class="sourceCode" id="cb317"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb317-1" data-line-number="1">x5[ <span class="op">!</span><span class="st"> </span><span class="kw">is.na</span>(x5) ]</a></code></pre></div>
+<pre><code>## [1] 1 2 4</code></pre>
+<div class="sourceCode" id="cb319"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb319-1" data-line-number="1">x5[ <span class="kw">is.na</span>(x5) ] &lt;-<span class="st"> </span><span class="dv">0</span>  <span class="co"># replace missing values with zero</span></a></code></pre></div>
+</div>
+<div id="the-attach-function" class="section level2">
+<h2><span class="header-section-number">4.5</span> The ‘attach’ Function</h2>
+<p><strong>Never Use This!</strong></p>
+<p>This is a convenient function for making variable names easily accessible, but it is problematic because of:</p>
+<p>scope</p>
+<p>conflicting variable names</p>
+<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb320-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">5</span></a>
+<a class="sourceLine" id="cb320-2" data-line-number="2">y &lt;-<span class="st"> </span><span class="dv">6</span><span class="op">:</span><span class="dv">10</span></a>
+<a class="sourceLine" id="cb320-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb320-4" data-line-number="4">dat &lt;-<span class="st"> </span><span class="kw">data.frame</span>(x,y)</a>
+<a class="sourceLine" id="cb320-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb320-6" data-line-number="6"><span class="kw">rm</span>(x)</a>
+<a class="sourceLine" id="cb320-7" data-line-number="7"><span class="kw">rm</span>(y)</a>
+<a class="sourceLine" id="cb320-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb320-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb320-10" data-line-number="10"><span class="co"># I want to transform x in my dataset</span></a>
+<a class="sourceLine" id="cb320-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb320-12" data-line-number="12"><span class="kw">attach</span>( dat )</a>
+<a class="sourceLine" id="cb320-13" data-line-number="13"></a>
+<a class="sourceLine" id="cb320-14" data-line-number="14"><span class="dv">2</span><span class="op">*</span>x</a></code></pre></div>
+<pre><code>## [1]  2  4  6  8 10</code></pre>
+<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb322-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="dv">2</span><span class="op">*</span>x</a>
+<a class="sourceLine" id="cb322-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb322-3" data-line-number="3"><span class="kw">detach</span>( dat )</a>
+<a class="sourceLine" id="cb322-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb322-5" data-line-number="5">x</a></code></pre></div>
+<pre><code>## [1]  2  4  6  8 10</code></pre>
+<div class="sourceCode" id="cb324"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb324-1" data-line-number="1">dat  <span class="co"># whoops! I didn&#39;t save my work in the dataset</span></a></code></pre></div>
+<pre><code>##   x  y
+## 1 1  6
+## 2 2  7
+## 3 3  8
+## 4 4  9
+## 5 5 10</code></pre>
+<p>You will see the <strong>attach()</strong> function used on occassion, and it is tempting because you can write the variable names directly. But in general, try to avoid the <strong>attach()</strong> function and don’t form bad habits by using it now because when your scripts become more complicated then can cause problmes.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="data-structures.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="merging-data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/Unit-02-Data-Structures.Rmd",
+"text": "Edit"
+},
+"download": ["DS4PS-I.pdf", "DS4PS-I.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

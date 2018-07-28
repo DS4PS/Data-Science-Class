@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Foundations of Data Science I</title>
+  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook.">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Foundations of Data Science I" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Foundations of Data Science I" />
+  
+  <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+<meta name="author" content="Jesse Lecy">
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="index.html">
+<link rel="next" href="data-structures.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="custom.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Data Science I</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prerequisites</a></li>
+<li class="chapter" data-level="2" data-path="introduction-to-r.html"><a href="introduction-to-r.html"><i class="fa fa-check"></i><b>2</b> Introduction to R</a><ul>
+<li class="chapter" data-level="2.1" data-path="introduction-to-r.html"><a href="introduction-to-r.html#navigation"><i class="fa fa-check"></i><b>2.1</b> Navigation</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="introduction-to-r.html"><a href="introduction-to-r.html#setting-your-working-directory"><i class="fa fa-check"></i><b>2.1.1</b> Setting Your Working Directory</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="introduction-to-r.html"><a href="introduction-to-r.html#commenting-code"><i class="fa fa-check"></i><b>2.2</b> Commenting Code</a></li>
+<li class="chapter" data-level="2.3" data-path="introduction-to-r.html"><a href="introduction-to-r.html#help"><i class="fa fa-check"></i><b>2.3</b> Help</a></li>
+<li class="chapter" data-level="2.4" data-path="introduction-to-r.html"><a href="introduction-to-r.html#install-programs-packages"><i class="fa fa-check"></i><b>2.4</b> Install Programs (packages)</a></li>
+<li class="chapter" data-level="2.5" data-path="introduction-to-r.html"><a href="introduction-to-r.html#accessing-built-in-datasets-in-r"><i class="fa fa-check"></i><b>2.5</b> Accessing Built-In Datasets in R</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="introduction-to-r.html"><a href="introduction-to-r.html#basic-data-operations"><i class="fa fa-check"></i><b>2.5.1</b> Basic Data Operations</a></li>
+<li class="chapter" data-level="2.5.2" data-path="introduction-to-r.html"><a href="introduction-to-r.html#using-the-lahman-data"><i class="fa fa-check"></i><b>2.5.2</b> Using the Lahman Data</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="introduction-to-r.html"><a href="introduction-to-r.html#master-table"><i class="fa fa-check"></i><b>2.6</b> <strong>MASTER TABLE</strong></a><ul>
+<li class="chapter" data-level="2.6.1" data-path="introduction-to-r.html"><a href="introduction-to-r.html#example-analysis"><i class="fa fa-check"></i><b>2.6.1</b> Example Analysis</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="data-structures.html"><a href="data-structures.html"><i class="fa fa-check"></i><b>3</b> Data Structures</a><ul>
+<li class="chapter" data-level="3.1" data-path="data-structures.html"><a href="data-structures.html#vectors"><i class="fa fa-check"></i><b>3.1</b> Vectors</a></li>
+<li class="chapter" data-level="3.2" data-path="data-structures.html"><a href="data-structures.html#casting"><i class="fa fa-check"></i><b>3.2</b> Casting</a></li>
+<li class="chapter" data-level="3.3" data-path="data-structures.html"><a href="data-structures.html#the-combine-function"><i class="fa fa-check"></i><b>3.3</b> The Combine Function</a></li>
+<li class="chapter" data-level="3.4" data-path="data-structures.html"><a href="data-structures.html#numeric-vectors"><i class="fa fa-check"></i><b>3.4</b> Numeric Vectors</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="data-structures.html"><a href="data-structures.html#integers-are-simple-numeric-vectors"><i class="fa fa-check"></i><b>3.4.1</b> Integers Are Simple Numeric Vectors</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="data-structures.html"><a href="data-structures.html#character-vectors"><i class="fa fa-check"></i><b>3.5</b> Character Vectors</a></li>
+<li class="chapter" data-level="3.6" data-path="data-structures.html"><a href="data-structures.html#logical-vectors"><i class="fa fa-check"></i><b>3.6</b> Logical Vectors</a></li>
+<li class="chapter" data-level="3.7" data-path="data-structures.html"><a href="data-structures.html#factors"><i class="fa fa-check"></i><b>3.7</b> Factors</a></li>
+<li class="chapter" data-level="3.8" data-path="data-structures.html"><a href="data-structures.html#generating-vectors"><i class="fa fa-check"></i><b>3.8</b> Generating Vectors</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="operators.html"><a href="operators.html"><i class="fa fa-check"></i><b>4</b> Operators</a><ul>
+<li class="chapter" data-level="4.1" data-path="operators.html"><a href="operators.html#datasets"><i class="fa fa-check"></i><b>4.1</b> Datasets</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="operators.html"><a href="operators.html#data-frames"><i class="fa fa-check"></i><b>4.1.1</b> Data Frames</a></li>
+<li class="chapter" data-level="4.1.2" data-path="operators.html"><a href="operators.html#matrices"><i class="fa fa-check"></i><b>4.1.2</b> Matrices</a></li>
+<li class="chapter" data-level="4.1.3" data-path="operators.html"><a href="operators.html#lists"><i class="fa fa-check"></i><b>4.1.3</b> Lists</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="operators.html"><a href="operators.html#subsets"><i class="fa fa-check"></i><b>4.2</b> Subsets</a></li>
+<li class="chapter" data-level="4.3" data-path="operators.html"><a href="operators.html#variable-transformations"><i class="fa fa-check"></i><b>4.3</b> Variable Transformations</a></li>
+<li class="chapter" data-level="4.4" data-path="operators.html"><a href="operators.html#missing-values-nas"><i class="fa fa-check"></i><b>4.4</b> Missing Values: NA’s</a></li>
+<li class="chapter" data-level="4.5" data-path="operators.html"><a href="operators.html#the-attach-function"><i class="fa fa-check"></i><b>4.5</b> The ‘attach’ Function</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="merging-data.html"><a href="merging-data.html"><i class="fa fa-check"></i><b>5</b> Merging Data</a><ul>
+<li class="chapter" data-level="5.1" data-path="merging-data.html"><a href="merging-data.html#packages-used-in-this-chapter"><i class="fa fa-check"></i><b>5.1</b> Packages Used in This Chapter</a></li>
+<li class="chapter" data-level="5.2" data-path="merging-data.html"><a href="merging-data.html#relational-databases"><i class="fa fa-check"></i><b>5.2</b> Relational Databases</a></li>
+<li class="chapter" data-level="5.3" data-path="merging-data.html"><a href="merging-data.html#set-theory"><i class="fa fa-check"></i><b>5.3</b> Set Theory</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="merging-data.html"><a href="merging-data.html#set-theory-functions"><i class="fa fa-check"></i><b>5.3.1</b> Set Theory Functions</a></li>
+<li class="chapter" data-level="5.3.2" data-path="merging-data.html"><a href="merging-data.html#set-theory-using-logical-operators"><i class="fa fa-check"></i><b>5.3.2</b> Set Theory Using Logical Operators</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="merging-data.html"><a href="merging-data.html#merging-data-1"><i class="fa fa-check"></i><b>5.4</b> Merging Data</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="merging-data.html"><a href="merging-data.html#the-by.x-and-by.y-arguments"><i class="fa fa-check"></i><b>5.4.1</b> The by.x and by.y Arguments</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="merging-data.html"><a href="merging-data.html#non-unique-observations-in-id-variables"><i class="fa fa-check"></i><b>5.5</b> Non-Unique Observations in ID Variables</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="merging-data.html"><a href="merging-data.html#example-of-incorrect-merge"><i class="fa fa-check"></i><b>5.5.1</b> Example of Incorrect Merge</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="merging-data.html"><a href="merging-data.html#the-in-function"><i class="fa fa-check"></i><b>5.6</b> The %in% function</a></li>
+<li class="chapter" data-level="5.7" data-path="merging-data.html"><a href="merging-data.html#the-match-function"><i class="fa fa-check"></i><b>5.7</b> The Match Function</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="analysis-with-groups-in-r.html"><a href="analysis-with-groups-in-r.html"><i class="fa fa-check"></i><b>6</b> Analysis with Groups in R</a><ul>
+<li class="chapter" data-level="6.0.1" data-path="analysis-with-groups-in-r.html"><a href="analysis-with-groups-in-r.html#packages-used-in-this-chapter-1"><i class="fa fa-check"></i><b>6.0.1</b> Packages Used in this Chapter</a></li>
+<li class="chapter" data-level="6.0.2" data-path="analysis-with-groups-in-r.html"><a href="analysis-with-groups-in-r.html#hypothetical-experimental-data"><i class="fa fa-check"></i><b>6.0.2</b> Hypothetical Experimental Data</a></li>
+<li class="chapter" data-level="6.1" data-path="analysis-with-groups-in-r.html"><a href="analysis-with-groups-in-r.html#group-structure"><i class="fa fa-check"></i><b>6.1</b> Group Structure</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="analysis-with-groups-in-r.html"><a href="analysis-with-groups-in-r.html#what-are-groups"><i class="fa fa-check"></i><b>6.1.1</b> What Are Groups?</a></li>
+<li class="chapter" data-level="6.1.2" data-path="analysis-with-groups-in-r.html"><a href="analysis-with-groups-in-r.html#main-take-away"><i class="fa fa-check"></i><b>6.1.2</b> Main Take-Away</a></li>
+<li class="chapter" data-level="6.1.3" data-path="analysis-with-groups-in-r.html"><a href="analysis-with-groups-in-r.html#example"><i class="fa fa-check"></i><b>6.1.3</b> Example</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="analysis-with-groups-in-r.html"><a href="analysis-with-groups-in-r.html#analysis-by-group"><i class="fa fa-check"></i><b>6.2</b> Analysis by Group</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="analysis-with-groups-in-r.html"><a href="analysis-with-groups-in-r.html#highest-ave-player-salary"><i class="fa fa-check"></i><b>6.2.1</b> Highest Ave Player Salary</a></li>
+<li class="chapter" data-level="6.2.2" data-path="analysis-with-groups-in-r.html"><a href="analysis-with-groups-in-r.html#most-players-paid-over-5-million"><i class="fa fa-check"></i><b>6.2.2</b> Most Players Paid Over $5 Million</a></li>
+<li class="chapter" data-level="6.2.3" data-path="analysis-with-groups-in-r.html"><a href="analysis-with-groups-in-r.html#fielding-positions"><i class="fa fa-check"></i><b>6.2.3</b> Fielding Positions</a></li>
+<li class="chapter" data-level="6.2.4" data-path="analysis-with-groups-in-r.html"><a href="analysis-with-groups-in-r.html#country-of-birth"><i class="fa fa-check"></i><b>6.2.4</b> Country of Birth</a></li>
+<li class="chapter" data-level="6.2.5" data-path="analysis-with-groups-in-r.html"><a href="analysis-with-groups-in-r.html#pay-raises"><i class="fa fa-check"></i><b>6.2.5</b> Pay Raises</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://webapp4.asu.edu/programs/t5/majorinfo/ASU00/PPPGEMS/graduate/false" target="blank">ASU</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Foundations of Data Science I</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="introduction-to-r" class="section level1">
+<h1><span class="header-section-number">Chapter 2</span> Introduction to R</h1>
+<p>This lecture introduces you to basic operations when you first start using R such as navigation, the object-oriented framework, loading a package, and creating some data vectors.</p>
+<div id="navigation" class="section level2">
+<h2><span class="header-section-number">2.1</span> Navigation</h2>
+<p>You need to know a few operations to help you maneuver the R work environment, such as listing objects (datasets and functions) that are active, changing your working directory, listing available files, and finding help.</p>
+<div id="setting-your-working-directory" class="section level3">
+<h3><span class="header-section-number">2.1.1</span> Setting Your Working Directory</h3>
+<p>When you are ready to load data, R needs to know where to look for your files. You can check what is avaiable in the current directory (i.e. folder) by asking to list all of the current files using <strong>dir()</strong>.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">dir</span>()</a></code></pre></div>
+<p>If the file that you need is located in a different folder, you can change directories easily in R Studio by Session -&gt; Set working director -&gt; Choose directory (or Ctrl + Shift + H).</p>
+<p>If you are writing a script, you want to keep track of this step so that it can be reproduced. Use the function <strong>get.wd()</strong> to check your current working directory, and <strong>set.wd()</strong> to change. You need to specify your path as an argument to this function, such as.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">setwd</span>( <span class="st">&quot;C:/user/projects/financial model&quot;</span> )</a></code></pre></div>
+<p>NOTE! R uses unix style notation with forward slashes, so if you copy and paste from Windows it will look like this, with back slashes:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw">setwd</span>( <span class="st">&quot;C:\user\projects</span><span class="ch">\f</span><span class="st">inancial model&quot;</span> )</a></code></pre></div>
+<p>You will need to change them around for it to work.</p>
+<p>It is best to save all of your steps in your scripts so that the analysis can be reproduced by yourself or others. In some cases you are doing exploratory or summary work, and you may want to find a file a quickly. You can use the <strong>file.choose()</strong> function to open a GUI to select your file directly. This function is used as an argument inside of a load data function.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">my.dat &lt;-<span class="st"> </span><span class="kw">read.csv</span>( <span class="kw">file.choose</span>() )</a></code></pre></div>
+</div>
+</div>
+<div id="commenting-code" class="section level2">
+<h2><span class="header-section-number">2.2</span> Commenting Code</h2>
+<p>Most computer languages have a special character that is used to “comment out” lines so that it is not run by the program. It is used for two important purposes. First, we can add text to document our functions and it will not interfere with the program. And two, we can use it to run a program while ignoring some of the code, often for debugging purposes.</p>
+<p>The <strong>#</strong> hash tag is used for comments in R.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="co">##==============================================</span></a>
+<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="co">##</span></a>
+<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="co">##  Here is some documentation for this script</span></a>
+<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="co">##</span></a>
+<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="co">##==============================================</span></a>
+<a class="sourceLine" id="cb6-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb6-7" data-line-number="7">x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10</span></a>
+<a class="sourceLine" id="cb6-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb6-9" data-line-number="9"><span class="kw">sum</span>( x )</a></code></pre></div>
+<pre><code>## [1] 55</code></pre>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="co"># y &lt;- 1:25     # not run</span></a>
+<a class="sourceLine" id="cb8-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb8-3" data-line-number="3"><span class="co"># sum( y )      # not run</span></a></code></pre></div>
+</div>
+<div id="help" class="section level2">
+<h2><span class="header-section-number">2.3</span> Help</h2>
+<p>You will use the help functions frequently to figure out what arguments and values are needed for specific functions. Because R is very customizable, you will find that many functions have several or dozens of arguments, and it is difficult to remember the correct syntax and values. But don’t worry, to look them up all you need is the function name and a call for help:</p>
+<blockquote>
+<p>help( dotchart ) # opens an external helpfile</p>
+</blockquote>
+<p>If you just need to remind yourself which arguments are defined in a function, you can use the <em>args()</em> command:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="kw">args</span>( dotchart )</a></code></pre></div>
+<pre><code>## function (x, labels = NULL, groups = NULL, gdata = NULL, cex = par(&quot;cex&quot;), 
+##     pt.cex = cex, pch = 21, gpch = 21, bg = par(&quot;bg&quot;), color = par(&quot;fg&quot;), 
+##     gcolor = par(&quot;fg&quot;), lcolor = &quot;gray&quot;, xlim = range(x[is.finite(x)]), 
+##     main = NULL, xlab = NULL, ylab = NULL, ...) 
+## NULL</code></pre>
+<p>If you can’t recall a function name, you can list all of the functions from a specific package as follows:</p>
+<blockquote>
+<p>help( package=“stats” ) # lists all functions in stats package</p>
+</blockquote>
+</div>
+<div id="install-programs-packages" class="section level2">
+<h2><span class="header-section-number">2.4</span> Install Programs (packages)</h2>
+<p>When you open R by default it will launch a core set of programs, called “packages” in R speak, that are use for most data operations. To see which packages are currently active use the <strong>search()</strong> function.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="kw">search</span>()</a></code></pre></div>
+<pre><code>##  [1] &quot;.GlobalEnv&quot;        &quot;package:ggplot2&quot;   &quot;package:scales&quot;   
+##  [4] &quot;package:reshape2&quot;  &quot;package:tidyr&quot;     &quot;package:bindrcpp&quot; 
+##  [7] &quot;package:maps&quot;      &quot;package:dplyr&quot;     &quot;package:pander&quot;   
+## [10] &quot;package:Lahman&quot;    &quot;package:bookdown&quot;  &quot;package:stats&quot;    
+## [13] &quot;package:graphics&quot;  &quot;package:grDevices&quot; &quot;package:utils&quot;    
+## [16] &quot;package:datasets&quot;  &quot;package:methods&quot;   &quot;Autoloads&quot;        
+## [19] &quot;package:base&quot;</code></pre>
+<p>These programs manage the basic data operations, run the core graphics engine, and give you basic statistical methods.</p>
+<p>The real magic for R comes from the over 7,000 contributed packages available on the CRAN: <a href="https://cran.r-project.org/web/views/" class="uri">https://cran.r-project.org/web/views/</a></p>
+<p>A package consists of custom functions and datasets that are generated by users. They are <em>packaged</em> together so that they can be shared with others. A package also includes documentation that describes each function, defines all of the arguments, and documents any datasets that are included.</p>
+<p>If you know a package name, it is easy to install. In R Studio you can select Tools -&gt; Install Packages and a list of available packages will be generated. But it is easier to use the <strong>install.packages()</strong> command. We will use the Lahman Package in this course, so let’s install that now.</p>
+<p><strong>Description</strong> <em>This package provides the tables from Sean Lahman’s
+Baseball Database as a set of R data.frames. It uses the data
+on pitching, hitting and fielding performance and other tables
+from 1871 through 2013, as recorded in the 2014 version of the
+database.</em></p>
+<p>See the documentation here: <a href="https://cran.r-project.org/web/packages/Lahman/Lahman.pdf" class="uri">https://cran.r-project.org/web/packages/Lahman/Lahman.pdf</a></p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="kw">install.packages</span>( <span class="st">&quot;Lahman&quot;</span> )</a></code></pre></div>
+<p>You will be asked to select a “mirror”. In R speak this just means the server from which you will download the package (choose anything nearby). R is a community of developers and universities that create code and maintain the infrastructure. A couple of dozen universities around the world host servers that contain copies of the R packages so that they can be easily accessed everywhere.</p>
+<p>If the package is successfully installed you will get a message similar to this:</p>
+<blockquote>
+<p>package ‘Lahman’ successfully unpacked and MD5 sums checked</p>
+</blockquote>
+<p>Once a new program is installed you can now open (“load” in R speak) the package using the <strong>library()</strong> command:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="kw">library</span>( <span class="st">&quot;Lahman&quot;</span> )</a></code></pre></div>
+<p>If you now type <strong>search()</strong> you can see that Lahman has been added to the list of active programs. We can now access all of the functions and data that are available in the Lahman package.</p>
+</div>
+<div id="accessing-built-in-datasets-in-r" class="section level2">
+<h2><span class="header-section-number">2.5</span> Accessing Built-In Datasets in R</h2>
+<p>One nice feature of R is that is comes with a bunch of built-in datasets that have been contributed by users are are loaded automatically. You can see the list of available datasets by typing:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="kw">data</span>()</a></code></pre></div>
+<p>This will list all of the default datasets in core R packages. If you want to see all of the datasets available in installed packages as well use:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="kw">data</span>( <span class="dt">package =</span> <span class="kw">.packages</span>(<span class="dt">all.available =</span> <span class="ot">TRUE</span>) )</a></code></pre></div>
+<div id="basic-data-operations" class="section level3">
+<h3><span class="header-section-number">2.5.1</span> Basic Data Operations</h3>
+<p>Let’s ignore the underlying data structure right now and look at some ways that we might interact with data.</p>
+<p>We will use the <strong>USArrests</strong> dataset available in the core files.</p>
+<p>To access the data we need to load it into working memory. Anything that is active in R will be listed in the environment, which you can check using the <strong>ls()</strong> command. We will load the dataset using the <strong>data()</strong> command.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1"><span class="kw">remove</span>( <span class="dt">list=</span><span class="kw">ls</span>() )</a></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1"><span class="kw">ls</span>() <span class="co"># nothing currently available</span></a></code></pre></div>
+<pre><code>## character(0)</code></pre>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1"><span class="kw">data</span>( <span class="st">&quot;USArrests&quot;</span> )</a>
+<a class="sourceLine" id="cb20-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb20-3" data-line-number="3"><span class="kw">ls</span>() <span class="co"># data is now avaible for use</span></a></code></pre></div>
+<pre><code>## [1] &quot;USArrests&quot;</code></pre>
+<p>Now that we have loaded a dataset, we can start to access the variables and analyze relationships. Let’s get to know our dataset.</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" data-line-number="1"><span class="kw">names</span>( USArrests )  <span class="co"># what variables do you have?</span></a></code></pre></div>
+<pre><code>## [1] &quot;Murder&quot;   &quot;Assault&quot;  &quot;UrbanPop&quot; &quot;Rape&quot;</code></pre>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" data-line-number="1"><span class="kw">row.names</span>( USArrests )   <span class="co"># what are the obsevations (rows) in our data</span></a></code></pre></div>
+<pre><code>##  [1] &quot;Alabama&quot;        &quot;Alaska&quot;         &quot;Arizona&quot;        &quot;Arkansas&quot;      
+##  [5] &quot;California&quot;     &quot;Colorado&quot;       &quot;Connecticut&quot;    &quot;Delaware&quot;      
+##  [9] &quot;Florida&quot;        &quot;Georgia&quot;        &quot;Hawaii&quot;         &quot;Idaho&quot;         
+## [13] &quot;Illinois&quot;       &quot;Indiana&quot;        &quot;Iowa&quot;           &quot;Kansas&quot;        
+## [17] &quot;Kentucky&quot;       &quot;Louisiana&quot;      &quot;Maine&quot;          &quot;Maryland&quot;      
+## [21] &quot;Massachusetts&quot;  &quot;Michigan&quot;       &quot;Minnesota&quot;      &quot;Mississippi&quot;   
+## [25] &quot;Missouri&quot;       &quot;Montana&quot;        &quot;Nebraska&quot;       &quot;Nevada&quot;        
+## [29] &quot;New Hampshire&quot;  &quot;New Jersey&quot;     &quot;New Mexico&quot;     &quot;New York&quot;      
+## [33] &quot;North Carolina&quot; &quot;North Dakota&quot;   &quot;Ohio&quot;           &quot;Oklahoma&quot;      
+## [37] &quot;Oregon&quot;         &quot;Pennsylvania&quot;   &quot;Rhode Island&quot;   &quot;South Carolina&quot;
+## [41] &quot;South Dakota&quot;   &quot;Tennessee&quot;      &quot;Texas&quot;          &quot;Utah&quot;          
+## [45] &quot;Vermont&quot;        &quot;Virginia&quot;       &quot;Washington&quot;     &quot;West Virginia&quot; 
+## [49] &quot;Wisconsin&quot;      &quot;Wyoming&quot;</code></pre>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" data-line-number="1"><span class="kw">nrow</span>( USArrests )   <span class="co"># how many observations are there?</span></a></code></pre></div>
+<pre><code>## [1] 50</code></pre>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" data-line-number="1"><span class="kw">dim</span>( USArrests )    <span class="co"># a quick way to see rows and columns - the dimensions of the dataset</span></a></code></pre></div>
+<pre><code>## [1] 50  4</code></pre>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" data-line-number="1"><span class="kw">summary</span>( USArrests )   <span class="co"># summary statistics of variables</span></a></code></pre></div>
+<pre><code>##      Murder          Assault         UrbanPop          Rape      
+##  Min.   : 0.800   Min.   : 45.0   Min.   :32.00   Min.   : 7.30  
+##  1st Qu.: 4.075   1st Qu.:109.0   1st Qu.:54.50   1st Qu.:15.07  
+##  Median : 7.250   Median :159.0   Median :66.00   Median :20.10  
+##  Mean   : 7.788   Mean   :170.8   Mean   :65.54   Mean   :21.23  
+##  3rd Qu.:11.250   3rd Qu.:249.0   3rd Qu.:77.75   3rd Qu.:26.18  
+##  Max.   :17.400   Max.   :337.0   Max.   :91.00   Max.   :46.00</code></pre>
+<p>We can see that the dataset consists of four variables: Murder, Assault, UrbanPop, and Rape. We also see that our unit of analysis is the state. But where does the data come from, and how are these variables measured?</p>
+<p>To see the documentation for a specific dataset you will need to use the <strong>help()</strong> function:</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" data-line-number="1"><span class="kw">help</span>( <span class="st">&quot;USArrests&quot;</span> )</a></code></pre></div>
+<p>We get valuable information about the source and metrics:</p>
+<p><strong>Description</strong> <em>This data set contains statistics, in arrests per 100,000 residents for assault, murder, and rape in each of the 50 US states in 1973. Also given is the percent of the population living in urban areas.</em></p>
+<p><strong>Format</strong> <em>A data frame with 50 observations on 4 variables.</em></p>
+<p><em>[,1] Murder numeric Murder arrests (per 100,000)</em>
+<em>[,2] Assault numeric Assault arrests (per 100,000)</em>
+<em>[,3] UrbanPop numeric Percent urban population</em>
+<em>[,4] Rape numeric Rape arrests (per 100,000)</em></p>
+<p>To access a specific variable inside of a dataset, you will use the <em>$</em> operator between the dataset name and the variable name:</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" data-line-number="1"><span class="kw">summary</span>( USArrests<span class="op">$</span>Murder )</a></code></pre></div>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   0.800   4.075   7.250   7.788  11.250  17.400</code></pre>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" data-line-number="1"><span class="kw">summary</span>( USArrests<span class="op">$</span>Assault )</a></code></pre></div>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    45.0   109.0   159.0   170.8   249.0   337.0</code></pre>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" data-line-number="1"><span class="co"># Is there a relationship between urban density and crime?</span></a>
+<a class="sourceLine" id="cb37-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb37-3" data-line-number="3"><span class="kw">plot</span>( USArrests<span class="op">$</span>UrbanPop, USArrests<span class="op">$</span>Murder )</a>
+<a class="sourceLine" id="cb37-4" data-line-number="4"><span class="kw">abline</span>( <span class="kw">lm</span>( USArrests<span class="op">$</span>Murder <span class="op">~</span><span class="st"> </span>USArrests<span class="op">$</span>UrbanPop ), <span class="dt">col=</span><span class="st">&quot;red&quot;</span> )</a></code></pre></div>
+<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+</div>
+<div id="using-the-lahman-data" class="section level3">
+<h3><span class="header-section-number">2.5.2</span> Using the Lahman Data</h3>
+<p>Let’s take a look at some of the data available in the Lahman package.</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" data-line-number="1"><span class="kw">data</span>( <span class="dt">package =</span> <span class="st">&quot;Lahman&quot;</span> )</a>
+<a class="sourceLine" id="cb38-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb38-3" data-line-number="3"><span class="co"># Data sets in package ‘Lahman’:</span></a>
+<a class="sourceLine" id="cb38-4" data-line-number="4"><span class="co">#</span></a>
+<a class="sourceLine" id="cb38-5" data-line-number="5"><span class="co"># AllstarFull                            AllstarFull table</span></a>
+<a class="sourceLine" id="cb38-6" data-line-number="6"><span class="co"># Appearances                            Appearances table</span></a>
+<a class="sourceLine" id="cb38-7" data-line-number="7"><span class="co"># AwardsManagers                         AwardsManagers table</span></a>
+<a class="sourceLine" id="cb38-8" data-line-number="8"><span class="co"># AwardsPlayers                          AwardsPlayers table</span></a>
+<a class="sourceLine" id="cb38-9" data-line-number="9"><span class="co"># AwardsShareManagers                    AwardsShareManagers table</span></a>
+<a class="sourceLine" id="cb38-10" data-line-number="10"><span class="co"># AwardsSharePlayers                     AwardsSharePlayers table</span></a>
+<a class="sourceLine" id="cb38-11" data-line-number="11"><span class="co"># Batting                                Batting table</span></a>
+<a class="sourceLine" id="cb38-12" data-line-number="12"><span class="co"># BattingPost                            BattingPost table</span></a>
+<a class="sourceLine" id="cb38-13" data-line-number="13"><span class="co"># CollegePlaying                         CollegePlaying table</span></a>
+<a class="sourceLine" id="cb38-14" data-line-number="14"><span class="co"># Fielding                               Fielding table</span></a>
+<a class="sourceLine" id="cb38-15" data-line-number="15"><span class="co"># FieldingOF                             FieldingOF table</span></a>
+<a class="sourceLine" id="cb38-16" data-line-number="16"><span class="co"># FieldingPost                           FieldingPost data</span></a>
+<a class="sourceLine" id="cb38-17" data-line-number="17"><span class="co"># HallOfFame                             Hall of Fame Voting Data</span></a>
+<a class="sourceLine" id="cb38-18" data-line-number="18"><span class="co"># LahmanData                             Lahman Datasets</span></a>
+<a class="sourceLine" id="cb38-19" data-line-number="19"><span class="co"># Managers                               Managers table</span></a>
+<a class="sourceLine" id="cb38-20" data-line-number="20"><span class="co"># ManagersHalf                           ManagersHalf table</span></a>
+<a class="sourceLine" id="cb38-21" data-line-number="21"><span class="co"># Master                                 Master table</span></a>
+<a class="sourceLine" id="cb38-22" data-line-number="22"><span class="co"># Pitching                               Pitching table</span></a>
+<a class="sourceLine" id="cb38-23" data-line-number="23"><span class="co"># PitchingPost                           PitchingPost table</span></a>
+<a class="sourceLine" id="cb38-24" data-line-number="24"><span class="co"># Salaries                               Salaries table</span></a>
+<a class="sourceLine" id="cb38-25" data-line-number="25"><span class="co"># Schools                                Schools table</span></a>
+<a class="sourceLine" id="cb38-26" data-line-number="26"><span class="co"># SeriesPost                             SeriesPost table</span></a>
+<a class="sourceLine" id="cb38-27" data-line-number="27"><span class="co"># Teams                                  Teams table</span></a>
+<a class="sourceLine" id="cb38-28" data-line-number="28"><span class="co"># TeamsFranchises                        TeamFranchises table</span></a>
+<a class="sourceLine" id="cb38-29" data-line-number="29"><span class="co"># TeamsHalf                              TeamsHalf table</span></a>
+<a class="sourceLine" id="cb38-30" data-line-number="30"><span class="co"># battingLabels                          Variable Labels</span></a>
+<a class="sourceLine" id="cb38-31" data-line-number="31"><span class="co"># fieldingLabels                         Variable Labels</span></a>
+<a class="sourceLine" id="cb38-32" data-line-number="32"><span class="co"># pitchingLabels                         Variable Labels</span></a></code></pre></div>
+<p>We see that we have lots of datasets to choose from here. I will use the Master dataset, which is a list of all of the Major League Baseball players over the past century, and their personal information.</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" data-line-number="1"><span class="kw">library</span>( Lahman )</a>
+<a class="sourceLine" id="cb39-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb39-3" data-line-number="3"><span class="kw">data</span>( Master )</a>
+<a class="sourceLine" id="cb39-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb39-5" data-line-number="5"><span class="kw">names</span>( Master )</a></code></pre></div>
+<pre><code>##  [1] &quot;playerID&quot;     &quot;birthYear&quot;    &quot;birthMonth&quot;   &quot;birthDay&quot;    
+##  [5] &quot;birthCountry&quot; &quot;birthState&quot;   &quot;birthCity&quot;    &quot;deathYear&quot;   
+##  [9] &quot;deathMonth&quot;   &quot;deathDay&quot;     &quot;deathCountry&quot; &quot;deathState&quot;  
+## [13] &quot;deathCity&quot;    &quot;nameFirst&quot;    &quot;nameLast&quot;     &quot;nameGiven&quot;   
+## [17] &quot;weight&quot;       &quot;height&quot;       &quot;bats&quot;         &quot;throws&quot;      
+## [21] &quot;debut&quot;        &quot;finalGame&quot;    &quot;retroID&quot;      &quot;bbrefID&quot;     
+## [25] &quot;deathDate&quot;    &quot;birthDate&quot;</code></pre>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" data-line-number="1"><span class="kw">nrow</span>( Master )  <span class="co"># 18,354 players included</span></a></code></pre></div>
+<pre><code>## [1] 19105</code></pre>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" data-line-number="1"><span class="kw">summary</span>( Master )</a></code></pre></div>
+<pre><code>##    playerID           birthYear      birthMonth        birthDay    
+##  Length:19105       Min.   :1820   Min.   : 1.000   Min.   : 1.00  
+##  Class :character   1st Qu.:1895   1st Qu.: 4.000   1st Qu.: 8.00  
+##  Mode  :character   Median :1937   Median : 7.000   Median :16.00  
+##                     Mean   :1931   Mean   : 6.629   Mean   :15.61  
+##                     3rd Qu.:1969   3rd Qu.:10.000   3rd Qu.:23.00  
+##                     Max.   :1996   Max.   :12.000   Max.   :31.00  
+##                     NA&#39;s   :132    NA&#39;s   :302      NA&#39;s   :449    
+##  birthCountry        birthState         birthCity           deathYear   
+##  Length:19105       Length:19105       Length:19105       Min.   :1872  
+##  Class :character   Class :character   Class :character   1st Qu.:1942  
+##  Mode  :character   Mode  :character   Mode  :character   Median :1967  
+##                                                           Mean   :1964  
+##                                                           3rd Qu.:1990  
+##                                                           Max.   :2017  
+##                                                           NA&#39;s   :9664  
+##    deathMonth        deathDay     deathCountry        deathState       
+##  Min.   : 1.000   Min.   : 1.00   Length:19105       Length:19105      
+##  1st Qu.: 3.000   1st Qu.: 8.00   Class :character   Class :character  
+##  Median : 6.000   Median :15.00   Mode  :character   Mode  :character  
+##  Mean   : 6.484   Mean   :15.57                                        
+##  3rd Qu.:10.000   3rd Qu.:23.00                                        
+##  Max.   :12.000   Max.   :31.00                                        
+##  NA&#39;s   :9665     NA&#39;s   :9666                                         
+##   deathCity          nameFirst           nameLast        
+##  Length:19105       Length:19105       Length:19105      
+##  Class :character   Class :character   Class :character  
+##  Mode  :character   Mode  :character   Mode  :character  
+##                                                          
+##                                                          
+##                                                          
+##                                                          
+##   nameGiven             weight          height        bats      
+##  Length:19105       Min.   : 65.0   Min.   :43.00   B   : 1175  
+##  Class :character   1st Qu.:170.0   1st Qu.:71.00   L   : 4957  
+##  Mode  :character   Median :185.0   Median :72.00   R   :11788  
+##                     Mean   :186.4   Mean   :72.27   NA&#39;s: 1185  
+##                     3rd Qu.:200.0   3rd Qu.:74.00               
+##                     Max.   :320.0   Max.   :83.00               
+##                     NA&#39;s   :854     NA&#39;s   :785                 
+##   throws         debut            finalGame           retroID         
+##  L   : 3653   Length:19105       Length:19105       Length:19105      
+##  R   :14472   Class :character   Class :character   Class :character  
+##  S   :    1   Mode  :character   Mode  :character   Mode  :character  
+##  NA&#39;s:  979                                                           
+##                                                                       
+##                                                                       
+##                                                                       
+##    bbrefID            deathDate            birthDate         
+##  Length:19105       Min.   :1872-03-17   Min.   :1820-04-17  
+##  Class :character   1st Qu.:1942-06-05   1st Qu.:1896-11-21  
+##  Mode  :character   Median :1967-03-06   Median :1939-01-01  
+##                     Mean   :1964-10-11   Mean   :1933-03-08  
+##                     3rd Qu.:1990-09-22   3rd Qu.:1970-04-02  
+##                     Max.   :2017-02-19   Max.   :1996-08-12  
+##                     NA&#39;s   :9666         NA&#39;s   :449</code></pre>
+<p>We can use <strong>help(Master)</strong> to get information about the dataset, including a data dictionary.</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb45-1" data-line-number="1"><span class="kw">help</span>( Master )</a></code></pre></div>
+</div>
+</div>
+<div id="master-table" class="section level2">
+<h2><span class="header-section-number">2.6</span> <strong>MASTER TABLE</strong></h2>
+<p><strong>Description</strong></p>
+<p>Master table - Player names, DOB, and biographical info. This file is to be used to get details about players listed in the Batting, Pitching, and other files where players are identified only by playerID.</p>
+<p><strong>Usage</strong></p>
+<p>data(Master)</p>
+<p><strong>Format</strong></p>
+<p>A data frame with 19105 observations on the following 26 variables.</p>
+<ul>
+<li><strong>playerID</strong>: A unique code asssigned to each player. The playerID links the data in this file with records on players in the other files.</li>
+<li><strong>birthYear</strong>: Year player was born</li>
+<li><strong>birthMonth</strong>: Month player was born</li>
+<li><strong>birthDay</strong>: Day player was born</li>
+<li><strong>birthCountry</strong>: Country where player was born</li>
+<li><strong>birthState</strong>: State where player was born</li>
+<li><strong>birthCity</strong>: City where player was born</li>
+<li><strong>deathYear</strong>: Year player died</li>
+<li><strong>deathMonth</strong>: Month player died</li>
+<li><strong>deathDay</strong>: Day player died</li>
+<li><strong>deathCountry</strong>: Country where player died</li>
+<li><strong>deathState</strong>: State where player died</li>
+<li><strong>deathCity</strong>: City where player died</li>
+<li><strong>nameFirst</strong>: Player’s first name</li>
+<li><strong>nameLast</strong>: Player’s last name</li>
+<li><strong>nameGiven</strong>: Player’s given name (typically first and middle)</li>
+<li><strong>weight</strong>: Player’s weight in pounds</li>
+<li><strong>height</strong>: Player’s height in inches</li>
+<li><strong>bats</strong>: a factor: Player’s batting hand (left (L), right (R), or both (B))</li>
+<li><strong>throws</strong>: a factor: Player’s throwing hand (left(L) or right(R))</li>
+<li><strong>debut</strong>: Date that player made first major league appearance</li>
+<li><strong>finalGame</strong>: Date that player made first major league appearance (blank if still active)</li>
+<li><strong>retroID</strong>: ID used by retrosheet, <a href="http://www.retrosheet.org/" class="uri">http://www.retrosheet.org/</a></li>
+<li><strong>bbrefID</strong>: ID used by Baseball Reference website, <a href="http://www.baseball-reference.com/" class="uri">http://www.baseball-reference.com/</a></li>
+<li><strong>birthDate</strong>: Player’s birthdate, in as.Date format</li>
+<li><strong>deathDate</strong>: Player’s deathdate, in as.Date format</li>
+</ul>
+<p><strong>Details</strong></p>
+<p>debut, finalGame were converted from character strings with as.Date.</p>
+<p><strong>Source</strong></p>
+<p>Lahman, S. (2016) Lahman’s Baseball Database, 1871-2015, 2015 version, <a href="http://www.seanlahman.com/baseball-archive/statistics/" class="uri">http://www.seanlahman.com/baseball-archive/statistics/</a></p>
+<div id="example-analysis" class="section level3">
+<h3><span class="header-section-number">2.6.1</span> Example Analysis</h3>
+<p>Perhaps I am curious about some of the data. I see that we have information on the birth month of professional baseball players. If you have read Malcolm Gladwell’s book <em>Outliers</em> you know there is an interesting cumulative advantage phenomenon that can occur with atheletes as they are young. If you are born near the end of the cutoff, you are on average six months older than other players in your league, and therefore slightly larger physically and more coordinated on average. Six months does not sound like much, but the slight size and coordination advantage means more playing time, which also improves skill. Over time, this small difference accumulates so that those lucky enough to be born near the cutoff become the best players.</p>
+<p>Gladwell looked at studies of hockey. Do we see this in baseball?</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" data-line-number="1"><span class="kw">table</span>( Master<span class="op">$</span>birthMonth )</a></code></pre></div>
+<pre><code>## 
+##    1    2    3    4    5    6    7    8    9   10   11   12 
+## 1631 1439 1528 1450 1449 1366 1503 1831 1661 1759 1620 1566</code></pre>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb48-1" data-line-number="1">tab &lt;-<span class="st"> </span><span class="kw">prop.table</span>( <span class="kw">table</span>( Master<span class="op">$</span>birthMonth ) )</a>
+<a class="sourceLine" id="cb48-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb48-3" data-line-number="3"><span class="kw">names</span>(tab) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Jan&quot;</span>,<span class="st">&quot;Feb&quot;</span>,<span class="st">&quot;Mar&quot;</span>,<span class="st">&quot;Apr&quot;</span>,<span class="st">&quot;May&quot;</span>,<span class="st">&quot;Jun&quot;</span>,<span class="st">&quot;Jul&quot;</span>,<span class="st">&quot;Aug&quot;</span>,<span class="st">&quot;Sep&quot;</span>,<span class="st">&quot;Oct&quot;</span>,<span class="st">&quot;Nov&quot;</span>,<span class="st">&quot;Dec&quot;</span>)</a>
+<a class="sourceLine" id="cb48-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb48-5" data-line-number="5"><span class="kw">dotchart</span>( tab, <span class="dt">pch=</span><span class="dv">19</span>, <span class="dt">xlab =</span> <span class="st">&quot;Percent of Players&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Birth Month&quot;</span> ) </a></code></pre></div>
+<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="data-structures.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/Unit-01-Introduction-to-R.Rmd",
+"text": "Edit"
+},
+"download": ["DS4PS-I.pdf", "DS4PS-I.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

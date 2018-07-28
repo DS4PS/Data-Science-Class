@@ -1,0 +1,7 @@
+book_filename: "DS4PS-I"
+# rmd_files: ["index.Rmd", "01-intro.Rmd", "04-application.Rmd"]
+language:
+  ui:
+    chapter_name: "Chapter "
+delete_merged_file: true
+output_dir: "docs"
