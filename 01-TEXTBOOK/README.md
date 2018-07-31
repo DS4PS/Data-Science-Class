@@ -119,6 +119,30 @@ knitr::include_graphics(rep('images/knit-logo.png', 3))
 ```
 ````
 
+### Text references (from bookdown documentation)
+
+You can assign some text to a label and reference the text using the label elsewhere in your document. This can be particularly useful for long figure/table captions (Section \@ref(figures) and \@ref(tables)), in which case you normally will have to write the whole character string in the chunk header (e.g., `fig.cap = "A long long figure caption."`) or your R code (e.g., `kable(caption = "A long long table caption.")`). It is also useful when these captions contain special HTML or LaTeX characters, e.g., if the figure caption contains an underscore, it works in the HTML output but may not work in LaTeX output because the underscore must be escaped in LaTeX.
+
+The syntax for a text reference is `(ref:label) text`, where `label` is a unique label^[You may consider using the code chunk labels.] throughout the document for `text`. It must be in a separate paragraph with empty lines above and below it. The paragraph must not be wrapped into multiple lines, and should not end with a white space. For example,
+
+```markdown
+(ref:foo) Define a text reference **here**. 
+```
+
+Then you can use `(ref:foo)` in your figure/table captions. The text can contain anything that Markdown supports, as long as it is one single paragraph. Here is a complete example:
+
+````markdown
+A normal paragraph.
+
+(ref:foo) A scatterplot of the data `cars` using **base** R graphics. 
+
+`r ''````{r foo, fig.cap='(ref:foo)'}
+plot(cars)  # a scatterplot
+```
+````
+
+Text references can be used anywhere in the document (not limited to figure captions). It can also be useful if you want to reuse a fragment of text in multiple places.
+
 [More examples](https://raw.githubusercontent.com/rstudio/bookdown/master/inst/examples/02-components.Rmd)
 
 
