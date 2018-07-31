@@ -2,7 +2,7 @@
 
 Director for all files for the Foundations of Data Science I, II and III course sequence.
 
-## Data Science Foundations I
+## Data Science Foundations I: Data Programming
 
 *	Intro to functions, arguments, and packages  
 *	Data types and structures  
@@ -16,7 +16,7 @@ Director for all files for the Foundations of Data Science I, II and III course 
 
 
 
-## Data Science Foundations II
+## Data Science Foundations II: Data Wrangling
 
 *	Intermediate data types (dates, lists, etc) 
 *	Intermediate data input through APIs (import step) 
@@ -29,7 +29,7 @@ Director for all files for the Foundations of Data Science I, II and III course 
 ![](http://r4ds.had.co.nz/diagrams/data-science-wrangle.png) 
 
 
-## Data Science Foundations III (project management)
+## Data Science Foundations III: Project Management
 
 *	Principles of open science and project management (reproducibility) 
 *	GitHub, versioning, and the agile team process 
