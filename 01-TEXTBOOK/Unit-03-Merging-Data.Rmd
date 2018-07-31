@@ -44,27 +44,35 @@ purchases <- data.frame(
 
 ```
 
+**Customer Database**
+
 ```{r, echo=F}
-
 customer.info %>% pander
-
-purchases  %>% pander   
-
-
 ```
+
+**Transactions Database**
+
+```{r, echo=F}
+purchases  %>% pander   
+```
+
 
 If we want to make the information actionable then we need to combine these datasets. For example, perhaps we want to know the average purchase amount from an individual in the 57701 zip code. We cannot answer that question with either dataset since the zip code is in one dataset, and the price is in another. We need to merge the data.
 
-```{r}
 
+
+```{r}
 
 merge( customer.info, purchases )   
 
 full.dat <- merge( customer.info, purchases ) 
 
+full.dat$PRICE[ full.dat$ZIP.CODE == "57701" ]
+
 mean( full.dat$PRICE[ full.dat$ZIP.CODE == "57701" ] )
 
 ```
+
 
 In reality, each purchase would have a purchase ID that is linked to shipping addresses, customer complaints, seller ratings, etc. Each seller would have their own data table with info. Each purchase would be tied to a payment type, which has its own data table. The system gets quite complex, which is why it is important to pay attention to the details of putting the data back together again.
 
@@ -111,11 +119,11 @@ For this example let's define set 1 as the treatment group, and set 2 as all wom
 
 treated <- name[ group == "treat" ]
 
-treated %>% pander
+treated 
 
 females <- name[ gender == "female" ]
 
-females %>% pander
+females 
 
 ```
 

@@ -1,0 +1,1059 @@
+--- 
+title: "Foundations of Data Science I"
+author: "Jesse Lecy"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+site: bookdown::bookdown_site
+output: bookdown::gitbook
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+description: "This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook."
+---
+
+# Prerequisites
+
+Placeholder
+
+
+
+<!--chapter:end:index.Rmd-->
+
+
+# Introduction to R
+
+Placeholder
+
+
+## Navigation
+### Setting Your Working Directory
+## Commenting Code
+##  Here is some documentation for this script
+## Help
+## Install Programs (packages)
+## Accessing Built-In Datasets in R
+### Basic Data Operations
+### Using the Lahman Data
+### Example Analysis
+
+<!--chapter:end:Unit-01-Introduction-to-R.Rmd-->
+
+# Data Structures
+
+
+```{r, echo=F }
+
+knitr::opts_chunk$set( echo = TRUE, message=F, warning=F, fig.width=8 )
+
+```
+
+
+
+## Vectors
+
+Vectors are the building blocks of data programming in R, so they are extremely important concepts. 
+
+Very loosely speaking a vector is a set of numbers or words. For example, *[ 1, 2, 3]* or *[ apple, orange, pear ]*. In social science, a vector is a variable in a dataset.
+
+You will spend a lot of time creating data vectors, transforming variables, generating subsets, cleaning data, and adding new observations. These are all accomplished through operators (commands) that act on vectors.
+
+There are four primary vector types ("classes") in R: 
+
+
+Class      | Description
+---------- | -----------
+numeric    | Typical variable of only numbers
+character  | A vector of letters or words, always enclosed with quotes
+factor     | Categories which represent groups, like treatment and control
+logical    | A vector of TRUE and FALSE to designate which observations fit a criteria
+
+Each vector or dataset has a "class" that tells R the data type.
+
+These different vectors can be combined into three different types of datasets (data frames, matrices, and lists), which will be discussed below.
+
+```{r}
+
+x1 <- c(167,185,119,142)
+
+x2 <- c("adam","jamal","linda","sriti")
+
+x3 <- factor( c("male","male","female","female") )
+
+x4 <- c( "treatment","control","treatment","control" )
+
+x5 <- x4 == "treatment"
+
+dat <- data.frame( name=x2, sex=x3, treat=x4, is.treat=x5, strength=x1 )
+
+```
+
+```{r, echo=F}
+dat %>% pander
+```
+
+R keeps track of the data type of each object:
+
+```{r}
+class( x1 )   # c(167,185,119,142)
+class( x2 )   # c("adam","jamal","linda","sriti")
+class( x3 )   # factor( c("male","male","female","female") )
+class( x5 )   # c( "treatment","control","treatment","control" )
+class( dat )  # data.frame( name=x2, sex=x3, treat=x4, is.treat=x5, strength=x1 )
+```
+
+
+
+We often need to know how many elements belong to a vector, which we find with the **length()** function.
+
+```{r}
+x1
+
+length( x1 )
+
+```
+
+
+
+## Casting
+
+You can easily move from one data type to another by *casting* a specific type as another type:
+
+```{r}
+
+x <- 1:5
+
+x
+
+as.character(x)
+
+y <- c(TRUE, FALSE, TRUE, TRUE, FALSE)
+
+y
+
+as.numeric( y )
+
+as.character( y )
+
+```
+
+But in some cases it might not make sense to cast one variable type as another.
+
+```{r}
+
+z <- c("a", "b", "c")
+
+z
+
+as.numeric( z )
+
+```
+
+
+
+Casting will often be induced when you try to combine different types of data. For example, when you add a character element to a numeric vector, the whole vector will be cast as a character vector. 
+
+```{r}
+
+x10 <- 1:5
+
+x10
+
+# a vector can only have one data type
+
+x11 <- c( x10, "a")
+
+x11 # all numbers silently recast as characters
+
+```
+
+
+When you read data in from outside sources, the input functions often will cast numeric vectors as factors if they contain a low number of elements. See the section on factors below for special instrucdtions on moving from factors to numeric vectors.
+
+
+
+## The Combine Function
+
+We often need to combine several elements into a single vector, or two vectors to form one. This is done using the **c()** function.
+
+```{r}
+
+c(1,2,3)
+
+c("a","b","c")
+
+x <- 1:5
+
+y <- 10:15
+
+z <- c(x,y)
+
+z
+
+c(z,"a")  # combining data types 
+
+```
+
+
+
+## Numeric Vectors
+
+There are some specific things to note about each vector type.
+
+Math operators will only work on numeric vectors.
+
+```{r}
+
+summary( x1 )
+
+```
+
+Note that if we try to run this mathematicl function we get an error:
+
+```{r, eval=F}
+
+sum( x2 ) # Error in sum(x2) : invalid 'type' (character) of argument
+
+```
+
+Many functions in R are sensitive to the data type of vectors. Mathematical functions, for example, do not make sense when applied to text (character vectors). In many cases R will give an error. In some cases R will silently re-cast the variable, then perform the operation. Be watchful for when silent re-casting occurs because it might have unwanted side effects, such as deleting data or re-coding group levels in the wrong way. 
+
+
+### Integers Are Simple Numeric Vectors
+
+The integer vector is a special type of numeric vector. It is used to save memory since integers require less space than numbers that contain decimals points (you need to allocate space for the numbers to the left and the numbers to the right of the decimal). Google "computer memory allocation" if you are interested in the specifics. 
+
+If you are doing advanced programming you will be more sensitive to memory allocation and the speed of your code, but in the intro class we will not differentiate between the two types of number vectors. In *most* cases they result in the same results, unless you are doing advanced numerical analysis where rounding errors matter.
+
+
+
+```{r}
+
+n <- 1:5
+
+n
+
+class( n )
+
+n[ 2 ] <- 2.01
+
+n  # all elements converted to decimals
+
+class( n )
+
+```
+
+
+## Character Vectors
+
+The most important rule to remember with this data type: when creating character vectors, all text must be enclosed by quotation marks.
+
+```{r}
+
+c( "a", "b", "c" )   # this works
+
+# c( a, b, c )       # this doesn't work
+# Error: object 'a' not found
+
+```
+
+When you type characters surrounded by quotes then R knows you are creating new text ("strings" in programming speak). When you type characters that are not surrounded by quotes, R thinks that you are looking for an object in the environment, like the variables we have already created. It gets confused when it doesn't find the object that you typed.
+
+In generate, you will use quotes when you are creating character vectors, and for arguments in functions. You do not use quotes when you are referencing an active object.
+
+```{r}
+
+ls()   # these are all of the active objects
+
+"x1"
+
+x1
+
+plot( rnorm(5), col="blue", pch=19, cex=4 )   # text used for color argument, use quotes
+
+# what if we want colors that represent groups in our data
+
+plot( 1:4, x1, col=x3, pch=19, cex=4 )       # object used for color argument, no quotes
+
+```
+
+Recall that x3 is the sex of study participants, so the different colors represent the different genders in the study.
+
+
+## Logical Vectors
+
+Logical vectors are collections of a set of TRUE and FALSE statements. 
+
+Logical statements allow us to define groups based upon criteria, then decide whether observations belong to the group. See the section on **operators** below for a complete list of logical statements.
+
+Logical vectors are important because organizing data into these sets is what drives all of the advanced data analytics (set theory is at the basis of mathematics and computer science). 
+
+
+
+```{r}
+dat
+
+dat$name == "sriti"
+
+dat$sex == "male"
+
+dat$strength > 180
+
+```
+
+Typically logical vectors are used in combination with subset operators to identify specific groups in the data.
+
+```{r}
+dat
+
+# isolate data on all of the females in the dataset
+
+dat[ dat$sex == "female" , ]
+
+```
+
+When defining logical vectors, you can use the abbreviated versions of T for TRUE and F for FALSE.
+
+```{r}
+
+z1 <- c(T,T,F,T,F,F)
+
+z1
+
+```
+
+Note how NAs affect complex logical statements:
+
+```{r}
+
+TRUE & TRUE
+
+TRUE & FALSE
+
+TRUE & NA
+
+FALSE & NA
+
+```
+
+If one condition is TRUE, and another is NA, R does not want to throw out the data because the state of the missing value is unclear. As a result, it will preserve the observation, but it will replace all of the data with missing values:
+
+```{r}
+
+dat
+
+keep.these <- c(T,F,NA,F)
+
+dat[ keep.these , ]
+
+```
+
+To remove these rows, replace all NAs in your selector vector with FALSE:
+
+```{r}
+keep.these[ is.na(keep.these) ] <- FALSE
+
+dat[ keep.these , ]
+```
+
+
+
+
+## Factors
+
+When there are categorical variables within our data, or groups, then we use a special vector to keep track of these groups. We could just use numbers (1=female, 0=male) or characters ("male","female"), but factors are useful for two reasons.
+
+First, it saves memory. Text is very "expensive" in terms of memory allocation and processing speed, so using simpler data structure makes R faster. 
+
+Second, when a variable is set as a factor, R recognizes that it represents a group and it can deploy object-oriented functionality. When you use a factor in analysis, R knows that you want to split the analysis up by groups.
+
+```{r}
+
+height <- c( 70, 68, 62, 64, 72, 69, 58, 63  )
+
+strength <- c(167,185,119,142,175,204,124,117)
+
+sex <- factor( c("male","male","female","female","male","male","female","female" ) )
+
+plot( height, strength )   # simple scatter plot
+
+plot( sex, strength )      # box and whisker plot       
+
+```
+
+Factors are more memory efficient than character vectors because they store the underlying data as a numeric vector instead of a categorical (text) vector. Each group in the data is assigned a number, and when printing items the program only has to remember which group corresponds to which number:
+
+```{r}
+sex
+
+as.numeric( sex )
+
+#  male = 2
+#  female = 1
+```
+
+If you print a factor, the computer just replaces each category designation with its name (2 would be replaced with "male" in this example). These replacements can be done in real time without clogging the memory of your computer as they don't need to be saved.
+
+In some instances a categorical variable might be represented by numbers. For example, grades 9-12 for high school kids. The **very important** rule to remember with factors is you can't move directly from the factor to numeric using the **as.numeric()** casting function. This will give you the underlying data structure, but will not give you the category names. To get these, you need the **as.character** casting function.
+
+```{r}
+
+grades <- sample( x=9:12, size=10, replace=T )
+
+grades
+
+grades <- as.factor( grades )
+
+grades
+
+as.numeric( grades )
+
+as.character( grades )
+
+# to get back to the original numeric vector
+
+as.numeric( as.character( grades ))
+
+
+```
+
+Note that when subsetting a factor, it will retain all of the original levels, even when they are not in use. 
+
+In this example, there are 37 teams in the Lahman dataset (some of them defunct) and 16 teams in the National League in 2002. But after applying the year and league subsets you will still have 37 levels.
+
+```{r}
+
+# there are only 16 teams in the NL in 2002
+
+sals.2002 <- Salaries [Salaries$yearID=="2002", ]
+nl.sals <- sals.2002 [ sals.2002$lgID == "NL",]
+levels( nl.sals$teamID )
+
+```
+
+
+After applying a subset, in order to remove the unused factor levels you need to apply either droplevels(), or else recast your factor as a new factor.
+
+For example:
+
+```{r}
+
+sals.2002 <- Salaries [Salaries$yearID=="2002", ]
+
+nl.sals <- sals.2002 [ sals.2002$lgID == "NL",]
+levels( nl.sals$teamID )
+
+# fix in one of two equivalent ways:
+#
+# nl.sals$teamID <- droplevels( nl.sals$teamID )
+# nl.sals$teamID <- factor( nl.sals$teamID )
+
+levels( nl.sals$teamID )
+nl.sals$teamID <- droplevels( nl.sals$teamID )
+levels( nl.sals$teamID )
+
+
+```
+
+
+
+
+
+
+
+
+## Generating Vectors
+
+You will often need to generate vectors for data transformations or simulations. Here are the most common functions that will be helpful.
+
+```{r}
+
+# repeat a number, or series of numbers
+
+rep( x=9, times=5 )
+
+rep( x=c(5,7), times=5 )
+
+rep( x=c(5,7), each=5 )
+
+rep( x=c("treatment","control"), each=5 )  # also works to create categories
+
+
+# create a sequence of numbers
+
+seq( from=1, to=15, by=1 )
+
+seq( from=1, to=15, by=3 )
+
+1:15   # shorthand if by=1
+
+
+
+# create a random sample
+
+hat <- c("a","b","c","b","f")
+
+sample( x=hat, size=3, replace=FALSE )
+sample( x=hat, size=3, replace=FALSE )
+sample( x=hat, size=3, replace=FALSE )
+
+# for multiple samples use replacement
+
+sample( x=hat, size=10, replace=TRUE )
+
+
+
+
+
+# create data that follows a normal curve
+
+iq <- rnorm( n=1000, mean=100, sd=15 )
+
+hist( iq, col="gray" )
+
+
+
+```
+
+
+
+
+
+
+# Operators 
+
+
+Logical operators are the most basic type of data programming and the core of many types of data analysis. Most of the time we are not conducting fancy statistics, we just want to identify members of a group (print all of the females from the study), or describe things that belong to a subset of the data (compare the average price of houses with garages to houses without garages).
+
+In order to accomplish these simple tasks we need to use logic statements. A logic statement answers the question, does an observation belong to a group.
+
+Many times groups are simple. Show me all of the professions that make over $100k a year, for example.
+
+Sometimes groups are complex. Identify the African American children from a specific zip code in Chicago that live in households with single mothers.
+
+You will use nine basic logical operators:
+
+Operator |  Description
+-------- |  -----------
+<        | less than
+<=       | less than or equal to
+ >       | greater than
+>=       | greater than or equal to
+==       | exactly equal to
+!=	     | not equal to
+x \| y	 | x OR y
+x & y	   | x AND y
+!        | opposite of
+
+Logical operators create logical vectors, a vector that contains only TRUE or FALSE. The TRUE means that the observation belongs to the group, FALSE means it does not.
+
+```{r}
+
+
+x1 <- c(7,9,1,2)
+
+x2 <- c("male","male","female","female")
+
+x3 <- c("treatment","control","treatment","control")
+
+x1 > 7
+
+x1 >= 7
+
+x1 == 9
+
+x1 = 9  # don't use a single equals operator!  it overwrites your variable
+
+x1
+
+x1 <- c(7,9,1,2)
+
+x1 == 9 | x1 == 1
+
+# x2 == male  # this will not work because male is not enclosed with quotes
+
+x2 == "female"
+
+x2 == "female" & x3 == "treatment"
+
+```
+
+Note that we use operators to create logical vectors where TRUE designates observation that belong to the defined group, and FALSE designates observations outside the group. We use these logical vectors in three ways:
+
+(1) We can create a selector variable that is used for subsets. When a logical vector is passed to the subset function it will keep all observations with a TRUE value, and drop observations with a FALSE value.
+
+```{r}
+
+x1
+
+x1 > 5
+
+keep.these <- x1 > 5
+
+x1[ keep.these ]
+
+# you can create a selector variable with one variable, and apply it to another
+
+x2[ keep.these ]  # sex of observations where x1 > 5
+```
+
+(2) Logical vectors give us an easy way to count things within defined groups. 
+
+We can apply a **sum()** function to a logical vector, and the result will be a tally of all of the TRUE cases.
+
+
+```{r}
+
+# how many females do we have in our study?
+
+sum( x2 == "female" )
+
+# how many females do we have in our treatment group?
+
+sum( x2 == "female" & x3 == "treatment" )
+
+
+```
+
+(3) We use selector variables to replace observations with new values using the assignment operator. This is similar to a find and replace operation.
+
+```{r}
+
+x7 <- c( "mole","mouse","shrew","mouse","rat","shrew")
+
+# the lab assistant incorrectly identified the shrews
+
+x7
+
+x7[ x7 == "shrew" ] <- "possum"
+
+x7
+
+
+# we don't know if linda received the treatment
+
+x3 <- c("adam","jamal","linda","sriti")
+
+x4 <- c( "treatment","control","treatment","control")
+
+x4[ x3 == "linda" ] <- NA
+
+x4
+
+```
+
+The **!** operator is a special case, where it is not used to define a new logical vector, but rather it swaps the values of an existing logical vector.
+
+```{r}
+
+x1
+
+these <- x1 > 5
+
+these
+
+! these
+
+! TRUE
+
+! FALSE
+```
+
+
+
+
+
+
+
+## Datasets
+
+When we combine multiple vectors together, we now have a dataset. There are three main types that we will use in this class.
+
+Class        | Description
+------------ | -----------
+data frame   | A typical data set comprised of several variables
+matrix       | A data set comprised of only numbers, used for matrix math
+list         | The grab bag of data structures - several vectors held together
+
+
+### Data Frames
+
+The most familiar spreadsheet-type data structure is called a data frame in R. It consists of rows, which represent observations, and columns, which represent variables.
+
+```{r}
+
+data( USArrests )
+
+dim( USArrests )   # number of rows by number of columns
+
+names( USArrests )   # variable names or column names
+
+row.names( USArrests )
+
+head( USArrests )  # print first six rows of the data
+
+```
+
+### Matrices
+
+A matrix is also a rectangular data object that consists of collections of vectors, but it is special in the sense that it only has numeric vectors and no variable names.
+
+```{r}
+
+mat <- matrix( 1:20, nrow=5 )
+
+mat
+
+names( mat )
+
+dim( mat )
+
+as.data.frame( mat )  # creates variable names
+
+```
+
+These are used almost exclusively for matrix algebra operations, which are fundamental to mathematical statistics. We will not use matrices in this course.
+
+### Lists
+
+The list is the most flexible data structure. It is created by sticking a bunch of unrelated vectors or datasets together. For example, when you run a regression you generate a bunch of interesting information. This information is saved as a list.
+
+```{r}
+
+x <- 1:100
+y <- 2*x + rnorm( 100, 0, 10)
+
+m.01 <- lm( y ~ x )
+
+names( m.01 )
+
+m.01$coefficients
+
+m.01$residuals
+
+m.01$call
+
+```
+
+These output are all related to the model we have run, so they are kept organized by the list so they can be used for various further steps like comparing models or checking for model fit. 
+
+A data frame is a bit more rigid that a list in that you cannot combine elements that do not have the same dimsions.
+
+```{r}
+
+# new.dataframe <- data.frame( m.01$coefficients, m.01$residuals, m.01$call )
+#
+# these will fail because the vectors have different lengths 
+
+```
+
+
+
+
+## Subsets
+
+The subset operators **[ ]** are one of the most common you will use in R.
+
+The primary rule of subsets is to use a data operator to create a logical selector vector, and use that to generate subsets. Any observation that corresponds to TRUE will be retained, any observation that corresponds to FALSE will be dropped.
+
+For vectors, you need to specify a single dimension. 
+
+
+```{r}
+
+x1 <- c(167,185,119,142)
+
+x2 <- c("adam","jamal","linda","sriti")
+
+x3 <- factor( c("male","male","female","female") )
+
+x4 <- c( "treatment","control","treatment","control" )
+
+dat <- data.frame( name=x2, sex=x3, treat=x4, strength=x1 )
+
+
+these <- x1 > 140     # selector vector
+
+these
+
+x1[ these ]
+
+x2[ these ]
+
+
+```
+
+
+
+
+For data frames, you need two dimensions (rows and columns). The two dimensions are seperated by a comma, and if you leave one blank you will not drop anything.
+
+
+```{r}
+
+# dat[  row position ,  column position  ]
+
+dat 
+
+these <- dat$treat == "treatment"
+
+dat[ these , ]   # all data in the treatment group
+
+dat[ , c("name","sex") ]  # select two columns of data
+
+# to keep a subset as a separate dataset
+
+dat.women <- dat[ dat$sex == "female" , ]
+
+dat.women
+  
+```
+
+
+Note the rules listed above about subsetting factors. After applying a subset, they will retain all of the original levels, even when they are not longer useful. You need to drop the unused levels if you would like them to be omitted from functions that use the factor levels for analysis.
+
+
+```{r}
+
+df <- data.frame( letters=LETTERS[1:5], numbers=seq(1:5) )
+
+levels( df$letters )
+
+sub.df <- df[ 1:3, ]
+
+sub.df$letters
+
+levels( sub.df$letters )
+
+droplevels( sub.df$letters )
+
+sub.df$letters <- droplevels( sub.df$letters )
+
+
+```
+
+
+
+## Variable Transformations
+
+When we create a new variable from existing variables, it is called a 'transformation'. This is very common in data science. Crime is measures by the number of assults *per 100,000 people*, for example (crime / pop). A batting average is the number of hits divided by the number of at bats. 
+
+In R, mathematical operations are *vectorized*, which means that operations are performed on the entire vector all at once. This makes transformations fast and easy.
+
+
+```{r}
+
+x <- 1:10
+
+x + 5
+
+x * 5
+
+```
+
+R uses a convention called "recycling", which means that it will re-use elements of a vector if necessary. In the example below the x vector has 10 elements, but the y vector only has 5 elements. When we run out of y, we just start over from the beginning. This is powerful in some instances, but can be dangerous in others if you don't realize that that it is happening.
+
+
+```{r}
+
+x <- 1:10
+
+y <- 1:5
+
+x + y
+
+x * y
+
+# the colors are recycled
+
+plot( 1:5, 1:5, col=c("red","blue"), pch=19, cex=3 )
+
+
+```
+
+Here is an example of recycling gone wrong:
+
+```{r}
+
+x1 <- c(167,185,119,142)
+
+x2 <- c("adam","jamal","linda","sriti")
+
+x3 <- c("male","male","female","female")
+
+x4 <- c( "treatment","contro","treatment","control" )
+
+dat <- data.frame( name=x2, sex=x3, treat=x4, strength=x1 )
+
+
+# create a subset of data of all female study participants
+
+dat$sex == "female"
+
+these <- dat$sex == "female"
+
+dat[ these, ]  # correct subset
+
+
+# same thing, but i mess is up - the female element is recycled in the overwrite
+
+dat$sex = "female"    # whoops just over-wrote my data! should be double equal
+
+these <- dat$sex == "female" 
+
+dat[ these , ]
+
+```
+
+
+
+## Missing Values: NA's
+
+Missing values are coded differently in each data analysis program. SPSS uses a period, for example. In R, missing values are coded as "NA".
+
+The important thing to note is that R wants to make sure you know there are missing values if you are conducting analysis. As a result, it will give you the answer of "NA" when you try to do math with a vector that includes a missing value. You have to ask it explicitly to ignore the missing value.
+
+```{r}
+x5 <- c( 1, 2, 3, 4 )
+
+x5
+
+sum( x5 )
+
+mean( x5 )
+
+x5 <- c( 1, 2, NA, 4 )
+
+x5
+
+# should missing values be treated as zeros or dropped? 
+
+sum( x5 )
+
+mean( x5 )
+
+sum( x5, na.rm=T )   # na.rm=T argument drops missing values
+
+mean( x5, na.rm=T )  # na.rm=T argument drops missing values
+```
+
+You cannot use the *==* operator to identify missing values in a dataset. There is a special **is.na()** function to locate all of the missing values in a vector.
+
+```{r}
+
+x5
+
+x5 == NA    # this does not do what you want
+
+is.na( x5 )    # much better
+
+! is.na( x5 )  # if you want to create a selector vector to drop missing values 
+
+x5[ ! is.na(x5) ]
+
+x5[ is.na(x5) ] <- 0  # replace missing values with zero
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+## The 'attach' Function 
+
+**Never Use This!**
+
+
+This is a convenient function for making variable names easily accessible, but it is problematic because of:
+
+scope
+
+conflicting variable names
+
+```{r}
+
+x <- 1:5
+y <- 6:10
+
+dat <- data.frame(x,y)
+
+rm(x)
+rm(y)
+
+
+# I want to transform x in my dataset
+
+attach( dat )
+
+2*x
+
+x <- 2*x
+
+detach( dat )
+
+x
+
+dat  # whoops! I didn't save my work in the dataset
+
+```
+
+
+You will see the **attach()** function used on occassion, and it is tempting because you can write the variable names directly. But in general, try to avoid the **attach()** function and don't form bad habits by using it now because when your scripts become more complicated then can cause problmes.
+
+
+
+
+
+
+
+
+<!--chapter:end:Unit-02-Data-Structures.Rmd-->
+
+
+# Merging Data
+
+Placeholder
+
+
+## Packages Used in This Chapter
+## Relational Databases
+## Set Theory
+### Set Theory Functions
+### Set Theory Using Logical Operators
+## Merging Data
+## use character columns of names to get sensible sort order
+### The by.x and by.y Arguments
+## Non-Unique Observations in ID Variables
+### Example of Incorrect Merge
+## The %in% function
+## The Match Function
+
+<!--chapter:end:Unit-03-Merging-Data.Rmd-->
+
+
+# Analysis with Groups in R
+
+Placeholder
+
+
+### Packages Used in this Chapter
+### Hypothetical Experimental Data
+## Group Structure
+### What Are Groups?
+### Main Take-Away
+### Example
+## Analysis by Group
+### Highest Ave Player Salary
+### Most Players Paid Over $5 Million
+### Fielding Positions
+### Country of Birth
+### Pay Raises
+
+<!--chapter:end:Unit-04-Analysis-with-Groups.Rmd-->
+
