@@ -104,6 +104,40 @@ bookdown::render_book( 'index.Rmd', 'bookdown::epub_book' )
 
 After these files are all built, you can click on the "index.html" file in the docs folder to launch the site. 
 
+# Images
+
+You can insert images eithr with traditional markdown or HTML syntax. 
+
+It is recommended, however, to use the include_graphics() function in **knitr** because it plays well with bookdown and allows you to create figure captions and re-size easily. 
+
+Other options may not render correctly if you change the output format between HTML and PDF, for example. 
+
+````markdown
+
+```{r knitr-logo, out.width='32.8%', fig.show='hold', fig.cap='Three knitr logos included in the document from an external PNG image file.'}
+knitr::include_graphics(rep('images/knit-logo.png', 3))
+```
+````
+
+[More examples](https://raw.githubusercontent.com/rstudio/bookdown/master/inst/examples/02-components.Rmd)
+
+
+# Tables
+
+Similar to images, the kable() function in **knitr** will render properly in most cases and allows you to add a caption. When rendered, tables will be automatically numbered for you. 
+
+````markdown
+```{r table-single, tidy=FALSE}
+knitr::kable(
+  head(mtcars[, 1:8], 10), booktabs = TRUE,
+  caption = 'A table of the first 10 rows of the mtcars data.'
+)
+```
+````
+
+You can also reference table numbers using `\@ref(tab:chunk-name)`. For example, instead of writing, "In Table 6" you would use the relative reference in case the chapters or tables are re-ordered. 
+
+So, for example, the table above would be referenced by `\@ref(tab:table-single)` since the code chunk is named "table-single". 
 
 # Documentation
 
