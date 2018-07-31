@@ -1,6 +1,6 @@
 # Data-Science-Class
 
-Director for all files for the Foundations of Data Science I, II and III course sequence.
+Repository for all files for the Foundations of Data Science I, II and III course sequence.
 
 ## Data Science Foundations I: Data Programming
 
