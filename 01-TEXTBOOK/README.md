@@ -115,7 +115,7 @@ Other options may not render correctly if you change the output format between H
 ````markdown
 
 ```{r knitr-logo, out.width='32.8%', fig.show='hold', fig.cap='Three knitr logos included in the document from an external PNG image file.'}
-knitr::include_graphics(rep('images/knit-logo.png', 3))
+knitr::include_graphics('images/knit-logo.png')
 ```
 ````
 
