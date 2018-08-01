@@ -1,3 +1,6 @@
+# (PART) PART I: DATA PROGRAMMING {-}
+
+
 # Introduction to R
 
 This lecture introduces you to basic operations when you first start using R such as navigation, the object-oriented framework, loading a package, and creating some data vectors.
