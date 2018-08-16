@@ -1,0 +1,29 @@
+--- 
+title: "Intro to Data Science for the Social Sector"
+author: "Jesse Lecy"
+date: "Latest build on `r format(Sys.time(), '%B %d, %Y')`"
+site: bookdown::bookdown_site
+output: bookdown::gitbook
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+description: "This is an introductory text to data science designed for social science graduate students in public affairs, nonprofit management, and international development."
+---
+
+# Welcome {-}
+
+Welcome to the course text for Data Science for the Social Sector.
+
+This text covers topics in R programming and project management
+
+![](http://r4ds.had.co.nz/diagrams/data-science-wrangle.png)
+
+
+
+```{r include=FALSE}
+# automatically create a bib database for R packages
+knitr::write_bib(c(
+  .packages(), 'bookdown', 'knitr', 'rmarkdown'
+), 'packages.bib')
+```
