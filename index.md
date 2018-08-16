@@ -2,18 +2,18 @@
 
 ### TEXTBOOK
 
-[Table of Contents](01-TEXTBOOK/docs/index.html)
+[Table of Contents](TEXTBOOK/docs/index.html)
 <br>
 
 ### LECTURE NOTES
 
 * Unit 01  
-* [Unit 02](02-LECTURES/module_2_slides.html)  
-* [Unit 03](02-LECTURES/module_3_slides.html)  
-* [Unit 04](02-LECTURES/module_4_slides.html)  
-* [Unit 05](02-LECTURES/module_5_slides.html)  
-* [Unit 05](02-LECTURES/module_6_slides.html)  
-* [Unit 07](02-LECTURES/Specification-Part-II.html)  
+* [Unit 02](LECTURES/module_2_slides.html)  
+* [Unit 03](LECTURES/module_3_slides.html)  
+* [Unit 04](LECTURES/module_4_slides.html)  
+* [Unit 05](LECTURES/module_5_slides.html)  
+* [Unit 05](LECTURES/module_6_slides.html)  
+* [Unit 07](LECTURES/Specification-Part-II.html)  
 <br>  
  
 
