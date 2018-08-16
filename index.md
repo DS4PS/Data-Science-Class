@@ -16,6 +16,10 @@
 * [Unit 07](LECTURES/Specification-Part-II.html)  
 <br>  
  
+### HANDOUTS
+
+[R Markdown Guide](HANDOUTS/R_Markdown_Template.html)
+
 
 ### LABS
 
