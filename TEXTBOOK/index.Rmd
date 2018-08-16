@@ -1,7 +1,7 @@
 --- 
 title: "Intro to Data Science for the Social Sector"
 author: "Jesse Lecy"
-date: "Latest build on `r format(Sys.time(), '%B %d, %Y')`"
+date: "Updated `r format(Sys.time(), '%B %d, %Y')`"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
 documentclass: book
