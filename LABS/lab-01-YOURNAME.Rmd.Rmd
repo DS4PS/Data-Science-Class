@@ -1,0 +1,28 @@
+---
+output: html_document
+---
+
+
+# Bio for Your Name
+
+--> your picture here <--
+
+
+## My Home Department
+
+--> link to your home department here <--
+
+
+## Interest in the Course
+
+--> write a few sentences here <--
+
+
+## Three Things About Me
+
+--> create a list <--
+
+
+## BONUS: Something Weird in my Playlist
+
+--> embed a video <--
