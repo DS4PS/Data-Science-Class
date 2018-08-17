@@ -1,0 +1,155 @@
+---
+title: "Lab 01 - My First Markdown Document"
+date: "Fall, 2018"
+output:
+  html_document:
+    theme: united
+    highlight: tango
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+This lab introduces you to Markdown, a popular 'language' for creating data-driven reports. This week you will practice some simple formatting rules using the [Markdown Tutorial](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) created by Adam Pritchard.
+
+DUE DATE: **Friday, August 24th by Midnight**
+
+
+## Lab Instructions
+
+Create a short bio for the class. Each question requires a different type of text or media. Use [Markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) to format each answer correctly.
+
+1. Add your name to a **Header 1** element called, "Bio of YOUR NAME".
+2. Add a **picture** of yourself to the bio.
+3. Write a short **paragraph** about why you joined this class.
+4. Create a **list** of three fun facts about yourself. 
+5. Add a **link** to the website of your degree program of study at ASU.
+6. OPTIONAL: Embed a YouTube **video** of a weird song that is currently in your music playlist. 
+
+See below for what my rendered document looks like.
+
+
+
+## R Markdown Template
+
+To help you get started, I have created a simple R Markdown file for the assignment. You can download the template, then open the file in R Studio.
+
+[ Download the .Rmd Template ](https://cdn.rawgit.com/DS4PS/Data-Science-Class/master/01-TEXTBOOK/Unit-04-Analysis-with-Groups.Rmd)
+
+Alternatively, you can create a new R Markdown file in R Studio, delete the default text, and paste this text.
+
+```
+---
+output: html_document
+---
+
+
+# Bio for Your Name
+
+--> your picture here <--
+
+
+## My Home Department
+
+--> link to your home department here <--
+
+
+## Interest in the Course
+
+--> write a few sentences here <--
+
+
+## Three Things About Me
+
+--> create a list <--
+
+
+## BONUS: Something Weird in my Playlist
+
+--> embed a video <--
+
+```
+
+
+## Inserting Images
+
+Note that you insert images in Markdown documents by creating an image placeholder with "![]" and referencing the file name in parentheses:
+
+```{r, eval=F}
+![](profile_pic.png)
+```
+
+When you render the document, Markdown requires that the image be saved in the same folder as your lab .Rmd file. If you have a lot of images, you can also store them in a subfolder, and reference them as follows (the folder is called "figures" in this example):
+
+```{r, eval=F}
+![](figures/profile_pic.png)
+```
+
+
+
+## Submitting the Lab
+
+When you have successfully rendered the document you will see a new HTML file in the same folder as your lab .Rmd file. This is an HTML complete file, which means it bundles all of the text and images together so that it can be easily shared via email or DropBox.
+
+Throughout the semester please make sure your submission files include the assignment name and your name: **Lab-01-Lecy.Rmd**
+
+When your bio is ready, email the RMD and the HTML files to me at *jdlecy@asu.edu*. I will create a link on the website so that everyone can learn a little bit about their classmates. 
+
+
+
+## Example Bio
+
+Here is what your final file might look like:
+
+
+---------
+
+<br><br><br>
+
+
+# Bio for Jesse Lecy
+
+![](figures/lecy.jpg)
+
+
+<br>
+
+## Interest in the Course
+
+I have a strong interest in nonprofit and government program effectiveness. I worked collecting community indicators for the United Nations in a post-conflict, community stabilization project in Kosovo, and realized the importance of not only having good data, but of being able to use it. I have advanced training in formal impact evaluation methods in program evaluation, but have found data science to offer a more flexible approach to evidence-based practices. 
+
+<br>
+
+## My Home Department
+
+[Community Resources and Development](https://scrd.asu.edu/)
+
+
+<br>
+
+## Three Things About Me
+
+1. I grew up in South Dakota.
+2. I worked in international development prior to grad school.
+3. I have a golden doodle named Oscar. 
+
+
+![](figures/oscar4.JPG)
+
+
+<br>
+
+## BONUS: Something Weird in my Playlist
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/6cIxF4Ex7a4?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+<br>
+<br>
+
+
+
+
+
+
