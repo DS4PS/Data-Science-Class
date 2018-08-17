@@ -23,7 +23,7 @@
 
 ### LABS
 
-* Lab 01 
+* [Lab 01](LABS/lab-01-instructions.html) 
 * Lab 02 
 * Lab 03 
 <br>
