@@ -177,13 +177,13 @@ Now that we have loaded a dataset, we can start to access the variables and anal
 
 ```{r}
 
-names( USArrests )  # what variables do you have?
-
-row.names( USArrests )   # what are the obsevations (rows) in our data
+names( USArrests )  # what variables are in the dataset?
 
 nrow( USArrests )   # how many observations are there?
 
 dim( USArrests )    # a quick way to see rows and columns - the dimensions of the dataset
+
+row.names( head( USArrests ) )   # what are the obsevations (rows) in our data
 
 summary( USArrests )   # summary statistics of variables
 
@@ -203,11 +203,12 @@ We get valuable information about the source and metrics:
 
 **Format** *A data frame with 50 observations on 4 variables.*
 
-*[,1]  Murder	numeric	Murder arrests (per 100,000)*
-*[,2]	Assault	numeric	Assault arrests (per 100,000)*
-*[,3]	UrbanPop	numeric	Percent urban population*
-*[,4]	Rape	numeric	Rape arrests (per 100,000)*
-
+* **Murder**:	numeric	Murder arrests (per 100,000) 
+* **Assault**:	numeric	Assault arrests (per 100,000)
+* **UrbanPop**:	numeric	Percent urban population
+* **Rape**:	numeric	Rape arrests (per 100,000)
+ 
+ 
 To access a specific variable inside of a dataset, you will use the *$* operator between the dataset name and the variable name:
 
 ```{r}
@@ -223,60 +224,70 @@ abline( lm( USArrests$Murder ~ USArrests$UrbanPop ), col="red" )
 ```
 
 
+
+
 ### Using the Lahman Data
 
 Let's take a look at some of the data available in the Lahman package.
 
 ```{r, eval=F}
-data( package = "Lahman" )
 
-# Data sets in package ‘Lahman’:
-#
-# AllstarFull                            AllstarFull table
-# Appearances                            Appearances table
-# AwardsManagers                         AwardsManagers table
-# AwardsPlayers                          AwardsPlayers table
-# AwardsShareManagers                    AwardsShareManagers table
-# AwardsSharePlayers                     AwardsSharePlayers table
-# Batting                                Batting table
-# BattingPost                            BattingPost table
-# CollegePlaying                         CollegePlaying table
-# Fielding                               Fielding table
-# FieldingOF                             FieldingOF table
-# FieldingPost                           FieldingPost data
-# HallOfFame                             Hall of Fame Voting Data
-# LahmanData                             Lahman Datasets
-# Managers                               Managers table
-# ManagersHalf                           ManagersHalf table
-# Master                                 Master table
-# Pitching                               Pitching table
-# PitchingPost                           PitchingPost table
-# Salaries                               Salaries table
-# Schools                                Schools table
-# SeriesPost                             SeriesPost table
-# Teams                                  Teams table
-# TeamsFranchises                        TeamFranchises table
-# TeamsHalf                              TeamsHalf table
-# battingLabels                          Variable Labels
-# fieldingLabels                         Variable Labels
-# pitchingLabels                         Variable Labels
+data( package = "Lahman" ) # All datasets in package ‘Lahman’:
 
 ```
+
+TABLE NAME        |   DEFITION
+------------------|---------------------
+AllstarFull   |   AllstarFull table
+Appearances   |   Appearances table
+AwardsManagers   |   AwardsManagers table
+AwardsPlayers   |   AwardsPlayers table
+AwardsShareManagers   |   AwardsShareManagers table
+AwardsSharePlayers   |   AwardsSharePlayers table
+Batting   |   Batting table
+BattingPost   |   BattingPost table
+CollegePlaying   |   CollegePlaying table
+Fielding   |   Fielding table
+FieldingOF   |   FieldingOF table
+FieldingPost   |   FieldingPost data
+HallOfFame    |   Hall of Fame Voting Data
+LahmanData   |   Lahman Datasets
+Managers   |    Managers table
+ManagersHalf   |   ManagersHalf table
+Master   |   Master table
+Pitching   |   Pitching table
+PitchingPost   |   PitchingPost table
+Salaries   |   Salaries table
+Schools   |   Schools table
+SeriesPost   |   SeriesPost table
+Teams    |   Teams table
+TeamsFranchises   |   TeamFranchises table
+TeamsHalf    |    TeamsHalf table
+battingLabels   |   Variable Labels
+fieldingLabels   |    Variable Labels
+pitchingLabels   |   Variable Labels  
+
+
 
 We see that we have lots of datasets to choose from here. I will use the Master dataset, which is a list of all of the Major League Baseball players over the past century, and their personal information. 
 
-```{r}
+```{r, eval=F}
 
-library( Lahman )
-
+library( Lahman )    # loads Lahman package
 data( Master )
+head( Master ) 
 
-names( Master )
-
-nrow( Master )  # 18,354 players included
-
-summary( Master )
 ```
+
+
+Here are some common functions for exploring datasets:
+
+```{r, eval=F}
+names( Master )      # variable names
+nrow( Master )       # 18,354 players included
+summary( Master )    # descriptive statistics of variables
+```
+
 
 We can use **help(Master)** to get information about the dataset, including a data dictionary.
 
@@ -288,7 +299,8 @@ help( Master )
 
 
 **MASTER TABLE**
----
+
+-------------------
 
 **Description**
 
@@ -337,6 +349,8 @@ debut, finalGame were converted from character strings with as.Date.
 
 Lahman, S. (2016) Lahman's Baseball Database, 1871-2015, 2015 version, http://www.seanlahman.com/baseball-archive/statistics/
 
+
+
 ### Example Analysis
 
 Perhaps I am curious about some of the data. I see that we have information on the birth month of professional baseball players. If you have read Malcolm Gladwell's book *Outliers* you know there is an interesting cumulative advantage phenomenon that can occur with atheletes as they are young. If you are born near the end of the cutoff, you are on average six months older than other players in your league, and therefore slightly larger physically and more coordinated on average. Six months does not sound like much, but the slight size and coordination advantage means more playing time, which also improves skill. Over time, this small difference accumulates so that those lucky enough to be born near the cutoff become the best players.
@@ -344,7 +358,7 @@ Perhaps I am curious about some of the data. I see that we have information on t
 Gladwell looked at studies of hockey. Do we see this in baseball?
 
 
-```{r, warning=FALSE}
+```{r, warning=FALSE, eval=F}
 
 table( Master$birthMonth )
 

@@ -5,6 +5,8 @@
 
 knitr::opts_chunk$set( echo = TRUE, message=F, warning=F, fig.width=8 )
 
+library( dplyr )
+library( Lahman )
 ```
 
 
@@ -13,9 +15,15 @@ knitr::opts_chunk$set( echo = TRUE, message=F, warning=F, fig.width=8 )
 
 Vectors are the building blocks of data programming in R, so they are extremely important concepts. 
 
-Very loosely speaking a vector is a set of numbers or words. For example, *[ 1, 2, 3]* or *[ apple, orange, pear ]*. In social science, a vector is a variable in a dataset.
+Very loosely speaking a vector is a set of numbers or words. For example:
 
-You will spend a lot of time creating data vectors, transforming variables, generating subsets, cleaning data, and adding new observations. These are all accomplished through operators (commands) that act on vectors.
+* Vector filled with numbers (numeric vector): **[ 1, 2, 3]** 
+
+OR
+
+* Vector of different fruit types:  **[ apple, orange, pear ]**
+
+In social sciences, a vector is most typically used as a variable in a dataset.
 
 There are four primary vector types ("classes") in R: 
 
@@ -48,20 +56,31 @@ dat <- data.frame( name=x2, sex=x3, treat=x4, is.treat=x5, strength=x1 )
 ```
 
 ```{r, echo=F}
+dat <- data.frame( name=x2, sex=x3, treat=x4, is.treat=x5, strength=x1, stringsAsFactors=F )
 dat %>% pander
 ```
 
-R keeps track of the data type of each object:
+R keeps track of the data type of each object, which can be ascertained using the **class()** function.
 
-```{r}
-class( x1 )   # c(167,185,119,142)
-class( x2 )   # c("adam","jamal","linda","sriti")
-class( x3 )   # factor( c("male","male","female","female") )
-class( x5 )   # c( "treatment","control","treatment","control" )
-class( dat )  # data.frame( name=x2, sex=x3, treat=x4, is.treat=x5, strength=x1 )
+```{r, eval=F}
+class( x )
+```
+
+```{r, echo=F}
+lapply( dat, class )
 ```
 
 
+
+```{r}
+class( dat )
+```
+
+
+
+### Common Functions for Vectors
+
+You will spend a lot of time creating data vectors, transforming variables, generating subsets, cleaning data, and adding new observations. These are all accomplished through **operators** (commands) that act on vectors.
 
 We often need to know how many elements belong to a vector, which we find with the **length()** function.
 
