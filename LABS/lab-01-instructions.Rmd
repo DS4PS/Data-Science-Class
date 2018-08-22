@@ -36,7 +36,7 @@ See below for what my rendered document looks like.
 
 To help you get started, I have created a simple R Markdown file for the assignment. You can download the template, then open the file in R Studio.
 
-[ Download the .Rmd Template ](https://cdn.rawgit.com/DS4PS/Data-Science-Class/master/01-TEXTBOOK/Unit-04-Analysis-with-Groups.Rmd)
+[ Download the .Rmd Template ](https://cdn.rawgit.com/DS4PS/Data-Science-Class/master/LABS/lab-01-template.Rmd)
 
 Alternatively, you can create a new R Markdown file in R Studio, delete the default text, and paste this text.
 
