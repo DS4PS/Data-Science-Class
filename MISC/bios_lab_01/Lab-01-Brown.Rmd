@@ -1,0 +1,32 @@
+---
+output: html_document
+---
+
+# Bio for Kendelle Brown
+
+![](myself.jpg)
+
+
+## My Home Department
+
+[https://publicservice.asu.edu/content/program-evaluation-ms]
+
+
+## Interest in the Course
+
+I was interested in taking Intro to Data Science for the Social Sector because I work in the nonprofit sector and I want to use the skills I gain through the Program Evaluation program to evaluate youth related programs to ensure their effectiveness. I've heard a lot of good things about R from past classmates and am excited to learn how to utilize the program. 
+
+
+## Three Things About Me
+
+1. Howl's Moving Castle is my favorite movie. 
+2. Reading is my favorite hobby.
+3. I have a dog named Windsor (pictured above).
+
+
+## BONUS: Something Weird in my Playlist
+
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=XoVtauULD24
+" target="_blank"><img src="http://img.youtube.com/vi/XoVtauULD24/0.jpg" 
+alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
+

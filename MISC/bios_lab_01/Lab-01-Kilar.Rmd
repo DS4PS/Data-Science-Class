@@ -1,0 +1,26 @@
+---
+output: html_document
+---
+
+# Bio for Steve Kilar
+
+![](Steve-Kilar.jpg "Headshot of Steve Kilar")
+
+## Interest in the Course
+
+I am taking this course because I would like to expand my data analysis and presentation skills. I work for a nonprofit that often analyzes government records, including databases, and I hope that what I learn in this course will help me advance my work. I also think the exposure to R, and data science generally, will help me think of new areas of research that I can explore during and after my doctoral studies.
+
+## My Home Department
+
+[Walter Cronkite School of Journalism and Mass Communication](https://cronkite.asu.edu/ "Cronkite School of Journalism Homepage")
+
+## Three Things About Me
+
+1. I grew up in Michigan.
+2. I have worked as a lawyer and a journalist.
+3. I have two cats.
+
+## BONUS: Something Weird in my Playlist
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/fsgWUq0fdKk?rel=0" frameborder="25" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+

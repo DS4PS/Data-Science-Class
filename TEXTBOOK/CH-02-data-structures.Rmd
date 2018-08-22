@@ -15,15 +15,13 @@ library( Lahman )
 
 Vectors are the building blocks of data programming in R, so they are extremely important concepts. 
 
-Very loosely speaking a vector is a set of numbers or words. For example:
+Very loosely speaking a vector is a set of numbers, words, or other values:
 
-* Vector filled with numbers (numeric vector): **[ 1, 2, 3]** 
+* [ 1, 2, 3]
+* [ apple, orange, pear ]
+* [ TRUE, FALSE, FALSE ]
 
-OR
-
-* Vector of different fruit types:  **[ apple, orange, pear ]**
-
-In social sciences, a vector is most typically used as a variable in a dataset.
+In social sciences, a vector usually represents a variable in a dataset.
 
 There are four primary vector types ("classes") in R: 
 
