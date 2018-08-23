@@ -1,6 +1,5 @@
 ---
-title: "Lab 01 - My First Markdown Document"
-date: "Fall, 2018"
+title: "Lab 01 - SOLUTIONS"
 output:
   html_document:
     theme: united
@@ -14,8 +13,6 @@ knitr::opts_chunk$set(echo = TRUE)
 
 This lab introduces you to Markdown, a popular 'language' for creating data-driven reports. This week you will practice some simple formatting rules using the [Markdown Tutorial](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) created by Adam Pritchard.
 
-DUE DATE: **Friday, August 24th by Midnight**
-
 
 ## Lab Instructions
 
@@ -28,17 +25,11 @@ Create a short bio for the class. Each question requires a different type of tex
 5. Add a **link** to the website of your degree program of study at ASU.
 6. OPTIONAL: Embed a YouTube **video** of a weird song that is currently in your music playlist. 
 
-See below for what my rendered document looks like.
 
 
+## Solutions
 
-## R Markdown Template
 
-To help you get started, I have created a simple R Markdown file for the assignment. You can download the template, then open the file in R Studio.
-
-[ Download the .Rmd Template ](https://cdn.rawgit.com/DS4PS/Data-Science-Class/master/01-TEXTBOOK/Unit-04-Analysis-with-Groups.Rmd)
-
-Alternatively, you can create a new R Markdown file in R Studio, delete the default text, and paste this text.
 
 ```
 ---
@@ -48,32 +39,52 @@ output: html_document
 
 # Bio for Your Name
 
---> your picture here <--
+![](image_name.png)
 
 
 ## My Home Department
 
---> link to your home department here <--
+[web link text](www.some-web-page.html)
 
 
 ## Interest in the Course
 
---> write a few sentences here <--
+You can write any text here. 
 
 
 ## Three Things About Me
 
---> create a list <--
+This is a bullet list:
+* item 1
+* item 2
+* item 3
+
+This is an ordered list:
+1. item 1
+2. item 2
+3.  item 3
 
 
-## BONUS: Something Weird in my Playlist
+## BONUS: Something weird in my playlist
 
---> embed a video <--
+[  ![](image.png)  ](www.youtube-video-address.html)
 
 ```
 
 
-## Inserting Images
+## Advanced Markdown Functionality
+
+### Naming Files
+
+I have asked you to use the following naming format for assignments: **Lab-01-Lecy.Rmd**
+
+Note that *.Rmd* stands for R Markdown files. R Studio has adopted the Markdown 'language' and added functionality using code chunks and many more options. See the [R Markdown Cheatsheet](https://www.rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf) to get a sense of the extensiveness of options you have.
+
+Basic script files have the *.R* extension, and RMD files will use the *.Rmd* extension. These file extensions can be written as *.RMD*, *.Rmd*, or *.rmd*. 
+
+
+
+### Organizing Images
 
 Note that you insert images in Markdown documents by creating an image placeholder with "![]" and referencing the file name in parentheses:
 
@@ -87,72 +98,40 @@ When you render the document, Markdown requires that the image be saved in the s
 ![](figures/profile_pic.png)
 ```
 
+It is a good idea to get into the practice of storing images and other assets in a separate folder, otherwise your directories will quickly get cluttered.
 
 
-## Submitting the Lab
+### Image Size
 
-When you have successfully rendered the document you will see a new HTML file in the same folder as your lab .Rmd file. This is an HTML complete file, which means it bundles all of the text and images together so that it can be easily shared via email or DropBox.
-
-Throughout the semester please make sure your submission files include the assignment name and your name: **Lab-01-Lecy.Rmd**
-
-When your bio is ready, email the RMD and the HTML files to me at *jdlecy@asu.edu*. I will create a link on the website so that everyone can learn a little bit about their classmates. 
+I 
 
 
-
-## Example Bio
-
-Here is what your final file might look like:
-
-
----------
-
-<br><br><br>
-
-
-# Bio for Jesse Lecy
-
+```
 ![](figures/lecy.jpg)
+```
 
+```{r, eval=F}
 
-<br>
 
 ![bio](figures/lecy.jpg)
-```{css}
+
+'```{css}
 img[alt=bio] { width: 100px; }
+'```
+
 ```
 
 
-## Interest in the Course
-
-I have a strong interest in nonprofit and government program effectiveness. I worked collecting community indicators for the United Nations in a post-conflict, community stabilization project in Kosovo, and realized the importance of not only having good data, but of being able to use it. I have advanced training in formal impact evaluation methods in program evaluation, but have found data science to offer a more flexible approach to evidence-based practices. 
-
-<br>
-
-## My Home Department
-
-[Community Resources and Development](https://scrd.asu.edu/)
 
 
-<br>
-
-## Three Things About Me
-
-1. I grew up in South Dakota.
-2. I worked in international development prior to grad school.
-3. I have a golden doodle named Oscar. 
 
 
-![](figures/oscar4.JPG)
+### Video Links
 
-
-<br>
-
-## BONUS: Something Weird in my Playlist
+Inserting videos 
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/6cIxF4Ex7a4?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
-<br>
-<br>
 
 
 

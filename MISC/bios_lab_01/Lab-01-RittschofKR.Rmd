@@ -1,0 +1,30 @@
+---
+output: html_document
+---
+
+
+# Bio for Kerri Rittschof
+![](C:\Users\kritt\OneDrive\Pictures\pic.jpg)
+
+## My Home Department
+
+[Center for Child Well-Being](https://childwellbeing.asu.edu/)
+
+
+## Interest in the Course
+
+I am interested in project evaluation; thus, I believe this course will assist in the ability to do a deeper dive into the data to find information to guide decisions for the children, people, and programs I work with. AND, I think it is cool to learn something new.
+
+
+## Three Things About Me
+
+1. I run! The furthest distance to date was a 60k in the rain and mud.
+2. My 22nd wedding anniversary is when this assignment is due (8/24).
+3. I have two Boston Terriers, and one is the LOVE of my life.
+
+
+## BONUS: Something Weird in my Playlist
+
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=XjeJLOOJxR0
+" target="_blank"><img src="http://img.youtube.com/vi/XjeJLOOJxR0/0.jpg" 
+alt="Call Me Maybe Side by Side" width="240" height="180" border="10" /></a>

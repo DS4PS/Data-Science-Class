@@ -1,0 +1,32 @@
+# Functions
+
+
+```{r, echo=F }
+
+knitr::opts_chunk$set( echo = TRUE, message=F, warning=F, fig.width=8 )
+
+```
+
+
+
+## Key Concepts
+
+
+
+```{r, fig.cap="Components of a Function", echo=F }
+knitr::include_graphics( "figures/function.png" )
+```
+
+After reading this chapter, the following vocabulary should be clear:
+
+* script
+* function
+* argument
+* return value
+* assignment
+
+## Computer Programs as Recipes
+
+Computer programs are powerful because they allow us to codify recipes for complex tasks, save them, share them, and build upon them. 
+
+In the simplest form, a computer program is like a recipe. It is a set of steps completed in order with the goal of 

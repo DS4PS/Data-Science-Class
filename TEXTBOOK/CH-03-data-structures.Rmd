@@ -10,6 +10,18 @@ library( Lahman )
 ```
 
 
+## Key Concepts
+
+```{r, fig.cap="Components of a Vector", echo=F }
+knitr::include_graphics( "figures/vectors.png" )
+```
+
+```{r, fig.cap="Basic data types in R", echo=F }
+knitr::include_graphics( "figures/data_types.png" )
+```
+
+
+
 
 ## Vectors
 
@@ -76,9 +88,9 @@ class( dat )
 
 
 
-### Common Functions for Vectors
+## Common Vectors Functions
 
-You will spend a lot of time creating data vectors, transforming variables, generating subsets, cleaning data, and adding new observations. These are all accomplished through **operators** (commands) that act on vectors.
+You will spend a lot of time creating data vectors, transforming variables, generating subsets, cleaning data, and adding new observations. These are all accomplished through **functions()** that act on vectors.
 
 We often need to know how many elements belong to a vector, which we find with the **length()** function.
 
@@ -90,10 +102,50 @@ length( x1 )
 ```
 
 
+## The Combine Function
+
+We often need to combine several elements into a single vector, or combine two vectors to form one. This is done using the **c()** function.
+
+```{r}
+
+c(1,2,3)        # create a numeric vector
+
+c("a","b","c")  # create a character vector
+
+```
+
+
+Combining two vectors:
+
+```{r}
+
+x <- 1:5
+
+y <- 10:15
+
+z <- c(x,y)
+
+z
+```
+
+Combining two vectors of different data types:
+
+
+```{r}
+x <- c(1,2,3)
+
+y <- c("a","b","c")
+
+z <- c(x,y)
+
+z
+```
+
+
 
 ## Casting
 
-You can easily move from one data type to another by *casting* a specific type as another type:
+You can easily move from one data type to another by **casting** a specific type as another type:
 
 ```{r}
 
@@ -127,48 +179,63 @@ as.numeric( z )
 
 
 
-Casting will often be induced when you try to combine different types of data. For example, when you add a character element to a numeric vector, the whole vector will be cast as a character vector. 
+Casting will often be induced automatically when you try to combine different types of data. For example, when you add a character element to a numeric vector, the whole vector will be cast as a character vector. 
 
 ```{r}
 
-x10 <- 1:5
+x1 <- 1:5
+x1
 
-x10
+x1 <- c( x1, "a" ) # a vector can only have one data type
 
-# a vector can only have one data type
-
-x11 <- c( x10, "a")
-
-x11 # all numbers silently recast as characters
+x1 # all numbers silently recast as characters
 
 ```
 
 
-When you read data in from outside sources, the input functions often will cast numeric vectors as factors if they contain a low number of elements. See the section on factors below for special instrucdtions on moving from factors to numeric vectors.
-
-
-
-## The Combine Function
-
-We often need to combine several elements into a single vector, or two vectors to form one. This is done using the **c()** function.
+If you consider the example above, when a numeric and character vector are combined all elements are re-cast as strings because numbers can be represented as characters but not vice-versa. R tries to select a reasonable default type, but sometimes casting will create some strange and unexpected behaviors. Consider some of these examples. What do you think each will produce? 
 
 ```{r}
 
-c(1,2,3)
+x1 <- c(1,2,3)                    # numeric
+x2 <- c("a","b","c")              # character
+x3 <- c(TRUE,FALSE,TRUE)          # logical
+x4 <- factor( c("a","b","c") )    # factor
 
-c("a","b","c")
+case1 <- c( x1, x3 )
 
-x <- 1:5
+case2 <- c( x2, x3 )
 
-y <- 10:15
+case3 <- c( x1, x4 )
 
-z <- c(x,y)
-
-z
-
-c(z,"a")  # combining data types 
+case4 <- c( x2, x4 )
 
 ```
+
+The answers to *case1* and *case2* are somewhat intuitive. 
+
+```{r}
+case1  # combine a numeric and logical vector
+
+case2  # combine a character and logical vector
+```
+
+Recall that TRUE and FALSE are often represented as 1 and 0 in datasets, so they can be recast as numeric elements. The numbers 2 and 3 have no meaning in a logical vector, so we can't cast a numeric vector as a logical vector.
+
+
+*case3* and *case4* are a little more nuanced. See the section on factors below to make sense of them.
+
+```{r}
+case3  # combine a numeric and factor vector
+
+case4  # combine a character and factor vector
+```
+
+
+
+TIP: When you read data in from outside sources, the input functions often will cast character or numeric vectors as factors if they contain a low number of elements. See the section on factors below for special instructions on moving from factors to numeric vectors.
+
+
 
 
 
@@ -224,13 +291,19 @@ class( n )
 
 The most important rule to remember with this data type: when creating character vectors, all text must be enclosed by quotation marks.
 
+This one works:
+
 ```{r}
 
 c( "a", "b", "c" )   # this works
 
-# c( a, b, c )       # this doesn't work
-# Error: object 'a' not found
+```
 
+This one will not:
+
+```{r, eval=F}
+c( a, b, c )  
+# Error: object 'a' not found
 ```
 
 When you type characters surrounded by quotes then R knows you are creating new text ("strings" in programming speak). When you type characters that are not surrounded by quotes, R thinks that you are looking for an object in the environment, like the variables we have already created. It gets confused when it doesn't find the object that you typed.
@@ -239,17 +312,14 @@ In generate, you will use quotes when you are creating character vectors, and fo
 
 ```{r}
 
-ls()   # these are all of the active objects
 
-"x1"
-
-x1
-
-plot( rnorm(5), col="blue", pch=19, cex=4 )   # text used for color argument, use quotes
+plot( 1:4, col="blue", pch=19, cex=4 )   # text used for color argument, use quotes
 
 # what if we want colors that represent groups in our data
 
-plot( 1:4, x1, col=x3, pch=19, cex=4 )       # object used for color argument, no quotes
+group <- factor( c("treatment","control","treatment","control") )
+
+plot( 1:4, col=group, pch=19, cex=4 )       # object used for color argument, no quotes
 
 ```
 
@@ -431,6 +501,13 @@ levels( nl.sals$teamID )
 
 ```
 
+
+TIP: When reading data from Excel spreadsheets (usually saved in the comma separated value or CSV format), remember to include the following argument to prevent the creation of factors, which can produce some annoying behaviors.
+
+```{r, eval=F}
+
+dat <- read.csv( "filename.csv", stringsAsFactors=F )
+```
 
 
 
