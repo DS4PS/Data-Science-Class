@@ -1,19 +1,24 @@
 ---
-title: "Functions"
-output: ioslides_presentation
+output:
+  ioslides_presentation:
+    widescreen: true
+    smaller: true
 ---
+
+## Functions in R
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set( echo=TRUE, message=F, warning=F )
 ```
 
-## Anatomy
+
+## Anatomy of a Function
 
 ```{r, echo=F, fig.width=2 }
 knitr::include_graphics( "figures/function.png" )
 ```
 
-## Simple Function
+## Example: Mortgage Calculator
 
 ```{r}
 ### A simple mortgage calculator 
@@ -49,28 +54,24 @@ Calculate monthly payments for a:
 calcMortgage( years=30, APR=0.05, principal=100000  )
 ```
 
-- 15-year mortgage 
-
-```{r}
-calcMortgage( years=15, APR=0.05, principal=100000  )
-```
 
 ## Arguments
 
 Note that we need to specify all argument values, or else we get an error:
 
 ```{r, eval=F}
-# this will not run
 calcMortgage( APR=0.05, principal=100000  )
 ```
 
-*Error in calcMortgage(APR = 0.05, principal = 1e+05) :*
-  *argument "years" is missing, with no default*
+<p style="color:red;">
+Error in calcMortgage(APR = 0.05, principal = 1e+05):  
+argument "years" is missing, with no default  
+</p>
 
 
 ## Default Arguments
 
-Sometimes we can provide pretty good guesses for default argument values. For example, we know that the most common type of loan is a 30-year fixed mortgage, and interest rates have been stable at 5% for the last year. We can include these as default values in the function:
+We can specify default values  for specific arguments:
 
 ```{r}
 ### A simple mortgage calculator 
@@ -97,42 +98,26 @@ Sometimes we can provide pretty good guesses for default argument values. For ex
 Now the previous code that caused an error will run fine:
 
 ```{r}
-calcMortgage( APR=0.05, principal=100000  )
-```
-
-If we do not provide a loan-term, it will assume we want a 30-year mortgage. On the other hand, if we do provide an argument for the loan term, we can override the default.
-
-```{r}
-calcMortgage( years=15, APR=0.05, principal=100000  )
+calcMortgage( principal=100000  )
 ```
 
 ## Default Arguments
 
-Note that we can omit years and APR, but we always need to provide the loan amount (principle), because there is no default provided. The bank is not going to guess about the loan size you want! 
+If we do not provide a loan-term, it will assume we want a 30-year mortgage. On the other hand, if we do provide an argument for the loan term, we can override the default.
 
-When you use the R help files, it's important to pay attenion to which arguments have default values provided, and which require your input.
+```{r}
+calcMortgage( principal=100000, years=15 )
+```
+
+
+## Checking Function Arguments
+
+The args() function is a quick way to peek at arguments for a function. You need to use help("function_name") to get more information about what is expected for each argument.
 
 ```{r}
 args( plot.default )
 ```
 
-## Default Arguments
-
-Here is a basic scatterplot:
-
-```{r, fig.width=5}
-x <- sample( 1:100, 100 )
-y <- 2*x + rnorm(100,0,10 )
-plot( x, y )
-```
-
-## Default Arguments
-
-Note that the **plot()** function provides a default for the Y argument. What type of plot is created if no Y argument is provided? 
-
-```{r, fig.width=5}
-plot( x )
-```
 
 
 ## Assignment
@@ -140,14 +125,14 @@ plot( x )
 When we call a function in R, the default behavior will be to print the result:
 
 ```{r}
-calcMortgage( years=15, APR=0.05, principal=100000  )
+calcMortgage( principal=100000  )
 ```
 
 
 ## Assignment
 
 ```{r}
-payments.15.year <- calcMortgage( years=15, APR=0.05, principal=100000  )
+payments.15.year <- calcMortgage( years=15, principal=100000  )
 ```
 
 These values are then stored, and can be used later or printed by typing the object name:
