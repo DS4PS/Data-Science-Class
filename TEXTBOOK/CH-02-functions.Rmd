@@ -73,7 +73,11 @@ Note that the loan function needs all three of the input values in order to calc
 
 ```{r, eval=F}
 calcMortgage( principal=100000  )
+# Error in calcMortgage(APR = 0.05, principal = 1e+05):  
+#  argument "years" is missing, with no default 
 ```
+
+
 
 When creating functions, we might have a good idea of typical use cases. If true, we can try to guess at reasonable user parameters. For example, perhaps we are working at a bank where most of the customers take out 30-year mortgages, and interest rates have been stable at 5 percent. We can set these as default values when we create the function. 
 

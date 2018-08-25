@@ -287,7 +287,9 @@ Figure 2.2: Assignment of output values
 <div id="default-argument-values" class="section level2">
 <h2><span class="header-section-number">2.4</span> Default Argument Values</h2>
 <p>Note that the loan function needs all three of the input values in order to calculate the loan size. If we were to omit one required value, we would get an error.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">calcMortgage</span>( <span class="dt">principal=</span><span class="dv">100000</span>  )</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">calcMortgage</span>( <span class="dt">principal=</span><span class="dv">100000</span>  )</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="co"># Error in calcMortgage(APR = 0.05, principal = 1e+05):  </span></a>
+<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="co">#  argument &quot;years&quot; is missing, with no default </span></a></code></pre></div>
 <p>When creating functions, we might have a good idea of typical use cases. If true, we can try to guess at reasonable user parameters. For example, perhaps we are working at a bank where most of the customers take out 30-year mortgages, and interest rates have been stable at 5 percent. We can set these as default values when we create the function.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">   calcMortgage &lt;-<span class="st"> </span><span class="cf">function</span>( principal, <span class="dt">years=</span><span class="dv">30</span>, <span class="dt">APR=</span><span class="fl">0.05</span> )</a>
 <a class="sourceLine" id="cb4-2" data-line-number="2">   {</a>

@@ -131,6 +131,8 @@ calcMortgage( principal=100000  )
 
 ## Assignment
 
+We can instead assign the function output to a new variable:
+
 ```{r}
 payments.15.year <- calcMortgage( years=15, principal=100000  )
 ```
