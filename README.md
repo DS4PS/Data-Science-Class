@@ -28,6 +28,7 @@ Repository for all files for the Foundations of Data Science I, II and III cours
 
 ![](http://r4ds.had.co.nz/diagrams/data-science-wrangle.png) 
 
+Image from: *Wickham, H., & Grolemund, G. (2016). R for data science: import, tidy, transform, visualize, and model data. " O'Reilly Media, Inc.".*
 
 ## Data Science Foundations III: Project Management
 
