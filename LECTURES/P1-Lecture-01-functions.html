@@ -3214,13 +3214,18 @@ Error in calcMortgage(APR = 0.05, principal = 1e+05):<br/>argument &ldquo;years&
 
 <p>We can instead assign the function output to a new variable:</p>
 
-<pre class = 'prettyprint lang-r'>payments.15.year &lt;- calcMortgage( years=15, principal=100000  )</pre>
+<pre class = 'prettyprint lang-r'>payments.15.year &lt;- calcMortgage( years=15, principal=100000  )
+payments.30.year &lt;- calcMortgage( years=30, principal=100000  )</pre>
 
 <p>These values are then stored, and can be used later or printed by typing the object name:</p>
 
 <pre class = 'prettyprint lang-r'>payments.15.year</pre>
 
-<pre >## [1] 790.79</pre></article></slide>
+<pre >## [1] 790.79</pre>
+
+<pre class = 'prettyprint lang-r'>payments.30.year</pre>
+
+<pre >## [1] 536.82</pre></article></slide>
 
 
   <slide class="backdrop"></slide>

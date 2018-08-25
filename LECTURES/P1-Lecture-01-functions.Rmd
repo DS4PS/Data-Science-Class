@@ -135,11 +135,13 @@ We can instead assign the function output to a new variable:
 
 ```{r}
 payments.15.year <- calcMortgage( years=15, principal=100000  )
+payments.30.year <- calcMortgage( years=30, principal=100000  )
 ```
 
 These values are then stored, and can be used later or printed by typing the object name:
 
 ```{r}
 payments.15.year
+payments.30.year
 ```
 

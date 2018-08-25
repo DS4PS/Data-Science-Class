@@ -151,6 +151,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.2" data-path="functions.html"><a href="functions.html#computer-programs-as-recipes"><i class="fa fa-check"></i><b>2.2</b> Computer Programs as Recipes</a></li>
 <li class="chapter" data-level="2.3" data-path="functions.html"><a href="functions.html#example-function"><i class="fa fa-check"></i><b>2.3</b> Example Function</a></li>
 <li class="chapter" data-level="2.4" data-path="functions.html"><a href="functions.html#default-argument-values"><i class="fa fa-check"></i><b>2.4</b> Default Argument Values</a></li>
+<li class="chapter" data-level="2.5" data-path="functions.html"><a href="functions.html#assignment"><i class="fa fa-check"></i><b>2.5</b> Assignment</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="data-structures.html"><a href="data-structures.html"><i class="fa fa-check"></i><b>3</b> Data Structures</a><ul>
 <li class="chapter" data-level="3.1" data-path="data-structures.html"><a href="data-structures.html#key-concepts-1"><i class="fa fa-check"></i><b>3.1</b> Key Concepts</a></li>
@@ -309,6 +310,21 @@ Figure 2.2: Assignment of output values
 <p>We can now run the function while omitting arguments, as long as they have defaults assigned.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw">calcMortgage</span>( <span class="dt">principal=</span><span class="dv">100000</span>  )</a>
 <a class="sourceLine" id="cb5-2" data-line-number="2"><span class="co">#&gt; [1] 536.82</span></a></code></pre></div>
+</div>
+<div id="assignment" class="section level2">
+<h2><span class="header-section-number">2.5</span> Assignment</h2>
+<p>When we call a function in R, the default behavior of the function is typically to print the results on the screen:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw">calcMortgage</span>( <span class="dt">principal=</span><span class="dv">100000</span>  )</a>
+<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="co">#&gt; [1] 536.82</span></a></code></pre></div>
+<p>If we are creating a script, however, we often need to save the function outputs at each step. We can do this by assigning output to a new variable.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">payments.<span class="fl">15.</span>year &lt;-<span class="st"> </span><span class="kw">calcMortgage</span>( <span class="dt">years=</span><span class="dv">15</span>, <span class="dt">principal=</span><span class="dv">100000</span>  )</a>
+<a class="sourceLine" id="cb7-2" data-line-number="2">payments.<span class="fl">30.</span>year &lt;-<span class="st"> </span><span class="kw">calcMortgage</span>( <span class="dt">years=</span><span class="dv">30</span>, <span class="dt">principal=</span><span class="dv">100000</span>  )</a></code></pre></div>
+<p>These values are then stored, and can be used later or printed by typing the object name:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">payments.<span class="fl">15.</span>year</a>
+<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="co">#&gt; [1] 790.79</span></a>
+<a class="sourceLine" id="cb8-3" data-line-number="3">payments.<span class="fl">30.</span>year</a>
+<a class="sourceLine" id="cb8-4" data-line-number="4"><span class="co">#&gt; [1] 536.82</span></a></code></pre></div>
+<p>NOte that variable names can include periods or underscores. They can also include numbers, but they cannot start with a number. Like everything in R, they will be case sensitive.</p>
 
 </div>
 </div>

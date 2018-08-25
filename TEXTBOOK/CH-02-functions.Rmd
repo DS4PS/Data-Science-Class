@@ -107,3 +107,29 @@ calcMortgage( principal=100000  )
 ```
 
 
+
+## Assignment
+
+When we call a function in R, the default behavior of the function is typically to print the results on the screen:
+
+```{r}
+calcMortgage( principal=100000  )
+```
+
+If we are creating a script, however, we often need to save the function outputs at each step. We can do this by assigning output to a new variable.
+
+```{r}
+payments.15.year <- calcMortgage( years=15, principal=100000  )
+payments.30.year <- calcMortgage( years=30, principal=100000  )
+```
+
+These values are then stored, and can be used later or printed by typing the object name:
+
+```{r}
+payments.15.year
+payments.30.year
+```
+
+NOte that variable names can include periods or underscores. They can also include numbers, but they cannot start with a number. Like everything in R, they will be case sensitive. 
+
+
