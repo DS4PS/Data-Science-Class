@@ -46,7 +46,7 @@ knitr::include_graphics( "figures/function.png" )
 Calculate monthly payments for a:
 
 - 30-year mortgage 
-- 5% annuan interest rate 
+- 5% annual interest rate 
 - $100,000 loan 
 
 
