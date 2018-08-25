@@ -1,0 +1,56 @@
+---
+title: "My Doc"
+author: "John Doe"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+output:
+  html_document:
+    df_print: paged
+    theme: flatly
+    highlight: haddock
+    toc: yes
+    toc_float: yes
+---
+
+
+
+
+## Setup
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set( echo=TRUE, message=FALSE, warning=FALSE, fig.width=10 )
+```
+
+```{r load_packages}
+library( dplyr )
+library( pander )
+```
+
+```{r load_data, eval=F, echo=T}
+URL <- "https://www.dropbox.com/s/72dqe1j4b6bops2/syr_parcels.csv?dl=1"
+dat <- read.csv( URL )
+head( dat )
+```
+
+
+
+
+
+# Question 1
+
+What is the total assessed value of land in syracuse? 
+
+ANSWER: Land is valued at **$1,200,567,042**.
+
+```{r, eval=F}
+sum( dat$assessedla, na.rm=T )
+```
+
+
+
+
+
+
+
+
+
+

@@ -15,28 +15,19 @@ library( pander )
 ```
 
 
-## Load Dataset
-
-This dataset is located in GitHub:
-
-```{r}
-dat <- read.csv( "syr_parcels.csv", stringsAsFactors=F )
-```
 
 
 ## About
 
-This data set represents 42,000 tax parcels for the city of Syracuse, NY.
+This dataset represents approximately 42,000 tax parcels for the city of Syracuse, NY. The dataset is available in the DataCuse open data portal: <http://data.syrgov.net/datasets/parcel-data-august-2017>
 
-```{r, fig.cap="Syracuse Parcels", echo=F, fig.width=10 }
+```{r, fig.cap="Syracuse Parcels", echo=F, fig.width=10, fig.align="center" }
 knitr::include_graphics( "syr_parcels/Syracuse_Parcels.png" )
 ```
 
-```{r, fig.cap="Downtown Syracuse", echo=F, fig.width=6 }
+```{r, fig.cap="Downtown Syracuse", echo=F, fig.width=10, fig.align="center" }
 knitr::include_graphics( "syr_parcels/downtown_syr.png" )
 ```
-
-
 
 
 ## Data Dictionary
@@ -74,12 +65,31 @@ This data set contains the following variables:
 * **overduewater** - total owed on overdue water bills (numeric)
 
 
-## Data Preview
+## Load Dataset
+
+We are using a number of variables from the 2015 extract of tax parcels saved as a CSV file on GitHub for easy loading:
 
 ```{r}
-head( dat )
+URL <- "https://raw.githubusercontent.com/DS4PS/Data-Science-Class/master/DATA/syr_parcels.csv"
+dat <- read.csv( URL, stringsAsFactors=FALSE )
+
+head( dat ) %>% pander
+
 ```
 
+
+## Parcel Shapefiles
+
+The shapefile has been converted to a geojson format, and is available on GitHub:
+
+```{r, eval=F}
+library( geojsonio )
+library( sp )
+library( rgdal )
+
+syr <- geojson_read( "syr_parcels.geojson", method="local", what="sp" )
+plot( syr,  border=NA, col="gray80" )
+```
 
 
 ## Neighborhoods
@@ -127,7 +137,7 @@ for( i in nhoods )
 
 ## Land Use
 
-```{r, echo=F, fig.width=10, eval=T}
+```{r, echo=F, fig.width=10, fig.height=12, eval=T}
 
 
 
