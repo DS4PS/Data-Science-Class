@@ -2,7 +2,8 @@ library( "rmarkdown" )
 pandoc_version()
 
 library( "bookdown" )
-setwd( "C:/Users/jdlecy/Dropbox/00 - PEDA Program Design/00 - R Book/Data-Science-Class/01-TEXTBOOK" )
+setwd( "C:/Users/jdlecy/Dropbox/02 - CLASSES/03 - PEDA/Data-Science-Class/TEXTBOOK" )
+
 
 
 bookdown::render_book( "index.Rmd", "bookdown::gitbook" )

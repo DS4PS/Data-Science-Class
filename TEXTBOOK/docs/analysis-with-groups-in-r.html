@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Intro to Data Science for the Social Sector</title>
   <meta name="description" content="This is an introductory text to data science designed for social science graduate students in public affairs, nonprofit management, and international development.">
-  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.6 and GitBook 2.6.7">
 
   <meta property="og:title" content="Intro to Data Science for the Social Sector" />
   <meta property="og:type" content="book" />
@@ -51,7 +51,7 @@
 <style type="text/css">
 a.sourceLine { display: inline-block; line-height: 1.25; }
 a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 div.sourceCode { margin: 1em 0; }
@@ -64,11 +64,13 @@ code.sourceCode { white-space: pre-wrap; }
 a.sourceLine { text-indent: -1em; padding-left: 1em; }
 }
 pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
 pre.numberSource a.sourceLine::before
   { content: attr(data-line-number);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -140,64 +142,68 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.5" data-path="introduction-to-r.html"><a href="introduction-to-r.html#accessing-built-in-datasets-in-r"><i class="fa fa-check"></i><b>1.5</b> Accessing Built-In Datasets in R</a><ul>
 <li class="chapter" data-level="1.5.1" data-path="introduction-to-r.html"><a href="introduction-to-r.html#basic-data-operations"><i class="fa fa-check"></i><b>1.5.1</b> Basic Data Operations</a></li>
 <li class="chapter" data-level="1.5.2" data-path="introduction-to-r.html"><a href="introduction-to-r.html#using-the-lahman-data"><i class="fa fa-check"></i><b>1.5.2</b> Using the Lahman Data</a></li>
-</ul></li>
-<li class="chapter" data-level="1.6" data-path="introduction-to-r.html"><a href="introduction-to-r.html#master-table"><i class="fa fa-check"></i><b>1.6</b> <strong>MASTER TABLE</strong></a><ul>
-<li class="chapter" data-level="1.6.1" data-path="introduction-to-r.html"><a href="introduction-to-r.html#example-analysis"><i class="fa fa-check"></i><b>1.6.1</b> Example Analysis</a></li>
+<li class="chapter" data-level="1.5.3" data-path="introduction-to-r.html"><a href="introduction-to-r.html#example-analysis"><i class="fa fa-check"></i><b>1.5.3</b> Example Analysis</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="data-structures.html"><a href="data-structures.html"><i class="fa fa-check"></i><b>2</b> Data Structures</a><ul>
-<li class="chapter" data-level="2.1" data-path="data-structures.html"><a href="data-structures.html#vectors"><i class="fa fa-check"></i><b>2.1</b> Vectors</a></li>
-<li class="chapter" data-level="2.2" data-path="data-structures.html"><a href="data-structures.html#casting"><i class="fa fa-check"></i><b>2.2</b> Casting</a></li>
-<li class="chapter" data-level="2.3" data-path="data-structures.html"><a href="data-structures.html#the-combine-function"><i class="fa fa-check"></i><b>2.3</b> The Combine Function</a></li>
-<li class="chapter" data-level="2.4" data-path="data-structures.html"><a href="data-structures.html#numeric-vectors"><i class="fa fa-check"></i><b>2.4</b> Numeric Vectors</a><ul>
-<li class="chapter" data-level="2.4.1" data-path="data-structures.html"><a href="data-structures.html#integers-are-simple-numeric-vectors"><i class="fa fa-check"></i><b>2.4.1</b> Integers Are Simple Numeric Vectors</a></li>
+<li class="chapter" data-level="2" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>2</b> Functions</a><ul>
+<li class="chapter" data-level="2.1" data-path="functions.html"><a href="functions.html#key-concepts"><i class="fa fa-check"></i><b>2.1</b> Key Concepts</a></li>
+<li class="chapter" data-level="2.2" data-path="functions.html"><a href="functions.html#computer-programs-as-recipes"><i class="fa fa-check"></i><b>2.2</b> Computer Programs as Recipes</a></li>
 </ul></li>
-<li class="chapter" data-level="2.5" data-path="data-structures.html"><a href="data-structures.html#character-vectors"><i class="fa fa-check"></i><b>2.5</b> Character Vectors</a></li>
-<li class="chapter" data-level="2.6" data-path="data-structures.html"><a href="data-structures.html#logical-vectors"><i class="fa fa-check"></i><b>2.6</b> Logical Vectors</a></li>
-<li class="chapter" data-level="2.7" data-path="data-structures.html"><a href="data-structures.html#factors"><i class="fa fa-check"></i><b>2.7</b> Factors</a></li>
-<li class="chapter" data-level="2.8" data-path="data-structures.html"><a href="data-structures.html#generating-vectors"><i class="fa fa-check"></i><b>2.8</b> Generating Vectors</a></li>
+<li class="chapter" data-level="3" data-path="data-structures.html"><a href="data-structures.html"><i class="fa fa-check"></i><b>3</b> Data Structures</a><ul>
+<li class="chapter" data-level="3.1" data-path="data-structures.html"><a href="data-structures.html#key-concepts-1"><i class="fa fa-check"></i><b>3.1</b> Key Concepts</a></li>
+<li class="chapter" data-level="3.2" data-path="data-structures.html"><a href="data-structures.html#vectors"><i class="fa fa-check"></i><b>3.2</b> Vectors</a></li>
+<li class="chapter" data-level="3.3" data-path="data-structures.html"><a href="data-structures.html#common-vectors-functions"><i class="fa fa-check"></i><b>3.3</b> Common Vectors Functions</a></li>
+<li class="chapter" data-level="3.4" data-path="data-structures.html"><a href="data-structures.html#the-combine-function"><i class="fa fa-check"></i><b>3.4</b> The Combine Function</a></li>
+<li class="chapter" data-level="3.5" data-path="data-structures.html"><a href="data-structures.html#casting"><i class="fa fa-check"></i><b>3.5</b> Casting</a></li>
+<li class="chapter" data-level="3.6" data-path="data-structures.html"><a href="data-structures.html#numeric-vectors"><i class="fa fa-check"></i><b>3.6</b> Numeric Vectors</a><ul>
+<li class="chapter" data-level="3.6.1" data-path="data-structures.html"><a href="data-structures.html#integers-are-simple-numeric-vectors"><i class="fa fa-check"></i><b>3.6.1</b> Integers Are Simple Numeric Vectors</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="operators.html"><a href="operators.html"><i class="fa fa-check"></i><b>3</b> Operators</a><ul>
-<li class="chapter" data-level="3.1" data-path="operators.html"><a href="operators.html#datasets"><i class="fa fa-check"></i><b>3.1</b> Datasets</a><ul>
-<li class="chapter" data-level="3.1.1" data-path="operators.html"><a href="operators.html#data-frames"><i class="fa fa-check"></i><b>3.1.1</b> Data Frames</a></li>
-<li class="chapter" data-level="3.1.2" data-path="operators.html"><a href="operators.html#matrices"><i class="fa fa-check"></i><b>3.1.2</b> Matrices</a></li>
-<li class="chapter" data-level="3.1.3" data-path="operators.html"><a href="operators.html#lists"><i class="fa fa-check"></i><b>3.1.3</b> Lists</a></li>
+<li class="chapter" data-level="3.7" data-path="data-structures.html"><a href="data-structures.html#character-vectors"><i class="fa fa-check"></i><b>3.7</b> Character Vectors</a></li>
+<li class="chapter" data-level="3.8" data-path="data-structures.html"><a href="data-structures.html#logical-vectors"><i class="fa fa-check"></i><b>3.8</b> Logical Vectors</a></li>
+<li class="chapter" data-level="3.9" data-path="data-structures.html"><a href="data-structures.html#factors"><i class="fa fa-check"></i><b>3.9</b> Factors</a></li>
+<li class="chapter" data-level="3.10" data-path="data-structures.html"><a href="data-structures.html#generating-vectors"><i class="fa fa-check"></i><b>3.10</b> Generating Vectors</a></li>
 </ul></li>
-<li class="chapter" data-level="3.2" data-path="operators.html"><a href="operators.html#subsets"><i class="fa fa-check"></i><b>3.2</b> Subsets</a></li>
-<li class="chapter" data-level="3.3" data-path="operators.html"><a href="operators.html#variable-transformations"><i class="fa fa-check"></i><b>3.3</b> Variable Transformations</a></li>
-<li class="chapter" data-level="3.4" data-path="operators.html"><a href="operators.html#missing-values-nas"><i class="fa fa-check"></i><b>3.4</b> Missing Values: NA’s</a></li>
-<li class="chapter" data-level="3.5" data-path="operators.html"><a href="operators.html#the-attach-function"><i class="fa fa-check"></i><b>3.5</b> The ‘attach’ Function</a></li>
+<li class="chapter" data-level="4" data-path="operators.html"><a href="operators.html"><i class="fa fa-check"></i><b>4</b> Operators</a><ul>
+<li class="chapter" data-level="4.1" data-path="operators.html"><a href="operators.html#datasets"><i class="fa fa-check"></i><b>4.1</b> Datasets</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="operators.html"><a href="operators.html#data-frames"><i class="fa fa-check"></i><b>4.1.1</b> Data Frames</a></li>
+<li class="chapter" data-level="4.1.2" data-path="operators.html"><a href="operators.html#matrices"><i class="fa fa-check"></i><b>4.1.2</b> Matrices</a></li>
+<li class="chapter" data-level="4.1.3" data-path="operators.html"><a href="operators.html#lists"><i class="fa fa-check"></i><b>4.1.3</b> Lists</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="merging-data.html"><a href="merging-data.html"><i class="fa fa-check"></i><b>4</b> Merging Data</a><ul>
-<li class="chapter" data-level="4.1" data-path="merging-data.html"><a href="merging-data.html#packages-used-in-this-chapter"><i class="fa fa-check"></i><b>4.1</b> Packages Used in This Chapter</a></li>
-<li class="chapter" data-level="4.2" data-path="merging-data.html"><a href="merging-data.html#relational-databases"><i class="fa fa-check"></i><b>4.2</b> Relational Databases</a></li>
-<li class="chapter" data-level="4.3" data-path="merging-data.html"><a href="merging-data.html#set-theory"><i class="fa fa-check"></i><b>4.3</b> Set Theory</a><ul>
-<li class="chapter" data-level="4.3.1" data-path="merging-data.html"><a href="merging-data.html#set-theory-functions"><i class="fa fa-check"></i><b>4.3.1</b> Set Theory Functions</a></li>
-<li class="chapter" data-level="4.3.2" data-path="merging-data.html"><a href="merging-data.html#set-theory-using-logical-operators"><i class="fa fa-check"></i><b>4.3.2</b> Set Theory Using Logical Operators</a></li>
+<li class="chapter" data-level="4.2" data-path="operators.html"><a href="operators.html#subsets"><i class="fa fa-check"></i><b>4.2</b> Subsets</a></li>
+<li class="chapter" data-level="4.3" data-path="operators.html"><a href="operators.html#variable-transformations"><i class="fa fa-check"></i><b>4.3</b> Variable Transformations</a></li>
+<li class="chapter" data-level="4.4" data-path="operators.html"><a href="operators.html#missing-values-nas"><i class="fa fa-check"></i><b>4.4</b> Missing Values: NA’s</a></li>
+<li class="chapter" data-level="4.5" data-path="operators.html"><a href="operators.html#the-attach-function"><i class="fa fa-check"></i><b>4.5</b> The ‘attach’ Function</a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="merging-data.html"><a href="merging-data.html#merging-data-1"><i class="fa fa-check"></i><b>4.4</b> Merging Data</a><ul>
-<li class="chapter" data-level="4.4.1" data-path="merging-data.html"><a href="merging-data.html#the-by.x-and-by.y-arguments"><i class="fa fa-check"></i><b>4.4.1</b> The by.x and by.y Arguments</a></li>
+<li class="chapter" data-level="5" data-path="merging-data.html"><a href="merging-data.html"><i class="fa fa-check"></i><b>5</b> Merging Data</a><ul>
+<li class="chapter" data-level="5.1" data-path="merging-data.html"><a href="merging-data.html#packages-used-in-this-chapter"><i class="fa fa-check"></i><b>5.1</b> Packages Used in This Chapter</a></li>
+<li class="chapter" data-level="5.2" data-path="merging-data.html"><a href="merging-data.html#relational-databases"><i class="fa fa-check"></i><b>5.2</b> Relational Databases</a></li>
+<li class="chapter" data-level="5.3" data-path="merging-data.html"><a href="merging-data.html#set-theory"><i class="fa fa-check"></i><b>5.3</b> Set Theory</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="merging-data.html"><a href="merging-data.html#set-theory-functions"><i class="fa fa-check"></i><b>5.3.1</b> Set Theory Functions</a></li>
+<li class="chapter" data-level="5.3.2" data-path="merging-data.html"><a href="merging-data.html#set-theory-using-logical-operators"><i class="fa fa-check"></i><b>5.3.2</b> Set Theory Using Logical Operators</a></li>
 </ul></li>
-<li class="chapter" data-level="4.5" data-path="merging-data.html"><a href="merging-data.html#non-unique-observations-in-id-variables"><i class="fa fa-check"></i><b>4.5</b> Non-Unique Observations in ID Variables</a><ul>
-<li class="chapter" data-level="4.5.1" data-path="merging-data.html"><a href="merging-data.html#example-of-incorrect-merge"><i class="fa fa-check"></i><b>4.5.1</b> Example of Incorrect Merge</a></li>
+<li class="chapter" data-level="5.4" data-path="merging-data.html"><a href="merging-data.html#merging-data-1"><i class="fa fa-check"></i><b>5.4</b> Merging Data</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="merging-data.html"><a href="merging-data.html#the-by.x-and-by.y-arguments"><i class="fa fa-check"></i><b>5.4.1</b> The by.x and by.y Arguments</a></li>
 </ul></li>
-<li class="chapter" data-level="4.6" data-path="merging-data.html"><a href="merging-data.html#the-in-function"><i class="fa fa-check"></i><b>4.6</b> The %in% function</a></li>
-<li class="chapter" data-level="4.7" data-path="merging-data.html"><a href="merging-data.html#the-match-function"><i class="fa fa-check"></i><b>4.7</b> The Match Function</a></li>
+<li class="chapter" data-level="5.5" data-path="merging-data.html"><a href="merging-data.html#non-unique-observations-in-id-variables"><i class="fa fa-check"></i><b>5.5</b> Non-Unique Observations in ID Variables</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="merging-data.html"><a href="merging-data.html#example-of-incorrect-merge"><i class="fa fa-check"></i><b>5.5.1</b> Example of Incorrect Merge</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="analysis-with-groups-in-r.html"><a href="analysis-with-groups-in-r.html"><i class="fa fa-check"></i><b>5</b> Analysis with Groups in R</a><ul>
-<li class="chapter" data-level="5.0.1" data-path="analysis-with-groups-in-r.html"><a href="analysis-with-groups-in-r.html#packages-used-in-this-chapter-1"><i class="fa fa-check"></i><b>5.0.1</b> Packages Used in this Chapter</a></li>
-<li class="chapter" data-level="5.0.2" data-path="analysis-with-groups-in-r.html"><a href="analysis-with-groups-in-r.html#hypothetical-experimental-data"><i class="fa fa-check"></i><b>5.0.2</b> Hypothetical Experimental Data</a></li>
-<li class="chapter" data-level="5.1" data-path="analysis-with-groups-in-r.html"><a href="analysis-with-groups-in-r.html#group-structure"><i class="fa fa-check"></i><b>5.1</b> Group Structure</a><ul>
-<li class="chapter" data-level="5.1.1" data-path="analysis-with-groups-in-r.html"><a href="analysis-with-groups-in-r.html#what-are-groups"><i class="fa fa-check"></i><b>5.1.1</b> What Are Groups?</a></li>
-<li class="chapter" data-level="5.1.2" data-path="analysis-with-groups-in-r.html"><a href="analysis-with-groups-in-r.html#main-take-away"><i class="fa fa-check"></i><b>5.1.2</b> Main Take-Away</a></li>
-<li class="chapter" data-level="5.1.3" data-path="analysis-with-groups-in-r.html"><a href="analysis-with-groups-in-r.html#example"><i class="fa fa-check"></i><b>5.1.3</b> Example</a></li>
+<li class="chapter" data-level="5.6" data-path="merging-data.html"><a href="merging-data.html#the-in-function"><i class="fa fa-check"></i><b>5.6</b> The %in% function</a></li>
+<li class="chapter" data-level="5.7" data-path="merging-data.html"><a href="merging-data.html#the-match-function"><i class="fa fa-check"></i><b>5.7</b> The Match Function</a></li>
 </ul></li>
-<li class="chapter" data-level="5.2" data-path="analysis-with-groups-in-r.html"><a href="analysis-with-groups-in-r.html#analysis-by-group"><i class="fa fa-check"></i><b>5.2</b> Analysis by Group</a><ul>
-<li class="chapter" data-level="5.2.1" data-path="analysis-with-groups-in-r.html"><a href="analysis-with-groups-in-r.html#highest-ave-player-salary"><i class="fa fa-check"></i><b>5.2.1</b> Highest Ave Player Salary</a></li>
-<li class="chapter" data-level="5.2.2" data-path="analysis-with-groups-in-r.html"><a href="analysis-with-groups-in-r.html#most-players-paid-over-5-million"><i class="fa fa-check"></i><b>5.2.2</b> Most Players Paid Over $5 Million</a></li>
-<li class="chapter" data-level="5.2.3" data-path="analysis-with-groups-in-r.html"><a href="analysis-with-groups-in-r.html#fielding-positions"><i class="fa fa-check"></i><b>5.2.3</b> Fielding Positions</a></li>
-<li class="chapter" data-level="5.2.4" data-path="analysis-with-groups-in-r.html"><a href="analysis-with-groups-in-r.html#country-of-birth"><i class="fa fa-check"></i><b>5.2.4</b> Country of Birth</a></li>
-<li class="chapter" data-level="5.2.5" data-path="analysis-with-groups-in-r.html"><a href="analysis-with-groups-in-r.html#pay-raises"><i class="fa fa-check"></i><b>5.2.5</b> Pay Raises</a></li>
+<li class="chapter" data-level="6" data-path="analysis-with-groups-in-r.html"><a href="analysis-with-groups-in-r.html"><i class="fa fa-check"></i><b>6</b> Analysis with Groups in R</a><ul>
+<li class="chapter" data-level="6.0.1" data-path="analysis-with-groups-in-r.html"><a href="analysis-with-groups-in-r.html#packages-used-in-this-chapter-1"><i class="fa fa-check"></i><b>6.0.1</b> Packages Used in this Chapter</a></li>
+<li class="chapter" data-level="6.0.2" data-path="analysis-with-groups-in-r.html"><a href="analysis-with-groups-in-r.html#hypothetical-experimental-data"><i class="fa fa-check"></i><b>6.0.2</b> Hypothetical Experimental Data</a></li>
+<li class="chapter" data-level="6.1" data-path="analysis-with-groups-in-r.html"><a href="analysis-with-groups-in-r.html#group-structure"><i class="fa fa-check"></i><b>6.1</b> Group Structure</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="analysis-with-groups-in-r.html"><a href="analysis-with-groups-in-r.html#what-are-groups"><i class="fa fa-check"></i><b>6.1.1</b> What Are Groups?</a></li>
+<li class="chapter" data-level="6.1.2" data-path="analysis-with-groups-in-r.html"><a href="analysis-with-groups-in-r.html#main-take-away"><i class="fa fa-check"></i><b>6.1.2</b> Main Take-Away</a></li>
+<li class="chapter" data-level="6.1.3" data-path="analysis-with-groups-in-r.html"><a href="analysis-with-groups-in-r.html#example"><i class="fa fa-check"></i><b>6.1.3</b> Example</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="analysis-with-groups-in-r.html"><a href="analysis-with-groups-in-r.html#analysis-by-group"><i class="fa fa-check"></i><b>6.2</b> Analysis by Group</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="analysis-with-groups-in-r.html"><a href="analysis-with-groups-in-r.html#highest-ave-player-salary"><i class="fa fa-check"></i><b>6.2.1</b> Highest Ave Player Salary</a></li>
+<li class="chapter" data-level="6.2.2" data-path="analysis-with-groups-in-r.html"><a href="analysis-with-groups-in-r.html#most-players-paid-over-5-million"><i class="fa fa-check"></i><b>6.2.2</b> Most Players Paid Over $5 Million</a></li>
+<li class="chapter" data-level="6.2.3" data-path="analysis-with-groups-in-r.html"><a href="analysis-with-groups-in-r.html#fielding-positions"><i class="fa fa-check"></i><b>6.2.3</b> Fielding Positions</a></li>
+<li class="chapter" data-level="6.2.4" data-path="analysis-with-groups-in-r.html"><a href="analysis-with-groups-in-r.html#country-of-birth"><i class="fa fa-check"></i><b>6.2.4</b> Country of Birth</a></li>
+<li class="chapter" data-level="6.2.5" data-path="analysis-with-groups-in-r.html"><a href="analysis-with-groups-in-r.html#pay-raises"><i class="fa fa-check"></i><b>6.2.5</b> Pay Raises</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -221,23 +227,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="analysis-with-groups-in-r" class="section level1">
-<h1><span class="header-section-number">Chapter 5</span> Analysis with Groups in R</h1>
+<h1><span class="header-section-number">Chapter 6</span> Analysis with Groups in R</h1>
 <div id="packages-used-in-this-chapter-1" class="section level3">
-<h3><span class="header-section-number">5.0.1</span> Packages Used in this Chapter</h3>
-<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb86-1" data-line-number="1"></a>
-<a class="sourceLine" id="cb86-2" data-line-number="2"><span class="kw">library</span>( pander )</a>
-<a class="sourceLine" id="cb86-3" data-line-number="3"><span class="kw">library</span>( dplyr )</a>
-<a class="sourceLine" id="cb86-4" data-line-number="4"><span class="kw">library</span>( tidyr )</a>
-<a class="sourceLine" id="cb86-5" data-line-number="5"><span class="kw">library</span>( reshape2 )</a>
-<a class="sourceLine" id="cb86-6" data-line-number="6"><span class="kw">library</span>( scales )</a>
-<a class="sourceLine" id="cb86-7" data-line-number="7"><span class="kw">library</span>( ggplot2 )</a>
-<a class="sourceLine" id="cb86-8" data-line-number="8"><span class="kw">library</span>( Lahman )</a></code></pre></div>
+<h3><span class="header-section-number">6.0.1</span> Packages Used in this Chapter</h3>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb96-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb96-2" data-line-number="2"><span class="kw">library</span>( pander )</a>
+<a class="sourceLine" id="cb96-3" data-line-number="3"><span class="kw">library</span>( dplyr )</a>
+<a class="sourceLine" id="cb96-4" data-line-number="4"><span class="kw">library</span>( tidyr )</a>
+<a class="sourceLine" id="cb96-5" data-line-number="5"><span class="kw">library</span>( reshape2 )</a>
+<a class="sourceLine" id="cb96-6" data-line-number="6"><span class="kw">library</span>( scales )</a>
+<a class="sourceLine" id="cb96-7" data-line-number="7"><span class="kw">library</span>( ggplot2 )</a>
+<a class="sourceLine" id="cb96-8" data-line-number="8"><span class="kw">library</span>( Lahman )</a></code></pre></div>
 </div>
 <div id="hypothetical-experimental-data" class="section level3">
-<h3><span class="header-section-number">5.0.2</span> Hypothetical Experimental Data</h3>
+<h3><span class="header-section-number">6.0.2</span> Hypothetical Experimental Data</h3>
 <p>We will demonstrate some functions using this hypothetical dataset:</p>
-<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb87-1" data-line-number="1"><span class="kw">head</span>( d ) <span class="op">%&gt;%</span><span class="st"> </span>pander</a></code></pre></div>
-<table style="width:88%;">
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb97-1" data-line-number="1"><span class="kw">head</span>( d ) <span class="op">%&gt;%</span><span class="st"> </span>pander</a></code></pre></div>
+<table style="width:86%;">
 <colgroup>
 <col width="6%" />
 <col width="11%" />
@@ -245,7 +251,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <col width="12%" />
 <col width="8%" />
 <col width="19%" />
-<col width="11%" />
+<col width="9%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -262,62 +268,62 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <tr class="odd">
 <td align="center">1</td>
 <td align="center">white</td>
-<td align="center">A</td>
+<td align="center">B</td>
 <td align="center">female</td>
-<td align="center">40</td>
+<td align="center">38</td>
 <td align="center">treatment</td>
-<td align="center">677.1</td>
+<td align="center">568.7</td>
 </tr>
 <tr class="even">
 <td align="center">2</td>
-<td align="center">white</td>
-<td align="center">A</td>
+<td align="center">asian</td>
+<td align="center">B</td>
 <td align="center">female</td>
-<td align="center">37</td>
+<td align="center">45</td>
 <td align="center">treatment</td>
-<td align="center">616.8</td>
+<td align="center">576.5</td>
 </tr>
 <tr class="odd">
 <td align="center">3</td>
 <td align="center">white</td>
-<td align="center">B</td>
+<td align="center">A</td>
 <td align="center">female</td>
-<td align="center">64</td>
+<td align="center">39</td>
 <td align="center">treatment</td>
-<td align="center">503.6</td>
+<td align="center">635.1</td>
 </tr>
 <tr class="even">
 <td align="center">4</td>
-<td align="center">asian</td>
-<td align="center">A</td>
+<td align="center">black</td>
+<td align="center">B</td>
 <td align="center">male</td>
 <td align="center">50</td>
 <td align="center">treatment</td>
-<td align="center">555.5</td>
+<td align="center">584.5</td>
 </tr>
 <tr class="odd">
 <td align="center">5</td>
-<td align="center">black</td>
+<td align="center">white</td>
 <td align="center">A</td>
 <td align="center">female</td>
-<td align="center">32</td>
+<td align="center">51</td>
 <td align="center">treatment</td>
-<td align="center">671</td>
+<td align="center">686.3</td>
 </tr>
 <tr class="even">
 <td align="center">6</td>
 <td align="center">black</td>
-<td align="center">A</td>
+<td align="center">B</td>
 <td align="center">female</td>
-<td align="center">28</td>
+<td align="center">39</td>
 <td align="center">treatment</td>
-<td align="center">644.2</td>
+<td align="center">696</td>
 </tr>
 </tbody>
 </table>
 </div>
 <div id="group-structure" class="section level2">
-<h2><span class="header-section-number">5.1</span> Group Structure</h2>
+<h2><span class="header-section-number">6.1</span> Group Structure</h2>
 <p>The two most important skills as you first learn a data programming language are:</p>
 <ol style="list-style-type: decimal">
 <li>Translating English phrases into computer code using logical statements<br />
@@ -326,19 +332,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 <p>This lecture focuses on efficienty splitting your data into groups, and then analyzing your data by group.</p>
 <div id="what-are-groups" class="section level3">
-<h3><span class="header-section-number">5.1.1</span> What Are Groups?</h3>
+<h3><span class="header-section-number">6.1.1</span> What Are Groups?</h3>
 <p>A group represents a set of elements with identical characteristics - mice all belong to one group and elephants belong to another. Easy enough, right?</p>
 <p>In data analysis, it is a little more complicated because a group is defined by a set of features. Each group still represents a set of elements with identical characteristics, but when we have multiple features there is a unique group for each combination of features.</p>
 <p>The simple way to think about this is that the cross-tab of features generates a grid (table), and each cell represents a unique group:</p>
-<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-103-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="DS4PS-I_files/figure-html4/unnamed-chunk-118-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>We might be interested in simple groups (treatment cases versus control cases), or complex groups (does the treatment effect women and men differently?).</p>
 <p>In previous lectures you have learned to identify a group with a logical statement, and analyze that group discretely.</p>
-<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb88-1" data-line-number="1"></a>
-<a class="sourceLine" id="cb88-2" data-line-number="2"><span class="kw">mean</span>( speed[ study.group <span class="op">==</span><span class="st"> &quot;treatment&quot;</span> <span class="op">&amp;</span><span class="st"> </span>gender<span class="op">==</span><span class="st">&quot;female&quot;</span> ] )</a>
-<a class="sourceLine" id="cb88-3" data-line-number="3"><span class="co">#&gt; [1] 618.9414</span></a></code></pre></div>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb98-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb98-2" data-line-number="2"><span class="kw">mean</span>( speed[ study.group <span class="op">==</span><span class="st"> &quot;treatment&quot;</span> <span class="op">&amp;</span><span class="st"> </span>gender<span class="op">==</span><span class="st">&quot;female&quot;</span> ] )</a>
+<a class="sourceLine" id="cb98-3" data-line-number="3"><span class="co">#&gt; [1] 612.3684</span></a></code></pre></div>
 <p>In this lecture you will learn to define a group structure, then analyze all of your data using that structure.</p>
-<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb89-1" data-line-number="1"></a>
-<a class="sourceLine" id="cb89-2" data-line-number="2"><span class="kw">tapply</span>( speed, <span class="dt">INDEX =</span> <span class="kw">list</span>( study.group, gender ), <span class="dt">FUN =</span> mean )</a></code></pre></div>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb99-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb99-2" data-line-number="2"><span class="kw">tapply</span>( speed, <span class="dt">INDEX =</span> <span class="kw">list</span>( study.group, gender ), <span class="dt">FUN =</span> mean )</a></code></pre></div>
 <table style="width:47%;">
 <colgroup>
 <col width="22%" />
@@ -355,24 +361,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <tbody>
 <tr class="odd">
 <td align="center"><strong>control</strong></td>
-<td align="center">468.3</td>
-<td align="center">361.4</td>
+<td align="center">469.5</td>
+<td align="center">364.6</td>
 </tr>
 <tr class="even">
 <td align="center"><strong>treatment</strong></td>
-<td align="center">618.9</td>
-<td align="center">519.8</td>
+<td align="center">612.4</td>
+<td align="center">505.6</td>
 </tr>
 </tbody>
 </table>
 </div>
 <div id="main-take-away" class="section level3">
-<h3><span class="header-section-number">5.1.2</span> Main Take-Away</h3>
+<h3><span class="header-section-number">6.1.2</span> Main Take-Away</h3>
 <p>R has been designed to do efficient data analysis by defining a group structure, then quickly applying a function to all unique members.</p>
 <p><img src="figures/group_plus_function.png" width="300"></p>
 <p>The base R packages do this with a set of functions in the <strong>apply()</strong> family. The <strong>tapply()</strong> function allows you to specify an outcome to analyze and a group, then ask for results from a function.</p>
-<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb90-1" data-line-number="1"></a>
-<a class="sourceLine" id="cb90-2" data-line-number="2"><span class="kw">tapply</span>( <span class="dt">X=</span>speed, <span class="dt">INDEX=</span><span class="kw">list</span>( study.group, gender ), <span class="dt">FUN=</span>mean ) </a></code></pre></div>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb100-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb100-2" data-line-number="2"><span class="kw">tapply</span>( <span class="dt">X=</span>speed, <span class="dt">INDEX=</span><span class="kw">list</span>( study.group, gender ), <span class="dt">FUN=</span>mean ) </a></code></pre></div>
 <table style="width:47%;">
 <colgroup>
 <col width="22%" />
@@ -389,24 +395,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <tbody>
 <tr class="odd">
 <td align="center"><strong>control</strong></td>
-<td align="center">468.3</td>
-<td align="center">361.4</td>
+<td align="center">469.5</td>
+<td align="center">364.6</td>
 </tr>
 <tr class="even">
 <td align="center"><strong>treatment</strong></td>
-<td align="center">618.9</td>
-<td align="center">519.8</td>
+<td align="center">612.4</td>
+<td align="center">505.6</td>
 </tr>
 </tbody>
 </table>
 <p>The <strong>dplyr</strong> package makes this process easier using some simple verbs and the “pipe” operator.</p>
-<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb91-1" data-line-number="1"></a>
-<a class="sourceLine" id="cb91-2" data-line-number="2">dat  <span class="op">%&gt;%</span><span class="st">  </span><span class="kw">group_by</span>( study.group, gender )  <span class="op">%&gt;%</span><span class="st">  </span><span class="kw">summarize</span>( <span class="dt">ave.speed =</span> <span class="kw">mean</span>(speed) )</a></code></pre></div>
-<table style="width:49%;">
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb101-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb101-2" data-line-number="2">dat  <span class="op">%&gt;%</span><span class="st">  </span><span class="kw">group_by</span>( study.group, gender )  <span class="op">%&gt;%</span><span class="st">  </span><span class="kw">summarize</span>( <span class="dt">ave.speed =</span> <span class="kw">mean</span>(speed) )</a></code></pre></div>
+<table style="width:47%;">
 <colgroup>
 <col width="19%" />
 <col width="12%" />
-<col width="16%" />
+<col width="15%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -419,28 +425,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <tr class="odd">
 <td align="center">control</td>
 <td align="center">male</td>
-<td align="center">361.4</td>
+<td align="center">364.6</td>
 </tr>
 <tr class="even">
 <td align="center">control</td>
 <td align="center">female</td>
-<td align="center">468.3</td>
+<td align="center">469.5</td>
 </tr>
 <tr class="odd">
 <td align="center">treatment</td>
 <td align="center">male</td>
-<td align="center">519.8</td>
+<td align="center">505.6</td>
 </tr>
 <tr class="even">
 <td align="center">treatment</td>
 <td align="center">female</td>
-<td align="center">618.9</td>
+<td align="center">612.4</td>
 </tr>
 </tbody>
 </table>
 </div>
 <div id="example" class="section level3">
-<h3><span class="header-section-number">5.1.3</span> Example</h3>
+<h3><span class="header-section-number">6.1.3</span> Example</h3>
 <p>Let’s think about a study looking at reading speed. The treatment is a workshop that teaches some speed-reading techniques. In this study we have data on:</p>
 <ul>
 <li>gender (male,female)</li>
@@ -449,54 +455,54 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>age (from 18 to 93)</li>
 </ul>
 <p>Examining descriptive statistics we can see that reading speed varies by gender and the treatment group, but not by race or blood type:</p>
-<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-112-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="DS4PS-I_files/figure-html4/unnamed-chunk-127-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>The question is, how many unique groups can we create with these four factors?</p>
 <p>Each individual factor contains a small number of levels (only 2 or 3 in this case), which makes the group structure look deceptively simple at first glance. When we start to examine combinations of factors we see that group structure can get complicated pretty quickly.</p>
 <p>If we look at gender alone, we have two levels: male and female. So we have two groups. If we look at our study groups alone we have two groups: treatment and control.</p>
 <p>If we look at gender and the study groups together, we now have a 2 x 2 grid, or four unique groups.</p>
 <p>If the race factor has three levels, how many unique groups will we have considering the study design, gender, and race together?</p>
-<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-113-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="DS4PS-I_files/figure-html4/unnamed-chunk-128-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>We can calculate the size of the grid by multiplying number of levels for each factor. We see here we have 12 unique groups:</p>
-<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb92-1" data-line-number="1"></a>
-<a class="sourceLine" id="cb92-2" data-line-number="2"><span class="kw">nlevels</span>( gender ) <span class="op">*</span><span class="st"> </span><span class="kw">nlevels</span>( study.group ) <span class="op">*</span><span class="st"> </span><span class="kw">nlevels</span>( race )</a>
-<a class="sourceLine" id="cb92-3" data-line-number="3"><span class="co">#&gt; [1] 12</span></a></code></pre></div>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb102-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb102-2" data-line-number="2"><span class="kw">nlevels</span>( gender ) <span class="op">*</span><span class="st"> </span><span class="kw">nlevels</span>( study.group ) <span class="op">*</span><span class="st"> </span><span class="kw">nlevels</span>( race )</a>
+<a class="sourceLine" id="cb102-3" data-line-number="3"><span class="co">#&gt; [1] 12</span></a></code></pre></div>
 <p>If we add blood type, a factor with two levels (A and B), we now have 24 unique groups:</p>
-<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb93-1" data-line-number="1"></a>
-<a class="sourceLine" id="cb93-2" data-line-number="2">p <span class="op">+</span><span class="st"> </span><span class="kw">facet_grid</span>( race <span class="op">+</span><span class="st"> </span>study.group <span class="op">~</span><span class="st"> </span>gender <span class="op">+</span><span class="st"> </span>blood.type) </a></code></pre></div>
-<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-115-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb103-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb103-2" data-line-number="2">p <span class="op">+</span><span class="st"> </span><span class="kw">facet_grid</span>( race <span class="op">+</span><span class="st"> </span>study.group <span class="op">~</span><span class="st"> </span>gender <span class="op">+</span><span class="st"> </span>blood.type) </a></code></pre></div>
+<p><img src="DS4PS-I_files/figure-html4/unnamed-chunk-130-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>What about age? It is a continuous variable, so it’s a little more tricky.</p>
 <p>We can certainly analyze the relationship between age and speed using correlation tools.</p>
-<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb94-1" data-line-number="1"><span class="kw">plot</span>( age, speed, <span class="dt">bty=</span><span class="st">&quot;n&quot;</span>, <span class="dt">main=</span><span class="st">&quot;Age&quot;</span> )</a></code></pre></div>
-<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-116-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb104-1" data-line-number="1"><span class="kw">plot</span>( age, speed, <span class="dt">bty=</span><span class="st">&quot;n&quot;</span>, <span class="dt">main=</span><span class="st">&quot;Age&quot;</span> )</a></code></pre></div>
+<p><img src="DS4PS-I_files/figure-html4/unnamed-chunk-131-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>But we can also incorporate this independent variable into a group structure. We can treat each distinct age as a separate group. The ages in this study range from 18 to 93, so we have 65 distinct ages represented.</p>
-<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb95-1" data-line-number="1"></a>
-<a class="sourceLine" id="cb95-2" data-line-number="2"><span class="kw">plot</span>( <span class="kw">factor</span>(age), speed, <span class="dt">las=</span><span class="dv">2</span>, <span class="dt">frame.plot=</span>F, <span class="dt">outline=</span>F, <span class="dt">main=</span><span class="st">&quot;Age&quot;</span>, <span class="dt">xaxt=</span><span class="st">&quot;n&quot;</span>  )</a></code></pre></div>
-<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-117-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb105-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb105-2" data-line-number="2"><span class="kw">plot</span>( <span class="kw">factor</span>(age), speed, <span class="dt">las=</span><span class="dv">2</span>, <span class="dt">frame.plot=</span>F, <span class="dt">outline=</span>F, <span class="dt">main=</span><span class="st">&quot;Age&quot;</span>, <span class="dt">xaxt=</span><span class="st">&quot;n&quot;</span>  )</a></code></pre></div>
+<p><img src="DS4PS-I_files/figure-html4/unnamed-chunk-132-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>If we think about the overall group structure, then, we have unique groups defined by gender, race, blood type, and study design, and another 65 age groups. So in total we now have 24 x 65 = 1,560 groups! That is getting complicated.</p>
 <p>This group design is problematic for two reasons. From a pragmatic standpoint, we can’t report results from 1,500 groups in a table. From a more substantive perspective, we although we have 1,500 distinct cells in our grid, many may not include observations that represent the unique combination of all factors. So this group design is not very practical.</p>
 <p>A similar problem arises if our data includes time. If our data includes the time of events recorded by hours, days of the week, months, and years, we can have generate complicated group structures if we try to analyze every unique combination.</p>
 <p>We can simplify our analysis by thinking about age ranges instead of ages, or in other words by binning our continuous data. If we split it into five-year ranges, for example, we have gone from 65 distinct ages to 12 distinct age groups.</p>
-<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb96-1" data-line-number="1"></a>
-<a class="sourceLine" id="cb96-2" data-line-number="2">age.group &lt;-<span class="st"> </span><span class="kw">cut</span>( age, </a>
-<a class="sourceLine" id="cb96-3" data-line-number="3">                  <span class="dt">breaks=</span><span class="kw">seq</span>(<span class="dt">from=</span><span class="dv">20</span>,<span class="dt">to=</span><span class="dv">80</span>,<span class="dt">by=</span><span class="dv">5</span>),</a>
-<a class="sourceLine" id="cb96-4" data-line-number="4">                  <span class="dt">labels=</span><span class="kw">paste</span>( <span class="kw">seq</span>(<span class="dt">from=</span><span class="dv">20</span>,<span class="dt">to=</span><span class="dv">75</span>,<span class="dt">by=</span><span class="dv">5</span>), <span class="st">&quot;to&quot;</span>, <span class="kw">seq</span>(<span class="dt">from=</span><span class="dv">25</span>,<span class="dt">to=</span><span class="dv">80</span>,<span class="dt">by=</span><span class="dv">5</span>) ) )</a>
-<a class="sourceLine" id="cb96-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb96-6" data-line-number="6">group.structure &lt;-<span class="st"> </span><span class="kw">formula</span>( speed <span class="op">~</span><span class="st"> </span>age.group )</a>
-<a class="sourceLine" id="cb96-7" data-line-number="7"></a>
-<a class="sourceLine" id="cb96-8" data-line-number="8"><span class="kw">boxplot</span>( group.structure, <span class="dt">las=</span><span class="dv">2</span>, <span class="dt">frame.plot=</span>F, <span class="dt">outline=</span>F, <span class="dt">main=</span><span class="st">&quot;Age Group&quot;</span>  )</a></code></pre></div>
-<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-118-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb106-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb106-2" data-line-number="2">age.group &lt;-<span class="st"> </span><span class="kw">cut</span>( age, </a>
+<a class="sourceLine" id="cb106-3" data-line-number="3">                  <span class="dt">breaks=</span><span class="kw">seq</span>(<span class="dt">from=</span><span class="dv">20</span>,<span class="dt">to=</span><span class="dv">80</span>,<span class="dt">by=</span><span class="dv">5</span>),</a>
+<a class="sourceLine" id="cb106-4" data-line-number="4">                  <span class="dt">labels=</span><span class="kw">paste</span>( <span class="kw">seq</span>(<span class="dt">from=</span><span class="dv">20</span>,<span class="dt">to=</span><span class="dv">75</span>,<span class="dt">by=</span><span class="dv">5</span>), <span class="st">&quot;to&quot;</span>, <span class="kw">seq</span>(<span class="dt">from=</span><span class="dv">25</span>,<span class="dt">to=</span><span class="dv">80</span>,<span class="dt">by=</span><span class="dv">5</span>) ) )</a>
+<a class="sourceLine" id="cb106-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb106-6" data-line-number="6">group.structure &lt;-<span class="st"> </span><span class="kw">formula</span>( speed <span class="op">~</span><span class="st"> </span>age.group )</a>
+<a class="sourceLine" id="cb106-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb106-8" data-line-number="8"><span class="kw">boxplot</span>( group.structure, <span class="dt">las=</span><span class="dv">2</span>, <span class="dt">frame.plot=</span>F, <span class="dt">outline=</span>F, <span class="dt">main=</span><span class="st">&quot;Age Group&quot;</span>  )</a></code></pre></div>
+<p><img src="DS4PS-I_files/figure-html4/unnamed-chunk-133-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>We have now simplified our analysis from 1,560 to 288 possible groups. Combinations of groups will also be easier:</p>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb97-1" data-line-number="1"></a>
-<a class="sourceLine" id="cb97-2" data-line-number="2">group.structure &lt;-<span class="st"> </span><span class="kw">formula</span>( speed <span class="op">~</span><span class="st"> </span>gender <span class="op">*</span><span class="st"> </span>age.group )</a>
-<a class="sourceLine" id="cb97-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb97-4" data-line-number="4"><span class="kw">boxplot</span>( group.structure, </a>
-<a class="sourceLine" id="cb97-5" data-line-number="5">         <span class="dt">las=</span><span class="dv">2</span>, <span class="dt">frame.plot=</span>F, <span class="dt">outline=</span>F, <span class="dt">main=</span><span class="st">&quot;Age Group by Gender&quot;</span>,</a>
-<a class="sourceLine" id="cb97-6" data-line-number="6">         <span class="dt">col=</span><span class="kw">c</span>(<span class="st">&quot;firebrick&quot;</span>,<span class="st">&quot;steelblue&quot;</span>), <span class="dt">xaxt=</span><span class="st">&quot;n&quot;</span> )</a></code></pre></div>
-<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-119-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb107-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb107-2" data-line-number="2">group.structure &lt;-<span class="st"> </span><span class="kw">formula</span>( speed <span class="op">~</span><span class="st"> </span>gender <span class="op">*</span><span class="st"> </span>age.group )</a>
+<a class="sourceLine" id="cb107-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb107-4" data-line-number="4"><span class="kw">boxplot</span>( group.structure, </a>
+<a class="sourceLine" id="cb107-5" data-line-number="5">         <span class="dt">las=</span><span class="dv">2</span>, <span class="dt">frame.plot=</span>F, <span class="dt">outline=</span>F, <span class="dt">main=</span><span class="st">&quot;Age Group by Gender&quot;</span>,</a>
+<a class="sourceLine" id="cb107-6" data-line-number="6">         <span class="dt">col=</span><span class="kw">c</span>(<span class="st">&quot;firebrick&quot;</span>,<span class="st">&quot;steelblue&quot;</span>), <span class="dt">xaxt=</span><span class="st">&quot;n&quot;</span> )</a></code></pre></div>
+<p><img src="DS4PS-I_files/figure-html4/unnamed-chunk-134-1.png" width="70%" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="analysis-by-group" class="section level2">
-<h2><span class="header-section-number">5.2</span> Analysis by Group</h2>
+<h2><span class="header-section-number">6.2</span> Analysis by Group</h2>
 <p>Let’s demonstrate some analysis of groups using the Lahman package and some <strong>dplyr</strong> verbs. Let’s do some analysis of player salaries (<em>Salaries</em> dataset), and start with a simple group structure - teams in the National League and time.</p>
 <ol style="list-style-type: decimal">
 <li>Which team has the highest average player salary?</li>
@@ -504,41 +510,41 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Which team has raised it’s pay the most over the past decade?</li>
 </ol>
 <p>Let’s start by thinking about group structure. We have teams, and we have seasons. Teams is stored as a factor, and seasons as a numeric value, so we can consider group for each by counting levels and unique values:</p>
-<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb98-1" data-line-number="1"><span class="kw">nlevels</span>( Salaries<span class="op">$</span>teamID )</a>
-<a class="sourceLine" id="cb98-2" data-line-number="2"><span class="co">#&gt; [1] 46</span></a>
-<a class="sourceLine" id="cb98-3" data-line-number="3"><span class="kw">length</span>( <span class="kw">unique</span>( Salaries<span class="op">$</span>yearID ) )</a>
-<a class="sourceLine" id="cb98-4" data-line-number="4"><span class="co">#&gt; [1] 32</span></a></code></pre></div>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb108-1" data-line-number="1"><span class="kw">nlevels</span>( Salaries<span class="op">$</span>teamID )</a>
+<a class="sourceLine" id="cb108-2" data-line-number="2"><span class="co">#&gt; [1] 46</span></a>
+<a class="sourceLine" id="cb108-3" data-line-number="3"><span class="kw">length</span>( <span class="kw">unique</span>( Salaries<span class="op">$</span>yearID ) )</a>
+<a class="sourceLine" id="cb108-4" data-line-number="4"><span class="co">#&gt; [1] 32</span></a></code></pre></div>
 <p>So we can potentially calculate 32 x 46 = 1,472 average player salaries.</p>
 <div id="highest-ave-player-salary" class="section level3">
-<h3><span class="header-section-number">5.2.1</span> Highest Ave Player Salary</h3>
+<h3><span class="header-section-number">6.2.1</span> Highest Ave Player Salary</h3>
 <p>For our first question, we will select only teams from the National League. Let’s use the most recent year of data to calculate average pay.</p>
-<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb99-1" data-line-number="1"></a>
-<a class="sourceLine" id="cb99-2" data-line-number="2">Salaries <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>( lgID <span class="op">==</span><span class="st"> &quot;NL&quot;</span>, yearID <span class="op">==</span><span class="st"> </span><span class="dv">2016</span> ) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb99-3" data-line-number="3"><span class="st">             </span><span class="kw">group_by</span>( teamID) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb99-4" data-line-number="4"><span class="st">             </span><span class="kw">summarize</span>( <span class="dt">Ave_Salary =</span> <span class="kw">mean</span>(salary) )</a>
-<a class="sourceLine" id="cb99-5" data-line-number="5"><span class="co">#&gt; # A tibble: 15 x 2</span></a>
-<a class="sourceLine" id="cb99-6" data-line-number="6"><span class="co">#&gt;   teamID Ave_Salary</span></a>
-<a class="sourceLine" id="cb99-7" data-line-number="7"><span class="co">#&gt;   &lt;fct&gt;       &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb99-8" data-line-number="8"><span class="co">#&gt; 1 ARI      3363041.</span></a>
-<a class="sourceLine" id="cb99-9" data-line-number="9"><span class="co">#&gt; 2 ATL      2362010.</span></a>
-<a class="sourceLine" id="cb99-10" data-line-number="10"><span class="co">#&gt; 3 CHC      5312678.</span></a>
-<a class="sourceLine" id="cb99-11" data-line-number="11"><span class="co">#&gt; 4 CIN      3066899.</span></a>
-<a class="sourceLine" id="cb99-12" data-line-number="12"><span class="co">#&gt; 5 COL      3413487 </span></a>
-<a class="sourceLine" id="cb99-13" data-line-number="13"><span class="co">#&gt; 6 LAD      6322525.</span></a>
-<a class="sourceLine" id="cb99-14" data-line-number="14"><span class="co">#&gt; # ... with 9 more rows</span></a></code></pre></div>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb109-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb109-2" data-line-number="2">Salaries <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>( lgID <span class="op">==</span><span class="st"> &quot;NL&quot;</span>, yearID <span class="op">==</span><span class="st"> </span><span class="dv">2016</span> ) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb109-3" data-line-number="3"><span class="st">             </span><span class="kw">group_by</span>( teamID) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb109-4" data-line-number="4"><span class="st">             </span><span class="kw">summarize</span>( <span class="dt">Ave_Salary =</span> <span class="kw">mean</span>(salary) )</a>
+<a class="sourceLine" id="cb109-5" data-line-number="5"><span class="co">#&gt; # A tibble: 15 x 2</span></a>
+<a class="sourceLine" id="cb109-6" data-line-number="6"><span class="co">#&gt;   teamID Ave_Salary</span></a>
+<a class="sourceLine" id="cb109-7" data-line-number="7"><span class="co">#&gt;   &lt;fct&gt;       &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb109-8" data-line-number="8"><span class="co">#&gt; 1 ARI       3363041</span></a>
+<a class="sourceLine" id="cb109-9" data-line-number="9"><span class="co">#&gt; 2 ATL       2362010</span></a>
+<a class="sourceLine" id="cb109-10" data-line-number="10"><span class="co">#&gt; 3 CHC       5312678</span></a>
+<a class="sourceLine" id="cb109-11" data-line-number="11"><span class="co">#&gt; 4 CIN       3066899</span></a>
+<a class="sourceLine" id="cb109-12" data-line-number="12"><span class="co">#&gt; 5 COL       3413487</span></a>
+<a class="sourceLine" id="cb109-13" data-line-number="13"><span class="co">#&gt; 6 LAD       6322525</span></a>
+<a class="sourceLine" id="cb109-14" data-line-number="14"><span class="co">#&gt; # ... with 9 more rows</span></a></code></pre></div>
 <p>Since the salaries are large, they are a little hard to read. Let’s clean up the table a bit.</p>
-<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb100-1" data-line-number="1"></a>
-<a class="sourceLine" id="cb100-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb100-3" data-line-number="3">Salaries  <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb100-4" data-line-number="4"><span class="st">             </span><span class="kw">filter</span>( lgID <span class="op">==</span><span class="st"> &quot;NL&quot;</span>, yearID <span class="op">==</span><span class="st"> </span><span class="dv">2016</span> ) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb100-5" data-line-number="5"><span class="st">             </span><span class="kw">group_by</span>( teamID ) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb100-6" data-line-number="6"><span class="st">             </span><span class="kw">summarize</span>( <span class="dt">Ave_Salary=</span><span class="kw">dollar</span>( <span class="kw">mean</span>(salary,<span class="dt">na.rm=</span>T) ) ) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb100-7" data-line-number="7"><span class="st">             </span><span class="kw">arrange</span>( <span class="kw">desc</span>(Ave_Salary) ) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb100-8" data-line-number="8"><span class="st">             </span><span class="kw">pander</span>()</a></code></pre></div>
-<table style="width:31%;">
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb110-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb110-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb110-3" data-line-number="3">Salaries  <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb110-4" data-line-number="4"><span class="st">             </span><span class="kw">filter</span>( lgID <span class="op">==</span><span class="st"> &quot;NL&quot;</span>, yearID <span class="op">==</span><span class="st"> </span><span class="dv">2016</span> ) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb110-5" data-line-number="5"><span class="st">             </span><span class="kw">group_by</span>( teamID ) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb110-6" data-line-number="6"><span class="st">             </span><span class="kw">summarize</span>( <span class="dt">Ave_Salary=</span><span class="kw">dollar</span>( <span class="kw">mean</span>(salary,<span class="dt">na.rm=</span>T) ) ) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb110-7" data-line-number="7"><span class="st">             </span><span class="kw">arrange</span>( <span class="kw">desc</span>(Ave_Salary) ) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb110-8" data-line-number="8"><span class="st">             </span><span class="kw">pander</span>()</a></code></pre></div>
+<table style="width:29%;">
 <colgroup>
 <col width="12%" />
-<col width="18%" />
+<col width="16%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -611,47 +617,47 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </table>
 </div>
 <div id="most-players-paid-over-5-million" class="section level3">
-<h3><span class="header-section-number">5.2.2</span> Most Players Paid Over $5 Million</h3>
+<h3><span class="header-section-number">6.2.2</span> Most Players Paid Over $5 Million</h3>
 <p>This question requires you to utilize a logical statement in order to translate from the question to code. We need to inspect each salary, determine whether it is over the $5m threshold, then count all of the cases. The operation will look something like this:</p>
-<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb101-1" data-line-number="1"><span class="kw">sum</span>( Salaries<span class="op">$</span>salary <span class="op">&gt;</span><span class="st"> </span><span class="dv">5000000</span> )</a>
-<a class="sourceLine" id="cb101-2" data-line-number="2"><span class="co">#&gt; [1] 3175</span></a></code></pre></div>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb111-1" data-line-number="1"><span class="kw">sum</span>( Salaries<span class="op">$</span>salary <span class="op">&gt;</span><span class="st"> </span><span class="dv">5000000</span> )</a>
+<a class="sourceLine" id="cb111-2" data-line-number="2"><span class="co">#&gt; [1] 3175</span></a></code></pre></div>
 <p>It gets a little trickier when we want to do the operation simultaneously across groups. Our team group structure is already defined, so let’s define our logical vector and count cases that match:</p>
-<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb102-1" data-line-number="1"></a>
-<a class="sourceLine" id="cb102-2" data-line-number="2">dat.NL &lt;-<span class="st"> </span><span class="kw">filter</span>( Salaries, yearID <span class="op">==</span><span class="st"> </span><span class="dv">2010</span> <span class="op">&amp;</span><span class="st"> </span>lgID <span class="op">==</span><span class="st"> &quot;NL&quot;</span> ) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">droplevels</span>()</a>
-<a class="sourceLine" id="cb102-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb102-4" data-line-number="4">gt<span class="fl">.5</span>m &lt;-<span class="st"> </span>dat.NL<span class="op">$</span>salary <span class="op">&gt;</span><span class="st"> </span><span class="dv">5000000</span></a>
-<a class="sourceLine" id="cb102-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb102-6" data-line-number="6"><span class="kw">table</span>( dat.NL<span class="op">$</span>teamID, gt<span class="fl">.5</span>m )</a>
-<a class="sourceLine" id="cb102-7" data-line-number="7"><span class="co">#&gt;      gt.5m</span></a>
-<a class="sourceLine" id="cb102-8" data-line-number="8"><span class="co">#&gt;       FALSE TRUE</span></a>
-<a class="sourceLine" id="cb102-9" data-line-number="9"><span class="co">#&gt;   ARI    23    3</span></a>
-<a class="sourceLine" id="cb102-10" data-line-number="10"><span class="co">#&gt;   ATL    21    6</span></a>
-<a class="sourceLine" id="cb102-11" data-line-number="11"><span class="co">#&gt;   CHN    19    8</span></a>
-<a class="sourceLine" id="cb102-12" data-line-number="12"><span class="co">#&gt;   CIN    21    5</span></a>
-<a class="sourceLine" id="cb102-13" data-line-number="13"><span class="co">#&gt;   COL    23    6</span></a>
-<a class="sourceLine" id="cb102-14" data-line-number="14"><span class="co">#&gt;   FLO    23    4</span></a>
-<a class="sourceLine" id="cb102-15" data-line-number="15"><span class="co">#&gt;   HOU    24    4</span></a>
-<a class="sourceLine" id="cb102-16" data-line-number="16"><span class="co">#&gt;   LAN    20    7</span></a>
-<a class="sourceLine" id="cb102-17" data-line-number="17"><span class="co">#&gt;   MIL    25    4</span></a>
-<a class="sourceLine" id="cb102-18" data-line-number="18"><span class="co">#&gt;   NYN    19    9</span></a>
-<a class="sourceLine" id="cb102-19" data-line-number="19"><span class="co">#&gt;   PHI    18   10</span></a>
-<a class="sourceLine" id="cb102-20" data-line-number="20"><span class="co">#&gt;   PIT    27    0</span></a>
-<a class="sourceLine" id="cb102-21" data-line-number="21"><span class="co">#&gt;   SDN    25    1</span></a>
-<a class="sourceLine" id="cb102-22" data-line-number="22"><span class="co">#&gt;   SFN    21    7</span></a>
-<a class="sourceLine" id="cb102-23" data-line-number="23"><span class="co">#&gt;   SLN    19    6</span></a>
-<a class="sourceLine" id="cb102-24" data-line-number="24"><span class="co">#&gt;   WAS    26    4</span></a></code></pre></div>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb112-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb112-2" data-line-number="2">dat.NL &lt;-<span class="st"> </span><span class="kw">filter</span>( Salaries, yearID <span class="op">==</span><span class="st"> </span><span class="dv">2010</span> <span class="op">&amp;</span><span class="st"> </span>lgID <span class="op">==</span><span class="st"> &quot;NL&quot;</span> ) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">droplevels</span>()</a>
+<a class="sourceLine" id="cb112-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb112-4" data-line-number="4">gt<span class="fl">.5</span>m &lt;-<span class="st"> </span>dat.NL<span class="op">$</span>salary <span class="op">&gt;</span><span class="st"> </span><span class="dv">5000000</span></a>
+<a class="sourceLine" id="cb112-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb112-6" data-line-number="6"><span class="kw">table</span>( dat.NL<span class="op">$</span>teamID, gt<span class="fl">.5</span>m )</a>
+<a class="sourceLine" id="cb112-7" data-line-number="7"><span class="co">#&gt;      gt.5m</span></a>
+<a class="sourceLine" id="cb112-8" data-line-number="8"><span class="co">#&gt;       FALSE TRUE</span></a>
+<a class="sourceLine" id="cb112-9" data-line-number="9"><span class="co">#&gt;   ARI    23    3</span></a>
+<a class="sourceLine" id="cb112-10" data-line-number="10"><span class="co">#&gt;   ATL    21    6</span></a>
+<a class="sourceLine" id="cb112-11" data-line-number="11"><span class="co">#&gt;   CHN    19    8</span></a>
+<a class="sourceLine" id="cb112-12" data-line-number="12"><span class="co">#&gt;   CIN    21    5</span></a>
+<a class="sourceLine" id="cb112-13" data-line-number="13"><span class="co">#&gt;   COL    23    6</span></a>
+<a class="sourceLine" id="cb112-14" data-line-number="14"><span class="co">#&gt;   FLO    23    4</span></a>
+<a class="sourceLine" id="cb112-15" data-line-number="15"><span class="co">#&gt;   HOU    24    4</span></a>
+<a class="sourceLine" id="cb112-16" data-line-number="16"><span class="co">#&gt;   LAN    20    7</span></a>
+<a class="sourceLine" id="cb112-17" data-line-number="17"><span class="co">#&gt;   MIL    25    4</span></a>
+<a class="sourceLine" id="cb112-18" data-line-number="18"><span class="co">#&gt;   NYN    19    9</span></a>
+<a class="sourceLine" id="cb112-19" data-line-number="19"><span class="co">#&gt;   PHI    18   10</span></a>
+<a class="sourceLine" id="cb112-20" data-line-number="20"><span class="co">#&gt;   PIT    27    0</span></a>
+<a class="sourceLine" id="cb112-21" data-line-number="21"><span class="co">#&gt;   SDN    25    1</span></a>
+<a class="sourceLine" id="cb112-22" data-line-number="22"><span class="co">#&gt;   SFN    21    7</span></a>
+<a class="sourceLine" id="cb112-23" data-line-number="23"><span class="co">#&gt;   SLN    19    6</span></a>
+<a class="sourceLine" id="cb112-24" data-line-number="24"><span class="co">#&gt;   WAS    26    4</span></a></code></pre></div>
 <p>This solution works, but the table provides too much information. We can use dply to simplify and format the table nicely for our report:</p>
-<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb103-1" data-line-number="1"></a>
-<a class="sourceLine" id="cb103-2" data-line-number="2">Salaries <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb103-3" data-line-number="3"><span class="st">   </span><span class="kw">filter</span>( yearID <span class="op">==</span><span class="st"> </span><span class="dv">2010</span> <span class="op">&amp;</span><span class="st"> </span>lgID <span class="op">==</span><span class="st"> &quot;NL&quot;</span> ) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb103-4" data-line-number="4"><span class="st">   </span><span class="kw">group_by</span>( teamID ) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb103-5" data-line-number="5"><span class="st">   </span><span class="kw">summarise</span>( <span class="dt">gt_five_million =</span> <span class="kw">sum</span>( salary <span class="op">&gt;</span><span class="st"> </span><span class="dv">5000000</span> ) ) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb103-6" data-line-number="6"><span class="st">   </span><span class="kw">arrange</span>( <span class="kw">desc</span>(gt_five_million) ) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb103-7" data-line-number="7"><span class="st">   </span>pander</a></code></pre></div>
-<table style="width:38%;">
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb113-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb113-2" data-line-number="2">Salaries <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb113-3" data-line-number="3"><span class="st">   </span><span class="kw">filter</span>( yearID <span class="op">==</span><span class="st"> </span><span class="dv">2010</span> <span class="op">&amp;</span><span class="st"> </span>lgID <span class="op">==</span><span class="st"> &quot;NL&quot;</span> ) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb113-4" data-line-number="4"><span class="st">   </span><span class="kw">group_by</span>( teamID ) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb113-5" data-line-number="5"><span class="st">   </span><span class="kw">summarise</span>( <span class="dt">gt_five_million =</span> <span class="kw">sum</span>( salary <span class="op">&gt;</span><span class="st"> </span><span class="dv">5000000</span> ) ) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb113-6" data-line-number="6"><span class="st">   </span><span class="kw">arrange</span>( <span class="kw">desc</span>(gt_five_million) ) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb113-7" data-line-number="7"><span class="st">   </span>pander</a></code></pre></div>
+<table style="width:36%;">
 <colgroup>
 <col width="12%" />
-<col width="25%" />
+<col width="23%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -728,18 +734,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </table>
 </div>
 <div id="fielding-positions" class="section level3">
-<h3><span class="header-section-number">5.2.3</span> Fielding Positions</h3>
+<h3><span class="header-section-number">6.2.3</span> Fielding Positions</h3>
 <p>Which fielding position is the highest paid?</p>
-<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb104-1" data-line-number="1"></a>
-<a class="sourceLine" id="cb104-2" data-line-number="2"><span class="kw">merge</span>( Salaries, Fielding ) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb104-3" data-line-number="3"><span class="st">  </span><span class="kw">filter</span>( yearID <span class="op">==</span><span class="st"> </span><span class="dv">2016</span> ) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb104-4" data-line-number="4"><span class="st">  </span><span class="kw">group_by</span>( POS ) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb104-5" data-line-number="5"><span class="st">  </span><span class="kw">summarize</span>( <span class="dt">Mean_Salary =</span> <span class="kw">dollar</span>( <span class="kw">mean</span>(salary) ) ) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb104-6" data-line-number="6"><span class="st">  </span>pander</a></code></pre></div>
-<table style="width:28%;">
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb114-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb114-2" data-line-number="2"><span class="kw">merge</span>( Salaries, Fielding ) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb114-3" data-line-number="3"><span class="st">  </span><span class="kw">filter</span>( yearID <span class="op">==</span><span class="st"> </span><span class="dv">2016</span> ) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb114-4" data-line-number="4"><span class="st">  </span><span class="kw">group_by</span>( POS ) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb114-5" data-line-number="5"><span class="st">  </span><span class="kw">summarize</span>( <span class="dt">Mean_Salary =</span> <span class="kw">dollar</span>( <span class="kw">mean</span>(salary) ) ) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb114-6" data-line-number="6"><span class="st">  </span>pander</a></code></pre></div>
+<table style="width:26%;">
 <colgroup>
 <col width="8%" />
-<col width="19%" />
+<col width="18%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -780,14 +786,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </table>
 </div>
 <div id="country-of-birth" class="section level3">
-<h3><span class="header-section-number">5.2.4</span> Country of Birth</h3>
+<h3><span class="header-section-number">6.2.4</span> Country of Birth</h3>
 <p>Which country has produced the highest paid baseball players?</p>
-<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb105-1" data-line-number="1"></a>
-<a class="sourceLine" id="cb105-2" data-line-number="2"><span class="kw">merge</span>( Salaries, Master ) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb105-3" data-line-number="3"><span class="st">  </span><span class="kw">filter</span>( yearID <span class="op">==</span><span class="st"> </span><span class="dv">2016</span> ) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb105-4" data-line-number="4"><span class="st">  </span><span class="kw">group_by</span>( birthCountry ) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb105-5" data-line-number="5"><span class="st">  </span><span class="kw">summarize</span>( <span class="dt">Mean_Salary =</span> <span class="kw">dollar</span>( <span class="kw">mean</span>(salary) ) ) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb105-6" data-line-number="6"><span class="st">  </span>pander</a></code></pre></div>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb115-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb115-2" data-line-number="2"><span class="kw">merge</span>( Salaries, Master ) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb115-3" data-line-number="3"><span class="st">  </span><span class="kw">filter</span>( yearID <span class="op">==</span><span class="st"> </span><span class="dv">2016</span> ) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb115-4" data-line-number="4"><span class="st">  </span><span class="kw">group_by</span>( birthCountry ) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb115-5" data-line-number="5"><span class="st">  </span><span class="kw">summarize</span>( <span class="dt">Mean_Salary =</span> <span class="kw">dollar</span>( <span class="kw">mean</span>(salary) ) ) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb115-6" data-line-number="6"><span class="st">  </span>pander</a></code></pre></div>
 <table style="width:42%;">
 <colgroup>
 <col width="20%" />
@@ -888,19 +894,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </table>
 </div>
 <div id="pay-raises" class="section level3">
-<h3><span class="header-section-number">5.2.5</span> Pay Raises</h3>
+<h3><span class="header-section-number">6.2.5</span> Pay Raises</h3>
 <p>To examine pay raises, we will now use more than one year of data. Since the question asks about pay raises over the past decade, we will filter the last ten years of data.</p>
 <p>And how since we are looking at patterns over teams and over time, we need to define a group structure with two variables:</p>
-<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb106-1" data-line-number="1"></a>
-<a class="sourceLine" id="cb106-2" data-line-number="2">Salaries <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>( yearID <span class="op">&gt;</span><span class="st"> </span><span class="dv">2006</span> <span class="op">&amp;</span><span class="st"> </span>lgID <span class="op">==</span><span class="st"> &quot;NL&quot;</span> ) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb106-3" data-line-number="3"><span class="st">             </span><span class="kw">group_by</span>( teamID, yearID ) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb106-4" data-line-number="4"><span class="st">             </span><span class="kw">summarize</span>( <span class="dt">mean=</span> <span class="kw">dollar</span>(<span class="kw">mean</span>(salary)) ) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb106-5" data-line-number="5"><span class="st">             </span><span class="kw">head</span>( <span class="dv">20</span> ) <span class="op">%&gt;%</span><span class="st"> </span>pander</a></code></pre></div>
-<table style="width:43%;">
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb116-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb116-2" data-line-number="2">Salaries <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>( yearID <span class="op">&gt;</span><span class="st"> </span><span class="dv">2006</span> <span class="op">&amp;</span><span class="st"> </span>lgID <span class="op">==</span><span class="st"> &quot;NL&quot;</span> ) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb116-3" data-line-number="3"><span class="st">             </span><span class="kw">group_by</span>( teamID, yearID ) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb116-4" data-line-number="4"><span class="st">             </span><span class="kw">summarize</span>( <span class="dt">mean=</span> <span class="kw">dollar</span>(<span class="kw">mean</span>(salary)) ) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb116-5" data-line-number="5"><span class="st">             </span><span class="kw">head</span>( <span class="dv">20</span> ) <span class="op">%&gt;%</span><span class="st"> </span>pander</a></code></pre></div>
+<table style="width:42%;">
 <colgroup>
 <col width="12%" />
 <col width="12%" />
-<col width="18%" />
+<col width="16%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -1013,10 +1019,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <p>This might seem like an odd format. We might expect something that looks more like our grid structure:</p>
-<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb107-1" data-line-number="1"></a>
-<a class="sourceLine" id="cb107-2" data-line-number="2">dat.NL &lt;-<span class="st"> </span><span class="kw">filter</span>( Salaries, yearID <span class="op">&gt;</span><span class="st"> </span><span class="dv">2010</span> <span class="op">&amp;</span><span class="st"> </span>lgID <span class="op">==</span><span class="st"> &quot;NL&quot;</span> ) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">droplevels</span>()</a>
-<a class="sourceLine" id="cb107-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb107-4" data-line-number="4"><span class="kw">tapply</span>( dat.NL<span class="op">$</span>salary, <span class="dt">INDEX=</span><span class="kw">list</span>(dat.NL<span class="op">$</span>teamID, dat.NL<span class="op">$</span>yearID), <span class="dt">FUN=</span>mean, <span class="dt">na.rm=</span>T ) <span class="op">%&gt;%</span><span class="st"> </span>pander</a></code></pre></div>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb117-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb117-2" data-line-number="2">dat.NL &lt;-<span class="st"> </span><span class="kw">filter</span>( Salaries, yearID <span class="op">&gt;</span><span class="st"> </span><span class="dv">2010</span> <span class="op">&amp;</span><span class="st"> </span>lgID <span class="op">==</span><span class="st"> &quot;NL&quot;</span> ) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">droplevels</span>()</a>
+<a class="sourceLine" id="cb117-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb117-4" data-line-number="4"><span class="kw">tapply</span>( dat.NL<span class="op">$</span>salary, <span class="dt">INDEX=</span><span class="kw">list</span>(dat.NL<span class="op">$</span>teamID, dat.NL<span class="op">$</span>yearID), <span class="dt">FUN=</span>mean, <span class="dt">na.rm=</span>T ) <span class="op">%&gt;%</span><span class="st"> </span>pander</a></code></pre></div>
 <table style="width:97%;">
 <colgroup>
 <col width="13%" />
@@ -1267,22 +1273,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <p>Later on we will look at the benefits of “tidy data”, but the basic idea is that you can “facet” your analysis easily when your groups are represented as factors instead of arranged as a table. For example, here is a time series graph that is faceted by teams:</p>
-<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb108-1" data-line-number="1"></a>
-<a class="sourceLine" id="cb108-2" data-line-number="2">Salaries <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>( yearID <span class="op">&gt;</span><span class="st"> </span><span class="dv">2000</span> <span class="op">&amp;</span><span class="st"> </span>lgID <span class="op">==</span><span class="st"> &quot;AL&quot;</span> ) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb108-3" data-line-number="3"><span class="st">             </span><span class="kw">group_by</span>( teamID, yearID ) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb108-4" data-line-number="4"><span class="st">             </span><span class="kw">summarize</span>( <span class="dt">Mean_Player_Salary=</span><span class="kw">mean</span>(salary) ) -&gt;<span class="st"> </span>t1</a>
-<a class="sourceLine" id="cb108-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb108-6" data-line-number="6"><span class="kw">qplot</span>( <span class="dt">data=</span>t1, <span class="dt">x=</span>yearID, <span class="dt">y=</span>Mean_Player_Salary, <span class="dt">geom=</span><span class="kw">c</span>(<span class="st">&quot;point&quot;</span>, <span class="st">&quot;smooth&quot;</span>)  ) <span class="op">+</span><span class="st"> </span><span class="kw">facet_wrap</span>( <span class="op">~</span><span class="st"> </span>teamID, <span class="dt">ncol=</span><span class="dv">5</span> )</a></code></pre></div>
-<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-130-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb118-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb118-2" data-line-number="2">Salaries <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>( yearID <span class="op">&gt;</span><span class="st"> </span><span class="dv">2000</span> <span class="op">&amp;</span><span class="st"> </span>lgID <span class="op">==</span><span class="st"> &quot;AL&quot;</span> ) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb118-3" data-line-number="3"><span class="st">             </span><span class="kw">group_by</span>( teamID, yearID ) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb118-4" data-line-number="4"><span class="st">             </span><span class="kw">summarize</span>( <span class="dt">Mean_Player_Salary=</span><span class="kw">mean</span>(salary) ) -&gt;<span class="st"> </span>t1</a>
+<a class="sourceLine" id="cb118-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb118-6" data-line-number="6"><span class="kw">qplot</span>( <span class="dt">data=</span>t1, <span class="dt">x=</span>yearID, <span class="dt">y=</span>Mean_Player_Salary, <span class="dt">geom=</span><span class="kw">c</span>(<span class="st">&quot;point&quot;</span>, <span class="st">&quot;smooth&quot;</span>)  ) <span class="op">+</span><span class="st"> </span><span class="kw">facet_wrap</span>( <span class="op">~</span><span class="st"> </span>teamID, <span class="dt">ncol=</span><span class="dv">5</span> )</a></code></pre></div>
+<p><img src="DS4PS-I_files/figure-html4/unnamed-chunk-145-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>Now you can quickly see that Detroit is the team that has raised salaries most aggressively.</p>
 <p>If we need to, we can easily convert a tidy dataset into something that looks like a table using the <strong>spread()</strong> function:</p>
-<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb109-1" data-line-number="1"></a>
-<a class="sourceLine" id="cb109-2" data-line-number="2">Salaries <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>( yearID <span class="op">&gt;</span><span class="st"> </span><span class="dv">2006</span> <span class="op">&amp;</span><span class="st"> </span>lgID <span class="op">==</span><span class="st"> &quot;NL&quot;</span> ) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb109-3" data-line-number="3"><span class="st">             </span><span class="kw">group_by</span>( teamID, yearID ) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb109-4" data-line-number="4"><span class="st">             </span><span class="kw">summarize</span>( <span class="dt">mean =</span> <span class="kw">dollar</span>(<span class="kw">mean</span>(salary)) ) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb109-5" data-line-number="5"><span class="st">             </span><span class="kw">spread</span>( <span class="dt">key=</span>yearID, <span class="dt">value=</span>mean, <span class="dt">sep=</span><span class="st">&quot;_&quot;</span> ) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb109-6" data-line-number="6"><span class="st">             </span><span class="kw">select</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">6</span> ) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">na.omit</span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb109-7" data-line-number="7"><span class="st">             </span>pander</a></code></pre></div>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb119-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb119-2" data-line-number="2">Salaries <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>( yearID <span class="op">&gt;</span><span class="st"> </span><span class="dv">2006</span> <span class="op">&amp;</span><span class="st"> </span>lgID <span class="op">==</span><span class="st"> &quot;NL&quot;</span> ) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb119-3" data-line-number="3"><span class="st">             </span><span class="kw">group_by</span>( teamID, yearID ) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb119-4" data-line-number="4"><span class="st">             </span><span class="kw">summarize</span>( <span class="dt">mean =</span> <span class="kw">dollar</span>(<span class="kw">mean</span>(salary)) ) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb119-5" data-line-number="5"><span class="st">             </span><span class="kw">spread</span>( <span class="dt">key=</span>yearID, <span class="dt">value=</span>mean, <span class="dt">sep=</span><span class="st">&quot;_&quot;</span> ) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb119-6" data-line-number="6"><span class="st">             </span><span class="kw">select</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">6</span> ) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">na.omit</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb119-7" data-line-number="7"><span class="st">             </span>pander</a></code></pre></div>
 <table>
 <colgroup>
 <col width="11%" />
@@ -1433,14 +1439,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb110-1" data-line-number="1"></a>
-<a class="sourceLine" id="cb110-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb110-3" data-line-number="3">Salaries <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>( yearID <span class="op">&gt;</span><span class="st"> </span><span class="dv">2006</span> <span class="op">&amp;</span><span class="st"> </span>lgID <span class="op">==</span><span class="st"> &quot;NL&quot;</span> ) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb110-4" data-line-number="4"><span class="st">             </span><span class="kw">group_by</span>( teamID, yearID ) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb110-5" data-line-number="5"><span class="st">             </span><span class="kw">summarize</span>( <span class="dt">mean =</span> <span class="kw">dollar</span>(<span class="kw">mean</span>(salary)) ) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb110-6" data-line-number="6"><span class="st">             </span><span class="kw">spread</span>( <span class="dt">key=</span>teamID, <span class="dt">value=</span>mean, <span class="dt">sep=</span><span class="st">&quot;_&quot;</span> ) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb110-7" data-line-number="7"><span class="st">             </span><span class="kw">select</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">6</span> ) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb110-8" data-line-number="8"><span class="st">             </span>pander</a></code></pre></div>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb120-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb120-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb120-3" data-line-number="3">Salaries <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>( yearID <span class="op">&gt;</span><span class="st"> </span><span class="dv">2006</span> <span class="op">&amp;</span><span class="st"> </span>lgID <span class="op">==</span><span class="st"> &quot;NL&quot;</span> ) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb120-4" data-line-number="4"><span class="st">             </span><span class="kw">group_by</span>( teamID, yearID ) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb120-5" data-line-number="5"><span class="st">             </span><span class="kw">summarize</span>( <span class="dt">mean =</span> <span class="kw">dollar</span>(<span class="kw">mean</span>(salary)) ) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb120-6" data-line-number="6"><span class="st">             </span><span class="kw">spread</span>( <span class="dt">key=</span>teamID, <span class="dt">value=</span>mean, <span class="dt">sep=</span><span class="st">&quot;_&quot;</span> ) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb120-7" data-line-number="7"><span class="st">             </span><span class="kw">select</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">6</span> ) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb120-8" data-line-number="8"><span class="st">             </span>pander</a></code></pre></div>
 <table>
 <colgroup>
 <col width="12%" />
@@ -1571,11 +1577,10 @@ gitbook.start({
 "facebook": true,
 "twitter": true,
 "google": false,
-"linkedin": false,
 "weibo": false,
 "instapper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -1583,7 +1588,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/DS4PS/Data-Science-Class/tree/master/01-TEXTBOOK/CH-04-group-structure.Rmd",
+"link": "https://github.com/DS4PS/Data-Science-Class/tree/master/01-TEXTBOOK/CH-05-group-structure.Rmd",
 "text": "Edit"
 },
 "download": ["DS4PS-I.pdf", "DS4PS-I.epub"],

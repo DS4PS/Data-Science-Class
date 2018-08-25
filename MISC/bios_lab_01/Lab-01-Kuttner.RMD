@@ -1,0 +1,37 @@
+---
+output: html_document
+---
+
+
+# Bio for Elizabeth Kuttner
+
+<img src="EKuttner.jpg" alt="EKuttner" width="200" height="200"/>
+
+
+## 	My Department
+
+[College of Public Service and Community Solutions](https://publicservice.asu.edu/)
+
+
+
+
+## Interest in the Course
+
+I am a first year PhD student. I have very little experience with programming. I would like to understand data science and R so that I can apply what I learn while doing research. The last programming course I took was in 1981 and I was using punch cards to code in Pascal!
+
+
+## Three Things About Me
+
+  * I am very new to programming.  
+  * I am getting my PhD in Public Administration and Policy so that someday I can work in a think-tank.  
+  * I don't have a playlist! 
+
+
+# Bonus - I love to crochet animals
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/HH9PMEYxH6w" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+
+
+
+

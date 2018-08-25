@@ -1,0 +1,50 @@
+---
+title: 'Lab 02 - Functions and Vectors'
+output:
+  html_document:
+    theme: united
+    highlight: tango
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message=F, warning=F)
+```
+
+
+# Functions
+
+dim, nrow, ncol
+names
+head
+sum
+length
+table
+
+
+# Data Source
+
+```{r}
+
+```
+
+# Questions
+
+how many tax parcels are in syracuse? 
+
+how many acres of land in syracuse (sum)
+
+how many vacant lots (sum)
+
+what proportion of parcels are tax exempt? (sum/length)
+
+which neighborhood has the most parcels? (table)
+
+which neighborhood has the most vacant lots? (table)
+
+
+#
+
+# Next Lab
+
+transformations
+filter

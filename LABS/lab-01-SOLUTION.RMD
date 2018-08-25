@@ -107,8 +107,11 @@ I
 
 
 ```
-![](figures/lecy.jpg)
+![alt-text](figures/lecy.jpg)
 ```
+![](figures/lecy.jpg)
+
+
 
 ```{r, eval=F}
 
@@ -121,18 +124,60 @@ img[alt=bio] { width: 100px; }
 
 ```
 
+![bio](figures/lecy.jpg)
+
+```{css}
+img[alt=bio] { width: 100px; }
+```
 
 
+Alternatively, you can just use HTML directly in markdown documents. 
+
+```
+<img src="figures/lecy.jpg" alt="bio profile picture" width="100" >
+```
 
 
 
 ### Video Links
 
-Inserting videos 
+The most basic way to create a video link is to add a hyperlink to a photo:
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/6cIxF4Ex7a4?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+```
+[   ![](youtube-image.png)  ](www.website-address.com)
+```
 
+The annoying part is that you need an image of your video as well as a link. You can search for your video name in images and find an appropriate image. Or there is a trick on YouTube - they create and save images for each video according to the following format: 
 
+```
+https://img.youtube.com/vi/<insert-youtube-video-id-here>/0.jpg
+```
+
+So, for example, the link for Rick Astley, Never Going to Give You Up is:
+
+https://www.youtube.com/watch?v=dQw4w9WgXcQ
+
+Which means the image file will be:
+
+```
+https://img.youtube.com/vi/dQw4w9WgXcQ/0.jpg
+```
+![](https://img.youtube.com/vi/dQw4w9WgXcQ/0.jpg)
+
+<br>
+
+This basic formula of adding a hyperlink to a photo will work for any photos in Markdown. If you are working with videos, however, there is a better option called an iframe<>. This format was created for embedding nicely-formatted videos into HTML pages, and allowing the user to play the video directly from the current page without having to go to YouTube.
+
+To find the iframe<> info, just click on the **Share** button, then click **Embed**. You will see the following info:
+
+```
+<iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+```
+Paste this code into Markdown, and you are ready to rick and roll. 
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+<br><br><br>
 
 
 
