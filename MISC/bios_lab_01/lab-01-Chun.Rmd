@@ -1,0 +1,30 @@
+---
+output: html_document
+---
+
+
+# Bio for Chun Shao
+
+![bio](untitled.png)
+
+## My Home Department
+
+[ASU Walter Cronkite School of Journalism and Mass Communication](https://cronkite.asu.edu/phd)
+
+
+## Interest in the Course
+
+Hello everyone, my name is Chun. I am a second-year doctoral student at ASU, my current research focuses on social media and television audience. Personally, I have a strong interest in various statistical analysis software, such as SPSS, AMOS, Smart-PLS, and R. I look forward to learning more practical skills about R in this class. 
+
+
+## Three Things About Me
+
+1. I love swimming.
+2. I am a San Antonio Spurs fan.
+3. "The Godfather" is my favorite movie.
+
+## BONUS: Something Weird in my Playlist (Sweet Child O' Mine)
+
+
+[![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/1w7OgIMMRc4/0.jpg)](http://www.youtube.com/watch?v=1w7OgIMMRc4)
+
