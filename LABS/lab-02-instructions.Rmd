@@ -15,7 +15,9 @@ library( pander )
 
 #### [DS4PS](https://ds4ps.github.io/course_website/)
 
-This lab offers practice with some basic R functions applied to vectors in order to ascertain basic information about the dataset or count and summarize things. 
+<br>
+
+*This lab offers practice with some basic R functions applied to vectors in order to ascertain basic information about the dataset or count and summarize things.*
 
 
 <br><br>
