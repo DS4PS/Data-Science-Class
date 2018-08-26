@@ -1,0 +1,32 @@
+---
+output: html_document
+---
+
+
+# Bio for Your Name
+
+![](Self_Picture.png)
+e
+
+## My Home Department
+
+[School of Public Affairs](https://spa.asu.edu/)
+
+
+## Interest in the Course
+
+I'm a PhD student in the School of Public Affair's. My research interested pertain to State and local government  policies that promote R&D and innovation, as well as Public management issues like performance management.  I am taking this class so that I can further develop my ability to present data in an assecible format, and to better understand obstacles public managers face when trying to learn and utilize these techniques.  Its not enough to collect data, it has to be able to help inform policy making.
+
+
+## Three Things About Me
+
+1. I grew up in North Carolina
+2. I got married last spring
+3. I shamelessly walk around the mall before it opens.
+
+
+## BONUS: Something Weird in my Playlist
+
+Bohemian Rhapsody - String + Piano Cover
+[![Bohemian Rhapsody](http://img.youtube.com/vi/i1nGx4DX83U/0.jpg)](http://www.youtube.com/watch?v=i1nGx4DX83U)
+

@@ -1,0 +1,34 @@
+---
+output: html_document
+---
+
+
+# Bio for Josephine Marie Godwyll
+
+![](jay.jpg) 
+
+
+## My Home Department
+
+ https://scrd.asu.edu/ 
+
+
+## Interest in the Course
+
+I have always wanted to learn a programming language to strengthen my GIS skills. I deal with a lot of datasets in my research studies and would love to use R to create relatable interfaces to share the information I create.
+
+
+## Three Things About Me
+
+1.I am an only child. 
+2.I am an engineer with a passion for community development. 
+3.I love the ocean 
+![](ocean.jpg)
+
+## BONUS: Something Weird in my Playlist
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/H2n2t6m-ybk" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+ 
+
+
+
