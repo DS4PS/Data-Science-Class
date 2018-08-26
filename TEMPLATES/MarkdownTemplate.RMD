@@ -25,7 +25,7 @@ library( dplyr )
 library( pander )
 ```
 
-```{r load_data, eval=F, echo=T}
+```{r load_data}
 URL <- "https://www.dropbox.com/s/72dqe1j4b6bops2/syr_parcels.csv?dl=1"
 dat <- read.csv( URL )
 head( dat )
@@ -41,7 +41,7 @@ What is the total assessed value of land in syracuse?
 
 ANSWER: Land is valued at **$1,200,567,042**.
 
-```{r, eval=F}
+```{r question_1}
 sum( dat$assessedla, na.rm=T )
 ```
 

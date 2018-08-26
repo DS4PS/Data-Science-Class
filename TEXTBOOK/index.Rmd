@@ -1,6 +1,5 @@
 --- 
 title: "Intro to Data Science for the Social Sector"
-author: "Jesse Lecy"
 date: "Updated `r format(Sys.time(), '%B %d, %Y')`"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
@@ -17,15 +16,22 @@ Welcome to the course text for Data Science for the Social Sector.
 
 This course introduces students to the field of data science and its applications in the public sector. Modern performance management and evaluation processes require strong data literacy and the ability to combine and analyze data from a variety of sources to inform managerial processes. We offer a practical, tools-based approach that is designed to build strong foundations for people that want to work as policy analysts or data-driven managers. We will cover data programming fundamentals, visualization, text analysis, automated reporting, and dynamic reporting using dashboards. The course is analytically rigorous, but no prior programming experience is assumed.
 
-> A data scientist is a person who should be able to leverage existing data sources, and create new ones as needed in order to extract meaningful information and actionable insights. These insights can be used to drive business decisions and changes intended to achieve business goals… ‘The Perfect Data Scientist’ is the individual who is equally strong in business, programming, statistics, and communication.
+<br>
+
+**The Data Science Process (Wickham & Grolemund, 2016):**
+
+![](figures/data-science-wrangle.png)
+
+<br>
+
+> *A data scientist is a person who should be able to leverage existing data sources, and create new ones as needed in order to extract meaningful information and actionable insights. These insights can be used to drive business decisions and changes intended to achieve business goals… ‘The Perfect Data Scientist’ is the individual who is equally strong in business, programming, statistics, and communication.*
+
 
 From: ["What Is Data Science, and What Does a Data Scientist Do?"](https://www.innoarchitech.com/what-is-data-science-does-data-scientist-do/)
 
 <br>
 
-**The Data Science Process:**
 
-![](http://r4ds.had.co.nz/diagrams/data-science-wrangle.png)
 
 
 

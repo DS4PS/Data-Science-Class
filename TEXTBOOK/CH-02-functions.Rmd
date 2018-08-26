@@ -32,7 +32,47 @@ After reading this chapter you should be able to define the following:
 
 Computer programs are powerful because they allow us to codify recipes for complex tasks, save them, share them, and build upon them. 
 
-In the simplest form, a computer program is like a recipe. It is a set of steps completed in order with the goal of 
+In the simplest form, a computer program is like a recipe. We have inputs, steps, and outputs.
+
+Ingredients: 
+
+* 1/3 cup butter   
+* 1/2 cup sugar   
+* 1/4 cup brown sugar   
+* 2 teaspoons vanilla extract  
+* 1 large egg  
+* 2 cups all-purpose flour  
+* 1/2 teaspoon baking soda  
+* 1/2 teaspoon kosher salt  
+* 1 cup chocolate chips  
+ 
+Instructions: 
+
+1. Preheat the oven to 375 degrees F. 
+2. In a large bowl, mix butter with the sugars until well-combined. 
+3. Stir in vanilla and egg until incorporated. 
+4. Addflour, baking soda, and salt.  
+5. Stir in chocolate chips. 
+6. Bake for 10 minutes. 
+
+
+In R, the recipe would look something like this:
+
+```
+function( butter=0.33, sugar=0.5, eggs=1, flour=2, temp=375 )
+{
+   dry.goods <- combine( flour, sugar )
+   batter <- mix( dry.goods, butter, eggs )
+   cookies <- bake( batter, temp, time=10 )
+   return( cookies )
+}
+```
+
+Note that this function to make cookies relies on other functions for each step, combine(), mix(), and bake(). Each of these functions would have to be defined as well, or more likely someone else in the open source community has already written a package called "baking" that contains simple functions for cooking so that you can use them for more complicated recipes. 
+
+You will find that R allows you to conduct powerful analysis primarily because you can build on top of and extend a lot of existing functionality. 
+
+
 
 ## Example Function
 
@@ -67,6 +107,8 @@ Let's then see what the payments will be for a:
 calcMortgage( principal=100000, years=30, APR=0.05  )
 ```
 
+
+
 ## Default Argument Values
 
 Note that the loan function needs all three of the input values in order to calculate the loan size. If we were to omit one required value, we would get an error. 
@@ -83,6 +125,11 @@ When creating functions, we might have a good idea of typical use cases. If true
 
 ```{r}
    calcMortgage <- function( principal, years=30, APR=0.05 )
+   ...
+```
+
+```{r, echo=F}
+   calcMortgage <- function( principal, years=30, APR=0.05 )
    {
 
       months <- years * 12
@@ -98,7 +145,6 @@ When creating functions, we might have a good idea of typical use cases. If true
    
    }
 ```
-
 
 We can now run the function while omitting arguments, as long as they have defaults assigned.
 
@@ -130,6 +176,6 @@ payments.15.year
 payments.30.year
 ```
 
-NOte that variable names can include periods or underscores. They can also include numbers, but they cannot start with a number. Like everything in R, they will be case sensitive. 
+Note that variable names can include periods or underscores. They can also include numbers, but they cannot start with a number. Like everything in R, they will be case sensitive. 
 
 

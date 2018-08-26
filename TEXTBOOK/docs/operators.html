@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Intro to Data Science for the Social Sector</title>
   <meta name="description" content="This is an introductory text to data science designed for social science graduate students in public affairs, nonprofit management, and international development.">
-  <meta name="generator" content="bookdown 0.6 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
 
   <meta property="og:title" content="Intro to Data Science for the Social Sector" />
   <meta property="og:type" content="book" />
@@ -22,7 +22,6 @@
   <meta name="twitter:description" content="This is an introductory text to data science designed for social science graduate students in public affairs, nonprofit management, and international development." />
   
 
-<meta name="author" content="Jesse Lecy">
 
 
 
@@ -51,7 +50,7 @@
 <style type="text/css">
 a.sourceLine { display: inline-block; line-height: 1.25; }
 a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; position: absolute; }
+a.sourceLine:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 div.sourceCode { margin: 1em 0; }
@@ -64,13 +63,11 @@ code.sourceCode { white-space: pre-wrap; }
 a.sourceLine { text-indent: -1em; padding-left: 1em; }
 }
 pre.numberSource a.sourceLine
-  { position: relative; }
-pre.numberSource a.sourceLine:empty
-  { position: absolute; }
+  { position: relative; left: -4em; }
 pre.numberSource a.sourceLine::before
   { content: attr(data-line-number);
-    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all;
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -148,6 +145,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>2</b> Functions</a><ul>
 <li class="chapter" data-level="2.1" data-path="functions.html"><a href="functions.html#key-concepts"><i class="fa fa-check"></i><b>2.1</b> Key Concepts</a></li>
 <li class="chapter" data-level="2.2" data-path="functions.html"><a href="functions.html#computer-programs-as-recipes"><i class="fa fa-check"></i><b>2.2</b> Computer Programs as Recipes</a></li>
+<li class="chapter" data-level="2.3" data-path="functions.html"><a href="functions.html#example-function"><i class="fa fa-check"></i><b>2.3</b> Example Function</a></li>
+<li class="chapter" data-level="2.4" data-path="functions.html"><a href="functions.html#default-argument-values"><i class="fa fa-check"></i><b>2.4</b> Default Argument Values</a></li>
+<li class="chapter" data-level="2.5" data-path="functions.html"><a href="functions.html#assignment"><i class="fa fa-check"></i><b>2.5</b> Assignment</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="data-structures.html"><a href="data-structures.html"><i class="fa fa-check"></i><b>3</b> Data Structures</a><ul>
 <li class="chapter" data-level="3.1" data-path="data-structures.html"><a href="data-structures.html#key-concepts-1"><i class="fa fa-check"></i><b>3.1</b> Key Concepts</a></li>
@@ -280,119 +280,119 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <p>Logical operators create logical vectors, a vector that contains only TRUE or FALSE. The TRUE means that the observation belongs to the group, FALSE means it does not.</p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb55-1" data-line-number="1"></a>
-<a class="sourceLine" id="cb55-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb55-3" data-line-number="3">x1 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">7</span>,<span class="dv">9</span>,<span class="dv">1</span>,<span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb55-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb55-5" data-line-number="5">x2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;male&quot;</span>,<span class="st">&quot;male&quot;</span>,<span class="st">&quot;female&quot;</span>,<span class="st">&quot;female&quot;</span>)</a>
-<a class="sourceLine" id="cb55-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb55-7" data-line-number="7">x3 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;treatment&quot;</span>,<span class="st">&quot;control&quot;</span>,<span class="st">&quot;treatment&quot;</span>,<span class="st">&quot;control&quot;</span>)</a>
-<a class="sourceLine" id="cb55-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb55-9" data-line-number="9">x1 <span class="op">&gt;</span><span class="st"> </span><span class="dv">7</span></a>
-<a class="sourceLine" id="cb55-10" data-line-number="10"><span class="co">#&gt; [1] FALSE  TRUE FALSE FALSE</span></a>
-<a class="sourceLine" id="cb55-11" data-line-number="11"></a>
-<a class="sourceLine" id="cb55-12" data-line-number="12">x1 <span class="op">&gt;=</span><span class="st"> </span><span class="dv">7</span></a>
-<a class="sourceLine" id="cb55-13" data-line-number="13"><span class="co">#&gt; [1]  TRUE  TRUE FALSE FALSE</span></a>
-<a class="sourceLine" id="cb55-14" data-line-number="14"></a>
-<a class="sourceLine" id="cb55-15" data-line-number="15">x1 <span class="op">==</span><span class="st"> </span><span class="dv">9</span></a>
-<a class="sourceLine" id="cb55-16" data-line-number="16"><span class="co">#&gt; [1] FALSE  TRUE FALSE FALSE</span></a>
-<a class="sourceLine" id="cb55-17" data-line-number="17"></a>
-<a class="sourceLine" id="cb55-18" data-line-number="18">x1 =<span class="st"> </span><span class="dv">9</span>  <span class="co"># don&#39;t use a single equals operator!  it overwrites your variable</span></a>
-<a class="sourceLine" id="cb55-19" data-line-number="19"></a>
-<a class="sourceLine" id="cb55-20" data-line-number="20">x1</a>
-<a class="sourceLine" id="cb55-21" data-line-number="21"><span class="co">#&gt; [1] 9</span></a>
-<a class="sourceLine" id="cb55-22" data-line-number="22"></a>
-<a class="sourceLine" id="cb55-23" data-line-number="23">x1 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">7</span>,<span class="dv">9</span>,<span class="dv">1</span>,<span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb55-24" data-line-number="24"></a>
-<a class="sourceLine" id="cb55-25" data-line-number="25">x1 <span class="op">==</span><span class="st"> </span><span class="dv">9</span> <span class="op">|</span><span class="st"> </span>x1 <span class="op">==</span><span class="st"> </span><span class="dv">1</span></a>
-<a class="sourceLine" id="cb55-26" data-line-number="26"><span class="co">#&gt; [1] FALSE  TRUE  TRUE FALSE</span></a>
-<a class="sourceLine" id="cb55-27" data-line-number="27"></a>
-<a class="sourceLine" id="cb55-28" data-line-number="28"><span class="co"># x2 == male  # this will not work because male is not enclosed with quotes</span></a>
-<a class="sourceLine" id="cb55-29" data-line-number="29"></a>
-<a class="sourceLine" id="cb55-30" data-line-number="30">x2 <span class="op">==</span><span class="st"> &quot;female&quot;</span></a>
-<a class="sourceLine" id="cb55-31" data-line-number="31"><span class="co">#&gt; [1] FALSE FALSE  TRUE  TRUE</span></a>
-<a class="sourceLine" id="cb55-32" data-line-number="32"></a>
-<a class="sourceLine" id="cb55-33" data-line-number="33">x2 <span class="op">==</span><span class="st"> &quot;female&quot;</span> <span class="op">&amp;</span><span class="st"> </span>x3 <span class="op">==</span><span class="st"> &quot;treatment&quot;</span></a>
-<a class="sourceLine" id="cb55-34" data-line-number="34"><span class="co">#&gt; [1] FALSE FALSE  TRUE FALSE</span></a></code></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb64-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb64-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb64-3" data-line-number="3">x1 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">7</span>,<span class="dv">9</span>,<span class="dv">1</span>,<span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb64-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb64-5" data-line-number="5">x2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;male&quot;</span>,<span class="st">&quot;male&quot;</span>,<span class="st">&quot;female&quot;</span>,<span class="st">&quot;female&quot;</span>)</a>
+<a class="sourceLine" id="cb64-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb64-7" data-line-number="7">x3 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;treatment&quot;</span>,<span class="st">&quot;control&quot;</span>,<span class="st">&quot;treatment&quot;</span>,<span class="st">&quot;control&quot;</span>)</a>
+<a class="sourceLine" id="cb64-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb64-9" data-line-number="9">x1 <span class="op">&gt;</span><span class="st"> </span><span class="dv">7</span></a>
+<a class="sourceLine" id="cb64-10" data-line-number="10"><span class="co">#&gt; [1] FALSE  TRUE FALSE FALSE</span></a>
+<a class="sourceLine" id="cb64-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb64-12" data-line-number="12">x1 <span class="op">&gt;=</span><span class="st"> </span><span class="dv">7</span></a>
+<a class="sourceLine" id="cb64-13" data-line-number="13"><span class="co">#&gt; [1]  TRUE  TRUE FALSE FALSE</span></a>
+<a class="sourceLine" id="cb64-14" data-line-number="14"></a>
+<a class="sourceLine" id="cb64-15" data-line-number="15">x1 <span class="op">==</span><span class="st"> </span><span class="dv">9</span></a>
+<a class="sourceLine" id="cb64-16" data-line-number="16"><span class="co">#&gt; [1] FALSE  TRUE FALSE FALSE</span></a>
+<a class="sourceLine" id="cb64-17" data-line-number="17"></a>
+<a class="sourceLine" id="cb64-18" data-line-number="18">x1 =<span class="st"> </span><span class="dv">9</span>  <span class="co"># don&#39;t use a single equals operator!  it overwrites your variable</span></a>
+<a class="sourceLine" id="cb64-19" data-line-number="19"></a>
+<a class="sourceLine" id="cb64-20" data-line-number="20">x1</a>
+<a class="sourceLine" id="cb64-21" data-line-number="21"><span class="co">#&gt; [1] 9</span></a>
+<a class="sourceLine" id="cb64-22" data-line-number="22"></a>
+<a class="sourceLine" id="cb64-23" data-line-number="23">x1 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">7</span>,<span class="dv">9</span>,<span class="dv">1</span>,<span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb64-24" data-line-number="24"></a>
+<a class="sourceLine" id="cb64-25" data-line-number="25">x1 <span class="op">==</span><span class="st"> </span><span class="dv">9</span> <span class="op">|</span><span class="st"> </span>x1 <span class="op">==</span><span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb64-26" data-line-number="26"><span class="co">#&gt; [1] FALSE  TRUE  TRUE FALSE</span></a>
+<a class="sourceLine" id="cb64-27" data-line-number="27"></a>
+<a class="sourceLine" id="cb64-28" data-line-number="28"><span class="co"># x2 == male  # this will not work because male is not enclosed with quotes</span></a>
+<a class="sourceLine" id="cb64-29" data-line-number="29"></a>
+<a class="sourceLine" id="cb64-30" data-line-number="30">x2 <span class="op">==</span><span class="st"> &quot;female&quot;</span></a>
+<a class="sourceLine" id="cb64-31" data-line-number="31"><span class="co">#&gt; [1] FALSE FALSE  TRUE  TRUE</span></a>
+<a class="sourceLine" id="cb64-32" data-line-number="32"></a>
+<a class="sourceLine" id="cb64-33" data-line-number="33">x2 <span class="op">==</span><span class="st"> &quot;female&quot;</span> <span class="op">&amp;</span><span class="st"> </span>x3 <span class="op">==</span><span class="st"> &quot;treatment&quot;</span></a>
+<a class="sourceLine" id="cb64-34" data-line-number="34"><span class="co">#&gt; [1] FALSE FALSE  TRUE FALSE</span></a></code></pre></div>
 <p>Note that we use operators to create logical vectors where TRUE designates observation that belong to the defined group, and FALSE designates observations outside the group. We use these logical vectors in three ways:</p>
 <ol style="list-style-type: decimal">
 <li>We can create a selector variable that is used for subsets. When a logical vector is passed to the subset function it will keep all observations with a TRUE value, and drop observations with a FALSE value.</li>
 </ol>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb56-1" data-line-number="1"></a>
-<a class="sourceLine" id="cb56-2" data-line-number="2">x1</a>
-<a class="sourceLine" id="cb56-3" data-line-number="3"><span class="co">#&gt; [1] 7 9 1 2</span></a>
-<a class="sourceLine" id="cb56-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb56-5" data-line-number="5">x1 <span class="op">&gt;</span><span class="st"> </span><span class="dv">5</span></a>
-<a class="sourceLine" id="cb56-6" data-line-number="6"><span class="co">#&gt; [1]  TRUE  TRUE FALSE FALSE</span></a>
-<a class="sourceLine" id="cb56-7" data-line-number="7"></a>
-<a class="sourceLine" id="cb56-8" data-line-number="8">keep.these &lt;-<span class="st"> </span>x1 <span class="op">&gt;</span><span class="st"> </span><span class="dv">5</span></a>
-<a class="sourceLine" id="cb56-9" data-line-number="9"></a>
-<a class="sourceLine" id="cb56-10" data-line-number="10">x1[ keep.these ]</a>
-<a class="sourceLine" id="cb56-11" data-line-number="11"><span class="co">#&gt; [1] 7 9</span></a>
-<a class="sourceLine" id="cb56-12" data-line-number="12"></a>
-<a class="sourceLine" id="cb56-13" data-line-number="13"><span class="co"># you can create a selector variable with one variable, and apply it to another</span></a>
-<a class="sourceLine" id="cb56-14" data-line-number="14"></a>
-<a class="sourceLine" id="cb56-15" data-line-number="15">x2[ keep.these ]  <span class="co"># sex of observations where x1 &gt; 5</span></a>
-<a class="sourceLine" id="cb56-16" data-line-number="16"><span class="co">#&gt; [1] &quot;male&quot; &quot;male&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb65-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb65-2" data-line-number="2">x1</a>
+<a class="sourceLine" id="cb65-3" data-line-number="3"><span class="co">#&gt; [1] 7 9 1 2</span></a>
+<a class="sourceLine" id="cb65-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb65-5" data-line-number="5">x1 <span class="op">&gt;</span><span class="st"> </span><span class="dv">5</span></a>
+<a class="sourceLine" id="cb65-6" data-line-number="6"><span class="co">#&gt; [1]  TRUE  TRUE FALSE FALSE</span></a>
+<a class="sourceLine" id="cb65-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb65-8" data-line-number="8">keep.these &lt;-<span class="st"> </span>x1 <span class="op">&gt;</span><span class="st"> </span><span class="dv">5</span></a>
+<a class="sourceLine" id="cb65-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb65-10" data-line-number="10">x1[ keep.these ]</a>
+<a class="sourceLine" id="cb65-11" data-line-number="11"><span class="co">#&gt; [1] 7 9</span></a>
+<a class="sourceLine" id="cb65-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb65-13" data-line-number="13"><span class="co"># you can create a selector variable with one variable, and apply it to another</span></a>
+<a class="sourceLine" id="cb65-14" data-line-number="14"></a>
+<a class="sourceLine" id="cb65-15" data-line-number="15">x2[ keep.these ]  <span class="co"># sex of observations where x1 &gt; 5</span></a>
+<a class="sourceLine" id="cb65-16" data-line-number="16"><span class="co">#&gt; [1] &quot;male&quot; &quot;male&quot;</span></a></code></pre></div>
 <ol start="2" style="list-style-type: decimal">
 <li>Logical vectors give us an easy way to count things within defined groups.</li>
 </ol>
 <p>We can apply a <strong>sum()</strong> function to a logical vector, and the result will be a tally of all of the TRUE cases.</p>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb57-1" data-line-number="1"></a>
-<a class="sourceLine" id="cb57-2" data-line-number="2"><span class="co"># how many females do we have in our study?</span></a>
-<a class="sourceLine" id="cb57-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb57-4" data-line-number="4"><span class="kw">sum</span>( x2 <span class="op">==</span><span class="st"> &quot;female&quot;</span> )</a>
-<a class="sourceLine" id="cb57-5" data-line-number="5"><span class="co">#&gt; [1] 2</span></a>
-<a class="sourceLine" id="cb57-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb57-7" data-line-number="7"><span class="co"># how many females do we have in our treatment group?</span></a>
-<a class="sourceLine" id="cb57-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb57-9" data-line-number="9"><span class="kw">sum</span>( x2 <span class="op">==</span><span class="st"> &quot;female&quot;</span> <span class="op">&amp;</span><span class="st"> </span>x3 <span class="op">==</span><span class="st"> &quot;treatment&quot;</span> )</a>
-<a class="sourceLine" id="cb57-10" data-line-number="10"><span class="co">#&gt; [1] 1</span></a></code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb66-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb66-2" data-line-number="2"><span class="co"># how many females do we have in our study?</span></a>
+<a class="sourceLine" id="cb66-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb66-4" data-line-number="4"><span class="kw">sum</span>( x2 <span class="op">==</span><span class="st"> &quot;female&quot;</span> )</a>
+<a class="sourceLine" id="cb66-5" data-line-number="5"><span class="co">#&gt; [1] 2</span></a>
+<a class="sourceLine" id="cb66-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb66-7" data-line-number="7"><span class="co"># how many females do we have in our treatment group?</span></a>
+<a class="sourceLine" id="cb66-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb66-9" data-line-number="9"><span class="kw">sum</span>( x2 <span class="op">==</span><span class="st"> &quot;female&quot;</span> <span class="op">&amp;</span><span class="st"> </span>x3 <span class="op">==</span><span class="st"> &quot;treatment&quot;</span> )</a>
+<a class="sourceLine" id="cb66-10" data-line-number="10"><span class="co">#&gt; [1] 1</span></a></code></pre></div>
 <ol start="3" style="list-style-type: decimal">
 <li>We use selector variables to replace observations with new values using the assignment operator. This is similar to a find and replace operation.</li>
 </ol>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb58-1" data-line-number="1"></a>
-<a class="sourceLine" id="cb58-2" data-line-number="2">x7 &lt;-<span class="st"> </span><span class="kw">c</span>( <span class="st">&quot;mole&quot;</span>,<span class="st">&quot;mouse&quot;</span>,<span class="st">&quot;shrew&quot;</span>,<span class="st">&quot;mouse&quot;</span>,<span class="st">&quot;rat&quot;</span>,<span class="st">&quot;shrew&quot;</span>)</a>
-<a class="sourceLine" id="cb58-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb58-4" data-line-number="4"><span class="co"># the lab assistant incorrectly identified the shrews</span></a>
-<a class="sourceLine" id="cb58-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb58-6" data-line-number="6">x7</a>
-<a class="sourceLine" id="cb58-7" data-line-number="7"><span class="co">#&gt; [1] &quot;mole&quot;  &quot;mouse&quot; &quot;shrew&quot; &quot;mouse&quot; &quot;rat&quot;   &quot;shrew&quot;</span></a>
-<a class="sourceLine" id="cb58-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb58-9" data-line-number="9">x7[ x7 <span class="op">==</span><span class="st"> &quot;shrew&quot;</span> ] &lt;-<span class="st"> &quot;possum&quot;</span></a>
-<a class="sourceLine" id="cb58-10" data-line-number="10"></a>
-<a class="sourceLine" id="cb58-11" data-line-number="11">x7</a>
-<a class="sourceLine" id="cb58-12" data-line-number="12"><span class="co">#&gt; [1] &quot;mole&quot;   &quot;mouse&quot;  &quot;possum&quot; &quot;mouse&quot;  &quot;rat&quot;    &quot;possum&quot;</span></a>
-<a class="sourceLine" id="cb58-13" data-line-number="13"></a>
-<a class="sourceLine" id="cb58-14" data-line-number="14"></a>
-<a class="sourceLine" id="cb58-15" data-line-number="15"><span class="co"># we don&#39;t know if linda received the treatment</span></a>
-<a class="sourceLine" id="cb58-16" data-line-number="16"></a>
-<a class="sourceLine" id="cb58-17" data-line-number="17">x3 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;adam&quot;</span>,<span class="st">&quot;jamal&quot;</span>,<span class="st">&quot;linda&quot;</span>,<span class="st">&quot;sriti&quot;</span>)</a>
-<a class="sourceLine" id="cb58-18" data-line-number="18"></a>
-<a class="sourceLine" id="cb58-19" data-line-number="19">x4 &lt;-<span class="st"> </span><span class="kw">c</span>( <span class="st">&quot;treatment&quot;</span>,<span class="st">&quot;control&quot;</span>,<span class="st">&quot;treatment&quot;</span>,<span class="st">&quot;control&quot;</span>)</a>
-<a class="sourceLine" id="cb58-20" data-line-number="20"></a>
-<a class="sourceLine" id="cb58-21" data-line-number="21">x4[ x3 <span class="op">==</span><span class="st"> &quot;linda&quot;</span> ] &lt;-<span class="st"> </span><span class="ot">NA</span></a>
-<a class="sourceLine" id="cb58-22" data-line-number="22"></a>
-<a class="sourceLine" id="cb58-23" data-line-number="23">x4</a>
-<a class="sourceLine" id="cb58-24" data-line-number="24"><span class="co">#&gt; [1] &quot;treatment&quot; &quot;control&quot;   NA          &quot;control&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb67-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb67-2" data-line-number="2">x7 &lt;-<span class="st"> </span><span class="kw">c</span>( <span class="st">&quot;mole&quot;</span>,<span class="st">&quot;mouse&quot;</span>,<span class="st">&quot;shrew&quot;</span>,<span class="st">&quot;mouse&quot;</span>,<span class="st">&quot;rat&quot;</span>,<span class="st">&quot;shrew&quot;</span>)</a>
+<a class="sourceLine" id="cb67-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb67-4" data-line-number="4"><span class="co"># the lab assistant incorrectly identified the shrews</span></a>
+<a class="sourceLine" id="cb67-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb67-6" data-line-number="6">x7</a>
+<a class="sourceLine" id="cb67-7" data-line-number="7"><span class="co">#&gt; [1] &quot;mole&quot;  &quot;mouse&quot; &quot;shrew&quot; &quot;mouse&quot; &quot;rat&quot;   &quot;shrew&quot;</span></a>
+<a class="sourceLine" id="cb67-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb67-9" data-line-number="9">x7[ x7 <span class="op">==</span><span class="st"> &quot;shrew&quot;</span> ] &lt;-<span class="st"> &quot;possum&quot;</span></a>
+<a class="sourceLine" id="cb67-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb67-11" data-line-number="11">x7</a>
+<a class="sourceLine" id="cb67-12" data-line-number="12"><span class="co">#&gt; [1] &quot;mole&quot;   &quot;mouse&quot;  &quot;possum&quot; &quot;mouse&quot;  &quot;rat&quot;    &quot;possum&quot;</span></a>
+<a class="sourceLine" id="cb67-13" data-line-number="13"></a>
+<a class="sourceLine" id="cb67-14" data-line-number="14"></a>
+<a class="sourceLine" id="cb67-15" data-line-number="15"><span class="co"># we don&#39;t know if linda received the treatment</span></a>
+<a class="sourceLine" id="cb67-16" data-line-number="16"></a>
+<a class="sourceLine" id="cb67-17" data-line-number="17">x3 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;adam&quot;</span>,<span class="st">&quot;jamal&quot;</span>,<span class="st">&quot;linda&quot;</span>,<span class="st">&quot;sriti&quot;</span>)</a>
+<a class="sourceLine" id="cb67-18" data-line-number="18"></a>
+<a class="sourceLine" id="cb67-19" data-line-number="19">x4 &lt;-<span class="st"> </span><span class="kw">c</span>( <span class="st">&quot;treatment&quot;</span>,<span class="st">&quot;control&quot;</span>,<span class="st">&quot;treatment&quot;</span>,<span class="st">&quot;control&quot;</span>)</a>
+<a class="sourceLine" id="cb67-20" data-line-number="20"></a>
+<a class="sourceLine" id="cb67-21" data-line-number="21">x4[ x3 <span class="op">==</span><span class="st"> &quot;linda&quot;</span> ] &lt;-<span class="st"> </span><span class="ot">NA</span></a>
+<a class="sourceLine" id="cb67-22" data-line-number="22"></a>
+<a class="sourceLine" id="cb67-23" data-line-number="23">x4</a>
+<a class="sourceLine" id="cb67-24" data-line-number="24"><span class="co">#&gt; [1] &quot;treatment&quot; &quot;control&quot;   NA          &quot;control&quot;</span></a></code></pre></div>
 <p>The <strong>!</strong> operator is a special case, where it is not used to define a new logical vector, but rather it swaps the values of an existing logical vector.</p>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb59-1" data-line-number="1"></a>
-<a class="sourceLine" id="cb59-2" data-line-number="2">x1</a>
-<a class="sourceLine" id="cb59-3" data-line-number="3"><span class="co">#&gt; [1] 7 9 1 2</span></a>
-<a class="sourceLine" id="cb59-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb59-5" data-line-number="5">these &lt;-<span class="st"> </span>x1 <span class="op">&gt;</span><span class="st"> </span><span class="dv">5</span></a>
-<a class="sourceLine" id="cb59-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb59-7" data-line-number="7">these</a>
-<a class="sourceLine" id="cb59-8" data-line-number="8"><span class="co">#&gt; [1]  TRUE  TRUE FALSE FALSE</span></a>
-<a class="sourceLine" id="cb59-9" data-line-number="9"></a>
-<a class="sourceLine" id="cb59-10" data-line-number="10"><span class="op">!</span><span class="st"> </span>these</a>
-<a class="sourceLine" id="cb59-11" data-line-number="11"><span class="co">#&gt; [1] FALSE FALSE  TRUE  TRUE</span></a>
-<a class="sourceLine" id="cb59-12" data-line-number="12"></a>
-<a class="sourceLine" id="cb59-13" data-line-number="13"><span class="op">!</span><span class="st"> </span><span class="ot">TRUE</span></a>
-<a class="sourceLine" id="cb59-14" data-line-number="14"><span class="co">#&gt; [1] FALSE</span></a>
-<a class="sourceLine" id="cb59-15" data-line-number="15"></a>
-<a class="sourceLine" id="cb59-16" data-line-number="16"><span class="op">!</span><span class="st"> </span><span class="ot">FALSE</span></a>
-<a class="sourceLine" id="cb59-17" data-line-number="17"><span class="co">#&gt; [1] TRUE</span></a></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb68-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb68-2" data-line-number="2">x1</a>
+<a class="sourceLine" id="cb68-3" data-line-number="3"><span class="co">#&gt; [1] 7 9 1 2</span></a>
+<a class="sourceLine" id="cb68-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb68-5" data-line-number="5">these &lt;-<span class="st"> </span>x1 <span class="op">&gt;</span><span class="st"> </span><span class="dv">5</span></a>
+<a class="sourceLine" id="cb68-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb68-7" data-line-number="7">these</a>
+<a class="sourceLine" id="cb68-8" data-line-number="8"><span class="co">#&gt; [1]  TRUE  TRUE FALSE FALSE</span></a>
+<a class="sourceLine" id="cb68-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb68-10" data-line-number="10"><span class="op">!</span><span class="st"> </span>these</a>
+<a class="sourceLine" id="cb68-11" data-line-number="11"><span class="co">#&gt; [1] FALSE FALSE  TRUE  TRUE</span></a>
+<a class="sourceLine" id="cb68-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb68-13" data-line-number="13"><span class="op">!</span><span class="st"> </span><span class="ot">TRUE</span></a>
+<a class="sourceLine" id="cb68-14" data-line-number="14"><span class="co">#&gt; [1] FALSE</span></a>
+<a class="sourceLine" id="cb68-15" data-line-number="15"></a>
+<a class="sourceLine" id="cb68-16" data-line-number="16"><span class="op">!</span><span class="st"> </span><span class="ot">FALSE</span></a>
+<a class="sourceLine" id="cb68-17" data-line-number="17"><span class="co">#&gt; [1] TRUE</span></a></code></pre></div>
 <div id="datasets" class="section level2">
 <h2><span class="header-section-number">4.1</span> Datasets</h2>
 <p>When we combine multiple vectors together, we now have a dataset. There are three main types that we will use in this class.</p>
@@ -421,136 +421,136 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="data-frames" class="section level3">
 <h3><span class="header-section-number">4.1.1</span> Data Frames</h3>
 <p>The most familiar spreadsheet-type data structure is called a data frame in R. It consists of rows, which represent observations, and columns, which represent variables.</p>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb60-1" data-line-number="1"></a>
-<a class="sourceLine" id="cb60-2" data-line-number="2"><span class="kw">data</span>( USArrests )</a>
-<a class="sourceLine" id="cb60-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb60-4" data-line-number="4"><span class="kw">dim</span>( USArrests )   <span class="co"># number of rows by number of columns</span></a>
-<a class="sourceLine" id="cb60-5" data-line-number="5"><span class="co">#&gt; [1] 50  4</span></a>
-<a class="sourceLine" id="cb60-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb60-7" data-line-number="7"><span class="kw">names</span>( USArrests )   <span class="co"># variable names or column names</span></a>
-<a class="sourceLine" id="cb60-8" data-line-number="8"><span class="co">#&gt; [1] &quot;Murder&quot;   &quot;Assault&quot;  &quot;UrbanPop&quot; &quot;Rape&quot;</span></a>
-<a class="sourceLine" id="cb60-9" data-line-number="9"></a>
-<a class="sourceLine" id="cb60-10" data-line-number="10"><span class="kw">row.names</span>( USArrests )</a>
-<a class="sourceLine" id="cb60-11" data-line-number="11"><span class="co">#&gt;  [1] &quot;Alabama&quot;        &quot;Alaska&quot;         &quot;Arizona&quot;        &quot;Arkansas&quot;      </span></a>
-<a class="sourceLine" id="cb60-12" data-line-number="12"><span class="co">#&gt;  [5] &quot;California&quot;     &quot;Colorado&quot;       &quot;Connecticut&quot;    &quot;Delaware&quot;      </span></a>
-<a class="sourceLine" id="cb60-13" data-line-number="13"><span class="co">#&gt;  [9] &quot;Florida&quot;        &quot;Georgia&quot;        &quot;Hawaii&quot;         &quot;Idaho&quot;         </span></a>
-<a class="sourceLine" id="cb60-14" data-line-number="14"><span class="co">#&gt; [13] &quot;Illinois&quot;       &quot;Indiana&quot;        &quot;Iowa&quot;           &quot;Kansas&quot;        </span></a>
-<a class="sourceLine" id="cb60-15" data-line-number="15"><span class="co">#&gt; [17] &quot;Kentucky&quot;       &quot;Louisiana&quot;      &quot;Maine&quot;          &quot;Maryland&quot;      </span></a>
-<a class="sourceLine" id="cb60-16" data-line-number="16"><span class="co">#&gt; [21] &quot;Massachusetts&quot;  &quot;Michigan&quot;       &quot;Minnesota&quot;      &quot;Mississippi&quot;   </span></a>
-<a class="sourceLine" id="cb60-17" data-line-number="17"><span class="co">#&gt; [25] &quot;Missouri&quot;       &quot;Montana&quot;        &quot;Nebraska&quot;       &quot;Nevada&quot;        </span></a>
-<a class="sourceLine" id="cb60-18" data-line-number="18"><span class="co">#&gt; [29] &quot;New Hampshire&quot;  &quot;New Jersey&quot;     &quot;New Mexico&quot;     &quot;New York&quot;      </span></a>
-<a class="sourceLine" id="cb60-19" data-line-number="19"><span class="co">#&gt; [33] &quot;North Carolina&quot; &quot;North Dakota&quot;   &quot;Ohio&quot;           &quot;Oklahoma&quot;      </span></a>
-<a class="sourceLine" id="cb60-20" data-line-number="20"><span class="co">#&gt; [37] &quot;Oregon&quot;         &quot;Pennsylvania&quot;   &quot;Rhode Island&quot;   &quot;South Carolina&quot;</span></a>
-<a class="sourceLine" id="cb60-21" data-line-number="21"><span class="co">#&gt; [41] &quot;South Dakota&quot;   &quot;Tennessee&quot;      &quot;Texas&quot;          &quot;Utah&quot;          </span></a>
-<a class="sourceLine" id="cb60-22" data-line-number="22"><span class="co">#&gt; [45] &quot;Vermont&quot;        &quot;Virginia&quot;       &quot;Washington&quot;     &quot;West Virginia&quot; </span></a>
-<a class="sourceLine" id="cb60-23" data-line-number="23"><span class="co">#&gt; [49] &quot;Wisconsin&quot;      &quot;Wyoming&quot;</span></a>
-<a class="sourceLine" id="cb60-24" data-line-number="24"></a>
-<a class="sourceLine" id="cb60-25" data-line-number="25"><span class="kw">head</span>( USArrests )  <span class="co"># print first six rows of the data</span></a>
-<a class="sourceLine" id="cb60-26" data-line-number="26"><span class="co">#&gt;            Murder Assault UrbanPop Rape</span></a>
-<a class="sourceLine" id="cb60-27" data-line-number="27"><span class="co">#&gt; Alabama      13.2     236       58 21.2</span></a>
-<a class="sourceLine" id="cb60-28" data-line-number="28"><span class="co">#&gt; Alaska       10.0     263       48 44.5</span></a>
-<a class="sourceLine" id="cb60-29" data-line-number="29"><span class="co">#&gt; Arizona       8.1     294       80 31.0</span></a>
-<a class="sourceLine" id="cb60-30" data-line-number="30"><span class="co">#&gt; Arkansas      8.8     190       50 19.5</span></a>
-<a class="sourceLine" id="cb60-31" data-line-number="31"><span class="co">#&gt; California    9.0     276       91 40.6</span></a>
-<a class="sourceLine" id="cb60-32" data-line-number="32"><span class="co">#&gt; Colorado      7.9     204       78 38.7</span></a></code></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb69-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb69-2" data-line-number="2"><span class="kw">data</span>( USArrests )</a>
+<a class="sourceLine" id="cb69-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb69-4" data-line-number="4"><span class="kw">dim</span>( USArrests )   <span class="co"># number of rows by number of columns</span></a>
+<a class="sourceLine" id="cb69-5" data-line-number="5"><span class="co">#&gt; [1] 50  4</span></a>
+<a class="sourceLine" id="cb69-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb69-7" data-line-number="7"><span class="kw">names</span>( USArrests )   <span class="co"># variable names or column names</span></a>
+<a class="sourceLine" id="cb69-8" data-line-number="8"><span class="co">#&gt; [1] &quot;Murder&quot;   &quot;Assault&quot;  &quot;UrbanPop&quot; &quot;Rape&quot;</span></a>
+<a class="sourceLine" id="cb69-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb69-10" data-line-number="10"><span class="kw">row.names</span>( USArrests )</a>
+<a class="sourceLine" id="cb69-11" data-line-number="11"><span class="co">#&gt;  [1] &quot;Alabama&quot;        &quot;Alaska&quot;         &quot;Arizona&quot;        &quot;Arkansas&quot;      </span></a>
+<a class="sourceLine" id="cb69-12" data-line-number="12"><span class="co">#&gt;  [5] &quot;California&quot;     &quot;Colorado&quot;       &quot;Connecticut&quot;    &quot;Delaware&quot;      </span></a>
+<a class="sourceLine" id="cb69-13" data-line-number="13"><span class="co">#&gt;  [9] &quot;Florida&quot;        &quot;Georgia&quot;        &quot;Hawaii&quot;         &quot;Idaho&quot;         </span></a>
+<a class="sourceLine" id="cb69-14" data-line-number="14"><span class="co">#&gt; [13] &quot;Illinois&quot;       &quot;Indiana&quot;        &quot;Iowa&quot;           &quot;Kansas&quot;        </span></a>
+<a class="sourceLine" id="cb69-15" data-line-number="15"><span class="co">#&gt; [17] &quot;Kentucky&quot;       &quot;Louisiana&quot;      &quot;Maine&quot;          &quot;Maryland&quot;      </span></a>
+<a class="sourceLine" id="cb69-16" data-line-number="16"><span class="co">#&gt; [21] &quot;Massachusetts&quot;  &quot;Michigan&quot;       &quot;Minnesota&quot;      &quot;Mississippi&quot;   </span></a>
+<a class="sourceLine" id="cb69-17" data-line-number="17"><span class="co">#&gt; [25] &quot;Missouri&quot;       &quot;Montana&quot;        &quot;Nebraska&quot;       &quot;Nevada&quot;        </span></a>
+<a class="sourceLine" id="cb69-18" data-line-number="18"><span class="co">#&gt; [29] &quot;New Hampshire&quot;  &quot;New Jersey&quot;     &quot;New Mexico&quot;     &quot;New York&quot;      </span></a>
+<a class="sourceLine" id="cb69-19" data-line-number="19"><span class="co">#&gt; [33] &quot;North Carolina&quot; &quot;North Dakota&quot;   &quot;Ohio&quot;           &quot;Oklahoma&quot;      </span></a>
+<a class="sourceLine" id="cb69-20" data-line-number="20"><span class="co">#&gt; [37] &quot;Oregon&quot;         &quot;Pennsylvania&quot;   &quot;Rhode Island&quot;   &quot;South Carolina&quot;</span></a>
+<a class="sourceLine" id="cb69-21" data-line-number="21"><span class="co">#&gt; [41] &quot;South Dakota&quot;   &quot;Tennessee&quot;      &quot;Texas&quot;          &quot;Utah&quot;          </span></a>
+<a class="sourceLine" id="cb69-22" data-line-number="22"><span class="co">#&gt; [45] &quot;Vermont&quot;        &quot;Virginia&quot;       &quot;Washington&quot;     &quot;West Virginia&quot; </span></a>
+<a class="sourceLine" id="cb69-23" data-line-number="23"><span class="co">#&gt; [49] &quot;Wisconsin&quot;      &quot;Wyoming&quot;</span></a>
+<a class="sourceLine" id="cb69-24" data-line-number="24"></a>
+<a class="sourceLine" id="cb69-25" data-line-number="25"><span class="kw">head</span>( USArrests )  <span class="co"># print first six rows of the data</span></a>
+<a class="sourceLine" id="cb69-26" data-line-number="26"><span class="co">#&gt;            Murder Assault UrbanPop Rape</span></a>
+<a class="sourceLine" id="cb69-27" data-line-number="27"><span class="co">#&gt; Alabama      13.2     236       58 21.2</span></a>
+<a class="sourceLine" id="cb69-28" data-line-number="28"><span class="co">#&gt; Alaska       10.0     263       48 44.5</span></a>
+<a class="sourceLine" id="cb69-29" data-line-number="29"><span class="co">#&gt; Arizona       8.1     294       80 31.0</span></a>
+<a class="sourceLine" id="cb69-30" data-line-number="30"><span class="co">#&gt; Arkansas      8.8     190       50 19.5</span></a>
+<a class="sourceLine" id="cb69-31" data-line-number="31"><span class="co">#&gt; California    9.0     276       91 40.6</span></a>
+<a class="sourceLine" id="cb69-32" data-line-number="32"><span class="co">#&gt; Colorado      7.9     204       78 38.7</span></a></code></pre></div>
 </div>
 <div id="matrices" class="section level3">
 <h3><span class="header-section-number">4.1.2</span> Matrices</h3>
 <p>A matrix is also a rectangular data object that consists of collections of vectors, but it is special in the sense that it only has numeric vectors and no variable names.</p>
-<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb61-1" data-line-number="1"></a>
-<a class="sourceLine" id="cb61-2" data-line-number="2">mat &lt;-<span class="st"> </span><span class="kw">matrix</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">20</span>, <span class="dt">nrow=</span><span class="dv">5</span> )</a>
-<a class="sourceLine" id="cb61-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb61-4" data-line-number="4">mat</a>
-<a class="sourceLine" id="cb61-5" data-line-number="5"><span class="co">#&gt;      [,1] [,2] [,3] [,4]</span></a>
-<a class="sourceLine" id="cb61-6" data-line-number="6"><span class="co">#&gt; [1,]    1    6   11   16</span></a>
-<a class="sourceLine" id="cb61-7" data-line-number="7"><span class="co">#&gt; [2,]    2    7   12   17</span></a>
-<a class="sourceLine" id="cb61-8" data-line-number="8"><span class="co">#&gt; [3,]    3    8   13   18</span></a>
-<a class="sourceLine" id="cb61-9" data-line-number="9"><span class="co">#&gt; [4,]    4    9   14   19</span></a>
-<a class="sourceLine" id="cb61-10" data-line-number="10"><span class="co">#&gt; [5,]    5   10   15   20</span></a>
-<a class="sourceLine" id="cb61-11" data-line-number="11"></a>
-<a class="sourceLine" id="cb61-12" data-line-number="12"><span class="kw">names</span>( mat )</a>
-<a class="sourceLine" id="cb61-13" data-line-number="13"><span class="co">#&gt; NULL</span></a>
-<a class="sourceLine" id="cb61-14" data-line-number="14"></a>
-<a class="sourceLine" id="cb61-15" data-line-number="15"><span class="kw">dim</span>( mat )</a>
-<a class="sourceLine" id="cb61-16" data-line-number="16"><span class="co">#&gt; [1] 5 4</span></a>
-<a class="sourceLine" id="cb61-17" data-line-number="17"></a>
-<a class="sourceLine" id="cb61-18" data-line-number="18"><span class="kw">as.data.frame</span>( mat )  <span class="co"># creates variable names</span></a>
-<a class="sourceLine" id="cb61-19" data-line-number="19"><span class="co">#&gt;   V1 V2 V3 V4</span></a>
-<a class="sourceLine" id="cb61-20" data-line-number="20"><span class="co">#&gt; 1  1  6 11 16</span></a>
-<a class="sourceLine" id="cb61-21" data-line-number="21"><span class="co">#&gt; 2  2  7 12 17</span></a>
-<a class="sourceLine" id="cb61-22" data-line-number="22"><span class="co">#&gt; 3  3  8 13 18</span></a>
-<a class="sourceLine" id="cb61-23" data-line-number="23"><span class="co">#&gt; 4  4  9 14 19</span></a>
-<a class="sourceLine" id="cb61-24" data-line-number="24"><span class="co">#&gt; 5  5 10 15 20</span></a></code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb70-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb70-2" data-line-number="2">mat &lt;-<span class="st"> </span><span class="kw">matrix</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">20</span>, <span class="dt">nrow=</span><span class="dv">5</span> )</a>
+<a class="sourceLine" id="cb70-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb70-4" data-line-number="4">mat</a>
+<a class="sourceLine" id="cb70-5" data-line-number="5"><span class="co">#&gt;      [,1] [,2] [,3] [,4]</span></a>
+<a class="sourceLine" id="cb70-6" data-line-number="6"><span class="co">#&gt; [1,]    1    6   11   16</span></a>
+<a class="sourceLine" id="cb70-7" data-line-number="7"><span class="co">#&gt; [2,]    2    7   12   17</span></a>
+<a class="sourceLine" id="cb70-8" data-line-number="8"><span class="co">#&gt; [3,]    3    8   13   18</span></a>
+<a class="sourceLine" id="cb70-9" data-line-number="9"><span class="co">#&gt; [4,]    4    9   14   19</span></a>
+<a class="sourceLine" id="cb70-10" data-line-number="10"><span class="co">#&gt; [5,]    5   10   15   20</span></a>
+<a class="sourceLine" id="cb70-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb70-12" data-line-number="12"><span class="kw">names</span>( mat )</a>
+<a class="sourceLine" id="cb70-13" data-line-number="13"><span class="co">#&gt; NULL</span></a>
+<a class="sourceLine" id="cb70-14" data-line-number="14"></a>
+<a class="sourceLine" id="cb70-15" data-line-number="15"><span class="kw">dim</span>( mat )</a>
+<a class="sourceLine" id="cb70-16" data-line-number="16"><span class="co">#&gt; [1] 5 4</span></a>
+<a class="sourceLine" id="cb70-17" data-line-number="17"></a>
+<a class="sourceLine" id="cb70-18" data-line-number="18"><span class="kw">as.data.frame</span>( mat )  <span class="co"># creates variable names</span></a>
+<a class="sourceLine" id="cb70-19" data-line-number="19"><span class="co">#&gt;   V1 V2 V3 V4</span></a>
+<a class="sourceLine" id="cb70-20" data-line-number="20"><span class="co">#&gt; 1  1  6 11 16</span></a>
+<a class="sourceLine" id="cb70-21" data-line-number="21"><span class="co">#&gt; 2  2  7 12 17</span></a>
+<a class="sourceLine" id="cb70-22" data-line-number="22"><span class="co">#&gt; 3  3  8 13 18</span></a>
+<a class="sourceLine" id="cb70-23" data-line-number="23"><span class="co">#&gt; 4  4  9 14 19</span></a>
+<a class="sourceLine" id="cb70-24" data-line-number="24"><span class="co">#&gt; 5  5 10 15 20</span></a></code></pre></div>
 <p>These are used almost exclusively for matrix algebra operations, which are fundamental to mathematical statistics. We will not use matrices in this course.</p>
 </div>
 <div id="lists" class="section level3">
 <h3><span class="header-section-number">4.1.3</span> Lists</h3>
 <p>The list is the most flexible data structure. It is created by sticking a bunch of unrelated vectors or datasets together. For example, when you run a regression you generate a bunch of interesting information. This information is saved as a list.</p>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb62-1" data-line-number="1"></a>
-<a class="sourceLine" id="cb62-2" data-line-number="2">x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">100</span></a>
-<a class="sourceLine" id="cb62-3" data-line-number="3">y &lt;-<span class="st"> </span><span class="dv">2</span><span class="op">*</span>x <span class="op">+</span><span class="st"> </span><span class="kw">rnorm</span>( <span class="dv">100</span>, <span class="dv">0</span>, <span class="dv">10</span>)</a>
-<a class="sourceLine" id="cb62-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb62-5" data-line-number="5">m<span class="fl">.01</span> &lt;-<span class="st"> </span><span class="kw">lm</span>( y <span class="op">~</span><span class="st"> </span>x )</a>
-<a class="sourceLine" id="cb62-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb62-7" data-line-number="7"><span class="kw">names</span>( m<span class="fl">.01</span> )</a>
-<a class="sourceLine" id="cb62-8" data-line-number="8"><span class="co">#&gt;  [1] &quot;coefficients&quot;  &quot;residuals&quot;     &quot;effects&quot;       &quot;rank&quot;         </span></a>
-<a class="sourceLine" id="cb62-9" data-line-number="9"><span class="co">#&gt;  [5] &quot;fitted.values&quot; &quot;assign&quot;        &quot;qr&quot;            &quot;df.residual&quot;  </span></a>
-<a class="sourceLine" id="cb62-10" data-line-number="10"><span class="co">#&gt;  [9] &quot;xlevels&quot;       &quot;call&quot;          &quot;terms&quot;         &quot;model&quot;</span></a>
-<a class="sourceLine" id="cb62-11" data-line-number="11"></a>
-<a class="sourceLine" id="cb62-12" data-line-number="12">m<span class="fl">.01</span><span class="op">$</span>coefficients</a>
-<a class="sourceLine" id="cb62-13" data-line-number="13"><span class="co">#&gt; (Intercept)           x </span></a>
-<a class="sourceLine" id="cb62-14" data-line-number="14"><span class="co">#&gt;   0.9390045   2.0047754</span></a>
-<a class="sourceLine" id="cb62-15" data-line-number="15"></a>
-<a class="sourceLine" id="cb62-16" data-line-number="16">m<span class="fl">.01</span><span class="op">$</span>residuals</a>
-<a class="sourceLine" id="cb62-17" data-line-number="17"><span class="co">#&gt;            1            2            3            4            5 </span></a>
-<a class="sourceLine" id="cb62-18" data-line-number="18"><span class="co">#&gt;  21.93231299   1.73674378  -5.20330873  -2.47671399  11.08477324 </span></a>
-<a class="sourceLine" id="cb62-19" data-line-number="19"><span class="co">#&gt;            6            7            8            9           10 </span></a>
-<a class="sourceLine" id="cb62-20" data-line-number="20"><span class="co">#&gt;  19.78839286   7.35639836  -5.82231401  13.67458706  -9.56100421 </span></a>
-<a class="sourceLine" id="cb62-21" data-line-number="21"><span class="co">#&gt;           11           12           13           14           15 </span></a>
-<a class="sourceLine" id="cb62-22" data-line-number="22"><span class="co">#&gt;   0.09731154  11.89546837   5.94656529  -8.91925399 -12.34334511 </span></a>
-<a class="sourceLine" id="cb62-23" data-line-number="23"><span class="co">#&gt;           16           17           18           19           20 </span></a>
-<a class="sourceLine" id="cb62-24" data-line-number="24"><span class="co">#&gt;  -3.69910303  -8.26575493 -18.40030978 -16.87831269  -6.78266804 </span></a>
-<a class="sourceLine" id="cb62-25" data-line-number="25"><span class="co">#&gt;           21           22           23           24           25 </span></a>
-<a class="sourceLine" id="cb62-26" data-line-number="26"><span class="co">#&gt;   4.69753395   7.87263663  -4.78061356 -13.47036076  11.04937507 </span></a>
-<a class="sourceLine" id="cb62-27" data-line-number="27"><span class="co">#&gt;           26           27           28           29           30 </span></a>
-<a class="sourceLine" id="cb62-28" data-line-number="28"><span class="co">#&gt;   3.58070791   7.97668693  11.40258274 -13.85987125 -16.75125948 </span></a>
-<a class="sourceLine" id="cb62-29" data-line-number="29"><span class="co">#&gt;           31           32           33           34           35 </span></a>
-<a class="sourceLine" id="cb62-30" data-line-number="30"><span class="co">#&gt;  12.02437944 -15.97956216   2.96456198  -6.24671869  -5.83631978 </span></a>
-<a class="sourceLine" id="cb62-31" data-line-number="31"><span class="co">#&gt;           36           37           38           39           40 </span></a>
-<a class="sourceLine" id="cb62-32" data-line-number="32"><span class="co">#&gt;  -1.85536708  20.85997125   1.48960042  -2.20641224  -1.72097919 </span></a>
-<a class="sourceLine" id="cb62-33" data-line-number="33"><span class="co">#&gt;           41           42           43           44           45 </span></a>
-<a class="sourceLine" id="cb62-34" data-line-number="34"><span class="co">#&gt;   3.14526558   3.10484733  -8.80193047   3.45300186  16.15698104 </span></a>
-<a class="sourceLine" id="cb62-35" data-line-number="35"><span class="co">#&gt;           46           47           48           49           50 </span></a>
-<a class="sourceLine" id="cb62-36" data-line-number="36"><span class="co">#&gt;   3.36981559  -8.47985059   6.35623433  -1.11191677 -10.72081686 </span></a>
-<a class="sourceLine" id="cb62-37" data-line-number="37"><span class="co">#&gt;           51           52           53           54           55 </span></a>
-<a class="sourceLine" id="cb62-38" data-line-number="38"><span class="co">#&gt;  -0.86574473  -7.24319741 -18.99590962  -6.10052803  -7.98916476 </span></a>
-<a class="sourceLine" id="cb62-39" data-line-number="39"><span class="co">#&gt;           56           57           58           59           60 </span></a>
-<a class="sourceLine" id="cb62-40" data-line-number="40"><span class="co">#&gt;  17.36061135  14.51802868   9.82530805  -7.73181913  -2.63296305 </span></a>
-<a class="sourceLine" id="cb62-41" data-line-number="41"><span class="co">#&gt;           61           62           63           64           65 </span></a>
-<a class="sourceLine" id="cb62-42" data-line-number="42"><span class="co">#&gt;  14.87268994   0.32808938  10.71371389   8.59600054 -10.87379086 </span></a>
-<a class="sourceLine" id="cb62-43" data-line-number="43"><span class="co">#&gt;           66           67           68           69           70 </span></a>
-<a class="sourceLine" id="cb62-44" data-line-number="44"><span class="co">#&gt; -21.27036439 -24.75368262 -13.44831830   5.84283969  -5.50735366 </span></a>
-<a class="sourceLine" id="cb62-45" data-line-number="45"><span class="co">#&gt;           71           72           73           74           75 </span></a>
-<a class="sourceLine" id="cb62-46" data-line-number="46"><span class="co">#&gt;  -2.24999078  14.12779609  -8.35945827   4.54577307   7.93595554 </span></a>
-<a class="sourceLine" id="cb62-47" data-line-number="47"><span class="co">#&gt;           76           77           78           79           80 </span></a>
-<a class="sourceLine" id="cb62-48" data-line-number="48"><span class="co">#&gt;   5.51289551   1.74269614  -3.47264930   2.90621908   5.05632622 </span></a>
-<a class="sourceLine" id="cb62-49" data-line-number="49"><span class="co">#&gt;           81           82           83           84           85 </span></a>
-<a class="sourceLine" id="cb62-50" data-line-number="50"><span class="co">#&gt;   6.35910824 -12.70761485  -2.19546758   5.48311521  -4.88899859 </span></a>
-<a class="sourceLine" id="cb62-51" data-line-number="51"><span class="co">#&gt;           86           87           88           89           90 </span></a>
-<a class="sourceLine" id="cb62-52" data-line-number="52"><span class="co">#&gt;   5.00930438   0.86805303  11.93936072 -10.85011589   5.33706949 </span></a>
-<a class="sourceLine" id="cb62-53" data-line-number="53"><span class="co">#&gt;           91           92           93           94           95 </span></a>
-<a class="sourceLine" id="cb62-54" data-line-number="54"><span class="co">#&gt;  -8.03810334  -2.04421553   7.49102803   4.20472773 -13.23063198 </span></a>
-<a class="sourceLine" id="cb62-55" data-line-number="55"><span class="co">#&gt;           96           97           98           99          100 </span></a>
-<a class="sourceLine" id="cb62-56" data-line-number="56"><span class="co">#&gt;  -3.31071355  -8.48317172  15.81051525  22.64354527  -4.62947072</span></a>
-<a class="sourceLine" id="cb62-57" data-line-number="57"></a>
-<a class="sourceLine" id="cb62-58" data-line-number="58">m<span class="fl">.01</span><span class="op">$</span>call</a>
-<a class="sourceLine" id="cb62-59" data-line-number="59"><span class="co">#&gt; lm(formula = y ~ x)</span></a></code></pre></div>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb71-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb71-2" data-line-number="2">x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">100</span></a>
+<a class="sourceLine" id="cb71-3" data-line-number="3">y &lt;-<span class="st"> </span><span class="dv">2</span><span class="op">*</span>x <span class="op">+</span><span class="st"> </span><span class="kw">rnorm</span>( <span class="dv">100</span>, <span class="dv">0</span>, <span class="dv">10</span>)</a>
+<a class="sourceLine" id="cb71-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb71-5" data-line-number="5">m<span class="fl">.01</span> &lt;-<span class="st"> </span><span class="kw">lm</span>( y <span class="op">~</span><span class="st"> </span>x )</a>
+<a class="sourceLine" id="cb71-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb71-7" data-line-number="7"><span class="kw">names</span>( m<span class="fl">.01</span> )</a>
+<a class="sourceLine" id="cb71-8" data-line-number="8"><span class="co">#&gt;  [1] &quot;coefficients&quot;  &quot;residuals&quot;     &quot;effects&quot;       &quot;rank&quot;         </span></a>
+<a class="sourceLine" id="cb71-9" data-line-number="9"><span class="co">#&gt;  [5] &quot;fitted.values&quot; &quot;assign&quot;        &quot;qr&quot;            &quot;df.residual&quot;  </span></a>
+<a class="sourceLine" id="cb71-10" data-line-number="10"><span class="co">#&gt;  [9] &quot;xlevels&quot;       &quot;call&quot;          &quot;terms&quot;         &quot;model&quot;</span></a>
+<a class="sourceLine" id="cb71-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb71-12" data-line-number="12">m<span class="fl">.01</span><span class="op">$</span>coefficients</a>
+<a class="sourceLine" id="cb71-13" data-line-number="13"><span class="co">#&gt; (Intercept)           x </span></a>
+<a class="sourceLine" id="cb71-14" data-line-number="14"><span class="co">#&gt;    2.293738    1.976082</span></a>
+<a class="sourceLine" id="cb71-15" data-line-number="15"></a>
+<a class="sourceLine" id="cb71-16" data-line-number="16">m<span class="fl">.01</span><span class="op">$</span>residuals</a>
+<a class="sourceLine" id="cb71-17" data-line-number="17"><span class="co">#&gt;            1            2            3            4            5 </span></a>
+<a class="sourceLine" id="cb71-18" data-line-number="18"><span class="co">#&gt;  -4.45915369  -0.43804807  21.31639137 -13.14945822  -9.56268925 </span></a>
+<a class="sourceLine" id="cb71-19" data-line-number="19"><span class="co">#&gt;            6            7            8            9           10 </span></a>
+<a class="sourceLine" id="cb71-20" data-line-number="20"><span class="co">#&gt;   1.19694148  12.02702031  -1.82897120 -14.01506728 -18.98721384 </span></a>
+<a class="sourceLine" id="cb71-21" data-line-number="21"><span class="co">#&gt;           11           12           13           14           15 </span></a>
+<a class="sourceLine" id="cb71-22" data-line-number="22"><span class="co">#&gt;  24.31510656   2.83541265  -2.11445232  -4.42166387 -19.93934016 </span></a>
+<a class="sourceLine" id="cb71-23" data-line-number="23"><span class="co">#&gt;           16           17           18           19           20 </span></a>
+<a class="sourceLine" id="cb71-24" data-line-number="24"><span class="co">#&gt;   4.10847714  -1.98826763   3.38444003   0.04164848  12.24124828 </span></a>
+<a class="sourceLine" id="cb71-25" data-line-number="25"><span class="co">#&gt;           21           22           23           24           25 </span></a>
+<a class="sourceLine" id="cb71-26" data-line-number="26"><span class="co">#&gt;  19.76583726  11.44906940  -0.79232752   4.77204282   0.56824505 </span></a>
+<a class="sourceLine" id="cb71-27" data-line-number="27"><span class="co">#&gt;           26           27           28           29           30 </span></a>
+<a class="sourceLine" id="cb71-28" data-line-number="28"><span class="co">#&gt;  -5.07262786  -4.82125478 -19.34550270 -15.16745136 -13.04023144 </span></a>
+<a class="sourceLine" id="cb71-29" data-line-number="29"><span class="co">#&gt;           31           32           33           34           35 </span></a>
+<a class="sourceLine" id="cb71-30" data-line-number="30"><span class="co">#&gt;  -1.78670802   3.15132517  14.72899864   7.78853250  -8.75107475 </span></a>
+<a class="sourceLine" id="cb71-31" data-line-number="31"><span class="co">#&gt;           36           37           38           39           40 </span></a>
+<a class="sourceLine" id="cb71-32" data-line-number="32"><span class="co">#&gt;  -3.71054456  -2.95345863  -3.96190015  -5.90672912 -12.68679230 </span></a>
+<a class="sourceLine" id="cb71-33" data-line-number="33"><span class="co">#&gt;           41           42           43           44           45 </span></a>
+<a class="sourceLine" id="cb71-34" data-line-number="34"><span class="co">#&gt; -11.16945050   2.23577443  -7.86183185   3.49781500   3.86432026 </span></a>
+<a class="sourceLine" id="cb71-35" data-line-number="35"><span class="co">#&gt;           46           47           48           49           50 </span></a>
+<a class="sourceLine" id="cb71-36" data-line-number="36"><span class="co">#&gt;   8.95409077  19.11645112  11.85327020  -0.16912890  -1.72943250 </span></a>
+<a class="sourceLine" id="cb71-37" data-line-number="37"><span class="co">#&gt;           51           52           53           54           55 </span></a>
+<a class="sourceLine" id="cb71-38" data-line-number="38"><span class="co">#&gt;  16.87173683  -3.57966283  13.83547537 -13.30575161   3.78600454 </span></a>
+<a class="sourceLine" id="cb71-39" data-line-number="39"><span class="co">#&gt;           56           57           58           59           60 </span></a>
+<a class="sourceLine" id="cb71-40" data-line-number="40"><span class="co">#&gt;  15.47362864 -22.69428388  -0.71833536  14.85981591  -7.61566268 </span></a>
+<a class="sourceLine" id="cb71-41" data-line-number="41"><span class="co">#&gt;           61           62           63           64           65 </span></a>
+<a class="sourceLine" id="cb71-42" data-line-number="42"><span class="co">#&gt;  29.20650172   7.86586626   3.29822498 -13.15124385  25.04607411 </span></a>
+<a class="sourceLine" id="cb71-43" data-line-number="43"><span class="co">#&gt;           66           67           68           69           70 </span></a>
+<a class="sourceLine" id="cb71-44" data-line-number="44"><span class="co">#&gt;   6.67621533  -5.32367730   4.69104892 -15.01851219  -0.56221680 </span></a>
+<a class="sourceLine" id="cb71-45" data-line-number="45"><span class="co">#&gt;           71           72           73           74           75 </span></a>
+<a class="sourceLine" id="cb71-46" data-line-number="46"><span class="co">#&gt;  -7.61575124  -7.66570663   1.18832231  -0.87627898  -7.68361918 </span></a>
+<a class="sourceLine" id="cb71-47" data-line-number="47"><span class="co">#&gt;           76           77           78           79           80 </span></a>
+<a class="sourceLine" id="cb71-48" data-line-number="48"><span class="co">#&gt;  10.39932319  -7.00999707  -8.67771557 -13.58650042  -3.67173405 </span></a>
+<a class="sourceLine" id="cb71-49" data-line-number="49"><span class="co">#&gt;           81           82           83           84           85 </span></a>
+<a class="sourceLine" id="cb71-50" data-line-number="50"><span class="co">#&gt;   3.77434220   4.65909096  -2.16469706  -4.38206808  -6.53710728 </span></a>
+<a class="sourceLine" id="cb71-51" data-line-number="51"><span class="co">#&gt;           86           87           88           89           90 </span></a>
+<a class="sourceLine" id="cb71-52" data-line-number="52"><span class="co">#&gt;   8.54090323  -5.45113922   0.08184184  -7.72901806   7.19082544 </span></a>
+<a class="sourceLine" id="cb71-53" data-line-number="53"><span class="co">#&gt;           91           92           93           94           95 </span></a>
+<a class="sourceLine" id="cb71-54" data-line-number="54"><span class="co">#&gt;   8.36082314   6.64946259  -5.49153242  15.39016809   9.20999914 </span></a>
+<a class="sourceLine" id="cb71-55" data-line-number="55"><span class="co">#&gt;           96           97           98           99          100 </span></a>
+<a class="sourceLine" id="cb71-56" data-line-number="56"><span class="co">#&gt; -11.44526046 -18.77646144  -8.80975459   2.66111532   6.44519174</span></a>
+<a class="sourceLine" id="cb71-57" data-line-number="57"></a>
+<a class="sourceLine" id="cb71-58" data-line-number="58">m<span class="fl">.01</span><span class="op">$</span>call</a>
+<a class="sourceLine" id="cb71-59" data-line-number="59"><span class="co">#&gt; lm(formula = y ~ x)</span></a></code></pre></div>
 <p>These output are all related to the model we have run, so they are kept organized by the list so they can be used for various further steps like comparing models or checking for model fit.</p>
 <p>A data frame is a bit more rigid that a list in that you cannot combine elements that do not have the same dimsions.</p>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb63-1" data-line-number="1"></a>
-<a class="sourceLine" id="cb63-2" data-line-number="2"><span class="co"># new.dataframe &lt;- data.frame( m.01$coefficients, m.01$residuals, m.01$call )</span></a>
-<a class="sourceLine" id="cb63-3" data-line-number="3"><span class="co">#</span></a>
-<a class="sourceLine" id="cb63-4" data-line-number="4"><span class="co"># these will fail because the vectors have different lengths </span></a></code></pre></div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb72-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb72-2" data-line-number="2"><span class="co"># new.dataframe &lt;- data.frame( m.01$coefficients, m.01$residuals, m.01$call )</span></a>
+<a class="sourceLine" id="cb72-3" data-line-number="3"><span class="co">#</span></a>
+<a class="sourceLine" id="cb72-4" data-line-number="4"><span class="co"># these will fail because the vectors have different lengths </span></a></code></pre></div>
 </div>
 </div>
 <div id="subsets" class="section level2">
@@ -558,201 +558,201 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>The subset operators <strong>[ ]</strong> are one of the most common you will use in R.</p>
 <p>The primary rule of subsets is to use a data operator to create a logical selector vector, and use that to generate subsets. Any observation that corresponds to TRUE will be retained, any observation that corresponds to FALSE will be dropped.</p>
 <p>For vectors, you need to specify a single dimension.</p>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb64-1" data-line-number="1"></a>
-<a class="sourceLine" id="cb64-2" data-line-number="2">x1 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">167</span>,<span class="dv">185</span>,<span class="dv">119</span>,<span class="dv">142</span>)</a>
-<a class="sourceLine" id="cb64-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb64-4" data-line-number="4">x2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;adam&quot;</span>,<span class="st">&quot;jamal&quot;</span>,<span class="st">&quot;linda&quot;</span>,<span class="st">&quot;sriti&quot;</span>)</a>
-<a class="sourceLine" id="cb64-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb64-6" data-line-number="6">x3 &lt;-<span class="st"> </span><span class="kw">factor</span>( <span class="kw">c</span>(<span class="st">&quot;male&quot;</span>,<span class="st">&quot;male&quot;</span>,<span class="st">&quot;female&quot;</span>,<span class="st">&quot;female&quot;</span>) )</a>
-<a class="sourceLine" id="cb64-7" data-line-number="7"></a>
-<a class="sourceLine" id="cb64-8" data-line-number="8">x4 &lt;-<span class="st"> </span><span class="kw">c</span>( <span class="st">&quot;treatment&quot;</span>,<span class="st">&quot;control&quot;</span>,<span class="st">&quot;treatment&quot;</span>,<span class="st">&quot;control&quot;</span> )</a>
-<a class="sourceLine" id="cb64-9" data-line-number="9"></a>
-<a class="sourceLine" id="cb64-10" data-line-number="10">dat &lt;-<span class="st"> </span><span class="kw">data.frame</span>( <span class="dt">name=</span>x2, <span class="dt">sex=</span>x3, <span class="dt">treat=</span>x4, <span class="dt">strength=</span>x1 )</a>
-<a class="sourceLine" id="cb64-11" data-line-number="11"></a>
-<a class="sourceLine" id="cb64-12" data-line-number="12"></a>
-<a class="sourceLine" id="cb64-13" data-line-number="13">these &lt;-<span class="st"> </span>x1 <span class="op">&gt;</span><span class="st"> </span><span class="dv">140</span>     <span class="co"># selector vector</span></a>
-<a class="sourceLine" id="cb64-14" data-line-number="14"></a>
-<a class="sourceLine" id="cb64-15" data-line-number="15">these</a>
-<a class="sourceLine" id="cb64-16" data-line-number="16"><span class="co">#&gt; [1]  TRUE  TRUE FALSE  TRUE</span></a>
-<a class="sourceLine" id="cb64-17" data-line-number="17"></a>
-<a class="sourceLine" id="cb64-18" data-line-number="18">x1[ these ]</a>
-<a class="sourceLine" id="cb64-19" data-line-number="19"><span class="co">#&gt; [1] 167 185 142</span></a>
-<a class="sourceLine" id="cb64-20" data-line-number="20"></a>
-<a class="sourceLine" id="cb64-21" data-line-number="21">x2[ these ]</a>
-<a class="sourceLine" id="cb64-22" data-line-number="22"><span class="co">#&gt; [1] &quot;adam&quot;  &quot;jamal&quot; &quot;sriti&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb73-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb73-2" data-line-number="2">x1 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">167</span>,<span class="dv">185</span>,<span class="dv">119</span>,<span class="dv">142</span>)</a>
+<a class="sourceLine" id="cb73-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb73-4" data-line-number="4">x2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;adam&quot;</span>,<span class="st">&quot;jamal&quot;</span>,<span class="st">&quot;linda&quot;</span>,<span class="st">&quot;sriti&quot;</span>)</a>
+<a class="sourceLine" id="cb73-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb73-6" data-line-number="6">x3 &lt;-<span class="st"> </span><span class="kw">factor</span>( <span class="kw">c</span>(<span class="st">&quot;male&quot;</span>,<span class="st">&quot;male&quot;</span>,<span class="st">&quot;female&quot;</span>,<span class="st">&quot;female&quot;</span>) )</a>
+<a class="sourceLine" id="cb73-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb73-8" data-line-number="8">x4 &lt;-<span class="st"> </span><span class="kw">c</span>( <span class="st">&quot;treatment&quot;</span>,<span class="st">&quot;control&quot;</span>,<span class="st">&quot;treatment&quot;</span>,<span class="st">&quot;control&quot;</span> )</a>
+<a class="sourceLine" id="cb73-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb73-10" data-line-number="10">dat &lt;-<span class="st"> </span><span class="kw">data.frame</span>( <span class="dt">name=</span>x2, <span class="dt">sex=</span>x3, <span class="dt">treat=</span>x4, <span class="dt">strength=</span>x1 )</a>
+<a class="sourceLine" id="cb73-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb73-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb73-13" data-line-number="13">these &lt;-<span class="st"> </span>x1 <span class="op">&gt;</span><span class="st"> </span><span class="dv">140</span>     <span class="co"># selector vector</span></a>
+<a class="sourceLine" id="cb73-14" data-line-number="14"></a>
+<a class="sourceLine" id="cb73-15" data-line-number="15">these</a>
+<a class="sourceLine" id="cb73-16" data-line-number="16"><span class="co">#&gt; [1]  TRUE  TRUE FALSE  TRUE</span></a>
+<a class="sourceLine" id="cb73-17" data-line-number="17"></a>
+<a class="sourceLine" id="cb73-18" data-line-number="18">x1[ these ]</a>
+<a class="sourceLine" id="cb73-19" data-line-number="19"><span class="co">#&gt; [1] 167 185 142</span></a>
+<a class="sourceLine" id="cb73-20" data-line-number="20"></a>
+<a class="sourceLine" id="cb73-21" data-line-number="21">x2[ these ]</a>
+<a class="sourceLine" id="cb73-22" data-line-number="22"><span class="co">#&gt; [1] &quot;adam&quot;  &quot;jamal&quot; &quot;sriti&quot;</span></a></code></pre></div>
 <p>For data frames, you need two dimensions (rows and columns). The two dimensions are seperated by a comma, and if you leave one blank you will not drop anything.</p>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb65-1" data-line-number="1"></a>
-<a class="sourceLine" id="cb65-2" data-line-number="2"><span class="co"># dat[  row position ,  column position  ]</span></a>
-<a class="sourceLine" id="cb65-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb65-4" data-line-number="4">dat </a>
-<a class="sourceLine" id="cb65-5" data-line-number="5"><span class="co">#&gt;    name    sex     treat strength</span></a>
-<a class="sourceLine" id="cb65-6" data-line-number="6"><span class="co">#&gt; 1  adam   male treatment      167</span></a>
-<a class="sourceLine" id="cb65-7" data-line-number="7"><span class="co">#&gt; 2 jamal   male   control      185</span></a>
-<a class="sourceLine" id="cb65-8" data-line-number="8"><span class="co">#&gt; 3 linda female treatment      119</span></a>
-<a class="sourceLine" id="cb65-9" data-line-number="9"><span class="co">#&gt; 4 sriti female   control      142</span></a>
-<a class="sourceLine" id="cb65-10" data-line-number="10"></a>
-<a class="sourceLine" id="cb65-11" data-line-number="11">these &lt;-<span class="st"> </span>dat<span class="op">$</span>treat <span class="op">==</span><span class="st"> &quot;treatment&quot;</span></a>
-<a class="sourceLine" id="cb65-12" data-line-number="12"></a>
-<a class="sourceLine" id="cb65-13" data-line-number="13">dat[ these , ]   <span class="co"># all data in the treatment group</span></a>
-<a class="sourceLine" id="cb65-14" data-line-number="14"><span class="co">#&gt;    name    sex     treat strength</span></a>
-<a class="sourceLine" id="cb65-15" data-line-number="15"><span class="co">#&gt; 1  adam   male treatment      167</span></a>
-<a class="sourceLine" id="cb65-16" data-line-number="16"><span class="co">#&gt; 3 linda female treatment      119</span></a>
-<a class="sourceLine" id="cb65-17" data-line-number="17"></a>
-<a class="sourceLine" id="cb65-18" data-line-number="18">dat[ , <span class="kw">c</span>(<span class="st">&quot;name&quot;</span>,<span class="st">&quot;sex&quot;</span>) ]  <span class="co"># select two columns of data</span></a>
-<a class="sourceLine" id="cb65-19" data-line-number="19"><span class="co">#&gt;    name    sex</span></a>
-<a class="sourceLine" id="cb65-20" data-line-number="20"><span class="co">#&gt; 1  adam   male</span></a>
-<a class="sourceLine" id="cb65-21" data-line-number="21"><span class="co">#&gt; 2 jamal   male</span></a>
-<a class="sourceLine" id="cb65-22" data-line-number="22"><span class="co">#&gt; 3 linda female</span></a>
-<a class="sourceLine" id="cb65-23" data-line-number="23"><span class="co">#&gt; 4 sriti female</span></a>
-<a class="sourceLine" id="cb65-24" data-line-number="24"></a>
-<a class="sourceLine" id="cb65-25" data-line-number="25"><span class="co"># to keep a subset as a separate dataset</span></a>
-<a class="sourceLine" id="cb65-26" data-line-number="26"></a>
-<a class="sourceLine" id="cb65-27" data-line-number="27">dat.women &lt;-<span class="st"> </span>dat[ dat<span class="op">$</span>sex <span class="op">==</span><span class="st"> &quot;female&quot;</span> , ]</a>
-<a class="sourceLine" id="cb65-28" data-line-number="28"></a>
-<a class="sourceLine" id="cb65-29" data-line-number="29">dat.women</a>
-<a class="sourceLine" id="cb65-30" data-line-number="30"><span class="co">#&gt;    name    sex     treat strength</span></a>
-<a class="sourceLine" id="cb65-31" data-line-number="31"><span class="co">#&gt; 3 linda female treatment      119</span></a>
-<a class="sourceLine" id="cb65-32" data-line-number="32"><span class="co">#&gt; 4 sriti female   control      142</span></a></code></pre></div>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb74-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb74-2" data-line-number="2"><span class="co"># dat[  row position ,  column position  ]</span></a>
+<a class="sourceLine" id="cb74-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb74-4" data-line-number="4">dat </a>
+<a class="sourceLine" id="cb74-5" data-line-number="5"><span class="co">#&gt;    name    sex     treat strength</span></a>
+<a class="sourceLine" id="cb74-6" data-line-number="6"><span class="co">#&gt; 1  adam   male treatment      167</span></a>
+<a class="sourceLine" id="cb74-7" data-line-number="7"><span class="co">#&gt; 2 jamal   male   control      185</span></a>
+<a class="sourceLine" id="cb74-8" data-line-number="8"><span class="co">#&gt; 3 linda female treatment      119</span></a>
+<a class="sourceLine" id="cb74-9" data-line-number="9"><span class="co">#&gt; 4 sriti female   control      142</span></a>
+<a class="sourceLine" id="cb74-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb74-11" data-line-number="11">these &lt;-<span class="st"> </span>dat<span class="op">$</span>treat <span class="op">==</span><span class="st"> &quot;treatment&quot;</span></a>
+<a class="sourceLine" id="cb74-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb74-13" data-line-number="13">dat[ these , ]   <span class="co"># all data in the treatment group</span></a>
+<a class="sourceLine" id="cb74-14" data-line-number="14"><span class="co">#&gt;    name    sex     treat strength</span></a>
+<a class="sourceLine" id="cb74-15" data-line-number="15"><span class="co">#&gt; 1  adam   male treatment      167</span></a>
+<a class="sourceLine" id="cb74-16" data-line-number="16"><span class="co">#&gt; 3 linda female treatment      119</span></a>
+<a class="sourceLine" id="cb74-17" data-line-number="17"></a>
+<a class="sourceLine" id="cb74-18" data-line-number="18">dat[ , <span class="kw">c</span>(<span class="st">&quot;name&quot;</span>,<span class="st">&quot;sex&quot;</span>) ]  <span class="co"># select two columns of data</span></a>
+<a class="sourceLine" id="cb74-19" data-line-number="19"><span class="co">#&gt;    name    sex</span></a>
+<a class="sourceLine" id="cb74-20" data-line-number="20"><span class="co">#&gt; 1  adam   male</span></a>
+<a class="sourceLine" id="cb74-21" data-line-number="21"><span class="co">#&gt; 2 jamal   male</span></a>
+<a class="sourceLine" id="cb74-22" data-line-number="22"><span class="co">#&gt; 3 linda female</span></a>
+<a class="sourceLine" id="cb74-23" data-line-number="23"><span class="co">#&gt; 4 sriti female</span></a>
+<a class="sourceLine" id="cb74-24" data-line-number="24"></a>
+<a class="sourceLine" id="cb74-25" data-line-number="25"><span class="co"># to keep a subset as a separate dataset</span></a>
+<a class="sourceLine" id="cb74-26" data-line-number="26"></a>
+<a class="sourceLine" id="cb74-27" data-line-number="27">dat.women &lt;-<span class="st"> </span>dat[ dat<span class="op">$</span>sex <span class="op">==</span><span class="st"> &quot;female&quot;</span> , ]</a>
+<a class="sourceLine" id="cb74-28" data-line-number="28"></a>
+<a class="sourceLine" id="cb74-29" data-line-number="29">dat.women</a>
+<a class="sourceLine" id="cb74-30" data-line-number="30"><span class="co">#&gt;    name    sex     treat strength</span></a>
+<a class="sourceLine" id="cb74-31" data-line-number="31"><span class="co">#&gt; 3 linda female treatment      119</span></a>
+<a class="sourceLine" id="cb74-32" data-line-number="32"><span class="co">#&gt; 4 sriti female   control      142</span></a></code></pre></div>
 <p>Note the rules listed above about subsetting factors. After applying a subset, they will retain all of the original levels, even when they are not longer useful. You need to drop the unused levels if you would like them to be omitted from functions that use the factor levels for analysis.</p>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb66-1" data-line-number="1"></a>
-<a class="sourceLine" id="cb66-2" data-line-number="2">df &lt;-<span class="st"> </span><span class="kw">data.frame</span>( <span class="dt">letters=</span>LETTERS[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>], <span class="dt">numbers=</span><span class="kw">seq</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>) )</a>
-<a class="sourceLine" id="cb66-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb66-4" data-line-number="4"><span class="kw">levels</span>( df<span class="op">$</span>letters )</a>
-<a class="sourceLine" id="cb66-5" data-line-number="5"><span class="co">#&gt; [1] &quot;A&quot; &quot;B&quot; &quot;C&quot; &quot;D&quot; &quot;E&quot;</span></a>
-<a class="sourceLine" id="cb66-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb66-7" data-line-number="7">sub.df &lt;-<span class="st"> </span>df[ <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, ]</a>
-<a class="sourceLine" id="cb66-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb66-9" data-line-number="9">sub.df<span class="op">$</span>letters</a>
-<a class="sourceLine" id="cb66-10" data-line-number="10"><span class="co">#&gt; [1] A B C</span></a>
-<a class="sourceLine" id="cb66-11" data-line-number="11"><span class="co">#&gt; Levels: A B C D E</span></a>
-<a class="sourceLine" id="cb66-12" data-line-number="12"></a>
-<a class="sourceLine" id="cb66-13" data-line-number="13"><span class="kw">levels</span>( sub.df<span class="op">$</span>letters )</a>
-<a class="sourceLine" id="cb66-14" data-line-number="14"><span class="co">#&gt; [1] &quot;A&quot; &quot;B&quot; &quot;C&quot; &quot;D&quot; &quot;E&quot;</span></a>
-<a class="sourceLine" id="cb66-15" data-line-number="15"></a>
-<a class="sourceLine" id="cb66-16" data-line-number="16"><span class="kw">droplevels</span>( sub.df<span class="op">$</span>letters )</a>
-<a class="sourceLine" id="cb66-17" data-line-number="17"><span class="co">#&gt; [1] A B C</span></a>
-<a class="sourceLine" id="cb66-18" data-line-number="18"><span class="co">#&gt; Levels: A B C</span></a>
-<a class="sourceLine" id="cb66-19" data-line-number="19"></a>
-<a class="sourceLine" id="cb66-20" data-line-number="20">sub.df<span class="op">$</span>letters &lt;-<span class="st"> </span><span class="kw">droplevels</span>( sub.df<span class="op">$</span>letters )</a></code></pre></div>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb75-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb75-2" data-line-number="2">df &lt;-<span class="st"> </span><span class="kw">data.frame</span>( <span class="dt">letters=</span>LETTERS[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>], <span class="dt">numbers=</span><span class="kw">seq</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>) )</a>
+<a class="sourceLine" id="cb75-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb75-4" data-line-number="4"><span class="kw">levels</span>( df<span class="op">$</span>letters )</a>
+<a class="sourceLine" id="cb75-5" data-line-number="5"><span class="co">#&gt; [1] &quot;A&quot; &quot;B&quot; &quot;C&quot; &quot;D&quot; &quot;E&quot;</span></a>
+<a class="sourceLine" id="cb75-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb75-7" data-line-number="7">sub.df &lt;-<span class="st"> </span>df[ <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, ]</a>
+<a class="sourceLine" id="cb75-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb75-9" data-line-number="9">sub.df<span class="op">$</span>letters</a>
+<a class="sourceLine" id="cb75-10" data-line-number="10"><span class="co">#&gt; [1] A B C</span></a>
+<a class="sourceLine" id="cb75-11" data-line-number="11"><span class="co">#&gt; Levels: A B C D E</span></a>
+<a class="sourceLine" id="cb75-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb75-13" data-line-number="13"><span class="kw">levels</span>( sub.df<span class="op">$</span>letters )</a>
+<a class="sourceLine" id="cb75-14" data-line-number="14"><span class="co">#&gt; [1] &quot;A&quot; &quot;B&quot; &quot;C&quot; &quot;D&quot; &quot;E&quot;</span></a>
+<a class="sourceLine" id="cb75-15" data-line-number="15"></a>
+<a class="sourceLine" id="cb75-16" data-line-number="16"><span class="kw">droplevels</span>( sub.df<span class="op">$</span>letters )</a>
+<a class="sourceLine" id="cb75-17" data-line-number="17"><span class="co">#&gt; [1] A B C</span></a>
+<a class="sourceLine" id="cb75-18" data-line-number="18"><span class="co">#&gt; Levels: A B C</span></a>
+<a class="sourceLine" id="cb75-19" data-line-number="19"></a>
+<a class="sourceLine" id="cb75-20" data-line-number="20">sub.df<span class="op">$</span>letters &lt;-<span class="st"> </span><span class="kw">droplevels</span>( sub.df<span class="op">$</span>letters )</a></code></pre></div>
 </div>
 <div id="variable-transformations" class="section level2">
 <h2><span class="header-section-number">4.3</span> Variable Transformations</h2>
 <p>When we create a new variable from existing variables, it is called a ‘transformation’. This is very common in data science. Crime is measures by the number of assults <em>per 100,000 people</em>, for example (crime / pop). A batting average is the number of hits divided by the number of at bats.</p>
 <p>In R, mathematical operations are <em>vectorized</em>, which means that operations are performed on the entire vector all at once. This makes transformations fast and easy.</p>
-<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb67-1" data-line-number="1"></a>
-<a class="sourceLine" id="cb67-2" data-line-number="2">x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10</span></a>
-<a class="sourceLine" id="cb67-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb67-4" data-line-number="4">x <span class="op">+</span><span class="st"> </span><span class="dv">5</span></a>
-<a class="sourceLine" id="cb67-5" data-line-number="5"><span class="co">#&gt;  [1]  6  7  8  9 10 11 12 13 14 15</span></a>
-<a class="sourceLine" id="cb67-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb67-7" data-line-number="7">x <span class="op">*</span><span class="st"> </span><span class="dv">5</span></a>
-<a class="sourceLine" id="cb67-8" data-line-number="8"><span class="co">#&gt;  [1]  5 10 15 20 25 30 35 40 45 50</span></a></code></pre></div>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb76-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb76-2" data-line-number="2">x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10</span></a>
+<a class="sourceLine" id="cb76-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb76-4" data-line-number="4">x <span class="op">+</span><span class="st"> </span><span class="dv">5</span></a>
+<a class="sourceLine" id="cb76-5" data-line-number="5"><span class="co">#&gt;  [1]  6  7  8  9 10 11 12 13 14 15</span></a>
+<a class="sourceLine" id="cb76-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb76-7" data-line-number="7">x <span class="op">*</span><span class="st"> </span><span class="dv">5</span></a>
+<a class="sourceLine" id="cb76-8" data-line-number="8"><span class="co">#&gt;  [1]  5 10 15 20 25 30 35 40 45 50</span></a></code></pre></div>
 <p>R uses a convention called “recycling”, which means that it will re-use elements of a vector if necessary. In the example below the x vector has 10 elements, but the y vector only has 5 elements. When we run out of y, we just start over from the beginning. This is powerful in some instances, but can be dangerous in others if you don’t realize that that it is happening.</p>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb68-1" data-line-number="1"></a>
-<a class="sourceLine" id="cb68-2" data-line-number="2">x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10</span></a>
-<a class="sourceLine" id="cb68-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb68-4" data-line-number="4">y &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">5</span></a>
-<a class="sourceLine" id="cb68-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb68-6" data-line-number="6">x <span class="op">+</span><span class="st"> </span>y</a>
-<a class="sourceLine" id="cb68-7" data-line-number="7"><span class="co">#&gt;  [1]  2  4  6  8 10  7  9 11 13 15</span></a>
-<a class="sourceLine" id="cb68-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb68-9" data-line-number="9">x <span class="op">*</span><span class="st"> </span>y</a>
-<a class="sourceLine" id="cb68-10" data-line-number="10"><span class="co">#&gt;  [1]  1  4  9 16 25  6 14 24 36 50</span></a>
-<a class="sourceLine" id="cb68-11" data-line-number="11"></a>
-<a class="sourceLine" id="cb68-12" data-line-number="12"><span class="co"># the colors are recycled</span></a>
-<a class="sourceLine" id="cb68-13" data-line-number="13"></a>
-<a class="sourceLine" id="cb68-14" data-line-number="14"><span class="kw">plot</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">col=</span><span class="kw">c</span>(<span class="st">&quot;red&quot;</span>,<span class="st">&quot;blue&quot;</span>), <span class="dt">pch=</span><span class="dv">19</span>, <span class="dt">cex=</span><span class="dv">3</span> )</a></code></pre></div>
-<p><img src="DS4PS-I_files/figure-html4/unnamed-chunk-79-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb77-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb77-2" data-line-number="2">x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10</span></a>
+<a class="sourceLine" id="cb77-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb77-4" data-line-number="4">y &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">5</span></a>
+<a class="sourceLine" id="cb77-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb77-6" data-line-number="6">x <span class="op">+</span><span class="st"> </span>y</a>
+<a class="sourceLine" id="cb77-7" data-line-number="7"><span class="co">#&gt;  [1]  2  4  6  8 10  7  9 11 13 15</span></a>
+<a class="sourceLine" id="cb77-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb77-9" data-line-number="9">x <span class="op">*</span><span class="st"> </span>y</a>
+<a class="sourceLine" id="cb77-10" data-line-number="10"><span class="co">#&gt;  [1]  1  4  9 16 25  6 14 24 36 50</span></a>
+<a class="sourceLine" id="cb77-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb77-12" data-line-number="12"><span class="co"># the colors are recycled</span></a>
+<a class="sourceLine" id="cb77-13" data-line-number="13"></a>
+<a class="sourceLine" id="cb77-14" data-line-number="14"><span class="kw">plot</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">col=</span><span class="kw">c</span>(<span class="st">&quot;red&quot;</span>,<span class="st">&quot;blue&quot;</span>), <span class="dt">pch=</span><span class="dv">19</span>, <span class="dt">cex=</span><span class="dv">3</span> )</a></code></pre></div>
+<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-89-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>Here is an example of recycling gone wrong:</p>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb69-1" data-line-number="1"></a>
-<a class="sourceLine" id="cb69-2" data-line-number="2">x1 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">167</span>,<span class="dv">185</span>,<span class="dv">119</span>,<span class="dv">142</span>)</a>
-<a class="sourceLine" id="cb69-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb69-4" data-line-number="4">x2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;adam&quot;</span>,<span class="st">&quot;jamal&quot;</span>,<span class="st">&quot;linda&quot;</span>,<span class="st">&quot;sriti&quot;</span>)</a>
-<a class="sourceLine" id="cb69-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb69-6" data-line-number="6">x3 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;male&quot;</span>,<span class="st">&quot;male&quot;</span>,<span class="st">&quot;female&quot;</span>,<span class="st">&quot;female&quot;</span>)</a>
-<a class="sourceLine" id="cb69-7" data-line-number="7"></a>
-<a class="sourceLine" id="cb69-8" data-line-number="8">x4 &lt;-<span class="st"> </span><span class="kw">c</span>( <span class="st">&quot;treatment&quot;</span>,<span class="st">&quot;contro&quot;</span>,<span class="st">&quot;treatment&quot;</span>,<span class="st">&quot;control&quot;</span> )</a>
-<a class="sourceLine" id="cb69-9" data-line-number="9"></a>
-<a class="sourceLine" id="cb69-10" data-line-number="10">dat &lt;-<span class="st"> </span><span class="kw">data.frame</span>( <span class="dt">name=</span>x2, <span class="dt">sex=</span>x3, <span class="dt">treat=</span>x4, <span class="dt">strength=</span>x1 )</a>
-<a class="sourceLine" id="cb69-11" data-line-number="11"></a>
-<a class="sourceLine" id="cb69-12" data-line-number="12"></a>
-<a class="sourceLine" id="cb69-13" data-line-number="13"><span class="co"># create a subset of data of all female study participants</span></a>
-<a class="sourceLine" id="cb69-14" data-line-number="14"></a>
-<a class="sourceLine" id="cb69-15" data-line-number="15">dat<span class="op">$</span>sex <span class="op">==</span><span class="st"> &quot;female&quot;</span></a>
-<a class="sourceLine" id="cb69-16" data-line-number="16"><span class="co">#&gt; [1] FALSE FALSE  TRUE  TRUE</span></a>
-<a class="sourceLine" id="cb69-17" data-line-number="17"></a>
-<a class="sourceLine" id="cb69-18" data-line-number="18">these &lt;-<span class="st"> </span>dat<span class="op">$</span>sex <span class="op">==</span><span class="st"> &quot;female&quot;</span></a>
-<a class="sourceLine" id="cb69-19" data-line-number="19"></a>
-<a class="sourceLine" id="cb69-20" data-line-number="20">dat[ these, ]  <span class="co"># correct subset</span></a>
-<a class="sourceLine" id="cb69-21" data-line-number="21"><span class="co">#&gt;    name    sex     treat strength</span></a>
-<a class="sourceLine" id="cb69-22" data-line-number="22"><span class="co">#&gt; 3 linda female treatment      119</span></a>
-<a class="sourceLine" id="cb69-23" data-line-number="23"><span class="co">#&gt; 4 sriti female   control      142</span></a>
-<a class="sourceLine" id="cb69-24" data-line-number="24"></a>
-<a class="sourceLine" id="cb69-25" data-line-number="25"></a>
-<a class="sourceLine" id="cb69-26" data-line-number="26"><span class="co"># same thing, but i mess is up - the female element is recycled in the overwrite</span></a>
-<a class="sourceLine" id="cb69-27" data-line-number="27"></a>
-<a class="sourceLine" id="cb69-28" data-line-number="28">dat<span class="op">$</span>sex =<span class="st"> &quot;female&quot;</span>    <span class="co"># whoops just over-wrote my data! should be double equal</span></a>
-<a class="sourceLine" id="cb69-29" data-line-number="29"></a>
-<a class="sourceLine" id="cb69-30" data-line-number="30">these &lt;-<span class="st"> </span>dat<span class="op">$</span>sex <span class="op">==</span><span class="st"> &quot;female&quot;</span> </a>
-<a class="sourceLine" id="cb69-31" data-line-number="31"></a>
-<a class="sourceLine" id="cb69-32" data-line-number="32">dat[ these , ]</a>
-<a class="sourceLine" id="cb69-33" data-line-number="33"><span class="co">#&gt;    name    sex     treat strength</span></a>
-<a class="sourceLine" id="cb69-34" data-line-number="34"><span class="co">#&gt; 1  adam female treatment      167</span></a>
-<a class="sourceLine" id="cb69-35" data-line-number="35"><span class="co">#&gt; 2 jamal female    contro      185</span></a>
-<a class="sourceLine" id="cb69-36" data-line-number="36"><span class="co">#&gt; 3 linda female treatment      119</span></a>
-<a class="sourceLine" id="cb69-37" data-line-number="37"><span class="co">#&gt; 4 sriti female   control      142</span></a></code></pre></div>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb78-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb78-2" data-line-number="2">x1 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">167</span>,<span class="dv">185</span>,<span class="dv">119</span>,<span class="dv">142</span>)</a>
+<a class="sourceLine" id="cb78-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb78-4" data-line-number="4">x2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;adam&quot;</span>,<span class="st">&quot;jamal&quot;</span>,<span class="st">&quot;linda&quot;</span>,<span class="st">&quot;sriti&quot;</span>)</a>
+<a class="sourceLine" id="cb78-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb78-6" data-line-number="6">x3 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;male&quot;</span>,<span class="st">&quot;male&quot;</span>,<span class="st">&quot;female&quot;</span>,<span class="st">&quot;female&quot;</span>)</a>
+<a class="sourceLine" id="cb78-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb78-8" data-line-number="8">x4 &lt;-<span class="st"> </span><span class="kw">c</span>( <span class="st">&quot;treatment&quot;</span>,<span class="st">&quot;contro&quot;</span>,<span class="st">&quot;treatment&quot;</span>,<span class="st">&quot;control&quot;</span> )</a>
+<a class="sourceLine" id="cb78-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb78-10" data-line-number="10">dat &lt;-<span class="st"> </span><span class="kw">data.frame</span>( <span class="dt">name=</span>x2, <span class="dt">sex=</span>x3, <span class="dt">treat=</span>x4, <span class="dt">strength=</span>x1 )</a>
+<a class="sourceLine" id="cb78-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb78-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb78-13" data-line-number="13"><span class="co"># create a subset of data of all female study participants</span></a>
+<a class="sourceLine" id="cb78-14" data-line-number="14"></a>
+<a class="sourceLine" id="cb78-15" data-line-number="15">dat<span class="op">$</span>sex <span class="op">==</span><span class="st"> &quot;female&quot;</span></a>
+<a class="sourceLine" id="cb78-16" data-line-number="16"><span class="co">#&gt; [1] FALSE FALSE  TRUE  TRUE</span></a>
+<a class="sourceLine" id="cb78-17" data-line-number="17"></a>
+<a class="sourceLine" id="cb78-18" data-line-number="18">these &lt;-<span class="st"> </span>dat<span class="op">$</span>sex <span class="op">==</span><span class="st"> &quot;female&quot;</span></a>
+<a class="sourceLine" id="cb78-19" data-line-number="19"></a>
+<a class="sourceLine" id="cb78-20" data-line-number="20">dat[ these, ]  <span class="co"># correct subset</span></a>
+<a class="sourceLine" id="cb78-21" data-line-number="21"><span class="co">#&gt;    name    sex     treat strength</span></a>
+<a class="sourceLine" id="cb78-22" data-line-number="22"><span class="co">#&gt; 3 linda female treatment      119</span></a>
+<a class="sourceLine" id="cb78-23" data-line-number="23"><span class="co">#&gt; 4 sriti female   control      142</span></a>
+<a class="sourceLine" id="cb78-24" data-line-number="24"></a>
+<a class="sourceLine" id="cb78-25" data-line-number="25"></a>
+<a class="sourceLine" id="cb78-26" data-line-number="26"><span class="co"># same thing, but i mess is up - the female element is recycled in the overwrite</span></a>
+<a class="sourceLine" id="cb78-27" data-line-number="27"></a>
+<a class="sourceLine" id="cb78-28" data-line-number="28">dat<span class="op">$</span>sex =<span class="st"> &quot;female&quot;</span>    <span class="co"># whoops just over-wrote my data! should be double equal</span></a>
+<a class="sourceLine" id="cb78-29" data-line-number="29"></a>
+<a class="sourceLine" id="cb78-30" data-line-number="30">these &lt;-<span class="st"> </span>dat<span class="op">$</span>sex <span class="op">==</span><span class="st"> &quot;female&quot;</span> </a>
+<a class="sourceLine" id="cb78-31" data-line-number="31"></a>
+<a class="sourceLine" id="cb78-32" data-line-number="32">dat[ these , ]</a>
+<a class="sourceLine" id="cb78-33" data-line-number="33"><span class="co">#&gt;    name    sex     treat strength</span></a>
+<a class="sourceLine" id="cb78-34" data-line-number="34"><span class="co">#&gt; 1  adam female treatment      167</span></a>
+<a class="sourceLine" id="cb78-35" data-line-number="35"><span class="co">#&gt; 2 jamal female    contro      185</span></a>
+<a class="sourceLine" id="cb78-36" data-line-number="36"><span class="co">#&gt; 3 linda female treatment      119</span></a>
+<a class="sourceLine" id="cb78-37" data-line-number="37"><span class="co">#&gt; 4 sriti female   control      142</span></a></code></pre></div>
 </div>
 <div id="missing-values-nas" class="section level2">
 <h2><span class="header-section-number">4.4</span> Missing Values: NA’s</h2>
 <p>Missing values are coded differently in each data analysis program. SPSS uses a period, for example. In R, missing values are coded as “NA”.</p>
 <p>The important thing to note is that R wants to make sure you know there are missing values if you are conducting analysis. As a result, it will give you the answer of “NA” when you try to do math with a vector that includes a missing value. You have to ask it explicitly to ignore the missing value.</p>
-<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb70-1" data-line-number="1">x5 &lt;-<span class="st"> </span><span class="kw">c</span>( <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span> )</a>
-<a class="sourceLine" id="cb70-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb70-3" data-line-number="3">x5</a>
-<a class="sourceLine" id="cb70-4" data-line-number="4"><span class="co">#&gt; [1] 1 2 3 4</span></a>
-<a class="sourceLine" id="cb70-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb70-6" data-line-number="6"><span class="kw">sum</span>( x5 )</a>
-<a class="sourceLine" id="cb70-7" data-line-number="7"><span class="co">#&gt; [1] 10</span></a>
-<a class="sourceLine" id="cb70-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb70-9" data-line-number="9"><span class="kw">mean</span>( x5 )</a>
-<a class="sourceLine" id="cb70-10" data-line-number="10"><span class="co">#&gt; [1] 2.5</span></a>
-<a class="sourceLine" id="cb70-11" data-line-number="11"></a>
-<a class="sourceLine" id="cb70-12" data-line-number="12">x5 &lt;-<span class="st"> </span><span class="kw">c</span>( <span class="dv">1</span>, <span class="dv">2</span>, <span class="ot">NA</span>, <span class="dv">4</span> )</a>
-<a class="sourceLine" id="cb70-13" data-line-number="13"></a>
-<a class="sourceLine" id="cb70-14" data-line-number="14">x5</a>
-<a class="sourceLine" id="cb70-15" data-line-number="15"><span class="co">#&gt; [1]  1  2 NA  4</span></a>
-<a class="sourceLine" id="cb70-16" data-line-number="16"></a>
-<a class="sourceLine" id="cb70-17" data-line-number="17"><span class="co"># should missing values be treated as zeros or dropped? </span></a>
-<a class="sourceLine" id="cb70-18" data-line-number="18"></a>
-<a class="sourceLine" id="cb70-19" data-line-number="19"><span class="kw">sum</span>( x5 )</a>
-<a class="sourceLine" id="cb70-20" data-line-number="20"><span class="co">#&gt; [1] NA</span></a>
-<a class="sourceLine" id="cb70-21" data-line-number="21"></a>
-<a class="sourceLine" id="cb70-22" data-line-number="22"><span class="kw">mean</span>( x5 )</a>
-<a class="sourceLine" id="cb70-23" data-line-number="23"><span class="co">#&gt; [1] NA</span></a>
-<a class="sourceLine" id="cb70-24" data-line-number="24"></a>
-<a class="sourceLine" id="cb70-25" data-line-number="25"><span class="kw">sum</span>( x5, <span class="dt">na.rm=</span>T )   <span class="co"># na.rm=T argument drops missing values</span></a>
-<a class="sourceLine" id="cb70-26" data-line-number="26"><span class="co">#&gt; [1] 7</span></a>
-<a class="sourceLine" id="cb70-27" data-line-number="27"></a>
-<a class="sourceLine" id="cb70-28" data-line-number="28"><span class="kw">mean</span>( x5, <span class="dt">na.rm=</span>T )  <span class="co"># na.rm=T argument drops missing values</span></a>
-<a class="sourceLine" id="cb70-29" data-line-number="29"><span class="co">#&gt; [1] 2.333333</span></a></code></pre></div>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb79-1" data-line-number="1">x5 &lt;-<span class="st"> </span><span class="kw">c</span>( <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span> )</a>
+<a class="sourceLine" id="cb79-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb79-3" data-line-number="3">x5</a>
+<a class="sourceLine" id="cb79-4" data-line-number="4"><span class="co">#&gt; [1] 1 2 3 4</span></a>
+<a class="sourceLine" id="cb79-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb79-6" data-line-number="6"><span class="kw">sum</span>( x5 )</a>
+<a class="sourceLine" id="cb79-7" data-line-number="7"><span class="co">#&gt; [1] 10</span></a>
+<a class="sourceLine" id="cb79-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb79-9" data-line-number="9"><span class="kw">mean</span>( x5 )</a>
+<a class="sourceLine" id="cb79-10" data-line-number="10"><span class="co">#&gt; [1] 2.5</span></a>
+<a class="sourceLine" id="cb79-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb79-12" data-line-number="12">x5 &lt;-<span class="st"> </span><span class="kw">c</span>( <span class="dv">1</span>, <span class="dv">2</span>, <span class="ot">NA</span>, <span class="dv">4</span> )</a>
+<a class="sourceLine" id="cb79-13" data-line-number="13"></a>
+<a class="sourceLine" id="cb79-14" data-line-number="14">x5</a>
+<a class="sourceLine" id="cb79-15" data-line-number="15"><span class="co">#&gt; [1]  1  2 NA  4</span></a>
+<a class="sourceLine" id="cb79-16" data-line-number="16"></a>
+<a class="sourceLine" id="cb79-17" data-line-number="17"><span class="co"># should missing values be treated as zeros or dropped? </span></a>
+<a class="sourceLine" id="cb79-18" data-line-number="18"></a>
+<a class="sourceLine" id="cb79-19" data-line-number="19"><span class="kw">sum</span>( x5 )</a>
+<a class="sourceLine" id="cb79-20" data-line-number="20"><span class="co">#&gt; [1] NA</span></a>
+<a class="sourceLine" id="cb79-21" data-line-number="21"></a>
+<a class="sourceLine" id="cb79-22" data-line-number="22"><span class="kw">mean</span>( x5 )</a>
+<a class="sourceLine" id="cb79-23" data-line-number="23"><span class="co">#&gt; [1] NA</span></a>
+<a class="sourceLine" id="cb79-24" data-line-number="24"></a>
+<a class="sourceLine" id="cb79-25" data-line-number="25"><span class="kw">sum</span>( x5, <span class="dt">na.rm=</span>T )   <span class="co"># na.rm=T argument drops missing values</span></a>
+<a class="sourceLine" id="cb79-26" data-line-number="26"><span class="co">#&gt; [1] 7</span></a>
+<a class="sourceLine" id="cb79-27" data-line-number="27"></a>
+<a class="sourceLine" id="cb79-28" data-line-number="28"><span class="kw">mean</span>( x5, <span class="dt">na.rm=</span>T )  <span class="co"># na.rm=T argument drops missing values</span></a>
+<a class="sourceLine" id="cb79-29" data-line-number="29"><span class="co">#&gt; [1] 2.333333</span></a></code></pre></div>
 <p>You cannot use the <em>==</em> operator to identify missing values in a dataset. There is a special <strong>is.na()</strong> function to locate all of the missing values in a vector.</p>
-<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb71-1" data-line-number="1"></a>
-<a class="sourceLine" id="cb71-2" data-line-number="2">x5</a>
-<a class="sourceLine" id="cb71-3" data-line-number="3"><span class="co">#&gt; [1]  1  2 NA  4</span></a>
-<a class="sourceLine" id="cb71-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb71-5" data-line-number="5">x5 <span class="op">==</span><span class="st"> </span><span class="ot">NA</span>    <span class="co"># this does not do what you want</span></a>
-<a class="sourceLine" id="cb71-6" data-line-number="6"><span class="co">#&gt; [1] NA NA NA NA</span></a>
-<a class="sourceLine" id="cb71-7" data-line-number="7"></a>
-<a class="sourceLine" id="cb71-8" data-line-number="8"><span class="kw">is.na</span>( x5 )    <span class="co"># much better</span></a>
-<a class="sourceLine" id="cb71-9" data-line-number="9"><span class="co">#&gt; [1] FALSE FALSE  TRUE FALSE</span></a>
-<a class="sourceLine" id="cb71-10" data-line-number="10"></a>
-<a class="sourceLine" id="cb71-11" data-line-number="11"><span class="op">!</span><span class="st"> </span><span class="kw">is.na</span>( x5 )  <span class="co"># if you want to create a selector vector to drop missing values </span></a>
-<a class="sourceLine" id="cb71-12" data-line-number="12"><span class="co">#&gt; [1]  TRUE  TRUE FALSE  TRUE</span></a>
-<a class="sourceLine" id="cb71-13" data-line-number="13"></a>
-<a class="sourceLine" id="cb71-14" data-line-number="14">x5[ <span class="op">!</span><span class="st"> </span><span class="kw">is.na</span>(x5) ]</a>
-<a class="sourceLine" id="cb71-15" data-line-number="15"><span class="co">#&gt; [1] 1 2 4</span></a>
-<a class="sourceLine" id="cb71-16" data-line-number="16"></a>
-<a class="sourceLine" id="cb71-17" data-line-number="17">x5[ <span class="kw">is.na</span>(x5) ] &lt;-<span class="st"> </span><span class="dv">0</span>  <span class="co"># replace missing values with zero</span></a></code></pre></div>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb80-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb80-2" data-line-number="2">x5</a>
+<a class="sourceLine" id="cb80-3" data-line-number="3"><span class="co">#&gt; [1]  1  2 NA  4</span></a>
+<a class="sourceLine" id="cb80-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb80-5" data-line-number="5">x5 <span class="op">==</span><span class="st"> </span><span class="ot">NA</span>    <span class="co"># this does not do what you want</span></a>
+<a class="sourceLine" id="cb80-6" data-line-number="6"><span class="co">#&gt; [1] NA NA NA NA</span></a>
+<a class="sourceLine" id="cb80-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb80-8" data-line-number="8"><span class="kw">is.na</span>( x5 )    <span class="co"># much better</span></a>
+<a class="sourceLine" id="cb80-9" data-line-number="9"><span class="co">#&gt; [1] FALSE FALSE  TRUE FALSE</span></a>
+<a class="sourceLine" id="cb80-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb80-11" data-line-number="11"><span class="op">!</span><span class="st"> </span><span class="kw">is.na</span>( x5 )  <span class="co"># if you want to create a selector vector to drop missing values </span></a>
+<a class="sourceLine" id="cb80-12" data-line-number="12"><span class="co">#&gt; [1]  TRUE  TRUE FALSE  TRUE</span></a>
+<a class="sourceLine" id="cb80-13" data-line-number="13"></a>
+<a class="sourceLine" id="cb80-14" data-line-number="14">x5[ <span class="op">!</span><span class="st"> </span><span class="kw">is.na</span>(x5) ]</a>
+<a class="sourceLine" id="cb80-15" data-line-number="15"><span class="co">#&gt; [1] 1 2 4</span></a>
+<a class="sourceLine" id="cb80-16" data-line-number="16"></a>
+<a class="sourceLine" id="cb80-17" data-line-number="17">x5[ <span class="kw">is.na</span>(x5) ] &lt;-<span class="st"> </span><span class="dv">0</span>  <span class="co"># replace missing values with zero</span></a></code></pre></div>
 </div>
 <div id="the-attach-function" class="section level2">
 <h2><span class="header-section-number">4.5</span> The ‘attach’ Function</h2>
@@ -760,37 +760,37 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>This is a convenient function for making variable names easily accessible, but it is problematic because of:</p>
 <p>scope</p>
 <p>conflicting variable names</p>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb72-1" data-line-number="1"></a>
-<a class="sourceLine" id="cb72-2" data-line-number="2">x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">5</span></a>
-<a class="sourceLine" id="cb72-3" data-line-number="3">y &lt;-<span class="st"> </span><span class="dv">6</span><span class="op">:</span><span class="dv">10</span></a>
-<a class="sourceLine" id="cb72-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb72-5" data-line-number="5">dat &lt;-<span class="st"> </span><span class="kw">data.frame</span>(x,y)</a>
-<a class="sourceLine" id="cb72-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb72-7" data-line-number="7"><span class="kw">rm</span>(x)</a>
-<a class="sourceLine" id="cb72-8" data-line-number="8"><span class="kw">rm</span>(y)</a>
-<a class="sourceLine" id="cb72-9" data-line-number="9"></a>
-<a class="sourceLine" id="cb72-10" data-line-number="10"></a>
-<a class="sourceLine" id="cb72-11" data-line-number="11"><span class="co"># I want to transform x in my dataset</span></a>
-<a class="sourceLine" id="cb72-12" data-line-number="12"></a>
-<a class="sourceLine" id="cb72-13" data-line-number="13"><span class="kw">attach</span>( dat )</a>
-<a class="sourceLine" id="cb72-14" data-line-number="14"></a>
-<a class="sourceLine" id="cb72-15" data-line-number="15"><span class="dv">2</span><span class="op">*</span>x</a>
-<a class="sourceLine" id="cb72-16" data-line-number="16"><span class="co">#&gt; [1]  2  4  6  8 10</span></a>
-<a class="sourceLine" id="cb72-17" data-line-number="17"></a>
-<a class="sourceLine" id="cb72-18" data-line-number="18">x &lt;-<span class="st"> </span><span class="dv">2</span><span class="op">*</span>x</a>
-<a class="sourceLine" id="cb72-19" data-line-number="19"></a>
-<a class="sourceLine" id="cb72-20" data-line-number="20"><span class="kw">detach</span>( dat )</a>
-<a class="sourceLine" id="cb72-21" data-line-number="21"></a>
-<a class="sourceLine" id="cb72-22" data-line-number="22">x</a>
-<a class="sourceLine" id="cb72-23" data-line-number="23"><span class="co">#&gt; [1]  2  4  6  8 10</span></a>
-<a class="sourceLine" id="cb72-24" data-line-number="24"></a>
-<a class="sourceLine" id="cb72-25" data-line-number="25">dat  <span class="co"># whoops! I didn&#39;t save my work in the dataset</span></a>
-<a class="sourceLine" id="cb72-26" data-line-number="26"><span class="co">#&gt;   x  y</span></a>
-<a class="sourceLine" id="cb72-27" data-line-number="27"><span class="co">#&gt; 1 1  6</span></a>
-<a class="sourceLine" id="cb72-28" data-line-number="28"><span class="co">#&gt; 2 2  7</span></a>
-<a class="sourceLine" id="cb72-29" data-line-number="29"><span class="co">#&gt; 3 3  8</span></a>
-<a class="sourceLine" id="cb72-30" data-line-number="30"><span class="co">#&gt; 4 4  9</span></a>
-<a class="sourceLine" id="cb72-31" data-line-number="31"><span class="co">#&gt; 5 5 10</span></a></code></pre></div>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb81-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb81-2" data-line-number="2">x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">5</span></a>
+<a class="sourceLine" id="cb81-3" data-line-number="3">y &lt;-<span class="st"> </span><span class="dv">6</span><span class="op">:</span><span class="dv">10</span></a>
+<a class="sourceLine" id="cb81-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb81-5" data-line-number="5">dat &lt;-<span class="st"> </span><span class="kw">data.frame</span>(x,y)</a>
+<a class="sourceLine" id="cb81-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb81-7" data-line-number="7"><span class="kw">rm</span>(x)</a>
+<a class="sourceLine" id="cb81-8" data-line-number="8"><span class="kw">rm</span>(y)</a>
+<a class="sourceLine" id="cb81-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb81-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb81-11" data-line-number="11"><span class="co"># I want to transform x in my dataset</span></a>
+<a class="sourceLine" id="cb81-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb81-13" data-line-number="13"><span class="kw">attach</span>( dat )</a>
+<a class="sourceLine" id="cb81-14" data-line-number="14"></a>
+<a class="sourceLine" id="cb81-15" data-line-number="15"><span class="dv">2</span><span class="op">*</span>x</a>
+<a class="sourceLine" id="cb81-16" data-line-number="16"><span class="co">#&gt; [1]  2  4  6  8 10</span></a>
+<a class="sourceLine" id="cb81-17" data-line-number="17"></a>
+<a class="sourceLine" id="cb81-18" data-line-number="18">x &lt;-<span class="st"> </span><span class="dv">2</span><span class="op">*</span>x</a>
+<a class="sourceLine" id="cb81-19" data-line-number="19"></a>
+<a class="sourceLine" id="cb81-20" data-line-number="20"><span class="kw">detach</span>( dat )</a>
+<a class="sourceLine" id="cb81-21" data-line-number="21"></a>
+<a class="sourceLine" id="cb81-22" data-line-number="22">x</a>
+<a class="sourceLine" id="cb81-23" data-line-number="23"><span class="co">#&gt; [1]  2  4  6  8 10</span></a>
+<a class="sourceLine" id="cb81-24" data-line-number="24"></a>
+<a class="sourceLine" id="cb81-25" data-line-number="25">dat  <span class="co"># whoops! I didn&#39;t save my work in the dataset</span></a>
+<a class="sourceLine" id="cb81-26" data-line-number="26"><span class="co">#&gt;   x  y</span></a>
+<a class="sourceLine" id="cb81-27" data-line-number="27"><span class="co">#&gt; 1 1  6</span></a>
+<a class="sourceLine" id="cb81-28" data-line-number="28"><span class="co">#&gt; 2 2  7</span></a>
+<a class="sourceLine" id="cb81-29" data-line-number="29"><span class="co">#&gt; 3 3  8</span></a>
+<a class="sourceLine" id="cb81-30" data-line-number="30"><span class="co">#&gt; 4 4  9</span></a>
+<a class="sourceLine" id="cb81-31" data-line-number="31"><span class="co">#&gt; 5 5 10</span></a></code></pre></div>
 <p>You will see the <strong>attach()</strong> function used on occassion, and it is tempting because you can write the variable names directly. But in general, try to avoid the <strong>attach()</strong> function and don’t form bad habits by using it now because when your scripts become more complicated then can cause problmes.</p>
 
 </div>
@@ -819,10 +819,11 @@ gitbook.start({
 "facebook": true,
 "twitter": true,
 "google": false,
+"linkedin": false,
 "weibo": false,
 "instapper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",

@@ -18,6 +18,8 @@ library( pander )
 This lab offers practice with some basic R functions applied to vectors in order to ascertain basic information about the dataset or count and summarize things. 
 
 
+<br><br>
+
 ## Functions
 
 You will use the following functions for this lab: 
@@ -39,6 +41,7 @@ summarize( dat$acres )
 
 
 
+<br><br>
 
 # Data
 
@@ -53,6 +56,7 @@ dat <- read.csv( URL, stringsAsFactors=FALSE )
 head( dat, 10 ) 
 ```
 
+<br><br>
 
 # Lab Instructions
 
@@ -69,6 +73,7 @@ Answer the following questions in your lab.
 
 
 
+<br><br>
 
 # Submission Instructions
 

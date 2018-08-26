@@ -25,7 +25,7 @@ This dataset represents approximately 42,000 tax parcels for the city of Syracus
 knitr::include_graphics( "syr_parcels/Syracuse_Parcels.png" )
 ```
 
-```{r, fig.cap="Downtown Syracuse", echo=F, fig.width=10, fig.align="center" }
+```{r, fig.cap="Downtown Syracuse", echo=F, fig.width=10, fig.heigth=10, fig.align="center" }
 knitr::include_graphics( "syr_parcels/downtown_syr.png" )
 ```
 

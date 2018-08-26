@@ -313,17 +313,20 @@ In generate, you will use quotes when you are creating character vectors, and fo
 ```{r}
 
 
-plot( 1:4, col="blue", pch=19, cex=4 )   # text used for color argument, use quotes
+plot( rep(1,4), col="blue", pch=19, cex=6 )   # text used for color argument, use quotes
 
-# what if we want colors that represent groups in our data
+
 
 group <- factor( c("treatment","control","treatment","control") )
 
-plot( 1:4, col=group, pch=19, cex=4 )       # object used for color argument, no quotes
+plot( rep(1,4), col=group, pch=19, cex=6 )       # object used for color argument, no quotes
 
 ```
 
-Recall that x3 is the sex of study participants, so the different colors represent the different genders in the study.
+In the first example we are using a text string as an argument, so it must be enclosed by quotes to specify that it is text.
+
+In the second example the colors are set according to group membership (treatment or control group). Since the argument is now an object (`col=group`), we do not use quotes. 
+
 
 
 ## Logical Vectors
@@ -368,10 +371,10 @@ z1
 
 ```
 
+
 Note how NAs affect complex logical statements:
 
 ```{r}
-
 TRUE & TRUE
 
 TRUE & FALSE
@@ -379,26 +382,21 @@ TRUE & FALSE
 TRUE & NA
 
 FALSE & NA
-
 ```
 
 If one condition is TRUE, and another is NA, R does not want to throw out the data because the state of the missing value is unclear. As a result, it will preserve the observation, but it will replace all of the data with missing values:
 
 ```{r}
-
 dat
 
 keep.these <- c(T,F,NA,F)
-
 dat[ keep.these , ]
-
 ```
 
 To remove these rows, replace all NAs in your selector vector with FALSE:
 
 ```{r}
 keep.these[ is.na(keep.these) ] <- FALSE
-
 dat[ keep.these , ]
 ```
 
@@ -414,7 +412,6 @@ First, it saves memory. Text is very "expensive" in terms of memory allocation a
 Second, when a variable is set as a factor, R recognizes that it represents a group and it can deploy object-oriented functionality. When you use a factor in analysis, R knows that you want to split the analysis up by groups.
 
 ```{r}
-
 height <- c( 70, 68, 62, 64, 72, 69, 58, 63  )
 
 strength <- c(167,185,119,142,175,204,124,117)
@@ -424,7 +421,6 @@ sex <- factor( c("male","male","female","female","male","male","female","female"
 plot( height, strength )   # simple scatter plot
 
 plot( sex, strength )      # box and whisker plot       
-
 ```
 
 Factors are more memory efficient than character vectors because they store the underlying data as a numeric vector instead of a categorical (text) vector. Each group in the data is assigned a number, and when printing items the program only has to remember which group corresponds to which number:
