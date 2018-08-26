@@ -5,8 +5,7 @@ output: html_document
 
 # Bio for Thomas Lutes
 
-[](TLPRO.jpg)
-
+<img src="TLPRO.jpg" width="200" >
 
 ## My Home Department
 
