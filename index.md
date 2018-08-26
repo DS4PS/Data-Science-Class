@@ -41,6 +41,10 @@
 <br>
 
 
+### Class Roster
+
+[ROSTER](MISC/bios_lab_01/ROSTER.md)
+
 ### READINGS
 
 Teetor, P. (2011). *R cookbook: Proven recipes for data analysis, statistics, and graphics*. " O'Reilly Media, Inc.". 
