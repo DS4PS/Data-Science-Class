@@ -65,8 +65,8 @@ head( dat, 10 )
 Answer the following questions in your lab.  
 
 1. How many tax parcels are in syracuse (dataset dimensions)? 
-2. How many acres of land are in syracuse (sum over numeric vector)?
-3. How many vacant BUILDINGS are there in Syracuse (sum over logical vector)?
+2. How many acres of land are in syracuse (sum over a numeric vector)?
+3. How many vacant BUILDINGS are there in Syracuse (sum over a logical vector)?
 4. What proportion of parcels are tax exempt?
 5. Which neighborhood contains the most tax parcels (table with one variable)?
 6. Which neighborhood contains the most vacant LOTS (table with two variables)? 
