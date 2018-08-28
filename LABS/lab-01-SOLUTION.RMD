@@ -71,18 +71,25 @@ This is an ordered list:
 
 ```
 
+<br><br>
 
-## Advanced Markdown Functionality
+## Notes on Markdown
+
+Below are some tips for more advanced Markdown functionality.
+
+Note that *.Rmd* stands for R Markdown files. R Studio has adopted the Markdown 'language' and added functionality using code chunks and many more options. See the [R Markdown Cheatsheet](https://www.rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf) to get a sense of the extensiveness of options you have.
+
+<br>
 
 ### Naming Files
 
 I have asked you to use the following naming format for assignments: **Lab-01-Lecy.Rmd**
 
-Note that *.Rmd* stands for R Markdown files. R Studio has adopted the Markdown 'language' and added functionality using code chunks and many more options. See the [R Markdown Cheatsheet](https://www.rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf) to get a sense of the extensiveness of options you have.
-
 Basic script files have the *.R* extension, and RMD files will use the *.Rmd* extension. These file extensions can be written as *.RMD*, *.Rmd*, or *.rmd*. 
 
+Avoid spaces in your file names whenever possible.
 
+<br>
 
 ### Organizing Images
 
@@ -101,16 +108,20 @@ When you render the document, Markdown requires that the image be saved in the s
 It is a good idea to get into the practice of storing images and other assets in a separate folder, otherwise your directories will quickly get cluttered.
 
 
+<br>
+
 ### Image Size
 
-I 
+The basic Markdown syntax for images is: 
 
 
-```
-![alt-text](figures/lecy.jpg)
 ```
 ![](figures/lecy.jpg)
+```
 
+We may want some control over image size. Markdown itself is a purposefully simple language, so it doesn't offer this functionality.
+
+We can, however, change image size in two ways, either with a CSS argument below the image:
 
 
 ```{r, eval=F}
@@ -124,6 +135,18 @@ img[alt=bio] { width: 100px; }
 
 ```
 
+
+Alternatively, you can just use HTML directly in markdown documents. 
+
+
+```
+<img src="figures/lecy.jpg" alt="bio profile picture" width="100" >
+```
+
+
+
+![](figures/lecy.jpg)
+
 ![bio](figures/lecy.jpg)
 
 ```{css}
@@ -131,12 +154,8 @@ img[alt=bio] { width: 100px; }
 ```
 
 
-Alternatively, you can just use HTML directly in markdown documents. 
 
-```
-<img src="figures/lecy.jpg" alt="bio profile picture" width="100" >
-```
-
+<br><br>
 
 
 ### Video Links
@@ -146,6 +165,8 @@ The most basic way to create a video link is to add a hyperlink to a photo:
 ```
 [   ![](youtube-image.png)  ](www.website-address.com)
 ```
+
+
 
 The annoying part is that you need an image of your video as well as a link. You can search for your video name in images and find an appropriate image. Or there is a trick on YouTube - they create and save images for each video according to the following format: 
 
@@ -164,11 +185,16 @@ https://img.youtube.com/vi/dQw4w9WgXcQ/0.jpg
 ```
 ![](https://img.youtube.com/vi/dQw4w9WgXcQ/0.jpg)
 
-<br>
+<br><br>
 
-This basic formula of adding a hyperlink to a photo will work for any photos in Markdown. If you are working with videos, however, there is a better option called an iframe<>. This format was created for embedding nicely-formatted videos into HTML pages, and allowing the user to play the video directly from the current page without having to go to YouTube.
 
-To find the iframe<> info, just click on the **Share** button, then click **Embed**. You will see the following info:
+### iframes
+
+This basic formula of adding a hyperlink to a photo will work for any photos in Markdown. If you are working with videos, however, there is a better option called an iframe. 
+
+This format was created for embedding nicely-formatted videos into HTML pages, and allowing the user to play the video directly from the current page without having to go to YouTube.
+
+To find the iframe info, just click on the **Share** button, then click **Embed**. You will see the following info:
 
 ```
 <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
