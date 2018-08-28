@@ -69,7 +69,7 @@ Answer the following questions in your lab.
 3. How many vacant BUILDINGS are there in Syracuse (sum over logical vector)?
 4. What proportion of parcels are tax exempt?
 5. Which neighborhood contains the most tax parcels (table with one variable)?
-6. Which neighborhood contains the most vacant lots (table with two variables)? 
+6. Which neighborhood contains the most vacant LOTS (table with two variables)? 
 
 *Recall that R wants to make sure you are aware of missing values, so it will return NA for functions performed on vectors with missing values. Add the 'NA remove' argument to these vectors to ignore missing values:* `sum( x, na.rm=T )`
 
