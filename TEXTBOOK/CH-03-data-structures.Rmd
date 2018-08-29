@@ -308,97 +308,48 @@ c( a, b, c )
 
 When you type characters surrounded by quotes then R knows you are creating new text ("strings" in programming speak). When you type characters that are not surrounded by quotes, R thinks that you are looking for an object in the environment, like the variables we have already created. It gets confused when it doesn't find the object that you typed.
 
-In generate, you will use quotes when you are creating character vectors, and for arguments in functions. You do not use quotes when you are referencing an active object.
+In generate, you will use quotes when you are creating character vectors, and for arguments in functions. You do not use quotes when you are referencing an active object. An active object is typically a dataset or vector that you have imported or created. You can print a list of all active objects with the `ls()` function.
 
-```{r}
+### Quotes in Arguments
 
+When you first start using R it can be confusing about when quotes are needed around arguments. Take the following example of the color argument (`col=`) in the `plot()` function.
 
-plot( rep(1,4), col="blue", pch=19, cex=6 )   # text used for color argument, use quotes
+```{r, eval=F}
+strength <- c(167,185,119,142)
+name <- c("adam","jamal","linda","sriti")
+group <- factor( c( "treatment","control","treatment","control" ) )
 
+plot( strength, col="blue", ... )
 
-
-group <- factor( c("treatment","control","treatment","control") )
-
-plot( rep(1,4), col=group, pch=19, cex=6 )       # object used for color argument, no quotes
-
-```
-
-In the first example we are using a text string as an argument, so it must be enclosed by quotes to specify that it is text.
-
-In the second example the colors are set according to group membership (treatment or control group). Since the argument is now an object (`col=group`), we do not use quotes. 
-
-
-
-## Logical Vectors
-
-Logical vectors are collections of a set of TRUE and FALSE statements. 
-
-Logical statements allow us to define groups based upon criteria, then decide whether observations belong to the group. See the section on **operators** below for a complete list of logical statements.
-
-Logical vectors are important because organizing data into these sets is what drives all of the advanced data analytics (set theory is at the basis of mathematics and computer science). 
-
-
-
-```{r}
-dat
-
-dat$name == "sriti"
-
-dat$sex == "male"
-
-dat$strength > 180
-
-```
-
-Typically logical vectors are used in combination with subset operators to identify specific groups in the data.
-
-```{r}
-dat
-
-# isolate data on all of the females in the dataset
-
-dat[ dat$sex == "female" , ]
-
-```
-
-When defining logical vectors, you can use the abbreviated versions of T for TRUE and F for FALSE.
-
-```{r}
-
-z1 <- c(T,T,F,T,F,F)
-
-z1
-
+plot( strength, col=group,  ... )
 ```
 
 
-Note how NAs affect complex logical statements:
+```{r, fig.width=3.5,fig.height=3.5, fig.show='hold', echo=F }
 
-```{r}
-TRUE & TRUE
+strength <- c(167,185,119,142)
+name <- c("adam","jamal","linda","sriti")
+group <- factor( c( "treatment","control","treatment","control" ) )
 
-TRUE & FALSE
+par( mar=c(0,0,3,0) )
+plot( strength, col="blue",       
+      pch=19, cex=3, axes=F, type="h", lwd=2,
+      main='col = "blue"', ylab="strength", ylim=c(100,200)  )   
+text( 1:4, strength, name, col="blue", pos=3, offset=1 )
 
-TRUE & NA
-
-FALSE & NA
+plot( strength, col=group,      
+      pch=19, cex=3, axes=F, type="h", lwd=2,
+      main='col = group', ylab="strength", ylim=c(100,200) )       
+text( 1:4, strength, name, col=c("red","black"), pos=3, offset=1 )
 ```
 
-If one condition is TRUE, and another is NA, R does not want to throw out the data because the state of the missing value is unclear. As a result, it will preserve the observation, but it will replace all of the data with missing values:
+In the first example we are using a text string as an argument to specify a color (`col="blue"`), so it must be enclosed by quotes because it is text.
 
-```{r}
-dat
+In the second example R selects the color based upon group membership specified by the factor called 'group' (treatment or control). Since the argument is now referencing an object (`col=group`), we do not use quotes.
 
-keep.these <- c(T,F,NA,F)
-dat[ keep.these , ]
-```
+The exception here is when your argument requires a number. Numbers are not passed with quotes, or they would be cast as text.  
 
-To remove these rows, replace all NAs in your selector vector with FALSE:
 
-```{r}
-keep.these[ is.na(keep.these) ] <- FALSE
-dat[ keep.these , ]
-```
 
 
 
@@ -569,318 +520,6 @@ hist( iq, col="gray" )
 
 
 
-# Operators 
-
-
-Logical operators are the most basic type of data programming and the core of many types of data analysis. Most of the time we are not conducting fancy statistics, we just want to identify members of a group (print all of the females from the study), or describe things that belong to a subset of the data (compare the average price of houses with garages to houses without garages).
-
-In order to accomplish these simple tasks we need to use logic statements. A logic statement answers the question, does an observation belong to a group.
-
-Many times groups are simple. Show me all of the professions that make over $100k a year, for example.
-
-Sometimes groups are complex. Identify the African American children from a specific zip code in Chicago that live in households with single mothers.
-
-You will use nine basic logical operators:
-
-Operator |  Description
--------- |  -----------
-<        | less than
-<=       | less than or equal to
- >       | greater than
->=       | greater than or equal to
-==       | exactly equal to
-!=	     | not equal to
-x \| y	 | x OR y
-x & y	   | x AND y
-!        | opposite of
-
-Logical operators create logical vectors, a vector that contains only TRUE or FALSE. The TRUE means that the observation belongs to the group, FALSE means it does not.
-
-```{r}
-
-
-x1 <- c(7,9,1,2)
-
-x2 <- c("male","male","female","female")
-
-x3 <- c("treatment","control","treatment","control")
-
-x1 > 7
-
-x1 >= 7
-
-x1 == 9
-
-x1 = 9  # don't use a single equals operator!  it overwrites your variable
-
-x1
-
-x1 <- c(7,9,1,2)
-
-x1 == 9 | x1 == 1
-
-# x2 == male  # this will not work because male is not enclosed with quotes
-
-x2 == "female"
-
-x2 == "female" & x3 == "treatment"
-
-```
-
-Note that we use operators to create logical vectors where TRUE designates observation that belong to the defined group, and FALSE designates observations outside the group. We use these logical vectors in three ways:
-
-(1) We can create a selector variable that is used for subsets. When a logical vector is passed to the subset function it will keep all observations with a TRUE value, and drop observations with a FALSE value.
-
-```{r}
-
-x1
-
-x1 > 5
-
-keep.these <- x1 > 5
-
-x1[ keep.these ]
-
-# you can create a selector variable with one variable, and apply it to another
-
-x2[ keep.these ]  # sex of observations where x1 > 5
-```
-
-(2) Logical vectors give us an easy way to count things within defined groups. 
-
-We can apply a **sum()** function to a logical vector, and the result will be a tally of all of the TRUE cases.
-
-
-```{r}
-
-# how many females do we have in our study?
-
-sum( x2 == "female" )
-
-# how many females do we have in our treatment group?
-
-sum( x2 == "female" & x3 == "treatment" )
-
-
-```
-
-(3) We use selector variables to replace observations with new values using the assignment operator. This is similar to a find and replace operation.
-
-```{r}
-
-x7 <- c( "mole","mouse","shrew","mouse","rat","shrew")
-
-# the lab assistant incorrectly identified the shrews
-
-x7
-
-x7[ x7 == "shrew" ] <- "possum"
-
-x7
-
-
-# we don't know if linda received the treatment
-
-x3 <- c("adam","jamal","linda","sriti")
-
-x4 <- c( "treatment","control","treatment","control")
-
-x4[ x3 == "linda" ] <- NA
-
-x4
-
-```
-
-The **!** operator is a special case, where it is not used to define a new logical vector, but rather it swaps the values of an existing logical vector.
-
-```{r}
-
-x1
-
-these <- x1 > 5
-
-these
-
-! these
-
-! TRUE
-
-! FALSE
-```
-
-
-
-
-
-
-
-## Datasets
-
-When we combine multiple vectors together, we now have a dataset. There are three main types that we will use in this class.
-
-Class        | Description
------------- | -----------
-data frame   | A typical data set comprised of several variables
-matrix       | A data set comprised of only numbers, used for matrix math
-list         | The grab bag of data structures - several vectors held together
-
-
-### Data Frames
-
-The most familiar spreadsheet-type data structure is called a data frame in R. It consists of rows, which represent observations, and columns, which represent variables.
-
-```{r}
-
-data( USArrests )
-
-dim( USArrests )   # number of rows by number of columns
-
-names( USArrests )   # variable names or column names
-
-row.names( USArrests )
-
-head( USArrests )  # print first six rows of the data
-
-```
-
-### Matrices
-
-A matrix is also a rectangular data object that consists of collections of vectors, but it is special in the sense that it only has numeric vectors and no variable names.
-
-```{r}
-
-mat <- matrix( 1:20, nrow=5 )
-
-mat
-
-names( mat )
-
-dim( mat )
-
-as.data.frame( mat )  # creates variable names
-
-```
-
-These are used almost exclusively for matrix algebra operations, which are fundamental to mathematical statistics. We will not use matrices in this course.
-
-### Lists
-
-The list is the most flexible data structure. It is created by sticking a bunch of unrelated vectors or datasets together. For example, when you run a regression you generate a bunch of interesting information. This information is saved as a list.
-
-```{r}
-
-x <- 1:100
-y <- 2*x + rnorm( 100, 0, 10)
-
-m.01 <- lm( y ~ x )
-
-names( m.01 )
-
-m.01$coefficients
-
-m.01$residuals
-
-m.01$call
-
-```
-
-These output are all related to the model we have run, so they are kept organized by the list so they can be used for various further steps like comparing models or checking for model fit. 
-
-A data frame is a bit more rigid that a list in that you cannot combine elements that do not have the same dimsions.
-
-```{r}
-
-# new.dataframe <- data.frame( m.01$coefficients, m.01$residuals, m.01$call )
-#
-# these will fail because the vectors have different lengths 
-
-```
-
-
-
-
-## Subsets
-
-The subset operators **[ ]** are one of the most common you will use in R.
-
-The primary rule of subsets is to use a data operator to create a logical selector vector, and use that to generate subsets. Any observation that corresponds to TRUE will be retained, any observation that corresponds to FALSE will be dropped.
-
-For vectors, you need to specify a single dimension. 
-
-
-```{r}
-
-x1 <- c(167,185,119,142)
-
-x2 <- c("adam","jamal","linda","sriti")
-
-x3 <- factor( c("male","male","female","female") )
-
-x4 <- c( "treatment","control","treatment","control" )
-
-dat <- data.frame( name=x2, sex=x3, treat=x4, strength=x1 )
-
-
-these <- x1 > 140     # selector vector
-
-these
-
-x1[ these ]
-
-x2[ these ]
-
-
-```
-
-
-
-
-For data frames, you need two dimensions (rows and columns). The two dimensions are seperated by a comma, and if you leave one blank you will not drop anything.
-
-
-```{r}
-
-# dat[  row position ,  column position  ]
-
-dat 
-
-these <- dat$treat == "treatment"
-
-dat[ these , ]   # all data in the treatment group
-
-dat[ , c("name","sex") ]  # select two columns of data
-
-# to keep a subset as a separate dataset
-
-dat.women <- dat[ dat$sex == "female" , ]
-
-dat.women
-  
-```
-
-
-Note the rules listed above about subsetting factors. After applying a subset, they will retain all of the original levels, even when they are not longer useful. You need to drop the unused levels if you would like them to be omitted from functions that use the factor levels for analysis.
-
-
-```{r}
-
-df <- data.frame( letters=LETTERS[1:5], numbers=seq(1:5) )
-
-levels( df$letters )
-
-sub.df <- df[ 1:3, ]
-
-sub.df$letters
-
-levels( sub.df$letters )
-
-droplevels( sub.df$letters )
-
-sub.df$letters <- droplevels( sub.df$letters )
-
-
-```
-
 
 
 ## Variable Transformations
@@ -1005,6 +644,91 @@ x5[ is.na(x5) ] <- 0  # replace missing values with zero
 ```
 
 
+
+
+
+
+## Datasets
+
+When we combine multiple vectors together, we now have a dataset. There are three main types that we will use in this class.
+
+Class        | Description
+------------ | -----------
+data frame   | A typical data set comprised of several variables
+matrix       | A data set comprised of only numbers, used for matrix math
+list         | The grab bag of data structures - several vectors held together
+
+
+### Data Frames
+
+The most familiar spreadsheet-type data structure is called a data frame in R. It consists of rows, which represent observations, and columns, which represent variables.
+
+```{r}
+
+data( USArrests )
+
+dim( USArrests )   # number of rows by number of columns
+
+names( USArrests )   # variable names or column names
+
+row.names( USArrests )
+
+head( USArrests )  # print first six rows of the data
+
+```
+
+### Matrices
+
+A matrix is also a rectangular data object that consists of collections of vectors, but it is special in the sense that it only has numeric vectors and no variable names.
+
+```{r}
+
+mat <- matrix( 1:20, nrow=5 )
+
+mat
+
+names( mat )
+
+dim( mat )
+
+as.data.frame( mat )  # creates variable names
+
+```
+
+These are used almost exclusively for matrix algebra operations, which are fundamental to mathematical statistics. We will not use matrices in this course.
+
+### Lists
+
+The list is the most flexible data structure. It is created by sticking a bunch of unrelated vectors or datasets together. For example, when you run a regression you generate a bunch of interesting information. This information is saved as a list.
+
+```{r}
+
+x <- 1:100
+y <- 2*x + rnorm( 100, 0, 10)
+
+m.01 <- lm( y ~ x )
+
+names( m.01 )
+
+m.01$coefficients
+
+m.01$residuals
+
+m.01$call
+
+```
+
+These output are all related to the model we have run, so they are kept organized by the list so they can be used for various further steps like comparing models or checking for model fit. 
+
+A data frame is a bit more rigid that a list in that you cannot combine elements that do not have the same dimsions.
+
+```{r}
+
+# new.dataframe <- data.frame( m.01$coefficients, m.01$residuals, m.01$call )
+#
+# these will fail because the vectors have different lengths 
+
+```
 
 
 

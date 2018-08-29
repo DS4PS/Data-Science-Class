@@ -2,7 +2,7 @@
 title: 'Lab 02 - Functions and Vectors'
 output:
   html_document:
-    theme: united
+    theme: readable
     df_print: paged
     highlight: tango
 ---

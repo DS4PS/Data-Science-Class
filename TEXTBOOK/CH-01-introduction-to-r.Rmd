@@ -1,4 +1,4 @@
-# (PART) PART I: DATA PROGRAMMING {-}
+# (PART) PART I: FOUNDATIONS {-}
 
 
 # Introduction to R

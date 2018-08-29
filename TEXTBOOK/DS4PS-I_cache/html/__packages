@@ -1,10 +1,10 @@
 base
 dplyr
 pander
-rmarkdown
-bookdown
 Lahman
 maps
+rmarkdown
+bookdown
 tidyr
 reshape2
 scales

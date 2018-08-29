@@ -1,7 +1,7 @@
 knitr::opts_chunk$set(
   warning = FALSE,
   message = FALSE,
-  comment = "#>",
+  comment = "###",
   collapse = TRUE,
   cache = TRUE,
   out.width = "70%",

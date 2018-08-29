@@ -6,7 +6,7 @@ bookdown::gitbook:
         <li><a href="https://ds4ps.github.io/course_website/">Data Science I</a></li>
       after: |
         <li><a href="https://webapp4.asu.edu/programs/t5/majorinfo/ASU00/PPPGEMS/graduate/false" target="blank">ASU</a></li>
-    edit: https://github.com/DS4PS/Data-Science-Class/tree/master/01-TEXTBOOK/%s   
+    edit: https://github.com/DS4PS/Data-Science-Class/tree/master/TEXTBOOK/%s   
     download: ["pdf","epub"]
 bookdown::pdf_book:
   includes:
