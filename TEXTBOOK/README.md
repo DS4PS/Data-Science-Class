@@ -45,7 +45,7 @@ The rest of the files are provided by a Bookdown template. You don't need to und
 
 The **bookdown** package uses a couple of YAML files to set build parameters. All of these settings are documented in the help file, but we can use the same files for most cases.
 
-## _output.yml
+## _bookdown.yml
 
 Sets parameters about where output goes and how the build manages files.
 ```
