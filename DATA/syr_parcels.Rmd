@@ -25,45 +25,52 @@ This dataset represents approximately 42,000 tax parcels for the city of Syracus
 knitr::include_graphics( "syr_parcels/Syracuse_Parcels.png" )
 ```
 
-```{r, fig.cap="Downtown Syracuse", echo=F, fig.width=10, fig.heigth=10, fig.align="center" }
+<br>
+
+```{r, fig.cap="Downtown Syracuse", echo=F, out.width="600px", fig.align="center" }
 knitr::include_graphics( "syr_parcels/downtown_syr.png" )
 ```
 
+
+<br><br>
 
 ## Data Dictionary
 
 This data set contains the following variables:
 
-* **tax_id** - unique parcel ID  (numeric)  
-* **neighborhood** - city neighborhood for tax parcel (character)
-* **stnum** - parcel address (numeric)
-* **stname** - parcel address (character)
-* **zip** - parcel address (numeric)
-* **owner** - property owner (character) 
-* **frontfeet** - length of the front of the lot (numeric)    
-* **depth** - depth of the lot (numeric)
-* **sqft** - size of the parcel in square feet  (numeric)
-* **acres** - size of the parcel in acres (numeric)
-* **yearbuilt** - year of construction for the building on the parcel (numeric) 
-* **age** - age of the building (numeric)
-* **age_range** - age of the building by decade (factor) 
-* **land_use** - zoning purpose of the parcel (factor)
-* **units** - number of units in multi-unit buildings (numeric)        
-* **residential** - is the parcel zoned for residential (T/F)  
-* **rental** - is the residential space zoned for rental (T/F)
-* **vacantbuil** - is the building vacant (T/F)   
-* **assessedla** - assessed value of the parcel land  (numeric)
-* **assessedva** - assessed value of the parcel land plus buildings (numeric) 
-* **tax.exempt** - is the parcel tax exempt (T/F)   
-* **countytxbl** -  value of parcel for tax purposes (numeric) 
-* **schooltxbl** - value of parcel for tax purposes (numeric)
-* **citytaxabl** - value of parcel for tax purposes (numeric)   
-* **star** - does the parcel qualify for a residential tax break (T/F)     
-* **amtdelinqu** - amount of tax bill that is delinquint (numeric)
-* **taxyrsdeli** - length of time tax bill is delinquint (numeric)
-* **totint** - total interest owed for delinquint taxes (numeric)
-* **overduewater** - total owed on overdue water bills (numeric)
+VARIABLE | DESCRIPTION
+-------- | ----------------------
+**tax_id**  |  unique parcel ID  (numeric)  
+**neighborhood**  |  city neighborhood for tax parcel (character) 
+**stnum**  |  parcel address (numeric) 
+**stname**  |  parcel address (character) 
+**zip**  |  parcel address (numeric) 
+**owner**  |  property owner (character) 
+**frontfeet**  |  length of the front of the lot (numeric)    
+**depth**  |  depth of the lot (numeric)
+**sqft**  |  size of the parcel in square feet  (numeric)
+**acres**  |  size of the parcel in acres (numeric)
+**yearbuilt**  |  year of construction for the building on the parcel (numeric) 
+**age**  |  age of the building (numeric)
+**age_range**  |  age of the building by decade (factor)  
+**land_use**  |  zoning purpose of the parcel (factor) 
+**units**  |  number of units in multi-unit buildings (numeric)        
+**residential**  |  is the parcel zoned for residential (T/F)  
+**rental**  |  is the residential space zoned for rental (T/F) 
+**vacantbuil**  |  is the building vacant (T/F)   
+**assessedla**  |  assessed value of the parcel land  (numeric)
+**assessedva**  |  assessed value of the parcel land plus buildings (numeric) 
+**tax.exempt**  |  is the parcel tax exempt (T/F)   
+**countytxbl**  |   value of parcel for tax purposes (numeric)  
+**schooltxbl**  |  value of parcel for tax purposes (numeric) 
+**citytaxabl**  |  value of parcel for tax purposes (numeric)   
+**star**  |  does the parcel qualify for a residential tax break (T/F)      
+**amtdelinqu**  |  amount of tax bill that is delinquint (numeric) 
+**taxyrsdeli**  |  length of time tax bill is delinquint (numeric) 
+**totint**  |  total interest owed for delinquint taxes (numeric) 
+**overduewater**  |  total owed on overdue water bills (numeric) 
 
+<br><br>
 
 ## Load Dataset
 
@@ -78,6 +85,8 @@ head( dat ) %>% pander
 ```
 
 
+<br><br>
+
 ## Parcel Shapefiles
 
 The shapefile has been converted to a geojson format, and is available on GitHub:
@@ -90,6 +99,8 @@ library( rgdal )
 syr <- geojson_read( "syr_parcels.geojson", method="local", what="sp" )
 plot( syr,  border=NA, col="gray80" )
 ```
+
+<br><br>
 
 
 ## Neighborhoods
@@ -132,7 +143,7 @@ for( i in nhoods )
 
 ```
 
-<br>
+<br><br>
 
 
 ## Land Use
