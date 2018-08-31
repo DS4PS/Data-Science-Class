@@ -45,7 +45,7 @@ The rest of the files are provided by a Bookdown template. You don't need to und
 
 The **bookdown** package uses a couple of YAML files to set build parameters. All of these settings are documented in the help file, but we can use the same files for most cases.
 
-## _output.yml
+## _bookdown.yml
 
 Sets parameters about where output goes and how the build manages files.
 ```
@@ -83,13 +83,6 @@ bookdown::epub_book: default
 
 # Building the Book
 
-Make sure you have a recent version of pandoc installed:
-
-```r
-library( "rmarkdown" )
-pandoc_version()
-```
-
 When the lecture notes are all ready the book is built using the following code:
 
 ```r
@@ -103,6 +96,17 @@ bookdown::render_book( 'index.Rmd', 'bookdown::epub_book' )
 ```
 
 After these files are all built, you can click on the "index.html" file in the docs folder to launch the site. 
+
+
+## Pandoc
+
+If you run into problems compiling, it might be a result of having an older version of Pandoc on your machine. Make sure you have a recent version of pandoc installed, which you can check by:
+
+```r
+library( "rmarkdown" )
+pandoc_version()
+```
+
 
 # Images
 
