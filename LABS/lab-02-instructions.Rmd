@@ -35,11 +35,6 @@ sum(), summary()        # summarize numeric vectors
 table()                 # summarize factors / character vectors
 ```
 
-Recall that referencing variables in R requires the dataset name and variable name, along with the `$` operator.
-
-```{r, eval=F}
-summarize( dat$acres )
-```
 
 
 
@@ -71,7 +66,22 @@ Answer the following questions in your lab.
 5. Which neighborhood contains the most tax parcels (table with one variable)?
 6. Which neighborhood contains the most vacant LOTS (table with two variables)? 
 
-*Recall that R wants to make sure you are aware of missing values, so it will return NA for functions performed on vectors with missing values. Add the 'NA remove' argument to these vectors to ignore missing values:* `sum( x, na.rm=T )`
+
+Recall: 
+
+(1) Referencing variables in R requires both the **dataset name** and **variable name**, separated by the `$` operator:
+
+```{r, eval=F}
+summarize( dat$acres )
+```
+
+(2) R wants to make sure you are aware of missing values, so it will return NA (not available) for functions performed on vectors with missing values. Add the 'NA remove' argument to these vectors to ignore missing values: 
+
+```{r, eval=F}
+sum( x, na.rm=T )
+```
+
+
 
 
 

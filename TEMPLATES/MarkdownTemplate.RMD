@@ -21,9 +21,14 @@ knitr::opts_chunk$set( echo=TRUE, message=FALSE, warning=FALSE, fig.width=10 )
 ```
 
 ```{r load_packages}
+# make sure these are installed on your machine before knitting
+# install.packages( "dplyr" )
+# install.packages( "pander" )
+# note that you cannot knit with an install.packages() function
 library( dplyr )
 library( pander )
 ```
+
 
 ```{r load_data}
 URL <- "https://www.dropbox.com/s/72dqe1j4b6bops2/syr_parcels.csv?dl=1"
