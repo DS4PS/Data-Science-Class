@@ -11,6 +11,16 @@ library( pander )
 ```
 
 
+<style>
+th {
+    text-align: left;
+}
+td {
+    text-align: left;
+}
+</style>
+
+
 ## Key Concepts
 
 ```{r, fig.cap="Logical statements define group membership", out.width='70%', echo=F }
@@ -61,16 +71,16 @@ You will use nine basic logical operators:
 
 Operator |  Description
 -------- |  -----------
-<        | less than
-<=       | less than or equal to
- >       | greater than
->=       | greater than or equal to
-==       | exactly equal to
-!=	     | not equal to
-x \| y	 | x OR y
-x & y	   | x AND y
-!        | opposite of 
-[ ]       | subset
+**<**        | less than
+**<=**     | less than or equal to
+**>**       | greater than
+**>=**      | greater than or equal to
+**==**      | exactly equal to
+**!=**	     | not equal to
+**x \| y**	 | x OR y
+**x & y**	   | x AND y
+**!**       | opposite of 
+**[ ]**       | subset
 
 Logical operators create logical vectors, a vector that contains only TRUE or FALSE. The TRUE means that the observation belongs to the group, FALSE means it does not.
 
