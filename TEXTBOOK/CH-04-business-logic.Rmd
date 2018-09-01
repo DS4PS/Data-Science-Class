@@ -40,6 +40,7 @@ knitr::include_graphics( "figures/bearded_men.png" )
 bearded.men <- gender == "male" & beard == TRUE
 proper.gentlemen <- gender == "male" & beard == FALSE
 mean( salary[ bearded.men ] )
+mean( salary[ ! bearded.men ] )  # this is incorrect !!!
 mean( salary[ proper.gentlemen ] )
 ```
 
@@ -148,7 +149,6 @@ We can apply a **sum()** function to a logical vector, and the result will be a 
 
 
 ```{r}
-
 # how many females do we have in our study?
 
 sum( gender == "female" )
@@ -165,7 +165,6 @@ mean( gender == "male" )
 **TWO:** We can create a selector variable that is used for subsets. A selector vector used in a subset operator will drop all observations that are FALSE, isolating data belonging to the group:
 
 ```{r}
-
 these.female <- gender == "female"
 name[ these.female ]
 strength[ these.female ]
@@ -219,7 +218,6 @@ study.group
 The **!** operator is a special case, where it is not used to define a new logical vector, but rather it swaps the values of an existing logical vector.
 
 ```{r}
-
 x1 <- c(7,9,1,2)
 
 these <- x1 > 5
@@ -233,6 +231,26 @@ these
 ! FALSE
 ```
 
+
+## Compound Logical Statements
+
+We can combine multiple logical statements using the AND, OR, and NOT operators ( &, |, ! ). This functionality gives us an incredible ability to specify very granular groups within our analysis. This will be important as we begin to construct analysis in a way that we search for apples to apples comparisons within our data in order to make inferences about program effectiveness. 
+
+These statements require some precision, however. Use care when applying that AND, OR, and NOT operators as to not include unintended data in your sample. In the example above, the statement "NOT bearded men" does not mean men without beards. It means all people outside of the category of men without beards (the "complement"), which includes women with or without beards as well. 
+
+```
+! ( gender == "male" & beard == TRUE )
+```
+Also note that parentheses matter. Compare this statement to the statement above:
+
+```
+! gender == "male" & beard == TRUE
+```
+Because we excluded the parentheses this statement now defines the group "NOT men AND with beards", or bearded women. 
+
+```{r, fig.cap="Examples of group construction with compound statements", out.width='60%', echo=F }
+knitr::include_graphics( "figures/compound_logical_statements.png" )
+```
 
 
 

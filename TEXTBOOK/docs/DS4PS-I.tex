@@ -123,7 +123,7 @@
     \preauthor{}\postauthor{}
       \predate{\centering\large\emph}
   \postdate{\par}
-    \date{Updated August 29, 2018}
+    \date{Updated September 01, 2018}
 
 \usepackage{booktabs}
 \usepackage{amsthm}
@@ -1691,6 +1691,111 @@ annoying behaviors.
 \end{Highlighting}
 \end{Shaded}
 
+\hypertarget{logical-vectors}{%
+\section{Logical Vectors}\label{logical-vectors}}
+
+Logical vectors are collections of a set of TRUE and FALSE statements.
+
+Logical statements allow us to define groups based upon criteria, then
+decide whether observations belong to the group. A logical statement is
+one that contains a logical operator, and returns only TRUE, FALSE, or
+NA values.
+
+Logical vectors are important because organizing data into these sets is
+what drives all of the advanced data analytics (set theory is at the
+basis of mathematics and computer science).
+
+\begin{longtable}[]{@{}cccc@{}}
+\toprule
+\begin{minipage}[b]{0.10\columnwidth}\centering
+name\strut
+\end{minipage} & \begin{minipage}[b]{0.11\columnwidth}\centering
+sex\strut
+\end{minipage} & \begin{minipage}[b]{0.15\columnwidth}\centering
+treat\strut
+\end{minipage} & \begin{minipage}[b]{0.15\columnwidth}\centering
+strength\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.10\columnwidth}\centering
+adam\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\centering
+male\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\centering
+treatment\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\centering
+167\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering
+jamal\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\centering
+male\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\centering
+control\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\centering
+185\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering
+linda\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\centering
+female\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\centering
+treatment\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\centering
+119\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering
+sriti\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\centering
+female\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\centering
+control\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\centering
+142\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dat}\OperatorTok{$}\NormalTok{name }\OperatorTok{==}\StringTok{ "sriti"}
+\CommentTok{### [1] FALSE FALSE FALSE  TRUE}
+
+\NormalTok{dat}\OperatorTok{$}\NormalTok{sex }\OperatorTok{==}\StringTok{ "male"}
+\CommentTok{### [1]  TRUE  TRUE FALSE FALSE}
+
+\NormalTok{dat}\OperatorTok{$}\NormalTok{strength }\OperatorTok{>}\StringTok{ }\DecValTok{180}
+\CommentTok{### [1] FALSE  TRUE FALSE FALSE}
+\end{Highlighting}
+\end{Shaded}
+
+When defining logical vectors, you can use the abbreviated versions of T
+for TRUE and F for FALSE.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{z1 <-}\StringTok{ }\KeywordTok{c}\NormalTok{(T,T,F,T,F,F)}
+\NormalTok{z1}
+\CommentTok{### [1]  TRUE  TRUE FALSE  TRUE FALSE FALSE}
+\end{Highlighting}
+\end{Shaded}
+
+Typically logical vectors are used in combination with subset operators
+to identify specific groups in the data.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# isolate data on all of the females in the dataset}
+\NormalTok{dat[ dat}\OperatorTok{$}\NormalTok{sex }\OperatorTok{==}\StringTok{ "female"}\NormalTok{ , ]}
+\CommentTok{###    name    sex     treat strength}
+\CommentTok{### 3 linda female treatment      119}
+\CommentTok{### 4 sriti female   control      142}
+\end{Highlighting}
+\end{Shaded}
+
+See the next chapter for more details on subsets.
+
 \hypertarget{generating-vectors}{%
 \section{Generating Vectors}\label{generating-vectors}}
 
@@ -1757,7 +1862,7 @@ simulations. Here are the most common functions that will be helpful.
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics[width=0.7\linewidth]{DS4PS-I_files/figure-latex/unnamed-chunk-70-1} \end{center}
+\begin{center}\includegraphics[width=0.7\linewidth]{DS4PS-I_files/figure-latex/unnamed-chunk-74-1} \end{center}
 
 \hypertarget{variable-transformations}{%
 \section{Variable Transformations}\label{variable-transformations}}
@@ -1811,7 +1916,7 @@ that it is happening.
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics[width=0.7\linewidth]{DS4PS-I_files/figure-latex/unnamed-chunk-72-1} \end{center}
+\begin{center}\includegraphics[width=0.7\linewidth]{DS4PS-I_files/figure-latex/unnamed-chunk-76-1} \end{center}
 
 Here is an example of recycling gone wrong:
 
@@ -2183,12 +2288,53 @@ then can cause problmes.
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.7\linewidth]{figures/set_theory} 
+{\centering \includegraphics[width=0.7\linewidth]{figures/group_selection} 
 
 }
 
-\caption{Logical statements define group membership}\label{fig:unnamed-chunk-83}
+\caption{Logical statements define group membership}\label{fig:unnamed-chunk-87}
 \end{figure}
+
+Logical statements are used to translate regular language into computer
+code. Many of our data analysis problems start by defining our
+sub-groups of interest.
+
+\begin{quote}
+What percentage of men over 30 are bald?
+\end{quote}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{these <-}\StringTok{ }\NormalTok{gender }\OperatorTok{==}\StringTok{ "male"} \OperatorTok{&}\StringTok{ }\NormalTok{age }\OperatorTok{>}\StringTok{ }\DecValTok{30} \OperatorTok{&}\StringTok{ }\NormalTok{hair }\OperatorTok{==}\StringTok{ }\OtherTok{FALSE}
+\KeywordTok{mean}\NormalTok{( these )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{quote}
+Do bearded men earn more than men without beards?
+\end{quote}
+
+We need to make sure statements are correct. For example, the complement
+of ``men with beards'' is not men without beards, it is men without
+beards OR women (with or without beards).
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.6\linewidth]{figures/bearded_men} 
+
+}
+
+\caption{Compound statements can be tricky}\label{fig:unnamed-chunk-89}
+\end{figure}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{bearded.men <-}\StringTok{ }\NormalTok{gender }\OperatorTok{==}\StringTok{ "male"} \OperatorTok{&}\StringTok{ }\NormalTok{beard }\OperatorTok{==}\StringTok{ }\OtherTok{TRUE}
+\NormalTok{proper.gentlemen <-}\StringTok{ }\NormalTok{gender }\OperatorTok{==}\StringTok{ "male"} \OperatorTok{&}\StringTok{ }\NormalTok{beard }\OperatorTok{==}\StringTok{ }\OtherTok{FALSE}
+\KeywordTok{mean}\NormalTok{( salary[ bearded.men ] )}
+\KeywordTok{mean}\NormalTok{( salary[ proper.gentlemen ] )}
+\end{Highlighting}
+\end{Shaded}
 
 \hypertarget{operators}{%
 \section{Operators}\label{operators}}
@@ -2227,6 +2373,7 @@ Operator & Description\tabularnewline
 x \textbar{} y & x OR y\tabularnewline
 x \& y & x AND y\tabularnewline
 ! & opposite of\tabularnewline
+{[} {]} & subset\tabularnewline
 \bottomrule
 \end{longtable}
 
@@ -2244,6 +2391,24 @@ FALSE means it does not.
 \NormalTok{x1 }\OperatorTok{>=}\StringTok{ }\DecValTok{7}
 \CommentTok{### [1]  TRUE  TRUE FALSE FALSE}
 
+\NormalTok{x1 }\OperatorTok{==}\StringTok{ }\DecValTok{9} \OperatorTok{|}\StringTok{ }\NormalTok{x1 }\OperatorTok{==}\StringTok{ }\DecValTok{1}
+\CommentTok{### [1] FALSE  TRUE  TRUE FALSE}
+
+\NormalTok{gender <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"male"}\NormalTok{,}\StringTok{"male"}\NormalTok{,}\StringTok{"female"}\NormalTok{,}\StringTok{"female"}\NormalTok{)}
+
+\NormalTok{gender }\OperatorTok{==}\StringTok{ "female"}
+\CommentTok{### [1] FALSE FALSE  TRUE  TRUE}
+\end{Highlighting}
+\end{Shaded}
+
+Note that the logical statement for ``equals'' is written with two equal
+signs. This is important to remember, because using a single equal sign
+can introduce subtle errors into your analysis.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x1 <-}\StringTok{ }\KeywordTok{c}\NormalTok{( }\DecValTok{7}\NormalTok{, }\DecValTok{9}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{ )}
+
 \NormalTok{x1 }\OperatorTok{==}\StringTok{ }\DecValTok{9}
 \CommentTok{### [1] FALSE  TRUE FALSE FALSE}
 
@@ -2251,78 +2416,204 @@ FALSE means it does not.
 
 \NormalTok{x1}
 \CommentTok{### [1] 9}
-
-\NormalTok{x1 <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{7}\NormalTok{,}\DecValTok{9}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{)}
-
-\NormalTok{x1 }\OperatorTok{==}\StringTok{ }\DecValTok{9} \OperatorTok{|}\StringTok{ }\NormalTok{x1 }\OperatorTok{==}\StringTok{ }\DecValTok{1}
-\CommentTok{### [1] FALSE  TRUE  TRUE FALSE}
-
-
-\NormalTok{x2 <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"male"}\NormalTok{,}\StringTok{"male"}\NormalTok{,}\StringTok{"female"}\NormalTok{,}\StringTok{"female"}\NormalTok{)}
-
-\NormalTok{x3 <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"treatment"}\NormalTok{,}\StringTok{"control"}\NormalTok{,}\StringTok{"treatment"}\NormalTok{,}\StringTok{"control"}\NormalTok{)}
-
-\CommentTok{# x2 == male  # this will not work because male is not enclosed with quotes}
-
-\NormalTok{x2 }\OperatorTok{==}\StringTok{ "female"}
-\CommentTok{### [1] FALSE FALSE  TRUE  TRUE}
-
-\NormalTok{x2 }\OperatorTok{==}\StringTok{ "female"} \OperatorTok{&}\StringTok{ }\NormalTok{x3 }\OperatorTok{==}\StringTok{ "treatment"}
-\CommentTok{### [1] FALSE FALSE  TRUE FALSE}
 \end{Highlighting}
 \end{Shaded}
 
-Note that we use operators to create logical vectors where TRUE
-designates observation that belong to the defined group, and FALSE
-designates observations outside the group. We use these logical vectors
-in three ways:
-
-\textbf{ONE:} We can create a selector variable that is used for
-subsets. When a logical vector is passed to the subset function it will
-keep all observations with a TRUE value, and drop observations with a
-FALSE value.
+We can write compound logical statements using the AND and OR operators:
 
 \begin{Shaded}
 \begin{Highlighting}[]
+\NormalTok{gender <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"male"}\NormalTok{,}\StringTok{"male"}\NormalTok{,}\StringTok{"female"}\NormalTok{,}\StringTok{"female"}\NormalTok{)}
 
-\NormalTok{x1}
-\CommentTok{### [1] 7 9 1 2}
+\NormalTok{study.group <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"treatment"}\NormalTok{,}\StringTok{"control"}\NormalTok{,}\StringTok{"treatment"}\NormalTok{,}\StringTok{"control"}\NormalTok{)}
 
-\NormalTok{x1 }\OperatorTok{>}\StringTok{ }\DecValTok{5}
-\CommentTok{### [1]  TRUE  TRUE FALSE FALSE}
+\NormalTok{gender }\OperatorTok{==}\StringTok{ "female"}  \OperatorTok{&}\StringTok{  }\NormalTok{study.group }\OperatorTok{==}\StringTok{ "treatment"}
+\CommentTok{### [1] FALSE FALSE  TRUE FALSE}
 
-\NormalTok{keep.these <-}\StringTok{ }\NormalTok{x1 }\OperatorTok{>}\StringTok{ }\DecValTok{5}
-
-\NormalTok{x1[ keep.these ]}
-\CommentTok{### [1] 7 9}
-
-\CommentTok{# you can create a selector variable with one variable, and apply it to another}
-
-\NormalTok{x2[ keep.these ]  }\CommentTok{# sex of observations where x1 > 5}
-\CommentTok{### [1] "male" "male"}
+\NormalTok{gender }\OperatorTok{==}\StringTok{ "female"}  \OperatorTok{|}\StringTok{  }\NormalTok{study.group }\OperatorTok{==}\StringTok{ "treatment"}
+\CommentTok{### [1]  TRUE FALSE  TRUE  TRUE}
 \end{Highlighting}
 \end{Shaded}
 
-\textbf{TWO}: Logical vectors give us an easy way to count things within
+\hypertarget{selector-vectors}{%
+\section{Selector Vectors}\label{selector-vectors}}
+
+Note that we use operators to create logical vectors where TRUE
+designates observation that belong to the defined group, and FALSE
+designates observations outside the group. The term ``selector vector''
+is a useful way to remember this purpose. When you are doing analysis,
+you select specific observaions to form a group, and you can
+
+\begin{longtable}[]{@{}cccc@{}}
+\toprule
+\begin{minipage}[b]{0.11\columnwidth}\centering
+name\strut
+\end{minipage} & \begin{minipage}[b]{0.11\columnwidth}\centering
+gender\strut
+\end{minipage} & \begin{minipage}[b]{0.12\columnwidth}\centering
+group\strut
+\end{minipage} & \begin{minipage}[b]{0.14\columnwidth}\centering
+strength\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.11\columnwidth}\centering
+frank\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\centering
+male\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering
+treat\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\centering
+27\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.11\columnwidth}\centering
+wanda\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\centering
+female\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering
+treat\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\centering
+43\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.11\columnwidth}\centering
+sanjay\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\centering
+male\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering
+control\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\centering
+19\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.11\columnwidth}\centering
+nancy\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\centering
+female\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering
+control\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\centering
+58\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{these.female <-}\StringTok{ }\NormalTok{dat}\OperatorTok{$}\NormalTok{gender }\OperatorTok{==}\StringTok{ "female"}
+
+\KeywordTok{sum}\NormalTok{( these.female )                   }\CommentTok{# number of women in the study}
+\CommentTok{### [1] 2}
+\KeywordTok{mean}\NormalTok{( these.female )                  }\CommentTok{# proportion of the study that is women}
+\CommentTok{### [1] 0.5}
+\NormalTok{dat[ these.female , ]                 }\CommentTok{# all data belonging to women}
+\CommentTok{###    name gender   group strength}
+\CommentTok{### 2 wanda female   treat       43}
+\CommentTok{### 4 nancy female control       58}
+\KeywordTok{mean}\NormalTok{( dat}\OperatorTok{$}\NormalTok{strength[ these.female ] )  }\CommentTok{# average outcome for women in the study}
+\CommentTok{### [1] 50.5}
+\end{Highlighting}
+\end{Shaded}
+
+I will consistently name my logical vectors ``these.GROUP'' throughout
+the chapters, where GROUP represents the group label. For example, I
+selected women above, so the selector vector is called ``these.female''.
+
+\hypertarget{usefulness-of-selector-vectors}{%
+\section{Usefulness of Selector
+Vectors}\label{usefulness-of-selector-vectors}}
+
+Selector vectors, i.e.~logical vectors that were created by defining a
+group, have three main uses in our analysis.
+
+\textbf{ONE}: Logical vectors give us an easy way to count things within
 defined groups.
 
 We can apply a \textbf{sum()} function to a logical vector, and the
-result will be a tally of all of the TRUE cases.
+result will be a tally of all of the TRUE cases. The \textbf{mean()}
+function will give us the proportion of the sample that belongs to our
+defined group.
 
 \begin{Shaded}
 \begin{Highlighting}[]
 
 \CommentTok{# how many females do we have in our study?}
 
-\KeywordTok{sum}\NormalTok{( x2 }\OperatorTok{==}\StringTok{ "female"}\NormalTok{ )}
+\KeywordTok{sum}\NormalTok{( gender }\OperatorTok{==}\StringTok{ "female"}\NormalTok{ )}
 \CommentTok{### [1] 2}
 
 \CommentTok{# how many females do we have in our treatment group?}
 
-\KeywordTok{sum}\NormalTok{( x2 }\OperatorTok{==}\StringTok{ "female"} \OperatorTok{&}\StringTok{ }\NormalTok{x3 }\OperatorTok{==}\StringTok{ "treatment"}\NormalTok{ )}
-\CommentTok{### [1] 1}
+\KeywordTok{sum}\NormalTok{( gender }\OperatorTok{==}\StringTok{ "female"} \OperatorTok{&}\StringTok{ }\NormalTok{study.group }\OperatorTok{==}\StringTok{ "treatment"}\NormalTok{ )}
+\CommentTok{### [1] 0}
+
+\CommentTok{# what proportion of our study are men? }
+
+\KeywordTok{mean}\NormalTok{( gender }\OperatorTok{==}\StringTok{ "male"}\NormalTok{ )}
+\CommentTok{### [1] 0.5}
 \end{Highlighting}
 \end{Shaded}
+
+\textbf{TWO:} We can create a selector variable that is used for
+subsets. A selector vector used in a subset operator will drop all
+observations that are FALSE, isolating data belonging to the group:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\NormalTok{these.female <-}\StringTok{ }\NormalTok{gender }\OperatorTok{==}\StringTok{ "female"}
+\NormalTok{name[ these.female ]}
+\CommentTok{### [1] "wanda" "nancy"}
+\NormalTok{strength[ these.female ]}
+\CommentTok{### [1] 43 58}
+\end{Highlighting}
+\end{Shaded}
+
+Or we can create a subset of the full dataset:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dat[ these.female , ]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}ccccc@{}}
+\toprule
+\begin{minipage}[b]{0.11\columnwidth}\centering
+~\strut
+\end{minipage} & \begin{minipage}[b]{0.10\columnwidth}\centering
+name\strut
+\end{minipage} & \begin{minipage}[b]{0.11\columnwidth}\centering
+gender\strut
+\end{minipage} & \begin{minipage}[b]{0.12\columnwidth}\centering
+group\strut
+\end{minipage} & \begin{minipage}[b]{0.13\columnwidth}\centering
+strength\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.11\columnwidth}\centering
+\textbf{2}\strut
+\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\centering
+wanda\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\centering
+female\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering
+treat\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\centering
+43\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.11\columnwidth}\centering
+\textbf{4}\strut
+\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\centering
+nancy\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\centering
+female\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering
+control\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\centering
+58\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
 
 \textbf{THREE}: We use selector variables to replace observations with
 new values using the assignment operator. This is similar to a find and
@@ -2330,29 +2621,59 @@ replace operation.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-
-\NormalTok{x7 <-}\StringTok{ }\KeywordTok{c}\NormalTok{( }\StringTok{"mole"}\NormalTok{,}\StringTok{"mouse"}\NormalTok{,}\StringTok{"shrew"}\NormalTok{,}\StringTok{"mouse"}\NormalTok{,}\StringTok{"rat"}\NormalTok{,}\StringTok{"shrew"}\NormalTok{)}
+\NormalTok{animals <-}\StringTok{ }\KeywordTok{c}\NormalTok{( }\StringTok{"mole"}\NormalTok{, }\StringTok{"mouse"}\NormalTok{, }\StringTok{"shrew"}\NormalTok{, }\StringTok{"mouse"}\NormalTok{, }\StringTok{"rat"}\NormalTok{, }\StringTok{"shrew"}\NormalTok{ )}
 
 \CommentTok{# the lab assistant incorrectly identified the shrews}
 
-\NormalTok{x7}
+\NormalTok{animals}
 \CommentTok{### [1] "mole"  "mouse" "shrew" "mouse" "rat"   "shrew"}
 
-\NormalTok{x7[ x7 }\OperatorTok{==}\StringTok{ "shrew"}\NormalTok{ ] <-}\StringTok{ "possum"}
+\NormalTok{animals[ animals }\OperatorTok{==}\StringTok{ "shrew"}\NormalTok{ ] <-}\StringTok{ "possum"}
 
-\NormalTok{x7}
+\NormalTok{animals}
 \CommentTok{### [1] "mole"   "mouse"  "possum" "mouse"  "rat"    "possum"}
+\end{Highlighting}
+\end{Shaded}
 
+We don't know if linda received the treatment:
 
-\CommentTok{# we don't know if linda received the treatment}
+\begin{longtable}[]{@{}cc@{}}
+\toprule
+\begin{minipage}[b]{0.10\columnwidth}\centering
+name\strut
+\end{minipage} & \begin{minipage}[b]{0.18\columnwidth}\centering
+study.group\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.10\columnwidth}\centering
+adam\strut
+\end{minipage} & \begin{minipage}[t]{0.18\columnwidth}\centering
+treatment\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering
+jamal\strut
+\end{minipage} & \begin{minipage}[t]{0.18\columnwidth}\centering
+control\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering
+linda\strut
+\end{minipage} & \begin{minipage}[t]{0.18\columnwidth}\centering
+treatment\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering
+sriti\strut
+\end{minipage} & \begin{minipage}[t]{0.18\columnwidth}\centering
+control\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
 
-\NormalTok{x3 <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"adam"}\NormalTok{,}\StringTok{"jamal"}\NormalTok{,}\StringTok{"linda"}\NormalTok{,}\StringTok{"sriti"}\NormalTok{)}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{study.group[ name }\OperatorTok{==}\StringTok{ "linda"}\NormalTok{ ] <-}\StringTok{ }\OtherTok{NA}
 
-\NormalTok{x4 <-}\StringTok{ }\KeywordTok{c}\NormalTok{( }\StringTok{"treatment"}\NormalTok{,}\StringTok{"control"}\NormalTok{,}\StringTok{"treatment"}\NormalTok{,}\StringTok{"control"}\NormalTok{)}
-
-\NormalTok{x4[ x3 }\OperatorTok{==}\StringTok{ "linda"}\NormalTok{ ] <-}\StringTok{ }\OtherTok{NA}
-
-\NormalTok{x4}
+\NormalTok{study.group}
 \CommentTok{### [1] "treatment" "control"   NA          "control"}
 \end{Highlighting}
 \end{Shaded}
@@ -2364,8 +2685,7 @@ existing logical vector.
 \begin{Shaded}
 \begin{Highlighting}[]
 
-\NormalTok{x1}
-\CommentTok{### [1] 7 9 1 2}
+\NormalTok{x1 <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{7}\NormalTok{,}\DecValTok{9}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{)}
 
 \NormalTok{these <-}\StringTok{ }\NormalTok{x1 }\OperatorTok{>}\StringTok{ }\DecValTok{5}
 
@@ -2383,110 +2703,29 @@ existing logical vector.
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{logical-vectors}{%
-\section{Logical Vectors}\label{logical-vectors}}
+\hypertarget{nas-in-logical-statements}{%
+\section{NAs in Logical Statements}\label{nas-in-logical-statements}}
 
-Logical vectors are collections of a set of TRUE and FALSE statements.
+Recall that missing values are an extremely important concept in
+statistics. If one-third of our survey sample reports that they never
+smoked pot, one-third reports they have smoked pot, and one-third did
+not answer the question, then what do we report for the proportion of
+the population that has smoked pot?
 
-Logical statements allow us to define groups based upon criteria, then
-decide whether observations belong to the group. A logical statement is
-one that contains a logical operator, and returns only TRUE, FALSE, or
-NA values.
+We might prefer to be cautious and count only the people that have
+confirmed they have smoked pot, resulting in an estimate of 33.3\%.
 
-Logical vectors are important because organizing data into these sets is
-what drives all of the advanced data analytics (set theory is at the
-basis of mathematics and computer science).
+If we throw out the missing data, then 50\% of respondents have smoked
+pot.
 
-\begin{longtable}[]{@{}cccc@{}}
-\toprule
-\begin{minipage}[b]{0.10\columnwidth}\centering
-name\strut
-\end{minipage} & \begin{minipage}[b]{0.11\columnwidth}\centering
-sex\strut
-\end{minipage} & \begin{minipage}[b]{0.15\columnwidth}\centering
-treat\strut
-\end{minipage} & \begin{minipage}[b]{0.15\columnwidth}\centering
-strength\strut
-\end{minipage}\tabularnewline
-\midrule
-\endhead
-\begin{minipage}[t]{0.10\columnwidth}\centering
-adam\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\centering
-male\strut
-\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\centering
-treatment\strut
-\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\centering
-167\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.10\columnwidth}\centering
-jamal\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\centering
-male\strut
-\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\centering
-control\strut
-\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\centering
-185\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.10\columnwidth}\centering
-linda\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\centering
-female\strut
-\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\centering
-treatment\strut
-\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\centering
-119\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.10\columnwidth}\centering
-sriti\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\centering
-female\strut
-\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\centering
-control\strut
-\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\centering
-142\strut
-\end{minipage}\tabularnewline
-\bottomrule
-\end{longtable}
+If we assume those that refuse to answer have likely smoked pot, our
+estimate might be 66.6\% of the sample.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{dat}\OperatorTok{$}\NormalTok{name }\OperatorTok{==}\StringTok{ "sriti"}
-\CommentTok{### [1] FALSE FALSE FALSE  TRUE}
+These different results are a function of how we treat the missing data
+in our survey, so it is important that we can keep track of missing
+values, especially during subset operations.
 
-\NormalTok{dat}\OperatorTok{$}\NormalTok{sex }\OperatorTok{==}\StringTok{ "male"}
-\CommentTok{### [1]  TRUE  TRUE FALSE FALSE}
-
-\NormalTok{dat}\OperatorTok{$}\NormalTok{strength }\OperatorTok{>}\StringTok{ }\DecValTok{180}
-\CommentTok{### [1] FALSE  TRUE FALSE FALSE}
-\end{Highlighting}
-\end{Shaded}
-
-When defining logical vectors, you can use the abbreviated versions of T
-for TRUE and F for FALSE.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{z1 <-}\StringTok{ }\KeywordTok{c}\NormalTok{(T,T,F,T,F,F)}
-\NormalTok{z1}
-\CommentTok{### [1]  TRUE  TRUE FALSE  TRUE FALSE FALSE}
-\end{Highlighting}
-\end{Shaded}
-
-Typically logical vectors are used in combination with subset operators
-to identify specific groups in the data.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{# isolate data on all of the females in the dataset}
-\NormalTok{dat[ dat}\OperatorTok{$}\NormalTok{sex }\OperatorTok{==}\StringTok{ "female"}\NormalTok{ , ]}
-\CommentTok{###    name    sex     treat strength}
-\CommentTok{### 3 linda female treatment      119}
-\CommentTok{### 4 sriti female   control      142}
-\end{Highlighting}
-\end{Shaded}
-
-Note how NAs affect compound logical statements:
+Note how NAs effect compound logical statements:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2504,68 +2743,70 @@ Note how NAs affect compound logical statements:
 \end{Highlighting}
 \end{Shaded}
 
-If one condition is FALSE and the other is NA, the missing value does
-not matter in this case because under the \& condition both must be TRUE
-for the observation to belong to the group we are defining with the
-logical statement, so it should be excluded even if we don't know the
-value for the second condition. For example, if we want to select all
-women in the treatment group, then a man is excluded from the group,
-even if it is unclear whether he belongs to the treatment or control
-condition.
+To make sense of these rules consider the following:
+
+If one condition is already FALSE, the missing value does not matter
+because under the \& condition BOTH must be TRUE for the observation to
+belong to our defined group. After we know that one of the conditions is
+FALSE the missing value is irrelevant. For example, if we want to select
+all women in the treatment group, and we have a man with an unclear
+treatment group status, he is still excluded from the group because he
+is a man.
 
 On the other hand, if one condition is TRUE, and another is NA, R does
 not want to throw out the data because the state of the missing value is
 unclear. As a result, it will preserve the observation, but it will
-replace all of the data with missing values.
+replace all of the data with missing values to signal the lack of
+certainty associated with that observation.
 
 \begin{longtable}[]{@{}cccc@{}}
 \toprule
-\begin{minipage}[b]{0.10\columnwidth}\centering
+\begin{minipage}[b]{0.11\columnwidth}\centering
 name\strut
 \end{minipage} & \begin{minipage}[b]{0.11\columnwidth}\centering
-sex\strut
-\end{minipage} & \begin{minipage}[b]{0.15\columnwidth}\centering
-treat\strut
-\end{minipage} & \begin{minipage}[b]{0.15\columnwidth}\centering
+gender\strut
+\end{minipage} & \begin{minipage}[b]{0.12\columnwidth}\centering
+group\strut
+\end{minipage} & \begin{minipage}[b]{0.14\columnwidth}\centering
 strength\strut
 \end{minipage}\tabularnewline
 \midrule
 \endhead
-\begin{minipage}[t]{0.10\columnwidth}\centering
-adam\strut
+\begin{minipage}[t]{0.11\columnwidth}\centering
+frank\strut
 \end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\centering
 male\strut
-\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\centering
-treatment\strut
-\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\centering
-167\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering
+treat\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\centering
+27\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.10\columnwidth}\centering
-jamal\strut
+\begin{minipage}[t]{0.11\columnwidth}\centering
+wanda\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\centering
+female\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering
+treat\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\centering
+43\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.11\columnwidth}\centering
+sanjay\strut
 \end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\centering
 male\strut
-\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\centering
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering
 control\strut
-\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\centering
-185\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\centering
+19\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.10\columnwidth}\centering
-linda\strut
+\begin{minipage}[t]{0.11\columnwidth}\centering
+nancy\strut
 \end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\centering
 female\strut
-\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\centering
-treatment\strut
-\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\centering
-119\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.10\columnwidth}\centering
-sriti\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\centering
-female\strut
-\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\centering
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering
 control\strut
-\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\centering
-142\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\centering
+58\strut
 \end{minipage}\tabularnewline
 \bottomrule
 \end{longtable}
@@ -2574,9 +2815,9 @@ control\strut
 \begin{Highlighting}[]
 \NormalTok{keep.these <-}\StringTok{ }\KeywordTok{c}\NormalTok{(T,F,}\OtherTok{NA}\NormalTok{,F)}
 \NormalTok{dat[ keep.these , ]}
-\CommentTok{###    name  sex     treat strength}
-\CommentTok{### 1  adam male treatment      167}
-\CommentTok{### NA <NA> <NA>      <NA>       NA}
+\CommentTok{###     name gender group strength}
+\CommentTok{### 1  frank   male treat       27}
+\CommentTok{### NA  <NA>   <NA>  <NA>       NA}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2587,8 +2828,8 @@ replace all NAs with FALSE:
 \begin{Highlighting}[]
 \NormalTok{keep.these[ }\KeywordTok{is.na}\NormalTok{(keep.these) ] <-}\StringTok{ }\OtherTok{FALSE}
 \NormalTok{dat[ keep.these , ]}
-\CommentTok{###   name  sex     treat strength}
-\CommentTok{### 1 adam male treatment      167}
+\CommentTok{###    name gender group strength}
+\CommentTok{### 1 frank   male treat       27}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2605,18 +2846,65 @@ that corresponds to FALSE will be dropped.
 
 For vectors, you need to specify a single dimension.
 
+\begin{longtable}[]{@{}cccc@{}}
+\toprule
+\begin{minipage}[b]{0.11\columnwidth}\centering
+name\strut
+\end{minipage} & \begin{minipage}[b]{0.11\columnwidth}\centering
+gender\strut
+\end{minipage} & \begin{minipage}[b]{0.12\columnwidth}\centering
+group\strut
+\end{minipage} & \begin{minipage}[b]{0.14\columnwidth}\centering
+strength\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.11\columnwidth}\centering
+frank\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\centering
+male\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering
+treat\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\centering
+27\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.11\columnwidth}\centering
+wanda\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\centering
+female\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering
+treat\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\centering
+43\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.11\columnwidth}\centering
+sanjay\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\centering
+male\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering
+control\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\centering
+19\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.11\columnwidth}\centering
+nancy\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\centering
+female\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering
+control\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\centering
+58\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{these <-}\StringTok{ }\NormalTok{x1 }\OperatorTok{>}\StringTok{ }\DecValTok{140}     \CommentTok{# selector vector}
-
-\NormalTok{these}
-\CommentTok{### [1] FALSE FALSE FALSE FALSE}
-
-\NormalTok{x1[ these ]}
-\CommentTok{### numeric(0)}
-
-\NormalTok{x2[ these ]}
-\CommentTok{### character(0)}
+\NormalTok{these.treat <-}\StringTok{ }\NormalTok{dat}\OperatorTok{$}\NormalTok{group }\OperatorTok{==}\StringTok{ "treat"}
+\NormalTok{name[ these.treat ]}
+\CommentTok{### [1] "frank" "wanda"}
+\NormalTok{strength[ these.treat ]}
+\CommentTok{### [1] 27 43}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2628,82 +2916,30 @@ not drop anything.
 dat{[} row position , column position {]}
 \end{quote}
 
-\begin{longtable}[]{@{}cccc@{}}
-\toprule
-\begin{minipage}[b]{0.10\columnwidth}\centering
-name\strut
-\end{minipage} & \begin{minipage}[b]{0.11\columnwidth}\centering
-sex\strut
-\end{minipage} & \begin{minipage}[b]{0.15\columnwidth}\centering
-treat\strut
-\end{minipage} & \begin{minipage}[b]{0.15\columnwidth}\centering
-strength\strut
-\end{minipage}\tabularnewline
-\midrule
-\endhead
-\begin{minipage}[t]{0.10\columnwidth}\centering
-adam\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\centering
-male\strut
-\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\centering
-treatment\strut
-\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\centering
-167\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.10\columnwidth}\centering
-jamal\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\centering
-male\strut
-\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\centering
-control\strut
-\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\centering
-185\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.10\columnwidth}\centering
-linda\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\centering
-female\strut
-\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\centering
-treatment\strut
-\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\centering
-119\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.10\columnwidth}\centering
-sriti\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\centering
-female\strut
-\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\centering
-control\strut
-\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\centering
-142\strut
-\end{minipage}\tabularnewline
-\bottomrule
-\end{longtable}
-
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{these <-}\StringTok{ }\NormalTok{dat}\OperatorTok{$}\NormalTok{treat }\OperatorTok{==}\StringTok{ "treatment"}
+\NormalTok{these.control <-}\StringTok{ }\NormalTok{dat}\OperatorTok{$}\NormalTok{group }\OperatorTok{==}\StringTok{ "control"}
 
-\NormalTok{dat[ these , ]   }\CommentTok{# all data in the treatment group}
-\CommentTok{###    name    sex     treat strength}
-\CommentTok{### 1  adam   male treatment      167}
-\CommentTok{### 3 linda female treatment      119}
+\NormalTok{dat[ these.control , ]   }\CommentTok{# all data in the control group}
+\CommentTok{###     name gender   group strength}
+\CommentTok{### 3 sanjay   male control       19}
+\CommentTok{### 4  nancy female control       58}
 
-\NormalTok{dat[ , }\KeywordTok{c}\NormalTok{(}\StringTok{"name"}\NormalTok{,}\StringTok{"sex"}\NormalTok{) ]  }\CommentTok{# select two columns of data}
-\CommentTok{###    name    sex}
-\CommentTok{### 1  adam   male}
-\CommentTok{### 2 jamal   male}
-\CommentTok{### 3 linda female}
-\CommentTok{### 4 sriti female}
+\NormalTok{dat[ , }\KeywordTok{c}\NormalTok{(}\StringTok{"name"}\NormalTok{,}\StringTok{"gender"}\NormalTok{) ]  }\CommentTok{# select two columns of data}
+\CommentTok{###     name gender}
+\CommentTok{### 1  frank   male}
+\CommentTok{### 2  wanda female}
+\CommentTok{### 3 sanjay   male}
+\CommentTok{### 4  nancy female}
 
 \CommentTok{# to keep a subset as a separate dataset}
 
-\NormalTok{dat.women <-}\StringTok{ }\NormalTok{dat[ dat}\OperatorTok{$}\NormalTok{sex }\OperatorTok{==}\StringTok{ "female"}\NormalTok{ , ]}
+\NormalTok{dat.women <-}\StringTok{ }\NormalTok{dat[ dat}\OperatorTok{$}\NormalTok{gender }\OperatorTok{==}\StringTok{ "female"}\NormalTok{ , ]}
 
 \NormalTok{dat.women}
-\CommentTok{###    name    sex     treat strength}
-\CommentTok{### 3 linda female treatment      119}
-\CommentTok{### 4 sriti female   control      142}
+\CommentTok{###    name gender   group strength}
+\CommentTok{### 2 wanda female   treat       43}
+\CommentTok{### 4 nancy female control       58}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2939,11 +3175,11 @@ We can then describe membership through three operations:
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.7\linewidth]{figures/xy} 
+{\centering \includegraphics[width=0.6\linewidth]{figures/xy} 
 
 }
 
-\caption{Membership defined by two sets}\label{fig:unnamed-chunk-108}
+\caption{Membership defined by two sets}\label{fig:unnamed-chunk-119}
 \end{figure}
 
 \begin{longtable}[]{@{}ll@{}}
@@ -2956,9 +3192,9 @@ Description\strut
 \midrule
 \endhead
 \begin{minipage}[t]{0.53\columnwidth}\raggedright
-union: X\strut
+union: X OR Y\strut
 \end{minipage} & \begin{minipage}[t]{0.41\columnwidth}\raggedright
-Y\strut
+The universe of all elements across all both sets: {[}A,B,C{]}\strut
 \end{minipage}\tabularnewline
 \begin{minipage}[t]{0.53\columnwidth}\raggedright
 intersection: X \& Y\strut
@@ -2975,14 +3211,6 @@ The elements in my first set, not in my second {[}A{]} or {[}C{]}\strut
 
 Let's see how this might work in practice with an example of members of
 a study:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{name <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"frank"}\NormalTok{,}\StringTok{"wanda"}\NormalTok{,}\StringTok{"sanjay"}\NormalTok{,}\StringTok{"nancy"}\NormalTok{)}
-\NormalTok{group <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"treat"}\NormalTok{,}\StringTok{"treat"}\NormalTok{,}\StringTok{"control"}\NormalTok{,}\StringTok{"control"}\NormalTok{)}
-\NormalTok{gender <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"male"}\NormalTok{,}\StringTok{"female"}\NormalTok{,}\StringTok{"male"}\NormalTok{,}\StringTok{"female"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
 
 \begin{longtable}[]{@{}ccc@{}}
 \toprule
@@ -3813,7 +4041,7 @@ example, we will look at unemployment levels by county.
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics[width=0.7\linewidth]{DS4PS-I_files/figure-latex/unnamed-chunk-131-1} \includegraphics[width=0.7\linewidth]{DS4PS-I_files/figure-latex/unnamed-chunk-131-2} \includegraphics[width=0.7\linewidth]{DS4PS-I_files/figure-latex/unnamed-chunk-131-3} \end{center}
+\begin{center}\includegraphics[width=0.7\linewidth]{DS4PS-I_files/figure-latex/unnamed-chunk-142-1} \includegraphics[width=0.7\linewidth]{DS4PS-I_files/figure-latex/unnamed-chunk-142-2} \includegraphics[width=0.7\linewidth]{DS4PS-I_files/figure-latex/unnamed-chunk-142-3} \end{center}
 
 Note that elements can be recycled from your \emph{y} vector:
 
@@ -4025,7 +4253,7 @@ features there is a unique group for each combination of features.
 The simple way to think about this is that the cross-tab of features
 generates a grid (table), and each cell represents a unique group:
 
-\begin{center}\includegraphics[width=0.7\linewidth]{DS4PS-I_files/figure-latex/unnamed-chunk-138-1} \end{center}
+\begin{center}\includegraphics[width=0.7\linewidth]{DS4PS-I_files/figure-latex/unnamed-chunk-149-1} \end{center}
 
 We might be interested in simple groups (treatment cases versus control
 cases), or complex groups (does the treatment effect women and men
@@ -4200,7 +4428,7 @@ have data on:
 Examining descriptive statistics we can see that reading speed varies by
 gender and the treatment group, but not by race or blood type:
 
-\begin{center}\includegraphics[width=0.7\linewidth]{DS4PS-I_files/figure-latex/unnamed-chunk-147-1} \end{center}
+\begin{center}\includegraphics[width=0.7\linewidth]{DS4PS-I_files/figure-latex/unnamed-chunk-158-1} \end{center}
 
 The question is, how many unique groups can we create with these four
 factors?
@@ -4220,7 +4448,7 @@ grid, or four unique groups.
 If the race factor has three levels, how many unique groups will we have
 considering the study design, gender, and race together?
 
-\begin{center}\includegraphics[width=0.7\linewidth]{DS4PS-I_files/figure-latex/unnamed-chunk-148-1} \end{center}
+\begin{center}\includegraphics[width=0.7\linewidth]{DS4PS-I_files/figure-latex/unnamed-chunk-159-1} \end{center}
 
 We can calculate the size of the grid by multiplying number of levels
 for each factor. We see here we have 12 unique groups:
@@ -4243,7 +4471,7 @@ unique groups:
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics[width=0.7\linewidth]{DS4PS-I_files/figure-latex/unnamed-chunk-150-1} \end{center}
+\begin{center}\includegraphics[width=0.7\linewidth]{DS4PS-I_files/figure-latex/unnamed-chunk-161-1} \end{center}
 
 What about age? It is a continuous variable, so it's a little more
 tricky.
@@ -4257,7 +4485,7 @@ correlation tools.
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics[width=0.7\linewidth]{DS4PS-I_files/figure-latex/unnamed-chunk-151-1} \end{center}
+\begin{center}\includegraphics[width=0.7\linewidth]{DS4PS-I_files/figure-latex/unnamed-chunk-162-1} \end{center}
 
 But we can also incorporate this independent variable into a group
 structure. We can treat each distinct age as a separate group. The ages
@@ -4271,7 +4499,7 @@ represented.
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics[width=0.7\linewidth]{DS4PS-I_files/figure-latex/unnamed-chunk-152-1} \end{center}
+\begin{center}\includegraphics[width=0.7\linewidth]{DS4PS-I_files/figure-latex/unnamed-chunk-163-1} \end{center}
 
 If we think about the overall group structure, then, we have unique
 groups defined by gender, race, blood type, and study design, and
@@ -4307,7 +4535,7 @@ to 12 distinct age groups.
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics[width=0.7\linewidth]{DS4PS-I_files/figure-latex/unnamed-chunk-153-1} \end{center}
+\begin{center}\includegraphics[width=0.7\linewidth]{DS4PS-I_files/figure-latex/unnamed-chunk-164-1} \end{center}
 
 We have now simplified our analysis from 1,560 to 288 possible groups.
 Combinations of groups will also be easier:
@@ -4323,7 +4551,7 @@ Combinations of groups will also be easier:
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics[width=0.7\linewidth]{DS4PS-I_files/figure-latex/unnamed-chunk-154-1} \end{center}
+\begin{center}\includegraphics[width=0.7\linewidth]{DS4PS-I_files/figure-latex/unnamed-chunk-165-1} \end{center}
 
 \hypertarget{analysis-by-group}{%
 \section{Analysis by Group}\label{analysis-by-group}}
@@ -5439,7 +5667,7 @@ is a time series graph that is faceted by teams:
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics[width=0.7\linewidth]{DS4PS-I_files/figure-latex/unnamed-chunk-165-1} \end{center}
+\begin{center}\includegraphics[width=0.7\linewidth]{DS4PS-I_files/figure-latex/unnamed-chunk-176-1} \end{center}
 
 Now you can quickly see that Detroit is the team that has raised
 salaries most aggressively.
