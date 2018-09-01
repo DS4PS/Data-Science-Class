@@ -13,12 +13,34 @@ library( pander )
 
 ## Key Concepts
 
-```{r, fig.cap="Logical statements define group membership", echo=F }
-knitr::include_graphics( "figures/set_theory.png" )
+```{r, fig.cap="Logical statements define group membership", out.width='70%', echo=F }
+knitr::include_graphics( "figures/group_selection.png" )
 ```
 
 
+Logical statements are used to translate regular language into computer code. Many of our data analysis problems start by defining our sub-groups of interest. 
 
+> What percentage of men over 30 are bald?  
+
+```{r, eval=F}
+these <- gender == "male" & age > 30 & hair == FALSE
+mean( these )
+```
+
+We need to make sure statements are correct. For example, the complement of "men with beards" is not men without beards, it is men without beards OR women (with or without beards). 
+
+> Do bearded men earn more than men without beards? 
+
+```{r, eval=F}
+bearded.men <- gender == "male" & beard == TRUE
+proper.gentlemen <- gender == "male" & beard == FALSE
+mean( salary[ bearded.men ] )
+mean( salary[ proper.gentlemen ] )
+```
+
+```{r, fig.cap="Logical statements define group membership", out.width='60%', echo=F }
+knitr::include_graphics( "figures/bearded_men.png" )
+```
 
 ## Operators 
 
@@ -43,7 +65,8 @@ Operator |  Description
 !=	     | not equal to
 x \| y	 | x OR y
 x & y	   | x AND y
-!        | opposite of
+!        | opposite of 
+[ ]       | subset
 
 Logical operators create logical vectors, a vector that contains only TRUE or FALSE. The TRUE means that the observation belongs to the group, FALSE means it does not.
 
@@ -54,98 +77,148 @@ x1 > 7
 
 x1 >= 7
 
+x1 == 9 | x1 == 1
+
+
+gender <- c("male","male","female","female")
+
+gender == "female"
+```
+
+Note that the logical statement for "equals" is written with two equal signs. This is important to remember, because using a single equal sign can introduce subtle errors into your analysis. 
+
+```{r}
+x1 <- c( 7, 9, 1, 2 )
+
 x1 == 9
 
 x1 = 9  # don't use a single equals operator!  it overwrites your variable
 
 x1
-
-x1 <- c(7,9,1,2)
-
-x1 == 9 | x1 == 1
-
-
-x2 <- c("male","male","female","female")
-
-x3 <- c("treatment","control","treatment","control")
-
-# x2 == male  # this will not work because male is not enclosed with quotes
-
-x2 == "female"
-
-x2 == "female" & x3 == "treatment"
-
 ```
 
-Note that we use operators to create logical vectors where TRUE designates observation that belong to the defined group, and FALSE designates observations outside the group. We use these logical vectors in three ways:
-
-**ONE:** We can create a selector variable that is used for subsets. When a logical vector is passed to the subset function it will keep all observations with a TRUE value, and drop observations with a FALSE value.
+We can write compound logical statements using the AND and OR operators:
 
 ```{r}
+gender <- c("male","male","female","female")
 
-x1
+study.group <- c("treatment","control","treatment","control")
 
-x1 > 5
+gender == "female"  &  study.group == "treatment"
 
-keep.these <- x1 > 5
-
-x1[ keep.these ]
-
-# you can create a selector variable with one variable, and apply it to another
-
-x2[ keep.these ]  # sex of observations where x1 > 5
+gender == "female"  |  study.group == "treatment"
 ```
 
-**TWO**: Logical vectors give us an easy way to count things within defined groups. 
 
-We can apply a **sum()** function to a logical vector, and the result will be a tally of all of the TRUE cases.
+
+## Selector Vectors
+
+Note that we use operators to create logical vectors where TRUE designates observation that belong to the defined group, and FALSE designates observations outside the group. The term "selector vector" is a useful way to remember this purpose. When you are doing analysis, you select specific observaions to form a group, and you can 
+
+```{r, echo=F}
+name <- c("frank","wanda","sanjay","nancy")
+group <- c("treat","treat","control","control")
+gender <- c("male","female","male","female")
+strength <- c(27,43,19,58)
+dat <- data.frame( name, gender, group, strength )
+dat %>% pander
+```
+
+
+```{r}
+these.female <- dat$gender == "female"
+
+sum( these.female )                   # number of women in the study
+mean( these.female )                  # proportion of the study that is women
+dat[ these.female , ]                 # all data belonging to women
+mean( dat$strength[ these.female ] )  # average outcome for women in the study
+```
+
+I will consistently name my logical vectors "these.GROUP" throughout the chapters, where GROUP represents the group label. For example, I selected women above, so the selector vector is called "these.female".  
+
+## Usefulness of Selector Vectors
+
+Selector vectors, i.e. logical vectors that were created by defining a group, have three main uses in our analysis. 
+
+**ONE**: Logical vectors give us an easy way to count things within defined groups. 
+
+We can apply a **sum()** function to a logical vector, and the result will be a tally of all of the TRUE cases. The **mean()** function will give us the proportion of the sample that belongs to our defined group.
 
 
 ```{r}
 
 # how many females do we have in our study?
 
-sum( x2 == "female" )
+sum( gender == "female" )
 
 # how many females do we have in our treatment group?
 
-sum( x2 == "female" & x3 == "treatment" )
+sum( gender == "female" & study.group == "treatment" )
 
+# what proportion of our study are men? 
 
+mean( gender == "male" )
 ```
+
+**TWO:** We can create a selector variable that is used for subsets. A selector vector used in a subset operator will drop all observations that are FALSE, isolating data belonging to the group:
+
+```{r}
+
+these.female <- gender == "female"
+name[ these.female ]
+strength[ these.female ]
+```
+
+Or we can create a subset of the full dataset:
+
+```{r, eval=F}
+dat[ these.female , ]
+```
+
+```{r, echo=F}
+dat[ these.female, ] %>% pander
+```
+
+
 
 **THREE**: We use selector variables to replace observations with new values using the assignment operator. This is similar to a find and replace operation.
 
 ```{r}
-
-x7 <- c( "mole","mouse","shrew","mouse","rat","shrew")
+animals <- c( "mole", "mouse", "shrew", "mouse", "rat", "shrew" )
 
 # the lab assistant incorrectly identified the shrews
 
-x7
+animals
 
-x7[ x7 == "shrew" ] <- "possum"
+animals[ animals == "shrew" ] <- "possum"
 
-x7
-
-
-# we don't know if linda received the treatment
-
-x3 <- c("adam","jamal","linda","sriti")
-
-x4 <- c( "treatment","control","treatment","control")
-
-x4[ x3 == "linda" ] <- NA
-
-x4
-
+animals
 ```
+
+
+
+We don't know if linda received the treatment:
+
+```{r, echo=F}
+name <- c("adam","jamal","linda","sriti")
+
+study.group <- c( "treatment","control","treatment","control")
+
+data.frame( name, study.group ) %>% pander()
+```
+
+```{r}
+study.group[ name == "linda" ] <- NA
+
+study.group
+```
+
 
 The **!** operator is a special case, where it is not used to define a new logical vector, but rather it swaps the values of an existing logical vector.
 
 ```{r}
 
-x1
+x1 <- c(7,9,1,2)
 
 these <- x1 > 5
 
@@ -161,55 +234,20 @@ these
 
 
 
+## NAs in Logical Statements
 
-## Logical Vectors
+Recall that missing values are an extremely important concept in statistics. If one-third of our survey sample reports that they never smoked pot, one-third reports they have smoked pot, and one-third did not answer the question, then what do we report for the proportion of the population that has smoked pot? 
 
-Logical vectors are collections of a set of TRUE and FALSE statements. 
+We might prefer to be cautious and count only the people that have confirmed they have smoked pot, resulting in an estimate of 33.3%. 
 
-Logical statements allow us to define groups based upon criteria, then decide whether observations belong to the group. A logical statement is one that contains a logical operator, and returns only TRUE, FALSE, or NA values. 
+If we throw out the missing data, then 50% of respondents have smoked pot.
 
-Logical vectors are important because organizing data into these sets is what drives all of the advanced data analytics (set theory is at the basis of mathematics and computer science). 
+If we assume those that refuse to answer have likely smoked pot, our estimate might be 66.6% of the sample. 
 
-```{r, echo=F}
-strength <- c(167,185,119,142)
-
-name <- c("adam","jamal","linda","sriti")
-
-sex <- factor( c("male","male","female","female") )
-
-treat <- c( "treatment","control","treatment","control" )
-
-dat <- data.frame( name, sex, treat, strength )
-
-dat %>% pander()
-```
+These different results are a function of how we treat the missing data in our survey, so it is important that we can keep track of missing values, especially during subset operations. 
 
 
-```{r}
-dat$name == "sriti"
-
-dat$sex == "male"
-
-dat$strength > 180
-```
-
-When defining logical vectors, you can use the abbreviated versions of T for TRUE and F for FALSE.
-
-```{r}
-z1 <- c(T,T,F,T,F,F)
-z1
-```
-
-
-Typically logical vectors are used in combination with subset operators to identify specific groups in the data.
-
-```{r}
-# isolate data on all of the females in the dataset
-dat[ dat$sex == "female" , ]
-```
-
-
-Note how NAs affect compound logical statements:
+Note how NAs effect compound logical statements:
 
 ```{r}
 TRUE & TRUE
@@ -221,9 +259,11 @@ TRUE & NA
 FALSE & NA
 ```
 
-If one condition is FALSE and the other is NA, the missing value does not matter in this case because under the & condition both must be TRUE for the observation to belong to the group we are defining with the logical statement, so it should be excluded even if we don't know the value for the second condition. For example, if we want to select all women in the treatment group, then a man is excluded from the group, even if it is unclear whether he belongs to the treatment or control condition. 
+To make sense of these rules consider the following: 
 
-On the other hand, if one condition is TRUE, and another is NA, R does not want to throw out the data because the state of the missing value is unclear. As a result, it will preserve the observation, but it will replace all of the data with missing values.
+If one condition is already FALSE, the missing value does not matter because under the & condition BOTH must be TRUE for the observation to belong to our defined group. After we know that one of the conditions is FALSE the missing value is irrelevant. For example, if we want to select all women in the treatment group, and we have a man with an unclear treatment group status, he is still excluded from the group because he is a man. 
+
+On the other hand, if one condition is TRUE, and another is NA, R does not want to throw out the data because the state of the missing value is unclear. As a result, it will preserve the observation, but it will replace all of the data with missing values to signal the lack of certainty associated with that observation.
 
 ```{r, echo=F}
 dat %>% pander
@@ -254,34 +294,37 @@ The primary rule of subsets is to use a data operator to create a logical select
 For vectors, you need to specify a single dimension. 
 
 
-```{r}
-these <- x1 > 140     # selector vector
-
-these
-
-x1[ these ]
-
-x2[ these ]
+```{r, echo=F}
+name <- c("frank","wanda","sanjay","nancy")
+group <- c("treat","treat","control","control")
+gender <- c("male","female","male","female")
+strength <- c(27,43,19,58)
+dat <- data.frame( name, gender, group, strength )
+dat %>% pander
 ```
+
+```{r}
+these.treat <- dat$group == "treat"
+name[ these.treat ]
+strength[ these.treat ]
+```
+
 
 For data frames, you need two dimensions (rows and columns). The two dimensions are seperated by a comma, and if you leave one blank you will not drop anything.
 
 > dat[  row position ,  column position  ]
 
-```{r, echo=F}
-dat %>% pander
-```
 
 ```{r}
-these <- dat$treat == "treatment"
+these.control <- dat$group == "control"
 
-dat[ these , ]   # all data in the treatment group
+dat[ these.control , ]   # all data in the control group
 
-dat[ , c("name","sex") ]  # select two columns of data
+dat[ , c("name","gender") ]  # select two columns of data
 
 # to keep a subset as a separate dataset
 
-dat.women <- dat[ dat$sex == "female" , ]
+dat.women <- dat[ dat$gender == "female" , ]
 
 dat.women
   

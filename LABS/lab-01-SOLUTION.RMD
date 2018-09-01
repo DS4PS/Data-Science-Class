@@ -121,6 +121,14 @@ The basic Markdown syntax for images is:
 
 We may want some control over image size. Markdown itself is a purposefully simple language, so it doesn't offer this functionality.
 
+
+NEW in RMD:
+
+```
+![Image Title](path/to/your/image){width=250px}
+```
+
+
 We can, however, change image size in two ways, either with a CSS argument below the image:
 
 

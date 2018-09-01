@@ -97,19 +97,19 @@ Let's assume we have two sets: set1=*[A,B]*, set2=*[B,C]*. Each element in this 
 
 We can then describe membership through three operations:
 
-```{r, fig.cap="Membership defined by two sets", echo=F, fig.width=4, fig.height=4 }
+```{r, fig.cap="Membership defined by two sets", echo=F, out.width='60%' }
 knitr::include_graphics( "figures/xy.png" )
 ```
 
 Operation      | Description
 -------------- | -----------
-union: X | Y          | The universe of all elements across all both sets: [A,B,C]
+union: X OR Y          | The universe of all elements across all both sets: [A,B,C]
 intersection: X & Y   | The elements shared by both sets: [B]
 difference: X & ! Y     | The elements in my first set, not in my second [A] or [C]
 
 Let's see how this might work in practice with an example of members of a study:
 
-```{r}
+```{r, echo=F}
 name <- c("frank","wanda","sanjay","nancy")
 group <- c("treat","treat","control","control")
 gender <- c("male","female","male","female")
