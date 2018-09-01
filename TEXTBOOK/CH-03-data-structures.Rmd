@@ -12,7 +12,7 @@ library( Lahman )
 
 ## Key Concepts
 
-```{r, fig.cap="Components of a Vector", echo=F }
+```{r, fig.cap="Components of a Vector", echo=F, out.width='60%' }
 knitr::include_graphics( "figures/vectors.png" )
 ```
 
@@ -251,7 +251,7 @@ summary( x1 )
 
 ```
 
-Note that if we try to run this mathematicl function we get an error:
+Note that if we try to run this mathematical function we get an error:
 
 ```{r, eval=F}
 
@@ -410,7 +410,7 @@ as.numeric( as.character( grades ))
 
 ```
 
-Note that when subsetting a factor, it will retain all of the original levels, even when they are not in use. 
+Note that when sub-setting a factor, it will retain all of the original levels, even when they are not in use. 
 
 In this example, there are 37 teams in the Lahman dataset (some of them defunct) and 16 teams in the National League in 2002. But after applying the year and league subsets you will still have 37 levels.
 
@@ -570,7 +570,7 @@ hist( iq, col="gray" )
 
 ## Variable Transformations
 
-When we create a new variable from existing variables, it is called a 'transformation'. This is very common in data science. Crime is measures by the number of assults *per 100,000 people*, for example (crime / pop). A batting average is the number of hits divided by the number of at bats. 
+When we create a new variable from existing variables, it is called a 'transformation'. This is very common in data science. Crime is measures by the number of assaults *per 100,000 people*, for example (crime / pop). A batting average is the number of hits divided by the number of at bats. 
 
 In R, mathematical operations are *vectorized*, which means that operations are performed on the entire vector all at once. This makes transformations fast and easy.
 
@@ -766,7 +766,7 @@ m.01$call
 
 These output are all related to the model we have run, so they are kept organized by the list so they can be used for various further steps like comparing models or checking for model fit. 
 
-A data frame is a bit more rigid that a list in that you cannot combine elements that do not have the same dimsions.
+A data frame is a bit more rigid that a list in that you cannot combine elements that do not have the same dimensions.
 
 ```{r}
 
@@ -824,7 +824,7 @@ dat  # whoops! I didn't save my work in the dataset
 ```
 
 
-You will see the **attach()** function used on occassion, and it is tempting because you can write the variable names directly. But in general, try to avoid the **attach()** function and don't form bad habits by using it now because when your scripts become more complicated then can cause problmes.
+You will see the **attach()** function used on occasion, and it is tempting because you can write the variable names directly. But in general, try to avoid the **attach()** function and don't form bad habits by using it now because when your scripts become more complicated then can cause problems.
 
 
 
