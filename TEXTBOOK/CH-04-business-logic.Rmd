@@ -27,9 +27,14 @@ these <- gender == "male" & age > 30 & hair == FALSE
 mean( these )
 ```
 
+> Do bearded men earn more than men without beards? 
+
 We need to make sure statements are correct. For example, the complement of "men with beards" is not men without beards, it is men without beards OR women (with or without beards). 
 
-> Do bearded men earn more than men without beards? 
+```{r, fig.cap="Compound statements can be tricky", out.width='60%', echo=F }
+knitr::include_graphics( "figures/bearded_men.png" )
+```
+
 
 ```{r, eval=F}
 bearded.men <- gender == "male" & beard == TRUE
@@ -38,9 +43,7 @@ mean( salary[ bearded.men ] )
 mean( salary[ proper.gentlemen ] )
 ```
 
-```{r, fig.cap="Logical statements define group membership", out.width='60%', echo=F }
-knitr::include_graphics( "figures/bearded_men.png" )
-```
+
 
 ## Operators 
 
@@ -78,7 +81,6 @@ x1 > 7
 x1 >= 7
 
 x1 == 9 | x1 == 1
-
 
 gender <- c("male","male","female","female")
 

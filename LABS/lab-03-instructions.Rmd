@@ -1,5 +1,5 @@
 ---
-title: 'Lab 02 - Functions and Vectors'
+title: 'Lab 03 - Logical Statements'
 output:
   html_document:
     theme: readable
@@ -24,15 +24,14 @@ library( pander )
 
 ## Functions
 
-You will use the following functions for this lab: 
+You will use the following operators and functions for this lab: 
 
 ```{r,eval=F}
-names()                 # variable names
-head()                  # preview dataset
-length()                # vector dimensions
-dim(), nrow(), ncol()   # dataset dimensions
-sum(), summary()        # summarize numeric vectors
-table()                 # summarize factors / character vectors
+logical operators  ( ==, >, <, etc. )
+AND and OR statements
+subset operator [ ] 
+sum()        # count TRUEs in logical vectors
+mean()       # proportion of TRUEs in logical vectors
 ```
 
 Recall that referencing variables in R requires the dataset name and variable name, along with the `$` operator.
@@ -60,16 +59,62 @@ head( dat, 10 )
 
 <br><br>
 
+
+## Data Dictionary
+
+VARIABLE | DESCRIPTION
+-------- | ----------------------
+**tax_id**  |  unique parcel ID  (numeric)  
+**neighborhood**  |  city neighborhood for tax parcel (character) 
+**stnum**  |  parcel address (numeric) 
+**stname**  |  parcel address (character) 
+**zip**  |  parcel address (numeric) 
+**owner**  |  property owner (character) 
+**frontfeet**  |  length of the front of the lot (numeric)    
+**depth**  |  depth of the lot (numeric)
+**sqft**  |  size of the parcel in square feet  (numeric)
+**acres**  |  size of the parcel in acres (numeric)
+**yearbuilt**  |  year of construction for the building on the parcel (numeric) 
+**age**  |  age of the building (numeric)
+**age_range**  |  age of the building by decade (factor)  
+**land_use**  |  zoning purpose of the parcel (factor) 
+**units**  |  number of units in multi-unit buildings (numeric)        
+**residential**  |  is the parcel zoned for residential (T/F)  
+**rental**  |  is the residential space zoned for rental (T/F) 
+**vacantbuil**  |  is the building vacant (T/F)   
+**assessedla**  |  assessed value of the parcel land  (numeric)
+**assessedva**  |  assessed value of the parcel land plus buildings (numeric) 
+**tax.exempt**  |  is the parcel tax exempt (T/F)   
+**countytxbl**  |   value of parcel for tax purposes (numeric)  
+**schooltxbl**  |  value of parcel for tax purposes (numeric) 
+**citytaxabl**  |  value of parcel for tax purposes (numeric)   
+**star**  |  does the parcel qualify for a residential tax break (T/F)      
+**amtdelinqu**  |  amount of tax bill that is delinquint (numeric) 
+**taxyrsdeli**  |  length of time tax bill is delinquint (numeric) 
+**totint**  |  total interest owed for delinquint taxes (numeric) 
+**overduewater**  |  total owed on overdue water bills (numeric) 
+
+
+<br><br>
+
+
 # Lab Instructions
 
-Answer the following questions in your lab.  
+Answer the following questions in your lab by writing the appropriate logical statements. Practice using compound statements and subset operators.  
 
-1. How many tax parcels are in syracuse (dataset dimensions)? 
-2. How many acres of land are in syracuse (sum over a numeric vector)?
-3. How many vacant BUILDINGS are there in Syracuse (sum over a logical vector)?
-4. What proportion of parcels are tax exempt?
-5. Which neighborhood contains the most tax parcels (table with one variable)?
-6. Which neighborhood contains the most vacant LOTS (table with two variables)? 
+1. How many tax parcels in Syracuse are tax-exempt? 
+3. How many acres of land are in Syracuse? 
+3. What proportion of total land in Syacuse is tax exempt (use `acres`)?
+
+4. How many single family homes were built between 1920 and 1945? 
+5. How many houses in the Westcott neighborhood have an assessed value (assessedva) of over $200,000? 
+
+5. What proportion of tax bills are delinquent? 
+6. What is the average amount owed by those with delinquint tax bills? 
+
+7. What proportion of tax parcels have an overdue water bill (overduewater)?
+8. Which type of land use is category has the most overdue water bills (selector vector plus table)? 
+
 
 *Recall that R wants to make sure you are aware of missing values, so it will return NA for functions performed on vectors with missing values. Add the 'NA remove' argument to these vectors to ignore missing values:* `sum( x, na.rm=T )`
 

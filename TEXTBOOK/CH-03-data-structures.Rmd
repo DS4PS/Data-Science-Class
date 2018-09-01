@@ -458,7 +458,53 @@ dat <- read.csv( "filename.csv", stringsAsFactors=F )
 
 
 
+## Logical Vectors
 
+Logical vectors are collections of a set of TRUE and FALSE statements. 
+
+Logical statements allow us to define groups based upon criteria, then decide whether observations belong to the group. A logical statement is one that contains a logical operator, and returns only TRUE, FALSE, or NA values. 
+
+Logical vectors are important because organizing data into these sets is what drives all of the advanced data analytics (set theory is at the basis of mathematics and computer science). 
+
+```{r, echo=F}
+strength <- c(167,185,119,142)
+
+name <- c("adam","jamal","linda","sriti")
+
+sex <- factor( c("male","male","female","female") )
+
+treat <- c( "treatment","control","treatment","control" )
+
+dat <- data.frame( name, sex, treat, strength )
+
+dat %>% pander()
+```
+
+
+```{r}
+dat$name == "sriti"
+
+dat$sex == "male"
+
+dat$strength > 180
+```
+
+When defining logical vectors, you can use the abbreviated versions of T for TRUE and F for FALSE.
+
+```{r}
+z1 <- c(T,T,F,T,F,F)
+z1
+```
+
+
+Typically logical vectors are used in combination with subset operators to identify specific groups in the data.
+
+```{r}
+# isolate data on all of the females in the dataset
+dat[ dat$sex == "female" , ]
+```
+
+See the next chapter for more details on subsets.
 
 
 

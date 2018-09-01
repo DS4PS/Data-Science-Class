@@ -163,15 +163,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.7.1" data-path="data-structures.html"><a href="data-structures.html#quotes-in-arguments"><i class="fa fa-check"></i><b>3.7.1</b> Quotes in Arguments</a></li>
 </ul></li>
 <li class="chapter" data-level="3.8" data-path="data-structures.html"><a href="data-structures.html#factors"><i class="fa fa-check"></i><b>3.8</b> Factors</a></li>
-<li class="chapter" data-level="3.9" data-path="data-structures.html"><a href="data-structures.html#generating-vectors"><i class="fa fa-check"></i><b>3.9</b> Generating Vectors</a></li>
-<li class="chapter" data-level="3.10" data-path="data-structures.html"><a href="data-structures.html#variable-transformations"><i class="fa fa-check"></i><b>3.10</b> Variable Transformations</a></li>
-<li class="chapter" data-level="3.11" data-path="data-structures.html"><a href="data-structures.html#missing-values-nas"><i class="fa fa-check"></i><b>3.11</b> Missing Values: NA’s</a></li>
-<li class="chapter" data-level="3.12" data-path="data-structures.html"><a href="data-structures.html#datasets"><i class="fa fa-check"></i><b>3.12</b> Datasets</a><ul>
-<li class="chapter" data-level="3.12.1" data-path="data-structures.html"><a href="data-structures.html#data-frames"><i class="fa fa-check"></i><b>3.12.1</b> Data Frames</a></li>
-<li class="chapter" data-level="3.12.2" data-path="data-structures.html"><a href="data-structures.html#matrices"><i class="fa fa-check"></i><b>3.12.2</b> Matrices</a></li>
-<li class="chapter" data-level="3.12.3" data-path="data-structures.html"><a href="data-structures.html#lists"><i class="fa fa-check"></i><b>3.12.3</b> Lists</a></li>
+<li class="chapter" data-level="3.9" data-path="data-structures.html"><a href="data-structures.html#logical-vectors"><i class="fa fa-check"></i><b>3.9</b> Logical Vectors</a></li>
+<li class="chapter" data-level="3.10" data-path="data-structures.html"><a href="data-structures.html#generating-vectors"><i class="fa fa-check"></i><b>3.10</b> Generating Vectors</a></li>
+<li class="chapter" data-level="3.11" data-path="data-structures.html"><a href="data-structures.html#variable-transformations"><i class="fa fa-check"></i><b>3.11</b> Variable Transformations</a></li>
+<li class="chapter" data-level="3.12" data-path="data-structures.html"><a href="data-structures.html#missing-values-nas"><i class="fa fa-check"></i><b>3.12</b> Missing Values: NA’s</a></li>
+<li class="chapter" data-level="3.13" data-path="data-structures.html"><a href="data-structures.html#datasets"><i class="fa fa-check"></i><b>3.13</b> Datasets</a><ul>
+<li class="chapter" data-level="3.13.1" data-path="data-structures.html"><a href="data-structures.html#data-frames"><i class="fa fa-check"></i><b>3.13.1</b> Data Frames</a></li>
+<li class="chapter" data-level="3.13.2" data-path="data-structures.html"><a href="data-structures.html#matrices"><i class="fa fa-check"></i><b>3.13.2</b> Matrices</a></li>
+<li class="chapter" data-level="3.13.3" data-path="data-structures.html"><a href="data-structures.html#lists"><i class="fa fa-check"></i><b>3.13.3</b> Lists</a></li>
 </ul></li>
-<li class="chapter" data-level="3.13" data-path="data-structures.html"><a href="data-structures.html#the-attach-function"><i class="fa fa-check"></i><b>3.13</b> The ‘attach’ Function</a></li>
+<li class="chapter" data-level="3.14" data-path="data-structures.html"><a href="data-structures.html#the-attach-function"><i class="fa fa-check"></i><b>3.14</b> The ‘attach’ Function</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="logical-statements.html"><a href="logical-statements.html"><i class="fa fa-check"></i><b>4</b> Logical Statements</a><ul>
 <li class="chapter" data-level="4.1" data-path="logical-statements.html"><a href="logical-statements.html#key-concepts-2"><i class="fa fa-check"></i><b>4.1</b> Key Concepts</a></li>
@@ -251,20 +252,20 @@ Figure 4.1: Logical statements define group membership
 </blockquote>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1">these &lt;-<span class="st"> </span>gender <span class="op">==</span><span class="st"> &quot;male&quot;</span> <span class="op">&amp;</span><span class="st"> </span>age <span class="op">&gt;</span><span class="st"> </span><span class="dv">30</span> <span class="op">&amp;</span><span class="st"> </span>hair <span class="op">==</span><span class="st"> </span><span class="ot">FALSE</span></a>
 <a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw">mean</span>( these )</a></code></pre></div>
-<p>We need to make sure statements are correct. For example, the complement of “men with beards” is not men without beards, it is men without beards OR women (with or without beards).</p>
 <blockquote>
 <p>Do bearded men earn more than men without beards?</p>
 </blockquote>
+<p>We need to make sure statements are correct. For example, the complement of “men with beards” is not men without beards, it is men without beards OR women (with or without beards).</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-5"></span>
+<img src="figures/bearded_men.png" alt="Compound statements can be tricky" width="60%" />
+<p class="caption">
+Figure 4.2: Compound statements can be tricky
+</p>
+</div>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">bearded.men &lt;-<span class="st"> </span>gender <span class="op">==</span><span class="st"> &quot;male&quot;</span> <span class="op">&amp;</span><span class="st"> </span>beard <span class="op">==</span><span class="st"> </span><span class="ot">TRUE</span></a>
 <a class="sourceLine" id="cb2-2" data-line-number="2">proper.gentlemen &lt;-<span class="st"> </span>gender <span class="op">==</span><span class="st"> &quot;male&quot;</span> <span class="op">&amp;</span><span class="st"> </span>beard <span class="op">==</span><span class="st"> </span><span class="ot">FALSE</span></a>
 <a class="sourceLine" id="cb2-3" data-line-number="3"><span class="kw">mean</span>( salary[ bearded.men ] )</a>
 <a class="sourceLine" id="cb2-4" data-line-number="4"><span class="kw">mean</span>( salary[ proper.gentlemen ] )</a></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-6"></span>
-<img src="figures/bearded_men.png" alt="Logical statements define group membership" width="60%" />
-<p class="caption">
-Figure 4.2: Logical statements define group membership
-</p>
-</div>
 </div>
 <div id="operators" class="section level2">
 <h2><span class="header-section-number">4.2</span> Operators</h2>
@@ -335,11 +336,10 @@ Figure 4.2: Logical statements define group membership
 <a class="sourceLine" id="cb3-9" data-line-number="9">x1 <span class="op">==</span><span class="st"> </span><span class="dv">9</span> <span class="op">|</span><span class="st"> </span>x1 <span class="op">==</span><span class="st"> </span><span class="dv">1</span></a>
 <a class="sourceLine" id="cb3-10" data-line-number="10"><span class="co">### [1] FALSE  TRUE  TRUE FALSE</span></a>
 <a class="sourceLine" id="cb3-11" data-line-number="11"></a>
-<a class="sourceLine" id="cb3-12" data-line-number="12"></a>
-<a class="sourceLine" id="cb3-13" data-line-number="13">gender &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;male&quot;</span>,<span class="st">&quot;male&quot;</span>,<span class="st">&quot;female&quot;</span>,<span class="st">&quot;female&quot;</span>)</a>
-<a class="sourceLine" id="cb3-14" data-line-number="14"></a>
-<a class="sourceLine" id="cb3-15" data-line-number="15">gender <span class="op">==</span><span class="st"> &quot;female&quot;</span></a>
-<a class="sourceLine" id="cb3-16" data-line-number="16"><span class="co">### [1] FALSE FALSE  TRUE  TRUE</span></a></code></pre></div>
+<a class="sourceLine" id="cb3-12" data-line-number="12">gender &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;male&quot;</span>,<span class="st">&quot;male&quot;</span>,<span class="st">&quot;female&quot;</span>,<span class="st">&quot;female&quot;</span>)</a>
+<a class="sourceLine" id="cb3-13" data-line-number="13"></a>
+<a class="sourceLine" id="cb3-14" data-line-number="14">gender <span class="op">==</span><span class="st"> &quot;female&quot;</span></a>
+<a class="sourceLine" id="cb3-15" data-line-number="15"><span class="co">### [1] FALSE FALSE  TRUE  TRUE</span></a></code></pre></div>
 <p>Note that the logical statement for “equals” is written with two equal signs. This is important to remember, because using a single equal sign can introduce subtle errors into your analysis.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">x1 &lt;-<span class="st"> </span><span class="kw">c</span>( <span class="dv">7</span>, <span class="dv">9</span>, <span class="dv">1</span>, <span class="dv">2</span> )</a>
 <a class="sourceLine" id="cb4-2" data-line-number="2"></a>
@@ -355,10 +355,10 @@ Figure 4.2: Logical statements define group membership
 <a class="sourceLine" id="cb5-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb5-3" data-line-number="3">study.group &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;treatment&quot;</span>,<span class="st">&quot;control&quot;</span>,<span class="st">&quot;treatment&quot;</span>,<span class="st">&quot;control&quot;</span>)</a>
 <a class="sourceLine" id="cb5-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb5-5" data-line-number="5">gender <span class="op">==</span><span class="st"> &quot;female&quot;</span> <span class="op">&amp;</span><span class="st"> </span>study.group <span class="op">==</span><span class="st"> &quot;treatment&quot;</span></a>
+<a class="sourceLine" id="cb5-5" data-line-number="5">gender <span class="op">==</span><span class="st"> &quot;female&quot;</span>  <span class="op">&amp;</span><span class="st">  </span>study.group <span class="op">==</span><span class="st"> &quot;treatment&quot;</span></a>
 <a class="sourceLine" id="cb5-6" data-line-number="6"><span class="co">### [1] FALSE FALSE  TRUE FALSE</span></a>
 <a class="sourceLine" id="cb5-7" data-line-number="7"></a>
-<a class="sourceLine" id="cb5-8" data-line-number="8">gender <span class="op">==</span><span class="st"> &quot;female&quot;</span> <span class="op">|</span><span class="st"> </span>study.group <span class="op">==</span><span class="st"> &quot;treatment&quot;</span></a>
+<a class="sourceLine" id="cb5-8" data-line-number="8">gender <span class="op">==</span><span class="st"> &quot;female&quot;</span>  <span class="op">|</span><span class="st">  </span>study.group <span class="op">==</span><span class="st"> &quot;treatment&quot;</span></a>
 <a class="sourceLine" id="cb5-9" data-line-number="9"><span class="co">### [1]  TRUE FALSE  TRUE  TRUE</span></a></code></pre></div>
 </div>
 <div id="selector-vectors" class="section level2">
