@@ -258,7 +258,7 @@ Also note that parentheses matter. Compare this statement to the statement above
 ```
 Because we excluded the parentheses this statement now defines the group "NOT men AND with beards", or bearded women. 
 
-```{r, fig.cap="Examples of group construction with compound statements", out.width='60%', echo=F }
+```{r, fig.cap="Examples of group construction with compound statements", out.width='90%', echo=F }
 knitr::include_graphics( "figures/compound_logical_statements.png" )
 ```
 

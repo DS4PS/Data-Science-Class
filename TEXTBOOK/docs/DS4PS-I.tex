@@ -1000,7 +1000,7 @@ everything in R, they will be case sensitive.
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.7\linewidth]{figures/vectors} 
+{\centering \includegraphics[width=0.6\linewidth]{figures/vectors} 
 
 }
 
@@ -1401,7 +1401,7 @@ Math operators will only work on numeric vectors.
 \end{Highlighting}
 \end{Shaded}
 
-Note that if we try to run this mathematicl function we get an error:
+Note that if we try to run this mathematical function we get an error:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1619,7 +1619,7 @@ casting function.
 \end{Highlighting}
 \end{Shaded}
 
-Note that when subsetting a factor, it will retain all of the original
+Note that when sub-setting a factor, it will retain all of the original
 levels, even when they are not in use.
 
 In this example, there are 37 teams in the Lahman dataset (some of them
@@ -1869,8 +1869,8 @@ simulations. Here are the most common functions that will be helpful.
 
 When we create a new variable from existing variables, it is called a
 `transformation'. This is very common in data science. Crime is measures
-by the number of assults \emph{per 100,000 people}, for example (crime /
-pop). A batting average is the number of hits divided by the number of
+by the number of assaults \emph{per 100,000 people}, for example (crime
+/ pop). A batting average is the number of hits divided by the number of
 at bats.
 
 In R, mathematical operations are \emph{vectorized}, which means that
@@ -2215,7 +2215,7 @@ organized by the list so they can be used for various further steps like
 comparing models or checking for model fit.
 
 A data frame is a bit more rigid that a list in that you cannot combine
-elements that do not have the same dimsions.
+elements that do not have the same dimensions.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2274,11 +2274,11 @@ conflicting variable names
 \end{Highlighting}
 \end{Shaded}
 
-You will see the \textbf{attach()} function used on occassion, and it is
+You will see the \textbf{attach()} function used on occasion, and it is
 tempting because you can write the variable names directly. But in
 general, try to avoid the \textbf{attach()} function and don't form bad
 habits by using it now because when your scripts become more complicated
-then can cause problmes.
+then can cause problems.
 
 \hypertarget{logical-statements}{%
 \chapter{Logical Statements}\label{logical-statements}}
@@ -2332,6 +2332,7 @@ beards OR women (with or without beards).
 \NormalTok{bearded.men <-}\StringTok{ }\NormalTok{gender }\OperatorTok{==}\StringTok{ "male"} \OperatorTok{&}\StringTok{ }\NormalTok{beard }\OperatorTok{==}\StringTok{ }\OtherTok{TRUE}
 \NormalTok{proper.gentlemen <-}\StringTok{ }\NormalTok{gender }\OperatorTok{==}\StringTok{ "male"} \OperatorTok{&}\StringTok{ }\NormalTok{beard }\OperatorTok{==}\StringTok{ }\OtherTok{FALSE}
 \KeywordTok{mean}\NormalTok{( salary[ bearded.men ] )}
+\KeywordTok{mean}\NormalTok{( salary[ }\OperatorTok{!}\StringTok{ }\NormalTok{bearded.men ] )  }\CommentTok{# this is incorrect !!!}
 \KeywordTok{mean}\NormalTok{( salary[ proper.gentlemen ] )}
 \end{Highlighting}
 \end{Shaded}
@@ -2364,16 +2365,16 @@ You will use nine basic logical operators:
 Operator & Description\tabularnewline
 \midrule
 \endhead
-\textless{} & less than\tabularnewline
-\textless{}= & less than or equal to\tabularnewline
-\textgreater{} & greater than\tabularnewline
-\textgreater{}= & greater than or equal to\tabularnewline
-== & exactly equal to\tabularnewline
-!= & not equal to\tabularnewline
-x \textbar{} y & x OR y\tabularnewline
-x \& y & x AND y\tabularnewline
-! & opposite of\tabularnewline
-{[} {]} & subset\tabularnewline
+\textbf{\textless{}} & less than\tabularnewline
+\textbf{\textless{}=} & less than or equal to\tabularnewline
+\textbf{\textgreater{}} & greater than\tabularnewline
+\textbf{\textgreater{}=} & greater than or equal to\tabularnewline
+\textbf{==} & exactly equal to\tabularnewline
+\textbf{!=} & not equal to\tabularnewline
+\textbf{x \textbar{} y} & x OR y\tabularnewline
+\textbf{x \& y} & x AND y\tabularnewline
+\textbf{!} & opposite of\tabularnewline
+\textbf{{[} {]}} & subset\tabularnewline
 \bottomrule
 \end{longtable}
 
@@ -2534,7 +2535,6 @@ defined group.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-
 \CommentTok{# how many females do we have in our study?}
 
 \KeywordTok{sum}\NormalTok{( gender }\OperatorTok{==}\StringTok{ "female"}\NormalTok{ )}
@@ -2558,7 +2558,6 @@ observations that are FALSE, isolating data belonging to the group:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-
 \NormalTok{these.female <-}\StringTok{ }\NormalTok{gender }\OperatorTok{==}\StringTok{ "female"}
 \NormalTok{name[ these.female ]}
 \CommentTok{### [1] "wanda" "nancy"}
@@ -2684,7 +2683,6 @@ existing logical vector.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-
 \NormalTok{x1 <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{7}\NormalTok{,}\DecValTok{9}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{)}
 
 \NormalTok{these <-}\StringTok{ }\NormalTok{x1 }\OperatorTok{>}\StringTok{ }\DecValTok{5}
@@ -2702,6 +2700,47 @@ existing logical vector.
 \CommentTok{### [1] TRUE}
 \end{Highlighting}
 \end{Shaded}
+
+\hypertarget{compound-logical-statements}{%
+\section{Compound Logical
+Statements}\label{compound-logical-statements}}
+
+We can combine multiple logical statements using the AND, OR, and NOT
+operators ( \&, \textbar{}, ! ). This functionality gives us an
+incredible ability to specify very granular groups within our analysis.
+This will be important as we begin to construct analysis in a way that
+we search for apples to apples comparisons within our data in order to
+make inferences about program effectiveness.
+
+These statements require some precision, however. Use care when applying
+that AND, OR, and NOT operators as to not include unintended data in
+your sample. In the example above, the statement ``NOT bearded men''
+does not mean men without beards. It means all people outside of the
+category of men without beards (the ``complement''), which includes
+women with or without beards as well.
+
+\begin{verbatim}
+! ( gender == "male" & beard == TRUE )
+\end{verbatim}
+
+Also note that parentheses matter. Compare this statement to the
+statement above:
+
+\begin{verbatim}
+! gender == "male" & beard == TRUE
+\end{verbatim}
+
+Because we excluded the parentheses this statement now defines the group
+``NOT men AND with beards'', or bearded women.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.6\linewidth]{figures/compound_logical_statements} 
+
+}
+
+\caption{Examples of group construction with compound statements}\label{fig:unnamed-chunk-104}
+\end{figure}
 
 \hypertarget{nas-in-logical-statements}{%
 \section{NAs in Logical Statements}\label{nas-in-logical-statements}}
@@ -3125,7 +3164,6 @@ dataset, and the price is in another. We need to merge the data.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-
 \KeywordTok{merge}\NormalTok{( customer.info, purchases )   }
 \CommentTok{###   CUSTOMER.ID FIRST.NAME LAST.NAME       ADDRESS ZIP.CODE PRODUCT PRICE}
 \CommentTok{### 1         178     Alvaro    Jaurez  123 Park Ave    57701   video  5.38}
@@ -3151,7 +3189,14 @@ tied to a payment type, which has its own data table. The system gets
 quite complex, which is why it is important to pay attention to the
 details of putting the data back together again.
 
-\includegraphics{figures/SampleRetailDatabase.png}
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{figures/SampleRetailDatabase} 
+
+}
+
+\caption{Example of a relational database schema}\label{fig:unnamed-chunk-120}
+\end{figure}
 
 We will cover a few details of data merges that will help you avoid
 common and very subtle mistakes that can lead to incorrect inferences.
@@ -3179,7 +3224,7 @@ We can then describe membership through three operations:
 
 }
 
-\caption{Membership defined by two sets}\label{fig:unnamed-chunk-119}
+\caption{Membership defined by two sets}\label{fig:unnamed-chunk-121}
 \end{figure}
 
 \begin{longtable}[]{@{}ll@{}}
@@ -4041,7 +4086,7 @@ example, we will look at unemployment levels by county.
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics[width=0.7\linewidth]{DS4PS-I_files/figure-latex/unnamed-chunk-142-1} \includegraphics[width=0.7\linewidth]{DS4PS-I_files/figure-latex/unnamed-chunk-142-2} \includegraphics[width=0.7\linewidth]{DS4PS-I_files/figure-latex/unnamed-chunk-142-3} \end{center}
+\begin{center}\includegraphics[width=0.7\linewidth]{DS4PS-I_files/figure-latex/unnamed-chunk-144-1} \includegraphics[width=0.7\linewidth]{DS4PS-I_files/figure-latex/unnamed-chunk-144-2} \includegraphics[width=0.7\linewidth]{DS4PS-I_files/figure-latex/unnamed-chunk-144-3} \end{center}
 
 Note that elements can be recycled from your \emph{y} vector:
 
@@ -4253,7 +4298,7 @@ features there is a unique group for each combination of features.
 The simple way to think about this is that the cross-tab of features
 generates a grid (table), and each cell represents a unique group:
 
-\begin{center}\includegraphics[width=0.7\linewidth]{DS4PS-I_files/figure-latex/unnamed-chunk-149-1} \end{center}
+\begin{center}\includegraphics[width=0.7\linewidth]{DS4PS-I_files/figure-latex/unnamed-chunk-151-1} \end{center}
 
 We might be interested in simple groups (treatment cases versus control
 cases), or complex groups (does the treatment effect women and men
@@ -4428,7 +4473,7 @@ have data on:
 Examining descriptive statistics we can see that reading speed varies by
 gender and the treatment group, but not by race or blood type:
 
-\begin{center}\includegraphics[width=0.7\linewidth]{DS4PS-I_files/figure-latex/unnamed-chunk-158-1} \end{center}
+\begin{center}\includegraphics[width=0.7\linewidth]{DS4PS-I_files/figure-latex/unnamed-chunk-160-1} \end{center}
 
 The question is, how many unique groups can we create with these four
 factors?
@@ -4448,7 +4493,7 @@ grid, or four unique groups.
 If the race factor has three levels, how many unique groups will we have
 considering the study design, gender, and race together?
 
-\begin{center}\includegraphics[width=0.7\linewidth]{DS4PS-I_files/figure-latex/unnamed-chunk-159-1} \end{center}
+\begin{center}\includegraphics[width=0.7\linewidth]{DS4PS-I_files/figure-latex/unnamed-chunk-161-1} \end{center}
 
 We can calculate the size of the grid by multiplying number of levels
 for each factor. We see here we have 12 unique groups:
@@ -4471,7 +4516,7 @@ unique groups:
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics[width=0.7\linewidth]{DS4PS-I_files/figure-latex/unnamed-chunk-161-1} \end{center}
+\begin{center}\includegraphics[width=0.7\linewidth]{DS4PS-I_files/figure-latex/unnamed-chunk-163-1} \end{center}
 
 What about age? It is a continuous variable, so it's a little more
 tricky.
@@ -4485,7 +4530,7 @@ correlation tools.
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics[width=0.7\linewidth]{DS4PS-I_files/figure-latex/unnamed-chunk-162-1} \end{center}
+\begin{center}\includegraphics[width=0.7\linewidth]{DS4PS-I_files/figure-latex/unnamed-chunk-164-1} \end{center}
 
 But we can also incorporate this independent variable into a group
 structure. We can treat each distinct age as a separate group. The ages
@@ -4499,7 +4544,7 @@ represented.
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics[width=0.7\linewidth]{DS4PS-I_files/figure-latex/unnamed-chunk-163-1} \end{center}
+\begin{center}\includegraphics[width=0.7\linewidth]{DS4PS-I_files/figure-latex/unnamed-chunk-165-1} \end{center}
 
 If we think about the overall group structure, then, we have unique
 groups defined by gender, race, blood type, and study design, and
@@ -4535,7 +4580,7 @@ to 12 distinct age groups.
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics[width=0.7\linewidth]{DS4PS-I_files/figure-latex/unnamed-chunk-164-1} \end{center}
+\begin{center}\includegraphics[width=0.7\linewidth]{DS4PS-I_files/figure-latex/unnamed-chunk-166-1} \end{center}
 
 We have now simplified our analysis from 1,560 to 288 possible groups.
 Combinations of groups will also be easier:
@@ -4551,7 +4596,7 @@ Combinations of groups will also be easier:
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics[width=0.7\linewidth]{DS4PS-I_files/figure-latex/unnamed-chunk-165-1} \end{center}
+\begin{center}\includegraphics[width=0.7\linewidth]{DS4PS-I_files/figure-latex/unnamed-chunk-167-1} \end{center}
 
 \hypertarget{analysis-by-group}{%
 \section{Analysis by Group}\label{analysis-by-group}}
@@ -5667,7 +5712,7 @@ is a time series graph that is faceted by teams:
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics[width=0.7\linewidth]{DS4PS-I_files/figure-latex/unnamed-chunk-176-1} \end{center}
+\begin{center}\includegraphics[width=0.7\linewidth]{DS4PS-I_files/figure-latex/unnamed-chunk-178-1} \end{center}
 
 Now you can quickly see that Detroit is the team that has raised
 salaries most aggressively.
