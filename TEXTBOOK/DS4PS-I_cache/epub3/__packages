@@ -1,0 +1,12 @@
+base
+rmarkdown
+bookdown
+dplyr
+pander
+Lahman
+maps
+tidyr
+reshape2
+scales
+ggplot2
+bindrcpp

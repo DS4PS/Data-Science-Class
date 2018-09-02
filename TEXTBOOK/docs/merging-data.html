@@ -134,13 +134,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.1.1" data-path="introduction-to-r.html"><a href="introduction-to-r.html#setting-your-working-directory"><i class="fa fa-check"></i><b>1.1.1</b> Setting Your Working Directory</a></li>
 </ul></li>
 <li class="chapter" data-level="1.2" data-path="introduction-to-r.html"><a href="introduction-to-r.html#commenting-code"><i class="fa fa-check"></i><b>1.2</b> Commenting Code</a></li>
-<li class="chapter" data-level="1.3" data-path="introduction-to-r.html"><a href="introduction-to-r.html#here-is-some-documentation-for-this-script"><i class="fa fa-check"></i><b>1.3</b> Here is some documentation for this script</a></li>
-<li class="chapter" data-level="1.4" data-path="introduction-to-r.html"><a href="introduction-to-r.html#help"><i class="fa fa-check"></i><b>1.4</b> Help</a></li>
-<li class="chapter" data-level="1.5" data-path="introduction-to-r.html"><a href="introduction-to-r.html#install-programs-packages"><i class="fa fa-check"></i><b>1.5</b> Install Programs (packages)</a></li>
-<li class="chapter" data-level="1.6" data-path="introduction-to-r.html"><a href="introduction-to-r.html#accessing-built-in-datasets-in-r"><i class="fa fa-check"></i><b>1.6</b> Accessing Built-In Datasets in R</a><ul>
-<li class="chapter" data-level="1.6.1" data-path="introduction-to-r.html"><a href="introduction-to-r.html#basic-data-operations"><i class="fa fa-check"></i><b>1.6.1</b> Basic Data Operations</a></li>
-<li class="chapter" data-level="1.6.2" data-path="introduction-to-r.html"><a href="introduction-to-r.html#using-the-lahman-data"><i class="fa fa-check"></i><b>1.6.2</b> Using the Lahman Data</a></li>
-<li class="chapter" data-level="1.6.3" data-path="introduction-to-r.html"><a href="introduction-to-r.html#example-analysis"><i class="fa fa-check"></i><b>1.6.3</b> Example Analysis</a></li>
+<li class="chapter" data-level="1.3" data-path="introduction-to-r.html"><a href="introduction-to-r.html#help"><i class="fa fa-check"></i><b>1.3</b> Help</a></li>
+<li class="chapter" data-level="1.4" data-path="introduction-to-r.html"><a href="introduction-to-r.html#install-programs-packages"><i class="fa fa-check"></i><b>1.4</b> Install Programs (packages)</a></li>
+<li class="chapter" data-level="1.5" data-path="introduction-to-r.html"><a href="introduction-to-r.html#accessing-built-in-datasets-in-r"><i class="fa fa-check"></i><b>1.5</b> Accessing Built-In Datasets in R</a><ul>
+<li class="chapter" data-level="1.5.1" data-path="introduction-to-r.html"><a href="introduction-to-r.html#basic-data-operations"><i class="fa fa-check"></i><b>1.5.1</b> Basic Data Operations</a></li>
+<li class="chapter" data-level="1.5.2" data-path="introduction-to-r.html"><a href="introduction-to-r.html#using-the-lahman-data"><i class="fa fa-check"></i><b>1.5.2</b> Using the Lahman Data</a></li>
+<li class="chapter" data-level="1.5.3" data-path="introduction-to-r.html"><a href="introduction-to-r.html#example-analysis"><i class="fa fa-check"></i><b>1.5.3</b> Example Analysis</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>2</b> Functions</a><ul>
@@ -240,9 +239,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Chapter 5</span> Merging Data</h1>
 <div id="packages-used-in-this-chapter" class="section level2">
 <h2><span class="header-section-number">5.1</span> Packages Used in This Chapter</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">library</span>( pander )</a>
-<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw">library</span>( dplyr )</a>
-<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="kw">library</span>( maps )</a></code></pre></div>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb91-1" data-line-number="1"><span class="kw">library</span>( pander )</a>
+<a class="sourceLine" id="cb91-2" data-line-number="2"><span class="kw">library</span>( dplyr )</a>
+<a class="sourceLine" id="cb91-3" data-line-number="3"><span class="kw">library</span>( maps )</a></code></pre></div>
 </div>
 <div id="relational-databases" class="section level2">
 <h2><span class="header-section-number">5.2</span> Relational Databases</h2>
@@ -334,23 +333,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <p>If we want to make the information actionable then we need to combine these datasets. For example, perhaps we want to know the average purchase amount from an individual in the 57701 zip code. We cannot answer that question with either dataset since the zip code is in one dataset, and the price is in another. We need to merge the data.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">merge</span>( customer.info, purchases )   </a>
-<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="co">###   CUSTOMER.ID FIRST.NAME LAST.NAME       ADDRESS ZIP.CODE PRODUCT PRICE</span></a>
-<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="co">### 1         178     Alvaro    Jaurez  123 Park Ave    57701   video  5.38</span></a>
-<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="co">### 2         178     Alvaro    Jaurez  123 Park Ave    57701  shovel 12.00</span></a>
-<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="co">### 3         269    Latisha     Shane 1600 Penn Ave    20500    book  3.99</span></a>
-<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="co">### 4         269    Latisha     Shane 1600 Penn Ave    20500   purse  8.00</span></a>
-<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="co">### 5         934    Janette   Johnson  456 Candy Ln    57701  mirror  7.64</span></a>
-<a class="sourceLine" id="cb2-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb2-9" data-line-number="9">full.dat &lt;-<span class="st"> </span><span class="kw">merge</span>( customer.info, purchases ) </a>
-<a class="sourceLine" id="cb2-10" data-line-number="10"></a>
-<a class="sourceLine" id="cb2-11" data-line-number="11">full.dat<span class="op">$</span>PRICE[ full.dat<span class="op">$</span>ZIP.CODE <span class="op">==</span><span class="st"> &quot;57701&quot;</span> ]</a>
-<a class="sourceLine" id="cb2-12" data-line-number="12"><span class="co">### [1]  5.38 12.00  7.64</span></a>
-<a class="sourceLine" id="cb2-13" data-line-number="13"></a>
-<a class="sourceLine" id="cb2-14" data-line-number="14"><span class="kw">mean</span>( full.dat<span class="op">$</span>PRICE[ full.dat<span class="op">$</span>ZIP.CODE <span class="op">==</span><span class="st"> &quot;57701&quot;</span> ] )</a>
-<a class="sourceLine" id="cb2-15" data-line-number="15"><span class="co">### [1] 8.34</span></a></code></pre></div>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb92-1" data-line-number="1"><span class="kw">merge</span>( customer.info, purchases )   </a>
+<a class="sourceLine" id="cb92-2" data-line-number="2"><span class="co">###   CUSTOMER.ID FIRST.NAME LAST.NAME       ADDRESS ZIP.CODE PRODUCT PRICE</span></a>
+<a class="sourceLine" id="cb92-3" data-line-number="3"><span class="co">### 1         178     Alvaro    Jaurez  123 Park Ave    57701   video  5.38</span></a>
+<a class="sourceLine" id="cb92-4" data-line-number="4"><span class="co">### 2         178     Alvaro    Jaurez  123 Park Ave    57701  shovel 12.00</span></a>
+<a class="sourceLine" id="cb92-5" data-line-number="5"><span class="co">### 3         269    Latisha     Shane 1600 Penn Ave    20500    book  3.99</span></a>
+<a class="sourceLine" id="cb92-6" data-line-number="6"><span class="co">### 4         269    Latisha     Shane 1600 Penn Ave    20500   purse  8.00</span></a>
+<a class="sourceLine" id="cb92-7" data-line-number="7"><span class="co">### 5         934    Janette   Johnson  456 Candy Ln    57701  mirror  7.64</span></a>
+<a class="sourceLine" id="cb92-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb92-9" data-line-number="9">full.dat &lt;-<span class="st"> </span><span class="kw">merge</span>( customer.info, purchases ) </a>
+<a class="sourceLine" id="cb92-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb92-11" data-line-number="11">full.dat<span class="op">$</span>PRICE[ full.dat<span class="op">$</span>ZIP.CODE <span class="op">==</span><span class="st"> &quot;57701&quot;</span> ]</a>
+<a class="sourceLine" id="cb92-12" data-line-number="12"><span class="co">### [1]  5.38 12.00  7.64</span></a>
+<a class="sourceLine" id="cb92-13" data-line-number="13"></a>
+<a class="sourceLine" id="cb92-14" data-line-number="14"><span class="kw">mean</span>( full.dat<span class="op">$</span>PRICE[ full.dat<span class="op">$</span>ZIP.CODE <span class="op">==</span><span class="st"> &quot;57701&quot;</span> ] )</a>
+<a class="sourceLine" id="cb92-15" data-line-number="15"><span class="co">### [1] 8.34</span></a></code></pre></div>
 <p>In reality, each purchase would have a purchase ID that is linked to shipping addresses, customer complaints, seller ratings, etc. Each seller would have their own data table with info. Each purchase would be tied to a payment type, which has its own data table. The system gets quite complex, which is why it is important to pay attention to the details of putting the data back together again.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-8"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-120"></span>
 <img src="figures/SampleRetailDatabase.png" alt="Example of a relational database schema" width="80%" />
 <p class="caption">
 Figure 5.1: Example of a relational database schema
@@ -365,7 +364,7 @@ Figure 5.1: Example of a relational database schema
 <h3><span class="header-section-number">5.3.1</span> Set Theory Functions</h3>
 <p>Let’s assume we have two sets: set1=<em>[A,B]</em>, set2=<em>[B,C]</em>. Each element in this set represents a group of observations that occurs in the dataset. So B represents people that occur in both datasets, A represents people that occur only in the first dataset, and C represents people that only occur in the second dataset.</p>
 <p>We can then describe membership through three operations:</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-9"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-121"></span>
 <img src="figures/xy.png" alt="Membership defined by two sets" width="60%" />
 <p class="caption">
 Figure 5.2: Membership defined by two sets
@@ -435,27 +434,27 @@ Figure 5.2: Membership defined by two sets
 </tbody>
 </table>
 <p>For this example let’s define set 1 as the treatment group, and set 2 as all women in the study. Note that set membership is always defined as binary (you are in the set or out), but it can include multiple criteria (the set of animals can contains cats, dogs, and mice).</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">treated &lt;-<span class="st"> </span>name[ group <span class="op">==</span><span class="st"> &quot;treat&quot;</span> ]</a>
-<a class="sourceLine" id="cb3-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb3-3" data-line-number="3">treated </a>
-<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="co">### [1] &quot;frank&quot; &quot;wanda&quot;</span></a>
-<a class="sourceLine" id="cb3-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb3-6" data-line-number="6">females &lt;-<span class="st"> </span>name[ gender <span class="op">==</span><span class="st"> &quot;female&quot;</span> ]</a>
-<a class="sourceLine" id="cb3-7" data-line-number="7"></a>
-<a class="sourceLine" id="cb3-8" data-line-number="8">females </a>
-<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="co">### [1] &quot;wanda&quot; &quot;nancy&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb93-1" data-line-number="1">treated &lt;-<span class="st"> </span>name[ group <span class="op">==</span><span class="st"> &quot;treat&quot;</span> ]</a>
+<a class="sourceLine" id="cb93-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb93-3" data-line-number="3">treated </a>
+<a class="sourceLine" id="cb93-4" data-line-number="4"><span class="co">### [1] &quot;frank&quot; &quot;wanda&quot;</span></a>
+<a class="sourceLine" id="cb93-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb93-6" data-line-number="6">females &lt;-<span class="st"> </span>name[ gender <span class="op">==</span><span class="st"> &quot;female&quot;</span> ]</a>
+<a class="sourceLine" id="cb93-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb93-8" data-line-number="8">females </a>
+<a class="sourceLine" id="cb93-9" data-line-number="9"><span class="co">### [1] &quot;wanda&quot; &quot;nancy&quot;</span></a></code></pre></div>
 <p>Now we can specify group belonging using some convenient set theory functions: <strong>union()</strong>, <strong>setdiff()</strong>, and <strong>intersect()</strong>.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw">union</span>( treated, females )</a>
-<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="co">### [1] &quot;frank&quot; &quot;wanda&quot; &quot;nancy&quot;</span></a>
-<a class="sourceLine" id="cb4-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="kw">intersect</span>( treated, females )</a>
-<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="co">### [1] &quot;wanda&quot;</span></a>
-<a class="sourceLine" id="cb4-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="kw">setdiff</span>( treated, females )</a>
-<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="co">### [1] &quot;frank&quot;</span></a>
-<a class="sourceLine" id="cb4-9" data-line-number="9"></a>
-<a class="sourceLine" id="cb4-10" data-line-number="10"><span class="kw">setdiff</span>( females, treated )</a>
-<a class="sourceLine" id="cb4-11" data-line-number="11"><span class="co">### [1] &quot;nancy&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb94-1" data-line-number="1"><span class="kw">union</span>( treated, females )</a>
+<a class="sourceLine" id="cb94-2" data-line-number="2"><span class="co">### [1] &quot;frank&quot; &quot;wanda&quot; &quot;nancy&quot;</span></a>
+<a class="sourceLine" id="cb94-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb94-4" data-line-number="4"><span class="kw">intersect</span>( treated, females )</a>
+<a class="sourceLine" id="cb94-5" data-line-number="5"><span class="co">### [1] &quot;wanda&quot;</span></a>
+<a class="sourceLine" id="cb94-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb94-7" data-line-number="7"><span class="kw">setdiff</span>( treated, females )</a>
+<a class="sourceLine" id="cb94-8" data-line-number="8"><span class="co">### [1] &quot;frank&quot;</span></a>
+<a class="sourceLine" id="cb94-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb94-10" data-line-number="10"><span class="kw">setdiff</span>( females, treated )</a>
+<a class="sourceLine" id="cb94-11" data-line-number="11"><span class="co">### [1] &quot;nancy&quot;</span></a></code></pre></div>
 <p>It is very important to note that <strong>union()</strong> and <strong>intersect()</strong> are symmetric functions, meaning <em>intersect(x,y)</em> will give you the same result as <em>intersect(y,x)</em>. The <strong>setdiff()</strong> function is not symmetric, however.</p>
 </div>
 <div id="set-theory-using-logical-operators" class="section level3">
@@ -500,25 +499,25 @@ Figure 5.2: Membership defined by two sets
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="co">#   x</span></a>
-<a class="sourceLine" id="cb5-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb5-3" data-line-number="3">name[ group <span class="op">==</span><span class="st"> &quot;treat&quot;</span> ]</a>
-<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="co">### [1] &quot;frank&quot; &quot;wanda&quot;</span></a>
-<a class="sourceLine" id="cb5-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="co">#   x &amp; y</span></a>
-<a class="sourceLine" id="cb5-7" data-line-number="7"></a>
-<a class="sourceLine" id="cb5-8" data-line-number="8">name[ group <span class="op">==</span><span class="st"> &quot;treat&quot;</span> <span class="op">&amp;</span><span class="st"> </span>gender <span class="op">==</span><span class="st"> &quot;female&quot;</span> ]</a>
-<a class="sourceLine" id="cb5-9" data-line-number="9"><span class="co">### [1] &quot;wanda&quot;</span></a>
-<a class="sourceLine" id="cb5-10" data-line-number="10"></a>
-<a class="sourceLine" id="cb5-11" data-line-number="11"><span class="co">#   x &amp; ! y</span></a>
-<a class="sourceLine" id="cb5-12" data-line-number="12"></a>
-<a class="sourceLine" id="cb5-13" data-line-number="13">name[ group <span class="op">==</span><span class="st"> &quot;treat&quot;</span> <span class="op">&amp;</span><span class="st"> </span>gender <span class="op">!=</span><span class="st"> &quot;female&quot;</span> ]</a>
-<a class="sourceLine" id="cb5-14" data-line-number="14"><span class="co">### [1] &quot;frank&quot;</span></a>
-<a class="sourceLine" id="cb5-15" data-line-number="15"></a>
-<a class="sourceLine" id="cb5-16" data-line-number="16"><span class="co">#  x | y</span></a>
-<a class="sourceLine" id="cb5-17" data-line-number="17"></a>
-<a class="sourceLine" id="cb5-18" data-line-number="18">name[ group <span class="op">==</span><span class="st"> &quot;treat&quot;</span> <span class="op">|</span><span class="st"> </span>gender <span class="op">==</span><span class="st"> &quot;female&quot;</span> ]</a>
-<a class="sourceLine" id="cb5-19" data-line-number="19"><span class="co">### [1] &quot;frank&quot; &quot;wanda&quot; &quot;nancy&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb95-1" data-line-number="1"><span class="co">#   x</span></a>
+<a class="sourceLine" id="cb95-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb95-3" data-line-number="3">name[ group <span class="op">==</span><span class="st"> &quot;treat&quot;</span> ]</a>
+<a class="sourceLine" id="cb95-4" data-line-number="4"><span class="co">### [1] &quot;frank&quot; &quot;wanda&quot;</span></a>
+<a class="sourceLine" id="cb95-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb95-6" data-line-number="6"><span class="co">#   x &amp; y</span></a>
+<a class="sourceLine" id="cb95-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb95-8" data-line-number="8">name[ group <span class="op">==</span><span class="st"> &quot;treat&quot;</span> <span class="op">&amp;</span><span class="st"> </span>gender <span class="op">==</span><span class="st"> &quot;female&quot;</span> ]</a>
+<a class="sourceLine" id="cb95-9" data-line-number="9"><span class="co">### [1] &quot;wanda&quot;</span></a>
+<a class="sourceLine" id="cb95-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb95-11" data-line-number="11"><span class="co">#   x &amp; ! y</span></a>
+<a class="sourceLine" id="cb95-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb95-13" data-line-number="13">name[ group <span class="op">==</span><span class="st"> &quot;treat&quot;</span> <span class="op">&amp;</span><span class="st"> </span>gender <span class="op">!=</span><span class="st"> &quot;female&quot;</span> ]</a>
+<a class="sourceLine" id="cb95-14" data-line-number="14"><span class="co">### [1] &quot;frank&quot;</span></a>
+<a class="sourceLine" id="cb95-15" data-line-number="15"></a>
+<a class="sourceLine" id="cb95-16" data-line-number="16"><span class="co">#  x | y</span></a>
+<a class="sourceLine" id="cb95-17" data-line-number="17"></a>
+<a class="sourceLine" id="cb95-18" data-line-number="18">name[ group <span class="op">==</span><span class="st"> &quot;treat&quot;</span> <span class="op">|</span><span class="st"> </span>gender <span class="op">==</span><span class="st"> &quot;female&quot;</span> ]</a>
+<a class="sourceLine" id="cb95-19" data-line-number="19"><span class="co">### [1] &quot;frank&quot; &quot;wanda&quot; &quot;nancy&quot;</span></a></code></pre></div>
 <p>Who belongs in these groups?</p>
 <ul>
 <li>!x &amp; !y</li>
@@ -531,13 +530,13 @@ Figure 5.2: Membership defined by two sets
 <h2><span class="header-section-number">5.4</span> Merging Data</h2>
 <p><strong>The Merge Function</strong></p>
 <p>The merge function joins two datasets. The function requires two datasets as the arguments, and they need to share a unique ID variable. Recall the example from above:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw">merge</span>( customer.info, purchases )</a>
-<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="co">###   CUSTOMER.ID FIRST.NAME LAST.NAME       ADDRESS ZIP.CODE PRODUCT PRICE</span></a>
-<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="co">### 1         178     Alvaro    Jaurez  123 Park Ave    57701   video  5.38</span></a>
-<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="co">### 2         178     Alvaro    Jaurez  123 Park Ave    57701  shovel 12.00</span></a>
-<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="co">### 3         269    Latisha     Shane 1600 Penn Ave    20500    book  3.99</span></a>
-<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="co">### 4         269    Latisha     Shane 1600 Penn Ave    20500   purse  8.00</span></a>
-<a class="sourceLine" id="cb6-7" data-line-number="7"><span class="co">### 5         934    Janette   Johnson  456 Candy Ln    57701  mirror  7.64</span></a></code></pre></div>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb96-1" data-line-number="1"><span class="kw">merge</span>( customer.info, purchases )</a>
+<a class="sourceLine" id="cb96-2" data-line-number="2"><span class="co">###   CUSTOMER.ID FIRST.NAME LAST.NAME       ADDRESS ZIP.CODE PRODUCT PRICE</span></a>
+<a class="sourceLine" id="cb96-3" data-line-number="3"><span class="co">### 1         178     Alvaro    Jaurez  123 Park Ave    57701   video  5.38</span></a>
+<a class="sourceLine" id="cb96-4" data-line-number="4"><span class="co">### 2         178     Alvaro    Jaurez  123 Park Ave    57701  shovel 12.00</span></a>
+<a class="sourceLine" id="cb96-5" data-line-number="5"><span class="co">### 3         269    Latisha     Shane 1600 Penn Ave    20500    book  3.99</span></a>
+<a class="sourceLine" id="cb96-6" data-line-number="6"><span class="co">### 4         269    Latisha     Shane 1600 Penn Ave    20500   purse  8.00</span></a>
+<a class="sourceLine" id="cb96-7" data-line-number="7"><span class="co">### 5         934    Janette   Johnson  456 Candy Ln    57701  mirror  7.64</span></a></code></pre></div>
 <p>The important thing to keep in mind is that the default merge operation uses the <strong>intersection</strong> of the two datasets. It will drop all elements that don’t occur in both datasets. We may want to fine-tune this as to not lose valuable data and potentially bias our analysis. As an example, no illegal immigrants will have social security numbers, so if you are merging using the SSN, you will drop this group from the data, which could impact your results.</p>
 <p><img src="figures/xy.png" /></p>
 <p>With a little help from the set theory examples above, we can think about which portions of the data we wish to drop and which portions we wish to keep.</p>
@@ -568,84 +567,84 @@ Figure 5.2: Membership defined by two sets
 </tbody>
 </table>
 <p>Here is some demonstrations with examples adapted from the R help file.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">authors   </a>
-<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="co">###       surname nationality deceased</span></a>
-<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="co">### 1       Tukey          US      yes</span></a>
-<a class="sourceLine" id="cb7-4" data-line-number="4"><span class="co">### 2     Tierney          US       no</span></a>
-<a class="sourceLine" id="cb7-5" data-line-number="5"><span class="co">### 3      Ripley          UK       no</span></a>
-<a class="sourceLine" id="cb7-6" data-line-number="6"><span class="co">### 4      McNeil   Australia       no</span></a>
-<a class="sourceLine" id="cb7-7" data-line-number="7"><span class="co">### 5 Shakespeare     England      yes</span></a>
-<a class="sourceLine" id="cb7-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb7-9" data-line-number="9">books    </a>
-<a class="sourceLine" id="cb7-10" data-line-number="10"><span class="co">###          name                     title</span></a>
-<a class="sourceLine" id="cb7-11" data-line-number="11"><span class="co">### 1       Tukey Exploratory Data Analysis</span></a>
-<a class="sourceLine" id="cb7-12" data-line-number="12"><span class="co">### 2    Venables Modern Applied Statistics</span></a>
-<a class="sourceLine" id="cb7-13" data-line-number="13"><span class="co">### 3      Ripley        Spatial Statistics</span></a>
-<a class="sourceLine" id="cb7-14" data-line-number="14"><span class="co">### 4      Ripley     Stochastic Simulation</span></a>
-<a class="sourceLine" id="cb7-15" data-line-number="15"><span class="co">### 5      McNeil Interactive Data Analysis</span></a>
-<a class="sourceLine" id="cb7-16" data-line-number="16"><span class="co">### 6 R Core Team      An Introduction to R</span></a>
-<a class="sourceLine" id="cb7-17" data-line-number="17"></a>
-<a class="sourceLine" id="cb7-18" data-line-number="18"></a>
-<a class="sourceLine" id="cb7-19" data-line-number="19"><span class="co"># adding books to the author bios dataset  ( set B only )</span></a>
-<a class="sourceLine" id="cb7-20" data-line-number="20"></a>
-<a class="sourceLine" id="cb7-21" data-line-number="21"><span class="kw">merge</span>(authors, books, <span class="dt">by.x =</span> <span class="st">&quot;surname&quot;</span>, <span class="dt">by.y =</span> <span class="st">&quot;name&quot;</span>)    </a>
-<a class="sourceLine" id="cb7-22" data-line-number="22"><span class="co">###   surname nationality deceased                     title</span></a>
-<a class="sourceLine" id="cb7-23" data-line-number="23"><span class="co">### 1  McNeil   Australia       no Interactive Data Analysis</span></a>
-<a class="sourceLine" id="cb7-24" data-line-number="24"><span class="co">### 2  Ripley          UK       no        Spatial Statistics</span></a>
-<a class="sourceLine" id="cb7-25" data-line-number="25"><span class="co">### 3  Ripley          UK       no     Stochastic Simulation</span></a>
-<a class="sourceLine" id="cb7-26" data-line-number="26"><span class="co">### 4   Tukey          US      yes Exploratory Data Analysis</span></a>
-<a class="sourceLine" id="cb7-27" data-line-number="27"></a>
-<a class="sourceLine" id="cb7-28" data-line-number="28"></a>
-<a class="sourceLine" id="cb7-29" data-line-number="29"></a>
-<a class="sourceLine" id="cb7-30" data-line-number="30"><span class="co"># adding author bios to the books dataset  ( set B only )</span></a>
-<a class="sourceLine" id="cb7-31" data-line-number="31"></a>
-<a class="sourceLine" id="cb7-32" data-line-number="32"><span class="kw">merge</span>(books, authors, <span class="dt">by.x =</span> <span class="st">&quot;name&quot;</span>, <span class="dt">by.y =</span> <span class="st">&quot;surname&quot;</span>)    </a>
-<a class="sourceLine" id="cb7-33" data-line-number="33"><span class="co">###     name                     title nationality deceased</span></a>
-<a class="sourceLine" id="cb7-34" data-line-number="34"><span class="co">### 1 McNeil Interactive Data Analysis   Australia       no</span></a>
-<a class="sourceLine" id="cb7-35" data-line-number="35"><span class="co">### 2 Ripley        Spatial Statistics          UK       no</span></a>
-<a class="sourceLine" id="cb7-36" data-line-number="36"><span class="co">### 3 Ripley     Stochastic Simulation          UK       no</span></a>
-<a class="sourceLine" id="cb7-37" data-line-number="37"><span class="co">### 4  Tukey Exploratory Data Analysis          US      yes</span></a>
-<a class="sourceLine" id="cb7-38" data-line-number="38"></a>
-<a class="sourceLine" id="cb7-39" data-line-number="39"></a>
-<a class="sourceLine" id="cb7-40" data-line-number="40"></a>
-<a class="sourceLine" id="cb7-41" data-line-number="41"><span class="co"># keep books without author bios, lose authors without books  ( sets A and B )</span></a>
-<a class="sourceLine" id="cb7-42" data-line-number="42"></a>
-<a class="sourceLine" id="cb7-43" data-line-number="43"><span class="kw">merge</span>( books, authors, <span class="dt">by.x =</span> <span class="st">&quot;name&quot;</span>, <span class="dt">by.y =</span> <span class="st">&quot;surname&quot;</span>, <span class="dt">all.x=</span>T )     </a>
-<a class="sourceLine" id="cb7-44" data-line-number="44"><span class="co">###          name                     title nationality deceased</span></a>
-<a class="sourceLine" id="cb7-45" data-line-number="45"><span class="co">### 1      McNeil Interactive Data Analysis   Australia       no</span></a>
-<a class="sourceLine" id="cb7-46" data-line-number="46"><span class="co">### 2 R Core Team      An Introduction to R        &lt;NA&gt;     &lt;NA&gt;</span></a>
-<a class="sourceLine" id="cb7-47" data-line-number="47"><span class="co">### 3      Ripley        Spatial Statistics          UK       no</span></a>
-<a class="sourceLine" id="cb7-48" data-line-number="48"><span class="co">### 4      Ripley     Stochastic Simulation          UK       no</span></a>
-<a class="sourceLine" id="cb7-49" data-line-number="49"><span class="co">### 5       Tukey Exploratory Data Analysis          US      yes</span></a>
-<a class="sourceLine" id="cb7-50" data-line-number="50"><span class="co">### 6    Venables Modern Applied Statistics        &lt;NA&gt;     &lt;NA&gt;</span></a>
-<a class="sourceLine" id="cb7-51" data-line-number="51"></a>
-<a class="sourceLine" id="cb7-52" data-line-number="52"></a>
-<a class="sourceLine" id="cb7-53" data-line-number="53"></a>
-<a class="sourceLine" id="cb7-54" data-line-number="54"><span class="co"># keep authors without book listed, lose books without author bios   ( sets B and C )</span></a>
-<a class="sourceLine" id="cb7-55" data-line-number="55"></a>
-<a class="sourceLine" id="cb7-56" data-line-number="56"><span class="kw">merge</span>( books, authors, <span class="dt">by.x =</span> <span class="st">&quot;name&quot;</span>, <span class="dt">by.y =</span> <span class="st">&quot;surname&quot;</span>, <span class="dt">all.y=</span>T )    </a>
-<a class="sourceLine" id="cb7-57" data-line-number="57"><span class="co">###          name                     title nationality deceased</span></a>
-<a class="sourceLine" id="cb7-58" data-line-number="58"><span class="co">### 1      McNeil Interactive Data Analysis   Australia       no</span></a>
-<a class="sourceLine" id="cb7-59" data-line-number="59"><span class="co">### 2      Ripley        Spatial Statistics          UK       no</span></a>
-<a class="sourceLine" id="cb7-60" data-line-number="60"><span class="co">### 3      Ripley     Stochastic Simulation          UK       no</span></a>
-<a class="sourceLine" id="cb7-61" data-line-number="61"><span class="co">### 4 Shakespeare                      &lt;NA&gt;     England      yes</span></a>
-<a class="sourceLine" id="cb7-62" data-line-number="62"><span class="co">### 5     Tierney                      &lt;NA&gt;          US       no</span></a>
-<a class="sourceLine" id="cb7-63" data-line-number="63"><span class="co">### 6       Tukey Exploratory Data Analysis          US      yes</span></a>
-<a class="sourceLine" id="cb7-64" data-line-number="64"></a>
-<a class="sourceLine" id="cb7-65" data-line-number="65"></a>
-<a class="sourceLine" id="cb7-66" data-line-number="66"></a>
-<a class="sourceLine" id="cb7-67" data-line-number="67"><span class="co"># dont&#39; throw out any data   ( sets A and B and C )</span></a>
-<a class="sourceLine" id="cb7-68" data-line-number="68"></a>
-<a class="sourceLine" id="cb7-69" data-line-number="69"><span class="kw">merge</span>( books, authors, <span class="dt">by.x =</span> <span class="st">&quot;name&quot;</span>, <span class="dt">by.y =</span> <span class="st">&quot;surname&quot;</span>, <span class="dt">all=</span>T )   </a>
-<a class="sourceLine" id="cb7-70" data-line-number="70"><span class="co">###          name                     title nationality deceased</span></a>
-<a class="sourceLine" id="cb7-71" data-line-number="71"><span class="co">### 1      McNeil Interactive Data Analysis   Australia       no</span></a>
-<a class="sourceLine" id="cb7-72" data-line-number="72"><span class="co">### 2 R Core Team      An Introduction to R        &lt;NA&gt;     &lt;NA&gt;</span></a>
-<a class="sourceLine" id="cb7-73" data-line-number="73"><span class="co">### 3      Ripley        Spatial Statistics          UK       no</span></a>
-<a class="sourceLine" id="cb7-74" data-line-number="74"><span class="co">### 4      Ripley     Stochastic Simulation          UK       no</span></a>
-<a class="sourceLine" id="cb7-75" data-line-number="75"><span class="co">### 5 Shakespeare                      &lt;NA&gt;     England      yes</span></a>
-<a class="sourceLine" id="cb7-76" data-line-number="76"><span class="co">### 6     Tierney                      &lt;NA&gt;          US       no</span></a>
-<a class="sourceLine" id="cb7-77" data-line-number="77"><span class="co">### 7       Tukey Exploratory Data Analysis          US      yes</span></a>
-<a class="sourceLine" id="cb7-78" data-line-number="78"><span class="co">### 8    Venables Modern Applied Statistics        &lt;NA&gt;     &lt;NA&gt;</span></a></code></pre></div>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb97-1" data-line-number="1">authors   </a>
+<a class="sourceLine" id="cb97-2" data-line-number="2"><span class="co">###       surname nationality deceased</span></a>
+<a class="sourceLine" id="cb97-3" data-line-number="3"><span class="co">### 1       Tukey          US      yes</span></a>
+<a class="sourceLine" id="cb97-4" data-line-number="4"><span class="co">### 2     Tierney          US       no</span></a>
+<a class="sourceLine" id="cb97-5" data-line-number="5"><span class="co">### 3      Ripley          UK       no</span></a>
+<a class="sourceLine" id="cb97-6" data-line-number="6"><span class="co">### 4      McNeil   Australia       no</span></a>
+<a class="sourceLine" id="cb97-7" data-line-number="7"><span class="co">### 5 Shakespeare     England      yes</span></a>
+<a class="sourceLine" id="cb97-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb97-9" data-line-number="9">books    </a>
+<a class="sourceLine" id="cb97-10" data-line-number="10"><span class="co">###          name                     title</span></a>
+<a class="sourceLine" id="cb97-11" data-line-number="11"><span class="co">### 1       Tukey Exploratory Data Analysis</span></a>
+<a class="sourceLine" id="cb97-12" data-line-number="12"><span class="co">### 2    Venables Modern Applied Statistics</span></a>
+<a class="sourceLine" id="cb97-13" data-line-number="13"><span class="co">### 3      Ripley        Spatial Statistics</span></a>
+<a class="sourceLine" id="cb97-14" data-line-number="14"><span class="co">### 4      Ripley     Stochastic Simulation</span></a>
+<a class="sourceLine" id="cb97-15" data-line-number="15"><span class="co">### 5      McNeil Interactive Data Analysis</span></a>
+<a class="sourceLine" id="cb97-16" data-line-number="16"><span class="co">### 6 R Core Team      An Introduction to R</span></a>
+<a class="sourceLine" id="cb97-17" data-line-number="17"></a>
+<a class="sourceLine" id="cb97-18" data-line-number="18"></a>
+<a class="sourceLine" id="cb97-19" data-line-number="19"><span class="co"># adding books to the author bios dataset  ( set B only )</span></a>
+<a class="sourceLine" id="cb97-20" data-line-number="20"></a>
+<a class="sourceLine" id="cb97-21" data-line-number="21"><span class="kw">merge</span>(authors, books, <span class="dt">by.x =</span> <span class="st">&quot;surname&quot;</span>, <span class="dt">by.y =</span> <span class="st">&quot;name&quot;</span>)    </a>
+<a class="sourceLine" id="cb97-22" data-line-number="22"><span class="co">###   surname nationality deceased                     title</span></a>
+<a class="sourceLine" id="cb97-23" data-line-number="23"><span class="co">### 1  McNeil   Australia       no Interactive Data Analysis</span></a>
+<a class="sourceLine" id="cb97-24" data-line-number="24"><span class="co">### 2  Ripley          UK       no        Spatial Statistics</span></a>
+<a class="sourceLine" id="cb97-25" data-line-number="25"><span class="co">### 3  Ripley          UK       no     Stochastic Simulation</span></a>
+<a class="sourceLine" id="cb97-26" data-line-number="26"><span class="co">### 4   Tukey          US      yes Exploratory Data Analysis</span></a>
+<a class="sourceLine" id="cb97-27" data-line-number="27"></a>
+<a class="sourceLine" id="cb97-28" data-line-number="28"></a>
+<a class="sourceLine" id="cb97-29" data-line-number="29"></a>
+<a class="sourceLine" id="cb97-30" data-line-number="30"><span class="co"># adding author bios to the books dataset  ( set B only )</span></a>
+<a class="sourceLine" id="cb97-31" data-line-number="31"></a>
+<a class="sourceLine" id="cb97-32" data-line-number="32"><span class="kw">merge</span>(books, authors, <span class="dt">by.x =</span> <span class="st">&quot;name&quot;</span>, <span class="dt">by.y =</span> <span class="st">&quot;surname&quot;</span>)    </a>
+<a class="sourceLine" id="cb97-33" data-line-number="33"><span class="co">###     name                     title nationality deceased</span></a>
+<a class="sourceLine" id="cb97-34" data-line-number="34"><span class="co">### 1 McNeil Interactive Data Analysis   Australia       no</span></a>
+<a class="sourceLine" id="cb97-35" data-line-number="35"><span class="co">### 2 Ripley        Spatial Statistics          UK       no</span></a>
+<a class="sourceLine" id="cb97-36" data-line-number="36"><span class="co">### 3 Ripley     Stochastic Simulation          UK       no</span></a>
+<a class="sourceLine" id="cb97-37" data-line-number="37"><span class="co">### 4  Tukey Exploratory Data Analysis          US      yes</span></a>
+<a class="sourceLine" id="cb97-38" data-line-number="38"></a>
+<a class="sourceLine" id="cb97-39" data-line-number="39"></a>
+<a class="sourceLine" id="cb97-40" data-line-number="40"></a>
+<a class="sourceLine" id="cb97-41" data-line-number="41"><span class="co"># keep books without author bios, lose authors without books  ( sets A and B )</span></a>
+<a class="sourceLine" id="cb97-42" data-line-number="42"></a>
+<a class="sourceLine" id="cb97-43" data-line-number="43"><span class="kw">merge</span>( books, authors, <span class="dt">by.x =</span> <span class="st">&quot;name&quot;</span>, <span class="dt">by.y =</span> <span class="st">&quot;surname&quot;</span>, <span class="dt">all.x=</span>T )     </a>
+<a class="sourceLine" id="cb97-44" data-line-number="44"><span class="co">###          name                     title nationality deceased</span></a>
+<a class="sourceLine" id="cb97-45" data-line-number="45"><span class="co">### 1      McNeil Interactive Data Analysis   Australia       no</span></a>
+<a class="sourceLine" id="cb97-46" data-line-number="46"><span class="co">### 2 R Core Team      An Introduction to R        &lt;NA&gt;     &lt;NA&gt;</span></a>
+<a class="sourceLine" id="cb97-47" data-line-number="47"><span class="co">### 3      Ripley        Spatial Statistics          UK       no</span></a>
+<a class="sourceLine" id="cb97-48" data-line-number="48"><span class="co">### 4      Ripley     Stochastic Simulation          UK       no</span></a>
+<a class="sourceLine" id="cb97-49" data-line-number="49"><span class="co">### 5       Tukey Exploratory Data Analysis          US      yes</span></a>
+<a class="sourceLine" id="cb97-50" data-line-number="50"><span class="co">### 6    Venables Modern Applied Statistics        &lt;NA&gt;     &lt;NA&gt;</span></a>
+<a class="sourceLine" id="cb97-51" data-line-number="51"></a>
+<a class="sourceLine" id="cb97-52" data-line-number="52"></a>
+<a class="sourceLine" id="cb97-53" data-line-number="53"></a>
+<a class="sourceLine" id="cb97-54" data-line-number="54"><span class="co"># keep authors without book listed, lose books without author bios   ( sets B and C )</span></a>
+<a class="sourceLine" id="cb97-55" data-line-number="55"></a>
+<a class="sourceLine" id="cb97-56" data-line-number="56"><span class="kw">merge</span>( books, authors, <span class="dt">by.x =</span> <span class="st">&quot;name&quot;</span>, <span class="dt">by.y =</span> <span class="st">&quot;surname&quot;</span>, <span class="dt">all.y=</span>T )    </a>
+<a class="sourceLine" id="cb97-57" data-line-number="57"><span class="co">###          name                     title nationality deceased</span></a>
+<a class="sourceLine" id="cb97-58" data-line-number="58"><span class="co">### 1      McNeil Interactive Data Analysis   Australia       no</span></a>
+<a class="sourceLine" id="cb97-59" data-line-number="59"><span class="co">### 2      Ripley        Spatial Statistics          UK       no</span></a>
+<a class="sourceLine" id="cb97-60" data-line-number="60"><span class="co">### 3      Ripley     Stochastic Simulation          UK       no</span></a>
+<a class="sourceLine" id="cb97-61" data-line-number="61"><span class="co">### 4 Shakespeare                      &lt;NA&gt;     England      yes</span></a>
+<a class="sourceLine" id="cb97-62" data-line-number="62"><span class="co">### 5     Tierney                      &lt;NA&gt;          US       no</span></a>
+<a class="sourceLine" id="cb97-63" data-line-number="63"><span class="co">### 6       Tukey Exploratory Data Analysis          US      yes</span></a>
+<a class="sourceLine" id="cb97-64" data-line-number="64"></a>
+<a class="sourceLine" id="cb97-65" data-line-number="65"></a>
+<a class="sourceLine" id="cb97-66" data-line-number="66"></a>
+<a class="sourceLine" id="cb97-67" data-line-number="67"><span class="co"># dont&#39; throw out any data   ( sets A and B and C )</span></a>
+<a class="sourceLine" id="cb97-68" data-line-number="68"></a>
+<a class="sourceLine" id="cb97-69" data-line-number="69"><span class="kw">merge</span>( books, authors, <span class="dt">by.x =</span> <span class="st">&quot;name&quot;</span>, <span class="dt">by.y =</span> <span class="st">&quot;surname&quot;</span>, <span class="dt">all=</span>T )   </a>
+<a class="sourceLine" id="cb97-70" data-line-number="70"><span class="co">###          name                     title nationality deceased</span></a>
+<a class="sourceLine" id="cb97-71" data-line-number="71"><span class="co">### 1      McNeil Interactive Data Analysis   Australia       no</span></a>
+<a class="sourceLine" id="cb97-72" data-line-number="72"><span class="co">### 2 R Core Team      An Introduction to R        &lt;NA&gt;     &lt;NA&gt;</span></a>
+<a class="sourceLine" id="cb97-73" data-line-number="73"><span class="co">### 3      Ripley        Spatial Statistics          UK       no</span></a>
+<a class="sourceLine" id="cb97-74" data-line-number="74"><span class="co">### 4      Ripley     Stochastic Simulation          UK       no</span></a>
+<a class="sourceLine" id="cb97-75" data-line-number="75"><span class="co">### 5 Shakespeare                      &lt;NA&gt;     England      yes</span></a>
+<a class="sourceLine" id="cb97-76" data-line-number="76"><span class="co">### 6     Tierney                      &lt;NA&gt;          US       no</span></a>
+<a class="sourceLine" id="cb97-77" data-line-number="77"><span class="co">### 7       Tukey Exploratory Data Analysis          US      yes</span></a>
+<a class="sourceLine" id="cb97-78" data-line-number="78"><span class="co">### 8    Venables Modern Applied Statistics        &lt;NA&gt;     &lt;NA&gt;</span></a></code></pre></div>
 <p>Also note that the order of your datasets in the argument list will impact the inclusion or exclusion of elements.</p>
 <p>merge( x, y, all=F ) EQUALS merge( y, x, all=F )</p>
 <p>merge( x, y, all.x=T ) DOES NOT EQUAL merge( y, x, all.x=T )</p>
@@ -653,49 +652,49 @@ Figure 5.2: Membership defined by two sets
 <h3><span class="header-section-number">5.4.1</span> The by.x and by.y Arguments</h3>
 <p>When you use the default <strong>merge()</strong> function without specifying the variables to merge upon, the function will check for common variable names across the two datasets. If there are multiple, it will join the shared variables to create a new unique key. This might be problematic if that was not the intent.</p>
 <p>Take the example of combining fielding and salary data in the Lahman package. If we are not explicit about the merge variable, we may get odd results. Note that they two datasets share four ID variables.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw">library</span>( Lahman )</a>
-<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="kw">data</span>( Fielding )</a>
-<a class="sourceLine" id="cb8-3" data-line-number="3"><span class="kw">data</span>( Salaries )</a></code></pre></div>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="kw">intersect</span>( <span class="kw">names</span>(Fielding), <span class="kw">names</span>(Salaries) )</a>
-<a class="sourceLine" id="cb9-2" data-line-number="2"><span class="co">### [1] &quot;playerID&quot; &quot;yearID&quot;   &quot;teamID&quot;   &quot;lgID&quot;</span></a>
-<a class="sourceLine" id="cb9-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb9-4" data-line-number="4"><span class="co"># merge id</span></a>
-<a class="sourceLine" id="cb9-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb9-6" data-line-number="6">int &lt;-<span class="st"> </span><span class="kw">intersect</span>( <span class="kw">names</span>(Fielding), <span class="kw">names</span>(Salaries) )</a>
-<a class="sourceLine" id="cb9-7" data-line-number="7"></a>
-<a class="sourceLine" id="cb9-8" data-line-number="8"><span class="kw">paste</span>( int[<span class="dv">1</span>],int[<span class="dv">2</span>],int[<span class="dv">3</span>],int[<span class="dv">4</span>], <span class="dt">sep=</span><span class="st">&quot;.&quot;</span> )</a>
-<a class="sourceLine" id="cb9-9" data-line-number="9"><span class="co">### [1] &quot;playerID.yearID.teamID.lgID&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb98-1" data-line-number="1"><span class="kw">library</span>( Lahman )</a>
+<a class="sourceLine" id="cb98-2" data-line-number="2"><span class="kw">data</span>( Fielding )</a>
+<a class="sourceLine" id="cb98-3" data-line-number="3"><span class="kw">data</span>( Salaries )</a></code></pre></div>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb99-1" data-line-number="1"><span class="kw">intersect</span>( <span class="kw">names</span>(Fielding), <span class="kw">names</span>(Salaries) )</a>
+<a class="sourceLine" id="cb99-2" data-line-number="2"><span class="co">### [1] &quot;playerID&quot; &quot;yearID&quot;   &quot;teamID&quot;   &quot;lgID&quot;</span></a>
+<a class="sourceLine" id="cb99-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb99-4" data-line-number="4"><span class="co"># merge id</span></a>
+<a class="sourceLine" id="cb99-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb99-6" data-line-number="6">int &lt;-<span class="st"> </span><span class="kw">intersect</span>( <span class="kw">names</span>(Fielding), <span class="kw">names</span>(Salaries) )</a>
+<a class="sourceLine" id="cb99-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb99-8" data-line-number="8"><span class="kw">paste</span>( int[<span class="dv">1</span>],int[<span class="dv">2</span>],int[<span class="dv">3</span>],int[<span class="dv">4</span>], <span class="dt">sep=</span><span class="st">&quot;.&quot;</span> )</a>
+<a class="sourceLine" id="cb99-9" data-line-number="9"><span class="co">### [1] &quot;playerID.yearID.teamID.lgID&quot;</span></a></code></pre></div>
 <p>To avoid problems, be explicit using the <em>by.x</em> and <em>by.x</em> arguments to control which variable is used for the merge.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="kw">head</span>( <span class="kw">merge</span>( Salaries, Fielding ) )</a>
-<a class="sourceLine" id="cb10-2" data-line-number="2"><span class="co">###   yearID teamID lgID  playerID salary stint POS  G GS InnOuts  PO  A E DP</span></a>
-<a class="sourceLine" id="cb10-3" data-line-number="3"><span class="co">### 1   1985    ATL   NL barkele01 870000     1   P 20 18     221   2  9 1  0</span></a>
-<a class="sourceLine" id="cb10-4" data-line-number="4"><span class="co">### 2   1985    ATL   NL bedrost01 550000     1   P 37 37     620  13 23 4  3</span></a>
-<a class="sourceLine" id="cb10-5" data-line-number="5"><span class="co">### 3   1985    ATL   NL benedbr01 545000     1   C 70 67    1698 314 35 4  1</span></a>
-<a class="sourceLine" id="cb10-6" data-line-number="6"><span class="co">### 4   1985    ATL   NL  campri01 633333     1   P 66  2     383   7 13 4  3</span></a>
-<a class="sourceLine" id="cb10-7" data-line-number="7"><span class="co">### 5   1985    ATL   NL ceronri01 625000     1   C 91 76    2097 384 48 6  4</span></a>
-<a class="sourceLine" id="cb10-8" data-line-number="8"><span class="co">### 6   1985    ATL   NL chambch01 800000     1  1B 39 27     814 299 25 1 31</span></a>
-<a class="sourceLine" id="cb10-9" data-line-number="9"><span class="co">###   PB WP SB CS ZR</span></a>
-<a class="sourceLine" id="cb10-10" data-line-number="10"><span class="co">### 1 NA NA NA NA NA</span></a>
-<a class="sourceLine" id="cb10-11" data-line-number="11"><span class="co">### 2 NA NA NA NA NA</span></a>
-<a class="sourceLine" id="cb10-12" data-line-number="12"><span class="co">### 3  1  9 65 24  1</span></a>
-<a class="sourceLine" id="cb10-13" data-line-number="13"><span class="co">### 4 NA NA NA NA NA</span></a>
-<a class="sourceLine" id="cb10-14" data-line-number="14"><span class="co">### 5  6 20 69 29  1</span></a>
-<a class="sourceLine" id="cb10-15" data-line-number="15"><span class="co">### 6 NA NA NA NA NA</span></a>
-<a class="sourceLine" id="cb10-16" data-line-number="16"><span class="kw">head</span>( <span class="kw">merge</span>( Salaries, Fielding, <span class="dt">by.x=</span><span class="st">&quot;playerID&quot;</span>, <span class="dt">by.y=</span><span class="st">&quot;playerID&quot;</span> ) )</a>
-<a class="sourceLine" id="cb10-17" data-line-number="17"><span class="co">###    playerID yearID.x teamID.x lgID.x  salary yearID.y stint teamID.y</span></a>
-<a class="sourceLine" id="cb10-18" data-line-number="18"><span class="co">### 1 aardsda01     2010      SEA     AL 2750000     2009     1      SEA</span></a>
-<a class="sourceLine" id="cb10-19" data-line-number="19"><span class="co">### 2 aardsda01     2010      SEA     AL 2750000     2015     1      ATL</span></a>
-<a class="sourceLine" id="cb10-20" data-line-number="20"><span class="co">### 3 aardsda01     2010      SEA     AL 2750000     2006     1      CHN</span></a>
-<a class="sourceLine" id="cb10-21" data-line-number="21"><span class="co">### 4 aardsda01     2010      SEA     AL 2750000     2008     1      BOS</span></a>
-<a class="sourceLine" id="cb10-22" data-line-number="22"><span class="co">### 5 aardsda01     2010      SEA     AL 2750000     2013     1      NYN</span></a>
-<a class="sourceLine" id="cb10-23" data-line-number="23"><span class="co">### 6 aardsda01     2010      SEA     AL 2750000     2012     1      NYA</span></a>
-<a class="sourceLine" id="cb10-24" data-line-number="24"><span class="co">###   lgID.y POS  G GS InnOuts PO A E DP PB WP SB CS ZR</span></a>
-<a class="sourceLine" id="cb10-25" data-line-number="25"><span class="co">### 1     AL   P 73  0     214  2 5 0  1 NA NA NA NA NA</span></a>
-<a class="sourceLine" id="cb10-26" data-line-number="26"><span class="co">### 2     NL   P 33  0      92  0 1 1  0 NA NA NA NA NA</span></a>
-<a class="sourceLine" id="cb10-27" data-line-number="27"><span class="co">### 3     NL   P 45  0     159  1 5 0  1 NA NA NA NA NA</span></a>
-<a class="sourceLine" id="cb10-28" data-line-number="28"><span class="co">### 4     AL   P 47  0     146  3 6 0  0 NA NA NA NA NA</span></a>
-<a class="sourceLine" id="cb10-29" data-line-number="29"><span class="co">### 5     NL   P 43  0     119  1 5 0  0 NA NA NA NA NA</span></a>
-<a class="sourceLine" id="cb10-30" data-line-number="30"><span class="co">### 6     AL   P  1  0       3  0 0 0  0 NA NA NA NA NA</span></a></code></pre></div>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb100-1" data-line-number="1"><span class="kw">head</span>( <span class="kw">merge</span>( Salaries, Fielding ) )</a>
+<a class="sourceLine" id="cb100-2" data-line-number="2"><span class="co">###   yearID teamID lgID  playerID salary stint POS  G GS InnOuts  PO  A E DP</span></a>
+<a class="sourceLine" id="cb100-3" data-line-number="3"><span class="co">### 1   1985    ATL   NL barkele01 870000     1   P 20 18     221   2  9 1  0</span></a>
+<a class="sourceLine" id="cb100-4" data-line-number="4"><span class="co">### 2   1985    ATL   NL bedrost01 550000     1   P 37 37     620  13 23 4  3</span></a>
+<a class="sourceLine" id="cb100-5" data-line-number="5"><span class="co">### 3   1985    ATL   NL benedbr01 545000     1   C 70 67    1698 314 35 4  1</span></a>
+<a class="sourceLine" id="cb100-6" data-line-number="6"><span class="co">### 4   1985    ATL   NL  campri01 633333     1   P 66  2     383   7 13 4  3</span></a>
+<a class="sourceLine" id="cb100-7" data-line-number="7"><span class="co">### 5   1985    ATL   NL ceronri01 625000     1   C 91 76    2097 384 48 6  4</span></a>
+<a class="sourceLine" id="cb100-8" data-line-number="8"><span class="co">### 6   1985    ATL   NL chambch01 800000     1  1B 39 27     814 299 25 1 31</span></a>
+<a class="sourceLine" id="cb100-9" data-line-number="9"><span class="co">###   PB WP SB CS ZR</span></a>
+<a class="sourceLine" id="cb100-10" data-line-number="10"><span class="co">### 1 NA NA NA NA NA</span></a>
+<a class="sourceLine" id="cb100-11" data-line-number="11"><span class="co">### 2 NA NA NA NA NA</span></a>
+<a class="sourceLine" id="cb100-12" data-line-number="12"><span class="co">### 3  1  9 65 24  1</span></a>
+<a class="sourceLine" id="cb100-13" data-line-number="13"><span class="co">### 4 NA NA NA NA NA</span></a>
+<a class="sourceLine" id="cb100-14" data-line-number="14"><span class="co">### 5  6 20 69 29  1</span></a>
+<a class="sourceLine" id="cb100-15" data-line-number="15"><span class="co">### 6 NA NA NA NA NA</span></a>
+<a class="sourceLine" id="cb100-16" data-line-number="16"><span class="kw">head</span>( <span class="kw">merge</span>( Salaries, Fielding, <span class="dt">by.x=</span><span class="st">&quot;playerID&quot;</span>, <span class="dt">by.y=</span><span class="st">&quot;playerID&quot;</span> ) )</a>
+<a class="sourceLine" id="cb100-17" data-line-number="17"><span class="co">###    playerID yearID.x teamID.x lgID.x  salary yearID.y stint teamID.y</span></a>
+<a class="sourceLine" id="cb100-18" data-line-number="18"><span class="co">### 1 aardsda01     2010      SEA     AL 2750000     2009     1      SEA</span></a>
+<a class="sourceLine" id="cb100-19" data-line-number="19"><span class="co">### 2 aardsda01     2010      SEA     AL 2750000     2015     1      ATL</span></a>
+<a class="sourceLine" id="cb100-20" data-line-number="20"><span class="co">### 3 aardsda01     2010      SEA     AL 2750000     2006     1      CHN</span></a>
+<a class="sourceLine" id="cb100-21" data-line-number="21"><span class="co">### 4 aardsda01     2010      SEA     AL 2750000     2008     1      BOS</span></a>
+<a class="sourceLine" id="cb100-22" data-line-number="22"><span class="co">### 5 aardsda01     2010      SEA     AL 2750000     2013     1      NYN</span></a>
+<a class="sourceLine" id="cb100-23" data-line-number="23"><span class="co">### 6 aardsda01     2010      SEA     AL 2750000     2012     1      NYA</span></a>
+<a class="sourceLine" id="cb100-24" data-line-number="24"><span class="co">###   lgID.y POS  G GS InnOuts PO A E DP PB WP SB CS ZR</span></a>
+<a class="sourceLine" id="cb100-25" data-line-number="25"><span class="co">### 1     AL   P 73  0     214  2 5 0  1 NA NA NA NA NA</span></a>
+<a class="sourceLine" id="cb100-26" data-line-number="26"><span class="co">### 2     NL   P 33  0      92  0 1 1  0 NA NA NA NA NA</span></a>
+<a class="sourceLine" id="cb100-27" data-line-number="27"><span class="co">### 3     NL   P 45  0     159  1 5 0  1 NA NA NA NA NA</span></a>
+<a class="sourceLine" id="cb100-28" data-line-number="28"><span class="co">### 4     AL   P 47  0     146  3 6 0  0 NA NA NA NA NA</span></a>
+<a class="sourceLine" id="cb100-29" data-line-number="29"><span class="co">### 5     NL   P 43  0     119  1 5 0  0 NA NA NA NA NA</span></a>
+<a class="sourceLine" id="cb100-30" data-line-number="30"><span class="co">### 6     AL   P  1  0       3  0 0 0  0 NA NA NA NA NA</span></a></code></pre></div>
 </div>
 </div>
 <div id="non-unique-observations-in-id-variables" class="section level2">
@@ -718,315 +717,315 @@ X4-Y1<br />
 X4-Y2<br />
 X4-Y3</p>
 <p>For example, perhaps a sales company has a database that keeps track of biographical data, and sales performance. Perhaps we want to see if there is peak age for sales performance. We need to merge these datasets.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1">bio &lt;-<span class="st"> </span><span class="kw">data.frame</span>( <span class="dt">name=</span><span class="kw">c</span>(<span class="st">&quot;John&quot;</span>,<span class="st">&quot;John&quot;</span>,<span class="st">&quot;John&quot;</span>),</a>
-<a class="sourceLine" id="cb11-2" data-line-number="2">                   <span class="dt">year=</span><span class="kw">c</span>(<span class="dv">2000</span>,<span class="dv">2001</span>,<span class="dv">2002</span>),</a>
-<a class="sourceLine" id="cb11-3" data-line-number="3">                   <span class="dt">age=</span><span class="kw">c</span>(<span class="dv">43</span>,<span class="dv">44</span>,<span class="dv">45</span>) )</a>
-<a class="sourceLine" id="cb11-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb11-5" data-line-number="5">performance &lt;-<span class="st"> </span><span class="kw">data.frame</span>( <span class="dt">name=</span><span class="kw">c</span>(<span class="st">&quot;John&quot;</span>,<span class="st">&quot;John&quot;</span>,<span class="st">&quot;John&quot;</span>),</a>
-<a class="sourceLine" id="cb11-6" data-line-number="6">                           <span class="dt">year=</span><span class="kw">c</span>(<span class="dv">2000</span>,<span class="dv">2001</span>,<span class="dv">2002</span>),</a>
-<a class="sourceLine" id="cb11-7" data-line-number="7">                           <span class="dt">sales=</span><span class="kw">c</span>(<span class="st">&quot;15k&quot;</span>,<span class="st">&quot;20k&quot;</span>,<span class="st">&quot;17k&quot;</span>) )</a>
-<a class="sourceLine" id="cb11-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb11-9" data-line-number="9"><span class="co"># correct merge</span></a>
-<a class="sourceLine" id="cb11-10" data-line-number="10"></a>
-<a class="sourceLine" id="cb11-11" data-line-number="11"><span class="kw">merge</span>( bio, performance, <span class="dt">by.x=</span><span class="kw">c</span>(<span class="st">&quot;name&quot;</span>,<span class="st">&quot;year&quot;</span>), <span class="dt">by.y=</span><span class="kw">c</span>(<span class="st">&quot;name&quot;</span>,<span class="st">&quot;year&quot;</span>) ) </a>
-<a class="sourceLine" id="cb11-12" data-line-number="12"><span class="co">###   name year age sales</span></a>
-<a class="sourceLine" id="cb11-13" data-line-number="13"><span class="co">### 1 John 2000  43   15k</span></a>
-<a class="sourceLine" id="cb11-14" data-line-number="14"><span class="co">### 2 John 2001  44   20k</span></a>
-<a class="sourceLine" id="cb11-15" data-line-number="15"><span class="co">### 3 John 2002  45   17k</span></a>
-<a class="sourceLine" id="cb11-16" data-line-number="16"></a>
-<a class="sourceLine" id="cb11-17" data-line-number="17"></a>
-<a class="sourceLine" id="cb11-18" data-line-number="18"><span class="co"># incorrect merge</span></a>
-<a class="sourceLine" id="cb11-19" data-line-number="19"></a>
-<a class="sourceLine" id="cb11-20" data-line-number="20"><span class="kw">merge</span>( bio, performance, <span class="dt">by.x=</span><span class="kw">c</span>(<span class="st">&quot;name&quot;</span>), <span class="dt">by.y=</span><span class="kw">c</span>(<span class="st">&quot;name&quot;</span>) )  </a>
-<a class="sourceLine" id="cb11-21" data-line-number="21"><span class="co">###   name year.x age year.y sales</span></a>
-<a class="sourceLine" id="cb11-22" data-line-number="22"><span class="co">### 1 John   2000  43   2000   15k</span></a>
-<a class="sourceLine" id="cb11-23" data-line-number="23"><span class="co">### 2 John   2000  43   2001   20k</span></a>
-<a class="sourceLine" id="cb11-24" data-line-number="24"><span class="co">### 3 John   2000  43   2002   17k</span></a>
-<a class="sourceLine" id="cb11-25" data-line-number="25"><span class="co">### 4 John   2001  44   2000   15k</span></a>
-<a class="sourceLine" id="cb11-26" data-line-number="26"><span class="co">### 5 John   2001  44   2001   20k</span></a>
-<a class="sourceLine" id="cb11-27" data-line-number="27"><span class="co">### 6 John   2001  44   2002   17k</span></a>
-<a class="sourceLine" id="cb11-28" data-line-number="28"><span class="co">### 7 John   2002  45   2000   15k</span></a>
-<a class="sourceLine" id="cb11-29" data-line-number="29"><span class="co">### 8 John   2002  45   2001   20k</span></a>
-<a class="sourceLine" id="cb11-30" data-line-number="30"><span class="co">### 9 John   2002  45   2002   17k</span></a></code></pre></div>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb101-1" data-line-number="1">bio &lt;-<span class="st"> </span><span class="kw">data.frame</span>( <span class="dt">name=</span><span class="kw">c</span>(<span class="st">&quot;John&quot;</span>,<span class="st">&quot;John&quot;</span>,<span class="st">&quot;John&quot;</span>),</a>
+<a class="sourceLine" id="cb101-2" data-line-number="2">                   <span class="dt">year=</span><span class="kw">c</span>(<span class="dv">2000</span>,<span class="dv">2001</span>,<span class="dv">2002</span>),</a>
+<a class="sourceLine" id="cb101-3" data-line-number="3">                   <span class="dt">age=</span><span class="kw">c</span>(<span class="dv">43</span>,<span class="dv">44</span>,<span class="dv">45</span>) )</a>
+<a class="sourceLine" id="cb101-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb101-5" data-line-number="5">performance &lt;-<span class="st"> </span><span class="kw">data.frame</span>( <span class="dt">name=</span><span class="kw">c</span>(<span class="st">&quot;John&quot;</span>,<span class="st">&quot;John&quot;</span>,<span class="st">&quot;John&quot;</span>),</a>
+<a class="sourceLine" id="cb101-6" data-line-number="6">                           <span class="dt">year=</span><span class="kw">c</span>(<span class="dv">2000</span>,<span class="dv">2001</span>,<span class="dv">2002</span>),</a>
+<a class="sourceLine" id="cb101-7" data-line-number="7">                           <span class="dt">sales=</span><span class="kw">c</span>(<span class="st">&quot;15k&quot;</span>,<span class="st">&quot;20k&quot;</span>,<span class="st">&quot;17k&quot;</span>) )</a>
+<a class="sourceLine" id="cb101-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb101-9" data-line-number="9"><span class="co"># correct merge</span></a>
+<a class="sourceLine" id="cb101-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb101-11" data-line-number="11"><span class="kw">merge</span>( bio, performance, <span class="dt">by.x=</span><span class="kw">c</span>(<span class="st">&quot;name&quot;</span>,<span class="st">&quot;year&quot;</span>), <span class="dt">by.y=</span><span class="kw">c</span>(<span class="st">&quot;name&quot;</span>,<span class="st">&quot;year&quot;</span>) ) </a>
+<a class="sourceLine" id="cb101-12" data-line-number="12"><span class="co">###   name year age sales</span></a>
+<a class="sourceLine" id="cb101-13" data-line-number="13"><span class="co">### 1 John 2000  43   15k</span></a>
+<a class="sourceLine" id="cb101-14" data-line-number="14"><span class="co">### 2 John 2001  44   20k</span></a>
+<a class="sourceLine" id="cb101-15" data-line-number="15"><span class="co">### 3 John 2002  45   17k</span></a>
+<a class="sourceLine" id="cb101-16" data-line-number="16"></a>
+<a class="sourceLine" id="cb101-17" data-line-number="17"></a>
+<a class="sourceLine" id="cb101-18" data-line-number="18"><span class="co"># incorrect merge</span></a>
+<a class="sourceLine" id="cb101-19" data-line-number="19"></a>
+<a class="sourceLine" id="cb101-20" data-line-number="20"><span class="kw">merge</span>( bio, performance, <span class="dt">by.x=</span><span class="kw">c</span>(<span class="st">&quot;name&quot;</span>), <span class="dt">by.y=</span><span class="kw">c</span>(<span class="st">&quot;name&quot;</span>) )  </a>
+<a class="sourceLine" id="cb101-21" data-line-number="21"><span class="co">###   name year.x age year.y sales</span></a>
+<a class="sourceLine" id="cb101-22" data-line-number="22"><span class="co">### 1 John   2000  43   2000   15k</span></a>
+<a class="sourceLine" id="cb101-23" data-line-number="23"><span class="co">### 2 John   2000  43   2001   20k</span></a>
+<a class="sourceLine" id="cb101-24" data-line-number="24"><span class="co">### 3 John   2000  43   2002   17k</span></a>
+<a class="sourceLine" id="cb101-25" data-line-number="25"><span class="co">### 4 John   2001  44   2000   15k</span></a>
+<a class="sourceLine" id="cb101-26" data-line-number="26"><span class="co">### 5 John   2001  44   2001   20k</span></a>
+<a class="sourceLine" id="cb101-27" data-line-number="27"><span class="co">### 6 John   2001  44   2002   17k</span></a>
+<a class="sourceLine" id="cb101-28" data-line-number="28"><span class="co">### 7 John   2002  45   2000   15k</span></a>
+<a class="sourceLine" id="cb101-29" data-line-number="29"><span class="co">### 8 John   2002  45   2001   20k</span></a>
+<a class="sourceLine" id="cb101-30" data-line-number="30"><span class="co">### 9 John   2002  45   2002   17k</span></a></code></pre></div>
 <p><strong>It is good practice to check the size (number of rows) of your dataset before and after a merge. If it has expanded, chances are you either used the wrong unique IDs, or your dataset contains duplicates.</strong></p>
 <div id="example-of-incorrect-merge" class="section level3">
 <h3><span class="header-section-number">5.5.1</span> Example of Incorrect Merge</h3>
 <p>Here is a tangible example using the Lahman baseball dataset. Perhaps we want to examine the relationship between fielding position and salary. The <em>Fielding</em> dataset contains fielding position information, and the <em>Salaries</em> dataset contains salary information. We can merge these two datasets using the <em>playerID</em> field.</p>
 <p>If we are not thoughtful about this, however, we will end up causing problems. Let’s look at an example using Kirby Pucket.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1">kirby.fielding &lt;-<span class="st"> </span>Fielding[ Fielding<span class="op">$</span>playerID <span class="op">==</span><span class="st"> &quot;puckeki01&quot;</span> , ]</a>
-<a class="sourceLine" id="cb12-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb12-3" data-line-number="3"><span class="kw">head</span>( kirby.fielding )</a>
-<a class="sourceLine" id="cb12-4" data-line-number="4"><span class="co">###        playerID yearID stint teamID lgID POS   G  GS InnOuts  PO  A E DP</span></a>
-<a class="sourceLine" id="cb12-5" data-line-number="5"><span class="co">### 83848 puckeki01   1984     1    MIN   AL  OF 128 128    3377 438 16 3  4</span></a>
-<a class="sourceLine" id="cb12-6" data-line-number="6"><span class="co">### 85157 puckeki01   1985     1    MIN   AL  OF 161 160    4213 465 19 8  5</span></a>
-<a class="sourceLine" id="cb12-7" data-line-number="7"><span class="co">### 86489 puckeki01   1986     1    MIN   AL  OF 160 157    4155 429  8 6  3</span></a>
-<a class="sourceLine" id="cb12-8" data-line-number="8"><span class="co">### 87896 puckeki01   1987     1    MIN   AL  OF 147 147    3820 341  8 5  2</span></a>
-<a class="sourceLine" id="cb12-9" data-line-number="9"><span class="co">### 89264 puckeki01   1988     1    MIN   AL  OF 158 157    4049 450 12 3  4</span></a>
-<a class="sourceLine" id="cb12-10" data-line-number="10"><span class="co">### 90685 puckeki01   1989     1    MIN   AL  OF 157 154    3985 438 13 4  3</span></a>
-<a class="sourceLine" id="cb12-11" data-line-number="11"><span class="co">###       PB WP SB CS ZR</span></a>
-<a class="sourceLine" id="cb12-12" data-line-number="12"><span class="co">### 83848 NA NA NA NA NA</span></a>
-<a class="sourceLine" id="cb12-13" data-line-number="13"><span class="co">### 85157 NA NA NA NA NA</span></a>
-<a class="sourceLine" id="cb12-14" data-line-number="14"><span class="co">### 86489 NA NA NA NA NA</span></a>
-<a class="sourceLine" id="cb12-15" data-line-number="15"><span class="co">### 87896 NA NA NA NA NA</span></a>
-<a class="sourceLine" id="cb12-16" data-line-number="16"><span class="co">### 89264 NA NA NA NA NA</span></a>
-<a class="sourceLine" id="cb12-17" data-line-number="17"><span class="co">### 90685 NA NA NA NA NA</span></a>
-<a class="sourceLine" id="cb12-18" data-line-number="18"></a>
-<a class="sourceLine" id="cb12-19" data-line-number="19"><span class="kw">nrow</span>( kirby.fielding )</a>
-<a class="sourceLine" id="cb12-20" data-line-number="20"><span class="co">### [1] 21</span></a>
-<a class="sourceLine" id="cb12-21" data-line-number="21"></a>
-<a class="sourceLine" id="cb12-22" data-line-number="22">kirby.salary &lt;-<span class="st"> </span>Salaries[ Salaries<span class="op">$</span>playerID <span class="op">==</span><span class="st"> &quot;puckeki01&quot;</span> , ]</a>
-<a class="sourceLine" id="cb12-23" data-line-number="23"></a>
-<a class="sourceLine" id="cb12-24" data-line-number="24"><span class="kw">head</span>( kirby.salary )</a>
-<a class="sourceLine" id="cb12-25" data-line-number="25"><span class="co">###      yearID teamID lgID  playerID  salary</span></a>
-<a class="sourceLine" id="cb12-26" data-line-number="26"><span class="co">### 280    1985    MIN   AL puckeki01  130000</span></a>
-<a class="sourceLine" id="cb12-27" data-line-number="27"><span class="co">### 917    1986    MIN   AL puckeki01  255000</span></a>
-<a class="sourceLine" id="cb12-28" data-line-number="28"><span class="co">### 1610   1987    MIN   AL puckeki01  465000</span></a>
-<a class="sourceLine" id="cb12-29" data-line-number="29"><span class="co">### 2244   1988    MIN   AL puckeki01 1090000</span></a>
-<a class="sourceLine" id="cb12-30" data-line-number="30"><span class="co">### 2922   1989    MIN   AL puckeki01 2000000</span></a>
-<a class="sourceLine" id="cb12-31" data-line-number="31"><span class="co">### 3717   1990    MIN   AL puckeki01 2816667</span></a>
-<a class="sourceLine" id="cb12-32" data-line-number="32"></a>
-<a class="sourceLine" id="cb12-33" data-line-number="33"><span class="kw">nrow</span>( kirby.salary )</a>
-<a class="sourceLine" id="cb12-34" data-line-number="34"><span class="co">### [1] 13</span></a>
-<a class="sourceLine" id="cb12-35" data-line-number="35"></a>
-<a class="sourceLine" id="cb12-36" data-line-number="36">kirby.field.salary &lt;-<span class="st"> </span><span class="kw">merge</span>( kirby.fielding, kirby.salary, <span class="dt">by.x=</span><span class="st">&quot;playerID&quot;</span>, <span class="dt">by.y=</span><span class="st">&quot;playerID&quot;</span> )</a>
-<a class="sourceLine" id="cb12-37" data-line-number="37"></a>
-<a class="sourceLine" id="cb12-38" data-line-number="38"><span class="kw">head</span>( <span class="kw">select</span>( kirby.field.salary, yearID.x, yearID.y,   POS,    G,  GS, salary ) )</a>
-<a class="sourceLine" id="cb12-39" data-line-number="39"><span class="co">###   yearID.x yearID.y POS   G  GS  salary</span></a>
-<a class="sourceLine" id="cb12-40" data-line-number="40"><span class="co">### 1     1984     1985  OF 128 128  130000</span></a>
-<a class="sourceLine" id="cb12-41" data-line-number="41"><span class="co">### 2     1984     1986  OF 128 128  255000</span></a>
-<a class="sourceLine" id="cb12-42" data-line-number="42"><span class="co">### 3     1984     1987  OF 128 128  465000</span></a>
-<a class="sourceLine" id="cb12-43" data-line-number="43"><span class="co">### 4     1984     1988  OF 128 128 1090000</span></a>
-<a class="sourceLine" id="cb12-44" data-line-number="44"><span class="co">### 5     1984     1989  OF 128 128 2000000</span></a>
-<a class="sourceLine" id="cb12-45" data-line-number="45"><span class="co">### 6     1984     1990  OF 128 128 2816667</span></a>
-<a class="sourceLine" id="cb12-46" data-line-number="46"></a>
-<a class="sourceLine" id="cb12-47" data-line-number="47"><span class="kw">nrow</span>( kirby.field.salary )</a>
-<a class="sourceLine" id="cb12-48" data-line-number="48"><span class="co">### [1] 273</span></a>
-<a class="sourceLine" id="cb12-49" data-line-number="49"></a>
-<a class="sourceLine" id="cb12-50" data-line-number="50"><span class="dv">21</span><span class="op">*</span><span class="dv">13</span></a>
-<a class="sourceLine" id="cb12-51" data-line-number="51"><span class="co">### [1] 273</span></a></code></pre></div>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb102-1" data-line-number="1">kirby.fielding &lt;-<span class="st"> </span>Fielding[ Fielding<span class="op">$</span>playerID <span class="op">==</span><span class="st"> &quot;puckeki01&quot;</span> , ]</a>
+<a class="sourceLine" id="cb102-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb102-3" data-line-number="3"><span class="kw">head</span>( kirby.fielding )</a>
+<a class="sourceLine" id="cb102-4" data-line-number="4"><span class="co">###        playerID yearID stint teamID lgID POS   G  GS InnOuts  PO  A E DP</span></a>
+<a class="sourceLine" id="cb102-5" data-line-number="5"><span class="co">### 83848 puckeki01   1984     1    MIN   AL  OF 128 128    3377 438 16 3  4</span></a>
+<a class="sourceLine" id="cb102-6" data-line-number="6"><span class="co">### 85157 puckeki01   1985     1    MIN   AL  OF 161 160    4213 465 19 8  5</span></a>
+<a class="sourceLine" id="cb102-7" data-line-number="7"><span class="co">### 86489 puckeki01   1986     1    MIN   AL  OF 160 157    4155 429  8 6  3</span></a>
+<a class="sourceLine" id="cb102-8" data-line-number="8"><span class="co">### 87896 puckeki01   1987     1    MIN   AL  OF 147 147    3820 341  8 5  2</span></a>
+<a class="sourceLine" id="cb102-9" data-line-number="9"><span class="co">### 89264 puckeki01   1988     1    MIN   AL  OF 158 157    4049 450 12 3  4</span></a>
+<a class="sourceLine" id="cb102-10" data-line-number="10"><span class="co">### 90685 puckeki01   1989     1    MIN   AL  OF 157 154    3985 438 13 4  3</span></a>
+<a class="sourceLine" id="cb102-11" data-line-number="11"><span class="co">###       PB WP SB CS ZR</span></a>
+<a class="sourceLine" id="cb102-12" data-line-number="12"><span class="co">### 83848 NA NA NA NA NA</span></a>
+<a class="sourceLine" id="cb102-13" data-line-number="13"><span class="co">### 85157 NA NA NA NA NA</span></a>
+<a class="sourceLine" id="cb102-14" data-line-number="14"><span class="co">### 86489 NA NA NA NA NA</span></a>
+<a class="sourceLine" id="cb102-15" data-line-number="15"><span class="co">### 87896 NA NA NA NA NA</span></a>
+<a class="sourceLine" id="cb102-16" data-line-number="16"><span class="co">### 89264 NA NA NA NA NA</span></a>
+<a class="sourceLine" id="cb102-17" data-line-number="17"><span class="co">### 90685 NA NA NA NA NA</span></a>
+<a class="sourceLine" id="cb102-18" data-line-number="18"></a>
+<a class="sourceLine" id="cb102-19" data-line-number="19"><span class="kw">nrow</span>( kirby.fielding )</a>
+<a class="sourceLine" id="cb102-20" data-line-number="20"><span class="co">### [1] 21</span></a>
+<a class="sourceLine" id="cb102-21" data-line-number="21"></a>
+<a class="sourceLine" id="cb102-22" data-line-number="22">kirby.salary &lt;-<span class="st"> </span>Salaries[ Salaries<span class="op">$</span>playerID <span class="op">==</span><span class="st"> &quot;puckeki01&quot;</span> , ]</a>
+<a class="sourceLine" id="cb102-23" data-line-number="23"></a>
+<a class="sourceLine" id="cb102-24" data-line-number="24"><span class="kw">head</span>( kirby.salary )</a>
+<a class="sourceLine" id="cb102-25" data-line-number="25"><span class="co">###      yearID teamID lgID  playerID  salary</span></a>
+<a class="sourceLine" id="cb102-26" data-line-number="26"><span class="co">### 280    1985    MIN   AL puckeki01  130000</span></a>
+<a class="sourceLine" id="cb102-27" data-line-number="27"><span class="co">### 917    1986    MIN   AL puckeki01  255000</span></a>
+<a class="sourceLine" id="cb102-28" data-line-number="28"><span class="co">### 1610   1987    MIN   AL puckeki01  465000</span></a>
+<a class="sourceLine" id="cb102-29" data-line-number="29"><span class="co">### 2244   1988    MIN   AL puckeki01 1090000</span></a>
+<a class="sourceLine" id="cb102-30" data-line-number="30"><span class="co">### 2922   1989    MIN   AL puckeki01 2000000</span></a>
+<a class="sourceLine" id="cb102-31" data-line-number="31"><span class="co">### 3717   1990    MIN   AL puckeki01 2816667</span></a>
+<a class="sourceLine" id="cb102-32" data-line-number="32"></a>
+<a class="sourceLine" id="cb102-33" data-line-number="33"><span class="kw">nrow</span>( kirby.salary )</a>
+<a class="sourceLine" id="cb102-34" data-line-number="34"><span class="co">### [1] 13</span></a>
+<a class="sourceLine" id="cb102-35" data-line-number="35"></a>
+<a class="sourceLine" id="cb102-36" data-line-number="36">kirby.field.salary &lt;-<span class="st"> </span><span class="kw">merge</span>( kirby.fielding, kirby.salary, <span class="dt">by.x=</span><span class="st">&quot;playerID&quot;</span>, <span class="dt">by.y=</span><span class="st">&quot;playerID&quot;</span> )</a>
+<a class="sourceLine" id="cb102-37" data-line-number="37"></a>
+<a class="sourceLine" id="cb102-38" data-line-number="38"><span class="kw">head</span>( <span class="kw">select</span>( kirby.field.salary, yearID.x, yearID.y,   POS,    G,  GS, salary ) )</a>
+<a class="sourceLine" id="cb102-39" data-line-number="39"><span class="co">###   yearID.x yearID.y POS   G  GS  salary</span></a>
+<a class="sourceLine" id="cb102-40" data-line-number="40"><span class="co">### 1     1984     1985  OF 128 128  130000</span></a>
+<a class="sourceLine" id="cb102-41" data-line-number="41"><span class="co">### 2     1984     1986  OF 128 128  255000</span></a>
+<a class="sourceLine" id="cb102-42" data-line-number="42"><span class="co">### 3     1984     1987  OF 128 128  465000</span></a>
+<a class="sourceLine" id="cb102-43" data-line-number="43"><span class="co">### 4     1984     1988  OF 128 128 1090000</span></a>
+<a class="sourceLine" id="cb102-44" data-line-number="44"><span class="co">### 5     1984     1989  OF 128 128 2000000</span></a>
+<a class="sourceLine" id="cb102-45" data-line-number="45"><span class="co">### 6     1984     1990  OF 128 128 2816667</span></a>
+<a class="sourceLine" id="cb102-46" data-line-number="46"></a>
+<a class="sourceLine" id="cb102-47" data-line-number="47"><span class="kw">nrow</span>( kirby.field.salary )</a>
+<a class="sourceLine" id="cb102-48" data-line-number="48"><span class="co">### [1] 273</span></a>
+<a class="sourceLine" id="cb102-49" data-line-number="49"></a>
+<a class="sourceLine" id="cb102-50" data-line-number="50"><span class="dv">21</span><span class="op">*</span><span class="dv">13</span></a>
+<a class="sourceLine" id="cb102-51" data-line-number="51"><span class="co">### [1] 273</span></a></code></pre></div>
 <p>What we have done here is taken each year of fielding data, and matched it to <strong>every</strong> year of salary data. We can see that we have 21 fielding observations and 13 years of salary data, so our resulting dataset is 273 observation pairs.</p>
 <p>This merge also makes it difficult to answer the question of the relationship between fielding position and salary if players change positions over time.</p>
 <p>The correct merge in this case would be a merge on a playerID-yearID pair. We can create a unique key by combining playerID and yearID using <strong>paste()</strong>:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"></a>
-<a class="sourceLine" id="cb13-2" data-line-number="2"><span class="kw">head</span>( <span class="kw">paste</span>( kirby.fielding<span class="op">$</span>playerID, kirby.fielding<span class="op">$</span>yearID, <span class="dt">sep=</span><span class="st">&quot;.&quot;</span>) )</a>
-<a class="sourceLine" id="cb13-3" data-line-number="3"><span class="co">### [1] &quot;puckeki01.1984&quot; &quot;puckeki01.1985&quot; &quot;puckeki01.1986&quot; &quot;puckeki01.1987&quot;</span></a>
-<a class="sourceLine" id="cb13-4" data-line-number="4"><span class="co">### [5] &quot;puckeki01.1988&quot; &quot;puckeki01.1989&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb103-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb103-2" data-line-number="2"><span class="kw">head</span>( <span class="kw">paste</span>( kirby.fielding<span class="op">$</span>playerID, kirby.fielding<span class="op">$</span>yearID, <span class="dt">sep=</span><span class="st">&quot;.&quot;</span>) )</a>
+<a class="sourceLine" id="cb103-3" data-line-number="3"><span class="co">### [1] &quot;puckeki01.1984&quot; &quot;puckeki01.1985&quot; &quot;puckeki01.1986&quot; &quot;puckeki01.1987&quot;</span></a>
+<a class="sourceLine" id="cb103-4" data-line-number="4"><span class="co">### [5] &quot;puckeki01.1988&quot; &quot;puckeki01.1989&quot;</span></a></code></pre></div>
 <p>But there is a simple solution as the merge function also allows for multiple variables to be used for a <strong>merge()</strong> command.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1">kirby.field.salary &lt;-<span class="st"> </span><span class="kw">merge</span>( kirby.fielding, kirby.salary, </a>
-<a class="sourceLine" id="cb14-2" data-line-number="2">                            <span class="dt">by.x=</span><span class="kw">c</span>(<span class="st">&quot;playerID&quot;</span>,<span class="st">&quot;yearID&quot;</span>), </a>
-<a class="sourceLine" id="cb14-3" data-line-number="3">                            <span class="dt">by.y=</span><span class="kw">c</span>(<span class="st">&quot;playerID&quot;</span>,<span class="st">&quot;yearID&quot;</span>)   )</a>
-<a class="sourceLine" id="cb14-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb14-5" data-line-number="5"><span class="kw">nrow</span>( kirby.field.salary )</a>
-<a class="sourceLine" id="cb14-6" data-line-number="6"><span class="co">### [1] 20</span></a></code></pre></div>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb104-1" data-line-number="1">kirby.field.salary &lt;-<span class="st"> </span><span class="kw">merge</span>( kirby.fielding, kirby.salary, </a>
+<a class="sourceLine" id="cb104-2" data-line-number="2">                            <span class="dt">by.x=</span><span class="kw">c</span>(<span class="st">&quot;playerID&quot;</span>,<span class="st">&quot;yearID&quot;</span>), </a>
+<a class="sourceLine" id="cb104-3" data-line-number="3">                            <span class="dt">by.y=</span><span class="kw">c</span>(<span class="st">&quot;playerID&quot;</span>,<span class="st">&quot;yearID&quot;</span>)   )</a>
+<a class="sourceLine" id="cb104-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb104-5" data-line-number="5"><span class="kw">nrow</span>( kirby.field.salary )</a>
+<a class="sourceLine" id="cb104-6" data-line-number="6"><span class="co">### [1] 20</span></a></code></pre></div>
 </div>
 </div>
 <div id="the-in-function" class="section level2">
 <h2><span class="header-section-number">5.6</span> The %in% function</h2>
 <p>Since we are talking about intersections and matches, I want to briefly introduce the <strong>%in%</strong> function. It is a combination of the two.</p>
 <p>The <strong>intersect()</strong> function returns a list of unique matches between two vectors.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="kw">data</span>(Salaries)</a>
-<a class="sourceLine" id="cb15-2" data-line-number="2"><span class="kw">data</span>(Fielding)</a>
-<a class="sourceLine" id="cb15-3" data-line-number="3"><span class="kw">intersect</span>( <span class="kw">names</span>(Salaries), <span class="kw">names</span>(Fielding) )</a>
-<a class="sourceLine" id="cb15-4" data-line-number="4"><span class="co">### [1] &quot;yearID&quot;   &quot;teamID&quot;   &quot;lgID&quot;     &quot;playerID&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb105-1" data-line-number="1"><span class="kw">data</span>(Salaries)</a>
+<a class="sourceLine" id="cb105-2" data-line-number="2"><span class="kw">data</span>(Fielding)</a>
+<a class="sourceLine" id="cb105-3" data-line-number="3"><span class="kw">intersect</span>( <span class="kw">names</span>(Salaries), <span class="kw">names</span>(Fielding) )</a>
+<a class="sourceLine" id="cb105-4" data-line-number="4"><span class="co">### [1] &quot;yearID&quot;   &quot;teamID&quot;   &quot;lgID&quot;     &quot;playerID&quot;</span></a></code></pre></div>
 <p>The <strong>match()</strong> function returns the position of matched elements.</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;A&quot;</span>,<span class="st">&quot;B&quot;</span>,<span class="st">&quot;C&quot;</span>,<span class="st">&quot;B&quot;</span>)</a>
-<a class="sourceLine" id="cb16-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb16-3" data-line-number="3">y &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;B&quot;</span>,<span class="st">&quot;D&quot;</span>,<span class="st">&quot;A&quot;</span>,<span class="st">&quot;F&quot;</span>)</a>
-<a class="sourceLine" id="cb16-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb16-5" data-line-number="5"><span class="kw">match</span>( x, y )</a>
-<a class="sourceLine" id="cb16-6" data-line-number="6"><span class="co">### [1]  3  1 NA  1</span></a></code></pre></div>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb106-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;A&quot;</span>,<span class="st">&quot;B&quot;</span>,<span class="st">&quot;C&quot;</span>,<span class="st">&quot;B&quot;</span>)</a>
+<a class="sourceLine" id="cb106-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb106-3" data-line-number="3">y &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;B&quot;</span>,<span class="st">&quot;D&quot;</span>,<span class="st">&quot;A&quot;</span>,<span class="st">&quot;F&quot;</span>)</a>
+<a class="sourceLine" id="cb106-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb106-5" data-line-number="5"><span class="kw">match</span>( x, y )</a>
+<a class="sourceLine" id="cb106-6" data-line-number="6"><span class="co">### [1]  3  1 NA  1</span></a></code></pre></div>
 <p>The <strong>%in%</strong> function returns a logical vector, where TRUE signifies that the element in <em>y</em> also occurs in <em>x</em>. In other words, does a specific element in <em>y</em> belong to the intersection of <em>x</em>,<em>y</em>.</p>
 <p>This is very useful for creating subsets of data that belong to both sets.</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;A&quot;</span>,<span class="st">&quot;B&quot;</span>,<span class="st">&quot;C&quot;</span>)</a>
-<a class="sourceLine" id="cb17-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb17-3" data-line-number="3">y &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;B&quot;</span>,<span class="st">&quot;D&quot;</span>,<span class="st">&quot;A&quot;</span>,<span class="st">&quot;B&quot;</span>,<span class="st">&quot;F&quot;</span>,<span class="st">&quot;B&quot;</span>)</a>
-<a class="sourceLine" id="cb17-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb17-5" data-line-number="5">y <span class="op">%in%</span><span class="st"> </span>x <span class="co"># does each element of y occur anywhere in x?</span></a>
-<a class="sourceLine" id="cb17-6" data-line-number="6"><span class="co">### [1]  TRUE FALSE  TRUE  TRUE FALSE  TRUE</span></a>
-<a class="sourceLine" id="cb17-7" data-line-number="7"></a>
-<a class="sourceLine" id="cb17-8" data-line-number="8">y[ y <span class="op">%in%</span><span class="st"> </span>x] <span class="co"># keep only data that occurs in both</span></a>
-<a class="sourceLine" id="cb17-9" data-line-number="9"><span class="co">### [1] &quot;B&quot; &quot;A&quot; &quot;B&quot; &quot;B&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb107-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;A&quot;</span>,<span class="st">&quot;B&quot;</span>,<span class="st">&quot;C&quot;</span>)</a>
+<a class="sourceLine" id="cb107-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb107-3" data-line-number="3">y &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;B&quot;</span>,<span class="st">&quot;D&quot;</span>,<span class="st">&quot;A&quot;</span>,<span class="st">&quot;B&quot;</span>,<span class="st">&quot;F&quot;</span>,<span class="st">&quot;B&quot;</span>)</a>
+<a class="sourceLine" id="cb107-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb107-5" data-line-number="5">y <span class="op">%in%</span><span class="st"> </span>x <span class="co"># does each element of y occur anywhere in x?</span></a>
+<a class="sourceLine" id="cb107-6" data-line-number="6"><span class="co">### [1]  TRUE FALSE  TRUE  TRUE FALSE  TRUE</span></a>
+<a class="sourceLine" id="cb107-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb107-8" data-line-number="8">y[ y <span class="op">%in%</span><span class="st"> </span>x] <span class="co"># keep only data that occurs in both</span></a>
+<a class="sourceLine" id="cb107-9" data-line-number="9"><span class="co">### [1] &quot;B&quot; &quot;A&quot; &quot;B&quot; &quot;B&quot;</span></a></code></pre></div>
 </div>
 <div id="the-match-function" class="section level2">
 <h2><span class="header-section-number">5.7</span> The Match Function</h2>
 <p>Often times we do not need to merge data, we may just need sort data in one dataset so that it matches the order of another dataset. This is accomplished using the <strong>match()</strong> function.</p>
 <p>Note that we can rearrange the order of a dataset by referencing the desired position.</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1"></a>
-<a class="sourceLine" id="cb18-2" data-line-number="2">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Second&quot;</span>,<span class="st">&quot;Third&quot;</span>,<span class="st">&quot;First&quot;</span>)</a>
-<a class="sourceLine" id="cb18-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb18-4" data-line-number="4">x</a>
-<a class="sourceLine" id="cb18-5" data-line-number="5"><span class="co">### [1] &quot;Second&quot; &quot;Third&quot;  &quot;First&quot;</span></a>
-<a class="sourceLine" id="cb18-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb18-7" data-line-number="7">x[ <span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">2</span>) ]</a>
-<a class="sourceLine" id="cb18-8" data-line-number="8"><span class="co">### [1] &quot;First&quot;  &quot;Second&quot; &quot;Third&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb108-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb108-2" data-line-number="2">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Second&quot;</span>,<span class="st">&quot;Third&quot;</span>,<span class="st">&quot;First&quot;</span>)</a>
+<a class="sourceLine" id="cb108-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb108-4" data-line-number="4">x</a>
+<a class="sourceLine" id="cb108-5" data-line-number="5"><span class="co">### [1] &quot;Second&quot; &quot;Third&quot;  &quot;First&quot;</span></a>
+<a class="sourceLine" id="cb108-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb108-7" data-line-number="7">x[ <span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">2</span>) ]</a>
+<a class="sourceLine" id="cb108-8" data-line-number="8"><span class="co">### [1] &quot;First&quot;  &quot;Second&quot; &quot;Third&quot;</span></a></code></pre></div>
 <p>The <strong>match()</strong> function returns the <em>positions</em> of matches of its <em>first</em> vector to the <em>second</em> vector listed in the arguments. Or in other words, the <em>order</em> that vector 2 would need to follow to match vector 1.</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1"></a>
-<a class="sourceLine" id="cb19-2" data-line-number="2">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;A&quot;</span>,<span class="st">&quot;B&quot;</span>,<span class="st">&quot;C&quot;</span>)</a>
-<a class="sourceLine" id="cb19-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb19-4" data-line-number="4">y &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;B&quot;</span>,<span class="st">&quot;D&quot;</span>,<span class="st">&quot;A&quot;</span>)</a>
-<a class="sourceLine" id="cb19-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb19-6" data-line-number="6"><span class="kw">cbind</span>( x, y )</a>
-<a class="sourceLine" id="cb19-7" data-line-number="7"><span class="co">###      x   y  </span></a>
-<a class="sourceLine" id="cb19-8" data-line-number="8"><span class="co">### [1,] &quot;A&quot; &quot;B&quot;</span></a>
-<a class="sourceLine" id="cb19-9" data-line-number="9"><span class="co">### [2,] &quot;B&quot; &quot;D&quot;</span></a>
-<a class="sourceLine" id="cb19-10" data-line-number="10"><span class="co">### [3,] &quot;C&quot; &quot;A&quot;</span></a>
-<a class="sourceLine" id="cb19-11" data-line-number="11"></a>
-<a class="sourceLine" id="cb19-12" data-line-number="12"><span class="kw">match</span>( x, y )</a>
-<a class="sourceLine" id="cb19-13" data-line-number="13"><span class="co">### [1]  3  1 NA</span></a>
-<a class="sourceLine" id="cb19-14" data-line-number="14"></a>
-<a class="sourceLine" id="cb19-15" data-line-number="15"><span class="kw">match</span>( y, x) <span class="co"># not a symmetric operation!</span></a>
-<a class="sourceLine" id="cb19-16" data-line-number="16"><span class="co">### [1]  2 NA  1</span></a>
-<a class="sourceLine" id="cb19-17" data-line-number="17"></a>
-<a class="sourceLine" id="cb19-18" data-line-number="18"><span class="co"># In the y vector:</span></a>
-<a class="sourceLine" id="cb19-19" data-line-number="19"><span class="co">#</span></a>
-<a class="sourceLine" id="cb19-20" data-line-number="20"><span class="co">#  [3]=A</span></a>
-<a class="sourceLine" id="cb19-21" data-line-number="21"><span class="co">#  [1]=B</span></a>
-<a class="sourceLine" id="cb19-22" data-line-number="22"><span class="co"># [NA]=D (no match)</span></a>
-<a class="sourceLine" id="cb19-23" data-line-number="23"></a>
-<a class="sourceLine" id="cb19-24" data-line-number="24">order.y &lt;-<span class="st"> </span><span class="kw">match</span>( x, y )</a>
-<a class="sourceLine" id="cb19-25" data-line-number="25"></a>
-<a class="sourceLine" id="cb19-26" data-line-number="26">y[ order.y ]</a>
-<a class="sourceLine" id="cb19-27" data-line-number="27"><span class="co">### [1] &quot;A&quot; &quot;B&quot; NA</span></a></code></pre></div>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb109-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb109-2" data-line-number="2">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;A&quot;</span>,<span class="st">&quot;B&quot;</span>,<span class="st">&quot;C&quot;</span>)</a>
+<a class="sourceLine" id="cb109-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb109-4" data-line-number="4">y &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;B&quot;</span>,<span class="st">&quot;D&quot;</span>,<span class="st">&quot;A&quot;</span>)</a>
+<a class="sourceLine" id="cb109-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb109-6" data-line-number="6"><span class="kw">cbind</span>( x, y )</a>
+<a class="sourceLine" id="cb109-7" data-line-number="7"><span class="co">###      x   y  </span></a>
+<a class="sourceLine" id="cb109-8" data-line-number="8"><span class="co">### [1,] &quot;A&quot; &quot;B&quot;</span></a>
+<a class="sourceLine" id="cb109-9" data-line-number="9"><span class="co">### [2,] &quot;B&quot; &quot;D&quot;</span></a>
+<a class="sourceLine" id="cb109-10" data-line-number="10"><span class="co">### [3,] &quot;C&quot; &quot;A&quot;</span></a>
+<a class="sourceLine" id="cb109-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb109-12" data-line-number="12"><span class="kw">match</span>( x, y )</a>
+<a class="sourceLine" id="cb109-13" data-line-number="13"><span class="co">### [1]  3  1 NA</span></a>
+<a class="sourceLine" id="cb109-14" data-line-number="14"></a>
+<a class="sourceLine" id="cb109-15" data-line-number="15"><span class="kw">match</span>( y, x) <span class="co"># not a symmetric operation!</span></a>
+<a class="sourceLine" id="cb109-16" data-line-number="16"><span class="co">### [1]  2 NA  1</span></a>
+<a class="sourceLine" id="cb109-17" data-line-number="17"></a>
+<a class="sourceLine" id="cb109-18" data-line-number="18"><span class="co"># In the y vector:</span></a>
+<a class="sourceLine" id="cb109-19" data-line-number="19"><span class="co">#</span></a>
+<a class="sourceLine" id="cb109-20" data-line-number="20"><span class="co">#  [3]=A</span></a>
+<a class="sourceLine" id="cb109-21" data-line-number="21"><span class="co">#  [1]=B</span></a>
+<a class="sourceLine" id="cb109-22" data-line-number="22"><span class="co"># [NA]=D (no match)</span></a>
+<a class="sourceLine" id="cb109-23" data-line-number="23"></a>
+<a class="sourceLine" id="cb109-24" data-line-number="24">order.y &lt;-<span class="st"> </span><span class="kw">match</span>( x, y )</a>
+<a class="sourceLine" id="cb109-25" data-line-number="25"></a>
+<a class="sourceLine" id="cb109-26" data-line-number="26">y[ order.y ]</a>
+<a class="sourceLine" id="cb109-27" data-line-number="27"><span class="co">### [1] &quot;A&quot; &quot;B&quot; NA</span></a></code></pre></div>
 <p>We can see that <strong>match()</strong> returns the correct order to put <em>y</em> in so that it matches the order of <em>x</em>. In the re-ordered vector, the first element is the original third element <em>A</em>, the second element is the original first element <em>B</em>, and there is no third element because <em>D</em> did not match anything in <em>x</em>.</p>
 <p>Note the order of arguments in the function:</p>
 <blockquote>
 <p>match( data I want to match to , data I need to re-order )</p>
 </blockquote>
 <p>We can use this position information to re-order <em>y</em> as follows:</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1"></a>
-<a class="sourceLine" id="cb20-2" data-line-number="2">x &lt;-<span class="st"> </span><span class="kw">sample</span>( LETTERS[<span class="dv">1</span><span class="op">:</span><span class="dv">15</span>], <span class="dt">size=</span><span class="dv">10</span> )</a>
-<a class="sourceLine" id="cb20-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb20-4" data-line-number="4">y &lt;-<span class="st"> </span><span class="kw">sample</span>( LETTERS[<span class="dv">1</span><span class="op">:</span><span class="dv">15</span>], <span class="dt">size=</span><span class="dv">10</span> )</a>
-<a class="sourceLine" id="cb20-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb20-6" data-line-number="6"><span class="kw">cbind</span>( x, y )</a>
-<a class="sourceLine" id="cb20-7" data-line-number="7"><span class="co">###       x   y  </span></a>
-<a class="sourceLine" id="cb20-8" data-line-number="8"><span class="co">###  [1,] &quot;A&quot; &quot;I&quot;</span></a>
-<a class="sourceLine" id="cb20-9" data-line-number="9"><span class="co">###  [2,] &quot;J&quot; &quot;K&quot;</span></a>
-<a class="sourceLine" id="cb20-10" data-line-number="10"><span class="co">###  [3,] &quot;K&quot; &quot;A&quot;</span></a>
-<a class="sourceLine" id="cb20-11" data-line-number="11"><span class="co">###  [4,] &quot;C&quot; &quot;M&quot;</span></a>
-<a class="sourceLine" id="cb20-12" data-line-number="12"><span class="co">###  [5,] &quot;I&quot; &quot;B&quot;</span></a>
-<a class="sourceLine" id="cb20-13" data-line-number="13"><span class="co">###  [6,] &quot;M&quot; &quot;N&quot;</span></a>
-<a class="sourceLine" id="cb20-14" data-line-number="14"><span class="co">###  [7,] &quot;F&quot; &quot;H&quot;</span></a>
-<a class="sourceLine" id="cb20-15" data-line-number="15"><span class="co">###  [8,] &quot;N&quot; &quot;L&quot;</span></a>
-<a class="sourceLine" id="cb20-16" data-line-number="16"><span class="co">###  [9,] &quot;H&quot; &quot;G&quot;</span></a>
-<a class="sourceLine" id="cb20-17" data-line-number="17"><span class="co">### [10,] &quot;E&quot; &quot;C&quot;</span></a>
-<a class="sourceLine" id="cb20-18" data-line-number="18"></a>
-<a class="sourceLine" id="cb20-19" data-line-number="19">order.y &lt;-<span class="st"> </span><span class="kw">match</span>( x, y )</a>
-<a class="sourceLine" id="cb20-20" data-line-number="20"></a>
-<a class="sourceLine" id="cb20-21" data-line-number="21">y.new &lt;-<span class="st"> </span>y[ order.y ]</a>
-<a class="sourceLine" id="cb20-22" data-line-number="22"></a>
-<a class="sourceLine" id="cb20-23" data-line-number="23"><span class="kw">cbind</span>( x, y.new )</a>
-<a class="sourceLine" id="cb20-24" data-line-number="24"><span class="co">###       x   y.new</span></a>
-<a class="sourceLine" id="cb20-25" data-line-number="25"><span class="co">###  [1,] &quot;A&quot; &quot;A&quot;  </span></a>
-<a class="sourceLine" id="cb20-26" data-line-number="26"><span class="co">###  [2,] &quot;J&quot; NA   </span></a>
-<a class="sourceLine" id="cb20-27" data-line-number="27"><span class="co">###  [3,] &quot;K&quot; &quot;K&quot;  </span></a>
-<a class="sourceLine" id="cb20-28" data-line-number="28"><span class="co">###  [4,] &quot;C&quot; &quot;C&quot;  </span></a>
-<a class="sourceLine" id="cb20-29" data-line-number="29"><span class="co">###  [5,] &quot;I&quot; &quot;I&quot;  </span></a>
-<a class="sourceLine" id="cb20-30" data-line-number="30"><span class="co">###  [6,] &quot;M&quot; &quot;M&quot;  </span></a>
-<a class="sourceLine" id="cb20-31" data-line-number="31"><span class="co">###  [7,] &quot;F&quot; NA   </span></a>
-<a class="sourceLine" id="cb20-32" data-line-number="32"><span class="co">###  [8,] &quot;N&quot; &quot;N&quot;  </span></a>
-<a class="sourceLine" id="cb20-33" data-line-number="33"><span class="co">###  [9,] &quot;H&quot; &quot;H&quot;  </span></a>
-<a class="sourceLine" id="cb20-34" data-line-number="34"><span class="co">### [10,] &quot;E&quot; NA</span></a>
-<a class="sourceLine" id="cb20-35" data-line-number="35"></a>
-<a class="sourceLine" id="cb20-36" data-line-number="36"></a>
-<a class="sourceLine" id="cb20-37" data-line-number="37"><span class="co"># Note the result if you confuse the order or arguments</span></a>
-<a class="sourceLine" id="cb20-38" data-line-number="38"></a>
-<a class="sourceLine" id="cb20-39" data-line-number="39">order.y &lt;-<span class="st"> </span><span class="kw">match</span>( y, x )</a>
-<a class="sourceLine" id="cb20-40" data-line-number="40"></a>
-<a class="sourceLine" id="cb20-41" data-line-number="41">y.new &lt;-<span class="st"> </span>y[ order.y ]</a>
-<a class="sourceLine" id="cb20-42" data-line-number="42"></a>
-<a class="sourceLine" id="cb20-43" data-line-number="43"><span class="kw">cbind</span>( x, y.new )</a>
-<a class="sourceLine" id="cb20-44" data-line-number="44"><span class="co">###       x   y.new</span></a>
-<a class="sourceLine" id="cb20-45" data-line-number="45"><span class="co">###  [1,] &quot;A&quot; &quot;B&quot;  </span></a>
-<a class="sourceLine" id="cb20-46" data-line-number="46"><span class="co">###  [2,] &quot;J&quot; &quot;A&quot;  </span></a>
-<a class="sourceLine" id="cb20-47" data-line-number="47"><span class="co">###  [3,] &quot;K&quot; &quot;I&quot;  </span></a>
-<a class="sourceLine" id="cb20-48" data-line-number="48"><span class="co">###  [4,] &quot;C&quot; &quot;N&quot;  </span></a>
-<a class="sourceLine" id="cb20-49" data-line-number="49"><span class="co">###  [5,] &quot;I&quot; NA   </span></a>
-<a class="sourceLine" id="cb20-50" data-line-number="50"><span class="co">###  [6,] &quot;M&quot; &quot;L&quot;  </span></a>
-<a class="sourceLine" id="cb20-51" data-line-number="51"><span class="co">###  [7,] &quot;F&quot; &quot;G&quot;  </span></a>
-<a class="sourceLine" id="cb20-52" data-line-number="52"><span class="co">###  [8,] &quot;N&quot; NA   </span></a>
-<a class="sourceLine" id="cb20-53" data-line-number="53"><span class="co">###  [9,] &quot;H&quot; NA   </span></a>
-<a class="sourceLine" id="cb20-54" data-line-number="54"><span class="co">### [10,] &quot;E&quot; &quot;M&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb110-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb110-2" data-line-number="2">x &lt;-<span class="st"> </span><span class="kw">sample</span>( LETTERS[<span class="dv">1</span><span class="op">:</span><span class="dv">15</span>], <span class="dt">size=</span><span class="dv">10</span> )</a>
+<a class="sourceLine" id="cb110-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb110-4" data-line-number="4">y &lt;-<span class="st"> </span><span class="kw">sample</span>( LETTERS[<span class="dv">1</span><span class="op">:</span><span class="dv">15</span>], <span class="dt">size=</span><span class="dv">10</span> )</a>
+<a class="sourceLine" id="cb110-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb110-6" data-line-number="6"><span class="kw">cbind</span>( x, y )</a>
+<a class="sourceLine" id="cb110-7" data-line-number="7"><span class="co">###       x   y  </span></a>
+<a class="sourceLine" id="cb110-8" data-line-number="8"><span class="co">###  [1,] &quot;C&quot; &quot;I&quot;</span></a>
+<a class="sourceLine" id="cb110-9" data-line-number="9"><span class="co">###  [2,] &quot;A&quot; &quot;K&quot;</span></a>
+<a class="sourceLine" id="cb110-10" data-line-number="10"><span class="co">###  [3,] &quot;F&quot; &quot;B&quot;</span></a>
+<a class="sourceLine" id="cb110-11" data-line-number="11"><span class="co">###  [4,] &quot;O&quot; &quot;A&quot;</span></a>
+<a class="sourceLine" id="cb110-12" data-line-number="12"><span class="co">###  [5,] &quot;K&quot; &quot;M&quot;</span></a>
+<a class="sourceLine" id="cb110-13" data-line-number="13"><span class="co">###  [6,] &quot;I&quot; &quot;J&quot;</span></a>
+<a class="sourceLine" id="cb110-14" data-line-number="14"><span class="co">###  [7,] &quot;D&quot; &quot;G&quot;</span></a>
+<a class="sourceLine" id="cb110-15" data-line-number="15"><span class="co">###  [8,] &quot;E&quot; &quot;F&quot;</span></a>
+<a class="sourceLine" id="cb110-16" data-line-number="16"><span class="co">###  [9,] &quot;L&quot; &quot;L&quot;</span></a>
+<a class="sourceLine" id="cb110-17" data-line-number="17"><span class="co">### [10,] &quot;G&quot; &quot;H&quot;</span></a>
+<a class="sourceLine" id="cb110-18" data-line-number="18"></a>
+<a class="sourceLine" id="cb110-19" data-line-number="19">order.y &lt;-<span class="st"> </span><span class="kw">match</span>( x, y )</a>
+<a class="sourceLine" id="cb110-20" data-line-number="20"></a>
+<a class="sourceLine" id="cb110-21" data-line-number="21">y.new &lt;-<span class="st"> </span>y[ order.y ]</a>
+<a class="sourceLine" id="cb110-22" data-line-number="22"></a>
+<a class="sourceLine" id="cb110-23" data-line-number="23"><span class="kw">cbind</span>( x, y.new )</a>
+<a class="sourceLine" id="cb110-24" data-line-number="24"><span class="co">###       x   y.new</span></a>
+<a class="sourceLine" id="cb110-25" data-line-number="25"><span class="co">###  [1,] &quot;C&quot; NA   </span></a>
+<a class="sourceLine" id="cb110-26" data-line-number="26"><span class="co">###  [2,] &quot;A&quot; &quot;A&quot;  </span></a>
+<a class="sourceLine" id="cb110-27" data-line-number="27"><span class="co">###  [3,] &quot;F&quot; &quot;F&quot;  </span></a>
+<a class="sourceLine" id="cb110-28" data-line-number="28"><span class="co">###  [4,] &quot;O&quot; NA   </span></a>
+<a class="sourceLine" id="cb110-29" data-line-number="29"><span class="co">###  [5,] &quot;K&quot; &quot;K&quot;  </span></a>
+<a class="sourceLine" id="cb110-30" data-line-number="30"><span class="co">###  [6,] &quot;I&quot; &quot;I&quot;  </span></a>
+<a class="sourceLine" id="cb110-31" data-line-number="31"><span class="co">###  [7,] &quot;D&quot; NA   </span></a>
+<a class="sourceLine" id="cb110-32" data-line-number="32"><span class="co">###  [8,] &quot;E&quot; NA   </span></a>
+<a class="sourceLine" id="cb110-33" data-line-number="33"><span class="co">###  [9,] &quot;L&quot; &quot;L&quot;  </span></a>
+<a class="sourceLine" id="cb110-34" data-line-number="34"><span class="co">### [10,] &quot;G&quot; &quot;G&quot;</span></a>
+<a class="sourceLine" id="cb110-35" data-line-number="35"></a>
+<a class="sourceLine" id="cb110-36" data-line-number="36"></a>
+<a class="sourceLine" id="cb110-37" data-line-number="37"><span class="co"># Note the result if you confuse the order or arguments</span></a>
+<a class="sourceLine" id="cb110-38" data-line-number="38"></a>
+<a class="sourceLine" id="cb110-39" data-line-number="39">order.y &lt;-<span class="st"> </span><span class="kw">match</span>( y, x )</a>
+<a class="sourceLine" id="cb110-40" data-line-number="40"></a>
+<a class="sourceLine" id="cb110-41" data-line-number="41">y.new &lt;-<span class="st"> </span>y[ order.y ]</a>
+<a class="sourceLine" id="cb110-42" data-line-number="42"></a>
+<a class="sourceLine" id="cb110-43" data-line-number="43"><span class="kw">cbind</span>( x, y.new )</a>
+<a class="sourceLine" id="cb110-44" data-line-number="44"><span class="co">###       x   y.new</span></a>
+<a class="sourceLine" id="cb110-45" data-line-number="45"><span class="co">###  [1,] &quot;C&quot; &quot;J&quot;  </span></a>
+<a class="sourceLine" id="cb110-46" data-line-number="46"><span class="co">###  [2,] &quot;A&quot; &quot;M&quot;  </span></a>
+<a class="sourceLine" id="cb110-47" data-line-number="47"><span class="co">###  [3,] &quot;F&quot; NA   </span></a>
+<a class="sourceLine" id="cb110-48" data-line-number="48"><span class="co">###  [4,] &quot;O&quot; &quot;K&quot;  </span></a>
+<a class="sourceLine" id="cb110-49" data-line-number="49"><span class="co">###  [5,] &quot;K&quot; NA   </span></a>
+<a class="sourceLine" id="cb110-50" data-line-number="50"><span class="co">###  [6,] &quot;I&quot; NA   </span></a>
+<a class="sourceLine" id="cb110-51" data-line-number="51"><span class="co">###  [7,] &quot;D&quot; &quot;H&quot;  </span></a>
+<a class="sourceLine" id="cb110-52" data-line-number="52"><span class="co">###  [8,] &quot;E&quot; &quot;B&quot;  </span></a>
+<a class="sourceLine" id="cb110-53" data-line-number="53"><span class="co">###  [9,] &quot;L&quot; &quot;L&quot;  </span></a>
+<a class="sourceLine" id="cb110-54" data-line-number="54"><span class="co">### [10,] &quot;G&quot; NA</span></a></code></pre></div>
 <p>This comes in handy when we are matching information between two tables. For example, in GIS the map regions follow a specific order but your data does not. Create a color scheme for levels of your data, and then re-order the colors so they match the correct region on the map. In this example, we will look at unemployment levels by county.</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1"></a>
-<a class="sourceLine" id="cb21-2" data-line-number="2"><span class="kw">library</span>( maps )</a>
-<a class="sourceLine" id="cb21-3" data-line-number="3"><span class="kw">data</span>( county.fips )</a>
-<a class="sourceLine" id="cb21-4" data-line-number="4"><span class="kw">data</span>( unemp )</a>
-<a class="sourceLine" id="cb21-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb21-6" data-line-number="6"><span class="kw">map</span>( <span class="dt">database=</span><span class="st">&quot;county&quot;</span> )</a>
-<a class="sourceLine" id="cb21-7" data-line-number="7"></a>
-<a class="sourceLine" id="cb21-8" data-line-number="8"><span class="co"># assign a color to each level of unemployment, red = high, gray = medium, blue = low</span></a>
-<a class="sourceLine" id="cb21-9" data-line-number="9"></a>
-<a class="sourceLine" id="cb21-10" data-line-number="10">color.function &lt;-<span class="st"> </span><span class="kw">colorRampPalette</span>( <span class="kw">c</span>(<span class="st">&quot;steelblue&quot;</span>, <span class="st">&quot;gray70&quot;</span>, <span class="st">&quot;firebrick&quot;</span>) )</a>
-<a class="sourceLine" id="cb21-11" data-line-number="11"></a>
-<a class="sourceLine" id="cb21-12" data-line-number="12"></a>
-<a class="sourceLine" id="cb21-13" data-line-number="13">color.vector &lt;-<span class="st"> </span><span class="kw">cut</span>( <span class="kw">rank</span>(unemp<span class="op">$</span>unemp), <span class="dt">breaks=</span><span class="dv">7</span>, <span class="dt">labels=</span><span class="kw">color.function</span>( <span class="dv">7</span> ) )</a>
-<a class="sourceLine" id="cb21-14" data-line-number="14"></a>
-<a class="sourceLine" id="cb21-15" data-line-number="15">color.vector &lt;-<span class="st"> </span><span class="kw">as.character</span>( color.vector )</a>
-<a class="sourceLine" id="cb21-16" data-line-number="16"></a>
-<a class="sourceLine" id="cb21-17" data-line-number="17"><span class="kw">head</span>( color.vector )</a>
-<a class="sourceLine" id="cb21-18" data-line-number="18"><span class="co">### [1] &quot;#B28282&quot; &quot;#B28282&quot; &quot;#B22222&quot; &quot;#B25252&quot; &quot;#B28282&quot; &quot;#B22222&quot;</span></a>
-<a class="sourceLine" id="cb21-19" data-line-number="19"></a>
-<a class="sourceLine" id="cb21-20" data-line-number="20"><span class="co"># doesn&#39;t look quite right</span></a>
-<a class="sourceLine" id="cb21-21" data-line-number="21"></a>
-<a class="sourceLine" id="cb21-22" data-line-number="22"><span class="kw">map</span>( <span class="dt">database=</span><span class="st">&quot;county&quot;</span>, <span class="dt">col=</span>color.vector, <span class="dt">fill=</span>T, <span class="dt">lty=</span><span class="dv">0</span> )</a>
-<a class="sourceLine" id="cb21-23" data-line-number="23"></a>
-<a class="sourceLine" id="cb21-24" data-line-number="24"></a>
-<a class="sourceLine" id="cb21-25" data-line-number="25"><span class="co"># what went wrong here? </span></a>
-<a class="sourceLine" id="cb21-26" data-line-number="26"></a>
-<a class="sourceLine" id="cb21-27" data-line-number="27"><span class="co"># our unemployment data (and thus the color vector) follows a different order</span></a>
-<a class="sourceLine" id="cb21-28" data-line-number="28"></a>
-<a class="sourceLine" id="cb21-29" data-line-number="29"><span class="kw">cbind</span>( <span class="dt">map.id=</span>county.fips<span class="op">$</span>fips, <span class="dt">data.id=</span>unemp<span class="op">$</span>fips, color.vector )[ <span class="dv">2500</span><span class="op">:</span><span class="dv">2510</span> , ]</a>
-<a class="sourceLine" id="cb21-30" data-line-number="30"><span class="co">###       map.id  data.id color.vector</span></a>
-<a class="sourceLine" id="cb21-31" data-line-number="31"><span class="co">###  [1,] &quot;48011&quot; &quot;47149&quot; &quot;#B28282&quot;   </span></a>
-<a class="sourceLine" id="cb21-32" data-line-number="32"><span class="co">###  [2,] &quot;48013&quot; &quot;47151&quot; &quot;#B22222&quot;   </span></a>
-<a class="sourceLine" id="cb21-33" data-line-number="33"><span class="co">###  [3,] &quot;48015&quot; &quot;47153&quot; &quot;#B22222&quot;   </span></a>
-<a class="sourceLine" id="cb21-34" data-line-number="34"><span class="co">###  [4,] &quot;48017&quot; &quot;47155&quot; &quot;#B28282&quot;   </span></a>
-<a class="sourceLine" id="cb21-35" data-line-number="35"><span class="co">###  [5,] &quot;48019&quot; &quot;47157&quot; &quot;#B28282&quot;   </span></a>
-<a class="sourceLine" id="cb21-36" data-line-number="36"><span class="co">###  [6,] &quot;48021&quot; &quot;47159&quot; &quot;#B22222&quot;   </span></a>
-<a class="sourceLine" id="cb21-37" data-line-number="37"><span class="co">###  [7,] &quot;48023&quot; &quot;47161&quot; &quot;#B25252&quot;   </span></a>
-<a class="sourceLine" id="cb21-38" data-line-number="38"><span class="co">###  [8,] &quot;48025&quot; &quot;47163&quot; &quot;#B3B3B3&quot;   </span></a>
-<a class="sourceLine" id="cb21-39" data-line-number="39"><span class="co">###  [9,] &quot;48027&quot; &quot;47165&quot; &quot;#B28282&quot;   </span></a>
-<a class="sourceLine" id="cb21-40" data-line-number="40"><span class="co">### [10,] &quot;48029&quot; &quot;47167&quot; &quot;#B25252&quot;   </span></a>
-<a class="sourceLine" id="cb21-41" data-line-number="41"><span class="co">### [11,] &quot;48031&quot; &quot;47169&quot; &quot;#B25252&quot;</span></a>
-<a class="sourceLine" id="cb21-42" data-line-number="42"></a>
-<a class="sourceLine" id="cb21-43" data-line-number="43"><span class="co"># place the color vector in the correct order</span></a>
-<a class="sourceLine" id="cb21-44" data-line-number="44"></a>
-<a class="sourceLine" id="cb21-45" data-line-number="45">this.order &lt;-<span class="st"> </span><span class="kw">match</span>( county.fips<span class="op">$</span>fips, unemp<span class="op">$</span>fips )</a>
-<a class="sourceLine" id="cb21-46" data-line-number="46"></a>
-<a class="sourceLine" id="cb21-47" data-line-number="47">color.vec.ordered &lt;-<span class="st"> </span>color.vector[ this.order ]</a>
-<a class="sourceLine" id="cb21-48" data-line-number="48"></a>
-<a class="sourceLine" id="cb21-49" data-line-number="49"><span class="co"># colors now match their correct counties</span></a>
-<a class="sourceLine" id="cb21-50" data-line-number="50"></a>
-<a class="sourceLine" id="cb21-51" data-line-number="51"><span class="kw">map</span>( <span class="dt">database=</span><span class="st">&quot;county&quot;</span>, <span class="dt">col=</span>color.vec.ordered, <span class="dt">fill=</span>T, <span class="dt">lty=</span><span class="dv">0</span> )</a>
-<a class="sourceLine" id="cb21-52" data-line-number="52"><span class="kw">title</span>( <span class="dt">main=</span><span class="st">&quot;Unemployment Levels by County in 2009&quot;</span>)</a></code></pre></div>
-<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-32-1.png" width="70%" style="display: block; margin: auto;" /><img src="DS4PS-I_files/figure-html/unnamed-chunk-32-2.png" width="70%" style="display: block; margin: auto;" /><img src="DS4PS-I_files/figure-html/unnamed-chunk-32-3.png" width="70%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb111-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb111-2" data-line-number="2"><span class="kw">library</span>( maps )</a>
+<a class="sourceLine" id="cb111-3" data-line-number="3"><span class="kw">data</span>( county.fips )</a>
+<a class="sourceLine" id="cb111-4" data-line-number="4"><span class="kw">data</span>( unemp )</a>
+<a class="sourceLine" id="cb111-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb111-6" data-line-number="6"><span class="kw">map</span>( <span class="dt">database=</span><span class="st">&quot;county&quot;</span> )</a>
+<a class="sourceLine" id="cb111-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb111-8" data-line-number="8"><span class="co"># assign a color to each level of unemployment, red = high, gray = medium, blue = low</span></a>
+<a class="sourceLine" id="cb111-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb111-10" data-line-number="10">color.function &lt;-<span class="st"> </span><span class="kw">colorRampPalette</span>( <span class="kw">c</span>(<span class="st">&quot;steelblue&quot;</span>, <span class="st">&quot;gray70&quot;</span>, <span class="st">&quot;firebrick&quot;</span>) )</a>
+<a class="sourceLine" id="cb111-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb111-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb111-13" data-line-number="13">color.vector &lt;-<span class="st"> </span><span class="kw">cut</span>( <span class="kw">rank</span>(unemp<span class="op">$</span>unemp), <span class="dt">breaks=</span><span class="dv">7</span>, <span class="dt">labels=</span><span class="kw">color.function</span>( <span class="dv">7</span> ) )</a>
+<a class="sourceLine" id="cb111-14" data-line-number="14"></a>
+<a class="sourceLine" id="cb111-15" data-line-number="15">color.vector &lt;-<span class="st"> </span><span class="kw">as.character</span>( color.vector )</a>
+<a class="sourceLine" id="cb111-16" data-line-number="16"></a>
+<a class="sourceLine" id="cb111-17" data-line-number="17"><span class="kw">head</span>( color.vector )</a>
+<a class="sourceLine" id="cb111-18" data-line-number="18"><span class="co">### [1] &quot;#B28282&quot; &quot;#B28282&quot; &quot;#B22222&quot; &quot;#B25252&quot; &quot;#B28282&quot; &quot;#B22222&quot;</span></a>
+<a class="sourceLine" id="cb111-19" data-line-number="19"></a>
+<a class="sourceLine" id="cb111-20" data-line-number="20"><span class="co"># doesn&#39;t look quite right</span></a>
+<a class="sourceLine" id="cb111-21" data-line-number="21"></a>
+<a class="sourceLine" id="cb111-22" data-line-number="22"><span class="kw">map</span>( <span class="dt">database=</span><span class="st">&quot;county&quot;</span>, <span class="dt">col=</span>color.vector, <span class="dt">fill=</span>T, <span class="dt">lty=</span><span class="dv">0</span> )</a>
+<a class="sourceLine" id="cb111-23" data-line-number="23"></a>
+<a class="sourceLine" id="cb111-24" data-line-number="24"></a>
+<a class="sourceLine" id="cb111-25" data-line-number="25"><span class="co"># what went wrong here? </span></a>
+<a class="sourceLine" id="cb111-26" data-line-number="26"></a>
+<a class="sourceLine" id="cb111-27" data-line-number="27"><span class="co"># our unemployment data (and thus the color vector) follows a different order</span></a>
+<a class="sourceLine" id="cb111-28" data-line-number="28"></a>
+<a class="sourceLine" id="cb111-29" data-line-number="29"><span class="kw">cbind</span>( <span class="dt">map.id=</span>county.fips<span class="op">$</span>fips, <span class="dt">data.id=</span>unemp<span class="op">$</span>fips, color.vector )[ <span class="dv">2500</span><span class="op">:</span><span class="dv">2510</span> , ]</a>
+<a class="sourceLine" id="cb111-30" data-line-number="30"><span class="co">###       map.id  data.id color.vector</span></a>
+<a class="sourceLine" id="cb111-31" data-line-number="31"><span class="co">###  [1,] &quot;48011&quot; &quot;47149&quot; &quot;#B28282&quot;   </span></a>
+<a class="sourceLine" id="cb111-32" data-line-number="32"><span class="co">###  [2,] &quot;48013&quot; &quot;47151&quot; &quot;#B22222&quot;   </span></a>
+<a class="sourceLine" id="cb111-33" data-line-number="33"><span class="co">###  [3,] &quot;48015&quot; &quot;47153&quot; &quot;#B22222&quot;   </span></a>
+<a class="sourceLine" id="cb111-34" data-line-number="34"><span class="co">###  [4,] &quot;48017&quot; &quot;47155&quot; &quot;#B28282&quot;   </span></a>
+<a class="sourceLine" id="cb111-35" data-line-number="35"><span class="co">###  [5,] &quot;48019&quot; &quot;47157&quot; &quot;#B28282&quot;   </span></a>
+<a class="sourceLine" id="cb111-36" data-line-number="36"><span class="co">###  [6,] &quot;48021&quot; &quot;47159&quot; &quot;#B22222&quot;   </span></a>
+<a class="sourceLine" id="cb111-37" data-line-number="37"><span class="co">###  [7,] &quot;48023&quot; &quot;47161&quot; &quot;#B25252&quot;   </span></a>
+<a class="sourceLine" id="cb111-38" data-line-number="38"><span class="co">###  [8,] &quot;48025&quot; &quot;47163&quot; &quot;#B3B3B3&quot;   </span></a>
+<a class="sourceLine" id="cb111-39" data-line-number="39"><span class="co">###  [9,] &quot;48027&quot; &quot;47165&quot; &quot;#B28282&quot;   </span></a>
+<a class="sourceLine" id="cb111-40" data-line-number="40"><span class="co">### [10,] &quot;48029&quot; &quot;47167&quot; &quot;#B25252&quot;   </span></a>
+<a class="sourceLine" id="cb111-41" data-line-number="41"><span class="co">### [11,] &quot;48031&quot; &quot;47169&quot; &quot;#B25252&quot;</span></a>
+<a class="sourceLine" id="cb111-42" data-line-number="42"></a>
+<a class="sourceLine" id="cb111-43" data-line-number="43"><span class="co"># place the color vector in the correct order</span></a>
+<a class="sourceLine" id="cb111-44" data-line-number="44"></a>
+<a class="sourceLine" id="cb111-45" data-line-number="45">this.order &lt;-<span class="st"> </span><span class="kw">match</span>( county.fips<span class="op">$</span>fips, unemp<span class="op">$</span>fips )</a>
+<a class="sourceLine" id="cb111-46" data-line-number="46"></a>
+<a class="sourceLine" id="cb111-47" data-line-number="47">color.vec.ordered &lt;-<span class="st"> </span>color.vector[ this.order ]</a>
+<a class="sourceLine" id="cb111-48" data-line-number="48"></a>
+<a class="sourceLine" id="cb111-49" data-line-number="49"><span class="co"># colors now match their correct counties</span></a>
+<a class="sourceLine" id="cb111-50" data-line-number="50"></a>
+<a class="sourceLine" id="cb111-51" data-line-number="51"><span class="kw">map</span>( <span class="dt">database=</span><span class="st">&quot;county&quot;</span>, <span class="dt">col=</span>color.vec.ordered, <span class="dt">fill=</span>T, <span class="dt">lty=</span><span class="dv">0</span> )</a>
+<a class="sourceLine" id="cb111-52" data-line-number="52"><span class="kw">title</span>( <span class="dt">main=</span><span class="st">&quot;Unemployment Levels by County in 2009&quot;</span>)</a></code></pre></div>
+<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-144-1.png" width="70%" style="display: block; margin: auto;" /><img src="DS4PS-I_files/figure-html/unnamed-chunk-144-2.png" width="70%" style="display: block; margin: auto;" /><img src="DS4PS-I_files/figure-html/unnamed-chunk-144-3.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>Note that elements can be recycled from your <em>y</em> vector:</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" data-line-number="1"></a>
-<a class="sourceLine" id="cb22-2" data-line-number="2">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;A&quot;</span>,<span class="st">&quot;B&quot;</span>,<span class="st">&quot;C&quot;</span>,<span class="st">&quot;B&quot;</span>)</a>
-<a class="sourceLine" id="cb22-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb22-4" data-line-number="4">y &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;B&quot;</span>,<span class="st">&quot;D&quot;</span>,<span class="st">&quot;A&quot;</span>,<span class="st">&quot;F&quot;</span>)</a>
-<a class="sourceLine" id="cb22-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb22-6" data-line-number="6"><span class="kw">cbind</span>( x, y )</a>
-<a class="sourceLine" id="cb22-7" data-line-number="7"><span class="co">###      x   y  </span></a>
-<a class="sourceLine" id="cb22-8" data-line-number="8"><span class="co">### [1,] &quot;A&quot; &quot;B&quot;</span></a>
-<a class="sourceLine" id="cb22-9" data-line-number="9"><span class="co">### [2,] &quot;B&quot; &quot;D&quot;</span></a>
-<a class="sourceLine" id="cb22-10" data-line-number="10"><span class="co">### [3,] &quot;C&quot; &quot;A&quot;</span></a>
-<a class="sourceLine" id="cb22-11" data-line-number="11"><span class="co">### [4,] &quot;B&quot; &quot;F&quot;</span></a>
-<a class="sourceLine" id="cb22-12" data-line-number="12"></a>
-<a class="sourceLine" id="cb22-13" data-line-number="13"><span class="kw">match</span>( x, y )</a>
-<a class="sourceLine" id="cb22-14" data-line-number="14"><span class="co">### [1]  3  1 NA  1</span></a>
-<a class="sourceLine" id="cb22-15" data-line-number="15"></a>
-<a class="sourceLine" id="cb22-16" data-line-number="16">order.y &lt;-<span class="st"> </span><span class="kw">match</span>( x, y )</a>
-<a class="sourceLine" id="cb22-17" data-line-number="17"></a>
-<a class="sourceLine" id="cb22-18" data-line-number="18">y.new &lt;-<span class="st"> </span>y[ order.y ]</a>
-<a class="sourceLine" id="cb22-19" data-line-number="19"></a>
-<a class="sourceLine" id="cb22-20" data-line-number="20"><span class="kw">cbind</span>( x, y.new )</a>
-<a class="sourceLine" id="cb22-21" data-line-number="21"><span class="co">###      x   y.new</span></a>
-<a class="sourceLine" id="cb22-22" data-line-number="22"><span class="co">### [1,] &quot;A&quot; &quot;A&quot;  </span></a>
-<a class="sourceLine" id="cb22-23" data-line-number="23"><span class="co">### [2,] &quot;B&quot; &quot;B&quot;  </span></a>
-<a class="sourceLine" id="cb22-24" data-line-number="24"><span class="co">### [3,] &quot;C&quot; NA   </span></a>
-<a class="sourceLine" id="cb22-25" data-line-number="25"><span class="co">### [4,] &quot;B&quot; &quot;B&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb112-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb112-2" data-line-number="2">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;A&quot;</span>,<span class="st">&quot;B&quot;</span>,<span class="st">&quot;C&quot;</span>,<span class="st">&quot;B&quot;</span>)</a>
+<a class="sourceLine" id="cb112-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb112-4" data-line-number="4">y &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;B&quot;</span>,<span class="st">&quot;D&quot;</span>,<span class="st">&quot;A&quot;</span>,<span class="st">&quot;F&quot;</span>)</a>
+<a class="sourceLine" id="cb112-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb112-6" data-line-number="6"><span class="kw">cbind</span>( x, y )</a>
+<a class="sourceLine" id="cb112-7" data-line-number="7"><span class="co">###      x   y  </span></a>
+<a class="sourceLine" id="cb112-8" data-line-number="8"><span class="co">### [1,] &quot;A&quot; &quot;B&quot;</span></a>
+<a class="sourceLine" id="cb112-9" data-line-number="9"><span class="co">### [2,] &quot;B&quot; &quot;D&quot;</span></a>
+<a class="sourceLine" id="cb112-10" data-line-number="10"><span class="co">### [3,] &quot;C&quot; &quot;A&quot;</span></a>
+<a class="sourceLine" id="cb112-11" data-line-number="11"><span class="co">### [4,] &quot;B&quot; &quot;F&quot;</span></a>
+<a class="sourceLine" id="cb112-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb112-13" data-line-number="13"><span class="kw">match</span>( x, y )</a>
+<a class="sourceLine" id="cb112-14" data-line-number="14"><span class="co">### [1]  3  1 NA  1</span></a>
+<a class="sourceLine" id="cb112-15" data-line-number="15"></a>
+<a class="sourceLine" id="cb112-16" data-line-number="16">order.y &lt;-<span class="st"> </span><span class="kw">match</span>( x, y )</a>
+<a class="sourceLine" id="cb112-17" data-line-number="17"></a>
+<a class="sourceLine" id="cb112-18" data-line-number="18">y.new &lt;-<span class="st"> </span>y[ order.y ]</a>
+<a class="sourceLine" id="cb112-19" data-line-number="19"></a>
+<a class="sourceLine" id="cb112-20" data-line-number="20"><span class="kw">cbind</span>( x, y.new )</a>
+<a class="sourceLine" id="cb112-21" data-line-number="21"><span class="co">###      x   y.new</span></a>
+<a class="sourceLine" id="cb112-22" data-line-number="22"><span class="co">### [1,] &quot;A&quot; &quot;A&quot;  </span></a>
+<a class="sourceLine" id="cb112-23" data-line-number="23"><span class="co">### [2,] &quot;B&quot; &quot;B&quot;  </span></a>
+<a class="sourceLine" id="cb112-24" data-line-number="24"><span class="co">### [3,] &quot;C&quot; NA   </span></a>
+<a class="sourceLine" id="cb112-25" data-line-number="25"><span class="co">### [4,] &quot;B&quot; &quot;B&quot;</span></a></code></pre></div>
 
 </div>
 </div>
