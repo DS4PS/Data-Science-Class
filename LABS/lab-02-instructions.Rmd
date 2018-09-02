@@ -42,7 +42,9 @@ table()                 # summarize factors / character vectors
 
 # Data
 
-This lab will use [city tax parcel data](https://ds4ps.github.io/Data-Science-Class/DATA/syr_parcels.html) from Syracuse, NY.
+This lab will use [city tax parcel data](https://ds4ps.github.io/Data-Science-Class/DATA/syr_parcels.html) from Syracuse, NY. Each house, business, park or empty lot in the city sits on a parcel of land, and the tax rate for that parcel is determined by the city. All of the characteristics of each parcel is stored in a central database, along with information about the land use classifications, owners, and whether the property is up-to-date on taxes and water bills. Each row represents one tax parcel, and all tax parcels in the city limits are recorded in the dataset. 
+
+You can load the dataset as follows: 
 
 ```{r}
 URL <- "https://raw.githubusercontent.com/DS4PS/Data-Science-Class/master/DATA/syr_parcels.csv"
@@ -59,7 +61,7 @@ head( dat, 10 )
 
 Answer the following questions in your lab.  
 
-1. How many tax parcels are in syracuse (dataset dimensions)? 
+1. How many tax parcels are in Syracuse (dataset dimensions)? 
 2. How many acres of land are in syracuse (sum over a numeric vector)?
 3. How many vacant BUILDINGS are there in Syracuse (sum over a logical vector)?
 4. What proportion of parcels are tax exempt?
@@ -72,13 +74,13 @@ Recall:
 (1) Referencing variables in R requires both the **dataset name** and **variable name**, separated by the `$` operator:
 
 ```{r, eval=F}
-summarize( dat$acres )
+summary( dat$acres )
 ```
 
 (2) R wants to make sure you are aware of missing values, so it will return NA (not available) for functions performed on vectors with missing values. Add the 'NA remove' argument to these vectors to ignore missing values: 
 
 ```{r, eval=F}
-sum( x, na.rm=T )
+sum( dat$star, na.rm=T )
 ```
 
 
