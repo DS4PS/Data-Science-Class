@@ -96,7 +96,7 @@ sum( dat$star, na.rm=T )
 
 When you have completed your assignment, knit your RMD file to generate your rendered HTML file. Platforms like BlackBoard and Canvas often disallow you from submitting HTML files when there is embedded computer code, so create a zipped folder with both the RMD and HTML files.
 
-Login to Canvas at <www.canvas.asu.edu> and navigate to the assignments tab in the course repository. Upload your zipped folder to the appropriate lab submission link.
+Login to Canvas at <http://canvas.asu.edu> and navigate to the assignments tab in the course repository. Upload your zipped folder to the appropriate lab submission link.
 
 Remember to:
 
