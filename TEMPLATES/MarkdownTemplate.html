@@ -11,7 +11,7 @@
 
 <meta name="author" content="John Doe" />
 
-<meta name="date" content="2018-08-25" />
+<meta name="date" content="2018-09-01" />
 
 <title>My Doc</title>
 
@@ -2794,24 +2794,37 @@ div.tocify {
 
 <h1 class="title toc-ignore">My Doc</h1>
 <h4 class="author"><em>John Doe</em></h4>
-<h4 class="date"><em>August 25, 2018</em></h4>
+<h4 class="date"><em>September 01, 2018</em></h4>
 
 </div>
 
 
 <div id="setup" class="section level2">
 <h2>Setup</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">library</span>( dplyr )</a>
-<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw">library</span>( pander )</a></code></pre></div>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">URL &lt;-<span class="st"> &quot;https://www.dropbox.com/s/72dqe1j4b6bops2/syr_parcels.csv?dl=1&quot;</span></a>
-<a class="sourceLine" id="cb2-2" data-line-number="2">dat &lt;-<span class="st"> </span><span class="kw">read.csv</span>( URL )</a>
-<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="kw">head</span>( dat )</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co"># make sure these are installed on your machine before knitting</span></a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="co"># install.packages( &quot;dplyr&quot; )</span></a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="co"># install.packages( &quot;pander&quot; )</span></a>
+<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="co">#</span></a>
+<a class="sourceLine" id="cb1-5" data-line-number="5"><span class="co"># Note that you cannot knit with an install.packages() function</span></a>
+<a class="sourceLine" id="cb1-6" data-line-number="6"><span class="co"># called in your RMD file. You only have to install packages</span></a>
+<a class="sourceLine" id="cb1-7" data-line-number="7"><span class="co"># once, then they are loaded using the library() function.</span></a>
+<a class="sourceLine" id="cb1-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb1-9" data-line-number="9"><span class="kw">library</span>( dplyr )</a>
+<a class="sourceLine" id="cb1-10" data-line-number="10"><span class="kw">library</span>( pander )</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">URL &lt;-<span class="st"> &quot;https://raw.githubusercontent.com/DS4PS/Data-Science-Class/master/DATA/syr_parcels.csv&quot;</span></a>
+<a class="sourceLine" id="cb2-2" data-line-number="2">dat &lt;-<span class="st"> </span><span class="kw">read.csv</span>( URL, <span class="dt">stringsAsFactors=</span><span class="ot">FALSE</span> )</a></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["tax_id"],"name":[1],"type":["int"],"align":["right"]},{"label":["neighborhood"],"name":[2],"type":["chr"],"align":["left"]},{"label":["stnum"],"name":[3],"type":["chr"],"align":["left"]},{"label":["stname"],"name":[4],"type":["chr"],"align":["left"]},{"label":["zip"],"name":[5],"type":["chr"],"align":["left"]},{"label":["owner"],"name":[6],"type":["chr"],"align":["left"]},{"label":["frontfeet"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["depth"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["sqft"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["acres"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["yearbuilt"],"name":[11],"type":["int"],"align":["right"]},{"label":["age"],"name":[12],"type":["int"],"align":["right"]},{"label":["age_range"],"name":[13],"type":["chr"],"align":["left"]},{"label":["land_use"],"name":[14],"type":["chr"],"align":["left"]},{"label":["units"],"name":[15],"type":["int"],"align":["right"]},{"label":["residential"],"name":[16],"type":["lgl"],"align":["right"]},{"label":["rental"],"name":[17],"type":["lgl"],"align":["right"]},{"label":["vacantbuil"],"name":[18],"type":["lgl"],"align":["right"]},{"label":["assessedla"],"name":[19],"type":["int"],"align":["right"]},{"label":["assessedva"],"name":[20],"type":["int"],"align":["right"]},{"label":["tax.exempt"],"name":[21],"type":["lgl"],"align":["right"]},{"label":["countytxbl"],"name":[22],"type":["int"],"align":["right"]},{"label":["schooltxbl"],"name":[23],"type":["int"],"align":["right"]},{"label":["citytaxabl"],"name":[24],"type":["int"],"align":["right"]},{"label":["star"],"name":[25],"type":["lgl"],"align":["right"]},{"label":["amtdelinqu"],"name":[26],"type":["dbl"],"align":["right"]},{"label":["taxyrsdeli"],"name":[27],"type":["int"],"align":["right"]},{"label":["totint"],"name":[28],"type":["dbl"],"align":["right"]},{"label":["overduewater"],"name":[29],"type":["dbl"],"align":["right"]}],"data":[{"1":"1393130501","2":"South Valley","3":"2655","4":"VALLEY DR","5":"13215","6":"CLARMIN BUILDERS ONON COR","7":"67.20","8":"50.00","9":"2149.182","10":"0.04933843","11":"NA","12":"NA","13":"NA","14":"Vacant Land","15":"0","16":"FALSE","17":"FALSE","18":"FALSE","19":"475","20":"500","21":"TRUE","22":"500","23":"500","24":"500","25":"NA","26":"0","27":"0","28":"0","29":"0.00","_rn_":"1"},{"1":"1393130500","2":"South Valley","3":"2635","4":"VALLEY DR","5":"13120","6":"JOHNSTON LEE R","7":"104.80","8":"46.50","9":"6370.403","10":"0.14624434","11":"1925","12":"90","13":"81-90","14":"Single Family","15":"0","16":"TRUE","17":"FALSE","18":"FALSE","19":"10800","20":"69300","21":"FALSE","22":"69300","23":"69300","24":"69300","25":"TRUE","26":"0","27":"0","28":"0","29":"177.79","_rn_":"2"},{"1":"1437100600","2":"South Valley","3":"203","4":"HAYES TERR","5":"13224","6":"CHRISTO CRAIG S","7":"82.87","8":"168.28","9":"12910.006","10":"0.29637297","11":"1957","12":"58","13":"51-60","14":"Single Family","15":"0","16":"TRUE","17":"FALSE","18":"FALSE","19":"20200","20":"88300","21":"FALSE","22":"88300","23":"88300","24":"88300","25":"TRUE","26":"0","27":"0","28":"0","29":"0.00","_rn_":"3"},{"1":"1425100900","2":"South Valley","3":"100","4":"EDNA RD & CITY LINE","5":"13120","6":"HAWKINS FARMS INC","7":"65.00","8":"160.89","9":"10322.661","10":"0.23697569","11":"1958","12":"57","13":"51-60","14":"Single Family","15":"0","16":"TRUE","17":"FALSE","18":"FALSE","19":"18000","20":"70500","21":"FALSE","22":"70500","23":"70500","24":"70500","25":"NA","26":"0","27":"0","28":"0","29":"0.00","_rn_":"4"},{"1":"1425101000","2":"South Valley","3":"104","4":"EDNA RD","5":"13205","6":"PETERS LYNNETTE","7":"65.00","8":"160.89","9":"10457.843","10":"0.24007904","11":"1965","12":"50","13":"41-50","14":"Single Family","15":"0","16":"TRUE","17":"FALSE","18":"FALSE","19":"18000","20":"74000","21":"FALSE","22":"74000","23":"74000","24":"74000","25":"TRUE","26":"0","27":"0","28":"0","29":"0.00","_rn_":"5"},{"1":"1425101100","2":"South Valley","3":"108","4":"EDNA RD","5":"13205","6":"MITCHELL LOTAN G","7":"65.00","8":"160.89","9":"10457.855","10":"0.24007931","11":"1954","12":"61","13":"61-70","14":"Single Family","15":"0","16":"TRUE","17":"FALSE","18":"FALSE","19":"18000","20":"95000","21":"FALSE","22":"95000","23":"95000","24":"95000","25":"TRUE","26":"0","27":"0","28":"0","29":"0.00","_rn_":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 </div>
 <div id="question-1" class="section level1">
 <h1>Question 1</h1>
 <p>What is the total assessed value of land in syracuse?</p>
 <p>ANSWER: Land is valued at <strong>$1,200,567,042</strong>.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">sum</span>( dat<span class="op">$</span>assessedla, <span class="dt">na.rm=</span>T )</a></code></pre></div>
+<pre><code>## [1] 1200567042</code></pre>
 </div>
 
 

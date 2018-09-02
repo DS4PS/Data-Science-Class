@@ -24,18 +24,27 @@ knitr::opts_chunk$set( echo=TRUE, message=FALSE, warning=FALSE, fig.width=10 )
 # make sure these are installed on your machine before knitting
 # install.packages( "dplyr" )
 # install.packages( "pander" )
-# note that you cannot knit with an install.packages() function
+#
+# Note that you cannot knit with an install.packages() function
+# called in your RMD file. You only have to install packages
+# once, then they are loaded using the library() function.
+
 library( dplyr )
 library( pander )
+
 ```
 
 
 ```{r load_data}
-URL <- "https://www.dropbox.com/s/72dqe1j4b6bops2/syr_parcels.csv?dl=1"
-dat <- read.csv( URL )
-head( dat )
+URL <- "https://raw.githubusercontent.com/DS4PS/Data-Science-Class/master/DATA/syr_parcels.csv"
+dat <- read.csv( URL, stringsAsFactors=FALSE )
 ```
 
+```{r peek_at_data, echo=F}
+# Note that when I include the argument "echo=FALSE" in the code chunk
+# it will print the results but hide the code. 
+head( dat )
+```
 
 
 
