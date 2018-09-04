@@ -126,7 +126,9 @@ gender == "female"  |  study.group == "treatment"
 
 ## Selector Vectors
 
-Note that we use operators to create logical vectors where TRUE designates observation that belong to the defined group, and FALSE designates observations outside the group. The term "selector vector" is a useful way to remember this purpose. When you are doing analysis, you select specific observaions to form a group, and you can 
+Note that we use operators to create logical vectors where TRUE designates observation that belong to the defined group, and FALSE designates observations outside the group. 
+
+The term "selector vector" is a useful way to remember this purpose. After you have defined a group by composing a logical statement, then the vector can be used to count group members and take subsets of other variables to calculate group statistics. 
 
 ```{r, echo=F}
 name <- c("frank","wanda","sanjay","nancy")
