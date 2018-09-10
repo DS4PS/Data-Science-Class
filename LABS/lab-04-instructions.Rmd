@@ -1,0 +1,229 @@
+---
+title: 'Lab 04 - Data Verbs'
+output:
+  html_document:
+    theme: readable
+    df_print: paged
+    highlight: tango
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message=F, warning=F)
+library( dplyr )
+library( pander )
+```
+
+#### [DS4PS](https://ds4ps.github.io/course_website/)
+
+<br>
+
+*This lab offers practice using data verbs from the __dplyr__ package to build data recipes.*
+
+You can create a new RMarkdown file for this lab, or download the lab template: 
+
+[RMD Template](https://cdn.rawgit.com/DS4PS/Data-Science-Class/a48d67a5/TEMPLATES/MarkdownTemplate.RMD)
+
+
+
+<br><br>
+
+## Functions
+
+You will use the following packages, functions, and operators for this lab: 
+
+```{r,eval=F}
+library( dplyr )                                # data verbs
+library( pander )                               # prints nice tables
+filter( dataset, logical statement )            # subset by rows
+select( dataset, column names )                 # subset by columns
+arrange( dataset, variable )                    # sort the dataset
+group_by( dataset, factor )                     # creates implicit subsets
+count( dataset, variables )                     # create a table of counts
+summarize( dataset, desired descriptive stats ) # summary stats
+mutate( dataset, variable transformation )      # create a new variable
+pipe operator %>%                               # pass data forward
+```
+
+Note that **dplyr** data verbs expect the dataset as the first argument, and do not require you to use `dat$` to reference variable names, nor do they need to be in quotes.
+
+```{r, eval=F}
+select( dat, acres, land_use, amtdelinqu )
+```
+
+
+
+
+
+<br><br>
+
+# Data
+
+This lab will use [city tax parcel data](https://ds4ps.github.io/Data-Science-Class/DATA/syr_parcels.html) from Syracuse, NY.
+
+```{r load_data}
+URL <- "https://raw.githubusercontent.com/DS4PS/Data-Science-Class/master/DATA/syr_parcels.csv"
+dat <- read.csv( URL, stringsAsFactors=FALSE )
+```
+
+```{r, echo=F}
+head( dat, 10 ) 
+```
+
+<br><br>
+
+
+## Data Dictionary
+
+VARIABLE | DESCRIPTION
+-------- | ----------------------
+**tax_id**  |  unique parcel ID  (numeric)  
+**neighborhood**  |  city neighborhood for tax parcel (character) 
+**stnum**  |  parcel address (numeric) 
+**stname**  |  parcel address (character) 
+**zip**  |  parcel address (numeric) 
+**owner**  |  property owner (character) 
+**frontfeet**  |  length of the front of the lot (numeric)    
+**depth**  |  depth of the lot (numeric)
+**sqft**  |  size of the parcel in square feet  (numeric)
+**acres**  |  size of the parcel in acres (numeric)
+**yearbuilt**  |  year of construction for the building on the parcel (numeric) 
+**age**  |  age of the building (numeric)
+**age_range**  |  age of the building by decade (factor)  
+**land_use**  |  zoning purpose of the parcel (factor) 
+**units**  |  number of units in multi-unit buildings (numeric)        
+**residential**  |  is the parcel zoned for residential (T/F)  
+**rental**  |  is the residential space zoned for rental (T/F) 
+**vacantbuil**  |  is the building vacant (T/F)   
+**assessedla**  |  assessed value of the parcel land  (numeric)
+**assessedva**  |  assessed value of the parcel land plus buildings (numeric) 
+**tax.exempt**  |  is the parcel tax exempt (T/F)   
+**countytxbl**  |   value of parcel for tax purposes (numeric)  
+**schooltxbl**  |  value of parcel for tax purposes (numeric) 
+**citytaxabl**  |  value of parcel for tax purposes (numeric)   
+**star**  |  does the parcel qualify for a residential tax break (T/F)      
+**amtdelinqu**  |  amount of tax bill that is delinquint (numeric) 
+**taxyrsdeli**  |  length of time tax bill is delinquint (numeric) 
+**totint**  |  total interest owed for delinquint taxes (numeric) 
+**overduewater**  |  total owed on overdue water bills (numeric) 
+
+
+<br><br>
+
+
+## Data Recipes
+
+You will practice creating data recipes with the pipe operator. Here are some examples to get you started.
+
+What is the average late tax bill by neighborhood? 
+
+```{r}
+dat %>%
+  filter( land_use == "Single Family" ) %>%
+  group_by( neighborhood ) %>%
+  summarize( ave.late.bill = round( mean( amtdelinqu, na.rm=T ), 0 ) ) %>%
+  arrange( desc( ave.late.bill ) )
+```
+
+Which neighborhoods have the most vacant land?
+
+```{r}
+dat %>% 
+  count( neighborhood, land_use ) %>%
+  filter( land_use == "Vacant Land" ) %>%
+  select( neighborhood, n ) %>%
+  arrange( desc(n) ) 
+```
+
+Who has the biggest delinquint tax bills in each neighborhood? 
+
+
+```{r}
+dat %>% 
+  group_by( neighborhood ) %>%
+  top_n( 1, amtdelinqu ) %>%
+  ungroup() %>%
+  select( owner, neighborhood, land_use, vacantbuil, taxyrsdeli, amtdelinqu, totint ) %>%
+  arrange( desc( amtdelinqu ) ) %>%
+  head( 15 ) %>%
+  pander()
+```
+
+
+# Lab Instructions
+
+1. In a previous lab, we looked at vacant lots per neighborhood using `table( dat$neighborhood, dat$land_use )`. Do this analysis again, but this time with a data recipe that only prints the pertinent information for the 10 neighborhoods with the most vacant land. I have build your data recipe for you. Fill in the elipses in the functions(...) with the appropriate arguments. 
+
+```{r, eval=F}
+dat %>%
+  count( ... ) %>%
+  filter( ... ) %>%
+  arrange( ... ) %>%
+  slice( 1:10 ) 
+```
+
+
+2. Calculate the average land value per neighborhood, and report the 10 neighborhoods with the most valuable land. Use **assessedla**.
+
+```{r, eval=F}
+dat %>%
+  group_by( ... ) %>%
+  summarize( ... ) %>%
+  arrange( ... ) %>%
+  slice( 1:10 ) 
+```
+
+3. What is the average parcel size by neighborhood? Should this change how you think about Q2?
+
+4. Adjust your calculations from Q2 by creating a new variable named "value.per.acre". The formula for this variable is **assessedla** / **acres**. Use the mutate() function to create the variable and add it back to the dataset. 
+
+```{r, eval=F}
+dat <- mutate( ... )
+```
+
+5. What is the average value of single family homes built in each decade? You will use **age_range**, **land_use**, and **assessedva**.
+
+```{r, eval=F}
+# this will order your decades correctly:
+decades <- c("1-10","11-20","21-30","31-40","41-50","51-60","61-70",
+             "71-80","81-90","91-100","101-110","111-120","121-130",
+             "131-140","141-150","151-160","161-170","171-180",
+             "181-190","191-200","201-210","211-220","221-230")
+dat$age_range <- factor( dat$age_range, levels=decades )
+
+dat %>%
+  filter( ... ) %>%
+  group_by( ... ) %>%
+  summarize ... ) %>%
+  arrange( ... ) 
+```
+
+6. How many Single Family homes in EACH neighborhood have an assessed value (assessedva) of over $200,000?
+
+<br><br>
+
+*Recall that R wants to make sure you are aware of missing values, so it will return NA for functions performed on vectors with missing values. Add the 'NA remove' argument to these vectors to ignore missing values:* `sum( x, na.rm=T )`
+
+
+
+<br><br>
+
+# Submission Instructions
+
+When you have completed your assignment, knit your RMD file to generate your rendered HTML file. Platforms like BlackBoard and Canvas often disallow you from submitting HTML files when there is embedded computer code, so create a zipped folder with both the RMD and HTML files.
+
+Login to Canvas at <http://canvas.asu.edu> and navigate to the assignments tab in the course repository. Upload your zipped folder to the appropriate lab submission link.
+
+Remember to:
+
+* name your files according to the convention: **Lab-##-LastName.Rmd**
+* show your solution, include your code.
+* do not print excessive output (like a full data set).
+* follow appropriate style guidelines (spaces between arguments, etc.).
+
+See [Google's R Style Guide](https://google.github.io/styleguide/Rguide.xml) for examples.
+
+## Notes on Knitting
+
+Note that when you knit a file, it starts from a blank slate. You might have packages loaded or datasets active on your local machine, so you can run code chunks fine. But when you knit you might get errors that functions cannot be located or datasets don't exist. Be sure that you have included chunks to load these in your RMD file.
+
+Your RMD file will not knit if you have errors in your code. If you get stuck on a question, just add `eval=F` to the code chunk and it will be ignored when you knit your file. That way I can give you credit for attempting the question and provide guidance on fixing the problem.

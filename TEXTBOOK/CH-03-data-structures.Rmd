@@ -1,4 +1,14 @@
-# Data Structures
+# VECTORS {-}
+
+Vectors are the building blocks of data programming in R, so they are extremely important concepts. 
+
+This section will cover basic principles of working with vectors in the R language, including the different types of vectors (data types or classes), and common functions used on vectors. 
+
+
+
+
+
+# Data Types
 
 
 ```{r, echo=F }
@@ -25,15 +35,14 @@ knitr::include_graphics( "figures/data_types.png" )
 
 ## Vectors
 
-Vectors are the building blocks of data programming in R, so they are extremely important concepts. 
 
-Very loosely speaking a vector is a set of numbers, words, or other values:
+Generally speaking a vector is a set of numbers, words, or other values stored sequentially:
 
 * [ 1, 2, 3]
 * [ apple, orange, pear ]
 * [ TRUE, FALSE, FALSE ]
 
-In social sciences, a vector usually represents a variable in a dataset.
+In social sciences, a vector usually represents a variable in a dataset, often as a column in a spreadsheet. 
 
 There are four primary vector types ("classes") in R: 
 
@@ -696,7 +705,17 @@ x5[ is.na(x5) ] <- 0  # replace missing values with zero
 
 ## Datasets
 
-When we combine multiple vectors together, we now have a dataset. There are three main types that we will use in this class.
+
+```{r, echo=F, eval=F }
+
+knitr::opts_chunk$set( echo = TRUE, message=F, warning=F, fig.width=8 )
+
+library( dplyr )
+library( Lahman )
+```
+
+
+When multiple vectors represent data from a single sample, they are typically combined into a dataset. There are three main types of datasets that we will use in this class.
 
 Class        | Description
 ------------ | -----------
@@ -781,50 +800,6 @@ A data frame is a bit more rigid that a list in that you cannot combine elements
 
 
 
-
-
-
-
-## The 'attach' Function 
-
-**Never Use This!**
-
-
-This is a convenient function for making variable names easily accessible, but it is problematic because of:
-
-scope
-
-conflicting variable names
-
-```{r}
-
-x <- 1:5
-y <- 6:10
-
-dat <- data.frame(x,y)
-
-rm(x)
-rm(y)
-
-
-# I want to transform x in my dataset
-
-attach( dat )
-
-2*x
-
-x <- 2*x
-
-detach( dat )
-
-x
-
-dat  # whoops! I didn't save my work in the dataset
-
-```
-
-
-You will see the **attach()** function used on occasion, and it is tempting because you can write the variable names directly. But in general, try to avoid the **attach()** function and don't form bad habits by using it now because when your scripts become more complicated then can cause problems.
 
 
 

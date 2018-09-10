@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="introduction-to-r.html">
-<link rel="next" href="data-structures.html">
+<link rel="next" href="vectors.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -45,6 +45,15 @@
 
 
 
+<script src="libs/detect-resize-0.5.3/jquery.resize.js"></script>
+<link href="libs/jquery-ui-1.11.4/jquery-ui.min.css" rel="stylesheet" />
+<script src="libs/jquery-ui-1.11.4/jquery-ui.min.js"></script>
+<script src="libs/d3-3.5.2/d3.min.js"></script>
+<script src="libs/vega-1.4.3/vega.min.js"></script>
+<script src="libs/lodash-2.2.1/lodash.min.js"></script>
+<script>var lodash = _.noConflict();</script>
+<link href="libs/ggvis-0.4.3/css/ggvis.css" rel="stylesheet" />
+<script src="libs/ggvis-0.4.3/js/ggvis.js"></script>
 
 
 <style type="text/css">
@@ -149,29 +158,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.4" data-path="functions.html"><a href="functions.html#default-argument-values"><i class="fa fa-check"></i><b>2.4</b> Default Argument Values</a></li>
 <li class="chapter" data-level="2.5" data-path="functions.html"><a href="functions.html#assignment"><i class="fa fa-check"></i><b>2.5</b> Assignment</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="data-structures.html"><a href="data-structures.html"><i class="fa fa-check"></i><b>3</b> Data Structures</a><ul>
-<li class="chapter" data-level="3.1" data-path="data-structures.html"><a href="data-structures.html#key-concepts-1"><i class="fa fa-check"></i><b>3.1</b> Key Concepts</a></li>
-<li class="chapter" data-level="3.2" data-path="data-structures.html"><a href="data-structures.html#vectors"><i class="fa fa-check"></i><b>3.2</b> Vectors</a></li>
-<li class="chapter" data-level="3.3" data-path="data-structures.html"><a href="data-structures.html#common-vectors-functions"><i class="fa fa-check"></i><b>3.3</b> Common Vectors Functions</a></li>
-<li class="chapter" data-level="3.4" data-path="data-structures.html"><a href="data-structures.html#the-combine-function"><i class="fa fa-check"></i><b>3.4</b> The Combine Function</a></li>
-<li class="chapter" data-level="3.5" data-path="data-structures.html"><a href="data-structures.html#casting"><i class="fa fa-check"></i><b>3.5</b> Casting</a></li>
-<li class="chapter" data-level="3.6" data-path="data-structures.html"><a href="data-structures.html#numeric-vectors"><i class="fa fa-check"></i><b>3.6</b> Numeric Vectors</a><ul>
-<li class="chapter" data-level="3.6.1" data-path="data-structures.html"><a href="data-structures.html#integers-are-simple-numeric-vectors"><i class="fa fa-check"></i><b>3.6.1</b> Integers Are Simple Numeric Vectors</a></li>
+<li class="chapter" data-level="" data-path="vectors.html"><a href="vectors.html"><i class="fa fa-check"></i>VECTORS</a></li>
+<li class="chapter" data-level="3" data-path="data-types.html"><a href="data-types.html"><i class="fa fa-check"></i><b>3</b> Data Types</a><ul>
+<li class="chapter" data-level="3.1" data-path="data-types.html"><a href="data-types.html#key-concepts-1"><i class="fa fa-check"></i><b>3.1</b> Key Concepts</a></li>
+<li class="chapter" data-level="3.2" data-path="data-types.html"><a href="data-types.html#vectors-1"><i class="fa fa-check"></i><b>3.2</b> Vectors</a></li>
+<li class="chapter" data-level="3.3" data-path="data-types.html"><a href="data-types.html#common-vectors-functions"><i class="fa fa-check"></i><b>3.3</b> Common Vectors Functions</a></li>
+<li class="chapter" data-level="3.4" data-path="data-types.html"><a href="data-types.html#the-combine-function"><i class="fa fa-check"></i><b>3.4</b> The Combine Function</a></li>
+<li class="chapter" data-level="3.5" data-path="data-types.html"><a href="data-types.html#casting"><i class="fa fa-check"></i><b>3.5</b> Casting</a></li>
+<li class="chapter" data-level="3.6" data-path="data-types.html"><a href="data-types.html#numeric-vectors"><i class="fa fa-check"></i><b>3.6</b> Numeric Vectors</a><ul>
+<li class="chapter" data-level="3.6.1" data-path="data-types.html"><a href="data-types.html#integers-are-simple-numeric-vectors"><i class="fa fa-check"></i><b>3.6.1</b> Integers Are Simple Numeric Vectors</a></li>
 </ul></li>
-<li class="chapter" data-level="3.7" data-path="data-structures.html"><a href="data-structures.html#character-vectors"><i class="fa fa-check"></i><b>3.7</b> Character Vectors</a><ul>
-<li class="chapter" data-level="3.7.1" data-path="data-structures.html"><a href="data-structures.html#quotes-in-arguments"><i class="fa fa-check"></i><b>3.7.1</b> Quotes in Arguments</a></li>
+<li class="chapter" data-level="3.7" data-path="data-types.html"><a href="data-types.html#character-vectors"><i class="fa fa-check"></i><b>3.7</b> Character Vectors</a><ul>
+<li class="chapter" data-level="3.7.1" data-path="data-types.html"><a href="data-types.html#quotes-in-arguments"><i class="fa fa-check"></i><b>3.7.1</b> Quotes in Arguments</a></li>
 </ul></li>
-<li class="chapter" data-level="3.8" data-path="data-structures.html"><a href="data-structures.html#factors"><i class="fa fa-check"></i><b>3.8</b> Factors</a></li>
-<li class="chapter" data-level="3.9" data-path="data-structures.html"><a href="data-structures.html#logical-vectors"><i class="fa fa-check"></i><b>3.9</b> Logical Vectors</a></li>
-<li class="chapter" data-level="3.10" data-path="data-structures.html"><a href="data-structures.html#generating-vectors"><i class="fa fa-check"></i><b>3.10</b> Generating Vectors</a></li>
-<li class="chapter" data-level="3.11" data-path="data-structures.html"><a href="data-structures.html#variable-transformations"><i class="fa fa-check"></i><b>3.11</b> Variable Transformations</a></li>
-<li class="chapter" data-level="3.12" data-path="data-structures.html"><a href="data-structures.html#missing-values-nas"><i class="fa fa-check"></i><b>3.12</b> Missing Values: NA’s</a></li>
-<li class="chapter" data-level="3.13" data-path="data-structures.html"><a href="data-structures.html#datasets"><i class="fa fa-check"></i><b>3.13</b> Datasets</a><ul>
-<li class="chapter" data-level="3.13.1" data-path="data-structures.html"><a href="data-structures.html#data-frames"><i class="fa fa-check"></i><b>3.13.1</b> Data Frames</a></li>
-<li class="chapter" data-level="3.13.2" data-path="data-structures.html"><a href="data-structures.html#matrices"><i class="fa fa-check"></i><b>3.13.2</b> Matrices</a></li>
-<li class="chapter" data-level="3.13.3" data-path="data-structures.html"><a href="data-structures.html#lists"><i class="fa fa-check"></i><b>3.13.3</b> Lists</a></li>
+<li class="chapter" data-level="3.8" data-path="data-types.html"><a href="data-types.html#factors"><i class="fa fa-check"></i><b>3.8</b> Factors</a></li>
+<li class="chapter" data-level="3.9" data-path="data-types.html"><a href="data-types.html#logical-vectors"><i class="fa fa-check"></i><b>3.9</b> Logical Vectors</a></li>
+<li class="chapter" data-level="3.10" data-path="data-types.html"><a href="data-types.html#generating-vectors"><i class="fa fa-check"></i><b>3.10</b> Generating Vectors</a></li>
+<li class="chapter" data-level="3.11" data-path="data-types.html"><a href="data-types.html#variable-transformations"><i class="fa fa-check"></i><b>3.11</b> Variable Transformations</a></li>
+<li class="chapter" data-level="3.12" data-path="data-types.html"><a href="data-types.html#missing-values-nas"><i class="fa fa-check"></i><b>3.12</b> Missing Values: NA’s</a></li>
+<li class="chapter" data-level="3.13" data-path="data-types.html"><a href="data-types.html#datasets"><i class="fa fa-check"></i><b>3.13</b> Datasets</a><ul>
+<li class="chapter" data-level="3.13.1" data-path="data-types.html"><a href="data-types.html#data-frames"><i class="fa fa-check"></i><b>3.13.1</b> Data Frames</a></li>
+<li class="chapter" data-level="3.13.2" data-path="data-types.html"><a href="data-types.html#matrices"><i class="fa fa-check"></i><b>3.13.2</b> Matrices</a></li>
+<li class="chapter" data-level="3.13.3" data-path="data-types.html"><a href="data-types.html#lists"><i class="fa fa-check"></i><b>3.13.3</b> Lists</a></li>
 </ul></li>
-<li class="chapter" data-level="3.14" data-path="data-structures.html"><a href="data-structures.html#the-attach-function"><i class="fa fa-check"></i><b>3.14</b> The ‘attach’ Function</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="logical-statements.html"><a href="logical-statements.html"><i class="fa fa-check"></i><b>4</b> Logical Statements</a><ul>
 <li class="chapter" data-level="4.1" data-path="logical-statements.html"><a href="logical-statements.html#key-concepts-2"><i class="fa fa-check"></i><b>4.1</b> Key Concepts</a></li>
@@ -182,38 +191,60 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.6" data-path="logical-statements.html"><a href="logical-statements.html#nas-in-logical-statements"><i class="fa fa-check"></i><b>4.6</b> NAs in Logical Statements</a></li>
 <li class="chapter" data-level="4.7" data-path="logical-statements.html"><a href="logical-statements.html#subsets"><i class="fa fa-check"></i><b>4.7</b> Subsets</a></li>
 </ul></li>
-<li class="part"><span><b>II PART II: DATA WRANGLING</b></span></li>
-<li class="chapter" data-level="5" data-path="merging-data.html"><a href="merging-data.html"><i class="fa fa-check"></i><b>5</b> Merging Data</a><ul>
-<li class="chapter" data-level="5.1" data-path="merging-data.html"><a href="merging-data.html#packages-used-in-this-chapter"><i class="fa fa-check"></i><b>5.1</b> Packages Used in This Chapter</a></li>
-<li class="chapter" data-level="5.2" data-path="merging-data.html"><a href="merging-data.html#relational-databases"><i class="fa fa-check"></i><b>5.2</b> Relational Databases</a></li>
-<li class="chapter" data-level="5.3" data-path="merging-data.html"><a href="merging-data.html#set-theory"><i class="fa fa-check"></i><b>5.3</b> Set Theory</a><ul>
-<li class="chapter" data-level="5.3.1" data-path="merging-data.html"><a href="merging-data.html#set-theory-functions"><i class="fa fa-check"></i><b>5.3.1</b> Set Theory Functions</a></li>
-<li class="chapter" data-level="5.3.2" data-path="merging-data.html"><a href="merging-data.html#set-theory-using-logical-operators"><i class="fa fa-check"></i><b>5.3.2</b> Set Theory Using Logical Operators</a></li>
+<li class="chapter" data-level="" data-path="data-verbs.html"><a href="data-verbs.html"><i class="fa fa-check"></i>DATA VERBS</a></li>
+<li class="chapter" data-level="5" data-path="the-dplyr-package.html"><a href="the-dplyr-package.html"><i class="fa fa-check"></i><b>5</b> The <strong>dplyr</strong> Package</a><ul>
+<li class="chapter" data-level="5.1" data-path="the-dplyr-package.html"><a href="the-dplyr-package.html#packages-used-in-this-chapter"><i class="fa fa-check"></i><b>5.1</b> Packages Used in This Chapter</a></li>
+<li class="chapter" data-level="5.2" data-path="the-dplyr-package.html"><a href="the-dplyr-package.html#key-concepts-3"><i class="fa fa-check"></i><b>5.2</b> Key Concepts</a></li>
+<li class="chapter" data-level="5.3" data-path="the-dplyr-package.html"><a href="the-dplyr-package.html#the-dplyr-package-1"><i class="fa fa-check"></i><b>5.3</b> The <strong>dplyr</strong> Package</a></li>
+<li class="chapter" data-level="5.4" data-path="the-dplyr-package.html"><a href="the-dplyr-package.html#use-filter-to-subset-rows"><i class="fa fa-check"></i><b>5.4</b> Use <strong>filter()</strong> to Subset Rows</a></li>
+<li class="chapter" data-level="5.5" data-path="the-dplyr-package.html"><a href="the-dplyr-package.html#select-columns"><i class="fa fa-check"></i><b>5.5</b> <strong>select()</strong> Columns</a></li>
+<li class="chapter" data-level="5.6" data-path="the-dplyr-package.html"><a href="the-dplyr-package.html#arrange-sorts-data"><i class="fa fa-check"></i><b>5.6</b> <strong>arrange()</strong> Sorts Data</a></li>
+<li class="chapter" data-level="5.7" data-path="the-dplyr-package.html"><a href="the-dplyr-package.html#variable-transforms-with-mutate"><i class="fa fa-check"></i><b>5.7</b> Variable Transforms with <strong>mutate()</strong></a></li>
+<li class="chapter" data-level="5.8" data-path="the-dplyr-package.html"><a href="the-dplyr-package.html#rename-variables"><i class="fa fa-check"></i><b>5.8</b> <strong>rename()</strong> Variables</a></li>
+<li class="chapter" data-level="5.9" data-path="the-dplyr-package.html"><a href="the-dplyr-package.html#summarize-variables"><i class="fa fa-check"></i><b>5.9</b> <strong>summarize()</strong> Variables</a></li>
 </ul></li>
-<li class="chapter" data-level="5.4" data-path="merging-data.html"><a href="merging-data.html#merging-data-1"><i class="fa fa-check"></i><b>5.4</b> Merging Data</a><ul>
-<li class="chapter" data-level="5.4.1" data-path="merging-data.html"><a href="merging-data.html#the-by.x-and-by.y-arguments"><i class="fa fa-check"></i><b>5.4.1</b> The by.x and by.y Arguments</a></li>
+<li class="chapter" data-level="6" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html"><i class="fa fa-check"></i><b>6</b> Descriptive Statistics</a><ul>
+<li class="chapter" data-level="6.1" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#useful-packages"><i class="fa fa-check"></i><b>6.1</b> Useful Packages</a></li>
 </ul></li>
-<li class="chapter" data-level="5.5" data-path="merging-data.html"><a href="merging-data.html#non-unique-observations-in-id-variables"><i class="fa fa-check"></i><b>5.5</b> Non-Unique Observations in ID Variables</a><ul>
-<li class="chapter" data-level="5.5.1" data-path="merging-data.html"><a href="merging-data.html#example-of-incorrect-merge"><i class="fa fa-check"></i><b>5.5.1</b> Example of Incorrect Merge</a></li>
+<li class="chapter" data-level="7" data-path="data-recipes.html"><a href="data-recipes.html"><i class="fa fa-check"></i><b>7</b> Data Recipes</a><ul>
+<li class="chapter" data-level="7.1" data-path="data-recipes.html"><a href="data-recipes.html#packages-used-in-this-chapter-1"><i class="fa fa-check"></i><b>7.1</b> Packages Used in This Chapter</a></li>
+<li class="chapter" data-level="7.2" data-path="data-recipes.html"><a href="data-recipes.html#key-concepts-4"><i class="fa fa-check"></i><b>7.2</b> Key Concepts</a></li>
+<li class="chapter" data-level="7.3" data-path="data-recipes.html"><a href="data-recipes.html#the-pipe-operator"><i class="fa fa-check"></i><b>7.3</b> The Pipe Operator <strong>%&gt;%</strong></a></li>
+<li class="chapter" data-level="7.4" data-path="data-recipes.html"><a href="data-recipes.html#building-data-recipes"><i class="fa fa-check"></i><b>7.4</b> Building Data Recipes</a></li>
+<li class="chapter" data-level="7.5" data-path="data-recipes.html"><a href="data-recipes.html#conclusion"><i class="fa fa-check"></i><b>7.5</b> Conclusion</a></li>
 </ul></li>
-<li class="chapter" data-level="5.6" data-path="merging-data.html"><a href="merging-data.html#the-in-function"><i class="fa fa-check"></i><b>5.6</b> The %in% function</a></li>
-<li class="chapter" data-level="5.7" data-path="merging-data.html"><a href="merging-data.html#the-match-function"><i class="fa fa-check"></i><b>5.7</b> The Match Function</a></li>
+<li class="chapter" data-level="8" data-path="analysis-with-groups.html"><a href="analysis-with-groups.html"><i class="fa fa-check"></i><b>8</b> Analysis with Groups</a><ul>
+<li class="chapter" data-level="8.1" data-path="analysis-with-groups.html"><a href="analysis-with-groups.html#packages-used-in-this-chapter-2"><i class="fa fa-check"></i><b>8.1</b> Packages Used in this Chapter</a></li>
+<li class="chapter" data-level="8.2" data-path="analysis-with-groups.html"><a href="analysis-with-groups.html#hypothetical-experimental-data"><i class="fa fa-check"></i><b>8.2</b> Hypothetical Experimental Data</a></li>
+<li class="chapter" data-level="8.3" data-path="analysis-with-groups.html"><a href="analysis-with-groups.html#group-structure"><i class="fa fa-check"></i><b>8.3</b> Group Structure</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="analysis-with-groups.html"><a href="analysis-with-groups.html#what-are-groups"><i class="fa fa-check"></i><b>8.3.1</b> What Are Groups?</a></li>
+<li class="chapter" data-level="8.3.2" data-path="analysis-with-groups.html"><a href="analysis-with-groups.html#main-take-away"><i class="fa fa-check"></i><b>8.3.2</b> Main Take-Away</a></li>
+<li class="chapter" data-level="8.3.3" data-path="analysis-with-groups.html"><a href="analysis-with-groups.html#example"><i class="fa fa-check"></i><b>8.3.3</b> Example</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="analysis-with-groups-in-r.html"><a href="analysis-with-groups-in-r.html"><i class="fa fa-check"></i><b>6</b> Analysis with Groups in R</a><ul>
-<li class="chapter" data-level="6.0.1" data-path="analysis-with-groups-in-r.html"><a href="analysis-with-groups-in-r.html#packages-used-in-this-chapter-1"><i class="fa fa-check"></i><b>6.0.1</b> Packages Used in this Chapter</a></li>
-<li class="chapter" data-level="6.0.2" data-path="analysis-with-groups-in-r.html"><a href="analysis-with-groups-in-r.html#hypothetical-experimental-data"><i class="fa fa-check"></i><b>6.0.2</b> Hypothetical Experimental Data</a></li>
-<li class="chapter" data-level="6.1" data-path="analysis-with-groups-in-r.html"><a href="analysis-with-groups-in-r.html#group-structure"><i class="fa fa-check"></i><b>6.1</b> Group Structure</a><ul>
-<li class="chapter" data-level="6.1.1" data-path="analysis-with-groups-in-r.html"><a href="analysis-with-groups-in-r.html#what-are-groups"><i class="fa fa-check"></i><b>6.1.1</b> What Are Groups?</a></li>
-<li class="chapter" data-level="6.1.2" data-path="analysis-with-groups-in-r.html"><a href="analysis-with-groups-in-r.html#main-take-away"><i class="fa fa-check"></i><b>6.1.2</b> Main Take-Away</a></li>
-<li class="chapter" data-level="6.1.3" data-path="analysis-with-groups-in-r.html"><a href="analysis-with-groups-in-r.html#example"><i class="fa fa-check"></i><b>6.1.3</b> Example</a></li>
+<li class="chapter" data-level="8.4" data-path="analysis-with-groups.html"><a href="analysis-with-groups.html#analysis-by-group"><i class="fa fa-check"></i><b>8.4</b> Analysis by Group</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="analysis-with-groups.html"><a href="analysis-with-groups.html#highest-ave-player-salary"><i class="fa fa-check"></i><b>8.4.1</b> Highest Ave Player Salary</a></li>
+<li class="chapter" data-level="8.4.2" data-path="analysis-with-groups.html"><a href="analysis-with-groups.html#most-players-paid-over-5-million"><i class="fa fa-check"></i><b>8.4.2</b> Most Players Paid Over $5 Million</a></li>
+<li class="chapter" data-level="8.4.3" data-path="analysis-with-groups.html"><a href="analysis-with-groups.html#fielding-positions"><i class="fa fa-check"></i><b>8.4.3</b> Fielding Positions</a></li>
+<li class="chapter" data-level="8.4.4" data-path="analysis-with-groups.html"><a href="analysis-with-groups.html#country-of-birth"><i class="fa fa-check"></i><b>8.4.4</b> Country of Birth</a></li>
+<li class="chapter" data-level="8.4.5" data-path="analysis-with-groups.html"><a href="analysis-with-groups.html#pay-raises"><i class="fa fa-check"></i><b>8.4.5</b> Pay Raises</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="analysis-with-groups-in-r.html"><a href="analysis-with-groups-in-r.html#analysis-by-group"><i class="fa fa-check"></i><b>6.2</b> Analysis by Group</a><ul>
-<li class="chapter" data-level="6.2.1" data-path="analysis-with-groups-in-r.html"><a href="analysis-with-groups-in-r.html#highest-ave-player-salary"><i class="fa fa-check"></i><b>6.2.1</b> Highest Ave Player Salary</a></li>
-<li class="chapter" data-level="6.2.2" data-path="analysis-with-groups-in-r.html"><a href="analysis-with-groups-in-r.html#most-players-paid-over-5-million"><i class="fa fa-check"></i><b>6.2.2</b> Most Players Paid Over $5 Million</a></li>
-<li class="chapter" data-level="6.2.3" data-path="analysis-with-groups-in-r.html"><a href="analysis-with-groups-in-r.html#fielding-positions"><i class="fa fa-check"></i><b>6.2.3</b> Fielding Positions</a></li>
-<li class="chapter" data-level="6.2.4" data-path="analysis-with-groups-in-r.html"><a href="analysis-with-groups-in-r.html#country-of-birth"><i class="fa fa-check"></i><b>6.2.4</b> Country of Birth</a></li>
-<li class="chapter" data-level="6.2.5" data-path="analysis-with-groups-in-r.html"><a href="analysis-with-groups-in-r.html#pay-raises"><i class="fa fa-check"></i><b>6.2.5</b> Pay Raises</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="data-wrangling.html"><a href="data-wrangling.html"><i class="fa fa-check"></i>DATA WRANGLING</a></li>
+<li class="chapter" data-level="9" data-path="merging-data.html"><a href="merging-data.html"><i class="fa fa-check"></i><b>9</b> Merging Data</a><ul>
+<li class="chapter" data-level="9.1" data-path="merging-data.html"><a href="merging-data.html#packages-used-in-this-chapter-3"><i class="fa fa-check"></i><b>9.1</b> Packages Used in This Chapter</a></li>
+<li class="chapter" data-level="9.2" data-path="merging-data.html"><a href="merging-data.html#relational-databases"><i class="fa fa-check"></i><b>9.2</b> Relational Databases</a></li>
+<li class="chapter" data-level="9.3" data-path="merging-data.html"><a href="merging-data.html#set-theory"><i class="fa fa-check"></i><b>9.3</b> Set Theory</a><ul>
+<li class="chapter" data-level="9.3.1" data-path="merging-data.html"><a href="merging-data.html#set-theory-functions"><i class="fa fa-check"></i><b>9.3.1</b> Set Theory Functions</a></li>
+<li class="chapter" data-level="9.3.2" data-path="merging-data.html"><a href="merging-data.html#set-theory-using-logical-operators"><i class="fa fa-check"></i><b>9.3.2</b> Set Theory Using Logical Operators</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="merging-data.html"><a href="merging-data.html#merging-data-1"><i class="fa fa-check"></i><b>9.4</b> Merging Data</a><ul>
+<li class="chapter" data-level="9.4.1" data-path="merging-data.html"><a href="merging-data.html#the-by.x-and-by.y-arguments"><i class="fa fa-check"></i><b>9.4.1</b> The by.x and by.y Arguments</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="merging-data.html"><a href="merging-data.html#non-unique-observations-in-id-variables"><i class="fa fa-check"></i><b>9.5</b> Non-Unique Observations in ID Variables</a><ul>
+<li class="chapter" data-level="9.5.1" data-path="merging-data.html"><a href="merging-data.html#example-of-incorrect-merge"><i class="fa fa-check"></i><b>9.5.1</b> Example of Incorrect Merge</a></li>
+</ul></li>
+<li class="chapter" data-level="9.6" data-path="merging-data.html"><a href="merging-data.html#the-in-function"><i class="fa fa-check"></i><b>9.6</b> The %in% function</a></li>
+<li class="chapter" data-level="9.7" data-path="merging-data.html"><a href="merging-data.html#the-match-function"><i class="fa fa-check"></i><b>9.7</b> The Match Function</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://webapp4.asu.edu/programs/t5/majorinfo/ASU00/PPPGEMS/graduate/false" target="blank">ASU</a></li>
@@ -367,7 +398,7 @@ Figure 2.2: Assignment of output values
         </div>
       </div>
 <a href="introduction-to-r.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="data-structures.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="vectors.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
