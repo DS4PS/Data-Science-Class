@@ -33,14 +33,16 @@ summary( dat )
 
 These are not pretty enough to include in a report. Fortunately there are some functions that produce nice tables for R Markdown reports. We will use the **stargazer** package extensively for regression results and descriptive statistics. 
 
+<br>
 
 ```{r results="asis"}
-library( stargazer )
+# library( stargazer )
 dat.numeric <- select_if( dat, is.numeric )
 stargazer( dat.numeric, type="html", digits=2, 
            summary.stat = c("n","min","median","mean","max","sd") )
 ```
 
+<br>
 
 In many instances we will be working with a large dataset with many variables that are non-numeric. For example, the **Lahman** package contains a *Master* data frame with the demographic information of all Major League baseball players in the League's 100-year history. 
 

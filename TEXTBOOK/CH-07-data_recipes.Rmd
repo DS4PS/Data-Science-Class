@@ -29,19 +29,19 @@ library( ggvis )
 
 ## Key Concepts
 
-```{r, fig.cap="Data verbs use data frames as the primary input and the output value.", echo=F, out.width='60%' }
+```{r, fig.cap="Data verbs use data frames as the primary input and the output value.", echo=F, out.width='80%' }
 knitr::include_graphics( "figures/data_verb_input_output.png" )
 ```
 
 <br><br>
 
-```{r, fig.cap="When we chain data verbs with the pipe operator we only reference the dataset name once, and all other times it's implicitly called through through piping.", echo=F, out.width='80%' }
+```{r, fig.cap="When we chain data verbs with the pipe operator we only reference the dataset name once, and all other times it's implicitly called through through piping.", echo=F, out.width='90%' }
 knitr::include_graphics( "figures/chaining_data_verbs.png" )
 ```
 
 <br><br>
 
-```{r, fig.cap="Chaining allows us to write data recipes.", echo=F, out.width='60%' }
+```{r, fig.cap="Chaining allows us to write data recipes.", echo=F, out.width='80%' }
 knitr::include_graphics( "figures/data_recipe.png" )
 ```
 
