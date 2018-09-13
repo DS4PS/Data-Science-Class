@@ -1,30 +1,81 @@
 ---
 title: 'Data Verbs'
-output: ioslides_presentation
+output:
+  ioslides_presentation:
+    widescreen: true
+    smaller: true
 ---
+
+<style>
+p.ex1 {
+    padding-top: 10px;
+}
+h1, h2{
+  margin-top:25px;
+}
+</style>
+
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo=TRUE, message=F, warning=F)
 
 library( pander )
+library( dplyr )
 ```
 
-```{r load_data, echo=F, eval=T}
+```{r load_data, echo=F, eval=T, cache=T}
 URL <- "https://raw.githubusercontent.com/DS4PS/Data-Science-Class/master/DATA/syr_parcels.csv"
 dat <- read.csv( URL, stringsAsFactors=FALSE )
 ```
 
+```{r, echo=F}
+d <- filter( dat, 
+             land_use %in% c("Vacant Land","Single Family","Commercial") &
+             neighborhood %in% c("Near Westside","Westcott","University Hill","Downtown") ) 
+```
+
+
+
+
 
 ## New Packages
-
 
 ```{r}
 library( dplyr )
 ```
 
-**"A Grammar of Data Manipulation"** ~ package authors
+**"A Grammar of Data Manipulation"** 
 
-Nouns:
+The **dplyr** package makes data manipulation much easier and faster because the functions are designed to be chained so that each step builds on the last. 
+
+The dplyr functions have a simple syntax.
+
+The are easily combined into a "data recipe" by passing or "piping" a dataset from one function to the next.
+
+
+## Key Concepts: Chaining Functions
+
+<br><br>
+
+```{r, echo=F, out.width='90%' }
+knitr::include_graphics( "../TEXTBOOK/figures/chaining_data_verbs2.png" )
+```
+
+
+## Key Concepts: Data Recipe
+
+```{r, echo=F, out.width='70%' }
+knitr::include_graphics( "../TEXTBOOK/figures/data_recipe2.png" )
+```
+
+
+
+## Grammar of Data
+
+
+What does "grammar" mean in the data programming context? 
+
+Nouns (objects):
 
 - vectors
 - data frames
@@ -33,111 +84,191 @@ And verbs that act on these nouns:
 
 - Subset
 - Sort
-- Transform a variable
+- Transform
 
 
 
+## dplyr Verbs
+
+DATA VERB | ACTION  
+---------|----------  
+filter() | Select rows  
+select() | Select columns 
+arrage() | Sort the dataset by one or more columns 
+mutate() | Create a new variable by transforming an existing variable or variables 
 
 
 
-## Tables
+## dplyr Verbs
 
-```{r, echo=F}
-gender <- sample( c("Male","Female"), 100, replace=TRUE )
-study.group <- sample( c("Treatment","Control"), 100, replace=TRUE )
-strength <- 10*(gender=="Female") + rnorm(100,30,15)
+```{r, echo=F, out.width='40%' }
+knitr::include_graphics( "../TEXTBOOK/figures/dataset_verbs.png" )
 ```
 
-Many functions in R start with a data frame (or vectors) and after some transformation they return a new data type:
-
-```{r}
-table( gender, study.group )     # returns a class() "table" 
-tapply( strength, gender, mean ) # returns a class() "array"
-```
 
 
+
+## dplyr Verbs
+
+You will find these two work really well together!
+
+DATA VERB | ACTION  
+---------|----------  
+group_by() | Split the dataset (implicitly) into a separate dataset for each group 
+summarize() | Create summary statistics for specified variables 
 
 
 ## Data Verbs
 
 
-```{r, fig.cap="Data verbs start with a data frame and end with a data frame.", echo=F, out.width='90%' }
-knitr::include_graphics( "../TEXTBOOK/figures/data_verbs.png" )
+```{r, fig.cap="Data verbs start with a data frame and end with a data frame.", echo=F, out.width='70%' }
+knitr::include_graphics( "../TEXTBOOK/figures/data_verbs2.png" )
 ```
 
 
-## Example
 
-```{r, echo=F}
-d <- filter( dat, land_use %in% c("Vacant Land","Single Family","Commercial") )
-d <- filter( d, neighborhood %in% c("Near Westside","Westcott","University Hill","Downtown") )
-```
 
+
+
+
+## Example {.small}
+
+Suppose we want to look at land use by neighborhoods:
 
 ```{r}
 table( d$neighborhood, d$land_use )
 ```
 
-Because the function returns a table and not a data frame we can't manipulate the output to isolate just the vacant land. 
+Because the function returns a table and not a data frame we can't drill down into specific categories, or sort by specific variables.
 
-## Example
 
-But if we use dplyr data verbs:
 
-```{r}
-count( d, neighborhood, land_use ) %>% filter( land_use == "Vacant Land" )
+## Example {.smaller}
+
+But if we use the **dplyr** data verb count():
+
+```{r, eval=F}
+count( d, neighborhood, land_use ) 
 ```
+
+```{r, echo=F}
+count( d, neighborhood, land_use ) %>% pander()
+```
+
+
+
+## Example {.smaller}
+
+We can now do things like filter() results:
+
+```{r, eval=F}
+count( d, neighborhood, land_use ) %>% 
+  filter( land_use == "Vacant Land" )
+```
+
+```{r, echo=F}
+count( d, neighborhood, land_use ) %>% 
+  filter( land_use == "Vacant Land" ) %>% pander()
+```
+
+
+## Example {.smaller}
+
+Or sort by specific fields in the new table:
+
+```{r, eval=F, echo=T}
+count( d, neighborhood, land_use ) %>%  
+  arrange( neighborhood, - n )
+```
+
+
+```{r, echo=F}
+count( d, neighborhood, land_use ) %>% 
+  arrange( neighborhood, - n ) %>% pander()
+```
+
 
 
 ## dplyr Functions
 
-**dplyr** verbs always return data frames (tibbles are just special data frames).
+**dplyr** verbs always require a data frame as their first argument:
 
-```{r}
-class( count( d, neighborhood, land_use ) )
+```{r, eval=F}
+# dat is the syracuse tax dataset
+count( dat, neighborhood, land_use ) 
 ```
 
-
-## Example
-
-This is our data recipe to identify vacant land by neighborhoods:
-
-```{r}
-original.data.frame   <- d
-new.data.frame        <- count( original.data.frame, neighborhood, land_use )  
-filtered.data.frame   <- filter( new.data.frame, land_use == "Vacant Land" )
-filtered.data.frame
+```{r, fig.cap="", echo=F, out.width='80%' }
+knitr::include_graphics( "../TEXTBOOK/figures/data_verb_input_output.png" )
 ```
 
 
 
-## Example
+## dplyr Arguments
 
-This is the same recipe written with pipes:
+Functions in dplyr are more consistent and more intuitive than core R.
 
-```{r}
-count( d, neighborhood, land_use )  %>% filter( land_use == "Vacant Land" )
+Because dplyr functions know the data frame you are working with, you don't have to preceed a variable name by *dat$* or use quote marks with the arguments. 
+
+
+
+## dplyr Arguments
+
+Subset by columns in dplyr:
+
+```{r, eval=F}
+select( dat, land_use, neighborhood ) 
+```
+
+VS core R:
+
+```{r, eval=F}
+dat[ , c("land_use""neighborhood") ] 
+```
+
+
+## dplyr Arguments
+
+Subset by rows in dplyr:
+
+```{r, eval=F}
+filter( dat, land_use == "Commercial" ) 
+```
+
+VS core R:
+
+```{r, eval=F}
+dat[ dat$land_use == "Commercial" , ] 
 ```
 
 
 
-## Example
+## dplyr Arguments
 
-OR:
+Sorting data frames in dplyr:
 
-```{r}
-d %>%
-  count( neighborhood, land_use )  %>%
-  filter( land_use == "Vacant Land" )
+```{r, eval=F}
+arrange( dat, - amtdelinqu )  # negative sign to reverse sort order
 ```
+
+VS core R:
+
+```{r, eval=F}
+dat[ order( dat$amtdelinqu, decreasing=T ) ,  ] 
+```
+
+
+
+
+
 
 
 ## Data Verbs
 
-This only works with functions that accept a data frame as the FIRST argument, and return a data frame.
+They accept a data frame as the FIRST argument, and return a data frame.
 
 ```{r, eval=F}
-count( d, neighborhood, land_use )  %>% filter( land_use == "Vacant Land" )
+count( d, neighborhood, land_use ) 
 ```
 
 <br>
@@ -148,78 +279,109 @@ knitr::include_graphics( "../TEXTBOOK/figures/data_verb_input_output.png" )
 
 
 
-## Piping
+## Data Verbs
 
-```{r, fig.cap="The pipe operator passes a data frame forward through a chain of data verbs. We only reference the dataset name once, and all other times it's implicitly called through through piping.", echo=F, out.width='90%' }
-knitr::include_graphics( "../TEXTBOOK/figures/chaining_data_verbs.png" )
-```
-
-
-## Data Recipes
-
-
-```{r, fig.cap="Data recipes are written using a series of data steps. We can simplify this process using pipes", echo=F, out.width='80%' }
-knitr::include_graphics( "../TEXTBOOK/figures/data_recipe.png" )
-```
-
-
-
-
-## US Baby Names
+**dplyr** data verbs always return data frames.
 
 ```{r}
-URL <- "https://github.com/DS4PS/Data-Science-Class/blob/master/DATA/BabyNames.rds?raw=true"
-names <- readRDS( gzcon( url( URL )))
-names %>% head() %>% pander()
+class( count( d, neighborhood, land_use ) )
 ```
 
-
-## Data Recipe Example
-
-Find Top 5 Baby Boomer male names:
-
-1. Create a subset of data for men born between 1946 and 1964. 
-2. Sort by the annual count of each name in the subset. 
-3. Keep only the most popular year for each name. 
-4. Identify the top 10 most popular during this period. 
-5. Print the results in a nice table that includes name and peak year data. 
+*The return object might have multiple classes, but one of them will be data.frame*
 
 
 
 
-## Data Recipe Example
+## Non-Verbs {.smaller}
 
-Find Top 5 Baby Boomer male names:
+```{r, echo=F}
+gender <- sample( c("Male","Female"), 100, replace=TRUE )
+study.group <- sample( c("Treatment","Control"), 100, replace=TRUE )
+strength <- 10*(gender=="Female") + rnorm(100,30,15)
+```
+
+These functions start with a data frame (or vectors) and after some transformation they return a different data type:
 
 ```{r}
-names %>% 
-  filter( Gender =="M" & Year >= 1946 & Year <= 1964 ) %>%
-  arrange( desc( Count ) ) %>%
-  distinct( Name, .keep_all=T ) %>%
-  top_n( 5, Count ) %>%
-  select( Name, Year, Count ) %>%
-  pander()
+table( gender, study.group )     # returns a class() "table" 
+tapply( strength, gender, mean ) # returns a class() "array"
 ```
 
 
 
-## dplyr Verbs
+## Group and Summarize
 
-- filter()
-- select()
-- arrange()
-- summarize()
+```{r, eval=F}
+grouped.dat <-  group_by( dat, factor ) %>%
+summarize( grouped.dat, ave.outcome=mean(outcome) )
+```
 
-## The group_by() Function
+The group_by() function splits the data into separate groups for each level of the factor.
+
+When you summarize grouped data, it will return statistics for each distinct level of data.
+
+
+## Group and Summarize
+
+```{r, echo=F}
+gender <- sample( c("Male","Female"), 100, replace=TRUE )
+study.group <- sample( c("Treatment","Control"), 100, replace=TRUE )
+strength <- 10*(gender=="Female") + rnorm(100,30,15)
+dat <- data.frame( gender, study.group, strength)
+```
+
+A table will print counts of each group level.
+
+```{r}
+count( dat, gender, study.group )
+```
+
+## Group and Summarize
+
+When you group_by() and summarize() it produces statistics for each group level.
+
+```{r}
+grouped.dat <- group_by( dat, gender, study.group )
+summarize( grouped.dat, ave.strength=mean(strength) )
+```
+
+
+## Example 1 {.smaller}
+
+Value of land by neighborhood:
+
+```{r}
+d %>%  # syracuse tax parcels
+  mutate( value.per.acre= assessedva / acres ) %>%
+  group_by( neighborhood ) %>%
+  summarize( ave.val.acre=mean(value.per.acre, na.rm=T) ) %>%
+  arrange( - ave.val.acre ) %>% pander()
+```
+
+
+## Example 2 {.smaller}
+
+Value of land by land use:
+
+```{r}
+d %>%  # syracuse tax parcels
+  mutate( value.per.acre= assessedva / acres ) %>%
+  group_by( land_use ) %>%
+  summarize( ave.val.acre=mean(value.per.acre, na.rm=T) ) %>%
+  arrange( - ave.val.acre ) %>% pander()
+```
+
+
+
+## Example 3 {.smaller}
+
+Value of land by neighborhood and land use:
 
 ```{r}
 d %>%  # syracuse tax parcels
   mutate( value.per.acre= assessedva / acres ) %>%
   group_by( neighborhood, land_use ) %>%
-  summarize( mean(value.per.acre, na.rm=T) ) %>%
-  arrange( land_use ) %>% pander()
+  summarize( ave.val.acre=mean(value.per.acre, na.rm=T) ) %>%
+  arrange( land_use, - ave.val.acre ) %>% pander()
 ```
-
-
-
 
