@@ -1,3 +1,150 @@
+--- 
+title: "Intro to Data Science for the Social Sector"
+date: "Updated `r format(Sys.time(), '%B %d, %Y')`"
+site: bookdown::bookdown_site
+output: bookdown::gitbook
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+description: "This is an introductory text to data science designed for social science graduate students in public affairs, nonprofit management, and international development."
+---
+
+# Welcome {-}
+
+Placeholder
+
+
+
+<!--chapter:end:index.Rmd-->
+
+
+# (PART) PART I: FOUNDATIONS {-}
+
+Placeholder
+
+# Introduction to R
+
+Placeholder
+
+
+## Navigation
+### Setting Your Working Directory
+## Commenting Code
+##  Here is some documentation for this script
+## Help
+## Install Programs (packages)
+## Accessing Built-In Datasets in R
+### Basic Data Operations
+### Using the Lahman Data
+### Example Analysis
+
+<!--chapter:end:CH-01-introduction-to-r.Rmd-->
+
+
+# Functions
+
+Placeholder
+
+
+## Key Concepts
+## Computer Programs as Recipes
+## Example Function
+## Default Argument Values
+## Assignment
+
+<!--chapter:end:CH-02-functions.Rmd-->
+
+
+# VECTORS {-}
+
+Placeholder
+
+
+## Key Concepts
+## Vectors
+## Common Vectors Functions
+## The Combine Function
+## Casting
+## Numeric Vectors
+### Integers Are Simple Numeric Vectors
+## Character Vectors
+### Quotes in Arguments
+## Factors
+## Logical Vectors
+## Generating Vectors
+## Variable Transformations
+## Missing Values: NA's
+## Datasets
+### Data Frames
+### Matrices
+### Lists
+
+<!--chapter:end:CH-03-data-structures.Rmd-->
+
+
+# Logical Statements
+
+Placeholder
+
+
+## Key Concepts
+## Operators 
+## Selector Vectors
+## Usefulness of Selector Vectors
+## Compound Logical Statements
+## NAs in Logical Statements
+## Subsets
+
+<!--chapter:end:CH-04-business-logic.Rmd-->
+
+
+# DATA VERBS {-}
+
+Placeholder
+
+
+## Packages Used in This Chapter
+## Key Concepts
+## The **dplyr** Package
+## Use **filter()** to Subset Rows
+## **select()** Columns
+## **arrange()** Sorts Data
+## Variable Transforms with **mutate()**
+## **rename()** Variables
+## **summarize()** Variables
+
+<!--chapter:end:CH-05-data_verbs.Rmd-->
+
+
+# Descriptive Statistics
+
+Placeholder
+
+
+## Useful Packages
+
+<!--chapter:end:CH-06-summary-stats.Rmd-->
+
+```{r include=FALSE, cache=FALSE}
+knitr::opts_chunk$set(
+  warning = FALSE,
+  message = FALSE,
+  comment = "###",
+  collapse = TRUE,
+  cache = TRUE,
+  out.width = "70%",
+  fig.align = 'center',
+  fig.width = 6,
+  fig.asp = 0.618,  # 1 / phi
+  fig.show = "hold"
+)
+
+library( dplyr )
+library( pander )
+
+options( dplyr.print_min = 6, dplyr.print_max = 6 )
+```
 # Data Recipes
 
 ```{r, echo=F }
@@ -244,4 +391,49 @@ The pipe operator is a little confusing when you first encounter it, but you wil
 In the next chapter we focus more on the use of groups in data science, and the applications of the **group_by()** function to make your job easier. 
 
 
+
+
+<!--chapter:end:CH-07-data_recipes.Rmd-->
+
+
+# Analysis with Groups
+
+Placeholder
+
+
+## Packages Used in this Chapter
+## Hypothetical Experimental Data
+## Group Structure
+### What Are Groups?
+### Main Take-Away
+### Example
+## Analysis by Group
+### Highest Ave Player Salary
+### Most Players Paid Over $5 Million
+### Fielding Positions
+### Country of Birth
+### Pay Raises
+
+<!--chapter:end:CH-08-group-structure.Rmd-->
+
+
+# DATA WRANGLING {-}
+
+Placeholder
+
+
+## Packages Used in This Chapter
+## Relational Databases
+## Set Theory
+### Set Theory Functions
+### Set Theory Using Logical Operators
+## Merging Data
+## use character columns of names to get sensible sort order
+### The by.x and by.y Arguments
+## Non-Unique Observations in ID Variables
+### Example of Incorrect Merge
+## The %in% function
+## The Match Function
+
+<!--chapter:end:CH-09-merging-data.Rmd-->
 

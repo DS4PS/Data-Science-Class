@@ -108,17 +108,17 @@ VARIABLE | DESCRIPTION
 Answer the following questions in your lab by writing the appropriate logical statements. Practice using compound statements and subset operators.  
 
 1. How many tax parcels in Syracuse are tax-exempt? 
-3. How many acres of land are in Syracuse? 
+2. How many acres of land are in Syracuse? 
 3. What proportion of total land in Syacuse is tax exempt (use `acres`)?
 
 4. How many single family homes were built between 1920 and 1945? 
 5. How many houses in the Westcott neighborhood have an assessed value (assessedva) of over $200,000? 
 
-5. What proportion of tax bills are delinquent? 
-6. What is the average amount owed by those with delinquint tax bills? 
+6. What proportion of tax bills are delinquent? 
+7. What is the average amount owed by those with delinquint tax bills? 
 
-7. What proportion of tax parcels have an overdue water bill (overduewater)?
-8. Which type of land use is category has the most overdue water bills (selector vector plus table)? 
+8. What proportion of tax parcels have an overdue water bill (overduewater)?
+9. Which type of land use is category has the most overdue water bills (selector vector plus table)? 
 
 
 *Recall that R wants to make sure you are aware of missing values, so it will return NA for functions performed on vectors with missing values. Add the 'NA remove' argument to these vectors to ignore missing values:* `sum( x, na.rm=T )`
