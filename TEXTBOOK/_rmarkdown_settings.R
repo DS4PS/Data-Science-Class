@@ -13,5 +13,6 @@ knitr::opts_chunk$set(
 
 library( dplyr )
 library( pander )
+library( stargazer )
 
 options( dplyr.print_min = 6, dplyr.print_max = 6 )
