@@ -337,57 +337,57 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <tbody>
 <tr class="odd">
 <td align="center">1</td>
-<td align="center">black</td>
-<td align="center">A</td>
-<td align="center">female</td>
-<td align="center">31</td>
+<td align="center">white</td>
+<td align="center">B</td>
+<td align="center">male</td>
+<td align="center">25</td>
 <td align="center">treatment</td>
-<td align="center">596.4</td>
+<td align="center">367</td>
 </tr>
 <tr class="even">
 <td align="center">2</td>
 <td align="center">white</td>
 <td align="center">B</td>
 <td align="center">male</td>
-<td align="center">48</td>
+<td align="center">28</td>
 <td align="center">treatment</td>
-<td align="center">536.7</td>
+<td align="center">570.1</td>
 </tr>
 <tr class="odd">
 <td align="center">3</td>
-<td align="center">white</td>
+<td align="center">black</td>
 <td align="center">B</td>
 <td align="center">female</td>
-<td align="center">46</td>
+<td align="center">23</td>
 <td align="center">treatment</td>
-<td align="center">698.7</td>
+<td align="center">420.9</td>
 </tr>
 <tr class="even">
 <td align="center">4</td>
-<td align="center">black</td>
+<td align="center">white</td>
 <td align="center">A</td>
 <td align="center">female</td>
-<td align="center">52</td>
+<td align="center">39</td>
 <td align="center">treatment</td>
-<td align="center">576</td>
+<td align="center">664.6</td>
 </tr>
 <tr class="odd">
 <td align="center">5</td>
-<td align="center">white</td>
-<td align="center">B</td>
-<td align="center">male</td>
-<td align="center">35</td>
-<td align="center">treatment</td>
-<td align="center">508.4</td>
-</tr>
-<tr class="even">
-<td align="center">6</td>
 <td align="center">black</td>
 <td align="center">B</td>
 <td align="center">female</td>
-<td align="center">36</td>
+<td align="center">34</td>
 <td align="center">treatment</td>
-<td align="center">702.5</td>
+<td align="center">600.8</td>
+</tr>
+<tr class="even">
+<td align="center">6</td>
+<td align="center">white</td>
+<td align="center">B</td>
+<td align="center">male</td>
+<td align="center">49</td>
+<td align="center">treatment</td>
+<td align="center">557.3</td>
 </tr>
 </tbody>
 </table>
@@ -411,7 +411,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>In previous lectures you have learned to identify a group with a logical statement, and analyze that group discretely.</p>
 <div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb136-1" data-line-number="1"></a>
 <a class="sourceLine" id="cb136-2" data-line-number="2"><span class="kw">mean</span>( speed[ study.group <span class="op">==</span><span class="st"> &quot;treatment&quot;</span> <span class="op">&amp;</span><span class="st"> </span>gender<span class="op">==</span><span class="st">&quot;female&quot;</span> ] )</a>
-<a class="sourceLine" id="cb136-3" data-line-number="3"><span class="co">### [1] 612.3679</span></a></code></pre></div>
+<a class="sourceLine" id="cb136-3" data-line-number="3"><span class="co">### [1] 613.3943</span></a></code></pre></div>
 <p>In this lecture you will learn to define a group structure, then analyze all of your data using that structure.</p>
 <div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb137-1" data-line-number="1"></a>
 <a class="sourceLine" id="cb137-2" data-line-number="2"><span class="kw">tapply</span>( speed, <span class="dt">INDEX =</span> <span class="kw">list</span>( study.group, gender ), <span class="dt">FUN =</span> mean )</a></code></pre></div>
@@ -431,13 +431,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <tbody>
 <tr class="odd">
 <td align="center"><strong>control</strong></td>
-<td align="center">460</td>
-<td align="center">362.2</td>
+<td align="center">469</td>
+<td align="center">357</td>
 </tr>
 <tr class="even">
 <td align="center"><strong>treatment</strong></td>
-<td align="center">612.4</td>
-<td align="center">517.6</td>
+<td align="center">613.4</td>
+<td align="center">511.6</td>
 </tr>
 </tbody>
 </table>
@@ -465,13 +465,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <tbody>
 <tr class="odd">
 <td align="center"><strong>control</strong></td>
-<td align="center">460</td>
-<td align="center">362.2</td>
+<td align="center">469</td>
+<td align="center">357</td>
 </tr>
 <tr class="even">
 <td align="center"><strong>treatment</strong></td>
-<td align="center">612.4</td>
-<td align="center">517.6</td>
+<td align="center">613.4</td>
+<td align="center">511.6</td>
 </tr>
 </tbody>
 </table>
@@ -495,22 +495,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <tr class="odd">
 <td align="center">control</td>
 <td align="center">male</td>
-<td align="center">362.2</td>
+<td align="center">357</td>
 </tr>
 <tr class="even">
 <td align="center">control</td>
 <td align="center">female</td>
-<td align="center">460</td>
+<td align="center">469</td>
 </tr>
 <tr class="odd">
 <td align="center">treatment</td>
 <td align="center">male</td>
-<td align="center">517.6</td>
+<td align="center">511.6</td>
 </tr>
 <tr class="even">
 <td align="center">treatment</td>
 <td align="center">female</td>
-<td align="center">612.4</td>
+<td align="center">613.4</td>
 </tr>
 </tbody>
 </table>

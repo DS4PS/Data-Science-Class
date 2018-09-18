@@ -1320,14 +1320,14 @@ Figure 5.1: Data verbs are functions that require a dataframe as the primary arg
 </thead>
 <tbody>
 <tr class="odd">
-<td align="center">control</td>
+<td align="center">treatment</td>
 <td align="center">male</td>
-<td align="center">72</td>
+<td align="center">101</td>
 </tr>
 <tr class="even">
 <td align="center">treatment</td>
-<td align="center">male</td>
-<td align="center">108</td>
+<td align="center">female</td>
+<td align="center">128</td>
 </tr>
 <tr class="odd">
 <td align="center">treatment</td>
@@ -1337,32 +1337,32 @@ Figure 5.1: Data verbs are functions that require a dataframe as the primary arg
 <tr class="even">
 <td align="center">control</td>
 <td align="center">male</td>
-<td align="center">92</td>
+<td align="center">93</td>
 </tr>
 <tr class="odd">
-<td align="center">control</td>
-<td align="center">female</td>
-<td align="center">126</td>
-</tr>
-<tr class="even">
 <td align="center">treatment</td>
 <td align="center">female</td>
 <td align="center">112</td>
+</tr>
+<tr class="even">
+<td align="center">control</td>
+<td align="center">female</td>
+<td align="center">109</td>
 </tr>
 </tbody>
 </table>
 <div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb112-1" data-line-number="1"><span class="kw">summarize</span>( dat, <span class="dt">n=</span><span class="kw">n</span>(), <span class="dt">min=</span><span class="kw">min</span>(strength), <span class="dt">mean=</span><span class="kw">mean</span>(strength), <span class="dt">max=</span><span class="kw">max</span>(strength) )</a>
 <a class="sourceLine" id="cb112-2" data-line-number="2"><span class="co">###     n min  mean max</span></a>
-<a class="sourceLine" id="cb112-3" data-line-number="3"><span class="co">### 1 100  56 98.47 145</span></a></code></pre></div>
+<a class="sourceLine" id="cb112-3" data-line-number="3"><span class="co">### 1 100  51 99.72 137</span></a></code></pre></div>
 <p>Similarly, the native <strong>table()</strong> function is useful, but returns a table object. The <strong>dplyr</strong> <strong>count()</strong> function will function almost identically, but it will return a data frame.</p>
 <div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb113-1" data-line-number="1">dplyr<span class="op">::</span><span class="kw">count</span>( dat, group, gender )</a>
 <a class="sourceLine" id="cb113-2" data-line-number="2"><span class="co">### # A tibble: 4 x 3</span></a>
 <a class="sourceLine" id="cb113-3" data-line-number="3"><span class="co">###   group     gender     n</span></a>
 <a class="sourceLine" id="cb113-4" data-line-number="4"><span class="co">###   &lt;fct&gt;     &lt;fct&gt;  &lt;int&gt;</span></a>
-<a class="sourceLine" id="cb113-5" data-line-number="5"><span class="co">### 1 control   female    23</span></a>
-<a class="sourceLine" id="cb113-6" data-line-number="6"><span class="co">### 2 control   male      22</span></a>
-<a class="sourceLine" id="cb113-7" data-line-number="7"><span class="co">### 3 treatment female    18</span></a>
-<a class="sourceLine" id="cb113-8" data-line-number="8"><span class="co">### 4 treatment male      37</span></a></code></pre></div>
+<a class="sourceLine" id="cb113-5" data-line-number="5"><span class="co">### 1 control   female    26</span></a>
+<a class="sourceLine" id="cb113-6" data-line-number="6"><span class="co">### 2 control   male      33</span></a>
+<a class="sourceLine" id="cb113-7" data-line-number="7"><span class="co">### 3 treatment female    23</span></a>
+<a class="sourceLine" id="cb113-8" data-line-number="8"><span class="co">### 4 treatment male      18</span></a></code></pre></div>
 <p>The real power of this function is the ability to use it with the <strong>group_by()</strong> function to analyze outcomes for many data subsets at once.</p>
 <div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb114-1" data-line-number="1">grouped.dat &lt;-<span class="st"> </span><span class="kw">group_by</span>( dat, group, gender )</a>
 <a class="sourceLine" id="cb114-2" data-line-number="2">dplyr<span class="op">::</span><span class="kw">summarize</span>( grouped.dat, </a>
@@ -1374,10 +1374,10 @@ Figure 5.1: Data verbs are functions that require a dataframe as the primary arg
 <a class="sourceLine" id="cb114-8" data-line-number="8"><span class="co">### # Groups:   group [?]</span></a>
 <a class="sourceLine" id="cb114-9" data-line-number="9"><span class="co">###   group     gender     n   min  mean   max</span></a>
 <a class="sourceLine" id="cb114-10" data-line-number="10"><span class="co">###   &lt;fct&gt;     &lt;fct&gt;  &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb114-11" data-line-number="11"><span class="co">### 1 control   female    23    75 112.    143</span></a>
-<a class="sourceLine" id="cb114-12" data-line-number="12"><span class="co">### 2 control   male      22    56  80.8   112</span></a>
-<a class="sourceLine" id="cb114-13" data-line-number="13"><span class="co">### 3 treatment female    18    94 120.    145</span></a>
-<a class="sourceLine" id="cb114-14" data-line-number="14"><span class="co">### 4 treatment male      37    63  89.8   117</span></a></code></pre></div>
+<a class="sourceLine" id="cb114-11" data-line-number="11"><span class="co">### 1 control   female    26    80 107.    135</span></a>
+<a class="sourceLine" id="cb114-12" data-line-number="12"><span class="co">### 2 control   male      33    51  83.3   110</span></a>
+<a class="sourceLine" id="cb114-13" data-line-number="13"><span class="co">### 3 treatment female    23    94 119.    137</span></a>
+<a class="sourceLine" id="cb114-14" data-line-number="14"><span class="co">### 4 treatment male      18    73  95.2   132</span></a></code></pre></div>
 <p>We will discuss this functionality in-depth two chapters from now.</p>
 
 </div>

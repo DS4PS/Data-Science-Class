@@ -38,7 +38,7 @@ These are not pretty enough to include in a report. Fortunately there are some f
 ```{r results="asis", eval=T}
 library( stargazer )
 dat.numeric <- select_if( dat, is.numeric )
-stargazer( dat.numeric, type="latex", digits=2, 
+stargazer( dat.numeric, type="html", digits=2, 
            summary.stat = c("n","min","median","mean","max","sd") )
 ```
 

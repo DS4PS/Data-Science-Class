@@ -30,7 +30,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="data-viz.html">
+<link rel="prev" href="the-plot-function.html">
 <link rel="next" href="custom-plot-example.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -45,6 +45,15 @@
 
 
 
+<script src="libs/detect-resize-0.5.3/jquery.resize.js"></script>
+<link href="libs/jquery-ui-1.11.4/jquery-ui.min.css" rel="stylesheet" />
+<script src="libs/jquery-ui-1.11.4/jquery-ui.min.js"></script>
+<script src="libs/d3-3.5.2/d3.min.js"></script>
+<script src="libs/vega-1.4.3/vega.min.js"></script>
+<script src="libs/lodash-2.2.1/lodash.min.js"></script>
+<script>var lodash = _.noConflict();</script>
+<link href="libs/ggvis-0.4.3/css/ggvis.css" rel="stylesheet" />
+<script src="libs/ggvis-0.4.3/js/ggvis.js"></script>
 
 
 <style type="text/css">
@@ -134,13 +143,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.1.1" data-path="introduction-to-r.html"><a href="introduction-to-r.html#setting-your-working-directory"><i class="fa fa-check"></i><b>1.1.1</b> Setting Your Working Directory</a></li>
 </ul></li>
 <li class="chapter" data-level="1.2" data-path="introduction-to-r.html"><a href="introduction-to-r.html#commenting-code"><i class="fa fa-check"></i><b>1.2</b> Commenting Code</a></li>
-<li class="chapter" data-level="1.3" data-path="introduction-to-r.html"><a href="introduction-to-r.html#here-is-some-documentation-for-this-script"><i class="fa fa-check"></i><b>1.3</b> Here is some documentation for this script</a></li>
-<li class="chapter" data-level="1.4" data-path="introduction-to-r.html"><a href="introduction-to-r.html#help"><i class="fa fa-check"></i><b>1.4</b> Help</a></li>
-<li class="chapter" data-level="1.5" data-path="introduction-to-r.html"><a href="introduction-to-r.html#install-programs-packages"><i class="fa fa-check"></i><b>1.5</b> Install Programs (packages)</a></li>
-<li class="chapter" data-level="1.6" data-path="introduction-to-r.html"><a href="introduction-to-r.html#accessing-built-in-datasets-in-r"><i class="fa fa-check"></i><b>1.6</b> Accessing Built-In Datasets in R</a><ul>
-<li class="chapter" data-level="1.6.1" data-path="introduction-to-r.html"><a href="introduction-to-r.html#basic-data-operations"><i class="fa fa-check"></i><b>1.6.1</b> Basic Data Operations</a></li>
-<li class="chapter" data-level="1.6.2" data-path="introduction-to-r.html"><a href="introduction-to-r.html#using-the-lahman-data"><i class="fa fa-check"></i><b>1.6.2</b> Using the Lahman Data</a></li>
-<li class="chapter" data-level="1.6.3" data-path="introduction-to-r.html"><a href="introduction-to-r.html#example-analysis"><i class="fa fa-check"></i><b>1.6.3</b> Example Analysis</a></li>
+<li class="chapter" data-level="1.3" data-path="introduction-to-r.html"><a href="introduction-to-r.html#help"><i class="fa fa-check"></i><b>1.3</b> Help</a></li>
+<li class="chapter" data-level="1.4" data-path="introduction-to-r.html"><a href="introduction-to-r.html#install-programs-packages"><i class="fa fa-check"></i><b>1.4</b> Install Programs (packages)</a></li>
+<li class="chapter" data-level="1.5" data-path="introduction-to-r.html"><a href="introduction-to-r.html#accessing-built-in-datasets-in-r"><i class="fa fa-check"></i><b>1.5</b> Accessing Built-In Datasets in R</a><ul>
+<li class="chapter" data-level="1.5.1" data-path="introduction-to-r.html"><a href="introduction-to-r.html#basic-data-operations"><i class="fa fa-check"></i><b>1.5.1</b> Basic Data Operations</a></li>
+<li class="chapter" data-level="1.5.2" data-path="introduction-to-r.html"><a href="introduction-to-r.html#using-the-lahman-data"><i class="fa fa-check"></i><b>1.5.2</b> Using the Lahman Data</a></li>
+<li class="chapter" data-level="1.5.3" data-path="introduction-to-r.html"><a href="introduction-to-r.html#example-analysis"><i class="fa fa-check"></i><b>1.5.3</b> Example Analysis</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>2</b> Functions</a><ul>
@@ -150,120 +158,123 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.4" data-path="functions.html"><a href="functions.html#default-argument-values"><i class="fa fa-check"></i><b>2.4</b> Default Argument Values</a></li>
 <li class="chapter" data-level="2.5" data-path="functions.html"><a href="functions.html#assignment"><i class="fa fa-check"></i><b>2.5</b> Assignment</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="vectors.html"><a href="vectors.html"><i class="fa fa-check"></i>VECTORS</a><ul>
-<li class="chapter" data-level="2.6" data-path="vectors.html"><a href="vectors.html#key-concepts-1"><i class="fa fa-check"></i><b>2.6</b> Key Concepts</a></li>
-<li class="chapter" data-level="2.7" data-path="vectors.html"><a href="vectors.html#vectors-1"><i class="fa fa-check"></i><b>2.7</b> Vectors</a></li>
-<li class="chapter" data-level="2.8" data-path="vectors.html"><a href="vectors.html#common-vectors-functions"><i class="fa fa-check"></i><b>2.8</b> Common Vectors Functions</a></li>
-<li class="chapter" data-level="2.9" data-path="vectors.html"><a href="vectors.html#the-combine-function"><i class="fa fa-check"></i><b>2.9</b> The Combine Function</a></li>
-<li class="chapter" data-level="2.10" data-path="vectors.html"><a href="vectors.html#casting"><i class="fa fa-check"></i><b>2.10</b> Casting</a></li>
-<li class="chapter" data-level="2.11" data-path="vectors.html"><a href="vectors.html#numeric-vectors"><i class="fa fa-check"></i><b>2.11</b> Numeric Vectors</a><ul>
-<li class="chapter" data-level="2.11.1" data-path="vectors.html"><a href="vectors.html#integers-are-simple-numeric-vectors"><i class="fa fa-check"></i><b>2.11.1</b> Integers Are Simple Numeric Vectors</a></li>
+<li class="chapter" data-level="" data-path="vectors.html"><a href="vectors.html"><i class="fa fa-check"></i>VECTORS</a></li>
+<li class="chapter" data-level="3" data-path="data-types.html"><a href="data-types.html"><i class="fa fa-check"></i><b>3</b> Data Types</a><ul>
+<li class="chapter" data-level="3.1" data-path="data-types.html"><a href="data-types.html#key-concepts-1"><i class="fa fa-check"></i><b>3.1</b> Key Concepts</a></li>
+<li class="chapter" data-level="3.2" data-path="data-types.html"><a href="data-types.html#vectors-1"><i class="fa fa-check"></i><b>3.2</b> Vectors</a></li>
+<li class="chapter" data-level="3.3" data-path="data-types.html"><a href="data-types.html#common-vectors-functions"><i class="fa fa-check"></i><b>3.3</b> Common Vectors Functions</a></li>
+<li class="chapter" data-level="3.4" data-path="data-types.html"><a href="data-types.html#the-combine-function"><i class="fa fa-check"></i><b>3.4</b> The Combine Function</a></li>
+<li class="chapter" data-level="3.5" data-path="data-types.html"><a href="data-types.html#casting"><i class="fa fa-check"></i><b>3.5</b> Casting</a></li>
+<li class="chapter" data-level="3.6" data-path="data-types.html"><a href="data-types.html#numeric-vectors"><i class="fa fa-check"></i><b>3.6</b> Numeric Vectors</a><ul>
+<li class="chapter" data-level="3.6.1" data-path="data-types.html"><a href="data-types.html#integers-are-simple-numeric-vectors"><i class="fa fa-check"></i><b>3.6.1</b> Integers Are Simple Numeric Vectors</a></li>
 </ul></li>
-<li class="chapter" data-level="2.12" data-path="vectors.html"><a href="vectors.html#character-vectors"><i class="fa fa-check"></i><b>2.12</b> Character Vectors</a><ul>
-<li class="chapter" data-level="2.12.1" data-path="vectors.html"><a href="vectors.html#quotes-in-arguments"><i class="fa fa-check"></i><b>2.12.1</b> Quotes in Arguments</a></li>
+<li class="chapter" data-level="3.7" data-path="data-types.html"><a href="data-types.html#character-vectors"><i class="fa fa-check"></i><b>3.7</b> Character Vectors</a><ul>
+<li class="chapter" data-level="3.7.1" data-path="data-types.html"><a href="data-types.html#quotes-in-arguments"><i class="fa fa-check"></i><b>3.7.1</b> Quotes in Arguments</a></li>
 </ul></li>
-<li class="chapter" data-level="2.13" data-path="vectors.html"><a href="vectors.html#factors"><i class="fa fa-check"></i><b>2.13</b> Factors</a></li>
-<li class="chapter" data-level="2.14" data-path="vectors.html"><a href="vectors.html#logical-vectors"><i class="fa fa-check"></i><b>2.14</b> Logical Vectors</a></li>
-<li class="chapter" data-level="2.15" data-path="vectors.html"><a href="vectors.html#generating-vectors"><i class="fa fa-check"></i><b>2.15</b> Generating Vectors</a></li>
-<li class="chapter" data-level="2.16" data-path="vectors.html"><a href="vectors.html#variable-transformations"><i class="fa fa-check"></i><b>2.16</b> Variable Transformations</a></li>
-<li class="chapter" data-level="2.17" data-path="vectors.html"><a href="vectors.html#missing-values-nas"><i class="fa fa-check"></i><b>2.17</b> Missing Values: NA’s</a></li>
-<li class="chapter" data-level="2.18" data-path="vectors.html"><a href="vectors.html#datasets"><i class="fa fa-check"></i><b>2.18</b> Datasets</a><ul>
-<li class="chapter" data-level="2.18.1" data-path="vectors.html"><a href="vectors.html#data-frames"><i class="fa fa-check"></i><b>2.18.1</b> Data Frames</a></li>
-<li class="chapter" data-level="2.18.2" data-path="vectors.html"><a href="vectors.html#matrices"><i class="fa fa-check"></i><b>2.18.2</b> Matrices</a></li>
-<li class="chapter" data-level="2.18.3" data-path="vectors.html"><a href="vectors.html#lists"><i class="fa fa-check"></i><b>2.18.3</b> Lists</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="3" data-path="logical-statements.html"><a href="logical-statements.html"><i class="fa fa-check"></i><b>3</b> Logical Statements</a><ul>
-<li class="chapter" data-level="3.1" data-path="logical-statements.html"><a href="logical-statements.html#key-concepts-2"><i class="fa fa-check"></i><b>3.1</b> Key Concepts</a></li>
-<li class="chapter" data-level="3.2" data-path="logical-statements.html"><a href="logical-statements.html#operators"><i class="fa fa-check"></i><b>3.2</b> Operators</a></li>
-<li class="chapter" data-level="3.3" data-path="logical-statements.html"><a href="logical-statements.html#selector-vectors"><i class="fa fa-check"></i><b>3.3</b> Selector Vectors</a></li>
-<li class="chapter" data-level="3.4" data-path="logical-statements.html"><a href="logical-statements.html#usefulness-of-selector-vectors"><i class="fa fa-check"></i><b>3.4</b> Usefulness of Selector Vectors</a></li>
-<li class="chapter" data-level="3.5" data-path="logical-statements.html"><a href="logical-statements.html#compound-logical-statements"><i class="fa fa-check"></i><b>3.5</b> Compound Logical Statements</a></li>
-<li class="chapter" data-level="3.6" data-path="logical-statements.html"><a href="logical-statements.html#nas-in-logical-statements"><i class="fa fa-check"></i><b>3.6</b> NAs in Logical Statements</a></li>
-<li class="chapter" data-level="3.7" data-path="logical-statements.html"><a href="logical-statements.html#subsets"><i class="fa fa-check"></i><b>3.7</b> Subsets</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="data-verbs.html"><a href="data-verbs.html"><i class="fa fa-check"></i>DATA VERBS</a><ul>
-<li class="chapter" data-level="3.8" data-path="data-verbs.html"><a href="data-verbs.html#packages-used-in-this-chapter"><i class="fa fa-check"></i><b>3.8</b> Packages Used in This Chapter</a></li>
-<li class="chapter" data-level="3.9" data-path="data-verbs.html"><a href="data-verbs.html#key-concepts-3"><i class="fa fa-check"></i><b>3.9</b> Key Concepts</a></li>
-<li class="chapter" data-level="3.10" data-path="data-verbs.html"><a href="data-verbs.html#the-dplyr-package"><i class="fa fa-check"></i><b>3.10</b> The <strong>dplyr</strong> Package</a></li>
-<li class="chapter" data-level="3.11" data-path="data-verbs.html"><a href="data-verbs.html#use-filter-to-subset-rows"><i class="fa fa-check"></i><b>3.11</b> Use <strong>filter()</strong> to Subset Rows</a></li>
-<li class="chapter" data-level="3.12" data-path="data-verbs.html"><a href="data-verbs.html#select-columns"><i class="fa fa-check"></i><b>3.12</b> <strong>select()</strong> Columns</a></li>
-<li class="chapter" data-level="3.13" data-path="data-verbs.html"><a href="data-verbs.html#arrange-sorts-data"><i class="fa fa-check"></i><b>3.13</b> <strong>arrange()</strong> Sorts Data</a></li>
-<li class="chapter" data-level="3.14" data-path="data-verbs.html"><a href="data-verbs.html#variable-transforms-with-mutate"><i class="fa fa-check"></i><b>3.14</b> Variable Transforms with <strong>mutate()</strong></a></li>
-<li class="chapter" data-level="3.15" data-path="data-verbs.html"><a href="data-verbs.html#rename-variables"><i class="fa fa-check"></i><b>3.15</b> <strong>rename()</strong> Variables</a></li>
-<li class="chapter" data-level="3.16" data-path="data-verbs.html"><a href="data-verbs.html#summarize-variables"><i class="fa fa-check"></i><b>3.16</b> <strong>summarize()</strong> Variables</a></li>
-</ul></li>
-<li class="chapter" data-level="4" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html"><i class="fa fa-check"></i><b>4</b> Descriptive Statistics</a><ul>
-<li class="chapter" data-level="4.1" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#useful-packages"><i class="fa fa-check"></i><b>4.1</b> Useful Packages</a></li>
-</ul></li>
-<li class="chapter" data-level="5" data-path="data-recipes.html"><a href="data-recipes.html"><i class="fa fa-check"></i><b>5</b> Data Recipes</a><ul>
-<li class="chapter" data-level="5.1" data-path="data-recipes.html"><a href="data-recipes.html#packages-used-in-this-chapter-1"><i class="fa fa-check"></i><b>5.1</b> Packages Used in This Chapter</a></li>
-<li class="chapter" data-level="5.2" data-path="data-recipes.html"><a href="data-recipes.html#key-concepts-4"><i class="fa fa-check"></i><b>5.2</b> Key Concepts</a></li>
-<li class="chapter" data-level="5.3" data-path="data-recipes.html"><a href="data-recipes.html#the-pipe-operator"><i class="fa fa-check"></i><b>5.3</b> The Pipe Operator <strong>%&gt;%</strong></a></li>
-<li class="chapter" data-level="5.4" data-path="data-recipes.html"><a href="data-recipes.html#building-data-recipes"><i class="fa fa-check"></i><b>5.4</b> Building Data Recipes</a></li>
-<li class="chapter" data-level="5.5" data-path="data-recipes.html"><a href="data-recipes.html#conclusion"><i class="fa fa-check"></i><b>5.5</b> Conclusion</a></li>
-</ul></li>
-<li class="chapter" data-level="6" data-path="analysis-with-groups.html"><a href="analysis-with-groups.html"><i class="fa fa-check"></i><b>6</b> Analysis with Groups</a><ul>
-<li class="chapter" data-level="6.1" data-path="analysis-with-groups.html"><a href="analysis-with-groups.html#packages-used-in-this-chapter-2"><i class="fa fa-check"></i><b>6.1</b> Packages Used in this Chapter</a></li>
-<li class="chapter" data-level="6.2" data-path="analysis-with-groups.html"><a href="analysis-with-groups.html#hypothetical-experimental-data"><i class="fa fa-check"></i><b>6.2</b> Hypothetical Experimental Data</a></li>
-<li class="chapter" data-level="6.3" data-path="analysis-with-groups.html"><a href="analysis-with-groups.html#group-structure"><i class="fa fa-check"></i><b>6.3</b> Group Structure</a><ul>
-<li class="chapter" data-level="6.3.1" data-path="analysis-with-groups.html"><a href="analysis-with-groups.html#what-are-groups"><i class="fa fa-check"></i><b>6.3.1</b> What Are Groups?</a></li>
-<li class="chapter" data-level="6.3.2" data-path="analysis-with-groups.html"><a href="analysis-with-groups.html#main-take-away"><i class="fa fa-check"></i><b>6.3.2</b> Main Take-Away</a></li>
-<li class="chapter" data-level="6.3.3" data-path="analysis-with-groups.html"><a href="analysis-with-groups.html#example"><i class="fa fa-check"></i><b>6.3.3</b> Example</a></li>
-</ul></li>
-<li class="chapter" data-level="6.4" data-path="analysis-with-groups.html"><a href="analysis-with-groups.html#analysis-by-group"><i class="fa fa-check"></i><b>6.4</b> Analysis by Group</a><ul>
-<li class="chapter" data-level="6.4.1" data-path="analysis-with-groups.html"><a href="analysis-with-groups.html#highest-ave-player-salary"><i class="fa fa-check"></i><b>6.4.1</b> Highest Ave Player Salary</a></li>
-<li class="chapter" data-level="6.4.2" data-path="analysis-with-groups.html"><a href="analysis-with-groups.html#most-players-paid-over-5-million"><i class="fa fa-check"></i><b>6.4.2</b> Most Players Paid Over $5 Million</a></li>
-<li class="chapter" data-level="6.4.3" data-path="analysis-with-groups.html"><a href="analysis-with-groups.html#fielding-positions"><i class="fa fa-check"></i><b>6.4.3</b> Fielding Positions</a></li>
-<li class="chapter" data-level="6.4.4" data-path="analysis-with-groups.html"><a href="analysis-with-groups.html#country-of-birth"><i class="fa fa-check"></i><b>6.4.4</b> Country of Birth</a></li>
-<li class="chapter" data-level="6.4.5" data-path="analysis-with-groups.html"><a href="analysis-with-groups.html#pay-raises"><i class="fa fa-check"></i><b>6.4.5</b> Pay Raises</a></li>
+<li class="chapter" data-level="3.8" data-path="data-types.html"><a href="data-types.html#factors"><i class="fa fa-check"></i><b>3.8</b> Factors</a></li>
+<li class="chapter" data-level="3.9" data-path="data-types.html"><a href="data-types.html#logical-vectors"><i class="fa fa-check"></i><b>3.9</b> Logical Vectors</a></li>
+<li class="chapter" data-level="3.10" data-path="data-types.html"><a href="data-types.html#generating-vectors"><i class="fa fa-check"></i><b>3.10</b> Generating Vectors</a></li>
+<li class="chapter" data-level="3.11" data-path="data-types.html"><a href="data-types.html#variable-transformations"><i class="fa fa-check"></i><b>3.11</b> Variable Transformations</a></li>
+<li class="chapter" data-level="3.12" data-path="data-types.html"><a href="data-types.html#missing-values-nas"><i class="fa fa-check"></i><b>3.12</b> Missing Values: NA’s</a></li>
+<li class="chapter" data-level="3.13" data-path="data-types.html"><a href="data-types.html#datasets"><i class="fa fa-check"></i><b>3.13</b> Datasets</a><ul>
+<li class="chapter" data-level="3.13.1" data-path="data-types.html"><a href="data-types.html#data-frames"><i class="fa fa-check"></i><b>3.13.1</b> Data Frames</a></li>
+<li class="chapter" data-level="3.13.2" data-path="data-types.html"><a href="data-types.html#matrices"><i class="fa fa-check"></i><b>3.13.2</b> Matrices</a></li>
+<li class="chapter" data-level="3.13.3" data-path="data-types.html"><a href="data-types.html#lists"><i class="fa fa-check"></i><b>3.13.3</b> Lists</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="data-viz.html"><a href="data-viz.html"><i class="fa fa-check"></i>DATA VIZ</a><ul>
-<li class="chapter" data-level="6.5" data-path="data-viz.html"><a href="data-viz.html#key-concepts-5"><i class="fa fa-check"></i><b>6.5</b> Key Concepts</a></li>
-<li class="chapter" data-level="6.6" data-path="data-viz.html"><a href="data-viz.html#plot-arguments"><i class="fa fa-check"></i><b>6.6</b> plot() Arguments</a></li>
-<li class="chapter" data-level="6.7" data-path="data-viz.html"><a href="data-viz.html#titles"><i class="fa fa-check"></i><b>6.7</b> Titles</a></li>
-<li class="chapter" data-level="6.8" data-path="data-viz.html"><a href="data-viz.html#type-of-plot"><i class="fa fa-check"></i><b>6.8</b> Type of Plot</a></li>
-<li class="chapter" data-level="6.9" data-path="data-viz.html"><a href="data-viz.html#shape-of-points"><i class="fa fa-check"></i><b>6.9</b> Shape of Points</a></li>
-<li class="chapter" data-level="6.10" data-path="data-viz.html"><a href="data-viz.html#size-of-points"><i class="fa fa-check"></i><b>6.10</b> Size of Points</a></li>
-<li class="chapter" data-level="6.11" data-path="data-viz.html"><a href="data-viz.html#colors"><i class="fa fa-check"></i><b>6.11</b> Colors</a></li>
-<li class="chapter" data-level="6.12" data-path="data-viz.html"><a href="data-viz.html#looking-ahead"><i class="fa fa-check"></i><b>6.12</b> Looking Ahead</a></li>
+<li class="chapter" data-level="4" data-path="logical-statements.html"><a href="logical-statements.html"><i class="fa fa-check"></i><b>4</b> Logical Statements</a><ul>
+<li class="chapter" data-level="4.1" data-path="logical-statements.html"><a href="logical-statements.html#key-concepts-2"><i class="fa fa-check"></i><b>4.1</b> Key Concepts</a></li>
+<li class="chapter" data-level="4.2" data-path="logical-statements.html"><a href="logical-statements.html#operators"><i class="fa fa-check"></i><b>4.2</b> Operators</a></li>
+<li class="chapter" data-level="4.3" data-path="logical-statements.html"><a href="logical-statements.html#selector-vectors"><i class="fa fa-check"></i><b>4.3</b> Selector Vectors</a></li>
+<li class="chapter" data-level="4.4" data-path="logical-statements.html"><a href="logical-statements.html#usefulness-of-selector-vectors"><i class="fa fa-check"></i><b>4.4</b> Usefulness of Selector Vectors</a></li>
+<li class="chapter" data-level="4.5" data-path="logical-statements.html"><a href="logical-statements.html#compound-logical-statements"><i class="fa fa-check"></i><b>4.5</b> Compound Logical Statements</a></li>
+<li class="chapter" data-level="4.6" data-path="logical-statements.html"><a href="logical-statements.html#nas-in-logical-statements"><i class="fa fa-check"></i><b>4.6</b> NAs in Logical Statements</a></li>
+<li class="chapter" data-level="4.7" data-path="logical-statements.html"><a href="logical-statements.html#subsets"><i class="fa fa-check"></i><b>4.7</b> Subsets</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="customizing-plots.html"><a href="customizing-plots.html"><i class="fa fa-check"></i><b>7</b> Customizing Plots</a><ul>
-<li class="chapter" data-level="7.1" data-path="customizing-plots.html"><a href="customizing-plots.html#key-concepts-6"><i class="fa fa-check"></i><b>7.1</b> Key Concepts</a></li>
-<li class="chapter" data-level="7.2" data-path="customizing-plots.html"><a href="customizing-plots.html#packages-used-in-this-chapter-3"><i class="fa fa-check"></i><b>7.2</b> Packages Used in This Chapter</a></li>
-<li class="chapter" data-level="7.3" data-path="customizing-plots.html"><a href="customizing-plots.html#layering-approach"><i class="fa fa-check"></i><b>7.3</b> Layering Approach</a></li>
-<li class="chapter" data-level="7.4" data-path="customizing-plots.html"><a href="customizing-plots.html#highlighting-cases"><i class="fa fa-check"></i><b>7.4</b> Highlighting Cases</a></li>
-<li class="chapter" data-level="7.5" data-path="customizing-plots.html"><a href="customizing-plots.html#visual-hypothesis-testing"><i class="fa fa-check"></i><b>7.5</b> Visual Hypothesis Testing</a></li>
-<li class="chapter" data-level="7.6" data-path="customizing-plots.html"><a href="customizing-plots.html#additional-parameters"><i class="fa fa-check"></i><b>7.6</b> Additional Parameters</a></li>
+<li class="chapter" data-level="" data-path="data-verbs.html"><a href="data-verbs.html"><i class="fa fa-check"></i>DATA VERBS</a></li>
+<li class="chapter" data-level="5" data-path="the-dplyr-package.html"><a href="the-dplyr-package.html"><i class="fa fa-check"></i><b>5</b> The <strong>dplyr</strong> Package</a><ul>
+<li class="chapter" data-level="5.1" data-path="the-dplyr-package.html"><a href="the-dplyr-package.html#packages-used-in-this-chapter"><i class="fa fa-check"></i><b>5.1</b> Packages Used in This Chapter</a></li>
+<li class="chapter" data-level="5.2" data-path="the-dplyr-package.html"><a href="the-dplyr-package.html#key-concepts-3"><i class="fa fa-check"></i><b>5.2</b> Key Concepts</a></li>
+<li class="chapter" data-level="5.3" data-path="the-dplyr-package.html"><a href="the-dplyr-package.html#the-dplyr-package-1"><i class="fa fa-check"></i><b>5.3</b> The <strong>dplyr</strong> Package</a></li>
+<li class="chapter" data-level="5.4" data-path="the-dplyr-package.html"><a href="the-dplyr-package.html#use-filter-to-subset-rows"><i class="fa fa-check"></i><b>5.4</b> Use <strong>filter()</strong> to Subset Rows</a></li>
+<li class="chapter" data-level="5.5" data-path="the-dplyr-package.html"><a href="the-dplyr-package.html#select-columns"><i class="fa fa-check"></i><b>5.5</b> <strong>select()</strong> Columns</a></li>
+<li class="chapter" data-level="5.6" data-path="the-dplyr-package.html"><a href="the-dplyr-package.html#arrange-sorts-data"><i class="fa fa-check"></i><b>5.6</b> <strong>arrange()</strong> Sorts Data</a></li>
+<li class="chapter" data-level="5.7" data-path="the-dplyr-package.html"><a href="the-dplyr-package.html#variable-transforms-with-mutate"><i class="fa fa-check"></i><b>5.7</b> Variable Transforms with <strong>mutate()</strong></a></li>
+<li class="chapter" data-level="5.8" data-path="the-dplyr-package.html"><a href="the-dplyr-package.html#rename-variables"><i class="fa fa-check"></i><b>5.8</b> <strong>rename()</strong> Variables</a></li>
+<li class="chapter" data-level="5.9" data-path="the-dplyr-package.html"><a href="the-dplyr-package.html#summarize-variables"><i class="fa fa-check"></i><b>5.9</b> <strong>summarize()</strong> Variables</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="custom-plot-example.html"><a href="custom-plot-example.html"><i class="fa fa-check"></i><b>8</b> Custom Plot Example</a><ul>
-<li class="chapter" data-level="8.1" data-path="custom-plot-example.html"><a href="custom-plot-example.html#basic-rank-plot"><i class="fa fa-check"></i><b>8.1</b> Basic Rank Plot</a></li>
-<li class="chapter" data-level="8.2" data-path="custom-plot-example.html"><a href="custom-plot-example.html#creating-a-submay-map-rank-plot"><i class="fa fa-check"></i><b>8.2</b> Creating a Submay Map Rank Plot</a></li>
-<li class="chapter" data-level="8.3" data-path="custom-plot-example.html"><a href="custom-plot-example.html#lines"><i class="fa fa-check"></i><b>8.3</b> Lines</a></li>
-<li class="chapter" data-level="8.4" data-path="custom-plot-example.html"><a href="custom-plot-example.html#connected-points"><i class="fa fa-check"></i><b>8.4</b> Connected Points</a></li>
-<li class="chapter" data-level="8.5" data-path="custom-plot-example.html"><a href="custom-plot-example.html#separate-points-and-connecting-lines"><i class="fa fa-check"></i><b>8.5</b> Separate Points and Connecting Lines</a></li>
-<li class="chapter" data-level="8.6" data-path="custom-plot-example.html"><a href="custom-plot-example.html#add-labels"><i class="fa fa-check"></i><b>8.6</b> Add Labels</a></li>
-<li class="chapter" data-level="8.7" data-path="custom-plot-example.html"><a href="custom-plot-example.html#add-axes-and-title"><i class="fa fa-check"></i><b>8.7</b> Add Axes and Title</a></li>
-<li class="chapter" data-level="8.8" data-path="custom-plot-example.html"><a href="custom-plot-example.html#generalizing-code"><i class="fa fa-check"></i><b>8.8</b> Generalizing Code</a></li>
-<li class="chapter" data-level="8.9" data-path="custom-plot-example.html"><a href="custom-plot-example.html#improved-aesthetics"><i class="fa fa-check"></i><b>8.9</b> Improved Aesthetics</a></li>
+<li class="chapter" data-level="6" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html"><i class="fa fa-check"></i><b>6</b> Descriptive Statistics</a><ul>
+<li class="chapter" data-level="6.1" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#useful-packages"><i class="fa fa-check"></i><b>6.1</b> Useful Packages</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="data-wrangling.html"><a href="data-wrangling.html"><i class="fa fa-check"></i>DATA WRANGLING</a><ul>
-<li class="chapter" data-level="8.10" data-path="data-wrangling.html"><a href="data-wrangling.html#packages-used-in-this-chapter-4"><i class="fa fa-check"></i><b>8.10</b> Packages Used in This Chapter</a></li>
-<li class="chapter" data-level="8.11" data-path="data-wrangling.html"><a href="data-wrangling.html#relational-databases"><i class="fa fa-check"></i><b>8.11</b> Relational Databases</a></li>
-<li class="chapter" data-level="8.12" data-path="data-wrangling.html"><a href="data-wrangling.html#set-theory"><i class="fa fa-check"></i><b>8.12</b> Set Theory</a><ul>
-<li class="chapter" data-level="8.12.1" data-path="data-wrangling.html"><a href="data-wrangling.html#set-theory-functions"><i class="fa fa-check"></i><b>8.12.1</b> Set Theory Functions</a></li>
-<li class="chapter" data-level="8.12.2" data-path="data-wrangling.html"><a href="data-wrangling.html#set-theory-using-logical-operators"><i class="fa fa-check"></i><b>8.12.2</b> Set Theory Using Logical Operators</a></li>
+<li class="chapter" data-level="7" data-path="data-recipes.html"><a href="data-recipes.html"><i class="fa fa-check"></i><b>7</b> Data Recipes</a><ul>
+<li class="chapter" data-level="7.1" data-path="data-recipes.html"><a href="data-recipes.html#packages-used-in-this-chapter-1"><i class="fa fa-check"></i><b>7.1</b> Packages Used in This Chapter</a></li>
+<li class="chapter" data-level="7.2" data-path="data-recipes.html"><a href="data-recipes.html#key-concepts-4"><i class="fa fa-check"></i><b>7.2</b> Key Concepts</a></li>
+<li class="chapter" data-level="7.3" data-path="data-recipes.html"><a href="data-recipes.html#the-pipe-operator"><i class="fa fa-check"></i><b>7.3</b> The Pipe Operator <strong>%&gt;%</strong></a></li>
+<li class="chapter" data-level="7.4" data-path="data-recipes.html"><a href="data-recipes.html#building-data-recipes"><i class="fa fa-check"></i><b>7.4</b> Building Data Recipes</a></li>
+<li class="chapter" data-level="7.5" data-path="data-recipes.html"><a href="data-recipes.html#conclusion"><i class="fa fa-check"></i><b>7.5</b> Conclusion</a></li>
 </ul></li>
-<li class="chapter" data-level="8.13" data-path="data-wrangling.html"><a href="data-wrangling.html#merging-data"><i class="fa fa-check"></i><b>8.13</b> Merging Data</a></li>
-<li class="chapter" data-level="8.14" data-path="data-wrangling.html"><a href="data-wrangling.html#use-character-columns-of-names-to-get-sensible-sort-order"><i class="fa fa-check"></i><b>8.14</b> use character columns of names to get sensible sort order</a><ul>
-<li class="chapter" data-level="8.14.1" data-path="data-wrangling.html"><a href="data-wrangling.html#the-by.x-and-by.y-arguments"><i class="fa fa-check"></i><b>8.14.1</b> The by.x and by.y Arguments</a></li>
+<li class="chapter" data-level="8" data-path="analysis-with-groups.html"><a href="analysis-with-groups.html"><i class="fa fa-check"></i><b>8</b> Analysis with Groups</a><ul>
+<li class="chapter" data-level="8.1" data-path="analysis-with-groups.html"><a href="analysis-with-groups.html#packages-used-in-this-chapter-2"><i class="fa fa-check"></i><b>8.1</b> Packages Used in this Chapter</a></li>
+<li class="chapter" data-level="8.2" data-path="analysis-with-groups.html"><a href="analysis-with-groups.html#hypothetical-experimental-data"><i class="fa fa-check"></i><b>8.2</b> Hypothetical Experimental Data</a></li>
+<li class="chapter" data-level="8.3" data-path="analysis-with-groups.html"><a href="analysis-with-groups.html#group-structure"><i class="fa fa-check"></i><b>8.3</b> Group Structure</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="analysis-with-groups.html"><a href="analysis-with-groups.html#what-are-groups"><i class="fa fa-check"></i><b>8.3.1</b> What Are Groups?</a></li>
+<li class="chapter" data-level="8.3.2" data-path="analysis-with-groups.html"><a href="analysis-with-groups.html#main-take-away"><i class="fa fa-check"></i><b>8.3.2</b> Main Take-Away</a></li>
+<li class="chapter" data-level="8.3.3" data-path="analysis-with-groups.html"><a href="analysis-with-groups.html#example"><i class="fa fa-check"></i><b>8.3.3</b> Example</a></li>
 </ul></li>
-<li class="chapter" data-level="8.15" data-path="data-wrangling.html"><a href="data-wrangling.html#non-unique-observations-in-id-variables"><i class="fa fa-check"></i><b>8.15</b> Non-Unique Observations in ID Variables</a><ul>
-<li class="chapter" data-level="8.15.1" data-path="data-wrangling.html"><a href="data-wrangling.html#example-of-incorrect-merge"><i class="fa fa-check"></i><b>8.15.1</b> Example of Incorrect Merge</a></li>
+<li class="chapter" data-level="8.4" data-path="analysis-with-groups.html"><a href="analysis-with-groups.html#analysis-by-group"><i class="fa fa-check"></i><b>8.4</b> Analysis by Group</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="analysis-with-groups.html"><a href="analysis-with-groups.html#highest-ave-player-salary"><i class="fa fa-check"></i><b>8.4.1</b> Highest Ave Player Salary</a></li>
+<li class="chapter" data-level="8.4.2" data-path="analysis-with-groups.html"><a href="analysis-with-groups.html#most-players-paid-over-5-million"><i class="fa fa-check"></i><b>8.4.2</b> Most Players Paid Over $5 Million</a></li>
+<li class="chapter" data-level="8.4.3" data-path="analysis-with-groups.html"><a href="analysis-with-groups.html#fielding-positions"><i class="fa fa-check"></i><b>8.4.3</b> Fielding Positions</a></li>
+<li class="chapter" data-level="8.4.4" data-path="analysis-with-groups.html"><a href="analysis-with-groups.html#country-of-birth"><i class="fa fa-check"></i><b>8.4.4</b> Country of Birth</a></li>
+<li class="chapter" data-level="8.4.5" data-path="analysis-with-groups.html"><a href="analysis-with-groups.html#pay-raises"><i class="fa fa-check"></i><b>8.4.5</b> Pay Raises</a></li>
 </ul></li>
-<li class="chapter" data-level="8.16" data-path="data-wrangling.html"><a href="data-wrangling.html#the-in-function"><i class="fa fa-check"></i><b>8.16</b> The %in% function</a></li>
-<li class="chapter" data-level="8.17" data-path="data-wrangling.html"><a href="data-wrangling.html#the-match-function"><i class="fa fa-check"></i><b>8.17</b> The Match Function</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-viz.html"><a href="data-viz.html"><i class="fa fa-check"></i>DATA VIZ</a></li>
+<li class="chapter" data-level="9" data-path="the-plot-function.html"><a href="the-plot-function.html"><i class="fa fa-check"></i><b>9</b> The plot() Function</a><ul>
+<li class="chapter" data-level="9.1" data-path="the-plot-function.html"><a href="the-plot-function.html#key-concepts-5"><i class="fa fa-check"></i><b>9.1</b> Key Concepts</a></li>
+<li class="chapter" data-level="9.2" data-path="the-plot-function.html"><a href="the-plot-function.html#plot-arguments"><i class="fa fa-check"></i><b>9.2</b> plot() Arguments</a></li>
+<li class="chapter" data-level="9.3" data-path="the-plot-function.html"><a href="the-plot-function.html#titles"><i class="fa fa-check"></i><b>9.3</b> Titles</a></li>
+<li class="chapter" data-level="9.4" data-path="the-plot-function.html"><a href="the-plot-function.html#type-of-plot"><i class="fa fa-check"></i><b>9.4</b> Type of Plot</a></li>
+<li class="chapter" data-level="9.5" data-path="the-plot-function.html"><a href="the-plot-function.html#shape-of-points"><i class="fa fa-check"></i><b>9.5</b> Shape of Points</a></li>
+<li class="chapter" data-level="9.6" data-path="the-plot-function.html"><a href="the-plot-function.html#size-of-points"><i class="fa fa-check"></i><b>9.6</b> Size of Points</a></li>
+<li class="chapter" data-level="9.7" data-path="the-plot-function.html"><a href="the-plot-function.html#colors"><i class="fa fa-check"></i><b>9.7</b> Colors</a></li>
+<li class="chapter" data-level="9.8" data-path="the-plot-function.html"><a href="the-plot-function.html#looking-ahead"><i class="fa fa-check"></i><b>9.8</b> Looking Ahead</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="customizing-plots.html"><a href="customizing-plots.html"><i class="fa fa-check"></i><b>10</b> Customizing Plots</a><ul>
+<li class="chapter" data-level="10.1" data-path="customizing-plots.html"><a href="customizing-plots.html#key-concepts-6"><i class="fa fa-check"></i><b>10.1</b> Key Concepts</a></li>
+<li class="chapter" data-level="10.2" data-path="customizing-plots.html"><a href="customizing-plots.html#packages-used-in-this-chapter-3"><i class="fa fa-check"></i><b>10.2</b> Packages Used in This Chapter</a></li>
+<li class="chapter" data-level="10.3" data-path="customizing-plots.html"><a href="customizing-plots.html#layering-approach"><i class="fa fa-check"></i><b>10.3</b> Layering Approach</a></li>
+<li class="chapter" data-level="10.4" data-path="customizing-plots.html"><a href="customizing-plots.html#highlighting-cases"><i class="fa fa-check"></i><b>10.4</b> Highlighting Cases</a></li>
+<li class="chapter" data-level="10.5" data-path="customizing-plots.html"><a href="customizing-plots.html#visual-hypothesis-testing"><i class="fa fa-check"></i><b>10.5</b> Visual Hypothesis Testing</a></li>
+<li class="chapter" data-level="10.6" data-path="customizing-plots.html"><a href="customizing-plots.html#additional-parameters"><i class="fa fa-check"></i><b>10.6</b> Additional Parameters</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="custom-plot-example.html"><a href="custom-plot-example.html"><i class="fa fa-check"></i><b>11</b> Custom Plot Example</a><ul>
+<li class="chapter" data-level="11.1" data-path="custom-plot-example.html"><a href="custom-plot-example.html#basic-rank-plot"><i class="fa fa-check"></i><b>11.1</b> Basic Rank Plot</a></li>
+<li class="chapter" data-level="11.2" data-path="custom-plot-example.html"><a href="custom-plot-example.html#creating-a-submay-map-rank-plot"><i class="fa fa-check"></i><b>11.2</b> Creating a Submay Map Rank Plot</a></li>
+<li class="chapter" data-level="11.3" data-path="custom-plot-example.html"><a href="custom-plot-example.html#lines"><i class="fa fa-check"></i><b>11.3</b> Lines</a></li>
+<li class="chapter" data-level="11.4" data-path="custom-plot-example.html"><a href="custom-plot-example.html#connected-points"><i class="fa fa-check"></i><b>11.4</b> Connected Points</a></li>
+<li class="chapter" data-level="11.5" data-path="custom-plot-example.html"><a href="custom-plot-example.html#separate-points-and-connecting-lines"><i class="fa fa-check"></i><b>11.5</b> Separate Points and Connecting Lines</a></li>
+<li class="chapter" data-level="11.6" data-path="custom-plot-example.html"><a href="custom-plot-example.html#add-labels"><i class="fa fa-check"></i><b>11.6</b> Add Labels</a></li>
+<li class="chapter" data-level="11.7" data-path="custom-plot-example.html"><a href="custom-plot-example.html#add-axes-and-title"><i class="fa fa-check"></i><b>11.7</b> Add Axes and Title</a></li>
+<li class="chapter" data-level="11.8" data-path="custom-plot-example.html"><a href="custom-plot-example.html#generalizing-code"><i class="fa fa-check"></i><b>11.8</b> Generalizing Code</a></li>
+<li class="chapter" data-level="11.9" data-path="custom-plot-example.html"><a href="custom-plot-example.html#improved-aesthetics"><i class="fa fa-check"></i><b>11.9</b> Improved Aesthetics</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-wrangling.html"><a href="data-wrangling.html"><i class="fa fa-check"></i>DATA WRANGLING</a></li>
+<li class="chapter" data-level="12" data-path="merging-data.html"><a href="merging-data.html"><i class="fa fa-check"></i><b>12</b> Merging Data</a><ul>
+<li class="chapter" data-level="12.1" data-path="merging-data.html"><a href="merging-data.html#packages-used-in-this-chapter-4"><i class="fa fa-check"></i><b>12.1</b> Packages Used in This Chapter</a></li>
+<li class="chapter" data-level="12.2" data-path="merging-data.html"><a href="merging-data.html#relational-databases"><i class="fa fa-check"></i><b>12.2</b> Relational Databases</a></li>
+<li class="chapter" data-level="12.3" data-path="merging-data.html"><a href="merging-data.html#set-theory"><i class="fa fa-check"></i><b>12.3</b> Set Theory</a><ul>
+<li class="chapter" data-level="12.3.1" data-path="merging-data.html"><a href="merging-data.html#set-theory-functions"><i class="fa fa-check"></i><b>12.3.1</b> Set Theory Functions</a></li>
+<li class="chapter" data-level="12.3.2" data-path="merging-data.html"><a href="merging-data.html#set-theory-using-logical-operators"><i class="fa fa-check"></i><b>12.3.2</b> Set Theory Using Logical Operators</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="merging-data.html"><a href="merging-data.html#merging-data-1"><i class="fa fa-check"></i><b>12.4</b> Merging Data</a><ul>
+<li class="chapter" data-level="12.4.1" data-path="merging-data.html"><a href="merging-data.html#the-by.x-and-by.y-arguments"><i class="fa fa-check"></i><b>12.4.1</b> The by.x and by.y Arguments</a></li>
+</ul></li>
+<li class="chapter" data-level="12.5" data-path="merging-data.html"><a href="merging-data.html#non-unique-observations-in-id-variables"><i class="fa fa-check"></i><b>12.5</b> Non-Unique Observations in ID Variables</a><ul>
+<li class="chapter" data-level="12.5.1" data-path="merging-data.html"><a href="merging-data.html#example-of-incorrect-merge"><i class="fa fa-check"></i><b>12.5.1</b> Example of Incorrect Merge</a></li>
+</ul></li>
+<li class="chapter" data-level="12.6" data-path="merging-data.html"><a href="merging-data.html#the-in-function"><i class="fa fa-check"></i><b>12.6</b> The %in% function</a></li>
+<li class="chapter" data-level="12.7" data-path="merging-data.html"><a href="merging-data.html#the-match-function"><i class="fa fa-check"></i><b>12.7</b> The Match Function</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://webapp4.asu.edu/programs/t5/majorinfo/ASU00/PPPGEMS/graduate/false" target="blank">ASU</a></li>
@@ -286,62 +297,62 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="customizing-plots" class="section level1">
-<h1><span class="header-section-number">Chapter 7</span> Customizing Plots</h1>
+<h1><span class="header-section-number">Chapter 10</span> Customizing Plots</h1>
 <div id="key-concepts-6" class="section level2">
-<h2><span class="header-section-number">7.1</span> Key Concepts</h2>
+<h2><span class="header-section-number">10.1</span> Key Concepts</h2>
 <p>We can create almost any customized visualization using a small number of functions from the Core R graphics engine:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">points</span>(</a>
-<a class="sourceLine" id="cb1-2" data-line-number="2">  <span class="dt">x=</span>x, <span class="dt">y=</span>y,                    <span class="co"># plots points at the x,y positions </span></a>
-<a class="sourceLine" id="cb1-3" data-line-number="3">  <span class="dt">pch=</span><span class="dv">19</span>,                      <span class="co"># the type of point to plot</span></a>
-<a class="sourceLine" id="cb1-4" data-line-number="4">  <span class="dt">cex=</span><span class="dv">2</span>,                           <span class="co"># aspect ratio of point size</span></a>
-<a class="sourceLine" id="cb1-5" data-line-number="5">  <span class="dt">col=</span><span class="st">&quot;red&quot;</span>,                     <span class="co"># color of points</span></a>
-<a class="sourceLine" id="cb1-6" data-line-number="6">  <span class="dt">bg=</span><span class="st">&quot;green&quot;</span>                     <span class="co"># fill color for open symbols</span></a>
-<a class="sourceLine" id="cb1-7" data-line-number="7"> )</a>
-<a class="sourceLine" id="cb1-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb1-9" data-line-number="9"></a>
-<a class="sourceLine" id="cb1-10" data-line-number="10"><span class="kw">text</span>(</a>
-<a class="sourceLine" id="cb1-11" data-line-number="11">  <span class="dt">x=</span>x, <span class="dt">y=</span>y,                    <span class="co"># draws a line by connecting points </span></a>
-<a class="sourceLine" id="cb1-12" data-line-number="12">  <span class="dt">labels=</span>some.text,          <span class="co"># vector of labels to plot on the graph</span></a>
-<a class="sourceLine" id="cb1-13" data-line-number="13">  <span class="dt">pos=</span><span class="dv">3</span>,                           <span class="co"># position: 1=below, 2=left, 3=above, 4=right</span></a>
-<a class="sourceLine" id="cb1-14" data-line-number="14">  <span class="dt">cex=</span><span class="dv">2</span>,                           <span class="co"># aspect ratio of text size</span></a>
-<a class="sourceLine" id="cb1-15" data-line-number="15">  <span class="dt">col=</span><span class="st">&quot;red&quot;</span>                    <span class="co"># color of text</span></a>
-<a class="sourceLine" id="cb1-16" data-line-number="16"> )</a>
-<a class="sourceLine" id="cb1-17" data-line-number="17"></a>
-<a class="sourceLine" id="cb1-18" data-line-number="18"></a>
-<a class="sourceLine" id="cb1-19" data-line-number="19"><span class="kw">lines</span>(</a>
-<a class="sourceLine" id="cb1-20" data-line-number="20">  <span class="dt">x=</span>x, <span class="dt">y=</span>y,                    <span class="co"># draws a line by connecting points </span></a>
-<a class="sourceLine" id="cb1-21" data-line-number="21">  <span class="dt">lty=</span><span class="st">&quot;l&quot;</span>,                       <span class="co"># type of lines, same as above</span></a>
-<a class="sourceLine" id="cb1-22" data-line-number="22">  <span class="dt">lwd=</span><span class="fl">0.5</span>,                     <span class="co"># line thickness</span></a>
-<a class="sourceLine" id="cb1-23" data-line-number="23">)</a>
-<a class="sourceLine" id="cb1-24" data-line-number="24"></a>
-<a class="sourceLine" id="cb1-25" data-line-number="25"></a>
-<a class="sourceLine" id="cb1-26" data-line-number="26"><span class="kw">segments</span>(</a>
-<a class="sourceLine" id="cb1-27" data-line-number="27">  <span class="dt">x0=</span>x0, <span class="dt">y0=</span>y0,              <span class="co"># starting points of the segments (usually a vector)</span></a>
-<a class="sourceLine" id="cb1-28" data-line-number="28">  <span class="dt">x1=</span>x1, <span class="dt">y1=</span>y1,              <span class="co"># end points of the segments (usually a vector)</span></a>
-<a class="sourceLine" id="cb1-29" data-line-number="29">  ...                            <span class="co"># other arguments from lines()</span></a>
-<a class="sourceLine" id="cb1-30" data-line-number="30"> )</a>
-<a class="sourceLine" id="cb1-31" data-line-number="31"></a>
-<a class="sourceLine" id="cb1-32" data-line-number="32"></a>
-<a class="sourceLine" id="cb1-33" data-line-number="33"><span class="kw">title</span>(</a>
-<a class="sourceLine" id="cb1-34" data-line-number="34">  <span class="dt">main=</span><span class="st">&quot;Plot Title&quot;</span>,       <span class="co"># text for the plot title</span></a>
-<a class="sourceLine" id="cb1-35" data-line-number="35">  <span class="dt">xlab=</span><span class="st">&quot;x variable&quot;</span>,       <span class="co"># text for the x-axis label</span></a>
-<a class="sourceLine" id="cb1-36" data-line-number="36">  <span class="dt">ylab=</span><span class="st">&quot;y variable&quot;</span>,       <span class="co"># text for the y-axis label</span></a>
-<a class="sourceLine" id="cb1-37" data-line-number="37">  <span class="dt">line=</span> <span class="dv">-1</span>                 <span class="co"># move the title closer / further</span></a>
-<a class="sourceLine" id="cb1-38" data-line-number="38">)</a>
-<a class="sourceLine" id="cb1-39" data-line-number="39"> </a>
-<a class="sourceLine" id="cb1-40" data-line-number="40"></a>
-<a class="sourceLine" id="cb1-41" data-line-number="41"><span class="kw">axis</span>(</a>
-<a class="sourceLine" id="cb1-42" data-line-number="42">  <span class="dt">side=</span><span class="dv">1</span>                   <span class="co"># 1=below, 2=left, 3=above, 4=right</span></a>
-<a class="sourceLine" id="cb1-43" data-line-number="43">  <span class="dt">at=</span><span class="kw">c</span>(<span class="dv">10</span>,<span class="dv">20</span>,<span class="dv">30</span>),          <span class="co"># position of tick marks</span></a>
-<a class="sourceLine" id="cb1-44" data-line-number="44">  <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;S&quot;</span>,<span class="st">&quot;M&quot;</span>,<span class="st">&quot;L&quot;</span>)    <span class="co"># labels for tick marks </span></a>
-<a class="sourceLine" id="cb1-45" data-line-number="45">)</a></code></pre></div>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb175-1" data-line-number="1"><span class="kw">points</span>(</a>
+<a class="sourceLine" id="cb175-2" data-line-number="2">  <span class="dt">x=</span>x, <span class="dt">y=</span>y,                    <span class="co"># plots points at the x,y positions </span></a>
+<a class="sourceLine" id="cb175-3" data-line-number="3">  <span class="dt">pch=</span><span class="dv">19</span>,                      <span class="co"># the type of point to plot</span></a>
+<a class="sourceLine" id="cb175-4" data-line-number="4">  <span class="dt">cex=</span><span class="dv">2</span>,                           <span class="co"># aspect ratio of point size</span></a>
+<a class="sourceLine" id="cb175-5" data-line-number="5">  <span class="dt">col=</span><span class="st">&quot;red&quot;</span>,                     <span class="co"># color of points</span></a>
+<a class="sourceLine" id="cb175-6" data-line-number="6">  <span class="dt">bg=</span><span class="st">&quot;green&quot;</span>                     <span class="co"># fill color for open symbols</span></a>
+<a class="sourceLine" id="cb175-7" data-line-number="7"> )</a>
+<a class="sourceLine" id="cb175-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb175-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb175-10" data-line-number="10"><span class="kw">text</span>(</a>
+<a class="sourceLine" id="cb175-11" data-line-number="11">  <span class="dt">x=</span>x, <span class="dt">y=</span>y,                    <span class="co"># draws a line by connecting points </span></a>
+<a class="sourceLine" id="cb175-12" data-line-number="12">  <span class="dt">labels=</span>some.text,          <span class="co"># vector of labels to plot on the graph</span></a>
+<a class="sourceLine" id="cb175-13" data-line-number="13">  <span class="dt">pos=</span><span class="dv">3</span>,                           <span class="co"># position: 1=below, 2=left, 3=above, 4=right</span></a>
+<a class="sourceLine" id="cb175-14" data-line-number="14">  <span class="dt">cex=</span><span class="dv">2</span>,                           <span class="co"># aspect ratio of text size</span></a>
+<a class="sourceLine" id="cb175-15" data-line-number="15">  <span class="dt">col=</span><span class="st">&quot;red&quot;</span>                    <span class="co"># color of text</span></a>
+<a class="sourceLine" id="cb175-16" data-line-number="16"> )</a>
+<a class="sourceLine" id="cb175-17" data-line-number="17"></a>
+<a class="sourceLine" id="cb175-18" data-line-number="18"></a>
+<a class="sourceLine" id="cb175-19" data-line-number="19"><span class="kw">lines</span>(</a>
+<a class="sourceLine" id="cb175-20" data-line-number="20">  <span class="dt">x=</span>x, <span class="dt">y=</span>y,                    <span class="co"># draws a line by connecting points </span></a>
+<a class="sourceLine" id="cb175-21" data-line-number="21">  <span class="dt">lty=</span><span class="st">&quot;l&quot;</span>,                       <span class="co"># type of lines, same as above</span></a>
+<a class="sourceLine" id="cb175-22" data-line-number="22">  <span class="dt">lwd=</span><span class="fl">0.5</span>,                     <span class="co"># line thickness</span></a>
+<a class="sourceLine" id="cb175-23" data-line-number="23">)</a>
+<a class="sourceLine" id="cb175-24" data-line-number="24"></a>
+<a class="sourceLine" id="cb175-25" data-line-number="25"></a>
+<a class="sourceLine" id="cb175-26" data-line-number="26"><span class="kw">segments</span>(</a>
+<a class="sourceLine" id="cb175-27" data-line-number="27">  <span class="dt">x0=</span>x0, <span class="dt">y0=</span>y0,              <span class="co"># starting points of the segments (usually a vector)</span></a>
+<a class="sourceLine" id="cb175-28" data-line-number="28">  <span class="dt">x1=</span>x1, <span class="dt">y1=</span>y1,              <span class="co"># end points of the segments (usually a vector)</span></a>
+<a class="sourceLine" id="cb175-29" data-line-number="29">  ...                            <span class="co"># other arguments from lines()</span></a>
+<a class="sourceLine" id="cb175-30" data-line-number="30"> )</a>
+<a class="sourceLine" id="cb175-31" data-line-number="31"></a>
+<a class="sourceLine" id="cb175-32" data-line-number="32"></a>
+<a class="sourceLine" id="cb175-33" data-line-number="33"><span class="kw">title</span>(</a>
+<a class="sourceLine" id="cb175-34" data-line-number="34">  <span class="dt">main=</span><span class="st">&quot;Plot Title&quot;</span>,       <span class="co"># text for the plot title</span></a>
+<a class="sourceLine" id="cb175-35" data-line-number="35">  <span class="dt">xlab=</span><span class="st">&quot;x variable&quot;</span>,       <span class="co"># text for the x-axis label</span></a>
+<a class="sourceLine" id="cb175-36" data-line-number="36">  <span class="dt">ylab=</span><span class="st">&quot;y variable&quot;</span>,       <span class="co"># text for the y-axis label</span></a>
+<a class="sourceLine" id="cb175-37" data-line-number="37">  <span class="dt">line=</span> <span class="dv">-1</span>                 <span class="co"># move the title closer / further</span></a>
+<a class="sourceLine" id="cb175-38" data-line-number="38">)</a>
+<a class="sourceLine" id="cb175-39" data-line-number="39"> </a>
+<a class="sourceLine" id="cb175-40" data-line-number="40"></a>
+<a class="sourceLine" id="cb175-41" data-line-number="41"><span class="kw">axis</span>(</a>
+<a class="sourceLine" id="cb175-42" data-line-number="42">  <span class="dt">side=</span><span class="dv">1</span>                   <span class="co"># 1=below, 2=left, 3=above, 4=right</span></a>
+<a class="sourceLine" id="cb175-43" data-line-number="43">  <span class="dt">at=</span><span class="kw">c</span>(<span class="dv">10</span>,<span class="dv">20</span>,<span class="dv">30</span>),          <span class="co"># position of tick marks</span></a>
+<a class="sourceLine" id="cb175-44" data-line-number="44">  <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;S&quot;</span>,<span class="st">&quot;M&quot;</span>,<span class="st">&quot;L&quot;</span>)    <span class="co"># labels for tick marks </span></a>
+<a class="sourceLine" id="cb175-45" data-line-number="45">)</a></code></pre></div>
 </div>
 <div id="packages-used-in-this-chapter-3" class="section level2">
-<h2><span class="header-section-number">7.2</span> Packages Used in This Chapter</h2>
+<h2><span class="header-section-number">10.2</span> Packages Used in This Chapter</h2>
 <p>We will use some data from the <strong>Lahman</strong> baseball data package for examples in this chapter.</p>
 <p>The <strong>Master</strong> data frame contains information about professional baseball players. We will focus on the relationship between height and weight of the players.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">library</span>( Lahman )</a>
-<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="kw">data</span>( Master )</a></code></pre></div>
+<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb176-1" data-line-number="1"><span class="kw">library</span>( Lahman )</a>
+<a class="sourceLine" id="cb176-2" data-line-number="2"><span class="kw">data</span>( Master )</a></code></pre></div>
 <table style="width:96%;">
 <colgroup>
 <col width="16%" />
@@ -420,10 +431,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tr>
 </tbody>
 </table>
-<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-5-1.png" width="70%" style="display: block; margin: auto;" /><img src="DS4PS-I_files/figure-html/unnamed-chunk-5-2.png" width="70%" style="display: block; margin: auto;" /><img src="DS4PS-I_files/figure-html/unnamed-chunk-5-3.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-256-1.png" width="70%" style="display: block; margin: auto;" /><img src="DS4PS-I_files/figure-html/unnamed-chunk-256-2.png" width="70%" style="display: block; margin: auto;" /><img src="DS4PS-I_files/figure-html/unnamed-chunk-256-3.png" width="70%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="layering-approach" class="section level2">
-<h2><span class="header-section-number">7.3</span> Layering Approach</h2>
+<h2><span class="header-section-number">10.3</span> Layering Approach</h2>
 <p>Graphs in R are created by layering elements on top of each other. The easiest way to understand this is to build a plot from the ground up.</p>
 <p>The following graph is comprised of six components:</p>
 <ul>
@@ -435,63 +446,63 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>y-label</li>
 </ul>
 <p>Many other elements can be added to the plot, but this is a good start.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="co"># remove players with no height or weight measures</span></a>
-<a class="sourceLine" id="cb3-2" data-line-number="2">Master &lt;-<span class="st"> </span><span class="kw">select</span>( Master, height, weight )</a>
-<a class="sourceLine" id="cb3-3" data-line-number="3">Master &lt;-<span class="st"> </span><span class="kw">na.omit</span>( Master ) </a>
-<a class="sourceLine" id="cb3-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="co"># find max and min values for each</span></a>
-<a class="sourceLine" id="cb3-6" data-line-number="6">xmin &lt;-<span class="st"> </span><span class="kw">min</span>(Master<span class="op">$</span>height)</a>
-<a class="sourceLine" id="cb3-7" data-line-number="7">xmax &lt;-<span class="st"> </span><span class="kw">max</span>(Master<span class="op">$</span>height)</a>
-<a class="sourceLine" id="cb3-8" data-line-number="8">ymin &lt;-<span class="st"> </span><span class="kw">min</span>(Master<span class="op">$</span>weight)</a>
-<a class="sourceLine" id="cb3-9" data-line-number="9">ymax &lt;-<span class="st"> </span><span class="kw">max</span>(Master<span class="op">$</span>weight)</a>
-<a class="sourceLine" id="cb3-10" data-line-number="10"></a>
-<a class="sourceLine" id="cb3-11" data-line-number="11"><span class="co"># empty plot</span></a>
-<a class="sourceLine" id="cb3-12" data-line-number="12"><span class="kw">plot.new</span>()</a>
-<a class="sourceLine" id="cb3-13" data-line-number="13"><span class="kw">plot.window</span>( <span class="dt">xlim=</span><span class="kw">c</span>(xmin,xmax), <span class="dt">ylim=</span><span class="kw">c</span>(ymin,ymax) )</a>
-<a class="sourceLine" id="cb3-14" data-line-number="14"><span class="kw">box</span>( <span class="dt">col=</span><span class="st">&quot;gray&quot;</span> )</a>
-<a class="sourceLine" id="cb3-15" data-line-number="15"><span class="kw">text</span>( <span class="dv">64</span>, <span class="dv">200</span>, <span class="st">&quot;(Empty Plot Window)&quot;</span>, <span class="dt">cex=</span><span class="dv">2</span> )</a></code></pre></div>
-<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-6-1.png" width="70%" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="co"># add points</span></a>
-<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="kw">plot.new</span>()</a>
-<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="kw">plot.window</span>( <span class="dt">xlim=</span><span class="kw">c</span>(xmin,xmax), <span class="dt">ylim=</span><span class="kw">c</span>(ymin,ymax) )</a>
-<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="kw">box</span>( <span class="dt">col=</span><span class="st">&quot;gray&quot;</span> )</a>
-<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="kw">points</span>( Master<span class="op">$</span>height, Master<span class="op">$</span>weight, <span class="dt">pch=</span><span class="dv">19</span> )</a></code></pre></div>
-<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-7-1.png" width="70%" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="co"># add an x-axis and y-axis</span></a>
-<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="kw">plot.new</span>()</a>
-<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="kw">plot.window</span>( <span class="dt">xlim=</span><span class="kw">c</span>(xmin,xmax), <span class="dt">ylim=</span><span class="kw">c</span>(ymin,ymax) )</a>
-<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="kw">box</span>( <span class="dt">col=</span><span class="st">&quot;gray&quot;</span> )</a>
-<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="kw">points</span>( Master<span class="op">$</span>height, Master<span class="op">$</span>weight, <span class="dt">pch=</span><span class="dv">19</span> )</a>
-<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="kw">axis</span>( <span class="dt">side=</span><span class="dv">1</span> )</a>
-<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="kw">axis</span>( <span class="dt">side=</span><span class="dv">2</span>, <span class="dt">las=</span><span class="dv">1</span> )</a></code></pre></div>
-<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-8-1.png" width="70%" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="co"># add axis labels</span></a>
-<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="kw">plot.new</span>()</a>
-<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="kw">plot.window</span>( <span class="dt">xlim=</span><span class="kw">c</span>(xmin,xmax), <span class="dt">ylim=</span><span class="kw">c</span>(ymin,ymax) )</a>
-<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="kw">box</span>( <span class="dt">col=</span><span class="st">&quot;gray&quot;</span> )</a>
-<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="kw">points</span>( Master<span class="op">$</span>height, Master<span class="op">$</span>weight, <span class="dt">pch=</span><span class="dv">19</span> )</a>
-<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="kw">axis</span>( <span class="dt">side=</span><span class="dv">1</span> )</a>
-<a class="sourceLine" id="cb6-7" data-line-number="7"><span class="kw">axis</span>( <span class="dt">side=</span><span class="dv">2</span>, <span class="dt">las=</span><span class="dv">1</span> )</a>
-<a class="sourceLine" id="cb6-8" data-line-number="8"><span class="kw">title</span>( <span class="dt">xlab=</span><span class="st">&quot;Height (inches)&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;Weight (lbs)&quot;</span> )</a>
-<a class="sourceLine" id="cb6-9" data-line-number="9"><span class="kw">title</span>( <span class="dt">main=</span><span class="st">&quot;Relationship Between Height and Weight of MLB Players&quot;</span> )</a></code></pre></div>
-<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-9-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb177-1" data-line-number="1"><span class="co"># remove players with no height or weight measures</span></a>
+<a class="sourceLine" id="cb177-2" data-line-number="2">Master &lt;-<span class="st"> </span><span class="kw">select</span>( Master, height, weight )</a>
+<a class="sourceLine" id="cb177-3" data-line-number="3">Master &lt;-<span class="st"> </span><span class="kw">na.omit</span>( Master ) </a>
+<a class="sourceLine" id="cb177-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb177-5" data-line-number="5"><span class="co"># find max and min values for each</span></a>
+<a class="sourceLine" id="cb177-6" data-line-number="6">xmin &lt;-<span class="st"> </span><span class="kw">min</span>(Master<span class="op">$</span>height)</a>
+<a class="sourceLine" id="cb177-7" data-line-number="7">xmax &lt;-<span class="st"> </span><span class="kw">max</span>(Master<span class="op">$</span>height)</a>
+<a class="sourceLine" id="cb177-8" data-line-number="8">ymin &lt;-<span class="st"> </span><span class="kw">min</span>(Master<span class="op">$</span>weight)</a>
+<a class="sourceLine" id="cb177-9" data-line-number="9">ymax &lt;-<span class="st"> </span><span class="kw">max</span>(Master<span class="op">$</span>weight)</a>
+<a class="sourceLine" id="cb177-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb177-11" data-line-number="11"><span class="co"># empty plot</span></a>
+<a class="sourceLine" id="cb177-12" data-line-number="12"><span class="kw">plot.new</span>()</a>
+<a class="sourceLine" id="cb177-13" data-line-number="13"><span class="kw">plot.window</span>( <span class="dt">xlim=</span><span class="kw">c</span>(xmin,xmax), <span class="dt">ylim=</span><span class="kw">c</span>(ymin,ymax) )</a>
+<a class="sourceLine" id="cb177-14" data-line-number="14"><span class="kw">box</span>( <span class="dt">col=</span><span class="st">&quot;gray&quot;</span> )</a>
+<a class="sourceLine" id="cb177-15" data-line-number="15"><span class="kw">text</span>( <span class="dv">64</span>, <span class="dv">200</span>, <span class="st">&quot;(Empty Plot Window)&quot;</span>, <span class="dt">cex=</span><span class="dv">2</span> )</a></code></pre></div>
+<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-257-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb178-1" data-line-number="1"><span class="co"># add points</span></a>
+<a class="sourceLine" id="cb178-2" data-line-number="2"><span class="kw">plot.new</span>()</a>
+<a class="sourceLine" id="cb178-3" data-line-number="3"><span class="kw">plot.window</span>( <span class="dt">xlim=</span><span class="kw">c</span>(xmin,xmax), <span class="dt">ylim=</span><span class="kw">c</span>(ymin,ymax) )</a>
+<a class="sourceLine" id="cb178-4" data-line-number="4"><span class="kw">box</span>( <span class="dt">col=</span><span class="st">&quot;gray&quot;</span> )</a>
+<a class="sourceLine" id="cb178-5" data-line-number="5"><span class="kw">points</span>( Master<span class="op">$</span>height, Master<span class="op">$</span>weight, <span class="dt">pch=</span><span class="dv">19</span> )</a></code></pre></div>
+<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-258-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb179-1" data-line-number="1"><span class="co"># add an x-axis and y-axis</span></a>
+<a class="sourceLine" id="cb179-2" data-line-number="2"><span class="kw">plot.new</span>()</a>
+<a class="sourceLine" id="cb179-3" data-line-number="3"><span class="kw">plot.window</span>( <span class="dt">xlim=</span><span class="kw">c</span>(xmin,xmax), <span class="dt">ylim=</span><span class="kw">c</span>(ymin,ymax) )</a>
+<a class="sourceLine" id="cb179-4" data-line-number="4"><span class="kw">box</span>( <span class="dt">col=</span><span class="st">&quot;gray&quot;</span> )</a>
+<a class="sourceLine" id="cb179-5" data-line-number="5"><span class="kw">points</span>( Master<span class="op">$</span>height, Master<span class="op">$</span>weight, <span class="dt">pch=</span><span class="dv">19</span> )</a>
+<a class="sourceLine" id="cb179-6" data-line-number="6"><span class="kw">axis</span>( <span class="dt">side=</span><span class="dv">1</span> )</a>
+<a class="sourceLine" id="cb179-7" data-line-number="7"><span class="kw">axis</span>( <span class="dt">side=</span><span class="dv">2</span>, <span class="dt">las=</span><span class="dv">1</span> )</a></code></pre></div>
+<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-259-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb180-1" data-line-number="1"><span class="co"># add axis labels</span></a>
+<a class="sourceLine" id="cb180-2" data-line-number="2"><span class="kw">plot.new</span>()</a>
+<a class="sourceLine" id="cb180-3" data-line-number="3"><span class="kw">plot.window</span>( <span class="dt">xlim=</span><span class="kw">c</span>(xmin,xmax), <span class="dt">ylim=</span><span class="kw">c</span>(ymin,ymax) )</a>
+<a class="sourceLine" id="cb180-4" data-line-number="4"><span class="kw">box</span>( <span class="dt">col=</span><span class="st">&quot;gray&quot;</span> )</a>
+<a class="sourceLine" id="cb180-5" data-line-number="5"><span class="kw">points</span>( Master<span class="op">$</span>height, Master<span class="op">$</span>weight, <span class="dt">pch=</span><span class="dv">19</span> )</a>
+<a class="sourceLine" id="cb180-6" data-line-number="6"><span class="kw">axis</span>( <span class="dt">side=</span><span class="dv">1</span> )</a>
+<a class="sourceLine" id="cb180-7" data-line-number="7"><span class="kw">axis</span>( <span class="dt">side=</span><span class="dv">2</span>, <span class="dt">las=</span><span class="dv">1</span> )</a>
+<a class="sourceLine" id="cb180-8" data-line-number="8"><span class="kw">title</span>( <span class="dt">xlab=</span><span class="st">&quot;Height (inches)&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;Weight (lbs)&quot;</span> )</a>
+<a class="sourceLine" id="cb180-9" data-line-number="9"><span class="kw">title</span>( <span class="dt">main=</span><span class="st">&quot;Relationship Between Height and Weight of MLB Players&quot;</span> )</a></code></pre></div>
+<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-260-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>Now let’s see if we can improve the aestetics a bit. This is pretty dense data, so let’s see if we can use some color transparency to get a sense of typical players versus outliers.</p>
 <p>Let’s adjust the xlim and ylim arguments so we don’t show the empty bottom left quadrant, and let’s use the <strong>gray()</strong> color function to add some transparency to the over-plotted data points. The first argument is a value between 0 and 1 specifying how dark you want the gray (0 being white, 1 being black, and any value in-between being a shade of gray). The second argument is another value between 0 and 1 specifying the transparency of the points, 0 being invisible and 1 being no transparency.</p>
 <p>We can also jitter them a bit (a tiny amount of random error to each data point) so they are not all plotted on top of each other since height and weight only take integer values.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">height.jitter &lt;-<span class="st"> </span>Master<span class="op">$</span>height <span class="op">+</span><span class="st"> </span><span class="kw">rnorm</span>( <span class="kw">nrow</span>(Master) )</a>
-<a class="sourceLine" id="cb7-2" data-line-number="2">weight.jitter &lt;-<span class="st"> </span>Master<span class="op">$</span>weight <span class="op">+</span><span class="st"> </span><span class="kw">rnorm</span>( <span class="kw">nrow</span>(Master) )</a>
-<a class="sourceLine" id="cb7-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb7-4" data-line-number="4"><span class="kw">plot.new</span>()</a>
-<a class="sourceLine" id="cb7-5" data-line-number="5"><span class="kw">plot.window</span>( <span class="dt">xlim=</span><span class="kw">c</span>(<span class="dv">60</span>,xmax), <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">110</span>,ymax) )</a>
-<a class="sourceLine" id="cb7-6" data-line-number="6"><span class="kw">points</span>( height.jitter, weight.jitter, </a>
-<a class="sourceLine" id="cb7-7" data-line-number="7">        <span class="dt">pch=</span><span class="dv">19</span>, <span class="dt">cex=</span><span class="fl">1.2</span>, <span class="dt">col=</span><span class="kw">gray</span>(<span class="fl">0.5</span>,<span class="fl">0.02</span>) )</a>
-<a class="sourceLine" id="cb7-8" data-line-number="8"><span class="kw">axis</span>( <span class="dt">side=</span><span class="dv">1</span> )</a>
-<a class="sourceLine" id="cb7-9" data-line-number="9"><span class="kw">axis</span>( <span class="dt">side=</span><span class="dv">2</span> )</a>
-<a class="sourceLine" id="cb7-10" data-line-number="10"><span class="kw">title</span>( <span class="dt">xlab=</span><span class="st">&quot;Height (inches)&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;Weight (lbs)&quot;</span>,</a>
-<a class="sourceLine" id="cb7-11" data-line-number="11">       <span class="dt">main=</span><span class="st">&quot;Relationship Between Height and Weight of MLB Players&quot;</span> )</a></code></pre></div>
-<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-10-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb181-1" data-line-number="1">height.jitter &lt;-<span class="st"> </span>Master<span class="op">$</span>height <span class="op">+</span><span class="st"> </span><span class="kw">rnorm</span>( <span class="kw">nrow</span>(Master) )</a>
+<a class="sourceLine" id="cb181-2" data-line-number="2">weight.jitter &lt;-<span class="st"> </span>Master<span class="op">$</span>weight <span class="op">+</span><span class="st"> </span><span class="kw">rnorm</span>( <span class="kw">nrow</span>(Master) )</a>
+<a class="sourceLine" id="cb181-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb181-4" data-line-number="4"><span class="kw">plot.new</span>()</a>
+<a class="sourceLine" id="cb181-5" data-line-number="5"><span class="kw">plot.window</span>( <span class="dt">xlim=</span><span class="kw">c</span>(<span class="dv">60</span>,xmax), <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">110</span>,ymax) )</a>
+<a class="sourceLine" id="cb181-6" data-line-number="6"><span class="kw">points</span>( height.jitter, weight.jitter, </a>
+<a class="sourceLine" id="cb181-7" data-line-number="7">        <span class="dt">pch=</span><span class="dv">19</span>, <span class="dt">cex=</span><span class="fl">1.2</span>, <span class="dt">col=</span><span class="kw">gray</span>(<span class="fl">0.5</span>,<span class="fl">0.02</span>) )</a>
+<a class="sourceLine" id="cb181-8" data-line-number="8"><span class="kw">axis</span>( <span class="dt">side=</span><span class="dv">1</span> )</a>
+<a class="sourceLine" id="cb181-9" data-line-number="9"><span class="kw">axis</span>( <span class="dt">side=</span><span class="dv">2</span> )</a>
+<a class="sourceLine" id="cb181-10" data-line-number="10"><span class="kw">title</span>( <span class="dt">xlab=</span><span class="st">&quot;Height (inches)&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;Weight (lbs)&quot;</span>,</a>
+<a class="sourceLine" id="cb181-11" data-line-number="11">       <span class="dt">main=</span><span class="st">&quot;Relationship Between Height and Weight of MLB Players&quot;</span> )</a></code></pre></div>
+<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-261-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>This is helpful, but maybe we want to highlight the data core some more. Let’s add another layer with only that data that falls within the 25th to 75th percentiles of height and weight.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw">quantile</span>( Master<span class="op">$</span>height ) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">pander</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb182-1" data-line-number="1"><span class="kw">quantile</span>( Master<span class="op">$</span>height ) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">pander</span>()</a></code></pre></div>
 <table style="width:42%;">
 <colgroup>
 <col width="6%" />
@@ -519,7 +530,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="kw">quantile</span>( Master<span class="op">$</span>weight ) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">pander</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb183-1" data-line-number="1"><span class="kw">quantile</span>( Master<span class="op">$</span>weight ) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">pander</span>()</a></code></pre></div>
 <table style="width:42%;">
 <colgroup>
 <col width="6%" />
@@ -547,63 +558,63 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1">height.jitter &lt;-<span class="st"> </span>Master<span class="op">$</span>height <span class="op">+</span><span class="st"> </span><span class="kw">rnorm</span>( <span class="kw">nrow</span>(Master) )</a>
-<a class="sourceLine" id="cb10-2" data-line-number="2">weight.jitter &lt;-<span class="st"> </span>Master<span class="op">$</span>weight <span class="op">+</span><span class="st"> </span><span class="kw">rnorm</span>( <span class="kw">nrow</span>(Master) )</a>
-<a class="sourceLine" id="cb10-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb10-4" data-line-number="4">height<span class="fl">.25</span>th &lt;-<span class="st"> </span><span class="kw">quantile</span>( Master<span class="op">$</span>height, <span class="fl">0.25</span>, <span class="dt">na.rm=</span>T )</a>
-<a class="sourceLine" id="cb10-5" data-line-number="5">height<span class="fl">.75</span>th &lt;-<span class="st"> </span><span class="kw">quantile</span>( Master<span class="op">$</span>height, <span class="fl">0.75</span>, <span class="dt">na.rm=</span>T )</a>
-<a class="sourceLine" id="cb10-6" data-line-number="6">these.height<span class="fl">.25</span>th.to<span class="fl">.75</span>th &lt;-<span class="st"> </span>Master<span class="op">$</span>height <span class="op">&gt;</span><span class="st"> </span>height<span class="fl">.25</span>th <span class="op">&amp;</span><span class="st"> </span>Master<span class="op">$</span>height <span class="op">&lt;</span><span class="st"> </span>height<span class="fl">.75</span>th</a>
-<a class="sourceLine" id="cb10-7" data-line-number="7"></a>
-<a class="sourceLine" id="cb10-8" data-line-number="8">weight<span class="fl">.25</span>th &lt;-<span class="st"> </span><span class="kw">quantile</span>( Master<span class="op">$</span>weight, <span class="fl">0.25</span>, <span class="dt">na.rm=</span>T )</a>
-<a class="sourceLine" id="cb10-9" data-line-number="9">weight<span class="fl">.75</span>th &lt;-<span class="st"> </span><span class="kw">quantile</span>( Master<span class="op">$</span>weight, <span class="fl">0.75</span>, <span class="dt">na.rm=</span>T )</a>
-<a class="sourceLine" id="cb10-10" data-line-number="10">these.weight<span class="fl">.25</span>th.to<span class="fl">.75</span>th &lt;-<span class="st"> </span>Master<span class="op">$</span>weight <span class="op">&gt;</span><span class="st"> </span>weight<span class="fl">.25</span>th <span class="op">&amp;</span><span class="st"> </span>Master<span class="op">$</span>weight <span class="op">&lt;</span><span class="st"> </span>weight<span class="fl">.75</span>th</a>
-<a class="sourceLine" id="cb10-11" data-line-number="11"></a>
-<a class="sourceLine" id="cb10-12" data-line-number="12">these.both<span class="fl">.25</span>th.to<span class="fl">.75</span>th &lt;-<span class="st"> </span>these.height<span class="fl">.25</span>th.to<span class="fl">.75</span>th <span class="op">&amp;</span><span class="st"> </span>these.weight<span class="fl">.25</span>th.to<span class="fl">.75</span>th</a>
-<a class="sourceLine" id="cb10-13" data-line-number="13"></a>
-<a class="sourceLine" id="cb10-14" data-line-number="14"><span class="kw">plot.new</span>()</a>
-<a class="sourceLine" id="cb10-15" data-line-number="15"><span class="kw">plot.window</span>( <span class="dt">xlim=</span><span class="kw">c</span>(<span class="dv">60</span>,xmax), <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">110</span>,ymax) )</a>
-<a class="sourceLine" id="cb10-16" data-line-number="16"><span class="kw">axis</span>( <span class="dt">side=</span><span class="dv">1</span> )</a>
-<a class="sourceLine" id="cb10-17" data-line-number="17"><span class="kw">axis</span>( <span class="dt">side=</span><span class="dv">2</span> )</a>
-<a class="sourceLine" id="cb10-18" data-line-number="18"><span class="kw">title</span>( <span class="dt">xlab=</span><span class="st">&quot;Height (inches)&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;Weight (lbs)&quot;</span>,</a>
-<a class="sourceLine" id="cb10-19" data-line-number="19">       <span class="dt">main=</span><span class="st">&quot;Relationship Between Height and Weight of MLB Players&quot;</span> )</a>
-<a class="sourceLine" id="cb10-20" data-line-number="20"></a>
-<a class="sourceLine" id="cb10-21" data-line-number="21"><span class="kw">points</span>( height.jitter, weight.jitter, </a>
-<a class="sourceLine" id="cb10-22" data-line-number="22">        <span class="dt">pch=</span><span class="dv">19</span>, <span class="dt">cex=</span><span class="fl">1.2</span>, <span class="dt">col=</span><span class="kw">gray</span>(<span class="fl">0.5</span>,<span class="fl">0.02</span>) )</a>
-<a class="sourceLine" id="cb10-23" data-line-number="23"></a>
-<a class="sourceLine" id="cb10-24" data-line-number="24"><span class="kw">points</span>( height.jitter[ these.both<span class="fl">.25</span>th.to<span class="fl">.75</span>th ], </a>
-<a class="sourceLine" id="cb10-25" data-line-number="25">        weight.jitter[ these.both<span class="fl">.25</span>th.to<span class="fl">.75</span>th ], </a>
-<a class="sourceLine" id="cb10-26" data-line-number="26">        <span class="dt">pch=</span><span class="dv">19</span>, <span class="dt">cex=</span><span class="fl">0.3</span>, <span class="dt">col=</span><span class="st">&quot;firebrick3&quot;</span> )</a></code></pre></div>
-<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-12-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb184-1" data-line-number="1">height.jitter &lt;-<span class="st"> </span>Master<span class="op">$</span>height <span class="op">+</span><span class="st"> </span><span class="kw">rnorm</span>( <span class="kw">nrow</span>(Master) )</a>
+<a class="sourceLine" id="cb184-2" data-line-number="2">weight.jitter &lt;-<span class="st"> </span>Master<span class="op">$</span>weight <span class="op">+</span><span class="st"> </span><span class="kw">rnorm</span>( <span class="kw">nrow</span>(Master) )</a>
+<a class="sourceLine" id="cb184-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb184-4" data-line-number="4">height<span class="fl">.25</span>th &lt;-<span class="st"> </span><span class="kw">quantile</span>( Master<span class="op">$</span>height, <span class="fl">0.25</span>, <span class="dt">na.rm=</span>T )</a>
+<a class="sourceLine" id="cb184-5" data-line-number="5">height<span class="fl">.75</span>th &lt;-<span class="st"> </span><span class="kw">quantile</span>( Master<span class="op">$</span>height, <span class="fl">0.75</span>, <span class="dt">na.rm=</span>T )</a>
+<a class="sourceLine" id="cb184-6" data-line-number="6">these.height<span class="fl">.25</span>th.to<span class="fl">.75</span>th &lt;-<span class="st"> </span>Master<span class="op">$</span>height <span class="op">&gt;</span><span class="st"> </span>height<span class="fl">.25</span>th <span class="op">&amp;</span><span class="st"> </span>Master<span class="op">$</span>height <span class="op">&lt;</span><span class="st"> </span>height<span class="fl">.75</span>th</a>
+<a class="sourceLine" id="cb184-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb184-8" data-line-number="8">weight<span class="fl">.25</span>th &lt;-<span class="st"> </span><span class="kw">quantile</span>( Master<span class="op">$</span>weight, <span class="fl">0.25</span>, <span class="dt">na.rm=</span>T )</a>
+<a class="sourceLine" id="cb184-9" data-line-number="9">weight<span class="fl">.75</span>th &lt;-<span class="st"> </span><span class="kw">quantile</span>( Master<span class="op">$</span>weight, <span class="fl">0.75</span>, <span class="dt">na.rm=</span>T )</a>
+<a class="sourceLine" id="cb184-10" data-line-number="10">these.weight<span class="fl">.25</span>th.to<span class="fl">.75</span>th &lt;-<span class="st"> </span>Master<span class="op">$</span>weight <span class="op">&gt;</span><span class="st"> </span>weight<span class="fl">.25</span>th <span class="op">&amp;</span><span class="st"> </span>Master<span class="op">$</span>weight <span class="op">&lt;</span><span class="st"> </span>weight<span class="fl">.75</span>th</a>
+<a class="sourceLine" id="cb184-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb184-12" data-line-number="12">these.both<span class="fl">.25</span>th.to<span class="fl">.75</span>th &lt;-<span class="st"> </span>these.height<span class="fl">.25</span>th.to<span class="fl">.75</span>th <span class="op">&amp;</span><span class="st"> </span>these.weight<span class="fl">.25</span>th.to<span class="fl">.75</span>th</a>
+<a class="sourceLine" id="cb184-13" data-line-number="13"></a>
+<a class="sourceLine" id="cb184-14" data-line-number="14"><span class="kw">plot.new</span>()</a>
+<a class="sourceLine" id="cb184-15" data-line-number="15"><span class="kw">plot.window</span>( <span class="dt">xlim=</span><span class="kw">c</span>(<span class="dv">60</span>,xmax), <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">110</span>,ymax) )</a>
+<a class="sourceLine" id="cb184-16" data-line-number="16"><span class="kw">axis</span>( <span class="dt">side=</span><span class="dv">1</span> )</a>
+<a class="sourceLine" id="cb184-17" data-line-number="17"><span class="kw">axis</span>( <span class="dt">side=</span><span class="dv">2</span> )</a>
+<a class="sourceLine" id="cb184-18" data-line-number="18"><span class="kw">title</span>( <span class="dt">xlab=</span><span class="st">&quot;Height (inches)&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;Weight (lbs)&quot;</span>,</a>
+<a class="sourceLine" id="cb184-19" data-line-number="19">       <span class="dt">main=</span><span class="st">&quot;Relationship Between Height and Weight of MLB Players&quot;</span> )</a>
+<a class="sourceLine" id="cb184-20" data-line-number="20"></a>
+<a class="sourceLine" id="cb184-21" data-line-number="21"><span class="kw">points</span>( height.jitter, weight.jitter, </a>
+<a class="sourceLine" id="cb184-22" data-line-number="22">        <span class="dt">pch=</span><span class="dv">19</span>, <span class="dt">cex=</span><span class="fl">1.2</span>, <span class="dt">col=</span><span class="kw">gray</span>(<span class="fl">0.5</span>,<span class="fl">0.02</span>) )</a>
+<a class="sourceLine" id="cb184-23" data-line-number="23"></a>
+<a class="sourceLine" id="cb184-24" data-line-number="24"><span class="kw">points</span>( height.jitter[ these.both<span class="fl">.25</span>th.to<span class="fl">.75</span>th ], </a>
+<a class="sourceLine" id="cb184-25" data-line-number="25">        weight.jitter[ these.both<span class="fl">.25</span>th.to<span class="fl">.75</span>th ], </a>
+<a class="sourceLine" id="cb184-26" data-line-number="26">        <span class="dt">pch=</span><span class="dv">19</span>, <span class="dt">cex=</span><span class="fl">0.3</span>, <span class="dt">col=</span><span class="st">&quot;firebrick3&quot;</span> )</a></code></pre></div>
+<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-263-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>That didn’t quite work out because a player might be “average” height (height between 25th and 75th percentile), but be heavier or lighter than normal. The criteria we applied basically draws a box and finds data within the box.</p>
 <p>Let’s rethink this a bit, and select players with “average” size using ratios between height and weight, often expressed as Body Mass Index (BMI). This selection criteria will not limit us to a square.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1">bmi &lt;-<span class="st"> </span>(Master<span class="op">$</span>weight <span class="op">*</span><span class="st"> </span><span class="fl">0.45359237</span>) <span class="op">/</span><span class="st"> </span>(Master<span class="op">$</span>height <span class="op">/</span><span class="st"> </span><span class="fl">39.370</span>)<span class="op">^</span><span class="dv">2</span> </a>
-<a class="sourceLine" id="cb11-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb11-3" data-line-number="3">bmi<span class="fl">.25</span>th &lt;-<span class="st"> </span><span class="kw">quantile</span>( bmi, <span class="fl">0.25</span>, <span class="dt">na.rm=</span>T )</a>
-<a class="sourceLine" id="cb11-4" data-line-number="4">bmi<span class="fl">.75</span>th &lt;-<span class="st"> </span><span class="kw">quantile</span>( bmi, <span class="fl">0.75</span>, <span class="dt">na.rm=</span>T )</a>
-<a class="sourceLine" id="cb11-5" data-line-number="5">these.bmi<span class="fl">.25</span>th.to<span class="fl">.75</span>th &lt;-<span class="st"> </span>bmi <span class="op">&gt;</span><span class="st"> </span>bmi<span class="fl">.25</span>th <span class="op">&amp;</span><span class="st"> </span>bmi <span class="op">&lt;</span><span class="st"> </span>bmi<span class="fl">.75</span>th</a>
-<a class="sourceLine" id="cb11-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb11-7" data-line-number="7"><span class="kw">plot.new</span>()</a>
-<a class="sourceLine" id="cb11-8" data-line-number="8"><span class="kw">plot.window</span>( <span class="dt">xlim=</span><span class="kw">c</span>(<span class="dv">60</span>,xmax), <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">110</span>,ymax) )</a>
-<a class="sourceLine" id="cb11-9" data-line-number="9"><span class="kw">axis</span>( <span class="dt">side=</span><span class="dv">1</span> )</a>
-<a class="sourceLine" id="cb11-10" data-line-number="10"><span class="kw">axis</span>( <span class="dt">side=</span><span class="dv">2</span> )</a>
-<a class="sourceLine" id="cb11-11" data-line-number="11"><span class="kw">title</span>( <span class="dt">xlab=</span><span class="st">&quot;Height (inches)&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;Weight (lbs)&quot;</span>,</a>
-<a class="sourceLine" id="cb11-12" data-line-number="12">       <span class="dt">main=</span><span class="st">&quot;Relationship Between Height and Weight of MLB Players&quot;</span> )</a>
-<a class="sourceLine" id="cb11-13" data-line-number="13"></a>
-<a class="sourceLine" id="cb11-14" data-line-number="14"><span class="kw">points</span>( height.jitter, weight.jitter, </a>
-<a class="sourceLine" id="cb11-15" data-line-number="15">        <span class="dt">pch=</span><span class="dv">19</span>, <span class="dt">cex=</span><span class="dv">2</span>, <span class="dt">col=</span><span class="kw">gray</span>(<span class="fl">0.5</span>,<span class="fl">0.02</span>) )</a>
-<a class="sourceLine" id="cb11-16" data-line-number="16"></a>
-<a class="sourceLine" id="cb11-17" data-line-number="17"><span class="kw">points</span>( height.jitter[ these.bmi<span class="fl">.25</span>th.to<span class="fl">.75</span>th ], </a>
-<a class="sourceLine" id="cb11-18" data-line-number="18">        weight.jitter[ these.bmi<span class="fl">.25</span>th.to<span class="fl">.75</span>th ], </a>
-<a class="sourceLine" id="cb11-19" data-line-number="19">        <span class="dt">pch=</span><span class="dv">19</span>, <span class="dt">cex=</span><span class="fl">0.1</span>, <span class="dt">col=</span><span class="st">&quot;firebrick3&quot;</span> )</a></code></pre></div>
-<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-13-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb185-1" data-line-number="1">bmi &lt;-<span class="st"> </span>(Master<span class="op">$</span>weight <span class="op">*</span><span class="st"> </span><span class="fl">0.45359237</span>) <span class="op">/</span><span class="st"> </span>(Master<span class="op">$</span>height <span class="op">/</span><span class="st"> </span><span class="fl">39.370</span>)<span class="op">^</span><span class="dv">2</span> </a>
+<a class="sourceLine" id="cb185-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb185-3" data-line-number="3">bmi<span class="fl">.25</span>th &lt;-<span class="st"> </span><span class="kw">quantile</span>( bmi, <span class="fl">0.25</span>, <span class="dt">na.rm=</span>T )</a>
+<a class="sourceLine" id="cb185-4" data-line-number="4">bmi<span class="fl">.75</span>th &lt;-<span class="st"> </span><span class="kw">quantile</span>( bmi, <span class="fl">0.75</span>, <span class="dt">na.rm=</span>T )</a>
+<a class="sourceLine" id="cb185-5" data-line-number="5">these.bmi<span class="fl">.25</span>th.to<span class="fl">.75</span>th &lt;-<span class="st"> </span>bmi <span class="op">&gt;</span><span class="st"> </span>bmi<span class="fl">.25</span>th <span class="op">&amp;</span><span class="st"> </span>bmi <span class="op">&lt;</span><span class="st"> </span>bmi<span class="fl">.75</span>th</a>
+<a class="sourceLine" id="cb185-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb185-7" data-line-number="7"><span class="kw">plot.new</span>()</a>
+<a class="sourceLine" id="cb185-8" data-line-number="8"><span class="kw">plot.window</span>( <span class="dt">xlim=</span><span class="kw">c</span>(<span class="dv">60</span>,xmax), <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">110</span>,ymax) )</a>
+<a class="sourceLine" id="cb185-9" data-line-number="9"><span class="kw">axis</span>( <span class="dt">side=</span><span class="dv">1</span> )</a>
+<a class="sourceLine" id="cb185-10" data-line-number="10"><span class="kw">axis</span>( <span class="dt">side=</span><span class="dv">2</span> )</a>
+<a class="sourceLine" id="cb185-11" data-line-number="11"><span class="kw">title</span>( <span class="dt">xlab=</span><span class="st">&quot;Height (inches)&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;Weight (lbs)&quot;</span>,</a>
+<a class="sourceLine" id="cb185-12" data-line-number="12">       <span class="dt">main=</span><span class="st">&quot;Relationship Between Height and Weight of MLB Players&quot;</span> )</a>
+<a class="sourceLine" id="cb185-13" data-line-number="13"></a>
+<a class="sourceLine" id="cb185-14" data-line-number="14"><span class="kw">points</span>( height.jitter, weight.jitter, </a>
+<a class="sourceLine" id="cb185-15" data-line-number="15">        <span class="dt">pch=</span><span class="dv">19</span>, <span class="dt">cex=</span><span class="dv">2</span>, <span class="dt">col=</span><span class="kw">gray</span>(<span class="fl">0.5</span>,<span class="fl">0.02</span>) )</a>
+<a class="sourceLine" id="cb185-16" data-line-number="16"></a>
+<a class="sourceLine" id="cb185-17" data-line-number="17"><span class="kw">points</span>( height.jitter[ these.bmi<span class="fl">.25</span>th.to<span class="fl">.75</span>th ], </a>
+<a class="sourceLine" id="cb185-18" data-line-number="18">        weight.jitter[ these.bmi<span class="fl">.25</span>th.to<span class="fl">.75</span>th ], </a>
+<a class="sourceLine" id="cb185-19" data-line-number="19">        <span class="dt">pch=</span><span class="dv">19</span>, <span class="dt">cex=</span><span class="fl">0.1</span>, <span class="dt">col=</span><span class="st">&quot;firebrick3&quot;</span> )</a></code></pre></div>
+<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-264-1.png" width="70%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="highlighting-cases" class="section level2">
-<h2><span class="header-section-number">7.4</span> Highlighting Cases</h2>
+<h2><span class="header-section-number">10.4</span> Highlighting Cases</h2>
 <p>Let’s look back at the original plot. Do you see anything strange?</p>
-<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-14-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-265-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>The smallest data point in the dataset seems to represent a baseball player that is 40 inches tall and weighs 80 pounds. That <em>must</em> be some sort of data entry error, right?</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="kw">data</span>( Master) </a>
-<a class="sourceLine" id="cb12-2" data-line-number="2">Master[ <span class="kw">which.min</span>(Master<span class="op">$</span>height) , <span class="kw">c</span>(<span class="dv">14</span>,<span class="dv">15</span>,<span class="dv">17</span><span class="op">:</span><span class="dv">20</span>,<span class="dv">2</span>) ] <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">pander</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb186-1" data-line-number="1"><span class="kw">data</span>( Master) </a>
+<a class="sourceLine" id="cb186-2" data-line-number="2">Master[ <span class="kw">which.min</span>(Master<span class="op">$</span>height) , <span class="kw">c</span>(<span class="dv">14</span>,<span class="dv">15</span>,<span class="dv">17</span><span class="op">:</span><span class="dv">20</span>,<span class="dv">2</span>) ] <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">pander</span>()</a></code></pre></div>
 <table>
 <colgroup>
 <col width="13%" />
@@ -643,25 +654,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="figures/eddie_gaedel.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>It turns out that <a href="https://www.theversed.com/10266/the-tragic-story-of-eddie-gaedel-the-shortest-player-in-mlb-history/#.i0Qgkojft1">Eddie Gaedel</a>, at 3 foot 7 inches, was the shortest man to ever play on a professional team. He was hired by the owner of the St. Louis Browns as a publicity stunt. He was so short that his strike zone, which goes form the knee to mid-chest, was too small for most pitchers. Crowds would cheer as he would quickly accumulate walks.</p>
 <p>Perhaps it would be useful to annotate some of the outliers on our graph. To do this, we can use the text() function.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="kw">text</span>(</a>
-<a class="sourceLine" id="cb13-2" data-line-number="2">  <span class="dt">x=</span>x, <span class="dt">y=</span>y,                    <span class="co"># draws a line by connecting points </span></a>
-<a class="sourceLine" id="cb13-3" data-line-number="3">  <span class="dt">labels=</span>some.text,          <span class="co"># vector of labels to plot on the graph</span></a>
-<a class="sourceLine" id="cb13-4" data-line-number="4">  <span class="dt">pos=</span><span class="dv">3</span>,                           <span class="co"># position: 1=below, 2=left, 3=above, 4=right</span></a>
-<a class="sourceLine" id="cb13-5" data-line-number="5">  <span class="dt">cex=</span><span class="dv">2</span>,                           <span class="co"># aspect ratio of text size</span></a>
-<a class="sourceLine" id="cb13-6" data-line-number="6">  <span class="dt">col=</span><span class="st">&quot;red&quot;</span>                    <span class="co"># color of text</span></a>
-<a class="sourceLine" id="cb13-7" data-line-number="7"> )</a></code></pre></div>
+<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb187-1" data-line-number="1"><span class="kw">text</span>(</a>
+<a class="sourceLine" id="cb187-2" data-line-number="2">  <span class="dt">x=</span>x, <span class="dt">y=</span>y,                    <span class="co"># draws a line by connecting points </span></a>
+<a class="sourceLine" id="cb187-3" data-line-number="3">  <span class="dt">labels=</span>some.text,          <span class="co"># vector of labels to plot on the graph</span></a>
+<a class="sourceLine" id="cb187-4" data-line-number="4">  <span class="dt">pos=</span><span class="dv">3</span>,                           <span class="co"># position: 1=below, 2=left, 3=above, 4=right</span></a>
+<a class="sourceLine" id="cb187-5" data-line-number="5">  <span class="dt">cex=</span><span class="dv">2</span>,                           <span class="co"># aspect ratio of text size</span></a>
+<a class="sourceLine" id="cb187-6" data-line-number="6">  <span class="dt">col=</span><span class="st">&quot;red&quot;</span>                    <span class="co"># color of text</span></a>
+<a class="sourceLine" id="cb187-7" data-line-number="7"> )</a></code></pre></div>
 <p>Let’s start by circling some data points. We do this by plotting a slightly larger point around the originals for the tallest, shortest, and heaviest players.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="kw">plot.new</span>()</a>
-<a class="sourceLine" id="cb14-2" data-line-number="2"><span class="kw">plot.window</span>( <span class="dt">xlim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>) )</a>
-<a class="sourceLine" id="cb14-3" data-line-number="3"><span class="kw">points</span>( <span class="fl">0.5</span>, <span class="fl">0.5</span>, <span class="dt">pch=</span><span class="dv">19</span>, <span class="dt">col=</span><span class="st">&quot;gray&quot;</span>, <span class="dt">cex=</span><span class="dv">3</span> )</a>
-<a class="sourceLine" id="cb14-4" data-line-number="4"><span class="kw">points</span>( <span class="fl">0.5</span>, <span class="fl">0.5</span>, <span class="dt">pch=</span><span class="dv">1</span>, <span class="dt">cex=</span><span class="dv">5</span>, <span class="dt">col=</span><span class="st">&quot;firebrick&quot;</span> )</a>
-<a class="sourceLine" id="cb14-5" data-line-number="5"><span class="kw">title</span>( <span class="dt">main=</span><span class="st">&quot;Large Hollow Point Plotted </span><span class="ch">\n</span><span class="st">Over Solid Point&quot;</span> )</a></code></pre></div>
-<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-18-1.png" width="70%" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1">this.shortest &lt;-<span class="st"> </span><span class="kw">which.min</span>(Master<span class="op">$</span>height)</a>
-<a class="sourceLine" id="cb15-2" data-line-number="2">this.tallest  &lt;-<span class="st"> </span><span class="kw">which.max</span>(Master<span class="op">$</span>height)</a>
-<a class="sourceLine" id="cb15-3" data-line-number="3">this.heaviest &lt;-<span class="st"> </span><span class="kw">which.max</span>(Master<span class="op">$</span>weight)</a>
-<a class="sourceLine" id="cb15-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb15-5" data-line-number="5">Master[ <span class="kw">c</span>(this.shortest,this.tallest,this.heaviest), <span class="kw">c</span>(<span class="dv">14</span>,<span class="dv">15</span>,<span class="dv">17</span><span class="op">:</span><span class="dv">20</span>,<span class="dv">2</span>) ] <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">pander</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb188-1" data-line-number="1"><span class="kw">plot.new</span>()</a>
+<a class="sourceLine" id="cb188-2" data-line-number="2"><span class="kw">plot.window</span>( <span class="dt">xlim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>) )</a>
+<a class="sourceLine" id="cb188-3" data-line-number="3"><span class="kw">points</span>( <span class="fl">0.5</span>, <span class="fl">0.5</span>, <span class="dt">pch=</span><span class="dv">19</span>, <span class="dt">col=</span><span class="st">&quot;gray&quot;</span>, <span class="dt">cex=</span><span class="dv">3</span> )</a>
+<a class="sourceLine" id="cb188-4" data-line-number="4"><span class="kw">points</span>( <span class="fl">0.5</span>, <span class="fl">0.5</span>, <span class="dt">pch=</span><span class="dv">1</span>, <span class="dt">cex=</span><span class="dv">5</span>, <span class="dt">col=</span><span class="st">&quot;firebrick&quot;</span> )</a>
+<a class="sourceLine" id="cb188-5" data-line-number="5"><span class="kw">title</span>( <span class="dt">main=</span><span class="st">&quot;Large Hollow Point Plotted </span><span class="ch">\n</span><span class="st">Over Solid Point&quot;</span> )</a></code></pre></div>
+<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-269-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb189-1" data-line-number="1">this.shortest &lt;-<span class="st"> </span><span class="kw">which.min</span>(Master<span class="op">$</span>height)</a>
+<a class="sourceLine" id="cb189-2" data-line-number="2">this.tallest  &lt;-<span class="st"> </span><span class="kw">which.max</span>(Master<span class="op">$</span>height)</a>
+<a class="sourceLine" id="cb189-3" data-line-number="3">this.heaviest &lt;-<span class="st"> </span><span class="kw">which.max</span>(Master<span class="op">$</span>weight)</a>
+<a class="sourceLine" id="cb189-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb189-5" data-line-number="5">Master[ <span class="kw">c</span>(this.shortest,this.tallest,this.heaviest), <span class="kw">c</span>(<span class="dv">14</span>,<span class="dv">15</span>,<span class="dv">17</span><span class="op">:</span><span class="dv">20</span>,<span class="dv">2</span>) ] <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">pander</span>()</a></code></pre></div>
 <table>
 <colgroup>
 <col width="14%" />
@@ -719,29 +730,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <p>Let’s highlight the three outliers in our dataset.</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="kw">plot</span>( Master<span class="op">$</span>height, Master<span class="op">$</span>weight, </a>
-<a class="sourceLine" id="cb16-2" data-line-number="2">      <span class="dt">pch=</span><span class="dv">19</span>, <span class="dt">col=</span><span class="st">&quot;gray&quot;</span>,</a>
-<a class="sourceLine" id="cb16-3" data-line-number="3">      <span class="dt">frame.plot=</span><span class="ot">FALSE</span>,</a>
-<a class="sourceLine" id="cb16-4" data-line-number="4">      <span class="dt">xlab=</span><span class="st">&quot;Height (inches)&quot;</span>, </a>
-<a class="sourceLine" id="cb16-5" data-line-number="5">      <span class="dt">ylab=</span><span class="st">&quot;Weight (lbs)&quot;</span>, </a>
-<a class="sourceLine" id="cb16-6" data-line-number="6">      <span class="dt">main=</span><span class="st">&quot;Relationship Between Height and Weight of MLB Players&quot;</span> )</a>
-<a class="sourceLine" id="cb16-7" data-line-number="7"></a>
-<a class="sourceLine" id="cb16-8" data-line-number="8"><span class="kw">points</span>( Master<span class="op">$</span>height[ this.shortest ], </a>
-<a class="sourceLine" id="cb16-9" data-line-number="9">        Master<span class="op">$</span>weight[ this.shortest ], </a>
-<a class="sourceLine" id="cb16-10" data-line-number="10">        <span class="dt">col=</span><span class="st">&quot;firebrick&quot;</span>, <span class="dt">cex=</span><span class="dv">2</span>, <span class="dt">lwd=</span><span class="dv">2</span> )</a>
-<a class="sourceLine" id="cb16-11" data-line-number="11"></a>
-<a class="sourceLine" id="cb16-12" data-line-number="12"><span class="kw">points</span>( Master<span class="op">$</span>height[ this.tallest ], </a>
-<a class="sourceLine" id="cb16-13" data-line-number="13">        Master<span class="op">$</span>weight[ this.tallest ], </a>
-<a class="sourceLine" id="cb16-14" data-line-number="14">        <span class="dt">col=</span><span class="st">&quot;firebrick&quot;</span>, <span class="dt">cex=</span><span class="dv">2</span>, <span class="dt">lwd=</span><span class="dv">2</span> )</a>
-<a class="sourceLine" id="cb16-15" data-line-number="15"></a>
-<a class="sourceLine" id="cb16-16" data-line-number="16"><span class="kw">points</span>( Master<span class="op">$</span>height[ this.heaviest ], </a>
-<a class="sourceLine" id="cb16-17" data-line-number="17">        Master<span class="op">$</span>weight[ this.heaviest], </a>
-<a class="sourceLine" id="cb16-18" data-line-number="18">        <span class="dt">col=</span><span class="st">&quot;firebrick&quot;</span>, <span class="dt">cex=</span><span class="dv">2</span>, <span class="dt">lwd=</span><span class="dv">2</span> )</a>
-<a class="sourceLine" id="cb16-19" data-line-number="19"></a>
-<a class="sourceLine" id="cb16-20" data-line-number="20"><span class="kw">text</span>( Master<span class="op">$</span>height[ this.shortest ], </a>
-<a class="sourceLine" id="cb16-21" data-line-number="21">      Master<span class="op">$</span>weight[ this.shortest ], </a>
-<a class="sourceLine" id="cb16-22" data-line-number="22">      <span class="st">&quot;Some Text Here&quot;</span>, <span class="dt">col=</span><span class="st">&quot;firebrick&quot;</span>, <span class="dt">pos=</span><span class="dv">3</span> )</a></code></pre></div>
-<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-21-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb190-1" data-line-number="1"><span class="kw">plot</span>( Master<span class="op">$</span>height, Master<span class="op">$</span>weight, </a>
+<a class="sourceLine" id="cb190-2" data-line-number="2">      <span class="dt">pch=</span><span class="dv">19</span>, <span class="dt">col=</span><span class="st">&quot;gray&quot;</span>,</a>
+<a class="sourceLine" id="cb190-3" data-line-number="3">      <span class="dt">frame.plot=</span><span class="ot">FALSE</span>,</a>
+<a class="sourceLine" id="cb190-4" data-line-number="4">      <span class="dt">xlab=</span><span class="st">&quot;Height (inches)&quot;</span>, </a>
+<a class="sourceLine" id="cb190-5" data-line-number="5">      <span class="dt">ylab=</span><span class="st">&quot;Weight (lbs)&quot;</span>, </a>
+<a class="sourceLine" id="cb190-6" data-line-number="6">      <span class="dt">main=</span><span class="st">&quot;Relationship Between Height and Weight of MLB Players&quot;</span> )</a>
+<a class="sourceLine" id="cb190-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb190-8" data-line-number="8"><span class="kw">points</span>( Master<span class="op">$</span>height[ this.shortest ], </a>
+<a class="sourceLine" id="cb190-9" data-line-number="9">        Master<span class="op">$</span>weight[ this.shortest ], </a>
+<a class="sourceLine" id="cb190-10" data-line-number="10">        <span class="dt">col=</span><span class="st">&quot;firebrick&quot;</span>, <span class="dt">cex=</span><span class="dv">2</span>, <span class="dt">lwd=</span><span class="dv">2</span> )</a>
+<a class="sourceLine" id="cb190-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb190-12" data-line-number="12"><span class="kw">points</span>( Master<span class="op">$</span>height[ this.tallest ], </a>
+<a class="sourceLine" id="cb190-13" data-line-number="13">        Master<span class="op">$</span>weight[ this.tallest ], </a>
+<a class="sourceLine" id="cb190-14" data-line-number="14">        <span class="dt">col=</span><span class="st">&quot;firebrick&quot;</span>, <span class="dt">cex=</span><span class="dv">2</span>, <span class="dt">lwd=</span><span class="dv">2</span> )</a>
+<a class="sourceLine" id="cb190-15" data-line-number="15"></a>
+<a class="sourceLine" id="cb190-16" data-line-number="16"><span class="kw">points</span>( Master<span class="op">$</span>height[ this.heaviest ], </a>
+<a class="sourceLine" id="cb190-17" data-line-number="17">        Master<span class="op">$</span>weight[ this.heaviest], </a>
+<a class="sourceLine" id="cb190-18" data-line-number="18">        <span class="dt">col=</span><span class="st">&quot;firebrick&quot;</span>, <span class="dt">cex=</span><span class="dv">2</span>, <span class="dt">lwd=</span><span class="dv">2</span> )</a>
+<a class="sourceLine" id="cb190-19" data-line-number="19"></a>
+<a class="sourceLine" id="cb190-20" data-line-number="20"><span class="kw">text</span>( Master<span class="op">$</span>height[ this.shortest ], </a>
+<a class="sourceLine" id="cb190-21" data-line-number="21">      Master<span class="op">$</span>weight[ this.shortest ], </a>
+<a class="sourceLine" id="cb190-22" data-line-number="22">      <span class="st">&quot;Some Text Here&quot;</span>, <span class="dt">col=</span><span class="st">&quot;firebrick&quot;</span>, <span class="dt">pos=</span><span class="dv">3</span> )</a></code></pre></div>
+<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-272-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>We add text to the graph through the x,y coordinate for the text, the text itself, and the <strong>pos=</strong> argument is used to specify where the text should go.</p>
 <ul>
 <li>pos=1: below</li>
@@ -752,85 +763,85 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>You can see that we have a problem above. Our text above Eddie Gaedel is lopped off because it wanders outside of the plot window. We can add additional real estate by expanding plot window with the <strong>xlim=</strong> and <strong>ylim=</strong> arguments.</p>
 <p>You can add a line break to a string by including the carriage return symbol “”.</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1"><span class="kw">data</span>( Master) </a>
-<a class="sourceLine" id="cb17-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb17-3" data-line-number="3"><span class="kw">plot</span>( Master<span class="op">$</span>height, Master<span class="op">$</span>weight, </a>
-<a class="sourceLine" id="cb17-4" data-line-number="4">      <span class="dt">pch=</span><span class="dv">19</span>, <span class="dt">col=</span><span class="st">&quot;gray&quot;</span>, <span class="dt">cex=</span><span class="fl">0.8</span>,</a>
-<a class="sourceLine" id="cb17-5" data-line-number="5">      <span class="dt">xlim=</span><span class="kw">c</span>(<span class="dv">30</span>,<span class="dv">100</span>), <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">50</span>,<span class="dv">430</span>),</a>
-<a class="sourceLine" id="cb17-6" data-line-number="6">      <span class="dt">frame.plot=</span><span class="ot">FALSE</span>,</a>
-<a class="sourceLine" id="cb17-7" data-line-number="7">      <span class="dt">xlab=</span><span class="st">&quot;Height (inches)&quot;</span>, </a>
-<a class="sourceLine" id="cb17-8" data-line-number="8">      <span class="dt">ylab=</span><span class="st">&quot;Weight (lbs)&quot;</span>, </a>
-<a class="sourceLine" id="cb17-9" data-line-number="9">      <span class="dt">main=</span><span class="st">&quot;Relationship Between Height and Weight of MLB Players&quot;</span> )</a>
-<a class="sourceLine" id="cb17-10" data-line-number="10"></a>
-<a class="sourceLine" id="cb17-11" data-line-number="11">d.small &lt;-<span class="st"> </span>Master[ <span class="kw">c</span>(this.shortest,this.tallest,this.heaviest), <span class="kw">c</span>(<span class="dv">14</span>,<span class="dv">15</span>,<span class="dv">17</span><span class="op">:</span><span class="dv">20</span>,<span class="dv">2</span>) ]</a>
-<a class="sourceLine" id="cb17-12" data-line-number="12"></a>
-<a class="sourceLine" id="cb17-13" data-line-number="13"><span class="kw">points</span>( d.small<span class="op">$</span>height, </a>
-<a class="sourceLine" id="cb17-14" data-line-number="14">        d.small<span class="op">$</span>weight, </a>
-<a class="sourceLine" id="cb17-15" data-line-number="15">        <span class="dt">col=</span><span class="st">&quot;firebrick&quot;</span>, <span class="dt">cex=</span><span class="dv">2</span>, <span class="dt">lwd=</span><span class="dv">2</span> )</a>
-<a class="sourceLine" id="cb17-16" data-line-number="16"></a>
-<a class="sourceLine" id="cb17-17" data-line-number="17"><span class="kw">text</span>( Master<span class="op">$</span>height[ this.shortest ], </a>
-<a class="sourceLine" id="cb17-18" data-line-number="18">      Master<span class="op">$</span>weight[ this.shortest ], </a>
-<a class="sourceLine" id="cb17-19" data-line-number="19">      <span class="st">&quot;Eddie Gaedel </span><span class="ch">\n</span><span class="st">Height: 43 Inches </span><span class="ch">\n</span><span class="st">Weight: 65 Lbs&quot;</span>, </a>
-<a class="sourceLine" id="cb17-20" data-line-number="20">      <span class="dt">col=</span><span class="st">&quot;firebrick&quot;</span>, <span class="dt">cex=</span><span class="fl">0.8</span>, <span class="dt">pos=</span><span class="dv">3</span>, <span class="dt">offset=</span><span class="dv">1</span> )</a>
-<a class="sourceLine" id="cb17-21" data-line-number="21"></a>
-<a class="sourceLine" id="cb17-22" data-line-number="22"><span class="kw">text</span>( Master<span class="op">$</span>height[ this.tallest ], </a>
-<a class="sourceLine" id="cb17-23" data-line-number="23">      Master<span class="op">$</span>weight[ this.tallest ], </a>
-<a class="sourceLine" id="cb17-24" data-line-number="24">      <span class="st">&quot;Jon Rauch </span><span class="ch">\n</span><span class="st">Height: 83 Inches </span><span class="ch">\n</span><span class="st">Weight: 290 Lbs&quot;</span>, </a>
-<a class="sourceLine" id="cb17-25" data-line-number="25">      <span class="dt">col=</span><span class="st">&quot;firebrick&quot;</span>, <span class="dt">cex=</span><span class="fl">0.8</span>, <span class="dt">pos=</span><span class="dv">4</span>, <span class="dt">offset=</span><span class="dv">1</span> )</a>
-<a class="sourceLine" id="cb17-26" data-line-number="26"></a>
-<a class="sourceLine" id="cb17-27" data-line-number="27"><span class="kw">text</span>( Master<span class="op">$</span>height[ this.heaviest ], </a>
-<a class="sourceLine" id="cb17-28" data-line-number="28">      Master<span class="op">$</span>weight[ this.heaviest ], </a>
-<a class="sourceLine" id="cb17-29" data-line-number="29">      <span class="st">&quot;Walter Young </span><span class="ch">\n</span><span class="st">Height: 77 Inches </span><span class="ch">\n</span><span class="st">Weight: 320 Lbs&quot;</span>, </a>
-<a class="sourceLine" id="cb17-30" data-line-number="30">      <span class="dt">col=</span><span class="st">&quot;firebrick&quot;</span>, <span class="dt">cex=</span><span class="fl">0.8</span>, <span class="dt">pos=</span><span class="dv">3</span>, <span class="dt">offset=</span><span class="dv">1</span> )</a></code></pre></div>
-<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-22-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb191-1" data-line-number="1"><span class="kw">data</span>( Master) </a>
+<a class="sourceLine" id="cb191-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb191-3" data-line-number="3"><span class="kw">plot</span>( Master<span class="op">$</span>height, Master<span class="op">$</span>weight, </a>
+<a class="sourceLine" id="cb191-4" data-line-number="4">      <span class="dt">pch=</span><span class="dv">19</span>, <span class="dt">col=</span><span class="st">&quot;gray&quot;</span>, <span class="dt">cex=</span><span class="fl">0.8</span>,</a>
+<a class="sourceLine" id="cb191-5" data-line-number="5">      <span class="dt">xlim=</span><span class="kw">c</span>(<span class="dv">30</span>,<span class="dv">100</span>), <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">50</span>,<span class="dv">430</span>),</a>
+<a class="sourceLine" id="cb191-6" data-line-number="6">      <span class="dt">frame.plot=</span><span class="ot">FALSE</span>,</a>
+<a class="sourceLine" id="cb191-7" data-line-number="7">      <span class="dt">xlab=</span><span class="st">&quot;Height (inches)&quot;</span>, </a>
+<a class="sourceLine" id="cb191-8" data-line-number="8">      <span class="dt">ylab=</span><span class="st">&quot;Weight (lbs)&quot;</span>, </a>
+<a class="sourceLine" id="cb191-9" data-line-number="9">      <span class="dt">main=</span><span class="st">&quot;Relationship Between Height and Weight of MLB Players&quot;</span> )</a>
+<a class="sourceLine" id="cb191-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb191-11" data-line-number="11">d.small &lt;-<span class="st"> </span>Master[ <span class="kw">c</span>(this.shortest,this.tallest,this.heaviest), <span class="kw">c</span>(<span class="dv">14</span>,<span class="dv">15</span>,<span class="dv">17</span><span class="op">:</span><span class="dv">20</span>,<span class="dv">2</span>) ]</a>
+<a class="sourceLine" id="cb191-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb191-13" data-line-number="13"><span class="kw">points</span>( d.small<span class="op">$</span>height, </a>
+<a class="sourceLine" id="cb191-14" data-line-number="14">        d.small<span class="op">$</span>weight, </a>
+<a class="sourceLine" id="cb191-15" data-line-number="15">        <span class="dt">col=</span><span class="st">&quot;firebrick&quot;</span>, <span class="dt">cex=</span><span class="dv">2</span>, <span class="dt">lwd=</span><span class="dv">2</span> )</a>
+<a class="sourceLine" id="cb191-16" data-line-number="16"></a>
+<a class="sourceLine" id="cb191-17" data-line-number="17"><span class="kw">text</span>( Master<span class="op">$</span>height[ this.shortest ], </a>
+<a class="sourceLine" id="cb191-18" data-line-number="18">      Master<span class="op">$</span>weight[ this.shortest ], </a>
+<a class="sourceLine" id="cb191-19" data-line-number="19">      <span class="st">&quot;Eddie Gaedel </span><span class="ch">\n</span><span class="st">Height: 43 Inches </span><span class="ch">\n</span><span class="st">Weight: 65 Lbs&quot;</span>, </a>
+<a class="sourceLine" id="cb191-20" data-line-number="20">      <span class="dt">col=</span><span class="st">&quot;firebrick&quot;</span>, <span class="dt">cex=</span><span class="fl">0.8</span>, <span class="dt">pos=</span><span class="dv">3</span>, <span class="dt">offset=</span><span class="dv">1</span> )</a>
+<a class="sourceLine" id="cb191-21" data-line-number="21"></a>
+<a class="sourceLine" id="cb191-22" data-line-number="22"><span class="kw">text</span>( Master<span class="op">$</span>height[ this.tallest ], </a>
+<a class="sourceLine" id="cb191-23" data-line-number="23">      Master<span class="op">$</span>weight[ this.tallest ], </a>
+<a class="sourceLine" id="cb191-24" data-line-number="24">      <span class="st">&quot;Jon Rauch </span><span class="ch">\n</span><span class="st">Height: 83 Inches </span><span class="ch">\n</span><span class="st">Weight: 290 Lbs&quot;</span>, </a>
+<a class="sourceLine" id="cb191-25" data-line-number="25">      <span class="dt">col=</span><span class="st">&quot;firebrick&quot;</span>, <span class="dt">cex=</span><span class="fl">0.8</span>, <span class="dt">pos=</span><span class="dv">4</span>, <span class="dt">offset=</span><span class="dv">1</span> )</a>
+<a class="sourceLine" id="cb191-26" data-line-number="26"></a>
+<a class="sourceLine" id="cb191-27" data-line-number="27"><span class="kw">text</span>( Master<span class="op">$</span>height[ this.heaviest ], </a>
+<a class="sourceLine" id="cb191-28" data-line-number="28">      Master<span class="op">$</span>weight[ this.heaviest ], </a>
+<a class="sourceLine" id="cb191-29" data-line-number="29">      <span class="st">&quot;Walter Young </span><span class="ch">\n</span><span class="st">Height: 77 Inches </span><span class="ch">\n</span><span class="st">Weight: 320 Lbs&quot;</span>, </a>
+<a class="sourceLine" id="cb191-30" data-line-number="30">      <span class="dt">col=</span><span class="st">&quot;firebrick&quot;</span>, <span class="dt">cex=</span><span class="fl">0.8</span>, <span class="dt">pos=</span><span class="dv">3</span>, <span class="dt">offset=</span><span class="dv">1</span> )</a></code></pre></div>
+<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-273-1.png" width="70%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="visual-hypothesis-testing" class="section level2">
-<h2><span class="header-section-number">7.5</span> Visual Hypothesis Testing</h2>
+<h2><span class="header-section-number">10.5</span> Visual Hypothesis Testing</h2>
 <p>As you can see, the <strong>text()</strong> function can be used to add narrative to a graphic. It can also be used in place of plotting points.</p>
 <p>Let’s think about testing the hypothesis that players have gotten larger over time. When we look at the basic relationship between height and weight we see the distribution of player sizes, but this plot has no information about the time-periods in which they played so we can’t tell if they are growing larger over time. What if we replace the plotting points with birth years?</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1"><span class="kw">plot.new</span>()</a>
-<a class="sourceLine" id="cb18-2" data-line-number="2"><span class="kw">plot.window</span>( <span class="dt">xlim=</span><span class="kw">c</span>(<span class="dv">60</span>,xmax), <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">110</span>,ymax) )</a>
-<a class="sourceLine" id="cb18-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb18-4" data-line-number="4"><span class="kw">text</span>( <span class="dt">x=</span>Master<span class="op">$</span>height, </a>
-<a class="sourceLine" id="cb18-5" data-line-number="5">      <span class="dt">y=</span>Master<span class="op">$</span>weight, </a>
-<a class="sourceLine" id="cb18-6" data-line-number="6">      <span class="dt">labels=</span>Master<span class="op">$</span>birthYear )</a></code></pre></div>
-<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-23-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb192-1" data-line-number="1"><span class="kw">plot.new</span>()</a>
+<a class="sourceLine" id="cb192-2" data-line-number="2"><span class="kw">plot.window</span>( <span class="dt">xlim=</span><span class="kw">c</span>(<span class="dv">60</span>,xmax), <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">110</span>,ymax) )</a>
+<a class="sourceLine" id="cb192-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb192-4" data-line-number="4"><span class="kw">text</span>( <span class="dt">x=</span>Master<span class="op">$</span>height, </a>
+<a class="sourceLine" id="cb192-5" data-line-number="5">      <span class="dt">y=</span>Master<span class="op">$</span>weight, </a>
+<a class="sourceLine" id="cb192-6" data-line-number="6">      <span class="dt">labels=</span>Master<span class="op">$</span>birthYear )</a></code></pre></div>
+<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-274-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>This is too dense to be meaningful. Maybe we can try to make the text smaller?</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1"><span class="kw">plot.new</span>()</a>
-<a class="sourceLine" id="cb19-2" data-line-number="2"><span class="kw">plot.window</span>( <span class="dt">xlim=</span><span class="kw">c</span>(<span class="dv">60</span>,xmax), <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">110</span>,ymax) )</a>
-<a class="sourceLine" id="cb19-3" data-line-number="3"><span class="kw">text</span>( <span class="dt">x=</span>Master<span class="op">$</span>height, </a>
-<a class="sourceLine" id="cb19-4" data-line-number="4">      <span class="dt">y=</span>Master<span class="op">$</span>weight, </a>
-<a class="sourceLine" id="cb19-5" data-line-number="5">      <span class="dt">labels=</span>Master<span class="op">$</span>birthYear, <span class="dt">cex=</span><span class="fl">0.5</span> )</a></code></pre></div>
-<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-24-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb193-1" data-line-number="1"><span class="kw">plot.new</span>()</a>
+<a class="sourceLine" id="cb193-2" data-line-number="2"><span class="kw">plot.window</span>( <span class="dt">xlim=</span><span class="kw">c</span>(<span class="dv">60</span>,xmax), <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">110</span>,ymax) )</a>
+<a class="sourceLine" id="cb193-3" data-line-number="3"><span class="kw">text</span>( <span class="dt">x=</span>Master<span class="op">$</span>height, </a>
+<a class="sourceLine" id="cb193-4" data-line-number="4">      <span class="dt">y=</span>Master<span class="op">$</span>weight, </a>
+<a class="sourceLine" id="cb193-5" data-line-number="5">      <span class="dt">labels=</span>Master<span class="op">$</span>birthYear, <span class="dt">cex=</span><span class="fl">0.5</span> )</a></code></pre></div>
+<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-275-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>Still not very insightful. We have over 19,000 players in the database, which appears to be too many for this graphic. Let’s thin the data out by taking a random sample of the full dataset.</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1"><span class="kw">par</span>( <span class="dt">mar=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>) )</a>
-<a class="sourceLine" id="cb20-2" data-line-number="2">m.sample &lt;-<span class="st"> </span><span class="kw">sample_n</span>( Master, <span class="dv">100</span> ) </a>
-<a class="sourceLine" id="cb20-3" data-line-number="3"><span class="kw">plot.new</span>()</a>
-<a class="sourceLine" id="cb20-4" data-line-number="4"><span class="kw">plot.window</span>( <span class="dt">xlim=</span><span class="kw">c</span>(<span class="dv">65</span>,<span class="dv">78</span>), <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">130</span>,<span class="dv">280</span>) )</a>
-<a class="sourceLine" id="cb20-5" data-line-number="5"><span class="kw">text</span>( <span class="dt">x=</span>m.sample<span class="op">$</span>height, </a>
-<a class="sourceLine" id="cb20-6" data-line-number="6">      <span class="dt">y=</span>m.sample<span class="op">$</span>weight, </a>
-<a class="sourceLine" id="cb20-7" data-line-number="7">      <span class="dt">labels=</span>m.sample<span class="op">$</span>birthYear, <span class="dt">cex=</span><span class="fl">0.8</span> )</a>
-<a class="sourceLine" id="cb20-8" data-line-number="8"><span class="kw">axis</span>( <span class="dt">side=</span><span class="dv">1</span>, <span class="dt">line=</span><span class="op">-</span><span class="dv">2</span> )</a>
-<a class="sourceLine" id="cb20-9" data-line-number="9"><span class="kw">axis</span>( <span class="dt">side=</span><span class="dv">2</span>, <span class="dt">line=</span><span class="op">-</span><span class="dv">2</span> )</a></code></pre></div>
-<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-25-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb194-1" data-line-number="1"><span class="kw">par</span>( <span class="dt">mar=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>) )</a>
+<a class="sourceLine" id="cb194-2" data-line-number="2">m.sample &lt;-<span class="st"> </span><span class="kw">sample_n</span>( Master, <span class="dv">100</span> ) </a>
+<a class="sourceLine" id="cb194-3" data-line-number="3"><span class="kw">plot.new</span>()</a>
+<a class="sourceLine" id="cb194-4" data-line-number="4"><span class="kw">plot.window</span>( <span class="dt">xlim=</span><span class="kw">c</span>(<span class="dv">65</span>,<span class="dv">78</span>), <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">130</span>,<span class="dv">280</span>) )</a>
+<a class="sourceLine" id="cb194-5" data-line-number="5"><span class="kw">text</span>( <span class="dt">x=</span>m.sample<span class="op">$</span>height, </a>
+<a class="sourceLine" id="cb194-6" data-line-number="6">      <span class="dt">y=</span>m.sample<span class="op">$</span>weight, </a>
+<a class="sourceLine" id="cb194-7" data-line-number="7">      <span class="dt">labels=</span>m.sample<span class="op">$</span>birthYear, <span class="dt">cex=</span><span class="fl">0.8</span> )</a>
+<a class="sourceLine" id="cb194-8" data-line-number="8"><span class="kw">axis</span>( <span class="dt">side=</span><span class="dv">1</span>, <span class="dt">line=</span><span class="op">-</span><span class="dv">2</span> )</a>
+<a class="sourceLine" id="cb194-9" data-line-number="9"><span class="kw">axis</span>( <span class="dt">side=</span><span class="dv">2</span>, <span class="dt">line=</span><span class="op">-</span><span class="dv">2</span> )</a></code></pre></div>
+<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-276-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>This is a big improvement. We can eyeball the data and start to pull out some trends. The people born in the 1800’s tend to be near the bottom of each pile of years, for example.</p>
 <p>Perhaps we can improve our visual hypothesis testing if we add some color coding. Let’s identify all of the individuals born since 1980 and color their birth years red to highlight the youngest cohort in the data. If people have gotten larger over time, we would expect this group to cluster near the top of the distribution.</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1">red.gray &lt;-<span class="st"> </span><span class="kw">ifelse</span>( m.sample<span class="op">$</span>birthYear <span class="op">&gt;=</span><span class="st"> </span><span class="dv">1980</span>, <span class="st">&quot;firebrick&quot;</span>, <span class="st">&quot;gray&quot;</span> )</a>
-<a class="sourceLine" id="cb21-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb21-3" data-line-number="3"><span class="kw">text</span>( <span class="dt">x=</span>m.sample<span class="op">$</span>height, </a>
-<a class="sourceLine" id="cb21-4" data-line-number="4">      <span class="dt">y=</span>m.sample<span class="op">$</span>weight, </a>
-<a class="sourceLine" id="cb21-5" data-line-number="5">      <span class="dt">labels=</span>m.sample<span class="op">$</span>birthYear,</a>
-<a class="sourceLine" id="cb21-6" data-line-number="6">      <span class="dt">col=</span>red.gray )</a></code></pre></div>
-<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-27-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb195-1" data-line-number="1">red.gray &lt;-<span class="st"> </span><span class="kw">ifelse</span>( m.sample<span class="op">$</span>birthYear <span class="op">&gt;=</span><span class="st"> </span><span class="dv">1980</span>, <span class="st">&quot;firebrick&quot;</span>, <span class="st">&quot;gray&quot;</span> )</a>
+<a class="sourceLine" id="cb195-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb195-3" data-line-number="3"><span class="kw">text</span>( <span class="dt">x=</span>m.sample<span class="op">$</span>height, </a>
+<a class="sourceLine" id="cb195-4" data-line-number="4">      <span class="dt">y=</span>m.sample<span class="op">$</span>weight, </a>
+<a class="sourceLine" id="cb195-5" data-line-number="5">      <span class="dt">labels=</span>m.sample<span class="op">$</span>birthYear,</a>
+<a class="sourceLine" id="cb195-6" data-line-number="6">      <span class="dt">col=</span>red.gray )</a></code></pre></div>
+<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-278-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>And we in fact see the pattern emerge. The youngest cohort, highlighted in red, seems to cluster near the top right, which suggests they have grown both taller and heavier over time.</p>
 <p>This hypothesis can be test more rigorously in other ways, but the demonstration at least gives an idea about how we might explore the data efficiently using flexible R graphing functions.</p>
 </div>
 <div id="additional-parameters" class="section level2">
-<h2><span class="header-section-number">7.6</span> Additional Parameters</h2>
+<h2><span class="header-section-number">10.6</span> Additional Parameters</h2>
 <p>The small number of functions introduced here in these chapters on data visualization can be used to make highly-customizable graphics that help you discover important patterns in the data and share the story with others.</p>
 <p>We are only scratching the surface on the options available within plotting functions. To see the default list of parameter settings in the R <strong>plot()</strong> function, type:</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" data-line-number="1"><span class="kw">par</span>()</a>
-<a class="sourceLine" id="cb22-2" data-line-number="2"><span class="kw">help</span>( par )</a></code></pre></div>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb196-1" data-line-number="1"><span class="kw">par</span>()</a>
+<a class="sourceLine" id="cb196-2" data-line-number="2"><span class="kw">help</span>( par )</a></code></pre></div>
 <p>These chapters show how core R graphics can be used to create highly-customized graphics. You can see that you have fine-tuned access to all aspects of the figures you create. You don’t have to become familiar with all of the options to develop solid visualization skills. Rather, you will likely focus on a few specific functions. A little time invested in learning the arguments for plot(), points(), lines(), text(), title(), and axis() goes a long way.</p>
 
 </div>
@@ -840,7 +851,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="data-viz.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="the-plot-function.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="custom-plot-example.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
