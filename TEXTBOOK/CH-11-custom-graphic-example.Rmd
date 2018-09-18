@@ -86,7 +86,14 @@ Argument | Result
 
 ## Lines
 
-Let's try one with basic lines.
+Let's try one with basic lines. Note that referencing a row of the data frame will return the ranking data for a single school:
+
+```{r}
+df[ 1, ]
+```
+
+Now let's plot the rankings over time:
+
 
 ```{r}
 id <- df$id          # save ID as separate variable
@@ -94,8 +101,8 @@ df <- df[ , -1 ]     # drop ID from the dataset so it's all numeric
 
 # save some useful dimension information
 
-ymin <- min(df)      # what is the largest value in the data frame?
-ymax <- max(df)      # what is the smallest value in the data frame?
+ymin <- min(df)      # what is the smallest value in the data frame?
+ymax <- max(df)      # what is the largest value in the data frame?
 num.x <- 5           # we have five years of data
 
 # create an empty plot with the correct dimensions for our plot

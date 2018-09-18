@@ -382,7 +382,7 @@ data( Master)
 
 plot( Master$height, Master$weight, 
       pch=19, col="gray", cex=0.8,
-      xlim=c(30,100), ylim=c(50,430),
+      xlim=c(30,100), ylim=c(50,450),
       frame.plot=FALSE,
       xlab="Height (inches)", 
       ylab="Weight (lbs)", 
