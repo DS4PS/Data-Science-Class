@@ -17,7 +17,7 @@ library( pander )
 
 <br>
 
-*You lab introduces students to the plot() function.*
+*Introduction to graphics using the plot() function in R.*
 
 You can create a new RMarkdown file, or download the lab template: 
 
@@ -64,7 +64,7 @@ This data comes from the **AEA** package that accompanies the textbook:
 
 We are using the **CASchools** dataset:
 
-*The data used here are from all 420 K-6 and K-8 districts in California with data available for 1998 and 1999. Test scores are on the Stanford 9 standardized test administered to 5th grade students. School characteristics (averaged across the district) include enrollment, number of teachers (measured as “full-time equivalents”, number of computers per classroom, and expenditures per student. Demographic variables for the students are averaged across the district.*
+*The data used here are from all 420 K-6 and K-8 districts in California with data available for 1998 and 1999. Test scores are on the Stanford 9 standardized test administered to 5th grade students. School characteristics (averaged across the district) include enrollment, number of teachers (measured as “full-time equivalents”), number of computers per classroom, and expenditures per student. Demographic variables for the students are averaged across the district.*
 
 We will use the following four variables, copied to GitHub for convenience:
 
@@ -121,7 +121,7 @@ We are interested in predictors of school test scores.
 
 We have three independent variables for our study: school budgets on a per-student basis, student teacher ratios, and proportion of students in the school that qualify for free or reduced lunches (a proxy for poverty status). 
 
-1. Create three scatterplots to visualizing the relationship between our three study variables and test scores. Test scores should be on the y-axis of each.
+1. Create three scatterplots to visualize the relationship between our study variables and test scores. Test scores should be on the y-axis of each plot.
 
 2. Select a different style (pch=) and color (col=) for plot points on each graph.
 
@@ -129,7 +129,7 @@ We have three independent variables for our study: school budgets on a per-stude
 
 4. Which of these variables is the best predictor of test scores? Explain your answer. 
 
-*You are free to adjust the rest of your graph aestetics as desired.* 
+*You are free to adjust the rest of your graph aesthetics as desired.* 
 
 
 <br><br>
