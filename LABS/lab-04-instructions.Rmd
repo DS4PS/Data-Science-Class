@@ -177,7 +177,7 @@ dat %>%
 4. Adjust your calculations from Q2 by creating a new variable named "value.per.acre". The formula for this variable is **assessedla** / **acres**. Use the mutate() function to create the variable and add it back to the dataset. 
 
 ```{r, eval=F}
-dat <- mutate( ... )
+dat <- mutate( dat, ... )
 ```
 
 5. What is the average value of single family homes built in each decade? You will use **age_range**, **land_use**, and **assessedva**.

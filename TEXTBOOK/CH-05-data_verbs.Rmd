@@ -554,8 +554,8 @@ dat %>% pander()
 
 The **rename()** function provides a more intuitive syntax:
 
-```{r, eval=T}
-rename( dat, x1=gender, x2=study.group )
+```{r, eval=F}
+rename( dat, gender=x1, study.group=x2 )
 ```
 
 

@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Intro to Data Science for the Social Sector</title>
+  <meta name="description" content="This is an introductory text to data science designed for social science graduate students in public affairs, nonprofit management, and international development.">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Intro to Data Science for the Social Sector" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is an introductory text to data science designed for social science graduate students in public affairs, nonprofit management, and international development." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Intro to Data Science for the Social Sector" />
+  
+  <meta name="twitter:description" content="This is an introductory text to data science designed for social science graduate students in public affairs, nonprofit management, and international development." />
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="analysis-with-groups.html">
+<link rel="next" href="the-plot-function.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script src="libs/detect-resize-0.5.3/jquery.resize.js"></script>
+<link href="libs/jquery-ui-1.11.4/jquery-ui.min.css" rel="stylesheet" />
+<script src="libs/jquery-ui-1.11.4/jquery-ui.min.js"></script>
+<script src="libs/d3-3.5.2/d3.min.js"></script>
+<script src="libs/vega-1.4.3/vega.min.js"></script>
+<script src="libs/lodash-2.2.1/lodash.min.js"></script>
+<script>var lodash = _.noConflict();</script>
+<link href="libs/ggvis-0.4.3/css/ggvis.css" rel="stylesheet" />
+<script src="libs/ggvis-0.4.3/js/ggvis.js"></script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="custom.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="https://ds4ps.github.io/course_website/">Data Science I</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a></li>
+<li class="part"><span><b>I PART I: FOUNDATIONS</b></span></li>
+<li class="chapter" data-level="1" data-path="introduction-to-r.html"><a href="introduction-to-r.html"><i class="fa fa-check"></i><b>1</b> Introduction to R</a><ul>
+<li class="chapter" data-level="1.1" data-path="introduction-to-r.html"><a href="introduction-to-r.html#navigation"><i class="fa fa-check"></i><b>1.1</b> Navigation</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="introduction-to-r.html"><a href="introduction-to-r.html#setting-your-working-directory"><i class="fa fa-check"></i><b>1.1.1</b> Setting Your Working Directory</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="introduction-to-r.html"><a href="introduction-to-r.html#commenting-code"><i class="fa fa-check"></i><b>1.2</b> Commenting Code</a></li>
+<li class="chapter" data-level="1.3" data-path="introduction-to-r.html"><a href="introduction-to-r.html#help"><i class="fa fa-check"></i><b>1.3</b> Help</a></li>
+<li class="chapter" data-level="1.4" data-path="introduction-to-r.html"><a href="introduction-to-r.html#install-programs-packages"><i class="fa fa-check"></i><b>1.4</b> Install Programs (packages)</a></li>
+<li class="chapter" data-level="1.5" data-path="introduction-to-r.html"><a href="introduction-to-r.html#accessing-built-in-datasets-in-r"><i class="fa fa-check"></i><b>1.5</b> Accessing Built-In Datasets in R</a><ul>
+<li class="chapter" data-level="1.5.1" data-path="introduction-to-r.html"><a href="introduction-to-r.html#basic-data-operations"><i class="fa fa-check"></i><b>1.5.1</b> Basic Data Operations</a></li>
+<li class="chapter" data-level="1.5.2" data-path="introduction-to-r.html"><a href="introduction-to-r.html#using-the-lahman-data"><i class="fa fa-check"></i><b>1.5.2</b> Using the Lahman Data</a></li>
+<li class="chapter" data-level="1.5.3" data-path="introduction-to-r.html"><a href="introduction-to-r.html#example-analysis"><i class="fa fa-check"></i><b>1.5.3</b> Example Analysis</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>2</b> Functions</a><ul>
+<li class="chapter" data-level="2.1" data-path="functions.html"><a href="functions.html#key-concepts"><i class="fa fa-check"></i><b>2.1</b> Key Concepts</a></li>
+<li class="chapter" data-level="2.2" data-path="functions.html"><a href="functions.html#computer-programs-as-recipes"><i class="fa fa-check"></i><b>2.2</b> Computer Programs as Recipes</a></li>
+<li class="chapter" data-level="2.3" data-path="functions.html"><a href="functions.html#example-function"><i class="fa fa-check"></i><b>2.3</b> Example Function</a></li>
+<li class="chapter" data-level="2.4" data-path="functions.html"><a href="functions.html#default-argument-values"><i class="fa fa-check"></i><b>2.4</b> Default Argument Values</a></li>
+<li class="chapter" data-level="2.5" data-path="functions.html"><a href="functions.html#assignment"><i class="fa fa-check"></i><b>2.5</b> Assignment</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="vectors.html"><a href="vectors.html"><i class="fa fa-check"></i>VECTORS</a></li>
+<li class="chapter" data-level="3" data-path="data-types.html"><a href="data-types.html"><i class="fa fa-check"></i><b>3</b> Data Types</a><ul>
+<li class="chapter" data-level="3.1" data-path="data-types.html"><a href="data-types.html#key-concepts-1"><i class="fa fa-check"></i><b>3.1</b> Key Concepts</a></li>
+<li class="chapter" data-level="3.2" data-path="data-types.html"><a href="data-types.html#vectors-1"><i class="fa fa-check"></i><b>3.2</b> Vectors</a></li>
+<li class="chapter" data-level="3.3" data-path="data-types.html"><a href="data-types.html#common-vectors-functions"><i class="fa fa-check"></i><b>3.3</b> Common Vectors Functions</a></li>
+<li class="chapter" data-level="3.4" data-path="data-types.html"><a href="data-types.html#the-combine-function"><i class="fa fa-check"></i><b>3.4</b> The Combine Function</a></li>
+<li class="chapter" data-level="3.5" data-path="data-types.html"><a href="data-types.html#casting"><i class="fa fa-check"></i><b>3.5</b> Casting</a></li>
+<li class="chapter" data-level="3.6" data-path="data-types.html"><a href="data-types.html#numeric-vectors"><i class="fa fa-check"></i><b>3.6</b> Numeric Vectors</a><ul>
+<li class="chapter" data-level="3.6.1" data-path="data-types.html"><a href="data-types.html#integers-are-simple-numeric-vectors"><i class="fa fa-check"></i><b>3.6.1</b> Integers Are Simple Numeric Vectors</a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="data-types.html"><a href="data-types.html#character-vectors"><i class="fa fa-check"></i><b>3.7</b> Character Vectors</a><ul>
+<li class="chapter" data-level="3.7.1" data-path="data-types.html"><a href="data-types.html#quotes-in-arguments"><i class="fa fa-check"></i><b>3.7.1</b> Quotes in Arguments</a></li>
+</ul></li>
+<li class="chapter" data-level="3.8" data-path="data-types.html"><a href="data-types.html#factors"><i class="fa fa-check"></i><b>3.8</b> Factors</a></li>
+<li class="chapter" data-level="3.9" data-path="data-types.html"><a href="data-types.html#logical-vectors"><i class="fa fa-check"></i><b>3.9</b> Logical Vectors</a></li>
+<li class="chapter" data-level="3.10" data-path="data-types.html"><a href="data-types.html#generating-vectors"><i class="fa fa-check"></i><b>3.10</b> Generating Vectors</a></li>
+<li class="chapter" data-level="3.11" data-path="data-types.html"><a href="data-types.html#variable-transformations"><i class="fa fa-check"></i><b>3.11</b> Variable Transformations</a></li>
+<li class="chapter" data-level="3.12" data-path="data-types.html"><a href="data-types.html#missing-values-nas"><i class="fa fa-check"></i><b>3.12</b> Missing Values: NA’s</a></li>
+<li class="chapter" data-level="3.13" data-path="data-types.html"><a href="data-types.html#datasets"><i class="fa fa-check"></i><b>3.13</b> Datasets</a><ul>
+<li class="chapter" data-level="3.13.1" data-path="data-types.html"><a href="data-types.html#data-frames"><i class="fa fa-check"></i><b>3.13.1</b> Data Frames</a></li>
+<li class="chapter" data-level="3.13.2" data-path="data-types.html"><a href="data-types.html#matrices"><i class="fa fa-check"></i><b>3.13.2</b> Matrices</a></li>
+<li class="chapter" data-level="3.13.3" data-path="data-types.html"><a href="data-types.html#lists"><i class="fa fa-check"></i><b>3.13.3</b> Lists</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="logical-statements.html"><a href="logical-statements.html"><i class="fa fa-check"></i><b>4</b> Logical Statements</a><ul>
+<li class="chapter" data-level="4.1" data-path="logical-statements.html"><a href="logical-statements.html#key-concepts-2"><i class="fa fa-check"></i><b>4.1</b> Key Concepts</a></li>
+<li class="chapter" data-level="4.2" data-path="logical-statements.html"><a href="logical-statements.html#operators"><i class="fa fa-check"></i><b>4.2</b> Operators</a></li>
+<li class="chapter" data-level="4.3" data-path="logical-statements.html"><a href="logical-statements.html#selector-vectors"><i class="fa fa-check"></i><b>4.3</b> Selector Vectors</a></li>
+<li class="chapter" data-level="4.4" data-path="logical-statements.html"><a href="logical-statements.html#usefulness-of-selector-vectors"><i class="fa fa-check"></i><b>4.4</b> Usefulness of Selector Vectors</a></li>
+<li class="chapter" data-level="4.5" data-path="logical-statements.html"><a href="logical-statements.html#compound-logical-statements"><i class="fa fa-check"></i><b>4.5</b> Compound Logical Statements</a></li>
+<li class="chapter" data-level="4.6" data-path="logical-statements.html"><a href="logical-statements.html#nas-in-logical-statements"><i class="fa fa-check"></i><b>4.6</b> NAs in Logical Statements</a></li>
+<li class="chapter" data-level="4.7" data-path="logical-statements.html"><a href="logical-statements.html#subsets"><i class="fa fa-check"></i><b>4.7</b> Subsets</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-verbs.html"><a href="data-verbs.html"><i class="fa fa-check"></i>DATA VERBS</a></li>
+<li class="chapter" data-level="5" data-path="the-dplyr-package.html"><a href="the-dplyr-package.html"><i class="fa fa-check"></i><b>5</b> The <strong>dplyr</strong> Package</a><ul>
+<li class="chapter" data-level="5.1" data-path="the-dplyr-package.html"><a href="the-dplyr-package.html#packages-used-in-this-chapter"><i class="fa fa-check"></i><b>5.1</b> Packages Used in This Chapter</a></li>
+<li class="chapter" data-level="5.2" data-path="the-dplyr-package.html"><a href="the-dplyr-package.html#key-concepts-3"><i class="fa fa-check"></i><b>5.2</b> Key Concepts</a></li>
+<li class="chapter" data-level="5.3" data-path="the-dplyr-package.html"><a href="the-dplyr-package.html#the-dplyr-package-1"><i class="fa fa-check"></i><b>5.3</b> The <strong>dplyr</strong> Package</a></li>
+<li class="chapter" data-level="5.4" data-path="the-dplyr-package.html"><a href="the-dplyr-package.html#use-filter-to-subset-rows"><i class="fa fa-check"></i><b>5.4</b> Use <strong>filter()</strong> to Subset Rows</a></li>
+<li class="chapter" data-level="5.5" data-path="the-dplyr-package.html"><a href="the-dplyr-package.html#select-columns"><i class="fa fa-check"></i><b>5.5</b> <strong>select()</strong> Columns</a></li>
+<li class="chapter" data-level="5.6" data-path="the-dplyr-package.html"><a href="the-dplyr-package.html#arrange-sorts-data"><i class="fa fa-check"></i><b>5.6</b> <strong>arrange()</strong> Sorts Data</a></li>
+<li class="chapter" data-level="5.7" data-path="the-dplyr-package.html"><a href="the-dplyr-package.html#variable-transforms-with-mutate"><i class="fa fa-check"></i><b>5.7</b> Variable Transforms with <strong>mutate()</strong></a></li>
+<li class="chapter" data-level="5.8" data-path="the-dplyr-package.html"><a href="the-dplyr-package.html#rename-variables"><i class="fa fa-check"></i><b>5.8</b> <strong>rename()</strong> Variables</a></li>
+<li class="chapter" data-level="5.9" data-path="the-dplyr-package.html"><a href="the-dplyr-package.html#summarize-variables"><i class="fa fa-check"></i><b>5.9</b> <strong>summarize()</strong> Variables</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html"><i class="fa fa-check"></i><b>6</b> Descriptive Statistics</a><ul>
+<li class="chapter" data-level="6.1" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#useful-packages"><i class="fa fa-check"></i><b>6.1</b> Useful Packages</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="data-recipes.html"><a href="data-recipes.html"><i class="fa fa-check"></i><b>7</b> Data Recipes</a><ul>
+<li class="chapter" data-level="7.1" data-path="data-recipes.html"><a href="data-recipes.html#packages-used-in-this-chapter-1"><i class="fa fa-check"></i><b>7.1</b> Packages Used in This Chapter</a></li>
+<li class="chapter" data-level="7.2" data-path="data-recipes.html"><a href="data-recipes.html#key-concepts-4"><i class="fa fa-check"></i><b>7.2</b> Key Concepts</a></li>
+<li class="chapter" data-level="7.3" data-path="data-recipes.html"><a href="data-recipes.html#the-pipe-operator"><i class="fa fa-check"></i><b>7.3</b> The Pipe Operator <strong>%&gt;%</strong></a></li>
+<li class="chapter" data-level="7.4" data-path="data-recipes.html"><a href="data-recipes.html#building-data-recipes"><i class="fa fa-check"></i><b>7.4</b> Building Data Recipes</a></li>
+<li class="chapter" data-level="7.5" data-path="data-recipes.html"><a href="data-recipes.html#conclusion"><i class="fa fa-check"></i><b>7.5</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="analysis-with-groups.html"><a href="analysis-with-groups.html"><i class="fa fa-check"></i><b>8</b> Analysis with Groups</a><ul>
+<li class="chapter" data-level="8.1" data-path="analysis-with-groups.html"><a href="analysis-with-groups.html#packages-used-in-this-chapter-2"><i class="fa fa-check"></i><b>8.1</b> Packages Used in this Chapter</a></li>
+<li class="chapter" data-level="8.2" data-path="analysis-with-groups.html"><a href="analysis-with-groups.html#hypothetical-experimental-data"><i class="fa fa-check"></i><b>8.2</b> Hypothetical Experimental Data</a></li>
+<li class="chapter" data-level="8.3" data-path="analysis-with-groups.html"><a href="analysis-with-groups.html#group-structure"><i class="fa fa-check"></i><b>8.3</b> Group Structure</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="analysis-with-groups.html"><a href="analysis-with-groups.html#what-are-groups"><i class="fa fa-check"></i><b>8.3.1</b> What Are Groups?</a></li>
+<li class="chapter" data-level="8.3.2" data-path="analysis-with-groups.html"><a href="analysis-with-groups.html#main-take-away"><i class="fa fa-check"></i><b>8.3.2</b> Main Take-Away</a></li>
+<li class="chapter" data-level="8.3.3" data-path="analysis-with-groups.html"><a href="analysis-with-groups.html#example"><i class="fa fa-check"></i><b>8.3.3</b> Example</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="analysis-with-groups.html"><a href="analysis-with-groups.html#analysis-by-group"><i class="fa fa-check"></i><b>8.4</b> Analysis by Group</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="analysis-with-groups.html"><a href="analysis-with-groups.html#highest-ave-player-salary"><i class="fa fa-check"></i><b>8.4.1</b> Highest Ave Player Salary</a></li>
+<li class="chapter" data-level="8.4.2" data-path="analysis-with-groups.html"><a href="analysis-with-groups.html#most-players-paid-over-5-million"><i class="fa fa-check"></i><b>8.4.2</b> Most Players Paid Over $5 Million</a></li>
+<li class="chapter" data-level="8.4.3" data-path="analysis-with-groups.html"><a href="analysis-with-groups.html#fielding-positions"><i class="fa fa-check"></i><b>8.4.3</b> Fielding Positions</a></li>
+<li class="chapter" data-level="8.4.4" data-path="analysis-with-groups.html"><a href="analysis-with-groups.html#country-of-birth"><i class="fa fa-check"></i><b>8.4.4</b> Country of Birth</a></li>
+<li class="chapter" data-level="8.4.5" data-path="analysis-with-groups.html"><a href="analysis-with-groups.html#pay-raises"><i class="fa fa-check"></i><b>8.4.5</b> Pay Raises</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-viz.html"><a href="data-viz.html"><i class="fa fa-check"></i>DATA VIZ</a></li>
+<li class="chapter" data-level="9" data-path="the-plot-function.html"><a href="the-plot-function.html"><i class="fa fa-check"></i><b>9</b> The plot() Function</a><ul>
+<li class="chapter" data-level="9.1" data-path="the-plot-function.html"><a href="the-plot-function.html#key-concepts-5"><i class="fa fa-check"></i><b>9.1</b> Key Concepts</a></li>
+<li class="chapter" data-level="9.2" data-path="the-plot-function.html"><a href="the-plot-function.html#plot-arguments"><i class="fa fa-check"></i><b>9.2</b> plot() Arguments</a></li>
+<li class="chapter" data-level="9.3" data-path="the-plot-function.html"><a href="the-plot-function.html#titles"><i class="fa fa-check"></i><b>9.3</b> Titles</a></li>
+<li class="chapter" data-level="9.4" data-path="the-plot-function.html"><a href="the-plot-function.html#type-of-plot"><i class="fa fa-check"></i><b>9.4</b> Type of Plot</a></li>
+<li class="chapter" data-level="9.5" data-path="the-plot-function.html"><a href="the-plot-function.html#shape-of-points"><i class="fa fa-check"></i><b>9.5</b> Shape of Points</a></li>
+<li class="chapter" data-level="9.6" data-path="the-plot-function.html"><a href="the-plot-function.html#size-of-points"><i class="fa fa-check"></i><b>9.6</b> Size of Points</a></li>
+<li class="chapter" data-level="9.7" data-path="the-plot-function.html"><a href="the-plot-function.html#colors"><i class="fa fa-check"></i><b>9.7</b> Colors</a></li>
+<li class="chapter" data-level="9.8" data-path="the-plot-function.html"><a href="the-plot-function.html#looking-ahead"><i class="fa fa-check"></i><b>9.8</b> Looking Ahead</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="customizing-plots.html"><a href="customizing-plots.html"><i class="fa fa-check"></i><b>10</b> Customizing Plots</a><ul>
+<li class="chapter" data-level="10.1" data-path="customizing-plots.html"><a href="customizing-plots.html#key-concepts-6"><i class="fa fa-check"></i><b>10.1</b> Key Concepts</a></li>
+<li class="chapter" data-level="10.2" data-path="customizing-plots.html"><a href="customizing-plots.html#packages-used-in-this-chapter-3"><i class="fa fa-check"></i><b>10.2</b> Packages Used in This Chapter</a></li>
+<li class="chapter" data-level="10.3" data-path="customizing-plots.html"><a href="customizing-plots.html#layering-approach"><i class="fa fa-check"></i><b>10.3</b> Layering Approach</a></li>
+<li class="chapter" data-level="10.4" data-path="customizing-plots.html"><a href="customizing-plots.html#highlighting-cases"><i class="fa fa-check"></i><b>10.4</b> Highlighting Cases</a></li>
+<li class="chapter" data-level="10.5" data-path="customizing-plots.html"><a href="customizing-plots.html#visual-hypothesis-testing"><i class="fa fa-check"></i><b>10.5</b> Visual Hypothesis Testing</a></li>
+<li class="chapter" data-level="10.6" data-path="customizing-plots.html"><a href="customizing-plots.html#additional-parameters"><i class="fa fa-check"></i><b>10.6</b> Additional Parameters</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="custom-plot-example.html"><a href="custom-plot-example.html"><i class="fa fa-check"></i><b>11</b> Custom Plot Example</a><ul>
+<li class="chapter" data-level="11.1" data-path="custom-plot-example.html"><a href="custom-plot-example.html#basic-rank-plot"><i class="fa fa-check"></i><b>11.1</b> Basic Rank Plot</a></li>
+<li class="chapter" data-level="11.2" data-path="custom-plot-example.html"><a href="custom-plot-example.html#creating-a-submay-map-rank-plot"><i class="fa fa-check"></i><b>11.2</b> Creating a Submay Map Rank Plot</a></li>
+<li class="chapter" data-level="11.3" data-path="custom-plot-example.html"><a href="custom-plot-example.html#lines"><i class="fa fa-check"></i><b>11.3</b> Lines</a></li>
+<li class="chapter" data-level="11.4" data-path="custom-plot-example.html"><a href="custom-plot-example.html#connected-points"><i class="fa fa-check"></i><b>11.4</b> Connected Points</a></li>
+<li class="chapter" data-level="11.5" data-path="custom-plot-example.html"><a href="custom-plot-example.html#separate-points-and-connecting-lines"><i class="fa fa-check"></i><b>11.5</b> Separate Points and Connecting Lines</a></li>
+<li class="chapter" data-level="11.6" data-path="custom-plot-example.html"><a href="custom-plot-example.html#add-labels"><i class="fa fa-check"></i><b>11.6</b> Add Labels</a></li>
+<li class="chapter" data-level="11.7" data-path="custom-plot-example.html"><a href="custom-plot-example.html#add-axes-and-title"><i class="fa fa-check"></i><b>11.7</b> Add Axes and Title</a></li>
+<li class="chapter" data-level="11.8" data-path="custom-plot-example.html"><a href="custom-plot-example.html#generalizing-code"><i class="fa fa-check"></i><b>11.8</b> Generalizing Code</a></li>
+<li class="chapter" data-level="11.9" data-path="custom-plot-example.html"><a href="custom-plot-example.html#improved-aesthetics"><i class="fa fa-check"></i><b>11.9</b> Improved Aesthetics</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-wrangling.html"><a href="data-wrangling.html"><i class="fa fa-check"></i>DATA WRANGLING</a></li>
+<li class="chapter" data-level="12" data-path="merging-data.html"><a href="merging-data.html"><i class="fa fa-check"></i><b>12</b> Merging Data</a><ul>
+<li class="chapter" data-level="12.1" data-path="merging-data.html"><a href="merging-data.html#packages-used-in-this-chapter-4"><i class="fa fa-check"></i><b>12.1</b> Packages Used in This Chapter</a></li>
+<li class="chapter" data-level="12.2" data-path="merging-data.html"><a href="merging-data.html#relational-databases"><i class="fa fa-check"></i><b>12.2</b> Relational Databases</a></li>
+<li class="chapter" data-level="12.3" data-path="merging-data.html"><a href="merging-data.html#set-theory"><i class="fa fa-check"></i><b>12.3</b> Set Theory</a><ul>
+<li class="chapter" data-level="12.3.1" data-path="merging-data.html"><a href="merging-data.html#set-theory-functions"><i class="fa fa-check"></i><b>12.3.1</b> Set Theory Functions</a></li>
+<li class="chapter" data-level="12.3.2" data-path="merging-data.html"><a href="merging-data.html#set-theory-using-logical-operators"><i class="fa fa-check"></i><b>12.3.2</b> Set Theory Using Logical Operators</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="merging-data.html"><a href="merging-data.html#merging-data-1"><i class="fa fa-check"></i><b>12.4</b> Merging Data</a><ul>
+<li class="chapter" data-level="12.4.1" data-path="merging-data.html"><a href="merging-data.html#the-by.x-and-by.y-arguments"><i class="fa fa-check"></i><b>12.4.1</b> The by.x and by.y Arguments</a></li>
+</ul></li>
+<li class="chapter" data-level="12.5" data-path="merging-data.html"><a href="merging-data.html#non-unique-observations-in-id-variables"><i class="fa fa-check"></i><b>12.5</b> Non-Unique Observations in ID Variables</a><ul>
+<li class="chapter" data-level="12.5.1" data-path="merging-data.html"><a href="merging-data.html#example-of-incorrect-merge"><i class="fa fa-check"></i><b>12.5.1</b> Example of Incorrect Merge</a></li>
+</ul></li>
+<li class="chapter" data-level="12.6" data-path="merging-data.html"><a href="merging-data.html#the-in-function"><i class="fa fa-check"></i><b>12.6</b> The %in% function</a></li>
+<li class="chapter" data-level="12.7" data-path="merging-data.html"><a href="merging-data.html#the-match-function"><i class="fa fa-check"></i><b>12.7</b> The Match Function</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://webapp4.asu.edu/programs/t5/majorinfo/ASU00/PPPGEMS/graduate/false" target="blank">ASU</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Intro to Data Science for the Social Sector</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="data-viz" class="section level1 unnumbered">
+<h1>DATA VIZ</h1>
+<p>Visualization can be a powerful way to generate insights from data. Creating impactful graphics is not a trivial undertaking, however. There is a science to how the brain consumes visual information. And there is an art to combining elements of graphics in ways that make the data both aesthetically pleasing and informative. It takes practice to develop these skills.</p>
+<p>This section of the textbook is not about the design of a specific visualization or graphic, but rather the implementation. Once you have an idea for your graphic in your mind, you need a few basic R functions to create the visualization. We will cover these nuts and bolts of building custom graphics, some popular R packages for visualization, and some tricks to take your data viz game to the next level using dynamic graphics and animations.</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-228"></span>
+<img src="figures/anatomy_of_a_graph3.png" alt="The core graphics package allows you to control every element of a visualization." width="50%" />
+<p class="caption">
+Figure 8.1: The core graphics package allows you to control every element of a visualization.
+</p>
+</div>
+<p>If you would like to start building your data viz muscles, we recommend the following resources as good jumping-off points.</p>
+<p>Popular blogs that demonstrate the step-by-step process of making a mediocre graphic into a compelling graphic:</p>
+<ul>
+<li><a href="http://www.makeovermonday.co.uk/gallery/">Makeover Mondays</a></li>
+<li><a href="http://flowingdata.com/">Flowing Data</a></li>
+<li><a href="http://junkcharts.typepad.com/junk_charts/">Junk Charts</a></li>
+<li><a href="http://kpq.github.io/chartsnthings/">NYT Graphics Blog</a></li>
+<li><a href="https://twitter.com/HelpMeViz">Help Me Viz</a></li>
+</ul>
+<p>Useful introductory textbooks on data visualization:</p>
+<ul>
+<li><a href="../READINGS/Schwabish%20(14)%20Visualizing%20Data%20for%20Economists.pdf">Schwabish, J. A. (2014). An economist’s guide to visualizing data. Journal of Economic Perspectives, 28(1), 209-34.</a></li>
+<li><a href="https://static1.squarespace.com/static/55d9f3fbe4b001723c108c17/t/56214bdae4b0b08cace11af0/1445022682859/Ebook+On+Data+Visualization.pdf">T. Chiasson, D. Gregory, &amp; Contributors (2013). Data + Design: A simple introduction to preparing and visualizing information.</a></li>
+<li><a href="https://www.tableau.com/sites/default/files/media/which_chart_v6_final_0.pdf">Tableau: Which Chart Goes with What Data</a></li>
+</ul>
+<p>Inspiration and help with R graphics:</p>
+<ul>
+<li><a href="https://www.r-graph-gallery.com/">R Graph Gallery</a></li>
+<li><a href="http://shiny.stat.ubc.ca/r-graph-catalog/">R Graph Catalog</a></li>
+<li><a href="http://shinyapps.org/apps/RGraphCompendium/index.php">R Graph Compendium</a></li>
+<li><a href="https://ggplot2.tidyverse.org/reference/">ggplot2 Geoms Gallery</a></li>
+</ul>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="analysis-with-groups.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="the-plot-function.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/DS4PS/Data-Science-Class/tree/master/TEXTBOOK/CH-09-plot-basics.Rmd",
+"text": "Edit"
+},
+"download": ["DS4PS-I.pdf", "DS4PS-I.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
