@@ -6,14 +6,6 @@
 
 We can create almost any customized visualization using a small number of functions from the Core R graphics engine:
 
-* plot.new(); plot.window()
-* points()
-* lines()
-* text()
-* segments()
-* axis()
-* title()
-
 
 ```{r, eval=F}
 points(
@@ -304,7 +296,7 @@ knitr::include_graphics( "figures/eddie_gaedel.png" )
 
 
 
-It turns out that [Eddie Gaedel](https://www.theversed.com/10266/the-tragic-story-of-eddie-gaedel-the-shortest-player-in-mlb-history/#.i0Qgkojft1), at 3 foot 7 inches, was the shortest man to ever play on a professional team. He was hired by the owner of the St. Louis Browns as a publicity stunt. He was so short that his strike zone, which goes form the knee to mid-chest, was too small for most pitchers. Crowds would cheer as he would quickly accumulate the four balls he needed for a walk. 
+It turns out that [Eddie Gaedel](https://www.theversed.com/10266/the-tragic-story-of-eddie-gaedel-the-shortest-player-in-mlb-history/#.i0Qgkojft1), at 3 foot 7 inches, was the shortest man to ever play on a professional team. He was hired by the owner of the St. Louis Browns as a publicity stunt. He was so short that his strike zone, which goes form the knee to mid-chest, was too small for most pitchers. Crowds would cheer as he would quickly accumulate walks. 
 
 Perhaps it would be useful to annotate some of the outliers on our graph. To do this, we can use the text() function.
 
@@ -346,7 +338,7 @@ Master[ c(this.shortest,this.tallest,this.heaviest), c(14,15,17:20,2) ] %>% pand
 ```
 
 
-Let's highlight 
+Let's highlight the three outliers in our dataset. 
 
 ```{r}
 plot( Master$height, Master$weight, 
@@ -373,7 +365,7 @@ text( Master$height[ this.shortest ],
       "Some Text Here", col="firebrick", pos=3 )
 ```
 
-We add text by giving the x,y coordinate for the text, the text itself, and we use the **pos=** argument to specify where the text should go. 
+We add text to the graph through the x,y coordinate for the text, the text itself, and the **pos=** argument is used to specify where the text should go. 
 
 * pos=1: below
 * pos=2: left
