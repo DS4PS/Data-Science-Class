@@ -6,9 +6,7 @@ This section will cover basic principles of working with vectors in the R langua
 
 
 
-
-
-# Data Types
+# Data Types 
 
 
 ```{r, echo=F }
