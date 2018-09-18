@@ -2,6 +2,12 @@
 
 Repository for all files for the Foundations of Data Science I, II and III course sequence.
 
+![](http://r4ds.had.co.nz/diagrams/data-science-wrangle.png) 
+
+Image from: *Wickham, H., & Grolemund, G. (2016). R for data science: import, tidy, transform, visualize, and model data. " O'Reilly Media, Inc.".*
+
+<br>
+
 ## Data Science Foundations I: Data Programming
 
 *	Intro to functions, arguments, and packages  
@@ -14,7 +20,7 @@ Repository for all files for the Foundations of Data Science I, II and III cours
 *	Regular expressions and strings 
 *	Dashboard project 
 
-
+<br>
 
 ## Data Science Foundations II: Data Wrangling
 
@@ -26,9 +32,7 @@ Repository for all files for the Foundations of Data Science I, II and III cours
 *	Applying functions to groups (model step) 
 *	Advanced markdown reporting functions (communicate step) 
 
-![](http://r4ds.had.co.nz/diagrams/data-science-wrangle.png) 
-
-Image from: *Wickham, H., & Grolemund, G. (2016). R for data science: import, tidy, transform, visualize, and model data. " O'Reilly Media, Inc.".*
+<br>
 
 ## Data Science Foundations III: Project Management
 
