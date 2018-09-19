@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Intro to Data Science for the Social Sector</title>
   <meta name="description" content="This is an introductory text to data science designed for social science graduate students in public affairs, nonprofit management, and international development.">
-  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.6 and GitBook 2.6.7">
 
   <meta property="og:title" content="Intro to Data Science for the Social Sector" />
   <meta property="og:type" content="book" />
@@ -59,7 +59,7 @@
 <style type="text/css">
 a.sourceLine { display: inline-block; line-height: 1.25; }
 a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 div.sourceCode { margin: 1em 0; }
@@ -72,11 +72,13 @@ code.sourceCode { white-space: pre-wrap; }
 a.sourceLine { text-indent: -1em; padding-left: 1em; }
 }
 pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
 pre.numberSource a.sourceLine::before
   { content: attr(data-line-number);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -148,7 +150,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.5" data-path="introduction-to-r.html"><a href="introduction-to-r.html#accessing-built-in-datasets-in-r"><i class="fa fa-check"></i><b>1.5</b> Accessing Built-In Datasets in R</a><ul>
 <li class="chapter" data-level="1.5.1" data-path="introduction-to-r.html"><a href="introduction-to-r.html#basic-data-operations"><i class="fa fa-check"></i><b>1.5.1</b> Basic Data Operations</a></li>
 <li class="chapter" data-level="1.5.2" data-path="introduction-to-r.html"><a href="introduction-to-r.html#using-the-lahman-data"><i class="fa fa-check"></i><b>1.5.2</b> Using the Lahman Data</a></li>
-<li class="chapter" data-level="1.5.3" data-path="introduction-to-r.html"><a href="introduction-to-r.html#example-analysis"><i class="fa fa-check"></i><b>1.5.3</b> Example Analysis</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>2</b> Functions</a><ul>
@@ -314,21 +315,21 @@ td {
 </div>
 <div id="key-concepts-4" class="section level2">
 <h2><span class="header-section-number">7.2</span> Key Concepts</h2>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-175"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-176"></span>
 <img src="figures/data_recipe.png" alt="Data recipes are written using a series of data steps. We can simplify this process using pipes" width="80%" />
 <p class="caption">
 Figure 7.1: Data recipes are written using a series of data steps. We can simplify this process using pipes
 </p>
 </div>
 <p><br><br></p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-176"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-177"></span>
 <img src="figures/data_verb_input_output.png" alt="Recall, data verbs use data frames as the primary input and the output value." width="80%" />
 <p class="caption">
 Figure 7.2: Recall, data verbs use data frames as the primary input and the output value.
 </p>
 </div>
 <p><br><br></p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-177"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-178"></span>
 <img src="figures/chaining_data_verbs.png" alt="The pipe operator passes a data frame forward through a chain of data vergs. We only reference the dataset name once, and all other times it's implicitly called through through piping." width="90%" />
 <p class="caption">
 Figure 7.3: The pipe operator passes a data frame forward through a chain of data vergs. We only reference the dataset name once, and all other times it’s implicitly called through through piping.
@@ -339,7 +340,7 @@ Figure 7.3: The pipe operator passes a data frame forward through a chain of dat
 <h2><span class="header-section-number">7.3</span> The Pipe Operator <strong>%&gt;%</strong></h2>
 <p>The idea of functions() was first introduced using a metaphor of a cookie recipe that has ingredients (data and arguments) and requires that each step of the process building on the results of the previous step.</p>
 <p>The pipe operator allows us to follow this same model to build “data recipes”, a stylized way of writing a program as a series of data verbs chained together to wrangle and analyze the data. The pipe operator passes the data from one verb to the next without having to name it directly.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-178"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-179"></span>
 <img src="figures/chaining_data_verbs.png" alt="The pipe operator allows us to pass a transformed dataset forward in the recipe." width="80%" />
 <p class="caption">
 Figure 7.4: The pipe operator allows us to pass a transformed dataset forward in the recipe.
@@ -432,11 +433,11 @@ Figure 7.4: The pipe operator allows us to pass a transformed dataset forward in
 <a class="sourceLine" id="cb122-5" data-line-number="5"><span class="st">  </span><span class="kw">top_n</span>( <span class="dv">10</span>, Count ) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb122-6" data-line-number="6"><span class="st">  </span><span class="kw">select</span>( Name, Year, Count ) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb122-7" data-line-number="7"><span class="st">  </span><span class="kw">pander</span>()</a></code></pre></div>
-<table style="width:35%;">
+<table style="width:33%;">
 <colgroup>
 <col width="13%" />
 <col width="9%" />
-<col width="11%" />
+<col width="9%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -703,27 +704,27 @@ Figure 7.4: The pipe operator allows us to pass a transformed dataset forward in
 <a class="sourceLine" id="cb126-4" data-line-number="4"><span class="st">  </span><span class="kw">select</span> (Name, Year, Count) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb126-5" data-line-number="5"><span class="st">  </span><span class="kw">ggvis</span>( <span class="op">~</span>Year, <span class="op">~</span>Count, <span class="dt">stroke =</span> <span class="op">~</span>Name ) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb126-6" data-line-number="6"><span class="st">  </span><span class="kw">layer_lines</span>()</a></code></pre></div>
-<div id="plot_id879877987-container" class="ggvis-output-container">
-<div id="plot_id879877987" class="ggvis-output"></div>
+<div id="plot_id830162306-container" class="ggvis-output-container">
+<div id="plot_id830162306" class="ggvis-output"></div>
 <div class="plot-gear-icon">
 <nav class="ggvis-control">
 <a class="ggvis-dropdown-toggle" title="Controls" onclick="return false;"></a>
 <ul class="ggvis-dropdown">
 <li>
 Renderer: 
-<a id="plot_id879877987_renderer_svg" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id879877987" data-renderer="svg">SVG</a>
+<a id="plot_id830162306_renderer_svg" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id830162306" data-renderer="svg">SVG</a>
  | 
-<a id="plot_id879877987_renderer_canvas" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id879877987" data-renderer="canvas">Canvas</a>
+<a id="plot_id830162306_renderer_canvas" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id830162306" data-renderer="canvas">Canvas</a>
 </li>
 <li>
-<a id="plot_id879877987_download" class="ggvis-download" data-plot-id="plot_id879877987">Download</a>
+<a id="plot_id830162306_download" class="ggvis-download" data-plot-id="plot_id830162306">Download</a>
 </li>
 </ul>
 </nav>
 </div>
 </div>
 <script type="text/javascript">
-var plot_id879877987_spec = {
+var plot_id830162306_spec = {
   "data": [
     {
       "name": ".0/group_by1/arrange2_flat",
@@ -884,47 +885,47 @@ var plot_id879877987_spec = {
   },
   "handlers": null
 };
-ggvis.getPlot("plot_id879877987").parseSpec(plot_id879877987_spec);
+ggvis.getPlot("plot_id830162306").parseSpec(plot_id830162306_spec);
 </script>
 <div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb127-1" data-line-number="1">top.five<span class="fl">.1920</span> &lt;-<span class="st"> </span></a>
 <a class="sourceLine" id="cb127-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>( peak.years, Year <span class="op">==</span><span class="st"> </span><span class="dv">1920</span> ) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb127-3" data-line-number="3"><span class="st">  </span><span class="kw">top_n</span>( <span class="dv">5</span>, Count ) </a>
 <a class="sourceLine" id="cb127-4" data-line-number="4"></a>
 <a class="sourceLine" id="cb127-5" data-line-number="5">top.five<span class="fl">.1920</span></a>
-<a class="sourceLine" id="cb127-6" data-line-number="6"><span class="co">### # A tibble: 5 x 5</span></a>
-<a class="sourceLine" id="cb127-7" data-line-number="7"><span class="co">###       Id Name     Year Gender Count</span></a>
-<a class="sourceLine" id="cb127-8" data-line-number="8"><span class="co">###    &lt;int&gt; &lt;chr&gt;   &lt;int&gt; &lt;chr&gt;  &lt;int&gt;</span></a>
-<a class="sourceLine" id="cb127-9" data-line-number="9"><span class="co">### 1 169464 Ruth     1920 F      26100</span></a>
-<a class="sourceLine" id="cb127-10" data-line-number="10"><span class="co">### 2 169465 Mildred  1920 F      18058</span></a>
-<a class="sourceLine" id="cb127-11" data-line-number="11"><span class="co">### 3 169472 Marie    1920 F      12745</span></a>
-<a class="sourceLine" id="cb127-12" data-line-number="12"><span class="co">### 4 169477 Lillian  1920 F      10050</span></a>
-<a class="sourceLine" id="cb127-13" data-line-number="13"><span class="co">### 5 169481 Gladys   1920 F       8819</span></a></code></pre></div>
+<a class="sourceLine" id="cb127-6" data-line-number="6">### # A tibble: 5 x 5</a>
+<a class="sourceLine" id="cb127-7" data-line-number="7">###       Id Name     Year Gender Count</a>
+<a class="sourceLine" id="cb127-8" data-line-number="8">###    &lt;int&gt; &lt;chr&gt;   &lt;int&gt; &lt;chr&gt;  &lt;int&gt;</a>
+<a class="sourceLine" id="cb127-9" data-line-number="9">### 1 169464 Ruth     1920 F      26100</a>
+<a class="sourceLine" id="cb127-10" data-line-number="10">### 2 169465 Mildred  1920 F      18058</a>
+<a class="sourceLine" id="cb127-11" data-line-number="11">### 3 169472 Marie    1920 F      12745</a>
+<a class="sourceLine" id="cb127-12" data-line-number="12">### 4 169477 Lillian  1920 F      10050</a>
+<a class="sourceLine" id="cb127-13" data-line-number="13">### 5 169481 Gladys   1920 F       8819</a></code></pre></div>
 <div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb128-1" data-line-number="1">names <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb128-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>( Name <span class="op">%in%</span><span class="st"> </span>top.five<span class="fl">.1920</span><span class="op">$</span>Name <span class="op">&amp;</span><span class="st"> </span>Gender <span class="op">==</span><span class="st">&quot;F&quot;</span> ) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb128-3" data-line-number="3"><span class="st">  </span><span class="kw">select</span> (Name, Year, Count) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb128-4" data-line-number="4"><span class="st">  </span><span class="kw">ggvis</span>( <span class="op">~</span>Year, <span class="op">~</span>Count, <span class="dt">stroke =</span> <span class="op">~</span>Name ) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb128-5" data-line-number="5"><span class="st">  </span><span class="kw">layer_lines</span>()</a></code></pre></div>
-<div id="plot_id141148039-container" class="ggvis-output-container">
-<div id="plot_id141148039" class="ggvis-output"></div>
+<div id="plot_id574363727-container" class="ggvis-output-container">
+<div id="plot_id574363727" class="ggvis-output"></div>
 <div class="plot-gear-icon">
 <nav class="ggvis-control">
 <a class="ggvis-dropdown-toggle" title="Controls" onclick="return false;"></a>
 <ul class="ggvis-dropdown">
 <li>
 Renderer: 
-<a id="plot_id141148039_renderer_svg" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id141148039" data-renderer="svg">SVG</a>
+<a id="plot_id574363727_renderer_svg" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id574363727" data-renderer="svg">SVG</a>
  | 
-<a id="plot_id141148039_renderer_canvas" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id141148039" data-renderer="canvas">Canvas</a>
+<a id="plot_id574363727_renderer_canvas" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id574363727" data-renderer="canvas">Canvas</a>
 </li>
 <li>
-<a id="plot_id141148039_download" class="ggvis-download" data-plot-id="plot_id141148039">Download</a>
+<a id="plot_id574363727_download" class="ggvis-download" data-plot-id="plot_id574363727">Download</a>
 </li>
 </ul>
 </nav>
 </div>
 </div>
 <script type="text/javascript">
-var plot_id141148039_spec = {
+var plot_id574363727_spec = {
   "data": [
     {
       "name": ".0/group_by1/arrange2_flat",
@@ -1085,7 +1086,7 @@ var plot_id141148039_spec = {
   },
   "handlers": null
 };
-ggvis.getPlot("plot_id141148039").parseSpec(plot_id141148039_spec);
+ggvis.getPlot("plot_id574363727").parseSpec(plot_id574363727_spec);
 </script>
 <div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb129-1" data-line-number="1">top.five<span class="fl">.1975</span> &lt;-<span class="st"> </span></a>
 <a class="sourceLine" id="cb129-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>( peak.years, Year <span class="op">==</span><span class="st"> </span><span class="dv">1975</span> ) <span class="op">%&gt;%</span><span class="st"> </span></a>
@@ -1096,27 +1097,27 @@ ggvis.getPlot("plot_id141148039").parseSpec(plot_id141148039_spec);
 <a class="sourceLine" id="cb129-7" data-line-number="7"><span class="st">  </span><span class="kw">select</span> (Name, Year, Count) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb129-8" data-line-number="8"><span class="st">  </span><span class="kw">ggvis</span>( <span class="op">~</span>Year, <span class="op">~</span>Count, <span class="dt">stroke =</span> <span class="op">~</span>Name ) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb129-9" data-line-number="9"><span class="st">  </span><span class="kw">layer_lines</span>()</a></code></pre></div>
-<div id="plot_id241174871-container" class="ggvis-output-container">
-<div id="plot_id241174871" class="ggvis-output"></div>
+<div id="plot_id890443403-container" class="ggvis-output-container">
+<div id="plot_id890443403" class="ggvis-output"></div>
 <div class="plot-gear-icon">
 <nav class="ggvis-control">
 <a class="ggvis-dropdown-toggle" title="Controls" onclick="return false;"></a>
 <ul class="ggvis-dropdown">
 <li>
 Renderer: 
-<a id="plot_id241174871_renderer_svg" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id241174871" data-renderer="svg">SVG</a>
+<a id="plot_id890443403_renderer_svg" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id890443403" data-renderer="svg">SVG</a>
  | 
-<a id="plot_id241174871_renderer_canvas" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id241174871" data-renderer="canvas">Canvas</a>
+<a id="plot_id890443403_renderer_canvas" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id890443403" data-renderer="canvas">Canvas</a>
 </li>
 <li>
-<a id="plot_id241174871_download" class="ggvis-download" data-plot-id="plot_id241174871">Download</a>
+<a id="plot_id890443403_download" class="ggvis-download" data-plot-id="plot_id890443403">Download</a>
 </li>
 </ul>
 </nav>
 </div>
 </div>
 <script type="text/javascript">
-var plot_id241174871_spec = {
+var plot_id890443403_spec = {
   "data": [
     {
       "name": ".0/group_by1/arrange2_flat",
@@ -1277,7 +1278,7 @@ var plot_id241174871_spec = {
   },
   "handlers": null
 };
-ggvis.getPlot("plot_id241174871").parseSpec(plot_id241174871_spec);
+ggvis.getPlot("plot_id890443403").parseSpec(plot_id890443403_spec);
 </script>
 <div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb130-1" data-line-number="1">top.five<span class="fl">.2000</span> &lt;-<span class="st"> </span></a>
 <a class="sourceLine" id="cb130-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>( peak.years, Year <span class="op">==</span><span class="st"> </span><span class="dv">2000</span> ) <span class="op">%&gt;%</span><span class="st"> </span></a>
@@ -1288,27 +1289,27 @@ ggvis.getPlot("plot_id241174871").parseSpec(plot_id241174871_spec);
 <a class="sourceLine" id="cb130-7" data-line-number="7"><span class="st">  </span><span class="kw">select</span> (Name, Year, Count) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb130-8" data-line-number="8"><span class="st">  </span><span class="kw">ggvis</span>( <span class="op">~</span>Year, <span class="op">~</span>Count, <span class="dt">stroke =</span> <span class="op">~</span>Name ) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb130-9" data-line-number="9"><span class="st">  </span><span class="kw">layer_lines</span>()</a></code></pre></div>
-<div id="plot_id311545248-container" class="ggvis-output-container">
-<div id="plot_id311545248" class="ggvis-output"></div>
+<div id="plot_id631193080-container" class="ggvis-output-container">
+<div id="plot_id631193080" class="ggvis-output"></div>
 <div class="plot-gear-icon">
 <nav class="ggvis-control">
 <a class="ggvis-dropdown-toggle" title="Controls" onclick="return false;"></a>
 <ul class="ggvis-dropdown">
 <li>
 Renderer: 
-<a id="plot_id311545248_renderer_svg" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id311545248" data-renderer="svg">SVG</a>
+<a id="plot_id631193080_renderer_svg" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id631193080" data-renderer="svg">SVG</a>
  | 
-<a id="plot_id311545248_renderer_canvas" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id311545248" data-renderer="canvas">Canvas</a>
+<a id="plot_id631193080_renderer_canvas" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id631193080" data-renderer="canvas">Canvas</a>
 </li>
 <li>
-<a id="plot_id311545248_download" class="ggvis-download" data-plot-id="plot_id311545248">Download</a>
+<a id="plot_id631193080_download" class="ggvis-download" data-plot-id="plot_id631193080">Download</a>
 </li>
 </ul>
 </nav>
 </div>
 </div>
 <script type="text/javascript">
-var plot_id311545248_spec = {
+var plot_id631193080_spec = {
   "data": [
     {
       "name": ".0/group_by1/arrange2_flat",
@@ -1469,7 +1470,7 @@ var plot_id311545248_spec = {
   },
   "handlers": null
 };
-ggvis.getPlot("plot_id311545248").parseSpec(plot_id311545248_spec);
+ggvis.getPlot("plot_id631193080").parseSpec(plot_id631193080_spec);
 </script>
 <p>Ryan Burge posted a <a href="https://www.kaggle.com/ryanburge/hipster-names/notebook">fun project on Kaggle</a> about how to find hipster names using this historical data. He defines hipster names as those meeting the following criteria:</p>
 <ul>
@@ -1496,27 +1497,27 @@ ggvis.getPlot("plot_id311545248").parseSpec(plot_id311545248_spec);
 <a class="sourceLine" id="cb132-5" data-line-number="5"><span class="st">  </span><span class="kw">select</span> (Name, Year, Count) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb132-6" data-line-number="6"><span class="st">  </span><span class="kw">ggvis</span>( <span class="op">~</span>Year, <span class="op">~</span>Count, <span class="dt">stroke =</span> <span class="op">~</span>Name ) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb132-7" data-line-number="7"><span class="st">  </span><span class="kw">layer_lines</span>()</a></code></pre></div>
-<div id="plot_id471045810-container" class="ggvis-output-container">
-<div id="plot_id471045810" class="ggvis-output"></div>
+<div id="plot_id781130671-container" class="ggvis-output-container">
+<div id="plot_id781130671" class="ggvis-output"></div>
 <div class="plot-gear-icon">
 <nav class="ggvis-control">
 <a class="ggvis-dropdown-toggle" title="Controls" onclick="return false;"></a>
 <ul class="ggvis-dropdown">
 <li>
 Renderer: 
-<a id="plot_id471045810_renderer_svg" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id471045810" data-renderer="svg">SVG</a>
+<a id="plot_id781130671_renderer_svg" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id781130671" data-renderer="svg">SVG</a>
  | 
-<a id="plot_id471045810_renderer_canvas" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id471045810" data-renderer="canvas">Canvas</a>
+<a id="plot_id781130671_renderer_canvas" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id781130671" data-renderer="canvas">Canvas</a>
 </li>
 <li>
-<a id="plot_id471045810_download" class="ggvis-download" data-plot-id="plot_id471045810">Download</a>
+<a id="plot_id781130671_download" class="ggvis-download" data-plot-id="plot_id781130671">Download</a>
 </li>
 </ul>
 </nav>
 </div>
 </div>
 <script type="text/javascript">
-var plot_id471045810_spec = {
+var plot_id781130671_spec = {
   "data": [
     {
       "name": ".0/group_by1/arrange2_flat",
@@ -1677,7 +1678,7 @@ var plot_id471045810_spec = {
   },
   "handlers": null
 };
-ggvis.getPlot("plot_id471045810").parseSpec(plot_id471045810_spec);
+ggvis.getPlot("plot_id781130671").parseSpec(plot_id781130671_spec);
 </script>
 <p>And the full list:</p>
 <div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb133-1" data-line-number="1">hipster.names <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">pander</span>()</a></code></pre></div>
@@ -1814,11 +1815,10 @@ gitbook.start({
 "facebook": true,
 "twitter": true,
 "google": false,
-"linkedin": false,
 "weibo": false,
 "instapper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",

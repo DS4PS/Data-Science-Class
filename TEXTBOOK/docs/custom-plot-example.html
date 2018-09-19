@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Intro to Data Science for the Social Sector</title>
   <meta name="description" content="This is an introductory text to data science designed for social science graduate students in public affairs, nonprofit management, and international development.">
-  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.6 and GitBook 2.6.7">
 
   <meta property="og:title" content="Intro to Data Science for the Social Sector" />
   <meta property="og:type" content="book" />
@@ -45,12 +45,21 @@
 
 
 
+<script src="libs/detect-resize-0.5.3/jquery.resize.js"></script>
+<link href="libs/jquery-ui-1.11.4/jquery-ui.min.css" rel="stylesheet" />
+<script src="libs/jquery-ui-1.11.4/jquery-ui.min.js"></script>
+<script src="libs/d3-3.5.2/d3.min.js"></script>
+<script src="libs/vega-1.4.3/vega.min.js"></script>
+<script src="libs/lodash-2.2.1/lodash.min.js"></script>
+<script>var lodash = _.noConflict();</script>
+<link href="libs/ggvis-0.4.3/css/ggvis.css" rel="stylesheet" />
+<script src="libs/ggvis-0.4.3/js/ggvis.js"></script>
 
 
 <style type="text/css">
 a.sourceLine { display: inline-block; line-height: 1.25; }
 a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 div.sourceCode { margin: 1em 0; }
@@ -63,11 +72,13 @@ code.sourceCode { white-space: pre-wrap; }
 a.sourceLine { text-indent: -1em; padding-left: 1em; }
 }
 pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
 pre.numberSource a.sourceLine::before
   { content: attr(data-line-number);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -134,13 +145,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.1.1" data-path="introduction-to-r.html"><a href="introduction-to-r.html#setting-your-working-directory"><i class="fa fa-check"></i><b>1.1.1</b> Setting Your Working Directory</a></li>
 </ul></li>
 <li class="chapter" data-level="1.2" data-path="introduction-to-r.html"><a href="introduction-to-r.html#commenting-code"><i class="fa fa-check"></i><b>1.2</b> Commenting Code</a></li>
-<li class="chapter" data-level="1.3" data-path="introduction-to-r.html"><a href="introduction-to-r.html#here-is-some-documentation-for-this-script"><i class="fa fa-check"></i><b>1.3</b> Here is some documentation for this script</a></li>
-<li class="chapter" data-level="1.4" data-path="introduction-to-r.html"><a href="introduction-to-r.html#help"><i class="fa fa-check"></i><b>1.4</b> Help</a></li>
-<li class="chapter" data-level="1.5" data-path="introduction-to-r.html"><a href="introduction-to-r.html#install-programs-packages"><i class="fa fa-check"></i><b>1.5</b> Install Programs (packages)</a></li>
-<li class="chapter" data-level="1.6" data-path="introduction-to-r.html"><a href="introduction-to-r.html#accessing-built-in-datasets-in-r"><i class="fa fa-check"></i><b>1.6</b> Accessing Built-In Datasets in R</a><ul>
-<li class="chapter" data-level="1.6.1" data-path="introduction-to-r.html"><a href="introduction-to-r.html#basic-data-operations"><i class="fa fa-check"></i><b>1.6.1</b> Basic Data Operations</a></li>
-<li class="chapter" data-level="1.6.2" data-path="introduction-to-r.html"><a href="introduction-to-r.html#using-the-lahman-data"><i class="fa fa-check"></i><b>1.6.2</b> Using the Lahman Data</a></li>
-<li class="chapter" data-level="1.6.3" data-path="introduction-to-r.html"><a href="introduction-to-r.html#example-analysis"><i class="fa fa-check"></i><b>1.6.3</b> Example Analysis</a></li>
+<li class="chapter" data-level="1.3" data-path="introduction-to-r.html"><a href="introduction-to-r.html#help"><i class="fa fa-check"></i><b>1.3</b> Help</a></li>
+<li class="chapter" data-level="1.4" data-path="introduction-to-r.html"><a href="introduction-to-r.html#install-programs-packages"><i class="fa fa-check"></i><b>1.4</b> Install Programs (packages)</a></li>
+<li class="chapter" data-level="1.5" data-path="introduction-to-r.html"><a href="introduction-to-r.html#accessing-built-in-datasets-in-r"><i class="fa fa-check"></i><b>1.5</b> Accessing Built-In Datasets in R</a><ul>
+<li class="chapter" data-level="1.5.1" data-path="introduction-to-r.html"><a href="introduction-to-r.html#basic-data-operations"><i class="fa fa-check"></i><b>1.5.1</b> Basic Data Operations</a></li>
+<li class="chapter" data-level="1.5.2" data-path="introduction-to-r.html"><a href="introduction-to-r.html#using-the-lahman-data"><i class="fa fa-check"></i><b>1.5.2</b> Using the Lahman Data</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>2</b> Functions</a><ul>
@@ -150,120 +159,123 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.4" data-path="functions.html"><a href="functions.html#default-argument-values"><i class="fa fa-check"></i><b>2.4</b> Default Argument Values</a></li>
 <li class="chapter" data-level="2.5" data-path="functions.html"><a href="functions.html#assignment"><i class="fa fa-check"></i><b>2.5</b> Assignment</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="vectors.html"><a href="vectors.html"><i class="fa fa-check"></i>VECTORS</a><ul>
-<li class="chapter" data-level="2.6" data-path="vectors.html"><a href="vectors.html#key-concepts-1"><i class="fa fa-check"></i><b>2.6</b> Key Concepts</a></li>
-<li class="chapter" data-level="2.7" data-path="vectors.html"><a href="vectors.html#vectors-1"><i class="fa fa-check"></i><b>2.7</b> Vectors</a></li>
-<li class="chapter" data-level="2.8" data-path="vectors.html"><a href="vectors.html#common-vectors-functions"><i class="fa fa-check"></i><b>2.8</b> Common Vectors Functions</a></li>
-<li class="chapter" data-level="2.9" data-path="vectors.html"><a href="vectors.html#the-combine-function"><i class="fa fa-check"></i><b>2.9</b> The Combine Function</a></li>
-<li class="chapter" data-level="2.10" data-path="vectors.html"><a href="vectors.html#casting"><i class="fa fa-check"></i><b>2.10</b> Casting</a></li>
-<li class="chapter" data-level="2.11" data-path="vectors.html"><a href="vectors.html#numeric-vectors"><i class="fa fa-check"></i><b>2.11</b> Numeric Vectors</a><ul>
-<li class="chapter" data-level="2.11.1" data-path="vectors.html"><a href="vectors.html#integers-are-simple-numeric-vectors"><i class="fa fa-check"></i><b>2.11.1</b> Integers Are Simple Numeric Vectors</a></li>
+<li class="chapter" data-level="" data-path="vectors.html"><a href="vectors.html"><i class="fa fa-check"></i>VECTORS</a></li>
+<li class="chapter" data-level="3" data-path="data-types.html"><a href="data-types.html"><i class="fa fa-check"></i><b>3</b> Data Types</a><ul>
+<li class="chapter" data-level="3.1" data-path="data-types.html"><a href="data-types.html#key-concepts-1"><i class="fa fa-check"></i><b>3.1</b> Key Concepts</a></li>
+<li class="chapter" data-level="3.2" data-path="data-types.html"><a href="data-types.html#vectors-1"><i class="fa fa-check"></i><b>3.2</b> Vectors</a></li>
+<li class="chapter" data-level="3.3" data-path="data-types.html"><a href="data-types.html#common-vectors-functions"><i class="fa fa-check"></i><b>3.3</b> Common Vectors Functions</a></li>
+<li class="chapter" data-level="3.4" data-path="data-types.html"><a href="data-types.html#the-combine-function"><i class="fa fa-check"></i><b>3.4</b> The Combine Function</a></li>
+<li class="chapter" data-level="3.5" data-path="data-types.html"><a href="data-types.html#casting"><i class="fa fa-check"></i><b>3.5</b> Casting</a></li>
+<li class="chapter" data-level="3.6" data-path="data-types.html"><a href="data-types.html#numeric-vectors"><i class="fa fa-check"></i><b>3.6</b> Numeric Vectors</a><ul>
+<li class="chapter" data-level="3.6.1" data-path="data-types.html"><a href="data-types.html#integers-are-simple-numeric-vectors"><i class="fa fa-check"></i><b>3.6.1</b> Integers Are Simple Numeric Vectors</a></li>
 </ul></li>
-<li class="chapter" data-level="2.12" data-path="vectors.html"><a href="vectors.html#character-vectors"><i class="fa fa-check"></i><b>2.12</b> Character Vectors</a><ul>
-<li class="chapter" data-level="2.12.1" data-path="vectors.html"><a href="vectors.html#quotes-in-arguments"><i class="fa fa-check"></i><b>2.12.1</b> Quotes in Arguments</a></li>
+<li class="chapter" data-level="3.7" data-path="data-types.html"><a href="data-types.html#character-vectors"><i class="fa fa-check"></i><b>3.7</b> Character Vectors</a><ul>
+<li class="chapter" data-level="3.7.1" data-path="data-types.html"><a href="data-types.html#quotes-in-arguments"><i class="fa fa-check"></i><b>3.7.1</b> Quotes in Arguments</a></li>
 </ul></li>
-<li class="chapter" data-level="2.13" data-path="vectors.html"><a href="vectors.html#factors"><i class="fa fa-check"></i><b>2.13</b> Factors</a></li>
-<li class="chapter" data-level="2.14" data-path="vectors.html"><a href="vectors.html#logical-vectors"><i class="fa fa-check"></i><b>2.14</b> Logical Vectors</a></li>
-<li class="chapter" data-level="2.15" data-path="vectors.html"><a href="vectors.html#generating-vectors"><i class="fa fa-check"></i><b>2.15</b> Generating Vectors</a></li>
-<li class="chapter" data-level="2.16" data-path="vectors.html"><a href="vectors.html#variable-transformations"><i class="fa fa-check"></i><b>2.16</b> Variable Transformations</a></li>
-<li class="chapter" data-level="2.17" data-path="vectors.html"><a href="vectors.html#missing-values-nas"><i class="fa fa-check"></i><b>2.17</b> Missing Values: NA’s</a></li>
-<li class="chapter" data-level="2.18" data-path="vectors.html"><a href="vectors.html#datasets"><i class="fa fa-check"></i><b>2.18</b> Datasets</a><ul>
-<li class="chapter" data-level="2.18.1" data-path="vectors.html"><a href="vectors.html#data-frames"><i class="fa fa-check"></i><b>2.18.1</b> Data Frames</a></li>
-<li class="chapter" data-level="2.18.2" data-path="vectors.html"><a href="vectors.html#matrices"><i class="fa fa-check"></i><b>2.18.2</b> Matrices</a></li>
-<li class="chapter" data-level="2.18.3" data-path="vectors.html"><a href="vectors.html#lists"><i class="fa fa-check"></i><b>2.18.3</b> Lists</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="3" data-path="logical-statements.html"><a href="logical-statements.html"><i class="fa fa-check"></i><b>3</b> Logical Statements</a><ul>
-<li class="chapter" data-level="3.1" data-path="logical-statements.html"><a href="logical-statements.html#key-concepts-2"><i class="fa fa-check"></i><b>3.1</b> Key Concepts</a></li>
-<li class="chapter" data-level="3.2" data-path="logical-statements.html"><a href="logical-statements.html#operators"><i class="fa fa-check"></i><b>3.2</b> Operators</a></li>
-<li class="chapter" data-level="3.3" data-path="logical-statements.html"><a href="logical-statements.html#selector-vectors"><i class="fa fa-check"></i><b>3.3</b> Selector Vectors</a></li>
-<li class="chapter" data-level="3.4" data-path="logical-statements.html"><a href="logical-statements.html#usefulness-of-selector-vectors"><i class="fa fa-check"></i><b>3.4</b> Usefulness of Selector Vectors</a></li>
-<li class="chapter" data-level="3.5" data-path="logical-statements.html"><a href="logical-statements.html#compound-logical-statements"><i class="fa fa-check"></i><b>3.5</b> Compound Logical Statements</a></li>
-<li class="chapter" data-level="3.6" data-path="logical-statements.html"><a href="logical-statements.html#nas-in-logical-statements"><i class="fa fa-check"></i><b>3.6</b> NAs in Logical Statements</a></li>
-<li class="chapter" data-level="3.7" data-path="logical-statements.html"><a href="logical-statements.html#subsets"><i class="fa fa-check"></i><b>3.7</b> Subsets</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="data-verbs.html"><a href="data-verbs.html"><i class="fa fa-check"></i>DATA VERBS</a><ul>
-<li class="chapter" data-level="3.8" data-path="data-verbs.html"><a href="data-verbs.html#packages-used-in-this-chapter"><i class="fa fa-check"></i><b>3.8</b> Packages Used in This Chapter</a></li>
-<li class="chapter" data-level="3.9" data-path="data-verbs.html"><a href="data-verbs.html#key-concepts-3"><i class="fa fa-check"></i><b>3.9</b> Key Concepts</a></li>
-<li class="chapter" data-level="3.10" data-path="data-verbs.html"><a href="data-verbs.html#the-dplyr-package"><i class="fa fa-check"></i><b>3.10</b> The <strong>dplyr</strong> Package</a></li>
-<li class="chapter" data-level="3.11" data-path="data-verbs.html"><a href="data-verbs.html#use-filter-to-subset-rows"><i class="fa fa-check"></i><b>3.11</b> Use <strong>filter()</strong> to Subset Rows</a></li>
-<li class="chapter" data-level="3.12" data-path="data-verbs.html"><a href="data-verbs.html#select-columns"><i class="fa fa-check"></i><b>3.12</b> <strong>select()</strong> Columns</a></li>
-<li class="chapter" data-level="3.13" data-path="data-verbs.html"><a href="data-verbs.html#arrange-sorts-data"><i class="fa fa-check"></i><b>3.13</b> <strong>arrange()</strong> Sorts Data</a></li>
-<li class="chapter" data-level="3.14" data-path="data-verbs.html"><a href="data-verbs.html#variable-transforms-with-mutate"><i class="fa fa-check"></i><b>3.14</b> Variable Transforms with <strong>mutate()</strong></a></li>
-<li class="chapter" data-level="3.15" data-path="data-verbs.html"><a href="data-verbs.html#rename-variables"><i class="fa fa-check"></i><b>3.15</b> <strong>rename()</strong> Variables</a></li>
-<li class="chapter" data-level="3.16" data-path="data-verbs.html"><a href="data-verbs.html#summarize-variables"><i class="fa fa-check"></i><b>3.16</b> <strong>summarize()</strong> Variables</a></li>
-</ul></li>
-<li class="chapter" data-level="4" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html"><i class="fa fa-check"></i><b>4</b> Descriptive Statistics</a><ul>
-<li class="chapter" data-level="4.1" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#useful-packages"><i class="fa fa-check"></i><b>4.1</b> Useful Packages</a></li>
-</ul></li>
-<li class="chapter" data-level="5" data-path="data-recipes.html"><a href="data-recipes.html"><i class="fa fa-check"></i><b>5</b> Data Recipes</a><ul>
-<li class="chapter" data-level="5.1" data-path="data-recipes.html"><a href="data-recipes.html#packages-used-in-this-chapter-1"><i class="fa fa-check"></i><b>5.1</b> Packages Used in This Chapter</a></li>
-<li class="chapter" data-level="5.2" data-path="data-recipes.html"><a href="data-recipes.html#key-concepts-4"><i class="fa fa-check"></i><b>5.2</b> Key Concepts</a></li>
-<li class="chapter" data-level="5.3" data-path="data-recipes.html"><a href="data-recipes.html#the-pipe-operator"><i class="fa fa-check"></i><b>5.3</b> The Pipe Operator <strong>%&gt;%</strong></a></li>
-<li class="chapter" data-level="5.4" data-path="data-recipes.html"><a href="data-recipes.html#building-data-recipes"><i class="fa fa-check"></i><b>5.4</b> Building Data Recipes</a></li>
-<li class="chapter" data-level="5.5" data-path="data-recipes.html"><a href="data-recipes.html#conclusion"><i class="fa fa-check"></i><b>5.5</b> Conclusion</a></li>
-</ul></li>
-<li class="chapter" data-level="6" data-path="analysis-with-groups.html"><a href="analysis-with-groups.html"><i class="fa fa-check"></i><b>6</b> Analysis with Groups</a><ul>
-<li class="chapter" data-level="6.1" data-path="analysis-with-groups.html"><a href="analysis-with-groups.html#packages-used-in-this-chapter-2"><i class="fa fa-check"></i><b>6.1</b> Packages Used in this Chapter</a></li>
-<li class="chapter" data-level="6.2" data-path="analysis-with-groups.html"><a href="analysis-with-groups.html#hypothetical-experimental-data"><i class="fa fa-check"></i><b>6.2</b> Hypothetical Experimental Data</a></li>
-<li class="chapter" data-level="6.3" data-path="analysis-with-groups.html"><a href="analysis-with-groups.html#group-structure"><i class="fa fa-check"></i><b>6.3</b> Group Structure</a><ul>
-<li class="chapter" data-level="6.3.1" data-path="analysis-with-groups.html"><a href="analysis-with-groups.html#what-are-groups"><i class="fa fa-check"></i><b>6.3.1</b> What Are Groups?</a></li>
-<li class="chapter" data-level="6.3.2" data-path="analysis-with-groups.html"><a href="analysis-with-groups.html#main-take-away"><i class="fa fa-check"></i><b>6.3.2</b> Main Take-Away</a></li>
-<li class="chapter" data-level="6.3.3" data-path="analysis-with-groups.html"><a href="analysis-with-groups.html#example"><i class="fa fa-check"></i><b>6.3.3</b> Example</a></li>
-</ul></li>
-<li class="chapter" data-level="6.4" data-path="analysis-with-groups.html"><a href="analysis-with-groups.html#analysis-by-group"><i class="fa fa-check"></i><b>6.4</b> Analysis by Group</a><ul>
-<li class="chapter" data-level="6.4.1" data-path="analysis-with-groups.html"><a href="analysis-with-groups.html#highest-ave-player-salary"><i class="fa fa-check"></i><b>6.4.1</b> Highest Ave Player Salary</a></li>
-<li class="chapter" data-level="6.4.2" data-path="analysis-with-groups.html"><a href="analysis-with-groups.html#most-players-paid-over-5-million"><i class="fa fa-check"></i><b>6.4.2</b> Most Players Paid Over $5 Million</a></li>
-<li class="chapter" data-level="6.4.3" data-path="analysis-with-groups.html"><a href="analysis-with-groups.html#fielding-positions"><i class="fa fa-check"></i><b>6.4.3</b> Fielding Positions</a></li>
-<li class="chapter" data-level="6.4.4" data-path="analysis-with-groups.html"><a href="analysis-with-groups.html#country-of-birth"><i class="fa fa-check"></i><b>6.4.4</b> Country of Birth</a></li>
-<li class="chapter" data-level="6.4.5" data-path="analysis-with-groups.html"><a href="analysis-with-groups.html#pay-raises"><i class="fa fa-check"></i><b>6.4.5</b> Pay Raises</a></li>
+<li class="chapter" data-level="3.8" data-path="data-types.html"><a href="data-types.html#factors"><i class="fa fa-check"></i><b>3.8</b> Factors</a></li>
+<li class="chapter" data-level="3.9" data-path="data-types.html"><a href="data-types.html#logical-vectors"><i class="fa fa-check"></i><b>3.9</b> Logical Vectors</a></li>
+<li class="chapter" data-level="3.10" data-path="data-types.html"><a href="data-types.html#generating-vectors"><i class="fa fa-check"></i><b>3.10</b> Generating Vectors</a></li>
+<li class="chapter" data-level="3.11" data-path="data-types.html"><a href="data-types.html#variable-transformations"><i class="fa fa-check"></i><b>3.11</b> Variable Transformations</a></li>
+<li class="chapter" data-level="3.12" data-path="data-types.html"><a href="data-types.html#missing-values-nas"><i class="fa fa-check"></i><b>3.12</b> Missing Values: NA’s</a></li>
+<li class="chapter" data-level="3.13" data-path="data-types.html"><a href="data-types.html#datasets"><i class="fa fa-check"></i><b>3.13</b> Datasets</a><ul>
+<li class="chapter" data-level="3.13.1" data-path="data-types.html"><a href="data-types.html#data-frames"><i class="fa fa-check"></i><b>3.13.1</b> Data Frames</a></li>
+<li class="chapter" data-level="3.13.2" data-path="data-types.html"><a href="data-types.html#matrices"><i class="fa fa-check"></i><b>3.13.2</b> Matrices</a></li>
+<li class="chapter" data-level="3.13.3" data-path="data-types.html"><a href="data-types.html#lists"><i class="fa fa-check"></i><b>3.13.3</b> Lists</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="data-viz.html"><a href="data-viz.html"><i class="fa fa-check"></i>DATA VIZ</a><ul>
-<li class="chapter" data-level="6.5" data-path="data-viz.html"><a href="data-viz.html#key-concepts-5"><i class="fa fa-check"></i><b>6.5</b> Key Concepts</a></li>
-<li class="chapter" data-level="6.6" data-path="data-viz.html"><a href="data-viz.html#plot-arguments"><i class="fa fa-check"></i><b>6.6</b> plot() Arguments</a></li>
-<li class="chapter" data-level="6.7" data-path="data-viz.html"><a href="data-viz.html#titles"><i class="fa fa-check"></i><b>6.7</b> Titles</a></li>
-<li class="chapter" data-level="6.8" data-path="data-viz.html"><a href="data-viz.html#type-of-plot"><i class="fa fa-check"></i><b>6.8</b> Type of Plot</a></li>
-<li class="chapter" data-level="6.9" data-path="data-viz.html"><a href="data-viz.html#shape-of-points"><i class="fa fa-check"></i><b>6.9</b> Shape of Points</a></li>
-<li class="chapter" data-level="6.10" data-path="data-viz.html"><a href="data-viz.html#size-of-points"><i class="fa fa-check"></i><b>6.10</b> Size of Points</a></li>
-<li class="chapter" data-level="6.11" data-path="data-viz.html"><a href="data-viz.html#colors"><i class="fa fa-check"></i><b>6.11</b> Colors</a></li>
-<li class="chapter" data-level="6.12" data-path="data-viz.html"><a href="data-viz.html#looking-ahead"><i class="fa fa-check"></i><b>6.12</b> Looking Ahead</a></li>
+<li class="chapter" data-level="4" data-path="logical-statements.html"><a href="logical-statements.html"><i class="fa fa-check"></i><b>4</b> Logical Statements</a><ul>
+<li class="chapter" data-level="4.1" data-path="logical-statements.html"><a href="logical-statements.html#key-concepts-2"><i class="fa fa-check"></i><b>4.1</b> Key Concepts</a></li>
+<li class="chapter" data-level="4.2" data-path="logical-statements.html"><a href="logical-statements.html#operators"><i class="fa fa-check"></i><b>4.2</b> Operators</a></li>
+<li class="chapter" data-level="4.3" data-path="logical-statements.html"><a href="logical-statements.html#selector-vectors"><i class="fa fa-check"></i><b>4.3</b> Selector Vectors</a></li>
+<li class="chapter" data-level="4.4" data-path="logical-statements.html"><a href="logical-statements.html#usefulness-of-selector-vectors"><i class="fa fa-check"></i><b>4.4</b> Usefulness of Selector Vectors</a></li>
+<li class="chapter" data-level="4.5" data-path="logical-statements.html"><a href="logical-statements.html#compound-logical-statements"><i class="fa fa-check"></i><b>4.5</b> Compound Logical Statements</a></li>
+<li class="chapter" data-level="4.6" data-path="logical-statements.html"><a href="logical-statements.html#nas-in-logical-statements"><i class="fa fa-check"></i><b>4.6</b> NAs in Logical Statements</a></li>
+<li class="chapter" data-level="4.7" data-path="logical-statements.html"><a href="logical-statements.html#subsets"><i class="fa fa-check"></i><b>4.7</b> Subsets</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="customizing-plots.html"><a href="customizing-plots.html"><i class="fa fa-check"></i><b>7</b> Customizing Plots</a><ul>
-<li class="chapter" data-level="7.1" data-path="customizing-plots.html"><a href="customizing-plots.html#key-concepts-6"><i class="fa fa-check"></i><b>7.1</b> Key Concepts</a></li>
-<li class="chapter" data-level="7.2" data-path="customizing-plots.html"><a href="customizing-plots.html#packages-used-in-this-chapter-3"><i class="fa fa-check"></i><b>7.2</b> Packages Used in This Chapter</a></li>
-<li class="chapter" data-level="7.3" data-path="customizing-plots.html"><a href="customizing-plots.html#layering-approach"><i class="fa fa-check"></i><b>7.3</b> Layering Approach</a></li>
-<li class="chapter" data-level="7.4" data-path="customizing-plots.html"><a href="customizing-plots.html#highlighting-cases"><i class="fa fa-check"></i><b>7.4</b> Highlighting Cases</a></li>
-<li class="chapter" data-level="7.5" data-path="customizing-plots.html"><a href="customizing-plots.html#visual-hypothesis-testing"><i class="fa fa-check"></i><b>7.5</b> Visual Hypothesis Testing</a></li>
-<li class="chapter" data-level="7.6" data-path="customizing-plots.html"><a href="customizing-plots.html#additional-parameters"><i class="fa fa-check"></i><b>7.6</b> Additional Parameters</a></li>
+<li class="chapter" data-level="" data-path="data-verbs.html"><a href="data-verbs.html"><i class="fa fa-check"></i>DATA VERBS</a></li>
+<li class="chapter" data-level="5" data-path="the-dplyr-package.html"><a href="the-dplyr-package.html"><i class="fa fa-check"></i><b>5</b> The <strong>dplyr</strong> Package</a><ul>
+<li class="chapter" data-level="5.1" data-path="the-dplyr-package.html"><a href="the-dplyr-package.html#packages-used-in-this-chapter"><i class="fa fa-check"></i><b>5.1</b> Packages Used in This Chapter</a></li>
+<li class="chapter" data-level="5.2" data-path="the-dplyr-package.html"><a href="the-dplyr-package.html#key-concepts-3"><i class="fa fa-check"></i><b>5.2</b> Key Concepts</a></li>
+<li class="chapter" data-level="5.3" data-path="the-dplyr-package.html"><a href="the-dplyr-package.html#the-dplyr-package-1"><i class="fa fa-check"></i><b>5.3</b> The <strong>dplyr</strong> Package</a></li>
+<li class="chapter" data-level="5.4" data-path="the-dplyr-package.html"><a href="the-dplyr-package.html#use-filter-to-subset-rows"><i class="fa fa-check"></i><b>5.4</b> Use <strong>filter()</strong> to Subset Rows</a></li>
+<li class="chapter" data-level="5.5" data-path="the-dplyr-package.html"><a href="the-dplyr-package.html#select-columns"><i class="fa fa-check"></i><b>5.5</b> <strong>select()</strong> Columns</a></li>
+<li class="chapter" data-level="5.6" data-path="the-dplyr-package.html"><a href="the-dplyr-package.html#arrange-sorts-data"><i class="fa fa-check"></i><b>5.6</b> <strong>arrange()</strong> Sorts Data</a></li>
+<li class="chapter" data-level="5.7" data-path="the-dplyr-package.html"><a href="the-dplyr-package.html#variable-transforms-with-mutate"><i class="fa fa-check"></i><b>5.7</b> Variable Transforms with <strong>mutate()</strong></a></li>
+<li class="chapter" data-level="5.8" data-path="the-dplyr-package.html"><a href="the-dplyr-package.html#rename-variables"><i class="fa fa-check"></i><b>5.8</b> <strong>rename()</strong> Variables</a></li>
+<li class="chapter" data-level="5.9" data-path="the-dplyr-package.html"><a href="the-dplyr-package.html#summarize-variables"><i class="fa fa-check"></i><b>5.9</b> <strong>summarize()</strong> Variables</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="custom-plot-example.html"><a href="custom-plot-example.html"><i class="fa fa-check"></i><b>8</b> Custom Plot Example</a><ul>
-<li class="chapter" data-level="8.1" data-path="custom-plot-example.html"><a href="custom-plot-example.html#basic-rank-plot"><i class="fa fa-check"></i><b>8.1</b> Basic Rank Plot</a></li>
-<li class="chapter" data-level="8.2" data-path="custom-plot-example.html"><a href="custom-plot-example.html#creating-a-submay-map-rank-plot"><i class="fa fa-check"></i><b>8.2</b> Creating a Submay Map Rank Plot</a></li>
-<li class="chapter" data-level="8.3" data-path="custom-plot-example.html"><a href="custom-plot-example.html#lines"><i class="fa fa-check"></i><b>8.3</b> Lines</a></li>
-<li class="chapter" data-level="8.4" data-path="custom-plot-example.html"><a href="custom-plot-example.html#connected-points"><i class="fa fa-check"></i><b>8.4</b> Connected Points</a></li>
-<li class="chapter" data-level="8.5" data-path="custom-plot-example.html"><a href="custom-plot-example.html#separate-points-and-connecting-lines"><i class="fa fa-check"></i><b>8.5</b> Separate Points and Connecting Lines</a></li>
-<li class="chapter" data-level="8.6" data-path="custom-plot-example.html"><a href="custom-plot-example.html#add-labels"><i class="fa fa-check"></i><b>8.6</b> Add Labels</a></li>
-<li class="chapter" data-level="8.7" data-path="custom-plot-example.html"><a href="custom-plot-example.html#add-axes-and-title"><i class="fa fa-check"></i><b>8.7</b> Add Axes and Title</a></li>
-<li class="chapter" data-level="8.8" data-path="custom-plot-example.html"><a href="custom-plot-example.html#generalizing-code"><i class="fa fa-check"></i><b>8.8</b> Generalizing Code</a></li>
-<li class="chapter" data-level="8.9" data-path="custom-plot-example.html"><a href="custom-plot-example.html#improved-aesthetics"><i class="fa fa-check"></i><b>8.9</b> Improved Aesthetics</a></li>
+<li class="chapter" data-level="6" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html"><i class="fa fa-check"></i><b>6</b> Descriptive Statistics</a><ul>
+<li class="chapter" data-level="6.1" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#useful-packages"><i class="fa fa-check"></i><b>6.1</b> Useful Packages</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="data-wrangling.html"><a href="data-wrangling.html"><i class="fa fa-check"></i>DATA WRANGLING</a><ul>
-<li class="chapter" data-level="8.10" data-path="data-wrangling.html"><a href="data-wrangling.html#packages-used-in-this-chapter-4"><i class="fa fa-check"></i><b>8.10</b> Packages Used in This Chapter</a></li>
-<li class="chapter" data-level="8.11" data-path="data-wrangling.html"><a href="data-wrangling.html#relational-databases"><i class="fa fa-check"></i><b>8.11</b> Relational Databases</a></li>
-<li class="chapter" data-level="8.12" data-path="data-wrangling.html"><a href="data-wrangling.html#set-theory"><i class="fa fa-check"></i><b>8.12</b> Set Theory</a><ul>
-<li class="chapter" data-level="8.12.1" data-path="data-wrangling.html"><a href="data-wrangling.html#set-theory-functions"><i class="fa fa-check"></i><b>8.12.1</b> Set Theory Functions</a></li>
-<li class="chapter" data-level="8.12.2" data-path="data-wrangling.html"><a href="data-wrangling.html#set-theory-using-logical-operators"><i class="fa fa-check"></i><b>8.12.2</b> Set Theory Using Logical Operators</a></li>
+<li class="chapter" data-level="7" data-path="data-recipes.html"><a href="data-recipes.html"><i class="fa fa-check"></i><b>7</b> Data Recipes</a><ul>
+<li class="chapter" data-level="7.1" data-path="data-recipes.html"><a href="data-recipes.html#packages-used-in-this-chapter-1"><i class="fa fa-check"></i><b>7.1</b> Packages Used in This Chapter</a></li>
+<li class="chapter" data-level="7.2" data-path="data-recipes.html"><a href="data-recipes.html#key-concepts-4"><i class="fa fa-check"></i><b>7.2</b> Key Concepts</a></li>
+<li class="chapter" data-level="7.3" data-path="data-recipes.html"><a href="data-recipes.html#the-pipe-operator"><i class="fa fa-check"></i><b>7.3</b> The Pipe Operator <strong>%&gt;%</strong></a></li>
+<li class="chapter" data-level="7.4" data-path="data-recipes.html"><a href="data-recipes.html#building-data-recipes"><i class="fa fa-check"></i><b>7.4</b> Building Data Recipes</a></li>
+<li class="chapter" data-level="7.5" data-path="data-recipes.html"><a href="data-recipes.html#conclusion"><i class="fa fa-check"></i><b>7.5</b> Conclusion</a></li>
 </ul></li>
-<li class="chapter" data-level="8.13" data-path="data-wrangling.html"><a href="data-wrangling.html#merging-data"><i class="fa fa-check"></i><b>8.13</b> Merging Data</a></li>
-<li class="chapter" data-level="8.14" data-path="data-wrangling.html"><a href="data-wrangling.html#use-character-columns-of-names-to-get-sensible-sort-order"><i class="fa fa-check"></i><b>8.14</b> use character columns of names to get sensible sort order</a><ul>
-<li class="chapter" data-level="8.14.1" data-path="data-wrangling.html"><a href="data-wrangling.html#the-by.x-and-by.y-arguments"><i class="fa fa-check"></i><b>8.14.1</b> The by.x and by.y Arguments</a></li>
+<li class="chapter" data-level="8" data-path="analysis-with-groups.html"><a href="analysis-with-groups.html"><i class="fa fa-check"></i><b>8</b> Analysis with Groups</a><ul>
+<li class="chapter" data-level="8.1" data-path="analysis-with-groups.html"><a href="analysis-with-groups.html#packages-used-in-this-chapter-2"><i class="fa fa-check"></i><b>8.1</b> Packages Used in this Chapter</a></li>
+<li class="chapter" data-level="8.2" data-path="analysis-with-groups.html"><a href="analysis-with-groups.html#hypothetical-experimental-data"><i class="fa fa-check"></i><b>8.2</b> Hypothetical Experimental Data</a></li>
+<li class="chapter" data-level="8.3" data-path="analysis-with-groups.html"><a href="analysis-with-groups.html#group-structure"><i class="fa fa-check"></i><b>8.3</b> Group Structure</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="analysis-with-groups.html"><a href="analysis-with-groups.html#what-are-groups"><i class="fa fa-check"></i><b>8.3.1</b> What Are Groups?</a></li>
+<li class="chapter" data-level="8.3.2" data-path="analysis-with-groups.html"><a href="analysis-with-groups.html#main-take-away"><i class="fa fa-check"></i><b>8.3.2</b> Main Take-Away</a></li>
+<li class="chapter" data-level="8.3.3" data-path="analysis-with-groups.html"><a href="analysis-with-groups.html#example"><i class="fa fa-check"></i><b>8.3.3</b> Example</a></li>
 </ul></li>
-<li class="chapter" data-level="8.15" data-path="data-wrangling.html"><a href="data-wrangling.html#non-unique-observations-in-id-variables"><i class="fa fa-check"></i><b>8.15</b> Non-Unique Observations in ID Variables</a><ul>
-<li class="chapter" data-level="8.15.1" data-path="data-wrangling.html"><a href="data-wrangling.html#example-of-incorrect-merge"><i class="fa fa-check"></i><b>8.15.1</b> Example of Incorrect Merge</a></li>
+<li class="chapter" data-level="8.4" data-path="analysis-with-groups.html"><a href="analysis-with-groups.html#analysis-by-group"><i class="fa fa-check"></i><b>8.4</b> Analysis by Group</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="analysis-with-groups.html"><a href="analysis-with-groups.html#highest-ave-player-salary"><i class="fa fa-check"></i><b>8.4.1</b> Highest Ave Player Salary</a></li>
+<li class="chapter" data-level="8.4.2" data-path="analysis-with-groups.html"><a href="analysis-with-groups.html#most-players-paid-over-5-million"><i class="fa fa-check"></i><b>8.4.2</b> Most Players Paid Over $5 Million</a></li>
+<li class="chapter" data-level="8.4.3" data-path="analysis-with-groups.html"><a href="analysis-with-groups.html#fielding-positions"><i class="fa fa-check"></i><b>8.4.3</b> Fielding Positions</a></li>
+<li class="chapter" data-level="8.4.4" data-path="analysis-with-groups.html"><a href="analysis-with-groups.html#country-of-birth"><i class="fa fa-check"></i><b>8.4.4</b> Country of Birth</a></li>
+<li class="chapter" data-level="8.4.5" data-path="analysis-with-groups.html"><a href="analysis-with-groups.html#pay-raises"><i class="fa fa-check"></i><b>8.4.5</b> Pay Raises</a></li>
 </ul></li>
-<li class="chapter" data-level="8.16" data-path="data-wrangling.html"><a href="data-wrangling.html#the-in-function"><i class="fa fa-check"></i><b>8.16</b> The %in% function</a></li>
-<li class="chapter" data-level="8.17" data-path="data-wrangling.html"><a href="data-wrangling.html#the-match-function"><i class="fa fa-check"></i><b>8.17</b> The Match Function</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-viz.html"><a href="data-viz.html"><i class="fa fa-check"></i>DATA VIZ</a></li>
+<li class="chapter" data-level="9" data-path="the-plot-function.html"><a href="the-plot-function.html"><i class="fa fa-check"></i><b>9</b> The plot() Function</a><ul>
+<li class="chapter" data-level="9.1" data-path="the-plot-function.html"><a href="the-plot-function.html#key-concepts-5"><i class="fa fa-check"></i><b>9.1</b> Key Concepts</a></li>
+<li class="chapter" data-level="9.2" data-path="the-plot-function.html"><a href="the-plot-function.html#plot-arguments"><i class="fa fa-check"></i><b>9.2</b> plot() Arguments</a></li>
+<li class="chapter" data-level="9.3" data-path="the-plot-function.html"><a href="the-plot-function.html#titles"><i class="fa fa-check"></i><b>9.3</b> Titles</a></li>
+<li class="chapter" data-level="9.4" data-path="the-plot-function.html"><a href="the-plot-function.html#type-of-plot"><i class="fa fa-check"></i><b>9.4</b> Type of Plot</a></li>
+<li class="chapter" data-level="9.5" data-path="the-plot-function.html"><a href="the-plot-function.html#shape-of-points"><i class="fa fa-check"></i><b>9.5</b> Shape of Points</a></li>
+<li class="chapter" data-level="9.6" data-path="the-plot-function.html"><a href="the-plot-function.html#size-of-points"><i class="fa fa-check"></i><b>9.6</b> Size of Points</a></li>
+<li class="chapter" data-level="9.7" data-path="the-plot-function.html"><a href="the-plot-function.html#colors"><i class="fa fa-check"></i><b>9.7</b> Colors</a></li>
+<li class="chapter" data-level="9.8" data-path="the-plot-function.html"><a href="the-plot-function.html#looking-ahead"><i class="fa fa-check"></i><b>9.8</b> Looking Ahead</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="customizing-plots.html"><a href="customizing-plots.html"><i class="fa fa-check"></i><b>10</b> Customizing Plots</a><ul>
+<li class="chapter" data-level="10.1" data-path="customizing-plots.html"><a href="customizing-plots.html#key-concepts-6"><i class="fa fa-check"></i><b>10.1</b> Key Concepts</a></li>
+<li class="chapter" data-level="10.2" data-path="customizing-plots.html"><a href="customizing-plots.html#packages-used-in-this-chapter-3"><i class="fa fa-check"></i><b>10.2</b> Packages Used in This Chapter</a></li>
+<li class="chapter" data-level="10.3" data-path="customizing-plots.html"><a href="customizing-plots.html#layering-approach"><i class="fa fa-check"></i><b>10.3</b> Layering Approach</a></li>
+<li class="chapter" data-level="10.4" data-path="customizing-plots.html"><a href="customizing-plots.html#highlighting-cases"><i class="fa fa-check"></i><b>10.4</b> Highlighting Cases</a></li>
+<li class="chapter" data-level="10.5" data-path="customizing-plots.html"><a href="customizing-plots.html#visual-hypothesis-testing"><i class="fa fa-check"></i><b>10.5</b> Visual Hypothesis Testing</a></li>
+<li class="chapter" data-level="10.6" data-path="customizing-plots.html"><a href="customizing-plots.html#additional-parameters"><i class="fa fa-check"></i><b>10.6</b> Additional Parameters</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="custom-plot-example.html"><a href="custom-plot-example.html"><i class="fa fa-check"></i><b>11</b> Custom Plot Example</a><ul>
+<li class="chapter" data-level="11.1" data-path="custom-plot-example.html"><a href="custom-plot-example.html#basic-rank-plot"><i class="fa fa-check"></i><b>11.1</b> Basic Rank Plot</a></li>
+<li class="chapter" data-level="11.2" data-path="custom-plot-example.html"><a href="custom-plot-example.html#creating-a-submay-map-rank-plot"><i class="fa fa-check"></i><b>11.2</b> Creating a Submay Map Rank Plot</a></li>
+<li class="chapter" data-level="11.3" data-path="custom-plot-example.html"><a href="custom-plot-example.html#lines"><i class="fa fa-check"></i><b>11.3</b> Lines</a></li>
+<li class="chapter" data-level="11.4" data-path="custom-plot-example.html"><a href="custom-plot-example.html#connected-points"><i class="fa fa-check"></i><b>11.4</b> Connected Points</a></li>
+<li class="chapter" data-level="11.5" data-path="custom-plot-example.html"><a href="custom-plot-example.html#separate-points-and-connecting-lines"><i class="fa fa-check"></i><b>11.5</b> Separate Points and Connecting Lines</a></li>
+<li class="chapter" data-level="11.6" data-path="custom-plot-example.html"><a href="custom-plot-example.html#add-labels"><i class="fa fa-check"></i><b>11.6</b> Add Labels</a></li>
+<li class="chapter" data-level="11.7" data-path="custom-plot-example.html"><a href="custom-plot-example.html#add-axes-and-title"><i class="fa fa-check"></i><b>11.7</b> Add Axes and Title</a></li>
+<li class="chapter" data-level="11.8" data-path="custom-plot-example.html"><a href="custom-plot-example.html#generalizing-code"><i class="fa fa-check"></i><b>11.8</b> Generalizing Code</a></li>
+<li class="chapter" data-level="11.9" data-path="custom-plot-example.html"><a href="custom-plot-example.html#improved-aesthetics"><i class="fa fa-check"></i><b>11.9</b> Improved Aesthetics</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-wrangling.html"><a href="data-wrangling.html"><i class="fa fa-check"></i>DATA WRANGLING</a></li>
+<li class="chapter" data-level="12" data-path="merging-data.html"><a href="merging-data.html"><i class="fa fa-check"></i><b>12</b> Merging Data</a><ul>
+<li class="chapter" data-level="12.1" data-path="merging-data.html"><a href="merging-data.html#packages-used-in-this-chapter-4"><i class="fa fa-check"></i><b>12.1</b> Packages Used in This Chapter</a></li>
+<li class="chapter" data-level="12.2" data-path="merging-data.html"><a href="merging-data.html#relational-databases"><i class="fa fa-check"></i><b>12.2</b> Relational Databases</a></li>
+<li class="chapter" data-level="12.3" data-path="merging-data.html"><a href="merging-data.html#set-theory"><i class="fa fa-check"></i><b>12.3</b> Set Theory</a><ul>
+<li class="chapter" data-level="12.3.1" data-path="merging-data.html"><a href="merging-data.html#set-theory-functions"><i class="fa fa-check"></i><b>12.3.1</b> Set Theory Functions</a></li>
+<li class="chapter" data-level="12.3.2" data-path="merging-data.html"><a href="merging-data.html#set-theory-using-logical-operators"><i class="fa fa-check"></i><b>12.3.2</b> Set Theory Using Logical Operators</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="merging-data.html"><a href="merging-data.html#merging-data-1"><i class="fa fa-check"></i><b>12.4</b> Merging Data</a><ul>
+<li class="chapter" data-level="12.4.1" data-path="merging-data.html"><a href="merging-data.html#the-by.x-and-by.y-arguments"><i class="fa fa-check"></i><b>12.4.1</b> The by.x and by.y Arguments</a></li>
+</ul></li>
+<li class="chapter" data-level="12.5" data-path="merging-data.html"><a href="merging-data.html#non-unique-observations-in-id-variables"><i class="fa fa-check"></i><b>12.5</b> Non-Unique Observations in ID Variables</a><ul>
+<li class="chapter" data-level="12.5.1" data-path="merging-data.html"><a href="merging-data.html#example-of-incorrect-merge"><i class="fa fa-check"></i><b>12.5.1</b> Example of Incorrect Merge</a></li>
+</ul></li>
+<li class="chapter" data-level="12.6" data-path="merging-data.html"><a href="merging-data.html#the-in-function"><i class="fa fa-check"></i><b>12.6</b> The %in% function</a></li>
+<li class="chapter" data-level="12.7" data-path="merging-data.html"><a href="merging-data.html#the-match-function"><i class="fa fa-check"></i><b>12.7</b> The Match Function</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://webapp4.asu.edu/programs/t5/majorinfo/ASU00/PPPGEMS/graduate/false" target="blank">ASU</a></li>
@@ -286,7 +298,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="custom-plot-example" class="section level1">
-<h1><span class="header-section-number">Chapter 8</span> Custom Plot Example</h1>
+<h1><span class="header-section-number">Chapter 11</span> Custom Plot Example</h1>
 <p>This example demonstrates the creation of custom visualizations in R. For reference, it took approximately two hours to develop the custom graphic.</p>
 <p>This example was inspired by a blog about the popularity of computer languages on Stack Overflow. Joshua Kunst commented on the deficiencies of rank plots, and demonstrated a <a href="http://jkunst.com/r/what-do-we-ask-in-stackoverflow/">superior plot</a> for representing changes in rank over time that looks like a NYC subway map.</p>
 <p><img src="http://jkunst.com/images/what-do-we-ask-in-stackoverflow/unnamed-chunk-9-1.png" /></p>
@@ -394,14 +406,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <div id="basic-rank-plot" class="section level2">
-<h2><span class="header-section-number">8.1</span> Basic Rank Plot</h2>
+<h2><span class="header-section-number">11.1</span> Basic Rank Plot</h2>
 <p>The original design for the graphic was very simple. It showed the starting rank and end rank of the school over the five-year period to give a sense of how much each school had changed. It is a little boring and also loses a lot of information regarding how consistent performance has been over time.</p>
-<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-4-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-285-1.png" width="70%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="creating-a-submay-map-rank-plot" class="section level2">
-<h2><span class="header-section-number">8.2</span> Creating a Submay Map Rank Plot</h2>
+<h2><span class="header-section-number">11.2</span> Creating a Submay Map Rank Plot</h2>
 <p>Let’s see how we put together a similar graphic using our school ranking data. Let’s start by looking at the variable names and the type of data we are working with:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">head</span>( df, <span class="dv">3</span> ) <span class="op">%&gt;%</span><span class="st"> </span>pander</a></code></pre></div>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb197-1" data-line-number="1"><span class="kw">head</span>( df, <span class="dv">3</span> ) <span class="op">%&gt;%</span><span class="st"> </span>pander</a></code></pre></div>
 <table style="width:42%;">
 <colgroup>
 <col width="6%" />
@@ -483,191 +495,191 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </table>
 </div>
 <div id="lines" class="section level2">
-<h2><span class="header-section-number">8.3</span> Lines</h2>
+<h2><span class="header-section-number">11.3</span> Lines</h2>
 <p>Let’s try one with basic lines. Note that referencing a row of the data frame will return the ranking data for a single school:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">df[ <span class="dv">1</span>, ]</a>
-<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="co">###   id r1 r2 r3 r4 r5</span></a>
-<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="co">### 1  A 10 10 10 10  9</span></a></code></pre></div>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb198-1" data-line-number="1">df[ <span class="dv">1</span>, ]</a>
+<a class="sourceLine" id="cb198-2" data-line-number="2">###   id r1 r2 r3 r4 r5</a>
+<a class="sourceLine" id="cb198-3" data-line-number="3">### 1  A 10 10 10 10  9</a></code></pre></div>
 <p>Now let’s plot the rankings over time:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">id &lt;-<span class="st"> </span>df<span class="op">$</span>id          <span class="co"># save ID as separate variable</span></a>
-<a class="sourceLine" id="cb3-2" data-line-number="2">df &lt;-<span class="st"> </span>df[ , <span class="dv">-1</span> ]     <span class="co"># drop ID from the dataset so it&#39;s all numeric</span></a>
-<a class="sourceLine" id="cb3-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="co"># save some useful dimension information</span></a>
-<a class="sourceLine" id="cb3-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb3-6" data-line-number="6">ymin &lt;-<span class="st"> </span><span class="kw">min</span>(df)      <span class="co"># what is the smallest value in the data frame?</span></a>
-<a class="sourceLine" id="cb3-7" data-line-number="7">ymax &lt;-<span class="st"> </span><span class="kw">max</span>(df)      <span class="co"># what is the largest value in the data frame?</span></a>
-<a class="sourceLine" id="cb3-8" data-line-number="8">num.x &lt;-<span class="st"> </span><span class="dv">5</span>           <span class="co"># we have five years of data</span></a>
-<a class="sourceLine" id="cb3-9" data-line-number="9"></a>
-<a class="sourceLine" id="cb3-10" data-line-number="10"><span class="co"># create an empty plot with the correct dimensions for our plot</span></a>
-<a class="sourceLine" id="cb3-11" data-line-number="11"><span class="kw">plot.new</span>()</a>
-<a class="sourceLine" id="cb3-12" data-line-number="12"><span class="kw">plot.window</span>( <span class="dt">xlim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">6</span>), <span class="dt">ylim=</span><span class="kw">c</span>(ymin,ymax) )</a>
-<a class="sourceLine" id="cb3-13" data-line-number="13"></a>
-<a class="sourceLine" id="cb3-14" data-line-number="14"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">1</span>,], <span class="dt">type=</span><span class="st">&quot;l&quot;</span> ) <span class="co"># school A</span></a>
-<a class="sourceLine" id="cb3-15" data-line-number="15"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">2</span>,], <span class="dt">type=</span><span class="st">&quot;l&quot;</span> ) <span class="co"># school B</span></a>
-<a class="sourceLine" id="cb3-16" data-line-number="16"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">3</span>,], <span class="dt">type=</span><span class="st">&quot;l&quot;</span> )</a>
-<a class="sourceLine" id="cb3-17" data-line-number="17"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">4</span>,], <span class="dt">type=</span><span class="st">&quot;l&quot;</span> )</a>
-<a class="sourceLine" id="cb3-18" data-line-number="18"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">5</span>,], <span class="dt">type=</span><span class="st">&quot;l&quot;</span> )</a>
-<a class="sourceLine" id="cb3-19" data-line-number="19"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">6</span>,], <span class="dt">type=</span><span class="st">&quot;l&quot;</span> )</a>
-<a class="sourceLine" id="cb3-20" data-line-number="20"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">7</span>,], <span class="dt">type=</span><span class="st">&quot;l&quot;</span> )</a>
-<a class="sourceLine" id="cb3-21" data-line-number="21"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">8</span>,], <span class="dt">type=</span><span class="st">&quot;l&quot;</span> )</a>
-<a class="sourceLine" id="cb3-22" data-line-number="22"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">9</span>,], <span class="dt">type=</span><span class="st">&quot;l&quot;</span> )</a>
-<a class="sourceLine" id="cb3-23" data-line-number="23"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">10</span>,], <span class="dt">type=</span><span class="st">&quot;l&quot;</span> )</a>
-<a class="sourceLine" id="cb3-24" data-line-number="24"></a>
-<a class="sourceLine" id="cb3-25" data-line-number="25"><span class="kw">text</span>( <span class="dt">x=</span><span class="fl">0.5</span>, <span class="dt">y=</span><span class="dv">10</span>, <span class="dt">labels=</span><span class="st">&quot;A&quot;</span> ) <span class="co"># rank in 2011</span></a>
-<a class="sourceLine" id="cb3-26" data-line-number="26"><span class="kw">text</span>( <span class="dt">x=</span><span class="fl">5.5</span>, <span class="dt">y=</span><span class="dv">9</span>, <span class="dt">labels=</span><span class="st">&quot;A&quot;</span> )  <span class="co"># rank in 2015</span></a></code></pre></div>
-<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-7-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb199-1" data-line-number="1">id &lt;-<span class="st"> </span>df<span class="op">$</span>id          <span class="co"># save ID as separate variable</span></a>
+<a class="sourceLine" id="cb199-2" data-line-number="2">df &lt;-<span class="st"> </span>df[ , <span class="dv">-1</span> ]     <span class="co"># drop ID from the dataset so it&#39;s all numeric</span></a>
+<a class="sourceLine" id="cb199-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb199-4" data-line-number="4"><span class="co"># save some useful dimension information</span></a>
+<a class="sourceLine" id="cb199-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb199-6" data-line-number="6">ymin &lt;-<span class="st"> </span><span class="kw">min</span>(df)      <span class="co"># what is the smallest value in the data frame?</span></a>
+<a class="sourceLine" id="cb199-7" data-line-number="7">ymax &lt;-<span class="st"> </span><span class="kw">max</span>(df)      <span class="co"># what is the largest value in the data frame?</span></a>
+<a class="sourceLine" id="cb199-8" data-line-number="8">num.x &lt;-<span class="st"> </span><span class="dv">5</span>           <span class="co"># we have five years of data</span></a>
+<a class="sourceLine" id="cb199-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb199-10" data-line-number="10"><span class="co"># create an empty plot with the correct dimensions for our plot</span></a>
+<a class="sourceLine" id="cb199-11" data-line-number="11"><span class="kw">plot.new</span>()</a>
+<a class="sourceLine" id="cb199-12" data-line-number="12"><span class="kw">plot.window</span>( <span class="dt">xlim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">6</span>), <span class="dt">ylim=</span><span class="kw">c</span>(ymin,ymax) )</a>
+<a class="sourceLine" id="cb199-13" data-line-number="13"></a>
+<a class="sourceLine" id="cb199-14" data-line-number="14"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">1</span>,], <span class="dt">type=</span><span class="st">&quot;l&quot;</span> ) <span class="co"># school A</span></a>
+<a class="sourceLine" id="cb199-15" data-line-number="15"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">2</span>,], <span class="dt">type=</span><span class="st">&quot;l&quot;</span> ) <span class="co"># school B</span></a>
+<a class="sourceLine" id="cb199-16" data-line-number="16"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">3</span>,], <span class="dt">type=</span><span class="st">&quot;l&quot;</span> )</a>
+<a class="sourceLine" id="cb199-17" data-line-number="17"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">4</span>,], <span class="dt">type=</span><span class="st">&quot;l&quot;</span> )</a>
+<a class="sourceLine" id="cb199-18" data-line-number="18"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">5</span>,], <span class="dt">type=</span><span class="st">&quot;l&quot;</span> )</a>
+<a class="sourceLine" id="cb199-19" data-line-number="19"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">6</span>,], <span class="dt">type=</span><span class="st">&quot;l&quot;</span> )</a>
+<a class="sourceLine" id="cb199-20" data-line-number="20"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">7</span>,], <span class="dt">type=</span><span class="st">&quot;l&quot;</span> )</a>
+<a class="sourceLine" id="cb199-21" data-line-number="21"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">8</span>,], <span class="dt">type=</span><span class="st">&quot;l&quot;</span> )</a>
+<a class="sourceLine" id="cb199-22" data-line-number="22"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">9</span>,], <span class="dt">type=</span><span class="st">&quot;l&quot;</span> )</a>
+<a class="sourceLine" id="cb199-23" data-line-number="23"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">10</span>,], <span class="dt">type=</span><span class="st">&quot;l&quot;</span> )</a>
+<a class="sourceLine" id="cb199-24" data-line-number="24"></a>
+<a class="sourceLine" id="cb199-25" data-line-number="25"><span class="kw">text</span>( <span class="dt">x=</span><span class="fl">0.5</span>, <span class="dt">y=</span><span class="dv">10</span>, <span class="dt">labels=</span><span class="st">&quot;A&quot;</span> ) <span class="co"># rank in 2011</span></a>
+<a class="sourceLine" id="cb199-26" data-line-number="26"><span class="kw">text</span>( <span class="dt">x=</span><span class="fl">5.5</span>, <span class="dt">y=</span><span class="dv">9</span>, <span class="dt">labels=</span><span class="st">&quot;A&quot;</span> )  <span class="co"># rank in 2015</span></a></code></pre></div>
+<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-288-1.png" width="70%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="connected-points" class="section level2">
-<h2><span class="header-section-number">8.4</span> Connected Points</h2>
+<h2><span class="header-section-number">11.4</span> Connected Points</h2>
 <p>Not bad but I think that we can improve upon the aestetics. Let’s change the lines to points plus connecting lines.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw">plot.new</span>()</a>
-<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="kw">plot.window</span>( <span class="dt">xlim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">6</span>), <span class="dt">ylim=</span><span class="kw">c</span>(ymin,ymax) )</a>
-<a class="sourceLine" id="cb4-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">1</span>,], <span class="dt">type=</span><span class="st">&quot;b&quot;</span> ) <span class="co"># school A</span></a>
-<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">2</span>,], <span class="dt">type=</span><span class="st">&quot;b&quot;</span> ) <span class="co"># school B</span></a>
-<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">3</span>,], <span class="dt">type=</span><span class="st">&quot;b&quot;</span> ) <span class="co"># etc...</span></a>
-<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">4</span>,], <span class="dt">type=</span><span class="st">&quot;b&quot;</span> )</a>
-<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">5</span>,], <span class="dt">type=</span><span class="st">&quot;b&quot;</span> )</a>
-<a class="sourceLine" id="cb4-9" data-line-number="9"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">6</span>,], <span class="dt">type=</span><span class="st">&quot;b&quot;</span> )</a>
-<a class="sourceLine" id="cb4-10" data-line-number="10"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">7</span>,], <span class="dt">type=</span><span class="st">&quot;b&quot;</span> )</a>
-<a class="sourceLine" id="cb4-11" data-line-number="11"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">8</span>,], <span class="dt">type=</span><span class="st">&quot;b&quot;</span> )</a>
-<a class="sourceLine" id="cb4-12" data-line-number="12"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">9</span>,], <span class="dt">type=</span><span class="st">&quot;b&quot;</span> )</a>
-<a class="sourceLine" id="cb4-13" data-line-number="13"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">10</span>,], <span class="dt">type=</span><span class="st">&quot;b&quot;</span> )</a>
-<a class="sourceLine" id="cb4-14" data-line-number="14"></a>
-<a class="sourceLine" id="cb4-15" data-line-number="15"></a>
-<a class="sourceLine" id="cb4-16" data-line-number="16"><span class="kw">text</span>( <span class="dt">x=</span><span class="fl">0.5</span>, <span class="dt">y=</span><span class="dv">10</span>, <span class="dt">labels=</span><span class="st">&quot;A&quot;</span> ) <span class="co"># rank in 2011</span></a>
-<a class="sourceLine" id="cb4-17" data-line-number="17"><span class="kw">text</span>( <span class="dt">x=</span><span class="fl">5.5</span>, <span class="dt">y=</span><span class="dv">9</span>, <span class="dt">labels=</span><span class="st">&quot;A&quot;</span> )  <span class="co"># rank in 2015</span></a></code></pre></div>
-<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-8-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb200-1" data-line-number="1"><span class="kw">plot.new</span>()</a>
+<a class="sourceLine" id="cb200-2" data-line-number="2"><span class="kw">plot.window</span>( <span class="dt">xlim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">6</span>), <span class="dt">ylim=</span><span class="kw">c</span>(ymin,ymax) )</a>
+<a class="sourceLine" id="cb200-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb200-4" data-line-number="4"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">1</span>,], <span class="dt">type=</span><span class="st">&quot;b&quot;</span> ) <span class="co"># school A</span></a>
+<a class="sourceLine" id="cb200-5" data-line-number="5"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">2</span>,], <span class="dt">type=</span><span class="st">&quot;b&quot;</span> ) <span class="co"># school B</span></a>
+<a class="sourceLine" id="cb200-6" data-line-number="6"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">3</span>,], <span class="dt">type=</span><span class="st">&quot;b&quot;</span> ) <span class="co"># etc...</span></a>
+<a class="sourceLine" id="cb200-7" data-line-number="7"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">4</span>,], <span class="dt">type=</span><span class="st">&quot;b&quot;</span> )</a>
+<a class="sourceLine" id="cb200-8" data-line-number="8"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">5</span>,], <span class="dt">type=</span><span class="st">&quot;b&quot;</span> )</a>
+<a class="sourceLine" id="cb200-9" data-line-number="9"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">6</span>,], <span class="dt">type=</span><span class="st">&quot;b&quot;</span> )</a>
+<a class="sourceLine" id="cb200-10" data-line-number="10"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">7</span>,], <span class="dt">type=</span><span class="st">&quot;b&quot;</span> )</a>
+<a class="sourceLine" id="cb200-11" data-line-number="11"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">8</span>,], <span class="dt">type=</span><span class="st">&quot;b&quot;</span> )</a>
+<a class="sourceLine" id="cb200-12" data-line-number="12"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">9</span>,], <span class="dt">type=</span><span class="st">&quot;b&quot;</span> )</a>
+<a class="sourceLine" id="cb200-13" data-line-number="13"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">10</span>,], <span class="dt">type=</span><span class="st">&quot;b&quot;</span> )</a>
+<a class="sourceLine" id="cb200-14" data-line-number="14"></a>
+<a class="sourceLine" id="cb200-15" data-line-number="15"></a>
+<a class="sourceLine" id="cb200-16" data-line-number="16"><span class="kw">text</span>( <span class="dt">x=</span><span class="fl">0.5</span>, <span class="dt">y=</span><span class="dv">10</span>, <span class="dt">labels=</span><span class="st">&quot;A&quot;</span> ) <span class="co"># rank in 2011</span></a>
+<a class="sourceLine" id="cb200-17" data-line-number="17"><span class="kw">text</span>( <span class="dt">x=</span><span class="fl">5.5</span>, <span class="dt">y=</span><span class="dv">9</span>, <span class="dt">labels=</span><span class="st">&quot;A&quot;</span> )  <span class="co"># rank in 2015</span></a></code></pre></div>
+<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-289-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>That looks better, but if we want to match the subway map aestetic we need thicker lines. Let’s try the line width parameter, lwd.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw">plot.new</span>()</a>
-<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="kw">plot.window</span>( <span class="dt">xlim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">6</span>), <span class="dt">ylim=</span><span class="kw">c</span>(ymin,ymax) )</a>
-<a class="sourceLine" id="cb5-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">1</span>,], <span class="dt">type=</span><span class="st">&quot;b&quot;</span>, <span class="dt">lwd=</span><span class="dv">5</span>, <span class="dt">cex=</span><span class="dv">2</span> )</a>
-<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">2</span>,], <span class="dt">type=</span><span class="st">&quot;b&quot;</span>, <span class="dt">lwd=</span><span class="dv">5</span>, <span class="dt">cex=</span><span class="dv">2</span> )</a>
-<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">3</span>,], <span class="dt">type=</span><span class="st">&quot;b&quot;</span>, <span class="dt">lwd=</span><span class="dv">5</span>, <span class="dt">cex=</span><span class="dv">2</span> )</a>
-<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">4</span>,], <span class="dt">type=</span><span class="st">&quot;b&quot;</span>, <span class="dt">lwd=</span><span class="dv">5</span>, <span class="dt">cex=</span><span class="dv">2</span> )</a>
-<a class="sourceLine" id="cb5-8" data-line-number="8"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">5</span>,], <span class="dt">type=</span><span class="st">&quot;b&quot;</span>, <span class="dt">lwd=</span><span class="dv">5</span>, <span class="dt">cex=</span><span class="dv">2</span> )</a>
-<a class="sourceLine" id="cb5-9" data-line-number="9"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">6</span>,], <span class="dt">type=</span><span class="st">&quot;b&quot;</span>, <span class="dt">lwd=</span><span class="dv">5</span>, <span class="dt">cex=</span><span class="dv">2</span> )</a>
-<a class="sourceLine" id="cb5-10" data-line-number="10"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">7</span>,], <span class="dt">type=</span><span class="st">&quot;b&quot;</span>, <span class="dt">lwd=</span><span class="dv">5</span>, <span class="dt">cex=</span><span class="dv">2</span> )</a>
-<a class="sourceLine" id="cb5-11" data-line-number="11"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">8</span>,], <span class="dt">type=</span><span class="st">&quot;b&quot;</span>, <span class="dt">lwd=</span><span class="dv">5</span>, <span class="dt">cex=</span><span class="dv">2</span> )</a>
-<a class="sourceLine" id="cb5-12" data-line-number="12"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">9</span>,], <span class="dt">type=</span><span class="st">&quot;b&quot;</span>, <span class="dt">lwd=</span><span class="dv">5</span>, <span class="dt">cex=</span><span class="dv">2</span> )</a>
-<a class="sourceLine" id="cb5-13" data-line-number="13"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">10</span>,], <span class="dt">type=</span><span class="st">&quot;b&quot;</span>, <span class="dt">lwd=</span><span class="dv">5</span>, <span class="dt">cex=</span><span class="dv">2</span> )</a>
-<a class="sourceLine" id="cb5-14" data-line-number="14"></a>
-<a class="sourceLine" id="cb5-15" data-line-number="15"></a>
-<a class="sourceLine" id="cb5-16" data-line-number="16"><span class="kw">text</span>( <span class="dt">x=</span><span class="fl">0.5</span>, <span class="dt">y=</span><span class="dv">10</span>, <span class="dt">labels=</span><span class="st">&quot;A&quot;</span> ) <span class="co"># rank in 2011</span></a>
-<a class="sourceLine" id="cb5-17" data-line-number="17"><span class="kw">text</span>( <span class="dt">x=</span><span class="fl">5.5</span>, <span class="dt">y=</span><span class="dv">9</span>, <span class="dt">labels=</span><span class="st">&quot;A&quot;</span> )  <span class="co"># rank in 2015</span></a></code></pre></div>
-<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-9-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb201-1" data-line-number="1"><span class="kw">plot.new</span>()</a>
+<a class="sourceLine" id="cb201-2" data-line-number="2"><span class="kw">plot.window</span>( <span class="dt">xlim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">6</span>), <span class="dt">ylim=</span><span class="kw">c</span>(ymin,ymax) )</a>
+<a class="sourceLine" id="cb201-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb201-4" data-line-number="4"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">1</span>,], <span class="dt">type=</span><span class="st">&quot;b&quot;</span>, <span class="dt">lwd=</span><span class="dv">5</span>, <span class="dt">cex=</span><span class="dv">2</span> )</a>
+<a class="sourceLine" id="cb201-5" data-line-number="5"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">2</span>,], <span class="dt">type=</span><span class="st">&quot;b&quot;</span>, <span class="dt">lwd=</span><span class="dv">5</span>, <span class="dt">cex=</span><span class="dv">2</span> )</a>
+<a class="sourceLine" id="cb201-6" data-line-number="6"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">3</span>,], <span class="dt">type=</span><span class="st">&quot;b&quot;</span>, <span class="dt">lwd=</span><span class="dv">5</span>, <span class="dt">cex=</span><span class="dv">2</span> )</a>
+<a class="sourceLine" id="cb201-7" data-line-number="7"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">4</span>,], <span class="dt">type=</span><span class="st">&quot;b&quot;</span>, <span class="dt">lwd=</span><span class="dv">5</span>, <span class="dt">cex=</span><span class="dv">2</span> )</a>
+<a class="sourceLine" id="cb201-8" data-line-number="8"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">5</span>,], <span class="dt">type=</span><span class="st">&quot;b&quot;</span>, <span class="dt">lwd=</span><span class="dv">5</span>, <span class="dt">cex=</span><span class="dv">2</span> )</a>
+<a class="sourceLine" id="cb201-9" data-line-number="9"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">6</span>,], <span class="dt">type=</span><span class="st">&quot;b&quot;</span>, <span class="dt">lwd=</span><span class="dv">5</span>, <span class="dt">cex=</span><span class="dv">2</span> )</a>
+<a class="sourceLine" id="cb201-10" data-line-number="10"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">7</span>,], <span class="dt">type=</span><span class="st">&quot;b&quot;</span>, <span class="dt">lwd=</span><span class="dv">5</span>, <span class="dt">cex=</span><span class="dv">2</span> )</a>
+<a class="sourceLine" id="cb201-11" data-line-number="11"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">8</span>,], <span class="dt">type=</span><span class="st">&quot;b&quot;</span>, <span class="dt">lwd=</span><span class="dv">5</span>, <span class="dt">cex=</span><span class="dv">2</span> )</a>
+<a class="sourceLine" id="cb201-12" data-line-number="12"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">9</span>,], <span class="dt">type=</span><span class="st">&quot;b&quot;</span>, <span class="dt">lwd=</span><span class="dv">5</span>, <span class="dt">cex=</span><span class="dv">2</span> )</a>
+<a class="sourceLine" id="cb201-13" data-line-number="13"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">10</span>,], <span class="dt">type=</span><span class="st">&quot;b&quot;</span>, <span class="dt">lwd=</span><span class="dv">5</span>, <span class="dt">cex=</span><span class="dv">2</span> )</a>
+<a class="sourceLine" id="cb201-14" data-line-number="14"></a>
+<a class="sourceLine" id="cb201-15" data-line-number="15"></a>
+<a class="sourceLine" id="cb201-16" data-line-number="16"><span class="kw">text</span>( <span class="dt">x=</span><span class="fl">0.5</span>, <span class="dt">y=</span><span class="dv">10</span>, <span class="dt">labels=</span><span class="st">&quot;A&quot;</span> ) <span class="co"># rank in 2011</span></a>
+<a class="sourceLine" id="cb201-17" data-line-number="17"><span class="kw">text</span>( <span class="dt">x=</span><span class="fl">5.5</span>, <span class="dt">y=</span><span class="dv">9</span>, <span class="dt">labels=</span><span class="st">&quot;A&quot;</span> )  <span class="co"># rank in 2015</span></a></code></pre></div>
+<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-290-1.png" width="70%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="separate-points-and-connecting-lines" class="section level2">
-<h2><span class="header-section-number">8.5</span> Separate Points and Connecting Lines</h2>
+<h2><span class="header-section-number">11.5</span> Separate Points and Connecting Lines</h2>
 <p>It’s not quite working because when we increase the line width, it makes our points that serve as the elbows thicker as well. Let’s try to separate these components:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw">plot.new</span>()</a>
-<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="kw">plot.window</span>( <span class="dt">xlim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">6</span>), <span class="dt">ylim=</span><span class="kw">c</span>(ymin,ymax) )</a>
-<a class="sourceLine" id="cb6-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">1</span>,], <span class="dt">type=</span><span class="st">&quot;p&quot;</span>, <span class="dt">cex=</span><span class="dv">2</span> )</a>
-<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">2</span>,], <span class="dt">type=</span><span class="st">&quot;p&quot;</span>, <span class="dt">cex=</span><span class="dv">2</span> )</a>
-<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">3</span>,], <span class="dt">type=</span><span class="st">&quot;p&quot;</span>, <span class="dt">cex=</span><span class="dv">2</span> )</a>
-<a class="sourceLine" id="cb6-7" data-line-number="7"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">4</span>,], <span class="dt">type=</span><span class="st">&quot;p&quot;</span>, <span class="dt">cex=</span><span class="dv">2</span> )</a>
-<a class="sourceLine" id="cb6-8" data-line-number="8"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">5</span>,], <span class="dt">type=</span><span class="st">&quot;p&quot;</span>, <span class="dt">cex=</span><span class="dv">2</span> )</a>
-<a class="sourceLine" id="cb6-9" data-line-number="9"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">6</span>,], <span class="dt">type=</span><span class="st">&quot;p&quot;</span>, <span class="dt">cex=</span><span class="dv">2</span> )</a>
-<a class="sourceLine" id="cb6-10" data-line-number="10"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">7</span>,], <span class="dt">type=</span><span class="st">&quot;p&quot;</span>, <span class="dt">cex=</span><span class="dv">2</span> )</a>
-<a class="sourceLine" id="cb6-11" data-line-number="11"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">8</span>,], <span class="dt">type=</span><span class="st">&quot;p&quot;</span>, <span class="dt">cex=</span><span class="dv">2</span> )</a>
-<a class="sourceLine" id="cb6-12" data-line-number="12"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">9</span>,], <span class="dt">type=</span><span class="st">&quot;p&quot;</span>, <span class="dt">cex=</span><span class="dv">2</span> )</a>
-<a class="sourceLine" id="cb6-13" data-line-number="13"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">10</span>,], <span class="dt">type=</span><span class="st">&quot;p&quot;</span>, <span class="dt">cex=</span><span class="dv">2</span> )</a>
-<a class="sourceLine" id="cb6-14" data-line-number="14"></a>
-<a class="sourceLine" id="cb6-15" data-line-number="15"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">1</span>,], <span class="dt">type=</span><span class="st">&quot;c&quot;</span>, <span class="dt">lwd=</span><span class="dv">5</span> )</a>
-<a class="sourceLine" id="cb6-16" data-line-number="16"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">2</span>,], <span class="dt">type=</span><span class="st">&quot;c&quot;</span>, <span class="dt">lwd=</span><span class="dv">5</span> )</a>
-<a class="sourceLine" id="cb6-17" data-line-number="17"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">3</span>,], <span class="dt">type=</span><span class="st">&quot;c&quot;</span>, <span class="dt">lwd=</span><span class="dv">5</span> )</a>
-<a class="sourceLine" id="cb6-18" data-line-number="18"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">4</span>,], <span class="dt">type=</span><span class="st">&quot;c&quot;</span>, <span class="dt">lwd=</span><span class="dv">5</span> )</a>
-<a class="sourceLine" id="cb6-19" data-line-number="19"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">5</span>,], <span class="dt">type=</span><span class="st">&quot;c&quot;</span>, <span class="dt">lwd=</span><span class="dv">5</span> )</a>
-<a class="sourceLine" id="cb6-20" data-line-number="20"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">6</span>,], <span class="dt">type=</span><span class="st">&quot;c&quot;</span>, <span class="dt">lwd=</span><span class="dv">5</span> )</a>
-<a class="sourceLine" id="cb6-21" data-line-number="21"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">7</span>,], <span class="dt">type=</span><span class="st">&quot;c&quot;</span>, <span class="dt">lwd=</span><span class="dv">5</span> )</a>
-<a class="sourceLine" id="cb6-22" data-line-number="22"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">8</span>,], <span class="dt">type=</span><span class="st">&quot;c&quot;</span>, <span class="dt">lwd=</span><span class="dv">5</span> )</a>
-<a class="sourceLine" id="cb6-23" data-line-number="23"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">9</span>,], <span class="dt">type=</span><span class="st">&quot;c&quot;</span>, <span class="dt">lwd=</span><span class="dv">5</span> )</a>
-<a class="sourceLine" id="cb6-24" data-line-number="24"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">10</span>,], <span class="dt">type=</span><span class="st">&quot;c&quot;</span>, <span class="dt">lwd=</span><span class="dv">5</span> )</a>
-<a class="sourceLine" id="cb6-25" data-line-number="25"></a>
-<a class="sourceLine" id="cb6-26" data-line-number="26"><span class="kw">text</span>( <span class="dt">x=</span><span class="fl">0.5</span>, <span class="dt">y=</span><span class="dv">10</span>, <span class="dt">labels=</span><span class="st">&quot;A&quot;</span> ) <span class="co"># rank in 2011</span></a>
-<a class="sourceLine" id="cb6-27" data-line-number="27"><span class="kw">text</span>( <span class="dt">x=</span><span class="fl">5.5</span>, <span class="dt">y=</span><span class="dv">9</span>, <span class="dt">labels=</span><span class="st">&quot;A&quot;</span> )  <span class="co"># rank in 2015</span></a></code></pre></div>
-<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-10-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb202-1" data-line-number="1"><span class="kw">plot.new</span>()</a>
+<a class="sourceLine" id="cb202-2" data-line-number="2"><span class="kw">plot.window</span>( <span class="dt">xlim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">6</span>), <span class="dt">ylim=</span><span class="kw">c</span>(ymin,ymax) )</a>
+<a class="sourceLine" id="cb202-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb202-4" data-line-number="4"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">1</span>,], <span class="dt">type=</span><span class="st">&quot;p&quot;</span>, <span class="dt">cex=</span><span class="dv">2</span> )</a>
+<a class="sourceLine" id="cb202-5" data-line-number="5"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">2</span>,], <span class="dt">type=</span><span class="st">&quot;p&quot;</span>, <span class="dt">cex=</span><span class="dv">2</span> )</a>
+<a class="sourceLine" id="cb202-6" data-line-number="6"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">3</span>,], <span class="dt">type=</span><span class="st">&quot;p&quot;</span>, <span class="dt">cex=</span><span class="dv">2</span> )</a>
+<a class="sourceLine" id="cb202-7" data-line-number="7"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">4</span>,], <span class="dt">type=</span><span class="st">&quot;p&quot;</span>, <span class="dt">cex=</span><span class="dv">2</span> )</a>
+<a class="sourceLine" id="cb202-8" data-line-number="8"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">5</span>,], <span class="dt">type=</span><span class="st">&quot;p&quot;</span>, <span class="dt">cex=</span><span class="dv">2</span> )</a>
+<a class="sourceLine" id="cb202-9" data-line-number="9"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">6</span>,], <span class="dt">type=</span><span class="st">&quot;p&quot;</span>, <span class="dt">cex=</span><span class="dv">2</span> )</a>
+<a class="sourceLine" id="cb202-10" data-line-number="10"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">7</span>,], <span class="dt">type=</span><span class="st">&quot;p&quot;</span>, <span class="dt">cex=</span><span class="dv">2</span> )</a>
+<a class="sourceLine" id="cb202-11" data-line-number="11"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">8</span>,], <span class="dt">type=</span><span class="st">&quot;p&quot;</span>, <span class="dt">cex=</span><span class="dv">2</span> )</a>
+<a class="sourceLine" id="cb202-12" data-line-number="12"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">9</span>,], <span class="dt">type=</span><span class="st">&quot;p&quot;</span>, <span class="dt">cex=</span><span class="dv">2</span> )</a>
+<a class="sourceLine" id="cb202-13" data-line-number="13"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">10</span>,], <span class="dt">type=</span><span class="st">&quot;p&quot;</span>, <span class="dt">cex=</span><span class="dv">2</span> )</a>
+<a class="sourceLine" id="cb202-14" data-line-number="14"></a>
+<a class="sourceLine" id="cb202-15" data-line-number="15"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">1</span>,], <span class="dt">type=</span><span class="st">&quot;c&quot;</span>, <span class="dt">lwd=</span><span class="dv">5</span> )</a>
+<a class="sourceLine" id="cb202-16" data-line-number="16"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">2</span>,], <span class="dt">type=</span><span class="st">&quot;c&quot;</span>, <span class="dt">lwd=</span><span class="dv">5</span> )</a>
+<a class="sourceLine" id="cb202-17" data-line-number="17"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">3</span>,], <span class="dt">type=</span><span class="st">&quot;c&quot;</span>, <span class="dt">lwd=</span><span class="dv">5</span> )</a>
+<a class="sourceLine" id="cb202-18" data-line-number="18"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">4</span>,], <span class="dt">type=</span><span class="st">&quot;c&quot;</span>, <span class="dt">lwd=</span><span class="dv">5</span> )</a>
+<a class="sourceLine" id="cb202-19" data-line-number="19"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">5</span>,], <span class="dt">type=</span><span class="st">&quot;c&quot;</span>, <span class="dt">lwd=</span><span class="dv">5</span> )</a>
+<a class="sourceLine" id="cb202-20" data-line-number="20"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">6</span>,], <span class="dt">type=</span><span class="st">&quot;c&quot;</span>, <span class="dt">lwd=</span><span class="dv">5</span> )</a>
+<a class="sourceLine" id="cb202-21" data-line-number="21"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">7</span>,], <span class="dt">type=</span><span class="st">&quot;c&quot;</span>, <span class="dt">lwd=</span><span class="dv">5</span> )</a>
+<a class="sourceLine" id="cb202-22" data-line-number="22"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">8</span>,], <span class="dt">type=</span><span class="st">&quot;c&quot;</span>, <span class="dt">lwd=</span><span class="dv">5</span> )</a>
+<a class="sourceLine" id="cb202-23" data-line-number="23"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">9</span>,], <span class="dt">type=</span><span class="st">&quot;c&quot;</span>, <span class="dt">lwd=</span><span class="dv">5</span> )</a>
+<a class="sourceLine" id="cb202-24" data-line-number="24"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">10</span>,], <span class="dt">type=</span><span class="st">&quot;c&quot;</span>, <span class="dt">lwd=</span><span class="dv">5</span> )</a>
+<a class="sourceLine" id="cb202-25" data-line-number="25"></a>
+<a class="sourceLine" id="cb202-26" data-line-number="26"><span class="kw">text</span>( <span class="dt">x=</span><span class="fl">0.5</span>, <span class="dt">y=</span><span class="dv">10</span>, <span class="dt">labels=</span><span class="st">&quot;A&quot;</span> ) <span class="co"># rank in 2011</span></a>
+<a class="sourceLine" id="cb202-27" data-line-number="27"><span class="kw">text</span>( <span class="dt">x=</span><span class="fl">5.5</span>, <span class="dt">y=</span><span class="dv">9</span>, <span class="dt">labels=</span><span class="st">&quot;A&quot;</span> )  <span class="co"># rank in 2015</span></a></code></pre></div>
+<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-291-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>That’s starting to look like what we want!</p>
 </div>
 <div id="add-labels" class="section level2">
-<h2><span class="header-section-number">8.6</span> Add Labels</h2>
+<h2><span class="header-section-number">11.6</span> Add Labels</h2>
 <p>How about we add some more labels.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw">plot.new</span>()</a>
-<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="kw">plot.window</span>( <span class="dt">xlim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">6</span>), <span class="dt">ylim=</span><span class="kw">c</span>(ymin,ymax) )</a>
-<a class="sourceLine" id="cb7-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb7-4" data-line-number="4"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">1</span>,], <span class="dt">type=</span><span class="st">&quot;p&quot;</span>, <span class="dt">cex=</span><span class="dv">2</span> )</a>
-<a class="sourceLine" id="cb7-5" data-line-number="5"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">2</span>,], <span class="dt">type=</span><span class="st">&quot;p&quot;</span>, <span class="dt">cex=</span><span class="dv">2</span> )</a>
-<a class="sourceLine" id="cb7-6" data-line-number="6"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">3</span>,], <span class="dt">type=</span><span class="st">&quot;p&quot;</span>, <span class="dt">cex=</span><span class="dv">2</span> )</a>
-<a class="sourceLine" id="cb7-7" data-line-number="7"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">4</span>,], <span class="dt">type=</span><span class="st">&quot;p&quot;</span>, <span class="dt">cex=</span><span class="dv">2</span> )</a>
-<a class="sourceLine" id="cb7-8" data-line-number="8"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">5</span>,], <span class="dt">type=</span><span class="st">&quot;p&quot;</span>, <span class="dt">cex=</span><span class="dv">2</span> )</a>
-<a class="sourceLine" id="cb7-9" data-line-number="9"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">6</span>,], <span class="dt">type=</span><span class="st">&quot;p&quot;</span>, <span class="dt">cex=</span><span class="dv">2</span> )</a>
-<a class="sourceLine" id="cb7-10" data-line-number="10"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">7</span>,], <span class="dt">type=</span><span class="st">&quot;p&quot;</span>, <span class="dt">cex=</span><span class="dv">2</span> )</a>
-<a class="sourceLine" id="cb7-11" data-line-number="11"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">8</span>,], <span class="dt">type=</span><span class="st">&quot;p&quot;</span>, <span class="dt">cex=</span><span class="dv">2</span> )</a>
-<a class="sourceLine" id="cb7-12" data-line-number="12"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">9</span>,], <span class="dt">type=</span><span class="st">&quot;p&quot;</span>, <span class="dt">cex=</span><span class="dv">2</span> )</a>
-<a class="sourceLine" id="cb7-13" data-line-number="13"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">10</span>,], <span class="dt">type=</span><span class="st">&quot;p&quot;</span>, <span class="dt">cex=</span><span class="dv">2</span> )</a>
-<a class="sourceLine" id="cb7-14" data-line-number="14"></a>
-<a class="sourceLine" id="cb7-15" data-line-number="15"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">1</span>,], <span class="dt">type=</span><span class="st">&quot;c&quot;</span>, <span class="dt">lwd=</span><span class="dv">5</span> )</a>
-<a class="sourceLine" id="cb7-16" data-line-number="16"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">2</span>,], <span class="dt">type=</span><span class="st">&quot;c&quot;</span>, <span class="dt">lwd=</span><span class="dv">5</span> )</a>
-<a class="sourceLine" id="cb7-17" data-line-number="17"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">3</span>,], <span class="dt">type=</span><span class="st">&quot;c&quot;</span>, <span class="dt">lwd=</span><span class="dv">5</span> )</a>
-<a class="sourceLine" id="cb7-18" data-line-number="18"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">4</span>,], <span class="dt">type=</span><span class="st">&quot;c&quot;</span>, <span class="dt">lwd=</span><span class="dv">5</span> )</a>
-<a class="sourceLine" id="cb7-19" data-line-number="19"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">5</span>,], <span class="dt">type=</span><span class="st">&quot;c&quot;</span>, <span class="dt">lwd=</span><span class="dv">5</span> )</a>
-<a class="sourceLine" id="cb7-20" data-line-number="20"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">6</span>,], <span class="dt">type=</span><span class="st">&quot;c&quot;</span>, <span class="dt">lwd=</span><span class="dv">5</span> )</a>
-<a class="sourceLine" id="cb7-21" data-line-number="21"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">7</span>,], <span class="dt">type=</span><span class="st">&quot;c&quot;</span>, <span class="dt">lwd=</span><span class="dv">5</span> )</a>
-<a class="sourceLine" id="cb7-22" data-line-number="22"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">8</span>,], <span class="dt">type=</span><span class="st">&quot;c&quot;</span>, <span class="dt">lwd=</span><span class="dv">5</span> )</a>
-<a class="sourceLine" id="cb7-23" data-line-number="23"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">9</span>,], <span class="dt">type=</span><span class="st">&quot;c&quot;</span>, <span class="dt">lwd=</span><span class="dv">5</span> )</a>
-<a class="sourceLine" id="cb7-24" data-line-number="24"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">10</span>,], <span class="dt">type=</span><span class="st">&quot;c&quot;</span>, <span class="dt">lwd=</span><span class="dv">5</span> )</a>
-<a class="sourceLine" id="cb7-25" data-line-number="25"></a>
-<a class="sourceLine" id="cb7-26" data-line-number="26"><span class="kw">text</span>( <span class="fl">0.7</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, id[<span class="kw">order</span>(df[,<span class="dv">1</span>])] )</a>
-<a class="sourceLine" id="cb7-27" data-line-number="27"><span class="kw">text</span>( <span class="fl">5.3</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, id[<span class="kw">order</span>(df[,<span class="dv">5</span>])] )</a>
-<a class="sourceLine" id="cb7-28" data-line-number="28"></a>
-<a class="sourceLine" id="cb7-29" data-line-number="29"><span class="kw">text</span>( <span class="dv">0</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, <span class="kw">paste</span>(<span class="dv">10</span><span class="op">:</span><span class="dv">1</span>,<span class="st">&quot;---&quot;</span>) )</a>
-<a class="sourceLine" id="cb7-30" data-line-number="30"><span class="kw">text</span>( <span class="dv">6</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, <span class="kw">paste</span>(<span class="st">&quot;---&quot;</span>,<span class="dv">10</span><span class="op">:</span><span class="dv">1</span>) )</a></code></pre></div>
-<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-11-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb203-1" data-line-number="1"><span class="kw">plot.new</span>()</a>
+<a class="sourceLine" id="cb203-2" data-line-number="2"><span class="kw">plot.window</span>( <span class="dt">xlim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">6</span>), <span class="dt">ylim=</span><span class="kw">c</span>(ymin,ymax) )</a>
+<a class="sourceLine" id="cb203-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb203-4" data-line-number="4"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">1</span>,], <span class="dt">type=</span><span class="st">&quot;p&quot;</span>, <span class="dt">cex=</span><span class="dv">2</span> )</a>
+<a class="sourceLine" id="cb203-5" data-line-number="5"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">2</span>,], <span class="dt">type=</span><span class="st">&quot;p&quot;</span>, <span class="dt">cex=</span><span class="dv">2</span> )</a>
+<a class="sourceLine" id="cb203-6" data-line-number="6"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">3</span>,], <span class="dt">type=</span><span class="st">&quot;p&quot;</span>, <span class="dt">cex=</span><span class="dv">2</span> )</a>
+<a class="sourceLine" id="cb203-7" data-line-number="7"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">4</span>,], <span class="dt">type=</span><span class="st">&quot;p&quot;</span>, <span class="dt">cex=</span><span class="dv">2</span> )</a>
+<a class="sourceLine" id="cb203-8" data-line-number="8"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">5</span>,], <span class="dt">type=</span><span class="st">&quot;p&quot;</span>, <span class="dt">cex=</span><span class="dv">2</span> )</a>
+<a class="sourceLine" id="cb203-9" data-line-number="9"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">6</span>,], <span class="dt">type=</span><span class="st">&quot;p&quot;</span>, <span class="dt">cex=</span><span class="dv">2</span> )</a>
+<a class="sourceLine" id="cb203-10" data-line-number="10"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">7</span>,], <span class="dt">type=</span><span class="st">&quot;p&quot;</span>, <span class="dt">cex=</span><span class="dv">2</span> )</a>
+<a class="sourceLine" id="cb203-11" data-line-number="11"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">8</span>,], <span class="dt">type=</span><span class="st">&quot;p&quot;</span>, <span class="dt">cex=</span><span class="dv">2</span> )</a>
+<a class="sourceLine" id="cb203-12" data-line-number="12"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">9</span>,], <span class="dt">type=</span><span class="st">&quot;p&quot;</span>, <span class="dt">cex=</span><span class="dv">2</span> )</a>
+<a class="sourceLine" id="cb203-13" data-line-number="13"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">10</span>,], <span class="dt">type=</span><span class="st">&quot;p&quot;</span>, <span class="dt">cex=</span><span class="dv">2</span> )</a>
+<a class="sourceLine" id="cb203-14" data-line-number="14"></a>
+<a class="sourceLine" id="cb203-15" data-line-number="15"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">1</span>,], <span class="dt">type=</span><span class="st">&quot;c&quot;</span>, <span class="dt">lwd=</span><span class="dv">5</span> )</a>
+<a class="sourceLine" id="cb203-16" data-line-number="16"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">2</span>,], <span class="dt">type=</span><span class="st">&quot;c&quot;</span>, <span class="dt">lwd=</span><span class="dv">5</span> )</a>
+<a class="sourceLine" id="cb203-17" data-line-number="17"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">3</span>,], <span class="dt">type=</span><span class="st">&quot;c&quot;</span>, <span class="dt">lwd=</span><span class="dv">5</span> )</a>
+<a class="sourceLine" id="cb203-18" data-line-number="18"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">4</span>,], <span class="dt">type=</span><span class="st">&quot;c&quot;</span>, <span class="dt">lwd=</span><span class="dv">5</span> )</a>
+<a class="sourceLine" id="cb203-19" data-line-number="19"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">5</span>,], <span class="dt">type=</span><span class="st">&quot;c&quot;</span>, <span class="dt">lwd=</span><span class="dv">5</span> )</a>
+<a class="sourceLine" id="cb203-20" data-line-number="20"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">6</span>,], <span class="dt">type=</span><span class="st">&quot;c&quot;</span>, <span class="dt">lwd=</span><span class="dv">5</span> )</a>
+<a class="sourceLine" id="cb203-21" data-line-number="21"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">7</span>,], <span class="dt">type=</span><span class="st">&quot;c&quot;</span>, <span class="dt">lwd=</span><span class="dv">5</span> )</a>
+<a class="sourceLine" id="cb203-22" data-line-number="22"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">8</span>,], <span class="dt">type=</span><span class="st">&quot;c&quot;</span>, <span class="dt">lwd=</span><span class="dv">5</span> )</a>
+<a class="sourceLine" id="cb203-23" data-line-number="23"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">9</span>,], <span class="dt">type=</span><span class="st">&quot;c&quot;</span>, <span class="dt">lwd=</span><span class="dv">5</span> )</a>
+<a class="sourceLine" id="cb203-24" data-line-number="24"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">10</span>,], <span class="dt">type=</span><span class="st">&quot;c&quot;</span>, <span class="dt">lwd=</span><span class="dv">5</span> )</a>
+<a class="sourceLine" id="cb203-25" data-line-number="25"></a>
+<a class="sourceLine" id="cb203-26" data-line-number="26"><span class="kw">text</span>( <span class="fl">0.7</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, id[<span class="kw">order</span>(df[,<span class="dv">1</span>])] )</a>
+<a class="sourceLine" id="cb203-27" data-line-number="27"><span class="kw">text</span>( <span class="fl">5.3</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, id[<span class="kw">order</span>(df[,<span class="dv">5</span>])] )</a>
+<a class="sourceLine" id="cb203-28" data-line-number="28"></a>
+<a class="sourceLine" id="cb203-29" data-line-number="29"><span class="kw">text</span>( <span class="dv">0</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, <span class="kw">paste</span>(<span class="dv">10</span><span class="op">:</span><span class="dv">1</span>,<span class="st">&quot;---&quot;</span>) )</a>
+<a class="sourceLine" id="cb203-30" data-line-number="30"><span class="kw">text</span>( <span class="dv">6</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, <span class="kw">paste</span>(<span class="st">&quot;---&quot;</span>,<span class="dv">10</span><span class="op">:</span><span class="dv">1</span>) )</a></code></pre></div>
+<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-292-1.png" width="70%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="add-axes-and-title" class="section level2">
-<h2><span class="header-section-number">8.7</span> Add Axes and Title</h2>
+<h2><span class="header-section-number">11.7</span> Add Axes and Title</h2>
 <p>And finally:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw">plot.new</span>()</a>
-<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="kw">plot.window</span>( <span class="dt">xlim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">6</span>), <span class="dt">ylim=</span><span class="kw">c</span>(ymin,ymax) )</a>
-<a class="sourceLine" id="cb8-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb8-4" data-line-number="4"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">1</span>,], <span class="dt">type=</span><span class="st">&quot;p&quot;</span>, <span class="dt">cex=</span><span class="dv">2</span> )</a>
-<a class="sourceLine" id="cb8-5" data-line-number="5"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">2</span>,], <span class="dt">type=</span><span class="st">&quot;p&quot;</span>, <span class="dt">cex=</span><span class="dv">2</span> )</a>
-<a class="sourceLine" id="cb8-6" data-line-number="6"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">3</span>,], <span class="dt">type=</span><span class="st">&quot;p&quot;</span>, <span class="dt">cex=</span><span class="dv">2</span> )</a>
-<a class="sourceLine" id="cb8-7" data-line-number="7"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">4</span>,], <span class="dt">type=</span><span class="st">&quot;p&quot;</span>, <span class="dt">cex=</span><span class="dv">2</span> )</a>
-<a class="sourceLine" id="cb8-8" data-line-number="8"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">5</span>,], <span class="dt">type=</span><span class="st">&quot;p&quot;</span>, <span class="dt">cex=</span><span class="dv">2</span> )</a>
-<a class="sourceLine" id="cb8-9" data-line-number="9"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">6</span>,], <span class="dt">type=</span><span class="st">&quot;p&quot;</span>, <span class="dt">cex=</span><span class="dv">2</span> )</a>
-<a class="sourceLine" id="cb8-10" data-line-number="10"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">7</span>,], <span class="dt">type=</span><span class="st">&quot;p&quot;</span>, <span class="dt">cex=</span><span class="dv">2</span> )</a>
-<a class="sourceLine" id="cb8-11" data-line-number="11"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">8</span>,], <span class="dt">type=</span><span class="st">&quot;p&quot;</span>, <span class="dt">cex=</span><span class="dv">2</span> )</a>
-<a class="sourceLine" id="cb8-12" data-line-number="12"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">9</span>,], <span class="dt">type=</span><span class="st">&quot;p&quot;</span>, <span class="dt">cex=</span><span class="dv">2</span> )</a>
-<a class="sourceLine" id="cb8-13" data-line-number="13"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">10</span>,], <span class="dt">type=</span><span class="st">&quot;p&quot;</span>, <span class="dt">cex=</span><span class="dv">2</span> )</a>
-<a class="sourceLine" id="cb8-14" data-line-number="14"></a>
-<a class="sourceLine" id="cb8-15" data-line-number="15"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">1</span>,], <span class="dt">type=</span><span class="st">&quot;c&quot;</span>, <span class="dt">lwd=</span><span class="dv">5</span> )</a>
-<a class="sourceLine" id="cb8-16" data-line-number="16"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">2</span>,], <span class="dt">type=</span><span class="st">&quot;c&quot;</span>, <span class="dt">lwd=</span><span class="dv">5</span> )</a>
-<a class="sourceLine" id="cb8-17" data-line-number="17"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">3</span>,], <span class="dt">type=</span><span class="st">&quot;c&quot;</span>, <span class="dt">lwd=</span><span class="dv">5</span> )</a>
-<a class="sourceLine" id="cb8-18" data-line-number="18"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">4</span>,], <span class="dt">type=</span><span class="st">&quot;c&quot;</span>, <span class="dt">lwd=</span><span class="dv">5</span> )</a>
-<a class="sourceLine" id="cb8-19" data-line-number="19"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">5</span>,], <span class="dt">type=</span><span class="st">&quot;c&quot;</span>, <span class="dt">lwd=</span><span class="dv">5</span> )</a>
-<a class="sourceLine" id="cb8-20" data-line-number="20"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">6</span>,], <span class="dt">type=</span><span class="st">&quot;c&quot;</span>, <span class="dt">lwd=</span><span class="dv">5</span> )</a>
-<a class="sourceLine" id="cb8-21" data-line-number="21"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">7</span>,], <span class="dt">type=</span><span class="st">&quot;c&quot;</span>, <span class="dt">lwd=</span><span class="dv">5</span> )</a>
-<a class="sourceLine" id="cb8-22" data-line-number="22"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">8</span>,], <span class="dt">type=</span><span class="st">&quot;c&quot;</span>, <span class="dt">lwd=</span><span class="dv">5</span> )</a>
-<a class="sourceLine" id="cb8-23" data-line-number="23"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">9</span>,], <span class="dt">type=</span><span class="st">&quot;c&quot;</span>, <span class="dt">lwd=</span><span class="dv">5</span> )</a>
-<a class="sourceLine" id="cb8-24" data-line-number="24"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">10</span>,], <span class="dt">type=</span><span class="st">&quot;c&quot;</span>, <span class="dt">lwd=</span><span class="dv">5</span> )</a>
-<a class="sourceLine" id="cb8-25" data-line-number="25"></a>
-<a class="sourceLine" id="cb8-26" data-line-number="26"><span class="kw">text</span>( <span class="fl">0.7</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, id[<span class="kw">order</span>(df[,<span class="dv">1</span>])] )</a>
-<a class="sourceLine" id="cb8-27" data-line-number="27"><span class="kw">text</span>( <span class="fl">5.3</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, id[<span class="kw">order</span>(df[,<span class="dv">5</span>])] )</a>
-<a class="sourceLine" id="cb8-28" data-line-number="28"></a>
-<a class="sourceLine" id="cb8-29" data-line-number="29"><span class="kw">text</span>( <span class="dv">0</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, <span class="kw">paste</span>(<span class="dv">10</span><span class="op">:</span><span class="dv">1</span>,<span class="st">&quot;---&quot;</span>) )</a>
-<a class="sourceLine" id="cb8-30" data-line-number="30"><span class="kw">text</span>( <span class="dv">6</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, <span class="kw">paste</span>(<span class="st">&quot;---&quot;</span>,<span class="dv">10</span><span class="op">:</span><span class="dv">1</span>) )</a>
-<a class="sourceLine" id="cb8-31" data-line-number="31"></a>
-<a class="sourceLine" id="cb8-32" data-line-number="32"><span class="kw">title</span>( <span class="dt">ylab=</span><span class="st">&quot;Rank&quot;</span>, <span class="dt">line=</span><span class="dv">1</span> )</a>
-<a class="sourceLine" id="cb8-33" data-line-number="33"><span class="kw">axis</span>( <span class="dt">side=</span><span class="dv">1</span>, <span class="dt">tick=</span>F, <span class="dt">at=</span><span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">labels=</span><span class="dv">2011</span><span class="op">:</span><span class="dv">2015</span> )</a>
-<a class="sourceLine" id="cb8-34" data-line-number="34"><span class="kw">title</span>( <span class="dt">main=</span><span class="st">&quot;School Rank 2011-2015&quot;</span>  )</a></code></pre></div>
-<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-12-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb204-1" data-line-number="1"><span class="kw">plot.new</span>()</a>
+<a class="sourceLine" id="cb204-2" data-line-number="2"><span class="kw">plot.window</span>( <span class="dt">xlim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">6</span>), <span class="dt">ylim=</span><span class="kw">c</span>(ymin,ymax) )</a>
+<a class="sourceLine" id="cb204-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb204-4" data-line-number="4"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">1</span>,], <span class="dt">type=</span><span class="st">&quot;p&quot;</span>, <span class="dt">cex=</span><span class="dv">2</span> )</a>
+<a class="sourceLine" id="cb204-5" data-line-number="5"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">2</span>,], <span class="dt">type=</span><span class="st">&quot;p&quot;</span>, <span class="dt">cex=</span><span class="dv">2</span> )</a>
+<a class="sourceLine" id="cb204-6" data-line-number="6"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">3</span>,], <span class="dt">type=</span><span class="st">&quot;p&quot;</span>, <span class="dt">cex=</span><span class="dv">2</span> )</a>
+<a class="sourceLine" id="cb204-7" data-line-number="7"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">4</span>,], <span class="dt">type=</span><span class="st">&quot;p&quot;</span>, <span class="dt">cex=</span><span class="dv">2</span> )</a>
+<a class="sourceLine" id="cb204-8" data-line-number="8"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">5</span>,], <span class="dt">type=</span><span class="st">&quot;p&quot;</span>, <span class="dt">cex=</span><span class="dv">2</span> )</a>
+<a class="sourceLine" id="cb204-9" data-line-number="9"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">6</span>,], <span class="dt">type=</span><span class="st">&quot;p&quot;</span>, <span class="dt">cex=</span><span class="dv">2</span> )</a>
+<a class="sourceLine" id="cb204-10" data-line-number="10"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">7</span>,], <span class="dt">type=</span><span class="st">&quot;p&quot;</span>, <span class="dt">cex=</span><span class="dv">2</span> )</a>
+<a class="sourceLine" id="cb204-11" data-line-number="11"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">8</span>,], <span class="dt">type=</span><span class="st">&quot;p&quot;</span>, <span class="dt">cex=</span><span class="dv">2</span> )</a>
+<a class="sourceLine" id="cb204-12" data-line-number="12"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">9</span>,], <span class="dt">type=</span><span class="st">&quot;p&quot;</span>, <span class="dt">cex=</span><span class="dv">2</span> )</a>
+<a class="sourceLine" id="cb204-13" data-line-number="13"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">10</span>,], <span class="dt">type=</span><span class="st">&quot;p&quot;</span>, <span class="dt">cex=</span><span class="dv">2</span> )</a>
+<a class="sourceLine" id="cb204-14" data-line-number="14"></a>
+<a class="sourceLine" id="cb204-15" data-line-number="15"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">1</span>,], <span class="dt">type=</span><span class="st">&quot;c&quot;</span>, <span class="dt">lwd=</span><span class="dv">5</span> )</a>
+<a class="sourceLine" id="cb204-16" data-line-number="16"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">2</span>,], <span class="dt">type=</span><span class="st">&quot;c&quot;</span>, <span class="dt">lwd=</span><span class="dv">5</span> )</a>
+<a class="sourceLine" id="cb204-17" data-line-number="17"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">3</span>,], <span class="dt">type=</span><span class="st">&quot;c&quot;</span>, <span class="dt">lwd=</span><span class="dv">5</span> )</a>
+<a class="sourceLine" id="cb204-18" data-line-number="18"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">4</span>,], <span class="dt">type=</span><span class="st">&quot;c&quot;</span>, <span class="dt">lwd=</span><span class="dv">5</span> )</a>
+<a class="sourceLine" id="cb204-19" data-line-number="19"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">5</span>,], <span class="dt">type=</span><span class="st">&quot;c&quot;</span>, <span class="dt">lwd=</span><span class="dv">5</span> )</a>
+<a class="sourceLine" id="cb204-20" data-line-number="20"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">6</span>,], <span class="dt">type=</span><span class="st">&quot;c&quot;</span>, <span class="dt">lwd=</span><span class="dv">5</span> )</a>
+<a class="sourceLine" id="cb204-21" data-line-number="21"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">7</span>,], <span class="dt">type=</span><span class="st">&quot;c&quot;</span>, <span class="dt">lwd=</span><span class="dv">5</span> )</a>
+<a class="sourceLine" id="cb204-22" data-line-number="22"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">8</span>,], <span class="dt">type=</span><span class="st">&quot;c&quot;</span>, <span class="dt">lwd=</span><span class="dv">5</span> )</a>
+<a class="sourceLine" id="cb204-23" data-line-number="23"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">9</span>,], <span class="dt">type=</span><span class="st">&quot;c&quot;</span>, <span class="dt">lwd=</span><span class="dv">5</span> )</a>
+<a class="sourceLine" id="cb204-24" data-line-number="24"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">10</span>,], <span class="dt">type=</span><span class="st">&quot;c&quot;</span>, <span class="dt">lwd=</span><span class="dv">5</span> )</a>
+<a class="sourceLine" id="cb204-25" data-line-number="25"></a>
+<a class="sourceLine" id="cb204-26" data-line-number="26"><span class="kw">text</span>( <span class="fl">0.7</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, id[<span class="kw">order</span>(df[,<span class="dv">1</span>])] )</a>
+<a class="sourceLine" id="cb204-27" data-line-number="27"><span class="kw">text</span>( <span class="fl">5.3</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, id[<span class="kw">order</span>(df[,<span class="dv">5</span>])] )</a>
+<a class="sourceLine" id="cb204-28" data-line-number="28"></a>
+<a class="sourceLine" id="cb204-29" data-line-number="29"><span class="kw">text</span>( <span class="dv">0</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, <span class="kw">paste</span>(<span class="dv">10</span><span class="op">:</span><span class="dv">1</span>,<span class="st">&quot;---&quot;</span>) )</a>
+<a class="sourceLine" id="cb204-30" data-line-number="30"><span class="kw">text</span>( <span class="dv">6</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, <span class="kw">paste</span>(<span class="st">&quot;---&quot;</span>,<span class="dv">10</span><span class="op">:</span><span class="dv">1</span>) )</a>
+<a class="sourceLine" id="cb204-31" data-line-number="31"></a>
+<a class="sourceLine" id="cb204-32" data-line-number="32"><span class="kw">title</span>( <span class="dt">ylab=</span><span class="st">&quot;Rank&quot;</span>, <span class="dt">line=</span><span class="dv">1</span> )</a>
+<a class="sourceLine" id="cb204-33" data-line-number="33"><span class="kw">axis</span>( <span class="dt">side=</span><span class="dv">1</span>, <span class="dt">tick=</span>F, <span class="dt">at=</span><span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">labels=</span><span class="dv">2011</span><span class="op">:</span><span class="dv">2015</span> )</a>
+<a class="sourceLine" id="cb204-34" data-line-number="34"><span class="kw">title</span>( <span class="dt">main=</span><span class="st">&quot;School Rank 2011-2015&quot;</span>  )</a></code></pre></div>
+<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-293-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>We are in business.</p>
 </div>
 <div id="generalizing-code" class="section level2">
-<h2><span class="header-section-number">8.8</span> Generalizing Code</h2>
+<h2><span class="header-section-number">11.8</span> Generalizing Code</h2>
 <p>Because we are plotting data row by row (each row of data represents rankings for one school over time), we can simplify our code by writing the plot() command once inside a loop (for loops are covered in subsequent chapters):</p>
 <table style="width:35%;">
 <colgroup>
@@ -710,58 +722,58 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="kw">plot.new</span>()</a>
-<a class="sourceLine" id="cb9-2" data-line-number="2"><span class="kw">plot.window</span>( <span class="dt">xlim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">6</span>), <span class="dt">ylim=</span><span class="kw">c</span>(ymin,ymax) )</a>
-<a class="sourceLine" id="cb9-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb9-4" data-line-number="4"><span class="cf">for</span>( i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(df) )</a>
-<a class="sourceLine" id="cb9-5" data-line-number="5">{</a>
-<a class="sourceLine" id="cb9-6" data-line-number="6">   <span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span>num.x, df[i,], <span class="dt">type=</span><span class="st">&quot;p&quot;</span>, </a>
-<a class="sourceLine" id="cb9-7" data-line-number="7">           <span class="dt">cex=</span><span class="fl">1.5</span>, <span class="dt">col=</span><span class="kw">gray</span>(<span class="fl">0.5</span>,<span class="fl">0.5</span>), </a>
-<a class="sourceLine" id="cb9-8" data-line-number="8">           <span class="dt">pch=</span><span class="dv">21</span>, <span class="dt">bg=</span><span class="st">&quot;white&quot;</span> ) </a>
-<a class="sourceLine" id="cb9-9" data-line-number="9">  </a>
-<a class="sourceLine" id="cb9-10" data-line-number="10">   <span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span>num.x, df[i,], <span class="dt">type=</span><span class="st">&quot;c&quot;</span>, </a>
-<a class="sourceLine" id="cb9-11" data-line-number="11">           <span class="dt">lwd=</span><span class="dv">6</span>, <span class="dt">col=</span><span class="kw">gray</span>(<span class="fl">0.5</span>,<span class="fl">0.5</span>) )</a>
-<a class="sourceLine" id="cb9-12" data-line-number="12">}</a></code></pre></div>
-<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-14-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb205-1" data-line-number="1"><span class="kw">plot.new</span>()</a>
+<a class="sourceLine" id="cb205-2" data-line-number="2"><span class="kw">plot.window</span>( <span class="dt">xlim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">6</span>), <span class="dt">ylim=</span><span class="kw">c</span>(ymin,ymax) )</a>
+<a class="sourceLine" id="cb205-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb205-4" data-line-number="4"><span class="cf">for</span>( i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(df) )</a>
+<a class="sourceLine" id="cb205-5" data-line-number="5">{</a>
+<a class="sourceLine" id="cb205-6" data-line-number="6">   <span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span>num.x, df[i,], <span class="dt">type=</span><span class="st">&quot;p&quot;</span>, </a>
+<a class="sourceLine" id="cb205-7" data-line-number="7">           <span class="dt">cex=</span><span class="fl">1.5</span>, <span class="dt">col=</span><span class="kw">gray</span>(<span class="fl">0.5</span>,<span class="fl">0.5</span>), </a>
+<a class="sourceLine" id="cb205-8" data-line-number="8">           <span class="dt">pch=</span><span class="dv">21</span>, <span class="dt">bg=</span><span class="st">&quot;white&quot;</span> ) </a>
+<a class="sourceLine" id="cb205-9" data-line-number="9">  </a>
+<a class="sourceLine" id="cb205-10" data-line-number="10">   <span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span>num.x, df[i,], <span class="dt">type=</span><span class="st">&quot;c&quot;</span>, </a>
+<a class="sourceLine" id="cb205-11" data-line-number="11">           <span class="dt">lwd=</span><span class="dv">6</span>, <span class="dt">col=</span><span class="kw">gray</span>(<span class="fl">0.5</span>,<span class="fl">0.5</span>) )</a>
+<a class="sourceLine" id="cb205-12" data-line-number="12">}</a></code></pre></div>
+<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-295-1.png" width="70%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="improved-aesthetics" class="section level2">
-<h2><span class="header-section-number">8.9</span> Improved Aesthetics</h2>
+<h2><span class="header-section-number">11.9</span> Improved Aesthetics</h2>
 <p>Finally, let’s play with the colors and sizes of elements so that we can highlight specific schools for our report.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="kw">plot.new</span>()</a>
-<a class="sourceLine" id="cb10-2" data-line-number="2"><span class="kw">plot.window</span>( <span class="dt">xlim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">6</span>), <span class="dt">ylim=</span><span class="kw">c</span>(ymin,ymax) )</a>
-<a class="sourceLine" id="cb10-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb10-4" data-line-number="4"><span class="co"># add each row to a loop instead of repeating lines of code</span></a>
-<a class="sourceLine" id="cb10-5" data-line-number="5"><span class="cf">for</span>( i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(df) )</a>
-<a class="sourceLine" id="cb10-6" data-line-number="6">{</a>
-<a class="sourceLine" id="cb10-7" data-line-number="7">   <span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span>num.x, df[i,], <span class="dt">type=</span><span class="st">&quot;p&quot;</span>, <span class="dt">cex=</span><span class="fl">1.5</span>, <span class="dt">col=</span><span class="kw">gray</span>(<span class="fl">0.5</span>,<span class="fl">0.5</span>), </a>
-<a class="sourceLine" id="cb10-8" data-line-number="8">           <span class="dt">pch=</span><span class="dv">21</span>, <span class="dt">bg=</span><span class="st">&quot;white&quot;</span> ) </a>
-<a class="sourceLine" id="cb10-9" data-line-number="9">   <span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span>num.x, df[i,], <span class="dt">type=</span><span class="st">&quot;c&quot;</span>, <span class="dt">lwd=</span><span class="dv">6</span>, <span class="dt">col=</span><span class="kw">gray</span>(<span class="fl">0.5</span>,<span class="fl">0.5</span>) )</a>
-<a class="sourceLine" id="cb10-10" data-line-number="10">}</a>
-<a class="sourceLine" id="cb10-11" data-line-number="11"></a>
-<a class="sourceLine" id="cb10-12" data-line-number="12"><span class="kw">text</span>( <span class="fl">0.7</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, id[<span class="kw">order</span>(df[,<span class="dv">1</span>])], <span class="dt">col=</span><span class="kw">gray</span>(<span class="fl">0.5</span>,<span class="fl">0.5</span>) )</a>
-<a class="sourceLine" id="cb10-13" data-line-number="13"><span class="kw">text</span>( <span class="fl">5.3</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, id[<span class="kw">order</span>(df[,<span class="dv">5</span>])], <span class="dt">col=</span><span class="kw">gray</span>(<span class="fl">0.5</span>,<span class="fl">0.5</span>) )</a>
-<a class="sourceLine" id="cb10-14" data-line-number="14"></a>
-<a class="sourceLine" id="cb10-15" data-line-number="15"><span class="kw">text</span>( <span class="dv">0</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, <span class="kw">paste</span>(<span class="dv">10</span><span class="op">:</span><span class="dv">1</span>,<span class="st">&quot;---&quot;</span>), <span class="dt">col=</span><span class="st">&quot;gray60&quot;</span>, <span class="dt">cex=</span><span class="fl">0.7</span> )</a>
-<a class="sourceLine" id="cb10-16" data-line-number="16"><span class="kw">text</span>( <span class="dv">6</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, <span class="kw">paste</span>(<span class="st">&quot;---&quot;</span>,<span class="dv">10</span><span class="op">:</span><span class="dv">1</span>), <span class="dt">col=</span><span class="st">&quot;gray60&quot;</span>, <span class="dt">cex=</span><span class="fl">0.7</span> )</a>
-<a class="sourceLine" id="cb10-17" data-line-number="17"></a>
-<a class="sourceLine" id="cb10-18" data-line-number="18"><span class="kw">title</span>( <span class="dt">ylab=</span><span class="st">&quot;Rank&quot;</span>, <span class="dt">col.lab=</span><span class="st">&quot;gray80&quot;</span>, <span class="dt">cex.lab=</span><span class="fl">1.5</span>, <span class="dt">line=</span><span class="dv">1</span> )</a>
-<a class="sourceLine" id="cb10-19" data-line-number="19"><span class="kw">axis</span>( <span class="dt">side=</span><span class="dv">1</span>, <span class="dt">tick=</span>F, <span class="dt">at=</span><span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">labels=</span><span class="dv">2011</span><span class="op">:</span><span class="dv">2015</span>, <span class="dt">col.axis=</span><span class="st">&quot;gray&quot;</span>, <span class="dt">cex.axis=</span><span class="dv">1</span> )</a>
-<a class="sourceLine" id="cb10-20" data-line-number="20"><span class="kw">title</span>( <span class="dt">main=</span><span class="st">&quot;School Rank 2011-2015&quot;</span>, <span class="dt">col.main=</span><span class="st">&quot;gray50&quot;</span> )</a>
-<a class="sourceLine" id="cb10-21" data-line-number="21"></a>
-<a class="sourceLine" id="cb10-22" data-line-number="22"><span class="co"># highlight some schools</span></a>
-<a class="sourceLine" id="cb10-23" data-line-number="23"></a>
-<a class="sourceLine" id="cb10-24" data-line-number="24"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">2</span>,], <span class="dt">type=</span><span class="st">&quot;c&quot;</span>, <span class="dt">lwd=</span><span class="dv">6</span>, <span class="dt">col=</span><span class="st">&quot;firebrick4&quot;</span> )</a>
-<a class="sourceLine" id="cb10-25" data-line-number="25"><span class="kw">text</span>( <span class="fl">0.7</span>, df[<span class="dv">2</span>,<span class="dv">1</span>], <span class="st">&quot;B&quot;</span>, <span class="dt">col=</span><span class="st">&quot;firebrick4&quot;</span> )</a>
-<a class="sourceLine" id="cb10-26" data-line-number="26"><span class="kw">text</span>( <span class="fl">5.3</span>, df[<span class="dv">2</span>,<span class="dv">5</span>], <span class="st">&quot;B&quot;</span>, <span class="dt">col=</span><span class="st">&quot;firebrick4&quot;</span> )</a>
-<a class="sourceLine" id="cb10-27" data-line-number="27"></a>
-<a class="sourceLine" id="cb10-28" data-line-number="28"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">6</span>,], <span class="dt">type=</span><span class="st">&quot;c&quot;</span>, <span class="dt">lwd=</span><span class="dv">6</span>, <span class="dt">col=</span><span class="st">&quot;steelblue&quot;</span> )</a>
-<a class="sourceLine" id="cb10-29" data-line-number="29"><span class="kw">text</span>( <span class="fl">0.7</span>, df[<span class="dv">6</span>,<span class="dv">1</span>], <span class="st">&quot;F&quot;</span>, <span class="dt">col=</span><span class="st">&quot;steelblue&quot;</span> )</a>
-<a class="sourceLine" id="cb10-30" data-line-number="30"><span class="kw">text</span>( <span class="fl">5.3</span>, df[<span class="dv">6</span>,<span class="dv">5</span>], <span class="st">&quot;F&quot;</span>, <span class="dt">col=</span><span class="st">&quot;steelblue&quot;</span> )</a>
-<a class="sourceLine" id="cb10-31" data-line-number="31"></a>
-<a class="sourceLine" id="cb10-32" data-line-number="32"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">3</span>,], <span class="dt">type=</span><span class="st">&quot;c&quot;</span>, <span class="dt">lwd=</span><span class="dv">6</span>, <span class="dt">col=</span><span class="st">&quot;goldenrod&quot;</span> )</a>
-<a class="sourceLine" id="cb10-33" data-line-number="33"><span class="kw">text</span>( <span class="fl">0.7</span>, df[<span class="dv">3</span>,<span class="dv">1</span>], id[<span class="dv">3</span>], <span class="dt">col=</span><span class="st">&quot;goldenrod&quot;</span> )</a>
-<a class="sourceLine" id="cb10-34" data-line-number="34"><span class="kw">text</span>( <span class="fl">5.3</span>, df[<span class="dv">3</span>,<span class="dv">5</span>], id[<span class="dv">3</span>], <span class="dt">col=</span><span class="st">&quot;goldenrod&quot;</span> )</a></code></pre></div>
-<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-15-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb206-1" data-line-number="1"><span class="kw">plot.new</span>()</a>
+<a class="sourceLine" id="cb206-2" data-line-number="2"><span class="kw">plot.window</span>( <span class="dt">xlim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">6</span>), <span class="dt">ylim=</span><span class="kw">c</span>(ymin,ymax) )</a>
+<a class="sourceLine" id="cb206-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb206-4" data-line-number="4"><span class="co"># add each row to a loop instead of repeating lines of code</span></a>
+<a class="sourceLine" id="cb206-5" data-line-number="5"><span class="cf">for</span>( i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(df) )</a>
+<a class="sourceLine" id="cb206-6" data-line-number="6">{</a>
+<a class="sourceLine" id="cb206-7" data-line-number="7">   <span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span>num.x, df[i,], <span class="dt">type=</span><span class="st">&quot;p&quot;</span>, <span class="dt">cex=</span><span class="fl">1.5</span>, <span class="dt">col=</span><span class="kw">gray</span>(<span class="fl">0.5</span>,<span class="fl">0.5</span>), </a>
+<a class="sourceLine" id="cb206-8" data-line-number="8">           <span class="dt">pch=</span><span class="dv">21</span>, <span class="dt">bg=</span><span class="st">&quot;white&quot;</span> ) </a>
+<a class="sourceLine" id="cb206-9" data-line-number="9">   <span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span>num.x, df[i,], <span class="dt">type=</span><span class="st">&quot;c&quot;</span>, <span class="dt">lwd=</span><span class="dv">6</span>, <span class="dt">col=</span><span class="kw">gray</span>(<span class="fl">0.5</span>,<span class="fl">0.5</span>) )</a>
+<a class="sourceLine" id="cb206-10" data-line-number="10">}</a>
+<a class="sourceLine" id="cb206-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb206-12" data-line-number="12"><span class="kw">text</span>( <span class="fl">0.7</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, id[<span class="kw">order</span>(df[,<span class="dv">1</span>])], <span class="dt">col=</span><span class="kw">gray</span>(<span class="fl">0.5</span>,<span class="fl">0.5</span>) )</a>
+<a class="sourceLine" id="cb206-13" data-line-number="13"><span class="kw">text</span>( <span class="fl">5.3</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, id[<span class="kw">order</span>(df[,<span class="dv">5</span>])], <span class="dt">col=</span><span class="kw">gray</span>(<span class="fl">0.5</span>,<span class="fl">0.5</span>) )</a>
+<a class="sourceLine" id="cb206-14" data-line-number="14"></a>
+<a class="sourceLine" id="cb206-15" data-line-number="15"><span class="kw">text</span>( <span class="dv">0</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, <span class="kw">paste</span>(<span class="dv">10</span><span class="op">:</span><span class="dv">1</span>,<span class="st">&quot;---&quot;</span>), <span class="dt">col=</span><span class="st">&quot;gray60&quot;</span>, <span class="dt">cex=</span><span class="fl">0.7</span> )</a>
+<a class="sourceLine" id="cb206-16" data-line-number="16"><span class="kw">text</span>( <span class="dv">6</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, <span class="kw">paste</span>(<span class="st">&quot;---&quot;</span>,<span class="dv">10</span><span class="op">:</span><span class="dv">1</span>), <span class="dt">col=</span><span class="st">&quot;gray60&quot;</span>, <span class="dt">cex=</span><span class="fl">0.7</span> )</a>
+<a class="sourceLine" id="cb206-17" data-line-number="17"></a>
+<a class="sourceLine" id="cb206-18" data-line-number="18"><span class="kw">title</span>( <span class="dt">ylab=</span><span class="st">&quot;Rank&quot;</span>, <span class="dt">col.lab=</span><span class="st">&quot;gray80&quot;</span>, <span class="dt">cex.lab=</span><span class="fl">1.5</span>, <span class="dt">line=</span><span class="dv">1</span> )</a>
+<a class="sourceLine" id="cb206-19" data-line-number="19"><span class="kw">axis</span>( <span class="dt">side=</span><span class="dv">1</span>, <span class="dt">tick=</span>F, <span class="dt">at=</span><span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">labels=</span><span class="dv">2011</span><span class="op">:</span><span class="dv">2015</span>, <span class="dt">col.axis=</span><span class="st">&quot;gray&quot;</span>, <span class="dt">cex.axis=</span><span class="dv">1</span> )</a>
+<a class="sourceLine" id="cb206-20" data-line-number="20"><span class="kw">title</span>( <span class="dt">main=</span><span class="st">&quot;School Rank 2011-2015&quot;</span>, <span class="dt">col.main=</span><span class="st">&quot;gray50&quot;</span> )</a>
+<a class="sourceLine" id="cb206-21" data-line-number="21"></a>
+<a class="sourceLine" id="cb206-22" data-line-number="22"><span class="co"># highlight some schools</span></a>
+<a class="sourceLine" id="cb206-23" data-line-number="23"></a>
+<a class="sourceLine" id="cb206-24" data-line-number="24"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">2</span>,], <span class="dt">type=</span><span class="st">&quot;c&quot;</span>, <span class="dt">lwd=</span><span class="dv">6</span>, <span class="dt">col=</span><span class="st">&quot;firebrick4&quot;</span> )</a>
+<a class="sourceLine" id="cb206-25" data-line-number="25"><span class="kw">text</span>( <span class="fl">0.7</span>, df[<span class="dv">2</span>,<span class="dv">1</span>], <span class="st">&quot;B&quot;</span>, <span class="dt">col=</span><span class="st">&quot;firebrick4&quot;</span> )</a>
+<a class="sourceLine" id="cb206-26" data-line-number="26"><span class="kw">text</span>( <span class="fl">5.3</span>, df[<span class="dv">2</span>,<span class="dv">5</span>], <span class="st">&quot;B&quot;</span>, <span class="dt">col=</span><span class="st">&quot;firebrick4&quot;</span> )</a>
+<a class="sourceLine" id="cb206-27" data-line-number="27"></a>
+<a class="sourceLine" id="cb206-28" data-line-number="28"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">6</span>,], <span class="dt">type=</span><span class="st">&quot;c&quot;</span>, <span class="dt">lwd=</span><span class="dv">6</span>, <span class="dt">col=</span><span class="st">&quot;steelblue&quot;</span> )</a>
+<a class="sourceLine" id="cb206-29" data-line-number="29"><span class="kw">text</span>( <span class="fl">0.7</span>, df[<span class="dv">6</span>,<span class="dv">1</span>], <span class="st">&quot;F&quot;</span>, <span class="dt">col=</span><span class="st">&quot;steelblue&quot;</span> )</a>
+<a class="sourceLine" id="cb206-30" data-line-number="30"><span class="kw">text</span>( <span class="fl">5.3</span>, df[<span class="dv">6</span>,<span class="dv">5</span>], <span class="st">&quot;F&quot;</span>, <span class="dt">col=</span><span class="st">&quot;steelblue&quot;</span> )</a>
+<a class="sourceLine" id="cb206-31" data-line-number="31"></a>
+<a class="sourceLine" id="cb206-32" data-line-number="32"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">3</span>,], <span class="dt">type=</span><span class="st">&quot;c&quot;</span>, <span class="dt">lwd=</span><span class="dv">6</span>, <span class="dt">col=</span><span class="st">&quot;goldenrod&quot;</span> )</a>
+<a class="sourceLine" id="cb206-33" data-line-number="33"><span class="kw">text</span>( <span class="fl">0.7</span>, df[<span class="dv">3</span>,<span class="dv">1</span>], id[<span class="dv">3</span>], <span class="dt">col=</span><span class="st">&quot;goldenrod&quot;</span> )</a>
+<a class="sourceLine" id="cb206-34" data-line-number="34"><span class="kw">text</span>( <span class="fl">5.3</span>, df[<span class="dv">3</span>,<span class="dv">5</span>], id[<span class="dv">3</span>], <span class="dt">col=</span><span class="st">&quot;goldenrod&quot;</span> )</a></code></pre></div>
+<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-296-1.png" width="70%" style="display: block; margin: auto;" /></p>
 
 </div>
 </div>
@@ -789,11 +801,10 @@ gitbook.start({
 "facebook": true,
 "twitter": true,
 "google": false,
-"linkedin": false,
 "weibo": false,
 "instapper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",

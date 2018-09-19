@@ -218,7 +218,8 @@ summary( USArrests$Assault )
 
 # Is there a relationship between urban density and crime?
 
-plot( USArrests$UrbanPop, USArrests$Murder )
+plot( USArrests$UrbanPop, USArrests$Murder, 
+      frame.plot=F, pch=19, col="gray" )
 abline( lm( USArrests$Murder ~ USArrests$UrbanPop ), col="red" )
 
 ```
@@ -232,7 +233,7 @@ Let's take a look at some of the data available in the Lahman package.
 
 ```{r, eval=F}
 
-data( package = "Lahman" ) # All datasets in package ‘Lahman’:
+data( package = "Lahman" ) # All datasets in package "Lahman":
 
 ```
 
@@ -272,11 +273,9 @@ pitchingLabels   |   Variable Labels
 We see that we have lots of datasets to choose from here. I will use the Master dataset, which is a list of all of the Major League Baseball players over the past century, and their personal information. 
 
 ```{r, eval=F}
-
 library( Lahman )    # loads Lahman package
 data( Master )
 head( Master ) 
-
 ```
 
 
@@ -292,9 +291,7 @@ summary( Master )    # descriptive statistics of variables
 We can use **help(Master)** to get information about the dataset, including a data dictionary.
 
 ```{r, eval=F}
-
 help( Master )
-
 ```
 
 
@@ -351,22 +348,26 @@ Lahman, S. (2016) Lahman's Baseball Database, 1871-2015, 2015 version, http://ww
 
 
 
+
+
+```{r, echo=F, eval=F}
+
 ### Example Analysis
 
 Perhaps I am curious about some of the data. I see that we have information on the birth month of professional baseball players. If you have read Malcolm Gladwell's book *Outliers* you know there is an interesting cumulative advantage phenomenon that can occur with atheletes as they are young. If you are born near the end of the cutoff, you are on average six months older than other players in your league, and therefore slightly larger physically and more coordinated on average. Six months does not sound like much, but the slight size and coordination advantage means more playing time, which also improves skill. Over time, this small difference accumulates so that those lucky enough to be born near the cutoff become the best players.
 
 Gladwell looked at studies of hockey. Do we see this in baseball?
+library( Lahman )
+data( Master )
+prop.table( table( Master$birthMonth ) )  %>% pander()
+```
 
 
 ```{r, warning=FALSE, eval=F}
-
-table( Master$birthMonth )
-
 tab <- prop.table( table( Master$birthMonth ) )
-
 names(tab) <- c("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec")
-
-dotchart( tab, pch=19, xlab = "Percent of Players", ylab = "Birth Month" ) 
-
+dotchart( tab, pch=19, 
+          xlab = "Proportion of MLB Players", 
+          ylab = "Birth Month" ) 
 ```
 

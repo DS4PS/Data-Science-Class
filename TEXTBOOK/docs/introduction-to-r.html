@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Intro to Data Science for the Social Sector</title>
   <meta name="description" content="This is an introductory text to data science designed for social science graduate students in public affairs, nonprofit management, and international development.">
-  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.6 and GitBook 2.6.7">
 
   <meta property="og:title" content="Intro to Data Science for the Social Sector" />
   <meta property="og:type" content="book" />
@@ -59,7 +59,7 @@
 <style type="text/css">
 a.sourceLine { display: inline-block; line-height: 1.25; }
 a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 div.sourceCode { margin: 1em 0; }
@@ -72,11 +72,13 @@ code.sourceCode { white-space: pre-wrap; }
 a.sourceLine { text-indent: -1em; padding-left: 1em; }
 }
 pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
 pre.numberSource a.sourceLine::before
   { content: attr(data-line-number);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -148,7 +150,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.5" data-path="introduction-to-r.html"><a href="introduction-to-r.html#accessing-built-in-datasets-in-r"><i class="fa fa-check"></i><b>1.5</b> Accessing Built-In Datasets in R</a><ul>
 <li class="chapter" data-level="1.5.1" data-path="introduction-to-r.html"><a href="introduction-to-r.html#basic-data-operations"><i class="fa fa-check"></i><b>1.5.1</b> Basic Data Operations</a></li>
 <li class="chapter" data-level="1.5.2" data-path="introduction-to-r.html"><a href="introduction-to-r.html#using-the-lahman-data"><i class="fa fa-check"></i><b>1.5.2</b> Using the Lahman Data</a></li>
-<li class="chapter" data-level="1.5.3" data-path="introduction-to-r.html"><a href="introduction-to-r.html#example-analysis"><i class="fa fa-check"></i><b>1.5.3</b> Example Analysis</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>2</b> Functions</a><ul>
@@ -321,16 +322,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Most computer languages have a special character that is used to “comment out” lines so that it is not run by the program. It is used for two important purposes. First, we can add text to document our functions and it will not interfere with the program. And two, we can use it to run a program while ignoring some of the code, often for debugging purposes.</p>
 <p>The <strong>#</strong> hash tag is used for comments in R.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"></a>
-<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="co">##==============================================</span></a>
-<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="co">##</span></a>
-<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="co">##  Here is some documentation for this script</span></a>
-<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="co">##</span></a>
-<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="co">##==============================================</span></a>
+<a class="sourceLine" id="cb5-2" data-line-number="2">##==============================================</a>
+<a class="sourceLine" id="cb5-3" data-line-number="3">##</a>
+<a class="sourceLine" id="cb5-4" data-line-number="4">##  Here is some documentation for this script</a>
+<a class="sourceLine" id="cb5-5" data-line-number="5">##</a>
+<a class="sourceLine" id="cb5-6" data-line-number="6">##==============================================</a>
 <a class="sourceLine" id="cb5-7" data-line-number="7"></a>
 <a class="sourceLine" id="cb5-8" data-line-number="8">x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10</span></a>
 <a class="sourceLine" id="cb5-9" data-line-number="9"></a>
 <a class="sourceLine" id="cb5-10" data-line-number="10"><span class="kw">sum</span>( x )</a>
-<a class="sourceLine" id="cb5-11" data-line-number="11"><span class="co">### [1] 55</span></a>
+<a class="sourceLine" id="cb5-11" data-line-number="11">### [1] 55</a>
 <a class="sourceLine" id="cb5-12" data-line-number="12"></a>
 <a class="sourceLine" id="cb5-13" data-line-number="13"><span class="co"># y &lt;- 1:25     # not run</span></a>
 <a class="sourceLine" id="cb5-14" data-line-number="14"></a>
@@ -344,11 +345,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </blockquote>
 <p>If you just need to remind yourself which arguments are defined in a function, you can use the <em>args()</em> command:</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw">args</span>( dotchart )</a>
-<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="co">### function (x, labels = NULL, groups = NULL, gdata = NULL, cex = par(&quot;cex&quot;), </span></a>
-<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="co">###     pt.cex = cex, pch = 21, gpch = 21, bg = par(&quot;bg&quot;), color = par(&quot;fg&quot;), </span></a>
-<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="co">###     gcolor = par(&quot;fg&quot;), lcolor = &quot;gray&quot;, xlim = range(x[is.finite(x)]), </span></a>
-<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="co">###     main = NULL, xlab = NULL, ylab = NULL, ...) </span></a>
-<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="co">### NULL</span></a></code></pre></div>
+<a class="sourceLine" id="cb6-2" data-line-number="2">### function (x, labels = NULL, groups = NULL, gdata = NULL, cex = par(&quot;cex&quot;), </a>
+<a class="sourceLine" id="cb6-3" data-line-number="3">###     pt.cex = cex, pch = 21, gpch = 21, bg = par(&quot;bg&quot;), color = par(&quot;fg&quot;), </a>
+<a class="sourceLine" id="cb6-4" data-line-number="4">###     gcolor = par(&quot;fg&quot;), lcolor = &quot;gray&quot;, xlim = range(x[is.finite(x)]), </a>
+<a class="sourceLine" id="cb6-5" data-line-number="5">###     main = NULL, xlab = NULL, ylab = NULL, ...) </a>
+<a class="sourceLine" id="cb6-6" data-line-number="6">### NULL</a></code></pre></div>
 <p>If you can’t recall a function name, you can list all of the functions from a specific package as follows:</p>
 <blockquote>
 <p>help( package=“stats” ) # lists all functions in stats package</p>
@@ -358,14 +359,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">1.4</span> Install Programs (packages)</h2>
 <p>When you open R by default it will launch a core set of programs, called “packages” in R speak, that are use for most data operations. To see which packages are currently active use the <strong>search()</strong> function.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw">search</span>()</a>
-<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="co">###  [1] &quot;.GlobalEnv&quot;        &quot;package:ggvis&quot;     &quot;package:ggplot2&quot;  </span></a>
-<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="co">###  [4] &quot;package:reshape2&quot;  &quot;package:tidyr&quot;     &quot;package:maps&quot;     </span></a>
-<a class="sourceLine" id="cb7-4" data-line-number="4"><span class="co">###  [7] &quot;package:skimr&quot;     &quot;package:stargazer&quot; &quot;package:scales&quot;   </span></a>
-<a class="sourceLine" id="cb7-5" data-line-number="5"><span class="co">### [10] &quot;package:bindrcpp&quot;  &quot;package:Lahman&quot;    &quot;package:pander&quot;   </span></a>
-<a class="sourceLine" id="cb7-6" data-line-number="6"><span class="co">### [13] &quot;package:dplyr&quot;     &quot;package:bookdown&quot;  &quot;package:rmarkdown&quot;</span></a>
-<a class="sourceLine" id="cb7-7" data-line-number="7"><span class="co">### [16] &quot;package:stats&quot;     &quot;package:graphics&quot;  &quot;package:grDevices&quot;</span></a>
-<a class="sourceLine" id="cb7-8" data-line-number="8"><span class="co">### [19] &quot;package:utils&quot;     &quot;package:datasets&quot;  &quot;package:methods&quot;  </span></a>
-<a class="sourceLine" id="cb7-9" data-line-number="9"><span class="co">### [22] &quot;Autoloads&quot;         &quot;package:base&quot;</span></a></code></pre></div>
+<a class="sourceLine" id="cb7-2" data-line-number="2">###  [1] &quot;.GlobalEnv&quot;        &quot;package:Lahman&quot;    &quot;package:stargazer&quot;</a>
+<a class="sourceLine" id="cb7-3" data-line-number="3">###  [4] &quot;package:pander&quot;    &quot;package:dplyr&quot;     &quot;package:bookdown&quot; </a>
+<a class="sourceLine" id="cb7-4" data-line-number="4">###  [7] &quot;package:rmarkdown&quot; &quot;package:stats&quot;     &quot;package:graphics&quot; </a>
+<a class="sourceLine" id="cb7-5" data-line-number="5">### [10] &quot;package:grDevices&quot; &quot;package:utils&quot;     &quot;package:datasets&quot; </a>
+<a class="sourceLine" id="cb7-6" data-line-number="6">### [13] &quot;package:methods&quot;   &quot;Autoloads&quot;         &quot;package:base&quot;</a></code></pre></div>
 <p>These programs manage the basic data operations, run the core graphics engine, and give you basic statistical methods.</p>
 <p>The real magic for R comes from the over 7,000 contributed packages available on the CRAN: <a href="https://cran.r-project.org/web/views/" class="uri">https://cran.r-project.org/web/views/</a></p>
 <p>A package consists of custom functions and datasets that are generated by users. They are <em>packaged</em> together so that they can be shared with others. A package also includes documentation that describes each function, defines all of the arguments, and documents any datasets that are included.</p>
@@ -401,35 +399,35 @@ database.</em></p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="kw">remove</span>( <span class="dt">list=</span><span class="kw">ls</span>() )</a></code></pre></div>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"></a>
 <a class="sourceLine" id="cb13-2" data-line-number="2"><span class="kw">ls</span>() <span class="co"># nothing currently available</span></a>
-<a class="sourceLine" id="cb13-3" data-line-number="3"><span class="co">### character(0)</span></a>
+<a class="sourceLine" id="cb13-3" data-line-number="3">### character(0)</a>
 <a class="sourceLine" id="cb13-4" data-line-number="4"></a>
 <a class="sourceLine" id="cb13-5" data-line-number="5"><span class="kw">data</span>( <span class="st">&quot;USArrests&quot;</span> )</a>
 <a class="sourceLine" id="cb13-6" data-line-number="6"></a>
 <a class="sourceLine" id="cb13-7" data-line-number="7"><span class="kw">ls</span>() <span class="co"># data is now avaible for use</span></a>
-<a class="sourceLine" id="cb13-8" data-line-number="8"><span class="co">### [1] &quot;USArrests&quot;</span></a></code></pre></div>
+<a class="sourceLine" id="cb13-8" data-line-number="8">### [1] &quot;USArrests&quot;</a></code></pre></div>
 <p>Now that we have loaded a dataset, we can start to access the variables and analyze relationships. Let’s get to know our dataset.</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"></a>
 <a class="sourceLine" id="cb14-2" data-line-number="2"><span class="kw">names</span>( USArrests )  <span class="co"># what variables are in the dataset?</span></a>
-<a class="sourceLine" id="cb14-3" data-line-number="3"><span class="co">### [1] &quot;Murder&quot;   &quot;Assault&quot;  &quot;UrbanPop&quot; &quot;Rape&quot;</span></a>
+<a class="sourceLine" id="cb14-3" data-line-number="3">### [1] &quot;Murder&quot;   &quot;Assault&quot;  &quot;UrbanPop&quot; &quot;Rape&quot;</a>
 <a class="sourceLine" id="cb14-4" data-line-number="4"></a>
 <a class="sourceLine" id="cb14-5" data-line-number="5"><span class="kw">nrow</span>( USArrests )   <span class="co"># how many observations are there?</span></a>
-<a class="sourceLine" id="cb14-6" data-line-number="6"><span class="co">### [1] 50</span></a>
+<a class="sourceLine" id="cb14-6" data-line-number="6">### [1] 50</a>
 <a class="sourceLine" id="cb14-7" data-line-number="7"></a>
 <a class="sourceLine" id="cb14-8" data-line-number="8"><span class="kw">dim</span>( USArrests )    <span class="co"># a quick way to see rows and columns - the dimensions of the dataset</span></a>
-<a class="sourceLine" id="cb14-9" data-line-number="9"><span class="co">### [1] 50  4</span></a>
+<a class="sourceLine" id="cb14-9" data-line-number="9">### [1] 50  4</a>
 <a class="sourceLine" id="cb14-10" data-line-number="10"></a>
 <a class="sourceLine" id="cb14-11" data-line-number="11"><span class="kw">row.names</span>( <span class="kw">head</span>( USArrests ) )   <span class="co"># what are the obsevations (rows) in our data</span></a>
-<a class="sourceLine" id="cb14-12" data-line-number="12"><span class="co">### [1] &quot;Alabama&quot;    &quot;Alaska&quot;     &quot;Arizona&quot;    &quot;Arkansas&quot;   &quot;California&quot;</span></a>
-<a class="sourceLine" id="cb14-13" data-line-number="13"><span class="co">### [6] &quot;Colorado&quot;</span></a>
+<a class="sourceLine" id="cb14-12" data-line-number="12">### [1] &quot;Alabama&quot;    &quot;Alaska&quot;     &quot;Arizona&quot;    &quot;Arkansas&quot;   &quot;California&quot;</a>
+<a class="sourceLine" id="cb14-13" data-line-number="13">### [6] &quot;Colorado&quot;</a>
 <a class="sourceLine" id="cb14-14" data-line-number="14"></a>
 <a class="sourceLine" id="cb14-15" data-line-number="15"><span class="kw">summary</span>( USArrests )   <span class="co"># summary statistics of variables</span></a>
-<a class="sourceLine" id="cb14-16" data-line-number="16"><span class="co">###      Murder          Assault         UrbanPop          Rape      </span></a>
-<a class="sourceLine" id="cb14-17" data-line-number="17"><span class="co">###  Min.   : 0.800   Min.   : 45.0   Min.   :32.00   Min.   : 7.30  </span></a>
-<a class="sourceLine" id="cb14-18" data-line-number="18"><span class="co">###  1st Qu.: 4.075   1st Qu.:109.0   1st Qu.:54.50   1st Qu.:15.07  </span></a>
-<a class="sourceLine" id="cb14-19" data-line-number="19"><span class="co">###  Median : 7.250   Median :159.0   Median :66.00   Median :20.10  </span></a>
-<a class="sourceLine" id="cb14-20" data-line-number="20"><span class="co">###  Mean   : 7.788   Mean   :170.8   Mean   :65.54   Mean   :21.23  </span></a>
-<a class="sourceLine" id="cb14-21" data-line-number="21"><span class="co">###  3rd Qu.:11.250   3rd Qu.:249.0   3rd Qu.:77.75   3rd Qu.:26.18  </span></a>
-<a class="sourceLine" id="cb14-22" data-line-number="22"><span class="co">###  Max.   :17.400   Max.   :337.0   Max.   :91.00   Max.   :46.00</span></a></code></pre></div>
+<a class="sourceLine" id="cb14-16" data-line-number="16">###      Murder          Assault         UrbanPop          Rape      </a>
+<a class="sourceLine" id="cb14-17" data-line-number="17">###  Min.   : 0.800   Min.   : 45.0   Min.   :32.00   Min.   : 7.30  </a>
+<a class="sourceLine" id="cb14-18" data-line-number="18">###  1st Qu.: 4.075   1st Qu.:109.0   1st Qu.:54.50   1st Qu.:15.07  </a>
+<a class="sourceLine" id="cb14-19" data-line-number="19">###  Median : 7.250   Median :159.0   Median :66.00   Median :20.10  </a>
+<a class="sourceLine" id="cb14-20" data-line-number="20">###  Mean   : 7.788   Mean   :170.8   Mean   :65.54   Mean   :21.23  </a>
+<a class="sourceLine" id="cb14-21" data-line-number="21">###  3rd Qu.:11.250   3rd Qu.:249.0   3rd Qu.:77.75   3rd Qu.:26.18  </a>
+<a class="sourceLine" id="cb14-22" data-line-number="22">###  Max.   :17.400   Max.   :337.0   Max.   :91.00   Max.   :46.00</a></code></pre></div>
 <p>We can see that the dataset consists of four variables: Murder, Assault, UrbanPop, and Rape. We also see that our unit of analysis is the state. But where does the data come from, and how are these variables measured?</p>
 <p>To see the documentation for a specific dataset you will need to use the <strong>help()</strong> function:</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="kw">help</span>( <span class="st">&quot;USArrests&quot;</span> )</a></code></pre></div>
@@ -445,23 +443,24 @@ database.</em></p>
 <p>To access a specific variable inside of a dataset, you will use the <em>$</em> operator between the dataset name and the variable name:</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1"></a>
 <a class="sourceLine" id="cb16-2" data-line-number="2"><span class="kw">summary</span>( USArrests<span class="op">$</span>Murder )</a>
-<a class="sourceLine" id="cb16-3" data-line-number="3"><span class="co">###    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </span></a>
-<a class="sourceLine" id="cb16-4" data-line-number="4"><span class="co">###   0.800   4.075   7.250   7.788  11.250  17.400</span></a>
+<a class="sourceLine" id="cb16-3" data-line-number="3">###    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </a>
+<a class="sourceLine" id="cb16-4" data-line-number="4">###   0.800   4.075   7.250   7.788  11.250  17.400</a>
 <a class="sourceLine" id="cb16-5" data-line-number="5"><span class="kw">summary</span>( USArrests<span class="op">$</span>Assault )</a>
-<a class="sourceLine" id="cb16-6" data-line-number="6"><span class="co">###    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </span></a>
-<a class="sourceLine" id="cb16-7" data-line-number="7"><span class="co">###    45.0   109.0   159.0   170.8   249.0   337.0</span></a>
+<a class="sourceLine" id="cb16-6" data-line-number="6">###    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </a>
+<a class="sourceLine" id="cb16-7" data-line-number="7">###    45.0   109.0   159.0   170.8   249.0   337.0</a>
 <a class="sourceLine" id="cb16-8" data-line-number="8"></a>
 <a class="sourceLine" id="cb16-9" data-line-number="9"><span class="co"># Is there a relationship between urban density and crime?</span></a>
 <a class="sourceLine" id="cb16-10" data-line-number="10"></a>
-<a class="sourceLine" id="cb16-11" data-line-number="11"><span class="kw">plot</span>( USArrests<span class="op">$</span>UrbanPop, USArrests<span class="op">$</span>Murder )</a>
-<a class="sourceLine" id="cb16-12" data-line-number="12"><span class="kw">abline</span>( <span class="kw">lm</span>( USArrests<span class="op">$</span>Murder <span class="op">~</span><span class="st"> </span>USArrests<span class="op">$</span>UrbanPop ), <span class="dt">col=</span><span class="st">&quot;red&quot;</span> )</a></code></pre></div>
+<a class="sourceLine" id="cb16-11" data-line-number="11"><span class="kw">plot</span>( USArrests<span class="op">$</span>UrbanPop, USArrests<span class="op">$</span>Murder, </a>
+<a class="sourceLine" id="cb16-12" data-line-number="12">      <span class="dt">frame.plot=</span>F, <span class="dt">pch=</span><span class="dv">19</span>, <span class="dt">col=</span><span class="st">&quot;gray&quot;</span> )</a>
+<a class="sourceLine" id="cb16-13" data-line-number="13"><span class="kw">abline</span>( <span class="kw">lm</span>( USArrests<span class="op">$</span>Murder <span class="op">~</span><span class="st"> </span>USArrests<span class="op">$</span>UrbanPop ), <span class="dt">col=</span><span class="st">&quot;red&quot;</span> )</a></code></pre></div>
 <p><img src="DS4PS-I_files/figure-html/unnamed-chunk-19-1.png" width="70%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="using-the-lahman-data" class="section level3">
 <h3><span class="header-section-number">1.5.2</span> Using the Lahman Data</h3>
 <p>Let’s take a look at some of the data available in the Lahman package.</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1"></a>
-<a class="sourceLine" id="cb17-2" data-line-number="2"><span class="kw">data</span>( <span class="dt">package =</span> <span class="st">&quot;Lahman&quot;</span> ) <span class="co"># All datasets in package ‘Lahman’:</span></a></code></pre></div>
+<a class="sourceLine" id="cb17-2" data-line-number="2"><span class="kw">data</span>( <span class="dt">package =</span> <span class="st">&quot;Lahman&quot;</span> ) <span class="co"># All datasets in package &quot;Lahman&quot;:</span></a></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -585,17 +584,15 @@ database.</em></p>
 </tbody>
 </table>
 <p>We see that we have lots of datasets to choose from here. I will use the Master dataset, which is a list of all of the Major League Baseball players over the past century, and their personal information.</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1"></a>
-<a class="sourceLine" id="cb18-2" data-line-number="2"><span class="kw">library</span>( Lahman )    <span class="co"># loads Lahman package</span></a>
-<a class="sourceLine" id="cb18-3" data-line-number="3"><span class="kw">data</span>( Master )</a>
-<a class="sourceLine" id="cb18-4" data-line-number="4"><span class="kw">head</span>( Master ) </a></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1"><span class="kw">library</span>( Lahman )    <span class="co"># loads Lahman package</span></a>
+<a class="sourceLine" id="cb18-2" data-line-number="2"><span class="kw">data</span>( Master )</a>
+<a class="sourceLine" id="cb18-3" data-line-number="3"><span class="kw">head</span>( Master ) </a></code></pre></div>
 <p>Here are some common functions for exploring datasets:</p>
 <div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1"><span class="kw">names</span>( Master )      <span class="co"># variable names</span></a>
 <a class="sourceLine" id="cb19-2" data-line-number="2"><span class="kw">nrow</span>( Master )       <span class="co"># 18,354 players included</span></a>
 <a class="sourceLine" id="cb19-3" data-line-number="3"><span class="kw">summary</span>( Master )    <span class="co"># descriptive statistics of variables</span></a></code></pre></div>
 <p>We can use <strong>help(Master)</strong> to get information about the dataset, including a data dictionary.</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1"></a>
-<a class="sourceLine" id="cb20-2" data-line-number="2"><span class="kw">help</span>( Master )</a></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1"><span class="kw">help</span>( Master )</a></code></pre></div>
 <p><strong>MASTER TABLE</strong></p>
 <hr />
 <p><strong>Description</strong></p>
@@ -636,19 +633,11 @@ database.</em></p>
 <p>debut, finalGame were converted from character strings with as.Date.</p>
 <p><strong>Source</strong></p>
 <p>Lahman, S. (2016) Lahman’s Baseball Database, 1871-2015, 2015 version, <a href="http://www.seanlahman.com/baseball-archive/statistics/" class="uri">http://www.seanlahman.com/baseball-archive/statistics/</a></p>
-</div>
-<div id="example-analysis" class="section level3">
-<h3><span class="header-section-number">1.5.3</span> Example Analysis</h3>
-<p>Perhaps I am curious about some of the data. I see that we have information on the birth month of professional baseball players. If you have read Malcolm Gladwell’s book <em>Outliers</em> you know there is an interesting cumulative advantage phenomenon that can occur with atheletes as they are young. If you are born near the end of the cutoff, you are on average six months older than other players in your league, and therefore slightly larger physically and more coordinated on average. Six months does not sound like much, but the slight size and coordination advantage means more playing time, which also improves skill. Over time, this small difference accumulates so that those lucky enough to be born near the cutoff become the best players.</p>
-<p>Gladwell looked at studies of hockey. Do we see this in baseball?</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1"></a>
-<a class="sourceLine" id="cb21-2" data-line-number="2"><span class="kw">table</span>( Master<span class="op">$</span>birthMonth )</a>
-<a class="sourceLine" id="cb21-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb21-4" data-line-number="4">tab &lt;-<span class="st"> </span><span class="kw">prop.table</span>( <span class="kw">table</span>( Master<span class="op">$</span>birthMonth ) )</a>
-<a class="sourceLine" id="cb21-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb21-6" data-line-number="6"><span class="kw">names</span>(tab) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Jan&quot;</span>,<span class="st">&quot;Feb&quot;</span>,<span class="st">&quot;Mar&quot;</span>,<span class="st">&quot;Apr&quot;</span>,<span class="st">&quot;May&quot;</span>,<span class="st">&quot;Jun&quot;</span>,<span class="st">&quot;Jul&quot;</span>,<span class="st">&quot;Aug&quot;</span>,<span class="st">&quot;Sep&quot;</span>,<span class="st">&quot;Oct&quot;</span>,<span class="st">&quot;Nov&quot;</span>,<span class="st">&quot;Dec&quot;</span>)</a>
-<a class="sourceLine" id="cb21-7" data-line-number="7"></a>
-<a class="sourceLine" id="cb21-8" data-line-number="8"><span class="kw">dotchart</span>( tab, <span class="dt">pch=</span><span class="dv">19</span>, <span class="dt">xlab =</span> <span class="st">&quot;Percent of Players&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Birth Month&quot;</span> ) </a></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1">tab &lt;-<span class="st"> </span><span class="kw">prop.table</span>( <span class="kw">table</span>( Master<span class="op">$</span>birthMonth ) )</a>
+<a class="sourceLine" id="cb21-2" data-line-number="2"><span class="kw">names</span>(tab) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Jan&quot;</span>,<span class="st">&quot;Feb&quot;</span>,<span class="st">&quot;Mar&quot;</span>,<span class="st">&quot;Apr&quot;</span>,<span class="st">&quot;May&quot;</span>,<span class="st">&quot;Jun&quot;</span>,<span class="st">&quot;Jul&quot;</span>,<span class="st">&quot;Aug&quot;</span>,<span class="st">&quot;Sep&quot;</span>,<span class="st">&quot;Oct&quot;</span>,<span class="st">&quot;Nov&quot;</span>,<span class="st">&quot;Dec&quot;</span>)</a>
+<a class="sourceLine" id="cb21-3" data-line-number="3"><span class="kw">dotchart</span>( tab, <span class="dt">pch=</span><span class="dv">19</span>, </a>
+<a class="sourceLine" id="cb21-4" data-line-number="4">          <span class="dt">xlab =</span> <span class="st">&quot;Proportion of MLB Players&quot;</span>, </a>
+<a class="sourceLine" id="cb21-5" data-line-number="5">          <span class="dt">ylab =</span> <span class="st">&quot;Birth Month&quot;</span> ) </a></code></pre></div>
 
 </div>
 </div>
@@ -677,11 +666,10 @@ gitbook.start({
 "facebook": true,
 "twitter": true,
 "google": false,
-"linkedin": false,
 "weibo": false,
 "instapper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
