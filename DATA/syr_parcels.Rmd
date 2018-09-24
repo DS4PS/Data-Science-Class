@@ -52,7 +52,6 @@ VARIABLE | DESCRIPTION
 **owner**  |  property owner (character) 
 **frontfeet**  |  length of the front of the lot (numeric)    
 **depth**  |  depth of the lot (numeric)
-**sqft**  |  size of the parcel in square feet  (numeric)
 **acres**  |  size of the parcel in acres (numeric)
 **yearbuilt**  |  year of construction for the building on the parcel (numeric) 
 **age**  |  age of the building (numeric)

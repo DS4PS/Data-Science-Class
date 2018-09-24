@@ -4,6 +4,13 @@ Vectors are the building blocks of data programming in R, so they are extremely 
 
 This section will cover basic principles of working with vectors in the R language, including the different types of vectors (data types or classes), and common functions used on vectors. 
 
+<br><br>
+
+```{r, fig.cap="Components of a Vector", echo=F, out.width='40%' }
+knitr::include_graphics( "figures/vectors.png" )
+```
+
+
 
 
 # Data Types 
