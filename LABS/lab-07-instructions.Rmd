@@ -11,6 +11,8 @@ output:
 knitr::opts_chunk$set(echo = TRUE, message=F, warning=F)
 library( dplyr )
 library( pander )
+library( Lahman )
+data( Teams )
 ```
 
 #### [DS4PS](https://ds4ps.github.io/course_website/)
@@ -19,9 +21,9 @@ library( pander )
 
 *This lab introduces the R Shiny package, which allows you to create dynamic graphics that ask for input from the user and change based upon the selection.*
 
-You can create a new RMarkdown file, or download the lab template: 
+You can try it out using the example from the [Shiny tutorial](https://rmarkdown.rstudio.com/flexdashboard/shiny.html#loading_data).
 
-[RMD Template](https://cdn.rawgit.com/DS4PS/Data-Science-Class/c464d527/TEMPLATES/MarkdownTemplateSimple.Rmd)
+
 
 
 
@@ -29,51 +31,22 @@ You can create a new RMarkdown file, or download the lab template:
 
 ## Replicating NYT Graphics
 
-For this lab you will be replicating the following [NYT Graphic](https://archive.nytimes.com/www.nytimes.com/interactive/2013/03/29/sports/baseball/Strikeouts-Are-Still-Soaring.html?_r=0&ref=baseball). 
+This lab builds on the previous lab, but you will not add the dynamic component of the graphic similar to the original [NYT version](https://archive.nytimes.com/www.nytimes.com/interactive/2013/03/29/sports/baseball/Strikeouts-Are-Still-Soaring.html?_r=0&ref=baseball). 
 
 ![](figures/strikeouts.png)
 
-You will use the following functions:
+This lab requires the following packages:
 
 ```{r, eval=F}
-plot()  or plot.new() + plot.window()
-axis()
-points()
-segments()
-text()
-abline()
-title()
-gray()
+install.packages( "shiny" )
+install.packages( "flexdashboard" )
 ```
 
+You will use the following template to complete the lab: 
 
-
+[RMD Template](https://cdn.rawgit.com/DS4PS/Data-Science-Class/c464d527/TEMPLATES/MarkdownTemplateSimple.Rmd)
 
 <br><br>
-
-# Data
-
-The data comes from the Lahman baseball data package. The **Teams** dataset contains season statistics for each baseball team from the late 1800s onward. The graph reports average strike-outs per game, which is calculated as **ave.so** below:
-
-
-```{r load_data}
-library( Lahman )
-data( Teams )
-ave.so <- Teams$SO / Teams$G
-```
-
-
-```{r, echo=F}
-head( Teams )
-```
-
-*Note that you don't have to understand baseball to make the graphic.*
-
-
-<br><br>
-
-
-
 
 
 
@@ -81,24 +54,78 @@ head( Teams )
 
 # Lab Instructions
 
-1.	Plot average strike-outs by year. Use the gray() function to select a color, and add transparency.
+1.	Place your code from last week into the code chunk with the renderPlot() function:
 
-2.	Use appropriate x and y axis conventions and labels. Use 1900 as the starting year for the graph using the xlim=c() argument.
+```{r, eval=F}
+renderPlot({
+  
+# your code here
+  
+})
+```
 
-3.	Calculate the league average using group_by() year or tapply(), and add it to the graph. Use the argument type=“b” to connect the dots.
+2. Create a user-input widget on the left side bar by adding the proper values to these arguments:
 
-4.	Reproduce at least two of the narrative texts (“US enters World War I”, etc.). Note that a line break within text is created by including “\n” in your string. 
+```{r, eval=F}
+selectInput( inputId=,
+             label=,
+             choices=,
+             selected=   
+           )
+```
 
-Your final plot should be as similar as possible to the NYT graphic. 
+Note that "choices=" will determine the teams visible in the drop-down box. You will be selecting from baseball teams. Please use the variable "name" in the dataset instead of teamID since it is more use-friendly. 
+
+You do not want to use "choices=Teams$name" for the argument because each team name is repeated multiple times. This drop-down box would then have several thousand choices.
+
+Note there are 
+
+```{r}
+Teams %>%
+  count( name ) %>%
+  arrange( - n ) %>% 
+  head( 10 ) %>%
+  pander()
+```
+
+The Cincinnati Reds and Pittsburgh Pirates have been in the dataset from the beginning, and the rest of the teams have been added along the way. Some of these professional baseball teams you might not recognize:
+
+
+```{r}
+Teams %>%
+  count( name ) %>%
+  arrange( - n ) %>% 
+  tail( 10 ) %>%
+  pander()
+```
+
+There 139 unique team names. 
+
+```{r}
+unique( Teams$name ) %>% length()
+```
+
+Find a reasonable way to select specific teams so that you are only using 10-25 team names in the drop-down menu.
+
+3. Similar to the NYT graphic, add the team trend line to the graphic in orange.
+
+Note that you would add a single team to the graphic something like this:
+
+```{r, eval=F}
+Teams$ave.so <- Teams$SO / Teams$G  # to make subsetable, add back to data frame
+one.team <- filter( Teams, name == "Cincinnati Reds" )
+points( x=one.team$yearID, y=one.team$ave.so, type="b", pch=19, col="darkorange4" )
+```
+
+What you need to do is replace the specific team name with the generalized input value from your selectInput() widget. 
+
 
 <br><br>
 
 
-
-
 # Submission Instructions
 
-When you submit your file, please do not zip them this time. Canvas seems to manage the HTML files fine, and it is much easier for me to grade when they are not zipped! 
+**When you submit your file, please do not zip them this time. Canvas seems to manage the HTML files fine, and it is much easier for me to grade when they are not zipped!**
 
 Login to Canvas at <http://canvas.asu.edu> and navigate to the assignments tab in the course repository. Upload your zipped folder to the appropriate lab submission link.
 

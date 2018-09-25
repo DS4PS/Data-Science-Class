@@ -5,6 +5,7 @@ runtime: shiny
 ---
 
 ```{r global, include=FALSE}
+library( dplyr )
 library( Lahman )
 data( Teams )
 ave.so <- Teams$SO / Teams$G
