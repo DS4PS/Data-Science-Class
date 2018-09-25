@@ -23,6 +23,7 @@ data( Teams )
 
 You can try it out using the example from the [Shiny tutorial](https://rmarkdown.rstudio.com/flexdashboard/shiny.html#loading_data).
 
+[Shiny Example](https://cdn.rawgit.com/DS4PS/Data-Science-Class/b28db4b7/TEMPLATES/ShinyExample-01.Rmd)
 
 
 
@@ -33,7 +34,7 @@ You can try it out using the example from the [Shiny tutorial](https://rmarkdown
 
 This lab builds on the previous lab, but you will not add the dynamic component of the graphic similar to the original [NYT version](https://archive.nytimes.com/www.nytimes.com/interactive/2013/03/29/sports/baseball/Strikeouts-Are-Still-Soaring.html?_r=0&ref=baseball). 
 
-![](figures/strikeouts.png)
+![](figures/strikeouts2.png)
 
 This lab requires the following packages:
 
@@ -44,7 +45,7 @@ install.packages( "flexdashboard" )
 
 You will use the following template to complete the lab: 
 
-[RMD Template](https://cdn.rawgit.com/DS4PS/Data-Science-Class/c464d527/TEMPLATES/MarkdownTemplateSimple.Rmd)
+[RMD Template](https://cdn.rawgit.com/DS4PS/Data-Science-Class/b28db4b7/TEMPLATES/ShinyTemplate-Lab-07.Rmd)
 
 <br><br>
 
@@ -54,7 +55,7 @@ You will use the following template to complete the lab:
 
 # Lab Instructions
 
-1.	Place your code from last week into the code chunk with the renderPlot() function:
+1.	**Place your code from last week into the code chunk with the renderPlot() function:**
 
 ```{r, eval=F}
 renderPlot({
@@ -64,7 +65,7 @@ renderPlot({
 })
 ```
 
-2. Create a user-input widget on the left side bar by adding the proper values to these arguments:
+2. **Create a user-input widget on the left side bar by adding the proper values to these arguments:**
 
 ```{r, eval=F}
 selectInput( inputId=,
@@ -107,7 +108,7 @@ unique( Teams$name ) %>% length()
 
 Find a reasonable way to select specific teams so that you are only using 10-25 team names in the drop-down menu.
 
-3. Similar to the NYT graphic, add the team trend line to the graphic in orange.
+3. **Similar to the NYT graphic, add the team trend line to the graphic in orange.**
 
 Note that you would add a single team to the graphic something like this:
 
