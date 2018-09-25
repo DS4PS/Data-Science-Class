@@ -29,30 +29,19 @@ library( pander )
 
 ```{r load_data}
 # load data statements here
+library( Lahman )
+data( Teams )
+ave.so <- Teams$SO / Teams$G
 ```
 
 
 ```{r peek_at_data, echo=F}
-# head( dat )
+head( Teams )
 ```
 
 
 
-
-# Question 1
-
-What is the total assessed value of land in syracuse? 
-
-ANSWER: Land is valued at **$1,200,567,042**.
-
-```{r question_1}
-# code here
-```
-
-
-# Question 2
-
-...
+# Solution
 
 
 

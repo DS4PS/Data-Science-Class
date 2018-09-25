@@ -1,5 +1,5 @@
 ---
-title: 'Lab 05 - Intro to plot()'
+title: 'Lab 06 - Graphics'
 output:
   html_document:
     theme: readable
@@ -17,38 +17,33 @@ library( pander )
 
 <br>
 
-*Introduction to graphics using the plot() function in R.*
+*More practice using the plot() function in R and a various graphing functions.*
 
 You can create a new RMarkdown file, or download the lab template: 
 
-[RMD Template](https://cdn.rawgit.com/DS4PS/Data-Science-Class/a48d67a5/TEMPLATES/MarkdownTemplate.RMD)
+[RMD Template](https://cdn.rawgit.com/DS4PS/Data-Science-Class/c464d527/TEMPLATES/MarkdownTemplateSimple.Rmd)
 
 
 
 <br><br>
 
-## Functions
+## Replicating NYT Graphics
 
-You will use the **plot()** function for this lab and have a chance to practice common arguments: 
+For this lab you will be replicating the following [NYT Graphic](https://archive.nytimes.com/www.nytimes.com/interactive/2013/03/29/sports/baseball/Strikeouts-Are-Still-Soaring.html?_r=0&ref=baseball). 
+
+![](figures/strikeouts.png)
+
+You will use the following functions:
 
 ```{r, eval=F}
-plot(
-  
-  x=fertilizer,          # data, if x is omitted then uses 1:length(y)
-  y=corn.height,                   
-  xlim=c(0,100),         # min and max value of axes
-  ylim=c(200,350),   
-  frame.plot=FALSE,      # draw a box around the data?
-  col="steel blue",      # color of the points
-  type="b",              # points="p", lines="l", both="b", or none="n"
-  pch=19,                # shape of points to plot
-  cex=2,                 # size of points
-  main="Plot Title",     # title of your plot
-  xlab="Label for X",    # axes labels
-  ylab="Label for Y",  
-  cex.lab=1.5            # aspect ratio for axes labels
-  
-  )
+plot()  or plot.new() + plot.window()
+axis()
+points()
+segments()
+text()
+abline()
+title()
+gray()
 ```
 
 
@@ -58,52 +53,21 @@ plot(
 
 # Data
 
-This data comes from the **AEA** package that accompanies the textbook:
-
-*Christian Kleiber and Achim Zeileis (2008), Applied Econometrics with R, Springer-Verlag, New York.*
-
-We are using the **CASchools** dataset:
-
-*The data used here are from all 420 K-6 and K-8 districts in California with data available for 1998 and 1999. Test scores are on the Stanford 9 standardized test administered to 5th grade students. School characteristics (averaged across the district) include enrollment, number of teachers (measured as “full-time equivalents”), number of computers per classroom, and expenditures per student. Demographic variables for the students are averaged across the district.*
-
-We will use the following four variables, copied to GitHub for convenience:
-
-VARIABLE | DESCRIPTION
--------- | ----------------------
-**test**  |  Average standardized math and reading test scores for students at each school 
-**free.lunch** | Proportion of students at each school that qualify for free or reduced lunches
-**student.ratio** | The student-to-teacher ratio of each school
-**per.student.exp** | The total school budget divided by the number of students 
+The data comes from the Lahman baseball data package. The **Teams** dataset contains season statistics for each baseball team from the late 1800s onward. The graph reports average strike-outs per game, which is calculated as **ave.so** below:
 
 
 ```{r load_data}
-URL <- "https://raw.githubusercontent.com/DS4PS/Data-Science-Class/master/DATA/CASchools.R"
-source( URL )
+library( Lahman )
+data( Teams )
+ave.so <- Teams$SO / Teams$G
 ```
 
 
 ```{r, echo=F}
-library( pander )
-model.dat <- data.frame( test, student.ratio, per.student.exp, free.lunch) 
-
-desc.stats <- data.frame( N = sapply( model.dat, function(x){sum(!is.na(x))} ),
-                          Min = sapply( model.dat, min ),
-                          Q25 = sapply( model.dat, quantile, 0.25, na.rm=T ),
-                          Mean = sapply( model.dat, mean ),
-                          Q75 = sapply( model.dat, quantile, 0.75, na.rm=T ),
-                          Max = sapply( model.dat, max ) )
-
-desc.stats <- round( desc.stats, 2 )
-
-rownames(desc.stats) <- c("Student Combined Test Scores (Math and Reading)",
-                              "Student Teacher Ratios",
-                              "Ave. School Expenditure Per Student",
-                              "Percentage of Students Eligible for Free Lunches")
-
-desc.stats %>% pander()
+head( Teams )
 ```
 
-
+*Note that you don't have to understand baseball to make the graphic.*
 
 
 <br><br>
@@ -117,26 +81,24 @@ desc.stats %>% pander()
 
 # Lab Instructions
 
-We are interested in predictors of school test scores. 
+1.	Plot average strike-outs by year. Use the gray() function to select a color, and add transparency.
 
-We have three independent variables for our study: school budgets on a per-student basis, student teacher ratios, and proportion of students in the school that qualify for free or reduced lunches (a proxy for poverty status). 
+2.	Use appropriate x and y axis conventions and labels. Use 1900 as the starting year for the graph using the xlim=c() argument.
 
-1. Create three scatterplots to visualize the relationship between our study variables and test scores. Test scores should be on the y-axis of each plot.
+3.	Calculate the league average using group_by() year or tapply(), and add it to the graph. Use the argument type=“b” to connect the dots.
 
-2. Select a different style (pch=) and color (col=) for plot points on each graph.
+4.	Reproduce at least two of the narrative texts (“US enters World War I”, etc.). Note that a line break within text is created by including “\n” in your string. 
 
-3. Add meaningful variable labels and plot titles to each graph.
-
-4. Which of these variables is the best predictor of test scores? Explain your answer. 
-
-*You are free to adjust the rest of your graph aesthetics as desired.* 
-
+Your final plot should be as similar as possible to the NYT graphic. 
 
 <br><br>
 
+
+
+
 # Submission Instructions
 
-When you have completed your assignment, knit your RMD file to generate your rendered HTML file. Platforms like BlackBoard and Canvas often disallow you from submitting HTML files when there is embedded computer code, so create a zipped folder with both the RMD and HTML files.
+When you submit your file, please do not zip them this time. Canvas seems to manage the HTML files fine, and it is much easier for me to grade when they are not zipped! 
 
 Login to Canvas at <http://canvas.asu.edu> and navigate to the assignments tab in the course repository. Upload your zipped folder to the appropriate lab submission link.
 
@@ -146,11 +108,3 @@ Remember to:
 * show your solution, include your code.
 * do not print excessive output (like a full data set).
 * follow appropriate style guidelines (spaces between arguments, etc.).
-
-See [Google's R Style Guide](https://google.github.io/styleguide/Rguide.xml) for examples.
-
-## Notes on Knitting
-
-Note that when you knit a file, it starts from a blank slate. You might have packages loaded or datasets active on your local machine, so you can run code chunks fine. But when you knit you might get errors that functions cannot be located or datasets don't exist. Be sure that you have included chunks to load these in your RMD file.
-
-Your RMD file will not knit if you have errors in your code. If you get stuck on a question, just add `eval=F` to the code chunk and it will be ignored when you knit your file. That way I can give you credit for attempting the question and provide guidance on fixing the problem.
