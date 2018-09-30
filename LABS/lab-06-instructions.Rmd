@@ -87,7 +87,7 @@ head( Teams )
 
 3.	Calculate the league average using group_by() year or tapply(), and add it to the graph. Use the argument type=“b” to connect the dots.
 
-4.	Reproduce at least two of the narrative texts (“US enters World War I”, etc.). Note that a line break within text is created by including “\n” in your string. 
+4.	Reproduce at least two of the narrative texts (“US enters World War I”, etc.). Note that a line break within text is created by including “\\n” in your string. 
 
 Your final plot should be as similar as possible to the NYT graphic. 
 
