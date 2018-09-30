@@ -89,6 +89,13 @@ head( Teams )
 
 4.	Reproduce at least two of the narrative texts (“US enters World War I”, etc.). Note that a line break within text is created by including “\\n” in your string. 
 
+For example:
+
+```{r, eval=F}
+text( x, y, text="Strike zone enlarged /nfrom 1963 to 1968." )
+```
+
+
 Your final plot should be as similar as possible to the NYT graphic. 
 
 <br><br>
