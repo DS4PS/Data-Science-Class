@@ -1,16 +1,14 @@
----
-runtime: shiny
----
-
-
-
 # Shiny Widgets
 
 
 
 ## Setup
 
-Note that to use Shiny widgets as part of your document, you need to create a new R Markdown document, then select Shiny as the template.
+To use Shiny widgets as part of your document, you need to create a new R Markdown document, then select Shiny as the template.
+
+The examples in this chapter can be tested with:
+
+[ShinyWidgetsDemo.Rmd](https://cdn.rawgit.com/DS4PS/Data-Science-Class/53c986f1/TEMPLATES/ShinyWidgetsDemo.Rmd)
 
 
 ## My Investment Portfolio

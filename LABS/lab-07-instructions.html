@@ -1659,14 +1659,14 @@ $(document).ready(function () {
 <ol start="2" style="list-style-type: decimal">
 <li><strong>Create a user-input widget on the left side bar by adding the proper values to these arguments:</strong></li>
 </ol>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">selectInput</span>( <span class="dt">inputId=</span>,</a>
-<a class="sourceLine" id="cb3-2" data-line-number="2">             <span class="dt">label=</span>,</a>
-<a class="sourceLine" id="cb3-3" data-line-number="3">             <span class="dt">choices=</span>,</a>
-<a class="sourceLine" id="cb3-4" data-line-number="4">             <span class="dt">selected=</span>   </a>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">selectInput</span>( <span class="dt">inputId=</span>,   <span class="co"># creates slot in input to hold values: input$your_inputId</span></a>
+<a class="sourceLine" id="cb3-2" data-line-number="2">             <span class="dt">label=</span>,     <span class="co"># title of the input widget</span></a>
+<a class="sourceLine" id="cb3-3" data-line-number="3">             <span class="dt">choices=</span>,   <span class="co"># options for the user</span></a>
+<a class="sourceLine" id="cb3-4" data-line-number="4">             <span class="dt">selected=</span>   <span class="co"># set the default option</span></a>
 <a class="sourceLine" id="cb3-5" data-line-number="5">           )</a></code></pre></div>
 <p>Note that “choices=” will determine the teams visible in the drop-down box. You will be selecting from baseball teams. Please use the variable “name” in the dataset instead of teamID since it is more use-friendly.</p>
 <p>You do not want to use “choices=Teams$name” for the argument because each team name is repeated multiple times. This drop-down box would then have several thousand choices.</p>
-<p>Note there are</p>
+<p>The Cincinnati Reds and Pittsburgh Pirates have been in the dataset from the beginning, and the rest of the teams have been added along the way. This table represents the total number of seasons they have appeared:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">Teams <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb4-2" data-line-number="2"><span class="st">  </span><span class="kw">count</span>( name ) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb4-3" data-line-number="3"><span class="st">  </span><span class="kw">arrange</span>( <span class="op">-</span><span class="st"> </span>n ) <span class="op">%&gt;%</span><span class="st"> </span></a>
@@ -1726,7 +1726,7 @@ $(document).ready(function () {
 </tr>
 </tbody>
 </table>
-<p>The Cincinnati Reds and Pittsburgh Pirates have been in the dataset from the beginning, and the rest of the teams have been added along the way. Some of these professional baseball teams you might not recognize:</p>
+<p>Some of these professional baseball teams you might not recognize because they only lasted for a short time:</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">Teams <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb5-2" data-line-number="2"><span class="st">  </span><span class="kw">count</span>( name ) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb5-3" data-line-number="3"><span class="st">  </span><span class="kw">arrange</span>( <span class="op">-</span><span class="st"> </span>n ) <span class="op">%&gt;%</span><span class="st"> </span></a>
@@ -1786,17 +1786,21 @@ $(document).ready(function () {
 </tr>
 </tbody>
 </table>
-<p>There 139 unique team names.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw">unique</span>( Teams<span class="op">$</span>name ) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">length</span>()</a></code></pre></div>
+<p>Note there are 139 unique team names in the dataset:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw">unique</span>( Teams<span class="op">$</span>name ) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">head</span>()</a></code></pre></div>
+<pre><code>## [1] &quot;Boston Red Stockings&quot;    &quot;Chicago White Stockings&quot;
+## [3] &quot;Cleveland Forest Citys&quot;  &quot;Fort Wayne Kekiongas&quot;   
+## [5] &quot;New York Mutuals&quot;        &quot;Philadelphia Athletics&quot;</code></pre>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw">unique</span>( Teams<span class="op">$</span>name ) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">length</span>()</a></code></pre></div>
 <pre><code>## [1] 139</code></pre>
 <p>Find a reasonable way to select specific teams so that you are only using 10-25 team names in the drop-down menu.</p>
 <ol start="3" style="list-style-type: decimal">
 <li><strong>Similar to the NYT graphic, add the team trend line to the graphic in orange.</strong></li>
 </ol>
 <p>Note that you would add a single team to the graphic something like this:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">Teams<span class="op">$</span>ave.so &lt;-<span class="st"> </span>Teams<span class="op">$</span>SO <span class="op">/</span><span class="st"> </span>Teams<span class="op">$</span>G  <span class="co"># to make subsetable, add back to data frame</span></a>
-<a class="sourceLine" id="cb8-2" data-line-number="2">one.team &lt;-<span class="st"> </span><span class="kw">filter</span>( Teams, name <span class="op">==</span><span class="st"> &quot;Cincinnati Reds&quot;</span> )</a>
-<a class="sourceLine" id="cb8-3" data-line-number="3"><span class="kw">points</span>( <span class="dt">x=</span>one.team<span class="op">$</span>yearID, <span class="dt">y=</span>one.team<span class="op">$</span>ave.so, <span class="dt">type=</span><span class="st">&quot;b&quot;</span>, <span class="dt">pch=</span><span class="dv">19</span>, <span class="dt">col=</span><span class="st">&quot;darkorange4&quot;</span> )</a></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1">Teams<span class="op">$</span>ave.so &lt;-<span class="st"> </span>Teams<span class="op">$</span>SO <span class="op">/</span><span class="st"> </span>Teams<span class="op">$</span>G  <span class="co"># to make subsetable, add back to data frame</span></a>
+<a class="sourceLine" id="cb10-2" data-line-number="2">one.team &lt;-<span class="st"> </span><span class="kw">filter</span>( Teams, name <span class="op">==</span><span class="st"> &quot;Cincinnati Reds&quot;</span> )</a>
+<a class="sourceLine" id="cb10-3" data-line-number="3"><span class="kw">points</span>( <span class="dt">x=</span>one.team<span class="op">$</span>yearID, <span class="dt">y=</span>one.team<span class="op">$</span>ave.so, <span class="dt">type=</span><span class="st">&quot;b&quot;</span>, <span class="dt">pch=</span><span class="dv">19</span>, <span class="dt">col=</span><span class="st">&quot;darkorange4&quot;</span> )</a></code></pre></div>
 <p>What you need to do is replace the specific team name with the generalized input value from your selectInput() widget.</p>
 <p><br><br></p>
 </div>

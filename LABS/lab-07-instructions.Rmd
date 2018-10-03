@@ -7,6 +7,8 @@ output:
     highlight: tango
 ---
 
+
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, message=F, warning=F)
 library( dplyr )
@@ -14,6 +16,8 @@ library( pander )
 library( Lahman )
 data( Teams )
 ```
+
+
 
 #### [DS4PS](https://ds4ps.github.io/course_website/)
 
@@ -68,10 +72,10 @@ renderPlot({
 2. **Create a user-input widget on the left side bar by adding the proper values to these arguments:**
 
 ```{r, eval=F}
-selectInput( inputId=,
-             label=,
-             choices=,
-             selected=   
+selectInput( inputId=,   # creates slot in input to hold values: input$your_inputId
+             label=,     # title of the input widget
+             choices=,   # options for the user
+             selected=   # set the default option
            )
 ```
 
@@ -79,7 +83,7 @@ Note that "choices=" will determine the teams visible in the drop-down box. You 
 
 You do not want to use "choices=Teams$name" for the argument because each team name is repeated multiple times. This drop-down box would then have several thousand choices.
 
-Note there are 
+The Cincinnati Reds and Pittsburgh Pirates have been in the dataset from the beginning, and the rest of the teams have been added along the way. This table represents the total number of seasons they have appeared:
 
 ```{r}
 Teams %>%
@@ -89,7 +93,7 @@ Teams %>%
   pander()
 ```
 
-The Cincinnati Reds and Pittsburgh Pirates have been in the dataset from the beginning, and the rest of the teams have been added along the way. Some of these professional baseball teams you might not recognize:
+ Some of these professional baseball teams you might not recognize because they only lasted for a short time:
 
 
 ```{r}
@@ -100,9 +104,10 @@ Teams %>%
   pander()
 ```
 
-There 139 unique team names. 
+Note there are `r length(unique(Teams$name))` unique team names in the dataset:
 
 ```{r}
+unique( Teams$name ) %>% head()
 unique( Teams$name ) %>% length()
 ```
 
