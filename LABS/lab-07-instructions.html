@@ -1633,6 +1633,8 @@ $(document).ready(function () {
 <p><em>This lab introduces the R Shiny package, which allows you to create dynamic graphics that ask for input from the user and change based upon the selection.</em></p>
 <p>You can try it out using the example from the <a href="https://rmarkdown.rstudio.com/flexdashboard/shiny.html#loading_data">Shiny tutorial</a>.</p>
 <p><a href="https://cdn.rawgit.com/DS4PS/Data-Science-Class/b28db4b7/TEMPLATES/ShinyExample-01.Rmd">Shiny Example</a></p>
+<p>When you include “runtime: shiny” in the header, you do not need to load the shiny package in your document setup steps.</p>
+<p>Note that running shiny creates an object called <strong>input</strong> which stores the values from your input widgets. Whatever you assign for the input widget ID will be the address for the value, which you can then access at <strong>input$your_id</strong>.</p>
 <p><br><br></p>
 </div>
 <div id="replicating-nyt-graphics" class="section level2">
@@ -1664,7 +1666,7 @@ $(document).ready(function () {
 <a class="sourceLine" id="cb3-3" data-line-number="3">             <span class="dt">choices=</span>,   <span class="co"># options for the user</span></a>
 <a class="sourceLine" id="cb3-4" data-line-number="4">             <span class="dt">selected=</span>   <span class="co"># set the default option</span></a>
 <a class="sourceLine" id="cb3-5" data-line-number="5">           )</a></code></pre></div>
-<p>Note that “choices=” will determine the teams visible in the drop-down box. You will be selecting from baseball teams. Please use the variable “name” in the dataset instead of teamID since it is more use-friendly.</p>
+<p>Note that “choices=” will determine the teams visible in the drop-down box. You will be selecting from baseball teams. Please use the variable “name” in the dataset instead of teamID since it is more user-friendly.</p>
 <p>You do not want to use “choices=Teams$name” for the argument because each team name is repeated multiple times. This drop-down box would then have several thousand choices.</p>
 <p>The Cincinnati Reds and Pittsburgh Pirates have been in the dataset from the beginning, and the rest of the teams have been added along the way. This table represents the total number of seasons they have appeared:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">Teams <span class="op">%&gt;%</span></a>

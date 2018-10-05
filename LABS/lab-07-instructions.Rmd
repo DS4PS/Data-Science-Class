@@ -29,7 +29,9 @@ You can try it out using the example from the [Shiny tutorial](https://rmarkdown
 
 [Shiny Example](https://cdn.rawgit.com/DS4PS/Data-Science-Class/b28db4b7/TEMPLATES/ShinyExample-01.Rmd)
 
+When you include "runtime: shiny" in the header, you do not need to load the shiny package in your document setup steps.
 
+Note that running shiny creates an object called **input** which stores the values from your input widgets. Whatever you assign for the input widget ID will be the address for the value, which you can then access at **input$your_id**. 
 
 
 <br><br>
@@ -79,7 +81,7 @@ selectInput( inputId=,   # creates slot in input to hold values: input$your_inpu
            )
 ```
 
-Note that "choices=" will determine the teams visible in the drop-down box. You will be selecting from baseball teams. Please use the variable "name" in the dataset instead of teamID since it is more use-friendly. 
+Note that "choices=" will determine the teams visible in the drop-down box. You will be selecting from baseball teams. Please use the variable "name" in the dataset instead of teamID since it is more user-friendly. 
 
 You do not want to use "choices=Teams$name" for the argument because each team name is repeated multiple times. This drop-down box would then have several thousand choices.
 
