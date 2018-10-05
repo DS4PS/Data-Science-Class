@@ -1631,8 +1631,11 @@ $(document).ready(function () {
 <h4><a href="https://ds4ps.github.io/course_website/">DS4PS</a></h4>
 <p><br></p>
 <p><em>This lab introduces the R Shiny package, which allows you to create dynamic graphics that ask for input from the user and change based upon the selection.</em></p>
-<p>You can try it out using the example from the <a href="https://rmarkdown.rstudio.com/flexdashboard/shiny.html#loading_data">Shiny tutorial</a>.</p>
-<p><a href="https://cdn.rawgit.com/DS4PS/Data-Science-Class/b28db4b7/TEMPLATES/ShinyExample-01.Rmd">Shiny Example</a></p>
+<p>You can try it out using the Shiny Demo file or the example from the <a href="https://rmarkdown.rstudio.com/flexdashboard/shiny.html#loading_data">Shiny tutorial</a>:</p>
+<ul>
+<li><a href="https://cdn.rawgit.com/DS4PS/Data-Science-Class/53c986f1/TEMPLATES/ShinyWidgetsDemo.Rmd">Shiny Demo</a></li>
+<li><a href="https://cdn.rawgit.com/DS4PS/Data-Science-Class/b28db4b7/TEMPLATES/ShinyExample-01.Rmd">Tutorial App</a></li>
+</ul>
 <p>When you include “runtime: shiny” in the header, you do not need to load the shiny package in your document setup steps.</p>
 <p>Note that running shiny creates an object called <strong>input</strong> which stores the values from your input widgets. Whatever you assign for the input widget ID will be the address for the value, which you can then access at <strong>input$your_id</strong>.</p>
 <p><br><br></p>

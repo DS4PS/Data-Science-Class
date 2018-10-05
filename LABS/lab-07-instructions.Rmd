@@ -25,9 +25,10 @@ data( Teams )
 
 *This lab introduces the R Shiny package, which allows you to create dynamic graphics that ask for input from the user and change based upon the selection.*
 
-You can try it out using the example from the [Shiny tutorial](https://rmarkdown.rstudio.com/flexdashboard/shiny.html#loading_data).
+You can try it out using the Shiny Demo file or the example from the [Shiny tutorial](https://rmarkdown.rstudio.com/flexdashboard/shiny.html#loading_data): 
 
-[Shiny Example](https://cdn.rawgit.com/DS4PS/Data-Science-Class/b28db4b7/TEMPLATES/ShinyExample-01.Rmd)
+* [Shiny Demo](https://cdn.rawgit.com/DS4PS/Data-Science-Class/53c986f1/TEMPLATES/ShinyWidgetsDemo.Rmd) 
+* [Tutorial App](https://cdn.rawgit.com/DS4PS/Data-Science-Class/b28db4b7/TEMPLATES/ShinyExample-01.Rmd) 
 
 When you include "runtime: shiny" in the header, you do not need to load the shiny package in your document setup steps.
 
