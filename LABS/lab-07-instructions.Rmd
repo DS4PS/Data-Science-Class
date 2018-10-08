@@ -70,6 +70,21 @@ input$my_widget_id
 The solutions for Lab-06 include an example of how you can add a specific team to the graph. It generalizes the team by using a generic **team.name** variable that stores the value. Then in the subsequent code instead of using the specific team name for data steps and graphing functions it references the placeholder variables. This enables you to change all of the team name references in one place, simplifying your code.
 
 ```{r, eval=F}
+## TEAM NAME HARD-CODED:
+
+# adding season stats for the team:
+dat.one.team <- filter( Teams, name == "Chicago Cubs" )
+points( x=dat.one.team$yearID, y=dat.one.team$ave.so, 
+        pch=20,  cex=1.2, col="goldenrod1", type="b" )
+
+# adding the team name to the legend:
+segments( x0=1900, y0=8.3, x1=1904, y1=8.32, col="goldenrod1", lwd = 1.5 )
+points( x=c(1900,1904), y=c(8.3,8.3), col="goldenrod1", pch=20, cex=1.2 )
+text ( x=1912, y=8.3, col="goldenrod1", labels="Chicago Cubs", cex=0.8 )
+
+
+## GENERALIZED TEAM NAME:
+
 team.name <- "Chicago Cubs"  
 
 # adding season stats for the team:
