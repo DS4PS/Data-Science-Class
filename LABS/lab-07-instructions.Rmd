@@ -25,6 +25,16 @@ data( Teams )
 
 *This lab introduces the R Shiny package, which allows you to create dynamic graphics that ask for input from the user and change based upon the selection.*
 
+
+This lab builds on the previous lab, but you will now add the drop-down menu similar to the original [NYT version](https://archive.nytimes.com/www.nytimes.com/interactive/2013/03/29/sports/baseball/Strikeouts-Are-Still-Soaring.html?_r=0&ref=baseball), and highlight season statistics from that team (the yellow line). 
+
+![](figures/strikeouts2.png)
+
+
+## Dynamic Graphics
+
+Shiny allows you to build interactive components in graphics or dashboards. The terms "dynamic" or "interactive" mean specifically that a set of widgets are used to gather user input, and that input changes the analysis or visualization accordingly. 
+
 You can try it out using the Shiny Demo file or the example from the [Shiny tutorial](https://rmarkdown.rstudio.com/flexdashboard/shiny.html#loading_data): 
 
 * [Shiny Demo](https://cdn.rawgit.com/DS4PS/Data-Science-Class/53c986f1/TEMPLATES/ShinyWidgetsDemo.Rmd) 
@@ -34,14 +44,57 @@ When you include "runtime: shiny" in the header, you do not need to load the shi
 
 Note that running shiny creates an object called **input** which stores the values from your input widgets. Whatever you assign for the input widget ID will be the address for the value, which you can then access at **input$your_id**. 
 
+```{r, eval=F}
+selectInput( 
+             inputId="my_widget_id",
+             label="My Shiny Widget",
+             choices=c("A","B","C"),
+             selected="B"   
+           )
+```
 
-<br><br>
+Shiny automatically creates an object called "input" for you. When you create a widget, shiny will perform the folowing assignment implicitly in the background:
 
-## Replicating NYT Graphics
+```{r, eval=F}
+input$my_widget_id <- "B"
+```
 
-This lab builds on the previous lab, but you will not add the dynamic component of the graphic similar to the original [NYT version](https://archive.nytimes.com/www.nytimes.com/interactive/2013/03/29/sports/baseball/Strikeouts-Are-Still-Soaring.html?_r=0&ref=baseball). 
+Before the user selects a value from the dropdown menu, the "*selected=*" argument specifies the default value. In this case, *input$my_widget_id* would store the value "B" by default. When the user makes a new selection, that value is updated with whatever option the user selected.
 
-![](figures/strikeouts2.png)
+In the rest of your code, you can then reference the user input value at:
+
+```{r, eval=F}
+input$my_widget_id
+```
+
+The solutions for Lab-06 include an example of how you can add a specific team to the graph. It generalizes the team by using a generic **team.name** variable that stores the value. Then in the subsequent code instead of using the specific team name for data steps and graphing functions it references the placeholder variables. This enables you to change all of the team name references in one place, simplifying your code.
+
+```{r, eval=F}
+team.name <- "Chicago Cubs"  
+
+# adding season stats for the team:
+dat.one.team <- filter( Teams, name == team.name )
+points( x=dat.one.team$yearID, y=dat.one.team$ave.so, 
+        pch=20,  cex=1.2, col="goldenrod1", type="b" )
+
+# adding the team name to the legend:
+segments( x0=1900, y0=8.3, x1=1904, y1=8.32, col="goldenrod1", lwd = 1.5 )
+points( x=c(1900,1904), y=c(8.3,8.3), col="goldenrod1", pch=20, cex=1.2 )
+text ( x=1912, y=8.3, col="goldenrod1", labels=team.name, cex=0.8 )
+```
+
+
+After you build your widget you can make the team selection dynamic by linking the user selection to your generic **team.name** variable. 
+
+```{r, eval=F}
+team.name <- input$my_widget_id  # input widget value
+```
+
+
+
+
+
+# Lab Instructions
 
 This lab requires the following packages:
 
@@ -50,17 +103,13 @@ install.packages( "shiny" )
 install.packages( "flexdashboard" )
 ```
 
-You will use the following template to complete the lab: 
+Note that you need to install packages before starting your lab. You cannot include an install commands inside of your RMD file. 
+
+You will use the following template to complete this lab: 
 
 [RMD Template](https://cdn.rawgit.com/DS4PS/Data-Science-Class/b28db4b7/TEMPLATES/ShinyTemplate-Lab-07.Rmd)
 
 <br><br>
-
-
-
-
-
-# Lab Instructions
 
 1.	**Place your code from last week into the code chunk with the renderPlot() function:**
 
