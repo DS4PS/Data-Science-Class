@@ -121,7 +121,7 @@ plot( Teams$yearID, Teams$HR/Teams$G, pch=19, col=gray(0.5,0.2), bty="n",
 
 **INSTRUCTIONS**
 
-* You are free to use whatever [layout styles](https://rmarkdown.rstudio.com/flexdashboard/layouts.html) you want, including those with tabs, as long as they have the correct number of windows.
+* Select layout styles from the [flexdashboard layout gallery](https://rmarkdown.rstudio.com/flexdashboard/layouts.html). You are free to use whatever styles you want, including those with tabs, as long as they have the correct number of windows.
 * You can use the graphics above, or calculate your own statistics from data in the Teams dataset.
 * You will NOT use shiny for this lab.
 * Hide your code using the code chunk "echo=F" option.
