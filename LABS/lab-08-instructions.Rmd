@@ -5,6 +5,7 @@ output:
     theme: readable
     df_print: paged
     highlight: tango
+    smart: false
 ---
 
 ```{r setup, include=FALSE}
@@ -144,6 +145,68 @@ You need to create a new dataframe that reports team name ("name"), year of seas
 
 Use dplyr functions like mutate() to create your statistics and add them back to your dataset, and select() to keep only relevant variables before printing your table. 
 
+**Extra Options**
+
+These options are not required for the lab, but you will find them very useful in the future.
+
+**Responsive Graphics:**
+
+When you are writing a typical report the size of graphics will be predictable because they are embedded in reports that are typically printed on 8.5 x 11 inch pages or rendered as PDFs. 
+
+When creating dashboards predicting the size of graphics can be a lot more challenging. Your dashboard has a dynamic layout that scales with the size of the web browser, but that will depend upon the size of the screen, which varies greatly between mobile phones, tablets, laptops, and desktops.
+
+As a result, it is much better to use "responsive" graphics, meaning those that do not have a set size or aspect ratio. These are typically HTML or javascript objects embedded in web pages. Fortunately R has some packages that will convert static R graphs to these sorts of objects to make them responsive.
+
+We have not yet introduced **ggplot2**, but it is one of the most powerful and popular graphing packages in R. It was created by the same team that created **dplyr** and R Studio. In this example, we create a baseball graph in R, then convert it to HTML using the plotly package. 
+
+```{r, eval=F}
+library( ggplot2 )
+library( plotly )
+
+Teams <- mutate( Teams, HG=H/G )
+
+league <- 
+  Teams %>%
+  group_by( yearID ) %>%
+  summarize( ave.hits =mean( H / G , na.rm=T ) )
+
+p <- ggplot( data=Teams, aes( x=yearID, y=HG  ) ) + 
+     geom_point( col="gray", alpha=0.3, size=2, aes( text=name ) ) +
+     geom_line( data=league, aes(x=yearID,y=ave.hits), col="blue" ) +
+     ggtitle( "Ave Hits Per Game" ) +
+     theme_bw()
+
+ggplotly( p )
+```
+
+
+**Export Buttons:**
+
+DT tables have a lot of powerful features. One is the ability to add export functions so that the user can save the data to their own machine for use later. When you have the filter feature and the export feature active together, it allows the user to define a specific dataset before exporting. 
+
+You can try it out using this code.
+
+```{r, eval=F}
+
+library( DT )
+
+sub.t <- Teams[ c("name","yearID","SO","H","HR","G") ]
+
+show.these.buttons <- c( 'copy', 'csv', 'excel', 'pdf', 'print' )
+
+datatable(  sub.t,
+           filter='bottom', rownames=FALSE, 
+           #options=list( pageLength=5, autoWidth=TRUE ),
+           fillContainer=TRUE, 
+           style="bootstrap",
+           class='table-condensed table-striped',
+           extensions = 'Buttons', 
+           options=list( dom='Bfrtip', 
+                         buttons=show.these.buttons  )) %>%
+  
+  formatStyle( "name", "white-space"="nowrap" )
+
+```
 
 <br><br>
 
