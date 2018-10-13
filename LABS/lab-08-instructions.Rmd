@@ -141,13 +141,16 @@ datatable( Teams[c("name","yearID","SO","H","HR","G") ],
 
 Your table will look similar to the one above. HOWEVER, your data table should report the statistics that are reported on your graphs, not the raw statistics that are reported here. For example, in the lab last week we used "average strikeouts per game" (SOPG) instead of "strike outs" (SO).
 
-You need to create a new dataframe that reports team name ("name"), year of season ("yearID"), games played ("G"), and the statistics from your graphs.
+You need to create a new dataframe that ONLY reports team name ("name"), year of season ("yearID"), games played ("G"), and the statistics from your graphs.
 
 Use dplyr functions like mutate() to create your statistics and add them back to your dataset, and select() to keep only relevant variables before printing your table. 
 
-**Extra Options**
 
-These options are not required for the lab, but you will find them very useful in the future.
+<br><br>
+
+**OPTIONAL**
+
+These options are not required for the lab, but you will find them useful in the future. You are welcome to include them in your dashboard if you would like to experiment.
 
 **Responsive Graphics:**
 
