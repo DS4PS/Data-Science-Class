@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Intro to Data Science for the Social Sector</title>
   <meta name="description" content="This is an introductory text to data science designed for social science graduate students in public affairs, nonprofit management, and international development.">
-  <meta name="generator" content="bookdown 0.6 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
 
   <meta property="og:title" content="Intro to Data Science for the Social Sector" />
   <meta property="og:type" content="book" />
@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="customizing-plots.html">
-<link rel="next" href="data-wrangling.html">
+
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -59,7 +59,7 @@
 <style type="text/css">
 a.sourceLine { display: inline-block; line-height: 1.25; }
 a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; position: absolute; }
+a.sourceLine:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 div.sourceCode { margin: 1em 0; }
@@ -72,13 +72,11 @@ code.sourceCode { white-space: pre-wrap; }
 a.sourceLine { text-indent: -1em; padding-left: 1em; }
 }
 pre.numberSource a.sourceLine
-  { position: relative; }
-pre.numberSource a.sourceLine:empty
-  { position: absolute; }
+  { position: relative; left: -4em; }
 pre.numberSource a.sourceLine::before
   { content: attr(data-line-number);
-    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all;
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -260,23 +258,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.8" data-path="custom-plot-example.html"><a href="custom-plot-example.html#generalizing-code"><i class="fa fa-check"></i><b>11.8</b> Generalizing Code</a></li>
 <li class="chapter" data-level="11.9" data-path="custom-plot-example.html"><a href="custom-plot-example.html#improved-aesthetics"><i class="fa fa-check"></i><b>11.9</b> Improved Aesthetics</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="data-wrangling.html"><a href="data-wrangling.html"><i class="fa fa-check"></i>DATA WRANGLING</a></li>
-<li class="chapter" data-level="12" data-path="merging-data.html"><a href="merging-data.html"><i class="fa fa-check"></i><b>12</b> Merging Data</a><ul>
-<li class="chapter" data-level="12.1" data-path="merging-data.html"><a href="merging-data.html#packages-used-in-this-chapter-4"><i class="fa fa-check"></i><b>12.1</b> Packages Used in This Chapter</a></li>
-<li class="chapter" data-level="12.2" data-path="merging-data.html"><a href="merging-data.html#relational-databases"><i class="fa fa-check"></i><b>12.2</b> Relational Databases</a></li>
-<li class="chapter" data-level="12.3" data-path="merging-data.html"><a href="merging-data.html#set-theory"><i class="fa fa-check"></i><b>12.3</b> Set Theory</a><ul>
-<li class="chapter" data-level="12.3.1" data-path="merging-data.html"><a href="merging-data.html#set-theory-functions"><i class="fa fa-check"></i><b>12.3.1</b> Set Theory Functions</a></li>
-<li class="chapter" data-level="12.3.2" data-path="merging-data.html"><a href="merging-data.html#set-theory-using-logical-operators"><i class="fa fa-check"></i><b>12.3.2</b> Set Theory Using Logical Operators</a></li>
-</ul></li>
-<li class="chapter" data-level="12.4" data-path="merging-data.html"><a href="merging-data.html#merging-data-1"><i class="fa fa-check"></i><b>12.4</b> Merging Data</a><ul>
-<li class="chapter" data-level="12.4.1" data-path="merging-data.html"><a href="merging-data.html#the-by.x-and-by.y-arguments"><i class="fa fa-check"></i><b>12.4.1</b> The by.x and by.y Arguments</a></li>
-</ul></li>
-<li class="chapter" data-level="12.5" data-path="merging-data.html"><a href="merging-data.html#non-unique-observations-in-id-variables"><i class="fa fa-check"></i><b>12.5</b> Non-Unique Observations in ID Variables</a><ul>
-<li class="chapter" data-level="12.5.1" data-path="merging-data.html"><a href="merging-data.html#example-of-incorrect-merge"><i class="fa fa-check"></i><b>12.5.1</b> Example of Incorrect Merge</a></li>
-</ul></li>
-<li class="chapter" data-level="12.6" data-path="merging-data.html"><a href="merging-data.html#the-in-function"><i class="fa fa-check"></i><b>12.6</b> The %in% function</a></li>
-<li class="chapter" data-level="12.7" data-path="merging-data.html"><a href="merging-data.html#the-match-function"><i class="fa fa-check"></i><b>12.7</b> The Match Function</a></li>
-</ul></li>
 <li class="divider"></li>
 <li><a href="https://webapp4.asu.edu/programs/t5/majorinfo/ASU00/PPPGEMS/graduate/false" target="blank">ASU</a></li>
 
@@ -408,7 +389,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="basic-rank-plot" class="section level2">
 <h2><span class="header-section-number">11.1</span> Basic Rank Plot</h2>
 <p>The original design for the graphic was very simple. It showed the starting rank and end rank of the school over the five-year period to give a sense of how much each school had changed. It is a little boring and also loses a lot of information regarding how consistent performance has been over time.</p>
-<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-285-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-286-1.png" width="90%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="creating-a-submay-map-rank-plot" class="section level2">
 <h2><span class="header-section-number">11.2</span> Creating a Submay Map Rank Plot</h2>
@@ -498,8 +479,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">11.3</span> Lines</h2>
 <p>Let’s try one with basic lines. Note that referencing a row of the data frame will return the ranking data for a single school:</p>
 <div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb198-1" data-line-number="1">df[ <span class="dv">1</span>, ]</a>
-<a class="sourceLine" id="cb198-2" data-line-number="2">###   id r1 r2 r3 r4 r5</a>
-<a class="sourceLine" id="cb198-3" data-line-number="3">### 1  A 10 10 10 10  9</a></code></pre></div>
+<a class="sourceLine" id="cb198-2" data-line-number="2"><span class="co">###   id r1 r2 r3 r4 r5</span></a>
+<a class="sourceLine" id="cb198-3" data-line-number="3"><span class="co">### 1  A 10 10 10 10  9</span></a></code></pre></div>
 <p>Now let’s plot the rankings over time:</p>
 <div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb199-1" data-line-number="1">id &lt;-<span class="st"> </span>df<span class="op">$</span>id          <span class="co"># save ID as separate variable</span></a>
 <a class="sourceLine" id="cb199-2" data-line-number="2">df &lt;-<span class="st"> </span>df[ , <span class="dv">-1</span> ]     <span class="co"># drop ID from the dataset so it&#39;s all numeric</span></a>
@@ -527,7 +508,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb199-24" data-line-number="24"></a>
 <a class="sourceLine" id="cb199-25" data-line-number="25"><span class="kw">text</span>( <span class="dt">x=</span><span class="fl">0.5</span>, <span class="dt">y=</span><span class="dv">10</span>, <span class="dt">labels=</span><span class="st">&quot;A&quot;</span> ) <span class="co"># rank in 2011</span></a>
 <a class="sourceLine" id="cb199-26" data-line-number="26"><span class="kw">text</span>( <span class="dt">x=</span><span class="fl">5.5</span>, <span class="dt">y=</span><span class="dv">9</span>, <span class="dt">labels=</span><span class="st">&quot;A&quot;</span> )  <span class="co"># rank in 2015</span></a></code></pre></div>
-<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-288-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-289-1.png" width="90%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="connected-points" class="section level2">
 <h2><span class="header-section-number">11.4</span> Connected Points</h2>
@@ -549,7 +530,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb200-15" data-line-number="15"></a>
 <a class="sourceLine" id="cb200-16" data-line-number="16"><span class="kw">text</span>( <span class="dt">x=</span><span class="fl">0.5</span>, <span class="dt">y=</span><span class="dv">10</span>, <span class="dt">labels=</span><span class="st">&quot;A&quot;</span> ) <span class="co"># rank in 2011</span></a>
 <a class="sourceLine" id="cb200-17" data-line-number="17"><span class="kw">text</span>( <span class="dt">x=</span><span class="fl">5.5</span>, <span class="dt">y=</span><span class="dv">9</span>, <span class="dt">labels=</span><span class="st">&quot;A&quot;</span> )  <span class="co"># rank in 2015</span></a></code></pre></div>
-<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-289-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-290-1.png" width="90%" style="display: block; margin: auto;" /></p>
 <p>That looks better, but if we want to match the subway map aestetic we need thicker lines. Let’s try the line width parameter, lwd.</p>
 <div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb201-1" data-line-number="1"><span class="kw">plot.new</span>()</a>
 <a class="sourceLine" id="cb201-2" data-line-number="2"><span class="kw">plot.window</span>( <span class="dt">xlim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">6</span>), <span class="dt">ylim=</span><span class="kw">c</span>(ymin,ymax) )</a>
@@ -568,7 +549,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb201-15" data-line-number="15"></a>
 <a class="sourceLine" id="cb201-16" data-line-number="16"><span class="kw">text</span>( <span class="dt">x=</span><span class="fl">0.5</span>, <span class="dt">y=</span><span class="dv">10</span>, <span class="dt">labels=</span><span class="st">&quot;A&quot;</span> ) <span class="co"># rank in 2011</span></a>
 <a class="sourceLine" id="cb201-17" data-line-number="17"><span class="kw">text</span>( <span class="dt">x=</span><span class="fl">5.5</span>, <span class="dt">y=</span><span class="dv">9</span>, <span class="dt">labels=</span><span class="st">&quot;A&quot;</span> )  <span class="co"># rank in 2015</span></a></code></pre></div>
-<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-290-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-291-1.png" width="90%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="separate-points-and-connecting-lines" class="section level2">
 <h2><span class="header-section-number">11.5</span> Separate Points and Connecting Lines</h2>
@@ -600,7 +581,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb202-25" data-line-number="25"></a>
 <a class="sourceLine" id="cb202-26" data-line-number="26"><span class="kw">text</span>( <span class="dt">x=</span><span class="fl">0.5</span>, <span class="dt">y=</span><span class="dv">10</span>, <span class="dt">labels=</span><span class="st">&quot;A&quot;</span> ) <span class="co"># rank in 2011</span></a>
 <a class="sourceLine" id="cb202-27" data-line-number="27"><span class="kw">text</span>( <span class="dt">x=</span><span class="fl">5.5</span>, <span class="dt">y=</span><span class="dv">9</span>, <span class="dt">labels=</span><span class="st">&quot;A&quot;</span> )  <span class="co"># rank in 2015</span></a></code></pre></div>
-<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-291-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-292-1.png" width="90%" style="display: block; margin: auto;" /></p>
 <p>That’s starting to look like what we want!</p>
 </div>
 <div id="add-labels" class="section level2">
@@ -636,7 +617,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb203-28" data-line-number="28"></a>
 <a class="sourceLine" id="cb203-29" data-line-number="29"><span class="kw">text</span>( <span class="dv">0</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, <span class="kw">paste</span>(<span class="dv">10</span><span class="op">:</span><span class="dv">1</span>,<span class="st">&quot;---&quot;</span>) )</a>
 <a class="sourceLine" id="cb203-30" data-line-number="30"><span class="kw">text</span>( <span class="dv">6</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, <span class="kw">paste</span>(<span class="st">&quot;---&quot;</span>,<span class="dv">10</span><span class="op">:</span><span class="dv">1</span>) )</a></code></pre></div>
-<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-292-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-293-1.png" width="90%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="add-axes-and-title" class="section level2">
 <h2><span class="header-section-number">11.7</span> Add Axes and Title</h2>
@@ -675,7 +656,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb204-32" data-line-number="32"><span class="kw">title</span>( <span class="dt">ylab=</span><span class="st">&quot;Rank&quot;</span>, <span class="dt">line=</span><span class="dv">1</span> )</a>
 <a class="sourceLine" id="cb204-33" data-line-number="33"><span class="kw">axis</span>( <span class="dt">side=</span><span class="dv">1</span>, <span class="dt">tick=</span>F, <span class="dt">at=</span><span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">labels=</span><span class="dv">2011</span><span class="op">:</span><span class="dv">2015</span> )</a>
 <a class="sourceLine" id="cb204-34" data-line-number="34"><span class="kw">title</span>( <span class="dt">main=</span><span class="st">&quot;School Rank 2011-2015&quot;</span>  )</a></code></pre></div>
-<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-293-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-294-1.png" width="90%" style="display: block; margin: auto;" /></p>
 <p>We are in business.</p>
 </div>
 <div id="generalizing-code" class="section level2">
@@ -734,7 +715,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb205-10" data-line-number="10">   <span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span>num.x, df[i,], <span class="dt">type=</span><span class="st">&quot;c&quot;</span>, </a>
 <a class="sourceLine" id="cb205-11" data-line-number="11">           <span class="dt">lwd=</span><span class="dv">6</span>, <span class="dt">col=</span><span class="kw">gray</span>(<span class="fl">0.5</span>,<span class="fl">0.5</span>) )</a>
 <a class="sourceLine" id="cb205-12" data-line-number="12">}</a></code></pre></div>
-<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-295-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-296-1.png" width="90%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="improved-aesthetics" class="section level2">
 <h2><span class="header-section-number">11.9</span> Improved Aesthetics</h2>
@@ -773,7 +754,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb206-32" data-line-number="32"><span class="kw">points</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, df[<span class="dv">3</span>,], <span class="dt">type=</span><span class="st">&quot;c&quot;</span>, <span class="dt">lwd=</span><span class="dv">6</span>, <span class="dt">col=</span><span class="st">&quot;goldenrod&quot;</span> )</a>
 <a class="sourceLine" id="cb206-33" data-line-number="33"><span class="kw">text</span>( <span class="fl">0.7</span>, df[<span class="dv">3</span>,<span class="dv">1</span>], id[<span class="dv">3</span>], <span class="dt">col=</span><span class="st">&quot;goldenrod&quot;</span> )</a>
 <a class="sourceLine" id="cb206-34" data-line-number="34"><span class="kw">text</span>( <span class="fl">5.3</span>, df[<span class="dv">3</span>,<span class="dv">5</span>], id[<span class="dv">3</span>], <span class="dt">col=</span><span class="st">&quot;goldenrod&quot;</span> )</a></code></pre></div>
-<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-296-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-297-1.png" width="90%" style="display: block; margin: auto;" /></p>
 
 </div>
 </div>
@@ -782,8 +763,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="customizing-plots.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="data-wrangling.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="customizing-plots.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -801,10 +782,11 @@ gitbook.start({
 "facebook": true,
 "twitter": true,
 "google": false,
+"linkedin": false,
 "weibo": false,
 "instapper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",

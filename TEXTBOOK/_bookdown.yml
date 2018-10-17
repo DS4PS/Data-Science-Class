@@ -1,5 +1,21 @@
 book_filename: "DS4PS-I"
 # rmd_files: ["index.Rmd", "01-intro.Rmd", "04-application.Rmd"]
+rmd_files: [
+	"index.Rmd",
+	"CH-01-introduction-to-r.Rmd",
+	"CH-02-functions.Rmd" ,
+	"CH-03-data-structures.Rmd",
+	"CH-04-business-logic.Rmd",
+	"CH-05-data_verbs.Rmd",
+	"CH-06-summary-stats.Rmd", 
+	"CH-07-data_recipes.Rmd",
+	"CH-08-group-structure.Rmd",
+	"CH-09-plot-basics.Rmd",
+	"CH-10-customized-graphics.Rmd",
+	"CH-11-custom-graphic-example.Rmd",
+	# "CH-12-shiny-widgets.Rmd",
+	# "CH-99-merging-data.Rmd",
+]
 language:
   ui:
     chapter_name: "Chapter "

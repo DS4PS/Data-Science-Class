@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Intro to Data Science for the Social Sector</title>
   <meta name="description" content="This is an introductory text to data science designed for social science graduate students in public affairs, nonprofit management, and international development.">
-  <meta name="generator" content="bookdown 0.6 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
 
   <meta property="og:title" content="Intro to Data Science for the Social Sector" />
   <meta property="og:type" content="book" />
@@ -59,7 +59,7 @@
 <style type="text/css">
 a.sourceLine { display: inline-block; line-height: 1.25; }
 a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; position: absolute; }
+a.sourceLine:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 div.sourceCode { margin: 1em 0; }
@@ -72,13 +72,11 @@ code.sourceCode { white-space: pre-wrap; }
 a.sourceLine { text-indent: -1em; padding-left: 1em; }
 }
 pre.numberSource a.sourceLine
-  { position: relative; }
-pre.numberSource a.sourceLine:empty
-  { position: absolute; }
+  { position: relative; left: -4em; }
 pre.numberSource a.sourceLine::before
   { content: attr(data-line-number);
-    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all;
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -260,23 +258,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.8" data-path="custom-plot-example.html"><a href="custom-plot-example.html#generalizing-code"><i class="fa fa-check"></i><b>11.8</b> Generalizing Code</a></li>
 <li class="chapter" data-level="11.9" data-path="custom-plot-example.html"><a href="custom-plot-example.html#improved-aesthetics"><i class="fa fa-check"></i><b>11.9</b> Improved Aesthetics</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="data-wrangling.html"><a href="data-wrangling.html"><i class="fa fa-check"></i>DATA WRANGLING</a></li>
-<li class="chapter" data-level="12" data-path="merging-data.html"><a href="merging-data.html"><i class="fa fa-check"></i><b>12</b> Merging Data</a><ul>
-<li class="chapter" data-level="12.1" data-path="merging-data.html"><a href="merging-data.html#packages-used-in-this-chapter-4"><i class="fa fa-check"></i><b>12.1</b> Packages Used in This Chapter</a></li>
-<li class="chapter" data-level="12.2" data-path="merging-data.html"><a href="merging-data.html#relational-databases"><i class="fa fa-check"></i><b>12.2</b> Relational Databases</a></li>
-<li class="chapter" data-level="12.3" data-path="merging-data.html"><a href="merging-data.html#set-theory"><i class="fa fa-check"></i><b>12.3</b> Set Theory</a><ul>
-<li class="chapter" data-level="12.3.1" data-path="merging-data.html"><a href="merging-data.html#set-theory-functions"><i class="fa fa-check"></i><b>12.3.1</b> Set Theory Functions</a></li>
-<li class="chapter" data-level="12.3.2" data-path="merging-data.html"><a href="merging-data.html#set-theory-using-logical-operators"><i class="fa fa-check"></i><b>12.3.2</b> Set Theory Using Logical Operators</a></li>
-</ul></li>
-<li class="chapter" data-level="12.4" data-path="merging-data.html"><a href="merging-data.html#merging-data-1"><i class="fa fa-check"></i><b>12.4</b> Merging Data</a><ul>
-<li class="chapter" data-level="12.4.1" data-path="merging-data.html"><a href="merging-data.html#the-by.x-and-by.y-arguments"><i class="fa fa-check"></i><b>12.4.1</b> The by.x and by.y Arguments</a></li>
-</ul></li>
-<li class="chapter" data-level="12.5" data-path="merging-data.html"><a href="merging-data.html#non-unique-observations-in-id-variables"><i class="fa fa-check"></i><b>12.5</b> Non-Unique Observations in ID Variables</a><ul>
-<li class="chapter" data-level="12.5.1" data-path="merging-data.html"><a href="merging-data.html#example-of-incorrect-merge"><i class="fa fa-check"></i><b>12.5.1</b> Example of Incorrect Merge</a></li>
-</ul></li>
-<li class="chapter" data-level="12.6" data-path="merging-data.html"><a href="merging-data.html#the-in-function"><i class="fa fa-check"></i><b>12.6</b> The %in% function</a></li>
-<li class="chapter" data-level="12.7" data-path="merging-data.html"><a href="merging-data.html#the-match-function"><i class="fa fa-check"></i><b>12.7</b> The Match Function</a></li>
-</ul></li>
 <li class="divider"></li>
 <li><a href="https://webapp4.asu.edu/programs/t5/majorinfo/ASU00/PPPGEMS/graduate/false" target="blank">ASU</a></li>
 
@@ -299,7 +280,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="the-plot-function" class="section level1">
 <h1><span class="header-section-number">Chapter 9</span> The plot() Function</h1>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-230"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-231"></span>
 <img src="figures/anatomy_of_a_graph1.png" alt="The core graphics package allows you to control every element of a visualization." width="80%" />
 <p class="caption">
 Figure 9.1: The core graphics package allows you to control every element of a visualization.
@@ -332,12 +313,12 @@ Figure 9.1: The core graphics package allows you to control every element of a v
 <p>To demonstrate these arguments we will use a simple dataset from a hypothetical farming experiment that examines the relationship between levels of new fertilizer under development and the height of the corn. To identify the optimal dosage of fertilizer to use, the experiment applies different levels to separate fields of corn, then measures the average final corn height at each dosage. The fields are scattered across three farms, and “moisture” represents the average Volumetric Water Content of the soil in each field.</p>
 <p>You can load it as follows:</p>
 <div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb160-1" data-line-number="1"><span class="kw">source</span>( <span class="st">&quot;https://raw.githubusercontent.com/DS4PS/Data-Science-Class/master/DATA/corn_stalks.R&quot;</span> )</a></code></pre></div>
-<table style="width:61%;">
+<table style="width:62%;">
 <colgroup>
 <col width="18%" />
 <col width="19%" />
 <col width="15%" />
-<col width="8%" />
+<col width="9%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -350,45 +331,45 @@ Figure 9.1: The core graphics package allows you to control every element of a v
 <tbody>
 <tr class="odd">
 <td align="center">1</td>
-<td align="center">252</td>
-<td align="center">0.89</td>
-<td align="center">C</td>
+<td align="center">269</td>
+<td align="center">0.8</td>
+<td align="center">B</td>
 </tr>
 <tr class="even">
 <td align="center">2</td>
-<td align="center">264</td>
-<td align="center">0.66</td>
-<td align="center">B</td>
+<td align="center">250</td>
+<td align="center">0.67</td>
+<td align="center">A</td>
 </tr>
 <tr class="odd">
 <td align="center">3</td>
-<td align="center">255</td>
-<td align="center">0.37</td>
+<td align="center">253</td>
+<td align="center">0.48</td>
 <td align="center">A</td>
 </tr>
 <tr class="even">
 <td align="center">4</td>
-<td align="center">240</td>
-<td align="center">0.77</td>
-<td align="center">A</td>
+<td align="center">276</td>
+<td align="center">0.39</td>
+<td align="center">B</td>
 </tr>
 <tr class="odd">
 <td align="center">5</td>
-<td align="center">238</td>
-<td align="center">0.36</td>
+<td align="center">316</td>
+<td align="center">0.7</td>
 <td align="center">A</td>
 </tr>
 <tr class="even">
 <td align="center">6</td>
-<td align="center">255</td>
-<td align="center">0.3</td>
-<td align="center">B</td>
+<td align="center">247</td>
+<td align="center">0.8</td>
+<td align="center">A</td>
 </tr>
 </tbody>
 </table>
 <p>The default <strong>plot()</strong> function requires an x-variable and y-variable and will create a scatterplot, adding axes and a title:</p>
 <div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb161-1" data-line-number="1"><span class="kw">plot</span>( <span class="dt">x=</span>fertilizer, <span class="dt">y=</span>corn.height )</a></code></pre></div>
-<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-234-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-235-1.png" width="90%" style="display: block; margin: auto;" /></p>
 <p>Ok, so let’s improve upon this a bit. You can use the following arguments to customize the plot:</p>
 </div>
 <div id="titles" class="section level2">
@@ -400,7 +381,7 @@ Figure 9.1: The core graphics package allows you to control every element of a v
 <a class="sourceLine" id="cb162-4" data-line-number="4">      <span class="dt">ylab=</span><span class="st">&quot;Corn Height (cm)&quot;</span>,</a>
 <a class="sourceLine" id="cb162-5" data-line-number="5">      <span class="dt">main=</span><span class="st">&quot;Relationship Between Fertilizer Intensity and Corn Growth&quot;</span>    </a>
 <a class="sourceLine" id="cb162-6" data-line-number="6">    )</a></code></pre></div>
-<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-235-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-236-1.png" width="90%" style="display: block; margin: auto;" /></p>
 <p>We can also change their size with <strong>cex.lab=</strong> to control the size of the axes labels, and <strong>cex.main=</strong> to control the size of the title.</p>
 <p>Note that all of the <strong>cex</strong> arguments are aspect ratios, meaning that the default value of 1 represents 100% and all other argument values are in relation to this default. A value of 2 means to increase the title to 200% of the size, an argument of 0.5 shrinks the title to half the original size.</p>
 <div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb163-1" data-line-number="1"><span class="kw">plot</span>( </a>
@@ -411,7 +392,7 @@ Figure 9.1: The core graphics package allows you to control every element of a v
 <a class="sourceLine" id="cb163-6" data-line-number="6">      <span class="dt">cex.lab=</span><span class="dv">2</span>,               <span class="co"># double the size of the axis labels</span></a>
 <a class="sourceLine" id="cb163-7" data-line-number="7">      <span class="dt">col.lab=</span><span class="st">&quot;steelblue&quot;</span>      <span class="co"># change color of axis labels</span></a>
 <a class="sourceLine" id="cb163-8" data-line-number="8">    )</a></code></pre></div>
-<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-237-1.png" width="70%" style="display: block; margin: auto;" /><img src="DS4PS-I_files/figure-html/unnamed-chunk-237-2.png" width="70%" style="display: block; margin: auto;" /><img src="DS4PS-I_files/figure-html/unnamed-chunk-237-3.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-238-1.png" width="90%" style="display: block; margin: auto;" /><img src="DS4PS-I_files/figure-html/unnamed-chunk-238-2.png" width="90%" style="display: block; margin: auto;" /><img src="DS4PS-I_files/figure-html/unnamed-chunk-238-3.png" width="90%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="type-of-plot" class="section level2">
 <h2><span class="header-section-number">9.4</span> Type of Plot</h2>
@@ -433,12 +414,12 @@ Figure 9.1: The core graphics package allows you to control every element of a v
 <a class="sourceLine" id="cb164-8" data-line-number="8">      <span class="dt">col.axis=</span><span class="st">&quot;gray60&quot;</span>,</a>
 <a class="sourceLine" id="cb164-9" data-line-number="9">      <span class="dt">frame.plot=</span>F</a>
 <a class="sourceLine" id="cb164-10" data-line-number="10">    )</a></code></pre></div>
-<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-239-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-240-1.png" width="90%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="shape-of-points" class="section level2">
 <h2><span class="header-section-number">9.5</span> Shape of Points</h2>
 <p>The argument <strong>pch</strong> determines the shape of the plot points. The numeric values 0 to 25 represent different default shapes. We can also use any number, letter, or symbol as a plotting shape.</p>
-<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-240-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-241-1.png" width="90%" style="display: block; margin: auto;" /></p>
 <p>Note that shapes 0 to 14 are hollow, 15 to 20 are solid, and 21 to 25 can also plot a background color specified by the <strong>bg=</strong> argument.</p>
 <div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb165-1" data-line-number="1"><span class="kw">plot</span>( </a>
 <a class="sourceLine" id="cb165-2" data-line-number="2">      <span class="dt">x=</span>fertilizer, <span class="dt">y=</span>corn.height,</a>
@@ -448,7 +429,7 @@ Figure 9.1: The core graphics package allows you to control every element of a v
 <a class="sourceLine" id="cb165-6" data-line-number="6">      <span class="dt">main=</span><span class="st">&quot;pch=23&quot;</span>, <span class="dt">cex.main=</span><span class="fl">1.5</span>,</a>
 <a class="sourceLine" id="cb165-7" data-line-number="7">      <span class="dt">pch=</span><span class="dv">23</span>, <span class="dt">col=</span><span class="st">&quot;red&quot;</span>, <span class="dt">bg=</span><span class="st">&quot;green&quot;</span></a>
 <a class="sourceLine" id="cb165-8" data-line-number="8">    )</a></code></pre></div>
-<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-241-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-242-1.png" width="90%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="size-of-points" class="section level2">
 <h2><span class="header-section-number">9.6</span> Size of Points</h2>
@@ -462,7 +443,7 @@ Figure 9.1: The core graphics package allows you to control every element of a v
 <a class="sourceLine" id="cb166-7" data-line-number="7">      <span class="dt">main=</span><span class="st">&quot;cex=2&quot;</span>, <span class="dt">cex.main=</span><span class="dv">2</span>,</a>
 <a class="sourceLine" id="cb166-8" data-line-number="8">      <span class="dt">frame.plot=</span><span class="ot">FALSE</span></a>
 <a class="sourceLine" id="cb166-9" data-line-number="9">    )</a></code></pre></div>
-<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-243-1.png" width="70%" style="display: block; margin: auto;" /><img src="DS4PS-I_files/figure-html/unnamed-chunk-243-2.png" width="70%" style="display: block; margin: auto;" /><img src="DS4PS-I_files/figure-html/unnamed-chunk-243-3.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-244-1.png" width="90%" style="display: block; margin: auto;" /><img src="DS4PS-I_files/figure-html/unnamed-chunk-244-2.png" width="90%" style="display: block; margin: auto;" /><img src="DS4PS-I_files/figure-html/unnamed-chunk-244-3.png" width="90%" style="display: block; margin: auto;" /></p>
 <p>The <strong>cex=</strong> argument is also useful for incorporating a third numeric variable into the analysis. For example, perhaps we want to include the average moisture levels of the soil for each field. When we use a numeric vector like this with the <strong>cex=</strong> argument, instead of a single constant, the plot will adjust the size of observation based upon its measured moisture level. Since moisture values are between 0 and 1, I have scaled them by 3 to ensure the points are large enough to see.</p>
 <div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb167-1" data-line-number="1"><span class="kw">plot</span>( </a>
 <a class="sourceLine" id="cb167-2" data-line-number="2">      <span class="dt">x=</span>fertilizer, <span class="dt">y=</span>corn.height,</a>
@@ -473,7 +454,7 @@ Figure 9.1: The core graphics package allows you to control every element of a v
 <a class="sourceLine" id="cb167-7" data-line-number="7">      <span class="dt">ylab=</span><span class="st">&quot;Corn Height (cm)&quot;</span>,</a>
 <a class="sourceLine" id="cb167-8" data-line-number="8">      <span class="dt">main=</span><span class="st">&quot;Relationship Between Fertilizer Intensity and Corn Growth&quot;</span></a>
 <a class="sourceLine" id="cb167-9" data-line-number="9">    )</a></code></pre></div>
-<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-244-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-245-1.png" width="90%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="colors" class="section level2">
 <h2><span class="header-section-number">9.7</span> Colors</h2>
@@ -487,7 +468,7 @@ Figure 9.1: The core graphics package allows you to control every element of a v
 <a class="sourceLine" id="cb168-6" data-line-number="6">      <span class="dt">main=</span><span class="st">&quot;Relationship Between Fertilizer Intensity and Corn Growth&quot;</span>,</a>
 <a class="sourceLine" id="cb168-7" data-line-number="7">      <span class="dt">frame.plot=</span><span class="ot">FALSE</span></a>
 <a class="sourceLine" id="cb168-8" data-line-number="8">    )</a></code></pre></div>
-<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-245-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-246-1.png" width="90%" style="display: block; margin: auto;" /></p>
 <p>In the example above we specified a single color for all of our corn heights. If we want to incorporate a third categorical variable in our analysis, we can use a factor in our dataset as the value we pass to the <strong>col=</strong> argument. For example, perhaps we want to indicate which farm each field belongs to in the graph.</p>
 <div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb169-1" data-line-number="1"><span class="kw">plot</span>( </a>
 <a class="sourceLine" id="cb169-2" data-line-number="2">      <span class="dt">x=</span>fertilizer, <span class="dt">y=</span>corn.height,</a>
@@ -498,14 +479,14 @@ Figure 9.1: The core graphics package allows you to control every element of a v
 <a class="sourceLine" id="cb169-7" data-line-number="7">      <span class="dt">main=</span><span class="st">&quot;Relationship Between Fertilizer Intensity and Corn Growth&quot;</span>,</a>
 <a class="sourceLine" id="cb169-8" data-line-number="8">      <span class="dt">frame.plot=</span><span class="ot">FALSE</span></a>
 <a class="sourceLine" id="cb169-9" data-line-number="9">    )</a></code></pre></div>
-<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-246-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-247-1.png" width="90%" style="display: block; margin: auto;" /></p>
 <p>Note that “farms” has to be a factor in order to use it in the <strong>col=</strong> argument. In this example, the farms have labels of “A” to “C”.</p>
 <div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb170-1" data-line-number="1"><span class="kw">levels</span>( farm )</a>
-<a class="sourceLine" id="cb170-2" data-line-number="2">### [1] &quot;A&quot; &quot;B&quot; &quot;C&quot;</a></code></pre></div>
+<a class="sourceLine" id="cb170-2" data-line-number="2"><span class="co">### [1] &quot;A&quot; &quot;B&quot; &quot;C&quot;</span></a></code></pre></div>
 <p>You might be curious how R selected the colors for the three farms. The <strong>palette()</strong> function will print the default values that R uses for categorical variables:</p>
 <div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb171-1" data-line-number="1"><span class="kw">palette</span>()</a>
-<a class="sourceLine" id="cb171-2" data-line-number="2">### [1] &quot;black&quot;   &quot;red&quot;     &quot;green3&quot;  &quot;blue&quot;    &quot;cyan&quot;    &quot;magenta&quot; &quot;yellow&quot; </a>
-<a class="sourceLine" id="cb171-3" data-line-number="3">### [8] &quot;gray&quot;</a></code></pre></div>
+<a class="sourceLine" id="cb171-2" data-line-number="2"><span class="co">### [1] &quot;black&quot;   &quot;red&quot;     &quot;green3&quot;  &quot;blue&quot;    &quot;cyan&quot;    &quot;magenta&quot; &quot;yellow&quot; </span></a>
+<a class="sourceLine" id="cb171-3" data-line-number="3"><span class="co">### [8] &quot;gray&quot;</span></a></code></pre></div>
 <p>You can see that the first three are the colors used in the graph above. Since there are only 8 default values, if your categorical variable has more than 8 levels it will start to recycle colors.</p>
 <p>Perhaps you don’t like the default values. You can select your own by passing color names to the <strong>palette()</strong> function as follows:</p>
 <div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb172-1" data-line-number="1"><span class="kw">palette</span>( <span class="kw">c</span>(<span class="st">&quot;forestgreen&quot;</span>,<span class="st">&quot;darkorange1&quot;</span>,<span class="st">&quot;darkorchid&quot;</span>) )</a>
@@ -519,7 +500,7 @@ Figure 9.1: The core graphics package allows you to control every element of a v
 <a class="sourceLine" id="cb172-9" data-line-number="9">      <span class="dt">main=</span><span class="st">&quot;Relationship Between Fertilizer Intensity and Corn Growth&quot;</span>,</a>
 <a class="sourceLine" id="cb172-10" data-line-number="10">      <span class="dt">frame.plot=</span><span class="ot">FALSE</span></a>
 <a class="sourceLine" id="cb172-11" data-line-number="11">    )</a></code></pre></div>
-<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-249-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-250-1.png" width="90%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="looking-ahead" class="section level2">
 <h2><span class="header-section-number">9.8</span> Looking Ahead</h2>
@@ -537,7 +518,7 @@ Figure 9.1: The core graphics package allows you to control every element of a v
 <a class="sourceLine" id="cb173-10" data-line-number="10">    )</a>
 <a class="sourceLine" id="cb173-11" data-line-number="11"></a>
 <a class="sourceLine" id="cb173-12" data-line-number="12"><span class="kw">lines</span>( <span class="kw">lowess</span>( fertilizer, corn.height ), <span class="dt">col=</span><span class="st">&quot;darkgoldenrod2&quot;</span>, <span class="dt">lwd=</span><span class="dv">4</span> )</a></code></pre></div>
-<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-250-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-251-1.png" width="90%" style="display: block; margin: auto;" /></p>
 <p>In order to add narrative to your graphs, you can add points and text.</p>
 <p>The <strong>points()</strong> function operates with basically the same parameters as the <strong>plot()</strong> function. The <strong>text()</strong> function uses the same X and Y coordinates, but you also have to add an argument for the text that you want added to the plot.</p>
 <p>Let’s highlight the tallest corn stalk as an example.</p>
@@ -549,7 +530,7 @@ Figure 9.1: The core graphics package allows you to control every element of a v
 <a class="sourceLine" id="cb174-6" data-line-number="6"><span class="kw">text</span>( <span class="dt">x=</span>tallest.x, <span class="dt">y=</span>tallest.y, </a>
 <a class="sourceLine" id="cb174-7" data-line-number="7">      <span class="dt">labels=</span><span class="st">&quot;Tallest Stalk&quot;</span>, </a>
 <a class="sourceLine" id="cb174-8" data-line-number="8">      <span class="dt">pos=</span><span class="dv">3</span>, <span class="dt">offset=</span><span class="dv">1</span>, <span class="dt">col=</span><span class="st">&quot;firebrick4&quot;</span> )</a></code></pre></div>
-<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-252-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="DS4PS-I_files/figure-html/unnamed-chunk-253-1.png" width="90%" style="display: block; margin: auto;" /></p>
 
 </div>
 </div>
@@ -577,10 +558,11 @@ gitbook.start({
 "facebook": true,
 "twitter": true,
 "google": false,
+"linkedin": false,
 "weibo": false,
 "instapper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",

@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Intro to Data Science for the Social Sector</title>
   <meta name="description" content="This is an introductory text to data science designed for social science graduate students in public affairs, nonprofit management, and international development.">
-  <meta name="generator" content="bookdown 0.6 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
 
   <meta property="og:title" content="Intro to Data Science for the Social Sector" />
   <meta property="og:type" content="book" />
@@ -59,7 +59,7 @@
 <style type="text/css">
 a.sourceLine { display: inline-block; line-height: 1.25; }
 a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; position: absolute; }
+a.sourceLine:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 div.sourceCode { margin: 1em 0; }
@@ -72,13 +72,11 @@ code.sourceCode { white-space: pre-wrap; }
 a.sourceLine { text-indent: -1em; padding-left: 1em; }
 }
 pre.numberSource a.sourceLine
-  { position: relative; }
-pre.numberSource a.sourceLine:empty
-  { position: absolute; }
+  { position: relative; left: -4em; }
 pre.numberSource a.sourceLine::before
   { content: attr(data-line-number);
-    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all;
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -260,23 +258,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.8" data-path="custom-plot-example.html"><a href="custom-plot-example.html#generalizing-code"><i class="fa fa-check"></i><b>11.8</b> Generalizing Code</a></li>
 <li class="chapter" data-level="11.9" data-path="custom-plot-example.html"><a href="custom-plot-example.html#improved-aesthetics"><i class="fa fa-check"></i><b>11.9</b> Improved Aesthetics</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="data-wrangling.html"><a href="data-wrangling.html"><i class="fa fa-check"></i>DATA WRANGLING</a></li>
-<li class="chapter" data-level="12" data-path="merging-data.html"><a href="merging-data.html"><i class="fa fa-check"></i><b>12</b> Merging Data</a><ul>
-<li class="chapter" data-level="12.1" data-path="merging-data.html"><a href="merging-data.html#packages-used-in-this-chapter-4"><i class="fa fa-check"></i><b>12.1</b> Packages Used in This Chapter</a></li>
-<li class="chapter" data-level="12.2" data-path="merging-data.html"><a href="merging-data.html#relational-databases"><i class="fa fa-check"></i><b>12.2</b> Relational Databases</a></li>
-<li class="chapter" data-level="12.3" data-path="merging-data.html"><a href="merging-data.html#set-theory"><i class="fa fa-check"></i><b>12.3</b> Set Theory</a><ul>
-<li class="chapter" data-level="12.3.1" data-path="merging-data.html"><a href="merging-data.html#set-theory-functions"><i class="fa fa-check"></i><b>12.3.1</b> Set Theory Functions</a></li>
-<li class="chapter" data-level="12.3.2" data-path="merging-data.html"><a href="merging-data.html#set-theory-using-logical-operators"><i class="fa fa-check"></i><b>12.3.2</b> Set Theory Using Logical Operators</a></li>
-</ul></li>
-<li class="chapter" data-level="12.4" data-path="merging-data.html"><a href="merging-data.html#merging-data-1"><i class="fa fa-check"></i><b>12.4</b> Merging Data</a><ul>
-<li class="chapter" data-level="12.4.1" data-path="merging-data.html"><a href="merging-data.html#the-by.x-and-by.y-arguments"><i class="fa fa-check"></i><b>12.4.1</b> The by.x and by.y Arguments</a></li>
-</ul></li>
-<li class="chapter" data-level="12.5" data-path="merging-data.html"><a href="merging-data.html#non-unique-observations-in-id-variables"><i class="fa fa-check"></i><b>12.5</b> Non-Unique Observations in ID Variables</a><ul>
-<li class="chapter" data-level="12.5.1" data-path="merging-data.html"><a href="merging-data.html#example-of-incorrect-merge"><i class="fa fa-check"></i><b>12.5.1</b> Example of Incorrect Merge</a></li>
-</ul></li>
-<li class="chapter" data-level="12.6" data-path="merging-data.html"><a href="merging-data.html#the-in-function"><i class="fa fa-check"></i><b>12.6</b> The %in% function</a></li>
-<li class="chapter" data-level="12.7" data-path="merging-data.html"><a href="merging-data.html#the-match-function"><i class="fa fa-check"></i><b>12.7</b> The Match Function</a></li>
-</ul></li>
 <li class="divider"></li>
 <li><a href="https://webapp4.asu.edu/programs/t5/majorinfo/ASU00/PPPGEMS/graduate/false" target="blank">ASU</a></li>
 
@@ -314,7 +295,7 @@ td {
 </div>
 <div id="key-concepts-3" class="section level2">
 <h2><span class="header-section-number">5.2</span> Key Concepts</h2>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-118"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-119"></span>
 <img src="figures/dataset_verbs.png" alt="Data verbs are functions that require a dataframe as the primary argument, perform some transformation on the data, then return a new dataframe." width="60%" />
 <p class="caption">
 Figure 5.1: Data verbs are functions that require a dataframe as the primary argument, perform some transformation on the data, then return a new dataframe.
@@ -350,7 +331,7 @@ Figure 5.1: Data verbs are functions that require a dataframe as the primary arg
 ### 2   5.58 ctrl 
 ### 3   5.18 ctrl 
 ### 4   6.11 ctrl 
-### 5   4.50 ctrl 
+### 5   4.5  ctrl 
 ### 6   4.61 ctrl 
 ### # ... with 24 more rows</code></pre>
 <p>We will cover the following <strong><em>dplyr</em></strong> functions in this section of the textbook:</p>
@@ -398,10 +379,10 @@ Figure 5.1: Data verbs are functions that require a dataframe as the primary arg
 <p><img src="figures/filter.png" width="60%" style="display: block; margin: auto;" /></p>
 <p>In the last chapter we learned how to use operators to translate from plain English questions to data queries.</p>
 <p>As an example, a city manager might want to know the average amount owed on a delinquent property tax.</p>
-<table style="width:31%;">
+<table style="width:32%;">
 <colgroup>
 <col width="12%" />
-<col width="18%" />
+<col width="19%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -461,33 +442,33 @@ Figure 5.1: Data verbs are functions that require a dataframe as the primary arg
 <div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb93-1" data-line-number="1">these.late &lt;-<span class="st"> </span>taxdat<span class="op">$</span>amount.owed <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>                 <span class="co"># 1. Define group</span></a>
 <a class="sourceLine" id="cb93-2" data-line-number="2">overdue.amounts &lt;-<span class="st"> </span>taxdat<span class="op">$</span>amount.owed[ these.late ]  <span class="co"># 2. Select data</span></a>
 <a class="sourceLine" id="cb93-3" data-line-number="3">overdue.amounts</a>
-<a class="sourceLine" id="cb93-4" data-line-number="4">### [1] 5549 1709  634 9353 1366</a>
+<a class="sourceLine" id="cb93-4" data-line-number="4"><span class="co">### [1] 5549 1709  634 9353 1366</span></a>
 <a class="sourceLine" id="cb93-5" data-line-number="5"><span class="kw">mean</span>( overdue.amounts )                              <span class="co"># 3. Analyze data</span></a>
-<a class="sourceLine" id="cb93-6" data-line-number="6">### [1] 3722.2</a></code></pre></div>
+<a class="sourceLine" id="cb93-6" data-line-number="6"><span class="co">### [1] 3722.2</span></a></code></pre></div>
 <p>The <strong>filter()</strong> function in the <strong><em>dplyr</em></strong> package is a slightly more elegant verb for selecting the group and subsetting the data by rows.</p>
 <blockquote>
 <p>filter( dataset name , logical expression )</p>
 </blockquote>
 <div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb94-1" data-line-number="1"><span class="kw">filter</span>( taxdat, amount.owed <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span> )</a>
-<a class="sourceLine" id="cb94-2" data-line-number="2">###   tax.id amount.owed</a>
-<a class="sourceLine" id="cb94-3" data-line-number="3">### 1      2        5549</a>
-<a class="sourceLine" id="cb94-4" data-line-number="4">### 2      4        1709</a>
-<a class="sourceLine" id="cb94-5" data-line-number="5">### 3      6         634</a>
-<a class="sourceLine" id="cb94-6" data-line-number="6">### 4     10        9353</a>
-<a class="sourceLine" id="cb94-7" data-line-number="7">### 5     12        1366</a></code></pre></div>
+<a class="sourceLine" id="cb94-2" data-line-number="2"><span class="co">###   tax.id amount.owed</span></a>
+<a class="sourceLine" id="cb94-3" data-line-number="3"><span class="co">### 1      2        5549</span></a>
+<a class="sourceLine" id="cb94-4" data-line-number="4"><span class="co">### 2      4        1709</span></a>
+<a class="sourceLine" id="cb94-5" data-line-number="5"><span class="co">### 3      6         634</span></a>
+<a class="sourceLine" id="cb94-6" data-line-number="6"><span class="co">### 4     10        9353</span></a>
+<a class="sourceLine" id="cb94-7" data-line-number="7"><span class="co">### 5     12        1366</span></a></code></pre></div>
 <p>Note that we do not need to reference the dat$ references inside <strong>dplyr</strong> functions.</p>
 </div>
 <div id="select-columns" class="section level2">
 <h2><span class="header-section-number">5.5</span> <strong>select()</strong> Columns</h2>
 <p><img src="figures/select.png" width="60%" style="display: block; margin: auto;" /></p>
 <p>In the core R operators, we select colums from a dataset using the subset function:</p>
-<table style="width:74%;">
+<table style="width:75%;">
 <colgroup>
 <col width="23%" />
 <col width="12%" />
 <col width="13%" />
 <col width="15%" />
-<col width="8%" />
+<col width="9%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -544,11 +525,11 @@ Figure 5.1: Data verbs are functions that require a dataframe as the primary arg
 </tbody>
 </table>
 <div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb95-1" data-line-number="1">USArrests[ , <span class="kw">c</span>(<span class="st">&quot;Murder&quot;</span>,<span class="st">&quot;Assault&quot;</span>) ]</a></code></pre></div>
-<table style="width:49%;">
+<table style="width:50%;">
 <colgroup>
 <col width="23%" />
 <col width="12%" />
-<col width="12%" />
+<col width="13%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -592,11 +573,11 @@ Figure 5.1: Data verbs are functions that require a dataframe as the primary arg
 </table>
 <p>The <strong><em>select()</em></strong> function converts this oeration into a data verb:</p>
 <div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb96-1" data-line-number="1"><span class="kw">select</span>( USArrests, Murder, Assault )</a></code></pre></div>
-<table style="width:49%;">
+<table style="width:50%;">
 <colgroup>
 <col width="23%" />
 <col width="12%" />
-<col width="12%" />
+<col width="13%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -639,13 +620,13 @@ Figure 5.1: Data verbs are functions that require a dataframe as the primary arg
 </tbody>
 </table>
 <p>The <strong><em>select()</em></strong> function adds a lot of additional arguments that make it easy to quickly identify and keep only the necessary variables. We can demonstrate a few using the built-in <em>iris</em> dataset in R.</p>
-<table style="width:93%;">
+<table style="width:94%;">
 <colgroup>
 <col width="20%" />
 <col width="19%" />
 <col width="20%" />
 <col width="19%" />
-<col width="12%" />
+<col width="13%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -877,11 +858,11 @@ Figure 5.1: Data verbs are functions that require a dataframe as the primary arg
 </table>
 <p>Or we can select by a range of variables by placing a colon between the first and last:</p>
 <div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb101-1" data-line-number="1"><span class="kw">select</span>( iris, Sepal.Length<span class="op">:</span>Petal.Width ) </a></code></pre></div>
-<table style="width:53%;">
+<table style="width:54%;">
 <colgroup>
 <col width="20%" />
 <col width="19%" />
-<col width="12%" />
+<col width="13%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -1003,10 +984,10 @@ Figure 5.1: Data verbs are functions that require a dataframe as the primary arg
 <div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb104-1" data-line-number="1"><span class="kw">arrange</span>( PlantGrowth, <span class="op">-</span>weight ) </a></code></pre></div>
 <p>We can also sort by multiple columns at once:</p>
 <div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb105-1" data-line-number="1"><span class="kw">arrange</span>( PlantGrowth, group, weight ) </a></code></pre></div>
-<table style="width:22%;">
+<table style="width:24%;">
 <colgroup>
 <col width="11%" />
-<col width="11%" />
+<col width="12%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -1119,10 +1100,10 @@ Figure 5.1: Data verbs are functions that require a dataframe as the primary arg
 <a class="sourceLine" id="cb107-7" data-line-number="7">per.capita.income &lt;-<span class="st">  </span>income <span class="op">/</span><span class="st"> </span>population</a></code></pre></div>
 <p>The <strong><em>mutate()</em></strong> function creates a new transformed variable from the forumala you specify and adds it to the original dataset.</p>
 <p>As an example, perhaps we have data on the number of nonprofits located in each US city. If we look at the raw count of nonprofits, it makes it look as though the large cities have the most vibrant nonprofit sectors:</p>
-<table style="width:39%;">
+<table style="width:40%;">
 <colgroup>
 <col width="22%" />
-<col width="16%" />
+<col width="18%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -1175,10 +1156,10 @@ Figure 5.1: Data verbs are functions that require a dataframe as the primary arg
 </table>
 <p>But these numbers may be misleading. Once we account for the population size through a new nonprofit density metric (nonprofits per 1,000 residents), we can see that some smaller cities have higher densities per capita.</p>
 <div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb108-1" data-line-number="1">dat.npos &lt;-<span class="st"> </span><span class="kw">mutate</span>( dat.npos, <span class="dt">density =</span> nonprofits <span class="op">/</span><span class="st"> </span>(pop<span class="op">/</span><span class="dv">1000</span>) )</a></code></pre></div>
-<table style="width:35%;">
+<table style="width:36%;">
 <colgroup>
 <col width="22%" />
-<col width="12%" />
+<col width="13%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -1236,10 +1217,10 @@ Figure 5.1: Data verbs are functions that require a dataframe as the primary arg
 <div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb109-1" data-line-number="1">x1 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;male&quot;</span>,<span class="st">&quot;male&quot;</span>,<span class="st">&quot;female&quot;</span>,<span class="st">&quot;female&quot;</span>)</a>
 <a class="sourceLine" id="cb109-2" data-line-number="2">x2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;treatment&quot;</span>,<span class="st">&quot;control&quot;</span>,<span class="st">&quot;treatment&quot;</span>,<span class="st">&quot;control&quot;</span>)</a>
 <a class="sourceLine" id="cb109-3" data-line-number="3">dat &lt;-<span class="st"> </span><span class="kw">data.frame</span>( x1, x2 )</a></code></pre></div>
-<table style="width:28%;">
+<table style="width:29%;">
 <colgroup>
 <col width="12%" />
-<col width="15%" />
+<col width="16%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -1268,10 +1249,10 @@ Figure 5.1: Data verbs are functions that require a dataframe as the primary arg
 </table>
 <p>The core R functions make it a little awkward to rename these variables.</p>
 <div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb110-1" data-line-number="1"><span class="kw">names</span>( dat ) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;gender&quot;</span>,<span class="st">&quot;study.group&quot;</span>)</a></code></pre></div>
-<table style="width:31%;">
+<table style="width:32%;">
 <colgroup>
 <col width="12%" />
-<col width="18%" />
+<col width="19%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -1306,11 +1287,11 @@ Figure 5.1: Data verbs are functions that require a dataframe as the primary arg
 <p>The next chapter will cover descriptive statistics in more depth, including some useful packages and functions for generating statistics for a variety of variable types and and reporting nice tables.</p>
 <p>Most descriptive functions, however, are not data verbs in the sense that they accept a data frame as the input and return a transformed data frame or tibble. The <strong>dplyr</strong> function <strong>summarize()</strong> is the primary function that will be used in data recipes (see the next chapter).</p>
 <p>Like other data verbs, the first argument will be the input dataset. In this case, there is no pre-determined set of descriptive statistics. The user needs to specify the desired metrics.</p>
-<table style="width:43%;">
+<table style="width:44%;">
 <colgroup>
 <col width="16%" />
 <col width="12%" />
-<col width="13%" />
+<col width="15%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -1322,48 +1303,48 @@ Figure 5.1: Data verbs are functions that require a dataframe as the primary arg
 <tbody>
 <tr class="odd">
 <td align="center">control</td>
+<td align="center">female</td>
+<td align="center">121</td>
+</tr>
+<tr class="even">
+<td align="center">control</td>
+<td align="center">male</td>
+<td align="center">93</td>
+</tr>
+<tr class="odd">
+<td align="center">treatment</td>
+<td align="center">female</td>
+<td align="center">123</td>
+</tr>
+<tr class="even">
+<td align="center">control</td>
 <td align="center">male</td>
 <td align="center">108</td>
 </tr>
-<tr class="even">
-<td align="center">treatment</td>
-<td align="center">female</td>
-<td align="center">95</td>
-</tr>
 <tr class="odd">
 <td align="center">treatment</td>
 <td align="center">male</td>
-<td align="center">86</td>
-</tr>
-<tr class="even">
-<td align="center">control</td>
-<td align="center">male</td>
-<td align="center">90</td>
-</tr>
-<tr class="odd">
-<td align="center">control</td>
-<td align="center">female</td>
-<td align="center">114</td>
+<td align="center">94</td>
 </tr>
 <tr class="even">
 <td align="center">treatment</td>
-<td align="center">male</td>
-<td align="center">87</td>
+<td align="center">female</td>
+<td align="center">115</td>
 </tr>
 </tbody>
 </table>
 <div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb112-1" data-line-number="1"><span class="kw">summarize</span>( dat, <span class="dt">n=</span><span class="kw">n</span>(), <span class="dt">min=</span><span class="kw">min</span>(strength), <span class="dt">mean=</span><span class="kw">mean</span>(strength), <span class="dt">max=</span><span class="kw">max</span>(strength) )</a>
-<a class="sourceLine" id="cb112-2" data-line-number="2">###     n min  mean max</a>
-<a class="sourceLine" id="cb112-3" data-line-number="3">### 1 100  53 96.53 145</a></code></pre></div>
+<a class="sourceLine" id="cb112-2" data-line-number="2"><span class="co">###     n min  mean max</span></a>
+<a class="sourceLine" id="cb112-3" data-line-number="3"><span class="co">### 1 100  57 102.5 155</span></a></code></pre></div>
 <p>Similarly, the native <strong>table()</strong> function is useful, but returns a table object. The <strong>dplyr</strong> <strong>count()</strong> function will function almost identically, but it will return a data frame.</p>
 <div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb113-1" data-line-number="1">dplyr<span class="op">::</span><span class="kw">count</span>( dat, group, gender )</a>
-<a class="sourceLine" id="cb113-2" data-line-number="2">### # A tibble: 4 x 3</a>
-<a class="sourceLine" id="cb113-3" data-line-number="3">###   group     gender     n</a>
-<a class="sourceLine" id="cb113-4" data-line-number="4">###   &lt;fct&gt;     &lt;fct&gt;  &lt;int&gt;</a>
-<a class="sourceLine" id="cb113-5" data-line-number="5">### 1 control   female    30</a>
-<a class="sourceLine" id="cb113-6" data-line-number="6">### 2 control   male      28</a>
-<a class="sourceLine" id="cb113-7" data-line-number="7">### 3 treatment female    17</a>
-<a class="sourceLine" id="cb113-8" data-line-number="8">### 4 treatment male      25</a></code></pre></div>
+<a class="sourceLine" id="cb113-2" data-line-number="2"><span class="co">### # A tibble: 4 x 3</span></a>
+<a class="sourceLine" id="cb113-3" data-line-number="3"><span class="co">###   group     gender     n</span></a>
+<a class="sourceLine" id="cb113-4" data-line-number="4"><span class="co">###   &lt;fct&gt;     &lt;fct&gt;  &lt;int&gt;</span></a>
+<a class="sourceLine" id="cb113-5" data-line-number="5"><span class="co">### 1 control   female    24</span></a>
+<a class="sourceLine" id="cb113-6" data-line-number="6"><span class="co">### 2 control   male      24</span></a>
+<a class="sourceLine" id="cb113-7" data-line-number="7"><span class="co">### 3 treatment female    29</span></a>
+<a class="sourceLine" id="cb113-8" data-line-number="8"><span class="co">### 4 treatment male      23</span></a></code></pre></div>
 <p>The real power of this function is the ability to use it with the <strong>group_by()</strong> function to analyze outcomes for many data subsets at once.</p>
 <div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb114-1" data-line-number="1">grouped.dat &lt;-<span class="st"> </span><span class="kw">group_by</span>( dat, group, gender )</a>
 <a class="sourceLine" id="cb114-2" data-line-number="2">dplyr<span class="op">::</span><span class="kw">summarize</span>( grouped.dat, </a>
@@ -1371,14 +1352,14 @@ Figure 5.1: Data verbs are functions that require a dataframe as the primary arg
 <a class="sourceLine" id="cb114-4" data-line-number="4">                  <span class="dt">min=</span><span class="kw">min</span>(strength), </a>
 <a class="sourceLine" id="cb114-5" data-line-number="5">                  <span class="dt">mean=</span><span class="kw">round</span>( <span class="kw">mean</span>(strength), <span class="dv">1</span> ), </a>
 <a class="sourceLine" id="cb114-6" data-line-number="6">                  <span class="dt">max=</span><span class="kw">max</span>(strength) ) </a>
-<a class="sourceLine" id="cb114-7" data-line-number="7">### # A tibble: 4 x 6</a>
-<a class="sourceLine" id="cb114-8" data-line-number="8">### # Groups:   group [?]</a>
-<a class="sourceLine" id="cb114-9" data-line-number="9">###   group     gender     n   min  mean   max</a>
-<a class="sourceLine" id="cb114-10" data-line-number="10">###   &lt;fct&gt;     &lt;fct&gt;  &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</a>
-<a class="sourceLine" id="cb114-11" data-line-number="11">### 1 control   female    30  79.0 110     145</a>
-<a class="sourceLine" id="cb114-12" data-line-number="12">### 2 control   male      28  53.0  78.3   108</a>
-<a class="sourceLine" id="cb114-13" data-line-number="13">### 3 treatment female    17  94.0 114     143</a>
-<a class="sourceLine" id="cb114-14" data-line-number="14">### 4 treatment male      25  60.0  88.9   115</a></code></pre></div>
+<a class="sourceLine" id="cb114-7" data-line-number="7"><span class="co">### # A tibble: 4 x 6</span></a>
+<a class="sourceLine" id="cb114-8" data-line-number="8"><span class="co">### # Groups:   group [?]</span></a>
+<a class="sourceLine" id="cb114-9" data-line-number="9"><span class="co">###   group     gender     n   min  mean   max</span></a>
+<a class="sourceLine" id="cb114-10" data-line-number="10"><span class="co">###   &lt;fct&gt;     &lt;fct&gt;  &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb114-11" data-line-number="11"><span class="co">### 1 control   female    24    75 110.    134</span></a>
+<a class="sourceLine" id="cb114-12" data-line-number="12"><span class="co">### 2 control   male      24    57  81.4   108</span></a>
+<a class="sourceLine" id="cb114-13" data-line-number="13"><span class="co">### 3 treatment female    29    87 123.    155</span></a>
+<a class="sourceLine" id="cb114-14" data-line-number="14"><span class="co">### 4 treatment male      23    73  90.4   112</span></a></code></pre></div>
 <p>We will discuss this functionality in-depth two chapters from now.</p>
 
 </div>
@@ -1407,10 +1388,11 @@ gitbook.start({
 "facebook": true,
 "twitter": true,
 "google": false,
+"linkedin": false,
 "weibo": false,
 "instapper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",

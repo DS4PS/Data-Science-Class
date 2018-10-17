@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Intro to Data Science for the Social Sector</title>
   <meta name="description" content="This is an introductory text to data science designed for social science graduate students in public affairs, nonprofit management, and international development.">
-  <meta name="generator" content="bookdown 0.6 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
 
   <meta property="og:title" content="Intro to Data Science for the Social Sector" />
   <meta property="og:type" content="book" />
@@ -59,7 +59,7 @@
 <style type="text/css">
 a.sourceLine { display: inline-block; line-height: 1.25; }
 a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; position: absolute; }
+a.sourceLine:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 div.sourceCode { margin: 1em 0; }
@@ -72,13 +72,11 @@ code.sourceCode { white-space: pre-wrap; }
 a.sourceLine { text-indent: -1em; padding-left: 1em; }
 }
 pre.numberSource a.sourceLine
-  { position: relative; }
-pre.numberSource a.sourceLine:empty
-  { position: absolute; }
+  { position: relative; left: -4em; }
 pre.numberSource a.sourceLine::before
   { content: attr(data-line-number);
-    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all;
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -260,23 +258,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.8" data-path="custom-plot-example.html"><a href="custom-plot-example.html#generalizing-code"><i class="fa fa-check"></i><b>11.8</b> Generalizing Code</a></li>
 <li class="chapter" data-level="11.9" data-path="custom-plot-example.html"><a href="custom-plot-example.html#improved-aesthetics"><i class="fa fa-check"></i><b>11.9</b> Improved Aesthetics</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="data-wrangling.html"><a href="data-wrangling.html"><i class="fa fa-check"></i>DATA WRANGLING</a></li>
-<li class="chapter" data-level="12" data-path="merging-data.html"><a href="merging-data.html"><i class="fa fa-check"></i><b>12</b> Merging Data</a><ul>
-<li class="chapter" data-level="12.1" data-path="merging-data.html"><a href="merging-data.html#packages-used-in-this-chapter-4"><i class="fa fa-check"></i><b>12.1</b> Packages Used in This Chapter</a></li>
-<li class="chapter" data-level="12.2" data-path="merging-data.html"><a href="merging-data.html#relational-databases"><i class="fa fa-check"></i><b>12.2</b> Relational Databases</a></li>
-<li class="chapter" data-level="12.3" data-path="merging-data.html"><a href="merging-data.html#set-theory"><i class="fa fa-check"></i><b>12.3</b> Set Theory</a><ul>
-<li class="chapter" data-level="12.3.1" data-path="merging-data.html"><a href="merging-data.html#set-theory-functions"><i class="fa fa-check"></i><b>12.3.1</b> Set Theory Functions</a></li>
-<li class="chapter" data-level="12.3.2" data-path="merging-data.html"><a href="merging-data.html#set-theory-using-logical-operators"><i class="fa fa-check"></i><b>12.3.2</b> Set Theory Using Logical Operators</a></li>
-</ul></li>
-<li class="chapter" data-level="12.4" data-path="merging-data.html"><a href="merging-data.html#merging-data-1"><i class="fa fa-check"></i><b>12.4</b> Merging Data</a><ul>
-<li class="chapter" data-level="12.4.1" data-path="merging-data.html"><a href="merging-data.html#the-by.x-and-by.y-arguments"><i class="fa fa-check"></i><b>12.4.1</b> The by.x and by.y Arguments</a></li>
-</ul></li>
-<li class="chapter" data-level="12.5" data-path="merging-data.html"><a href="merging-data.html#non-unique-observations-in-id-variables"><i class="fa fa-check"></i><b>12.5</b> Non-Unique Observations in ID Variables</a><ul>
-<li class="chapter" data-level="12.5.1" data-path="merging-data.html"><a href="merging-data.html#example-of-incorrect-merge"><i class="fa fa-check"></i><b>12.5.1</b> Example of Incorrect Merge</a></li>
-</ul></li>
-<li class="chapter" data-level="12.6" data-path="merging-data.html"><a href="merging-data.html#the-in-function"><i class="fa fa-check"></i><b>12.6</b> The %in% function</a></li>
-<li class="chapter" data-level="12.7" data-path="merging-data.html"><a href="merging-data.html#the-match-function"><i class="fa fa-check"></i><b>12.7</b> The Match Function</a></li>
-</ul></li>
 <li class="divider"></li>
 <li><a href="https://webapp4.asu.edu/programs/t5/majorinfo/ASU00/PPPGEMS/graduate/false" target="blank">ASU</a></li>
 
@@ -301,7 +282,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1>DATA VIZ</h1>
 <p>Visualization can be a powerful way to generate insights from data. Creating impactful graphics is not a trivial undertaking, however. There is a science to how the brain consumes visual information. And there is an art to combining elements of graphics in ways that make the data both aesthetically pleasing and informative. It takes practice to develop these skills.</p>
 <p>This section of the textbook is not about the design of a specific visualization or graphic, but rather the implementation. Once you have an idea for your graphic in your mind, you need a few basic R functions to create the visualization. We will cover these nuts and bolts of building custom graphics, some popular R packages for visualization, and some tricks to take your data viz game to the next level using dynamic graphics and animations.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-229"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-230"></span>
 <img src="figures/anatomy_of_a_graph3.png" alt="The core graphics package allows you to control every element of a visualization." width="50%" />
 <p class="caption">
 Figure 8.1: The core graphics package allows you to control every element of a visualization.
@@ -354,10 +335,11 @@ gitbook.start({
 "facebook": true,
 "twitter": true,
 "google": false,
+"linkedin": false,
 "weibo": false,
 "instapper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
