@@ -1,0 +1,122 @@
+---
+title: "Prepare Population Data"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+censuskey <- "b431c35dad89e2863681311677d12581e8f24c24"
+# devtools::install_github("hrecht/censusapi")
+library( censusapi )
+library( dplyr )
+```
+
+
+
+
+
+# ACS PROFILE
+
+```{r, eval=F}
+### CREATE ACS DATA PROFILES DATASET (1000 common vars)
+
+vars2015 <- listCensusMetadata( name="acs5/profile", vintage=2015, "v" )
+
+these <- c("SELECTED SOCIAL CHARACTERISTICS IN THE UNITED STATES",
+           "SELECTED ECONOMIC CHARACTERISTICS",
+           "SELECTED HOUSING CHARACTERISTICS",
+           "ACS DEMOGRAPHIC AND HOUSING ESTIMATES")
+
+dp.vars <- vars2015[ vars2015$concept %in% these , ]
+
+dp.vars <- dp.vars[ grep("E$", dp.vars$name, value=FALSE ) , c("name","label") ]
+
+# View( dp.vars )
+
+# Data Dictionary File:
+# write.csv( dp.vars, "DataProfileDataDictionary.csv", row.names=F 
+```
+
+
+```{r, eval=F}
+
+library( dplyr )
+
+# 5 year ACS, 2014 - all counties within the US
+
+dat.2010 <- getCensus( name="acs5/profile", 
+                        vintage=2014, 
+                        key=censuskey, 
+                        vars=c("DP05_0001E"), 
+                        region="county:*")
+
+dat.2010$FIPS <- paste0( dat.2010$state, dat.2010$county )
+
+head( dat.2010 )
+
+dat.2010 <- rename( dat.2010, poverty = DP05_0001E )
+
+```
+
+
+# Data 2000
+
+```{r, eval=F}
+vars <- listCensusMetadata( name="sf1", vintage=2000, "v" )
+```
+
+
+```{r}
+dat.2000 <- getCensus( name="sf1", 
+                        vintage=2000, 
+                        key=censuskey, 
+                        vars=c("P001001"), 
+                        region="county:*")
+
+dat.2000$fips <- paste0( dat.2000$state, dat.2000$county )
+
+dat.2000 <- rename( dat.2000, population = P001001 )
+
+dat.2000$year <- 2000
+
+head( dat.2000 )
+
+d1 <- select( dat.2000, fips, population, year )
+```
+
+
+# Data 2010
+
+```{r, eval=F}
+vars2 <- listCensusMetadata( name="sf1", vintage=2010, "v" )
+```
+
+```{r}
+dat.2010 <- getCensus( name="sf1", 
+                        vintage=2010, 
+                        key=censuskey, 
+                        vars=c("P0080001"), 
+                        region="county:*")
+
+head( dat.2010 )
+
+dat.2010$fips <- paste0( dat.2010$state, dat.2010$county )
+
+dat.2010 <- rename( dat.2010, population = P0080001 )
+
+dat.2010$year <- 2010
+
+head( dat.2010 )
+
+d2 <- select( dat.2010, fips, population, year )
+
+```
+
+
+# Write to CSV
+
+```{r}
+d3 <- rbind( d1, d2 )
+write.csv( d3, "census_population_2000_and_2010.csv", row.names=F )
+```
+
