@@ -180,7 +180,7 @@ knitr::include_graphics( "figures/np_density_table.png" )
 
 **PART 1:** 
 
-1) Combine the 2000 and 2010 nonprofit data using the rbind(), or row bind, function. 
+1) Combine the 2000 and 2010 nonprofit data using the row binding rbind() function. 
 
 ```{r, eval=F}
 np.dat <- rbind( np.dat.2000, np.dat.2010 )

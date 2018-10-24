@@ -141,6 +141,7 @@ d3 <- rbind( d1, d2 )
 d3 <- merge( d3, d14, by.x="fips", by.y="FIPS", all.x=TRUE )
 d3 <- select( d3, fips, MSA, year, population )
 d3$fips <- paste0( "F-", d3$fips )
+head( d3 )
 write.csv( d3, "census_population_2000_and_2010.csv", row.names=F )
 ```
 
