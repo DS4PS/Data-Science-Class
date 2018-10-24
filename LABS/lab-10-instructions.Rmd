@@ -33,7 +33,7 @@ You can create a new RMarkdown file, or download the lab template:
 
 # Overview of Joins
 
-### Inner, Outer, Left and Right
+## Inner, Outer, Left and Right
 
 There are two things to remember when conducting joins. The first is that when you merge two datasets it is rare for them both to contain the exact same observations. As a result, you need to make decisions about which data to keep and which data to drop post-merge. There are four options:
 
@@ -75,9 +75,14 @@ knitr::include_graphics( "figures/left_join.png" )
 knitr::include_graphics( "figures/right_join.png" )
 ```
 
-The important 
+ 
+<br>
 
-### Compound IDs
+## Compound IDs
+
+It is often the case where a single ID does not unique specify observations needed to join data. For example, if you are looking at the relationship between employee eye color and their height, these are both variables that can only have one value per employee, so the employee ID would be sufficient to merge the eye color and height datasets.
+
+If we want to look at the relationship between employee sick days in a given year and their performance, we now might have multiple years of data for each employee. To merge these two datasets we need to use both ID and YEAR. This is an example of a compound ID - two or more variables are needed to create a unique key for the join.
 
 ```{r, fig.cap="", echo=F, out.width='60%', fig.align='center' }
 knitr::include_graphics( "figures/compound_ids.png" )
@@ -117,17 +122,17 @@ merge( dat1, dat2, by="id" )         %>% pander()
 The solution is to ensure you are using the combination of keys that ensures each observation is correctly specified. 
 
 
-### Specify Merge Keys
+## Merge Keys
 
-You can check for shared variable names across two datasets by looking at the intersection of names in both:
+Your "keys" are the shared IDs across your datasets used for the join. You can check for shared variable names by looking at the intersection of names in both:
 
 ```{r}
 intersect( names(dat1), names(dat2) )
 ```
 
-This will only work when the datasets were generated from a common system that uses standardized variable names. In other cases, variables may be spelled differently ('year' vs. 'Year') or have completely different names. 
+Thi works when the datasets were generated from a common system that uses standardized and identical ID names. In other cases, the same key may be spelled differently ('year' vs. 'YEAR') or have completely different names. 
 
-The check at least allows you to catch instances where variable names would be repeated, and thus duplicated in the merged file. When this happens, like the 'year' variable in the example above, the merge operation will add an x and y to the variables to specify whether they originated from your first or second dataset ('year.x' and 'year.y' in the example above). 
+The check above at least allows you to catch instances where variable names would be repeated, and thus duplicated in the merged file. When this happens, like the 'year' variable in the example above, the merge operation will add an 'x' and 'y' to the end of the variable names to specify which dataset they originated from ('year.x' and 'year.y' in the example above). 
 
 In instances where variable names differ, you can specify the names directly using "by.x=" and "by.y=":
 
@@ -135,6 +140,29 @@ In instances where variable names differ, you can specify the names directly usi
 merge( dat1, dat2, by.x="fips", by.y="FIPS" ) 
 ```
 
+
+## In Summary
+
+You will be using the merge() function in this lab to join datasets. You need to specify two arguments in each merge call.
+
+```{r, eval=F}
+
+merge( dat1, dat2, by="", all="" )
+```
+
+
+Your IDs used to join dataset:
+
+* Use "by=" when variable names are identical
+* Use "by.x=" and "by.y=" when the variable names are spelled differently
+* Remember the c() when you have a compound key:  by=c("FIPS","YEAR")
+
+Specify an outer, inner, left, or right join:
+
+* all=TRUE creates an outer join
+* all=FALSE creates an inner join
+* all.x=TRUE creates a left join
+* all.y=TRUE creates a right join
 
 <br><br>
 
@@ -163,7 +191,7 @@ head( np.dat.2000 )
 
 ```{r}
 url <- "https://raw.githubusercontent.com/DS4PS/Data-Science-Class/master/DATA/census_population_2000_and_2010.csv"
-pop <- read.csv( url, stringsAsFactors=F, colClasses=c("character","character","numeric","numeric") )
+pop <- read.csv( url, stringsAsFactors=F )
 head( pop )
 ```
 
@@ -171,7 +199,7 @@ head( pop )
 
 # Lab Instructions
 
-In this lab you will look at nonprofit density by community. Your analysis will mirror the analysis in this table:
+In this lab you will look at nonprofit density by community. Your analysis will mirror the analysis of "All Subsectors" in this table (samples differ slightly so see below for exact so:
 
 ```{r, fig.cap="", echo=F, out.width='80%', fig.align='center' }
 knitr::include_graphics( "figures/np_density_table.png" )
