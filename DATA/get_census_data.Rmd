@@ -113,10 +113,77 @@ d2 <- select( dat.2010, fips, population, year )
 ```
 
 
+# Add MSA
+
+```{r}
+
+d12 <- select( d4, MSA, FIPS )
+d12 <- unique( d12 )
+these <- ! ( d12$FIPS == "" | d12$FIPS %in% d12$FIPS[duplicated( d12$FIPS )] & d12$MSA == "RURAL" )
+
+d14 <- d12[ these , ]
+
+d14$MSA[ d14$FIPS == "09001" ] <- "NEW YORK, NY"
+d14$MSA[ d14$FIPS == "09009" ] <- "NEW YORK, NY"
+d14$MSA[ d14$FIPS == "20177" ] <- "TOPEKA, KS"
+d14$MSA[ d14$FIPS == "37127" ] <- "RALEIGH, NC"
+
+d14 <- unique( d14 )
+
+write.csv( d14, "msa_fips_crosswalk.csv", row.names=F )
+```
+
+
 # Write to CSV
 
 ```{r}
 d3 <- rbind( d1, d2 )
+d3 <- merge( d3, d14, by.x="fips", by.y="FIPS", all.x=TRUE )
+d3 <- select( d3, fips, MSA, year, population )
+d3$fips <- paste0( "F-", d3$fips )
 write.csv( d3, "census_population_2000_and_2010.csv", row.names=F )
+```
+
+
+
+# test lab
+
+```{r, eval=F}
+d4 <- read.csv( "nonprofits_2000_2010.csv", stringsAsFactors=F )
+
+d5 <- 
+  d4 %>%
+  group_by( FIPS, YEAR ) %>%
+  count( ) %>%
+  arrange( FIPS )
+
+d6 <- merge( d5, d3, by.x=c("FIPS","YEAR"), by.y=c("fips","year"), all.x=TRUE )
+
+d7 <- mutate( d6, np.density = n / (population/10000) )
+
+plot( log(d7$population), log(d7$n) )
+plot( log(d7$population), d7$np.density )
+
+
+d5 <- 
+  d4 %>%
+  group_by( MSA, YEAR ) %>%
+  count( ) %>%
+  arrange( MSA )
+
+d8 <- 
+  d3 %>%
+  group_by( MSA, year ) %>%
+  summarize( POP=sum(population, na.rm=T) )
+
+
+d6 <- merge( d5, d8, by.x=c("MSA","YEAR"), by.y=c("MSA","year"), all.x=TRUE )
+
+d7 <- mutate( d6, np.density = n / (POP/10000) )
+
+summary( d7$np.density )
+
+plot( log(d7$POP), log(d7$n) )
+plot( log(d7$POP), d7$np.density )
 ```
 
