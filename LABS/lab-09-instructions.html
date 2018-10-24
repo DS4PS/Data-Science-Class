@@ -1853,10 +1853,12 @@ $(document).ready(function () {
 </tr>
 </tbody>
 </table>
+<p><br><br></p>
 </div>
 <div id="lab-instructions" class="section level1">
 <h1>Lab Instructions</h1>
 <p>Parts 1-4 are designed to give you practice acquiring data from an external site and reading it into R. Part 5 asks you to analyze the data to pick out some patterns.</p>
+<p><br><br></p>
 <p><strong>PART 1:</strong></p>
 <ol style="list-style-type: decimal">
 <li>Download the dataset called “Crash Data” as a CSV file and save it to your computer.</li>
@@ -1873,6 +1875,7 @@ $(document).ready(function () {
 <p><code>C:/Users/username/Downloads</code></p>
 <p>In R Studio you can set your working directory under Session –&gt; Set Working Directory –&gt; Choose Directory or using the shortcut Ctrl+Shift+H. Then get the correct R path by typing:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">getwd</span>()</a></code></pre></div>
+<p><br><br></p>
 <p><strong>PART 2:</strong></p>
 <p>In the first step you are using what is called an “absolute path” reference. It is absolute because it gives the exact location (path) of the file on a specific machine.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw">setwd</span>( <span class="st">&quot;C:/Users/JaneDoe/Downloads&quot;</span> )</a></code></pre></div>
@@ -1898,13 +1901,16 @@ $(document).ready(function () {
   |   ├──filename.csv</code></pre>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1">dat &lt;-<span class="st"> </span><span class="kw">read.csv</span>( <span class="st">&quot;../data/filename.csv&quot;</span> )</a></code></pre></div>
 <p>Create a folder called “data” in your lab folder, and repeat PART 1 above WITHOUT the <strong>setwd()</strong> command by using a relative path. Read in the data file and print out variables using <strong>str()</strong>.</p>
+<p><br><br></p>
 <p><strong>PART 3:</strong></p>
 <p>Note that the open data site provides a URL for the dataset. If you want your code to be as general as possible, you can load the data directly from the web link instead of from a local file, and use <strong>str()</strong> to print out variable names.</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1">URL &lt;-<span class="st"> &quot;dataset_web_address_here&quot;</span></a>
 <a class="sourceLine" id="cb11-2" data-line-number="2">dat &lt;-<span class="st"> </span><span class="kw">read.csv</span>( URL )</a>
 <a class="sourceLine" id="cb11-3" data-line-number="3"><span class="kw">str</span>( dat )</a></code></pre></div>
+<p><br><br></p>
 <p><strong>PART 4:</strong></p>
 <p>Note the variable classes in the previous steps. By default R tries to guess which variables are factors, and it doesn’t often do a good job. Load the data again, but this time add the argument stringsAsFactors=FALSE to the <strong>read.csv()</strong> function, and re-print dataset names and classes using <strong>str()</strong>. What has changed?</p>
+<p><br><br></p>
 <p><strong>PART 5:</strong></p>
 <p>You are an analyst employed by the City of Tempe. The Mayor’s office sends a request for some information about the causes of injuries and fatalities in traffic accidents in the city. Use the Crash data and dplyr functions to answer the following questions:</p>
 <ol style="list-style-type: decimal">
@@ -1912,11 +1918,12 @@ $(document).ready(function () {
 <li>Historically, what proportion of car accidents in Tempe result in injuries or fatalities?</li>
 <li>What sort of accident (“Collisionmanner”) is most likely to result in an injury or fatality?</li>
 <li>Of all of the accidents that result in injuries or fatalities, how often are alcohol and drugs involved?</li>
-<li>Do young drivers (under the age of 26) or elderly drivers (over the age of 64) cause more accidents? Assume the first drive caused the accident.<br />
+<li>Do young drivers (25 or younger) or elderly drivers (65 or older) cause more accidents? Assume the first driver in the dataset caused the accident.<br />
 </li>
 <li>Are rates of injury or fatality different for those two groups? In other words, what proportion of accidents caused by each group result in injuries or fatalities?</li>
-<li>What are the three most common types of accidents caused by each group?</li>
+<li>What are the three most common types of accidents (“Collisionmanner”) caused by each group?</li>
 </ol>
+<p><br><br></p>
 </div>
 <div id="submission-instructions" class="section level1">
 <h1>Submission Instructions</h1>
@@ -1929,6 +1936,7 @@ $(document).ready(function () {
 <li>do not print excessive output (like a full data set).</li>
 <li>follow appropriate style guidelines (spaces between arguments, etc.).</li>
 </ul>
+<p><br><br></p>
 </div>
 
 
