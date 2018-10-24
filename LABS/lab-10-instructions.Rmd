@@ -208,7 +208,7 @@ head( pop )
 
 # Lab Instructions
 
-In this lab you will look at nonprofit density by community. Your analysis will mirror the analysis of "All Subsectors" in this table (samples differ slightly so see below for exact so:
+In this lab you will look at nonprofit density by county. Your analysis will mirror the analysis of "All Subsectors" in this table (samples differ slightly so see below for exact solutions):
 
 ```{r, fig.cap="", echo=F, out.width='80%', fig.align='center' }
 knitr::include_graphics( "figures/np_density_table.png" )
@@ -219,27 +219,27 @@ knitr::include_graphics( "figures/np_density_table.png" )
 
 **PART 1:** 
 
-1) Combine the 2000 and 2010 nonprofit data using the row binding rbind() function. 
+1) **Combine the 2000 and 2010 nonprofit data using the row binding rbind() function.** 
 
 ```{r, eval=F}
 np.dat <- rbind( np.dat.2000, np.dat.2010 )
 ```
 
-2) Count the nonprofits in each county for each year. Use "FIPS" for the county code and "YEAR" for the tax year.
+2) **Count the nonprofits in each county for each year. Use "FIPS" for the county code and "YEAR" for the tax year.**
 
 *Note, FIPS stands for "Federal Information Processing Standard", a set of codes published by the US government that provide standard unique identifier ID numbers for states, countries, Census tracts and other geographies. This allows everyone to build databases that have the same ID codes so that data can be more easily combined. It would be near impossible if each entity collecting data at a specific unit of observation like a state or county created their own ID system.*
 
-3) Add county population to this dataset by merging the Census data with the nonprofit data.
+3) **Add county population to this dataset by merging the Census data with the nonprofit data.**
 
 Which join should you use? Outer, inner, left, or right? 
 
 Note that the variables are spelled differently in your two datasets: 'FIPS' and 'YEAR' vs 'fips' and 'year'. You need to either change the spelling by renaming variables, or use the "by.x=" and "by.y=" arguments in the merge.  
 
-4) Calculate the nonprofit density per county using the following formula:
+4) **Calculate the nonprofit density per county using the following formula:**
 
 $$Density = \frac{Number Of Nonprofits}{Population/100,000}$$
 
-5) Report the summary statistics for the 2000 density measures. They should match these:
+5) **Report the summary statistics for the 2000 density measures. They should match these:**
 
 
 
@@ -270,7 +270,9 @@ summary( npo.count.2000$density ) %>% pander()
 
 **PART 2:** 
 
-Calculate the population growth rates between 2000 and 2010. One easy way to do this is to arrange the 2000 and 2010 populations side-by-side as separate columns. Try splitting your dataset into two sets by years, then merge them back together by FIPS codes. 
+**Calculate the population growth rates between 2000 and 2010.** 
+
+One easy way to do this is to arrange the 2000 and 2010 populations side-by-side as separate columns. Try splitting your dataset into two sets by years, then merge them back together by FIPS codes. 
 
 The growth rate is calculated as:
 
@@ -307,7 +309,7 @@ summary( pop.merged$growth.rate ) %>% pander()
 **PART 3 - OPTIONAL:**
 
 
-Calculate the 2000 nonprofit density rates and the population growth rates from above using the Metropolitan Statistical Area (the MSA - the Census definition of a large city), instead of counties.
+**Calculate the 2000 nonprofit density rates and the population growth rates from above using the Metropolitan Statistical Area (the MSA - the Census definition of a large city), instead of counties.**
 
 Note that nonprofits and population both need to be aggregated up to the MSA code prior to the merge. Use MSA and not MSA_NECH.
 

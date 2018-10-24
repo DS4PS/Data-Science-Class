@@ -43,7 +43,8 @@ d1$RULEDATE <- substr( d1$RULEDATE, 1, 4 )
 
 d1 <- rename( d1, REVENUE=TOTREV2, EXPENSES=EXPS, ASSETS=ASS_EOY )
 
-
+d1$FIPS <- substr( 1000000 + as.numeric(d1$FIPS), 3, 7 )
+d1$FIPS <- paste0( "F-", d1$FIPS )
 
 
 
@@ -77,6 +78,8 @@ d2$RULEDATE <- substr( d2$RULEDATE, 1, 4 )
 
 d2 <- rename( d2, REVENUE=TOTREV2, EXPENSES=EXPS, ASSETS=ASS_EOY )
 
+d2$FIPS <- substr( 1000000 + as.numeric(d2$FIPS), 3, 7 )
+d2$FIPS <- paste0( "F-", d2$FIPS )
 
 
 
@@ -85,7 +88,7 @@ d2 <- rename( d2, REVENUE=TOTREV2, EXPENSES=EXPS, ASSETS=ASS_EOY )
 
 d1$YEAR <- 2010
 d2$YEAR <- 2000
-d2$FIPS <- substr( 1000000 + as.numeric(d2$FIPS), 3, 7 )
+
 d2$LONGITUDE <- NA
 d2$LATITUDE <- NA
 
