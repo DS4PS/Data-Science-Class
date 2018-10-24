@@ -33,6 +33,8 @@ You can create a new RMarkdown file, or download the lab template:
 
 # Overview of Joins
 
+<br>
+
 ## Inner, Outer, Left and Right
 
 There are two things to remember when conducting joins. The first is that when you merge two datasets it is rare for them both to contain the exact same observations. As a result, you need to make decisions about which data to keep and which data to drop post-merge. There are four options:
@@ -76,7 +78,7 @@ knitr::include_graphics( "figures/right_join.png" )
 ```
 
  
-<br>
+<br><br>
 
 ## Compound IDs
 
@@ -121,6 +123,7 @@ merge( dat1, dat2, by="id" )         %>% pander()
 
 The solution is to ensure you are using the combination of keys that ensures each observation is correctly specified. 
 
+<br><br>
 
 ## Merge Keys
 
@@ -140,6 +143,8 @@ In instances where variable names differ, you can specify the names directly usi
 merge( dat1, dat2, by.x="fips", by.y="FIPS" ) 
 ```
 
+
+<br><br>
 
 ## In Summary
 
@@ -163,6 +168,9 @@ Specify an outer, inner, left, or right join:
 * all=FALSE creates an inner join
 * all.x=TRUE creates a left join
 * all.y=TRUE creates a right join
+
+
+
 
 <br><br>
 
@@ -196,6 +204,7 @@ head( pop )
 ```
 
 
+<br><br>
 
 # Lab Instructions
 
@@ -205,6 +214,8 @@ In this lab you will look at nonprofit density by community. Your analysis will 
 knitr::include_graphics( "figures/np_density_table.png" )
 ```
 
+
+<br><br>
 
 **PART 1:** 
 
@@ -255,7 +266,7 @@ summary( npo.count.2000$density ) %>% pander()
 ```
 
 
-
+<br><br>
 
 **PART 2:** 
 
@@ -290,6 +301,8 @@ head( pop.merged ) %>% pander()
 summary( pop.merged$growth.rate ) %>% pander()
 ```
 
+
+<br><br>
 
 **PART 3 - OPTIONAL:**
 
@@ -349,6 +362,9 @@ head( pop.merged ) %>% pander()
 
 summary( pop.merged$growth.rate ) %>% pander()
 ```
+
+
+<br><br>
 
 # Submission Instructions
 
