@@ -219,27 +219,27 @@ knitr::include_graphics( "figures/np_density_table.png" )
 
 **PART 1:** 
 
-1) **Combine the 2000 and 2010 nonprofit data using the row binding rbind() function.** 
+**1) Combine the 2000 and 2010 nonprofit data using the row binding rbind() function.** 
 
 ```{r, eval=F}
 np.dat <- rbind( np.dat.2000, np.dat.2010 )
 ```
 
-2) **Count the nonprofits in each county for each year. Use "FIPS" for the county code and "YEAR" for the tax year.**
+**2) Count the nonprofits in each county for each year. Use "FIPS" for the county code and "YEAR" for the tax year.**
 
 *Note, FIPS stands for "Federal Information Processing Standard", a set of codes published by the US government that provide standard unique identifier ID numbers for states, countries, Census tracts and other geographies. This allows everyone to build databases that have the same ID codes so that data can be more easily combined. It would be near impossible if each entity collecting data at a specific unit of observation like a state or county created their own ID system.*
 
-3) **Add county population to this dataset by merging the Census data with the nonprofit data.**
+**3) Add county population to this dataset by merging the Census data with the nonprofit data.**
 
 Which join should you use? Outer, inner, left, or right? 
 
 Note that the variables are spelled differently in your two datasets: 'FIPS' and 'YEAR' vs 'fips' and 'year'. You need to either change the spelling by renaming variables, or use the "by.x=" and "by.y=" arguments in the merge.  
 
-4) **Calculate the nonprofit density per county using the following formula:**
+**4) Calculate the nonprofit density per county using the following formula:**
 
 $$Density = \frac{Number Of Nonprofits}{Population/100,000}$$
 
-5) **Report the summary statistics for the 2000 density measures. They should match these:**
+**5) Report the summary statistics for the 2000 density measures. They should match these:**
 
 
 
