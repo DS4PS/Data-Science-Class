@@ -1,0 +1,311 @@
+---
+title: 'Lab 11 - Maps'
+output:
+  html_document:
+    theme: readable
+    df_print: paged
+    highlight: tango
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message=F, warning=F, fig.align='center', fig.width=9 )
+library( dplyr )
+library( pander )
+library( ggmap )
+library( leaflet )
+library( viridis )
+```
+
+#### [DS4PS](https://ds4ps.github.io/course_website/)
+
+<br>
+
+This lab demonstrates the use of base maps to provide context for geographic point data. We will utilize map tiles from the **ggmap** package and an interactive HTML map using the **leaflet** package.
+
+```{r, eval=F}
+library( dplyr )
+library( pander )
+library( ggmap )
+library( leaflet )
+```
+
+You can create a new RMarkdown file, or download the lab template: 
+
+[RMD Template](https://cdn.rawgit.com/DS4PS/Data-Science-Class/c464d527/TEMPLATES/MarkdownTemplateSimple.Rmd)
+
+
+
+
+
+
+<br><br>
+
+# Data
+
+
+```{r}
+URL <- "https://github.com/DS4PS/Data-Science-Class/blob/master/DATA/TempeTrafficAccidents.rds?raw=true"
+dat <- readRDS(gzcon(url( URL )))
+head( dat )
+
+barplot( table( dat$Totalinjuries ), main="Total Injuries Per Accident" )
+barplot( table( dat$Totalfatalities ), main="Total Fatalities Per Accident" )
+```
+
+
+
+For this lab we will focus on accidents that result in injuries or fatalities:
+
+```{r}
+d2 <- 
+  dat %>% 
+  filter( Totalinjuries > 0 | Totalfatalities > 0 ) %>%
+  mutate( tot.injuries.fatalities = Totalinjuries + Totalfatalities )
+```
+
+
+
+<br><br>
+
+# Maps in R
+
+This lab will introduce you to two mapping functions that allow you to add base tiles underneath your plotting points to provide context for the data.
+
+For these examples we will use the count of injuries and fatalities to scale point sizes on the graphics:
+
+```{r}
+point.size <- d2$tot.injuries.fatalities
+```
+
+The main thing to pay attention to across the various mapping programs is that they all have similar aesthetic capabilities, but the arguments will be slightly different in each package:
+
+
+ARGUMENT: | plot() | qmplot() | leaflet()
+--------- | ------ | -------- | --------------
+COLOR | col="red" | color=I("red") | fillColor="red"
+POINT SIZE | cex=point.size | size=I(point.size) | radius=20*point.size
+TRANSPARENCY | col=alpha("red",alpha=0.5) | alpha=I(0.1) | fillOpacity=0.5
+
+
+Let's start by plotting the accidents in the dataset using the Longitude and Latitude coordinates:
+
+
+```{r, fig.width=4, fig.height=8}
+# {r, fig.width=4, fig.height=8}
+par( mar=c(0,0,4,0) )
+
+plot( d2$Longitude, d2$Latitude, pch=19, 
+      cex=0.25*d2$tot.injuries.fatalities, 
+      col=alpha( "firebrick", alpha=0.5),
+      main="Traffic Accidents in Tempe, AZ",
+      xlab="", ylab="",
+      bty="n", axes=F )
+
+title( main="(plot size relative to injuries and fatalities)", 
+       line=0.5, cex.main=0.7 )
+```
+
+
+We see nice patterns emerge and the outlines of streets, but this data is hard to interpret without a little context. We can easily add context by including an underlying map tile to show streets and landmarks behind the data. The qmplot() function makes this very easy:
+
+
+```{r}
+qmplot( Longitude, Latitude, data=d2, maptype="toner-lite", zoom=14, 
+        size=I(point.size), color=I("firebrick"), alpha = I(0.1) )
+```
+
+
+
+
+
+```{r, fig.pos='beside', fig.width=4}
+
+par( mar=c(0,0,3,0) )
+
+plot( d2$Longitude, d2$Latitude, pch=19, 
+      cex=0.25*d2$tot.injuries.fatalities, 
+      col=alpha( "firebrick", alpha=0.5),
+      main="Traffic Accidents in Tempe, AZ",
+      xlab="", ylab="",
+      bty="n", axes=F,
+      xlim=c( -111.9515, -111.9051), ylim=c(33.38434, 33.44176) )
+
+
+qmplot( Longitude, Latitude, data=d2, maptype="toner-lite", zoom=14, 
+        size=I(point.size), color=I("firebrick"), alpha = I(0.1), 
+        xlim=c( -111.9515, -111.9051), ylim=c(33.38434, 33.44176) )
+
+```
+
+
+The qmplot() functions includes some nice features for summarizing dense point data to help find patterns. We will specifically look at the **heat map** features and the facet_wrap() option.
+
+Adding the arguments *geom="density2d"* will transform the data from points on a map to a contour plot that represents density of points. It can be a helpful function for summarizing dense data.
+
+```{r}
+qmplot( Longitude, Latitude, data=d2, maptype="toner-lite", zoom=13, 
+        geom="density2d", color=I("firebrick") ) 
+```
+
+There are lots of ways to customize the data using **ggmap**:
+
+```{r}
+qmplot( Longitude, Latitude, data=d2, geom = "blank", 
+  zoom = 13, maptype = "toner-background", darken = .7, legend = "bottomright" ) +
+  stat_density_2d( aes(fill = ..level..), geom = "polygon", alpha=0.3 , color = NA) +
+  scale_fill_gradient2(  low = "white", mid = "yellow", high = "red", midpoint = 200 )
+```
+
+
+```{r}
+# library( viridis )  # color palletes for color-blind viewers
+qmplot( Longitude, Latitude, data=d2, geom="blank", 
+  zoom = 13, maptype = "toner-background", darken = .3, legend = "bottomright" ) +
+  stat_density_2d( aes(fill = ..level..), geom = "polygon", alpha=0.4, color = NA ) +
+  scale_fill_viridis() 
+```
+
+
+The facet_wrap() option allows us to quickly create multiple plots with subsets of the data using a categorical variable in the dataset:
+
+```{r, fig.width=8}
+qmplot( Longitude, Latitude, data=dat, geom = "blank", 
+  zoom = 13, maptype = "toner-background", darken = .7 ) +
+  stat_density_2d( aes(fill = ..level..), geom = "polygon", alpha=0.3, color = NA) +
+  scale_fill_gradient2( low="white", mid="yellow", high="red", midpoint=100 ) + 
+  facet_wrap( ~ Unittype_One )
+```
+
+
+```{r}
+d2$age.group <- cut( d2$Age_Drv1, breaks=c(0,25,45,65,150) )
+
+qmplot( Longitude, Latitude, data=d2, maptype="toner-lite", zoom=13, geom="blank" ) +
+        geom_point( color="steelblue", size=0.7*point.size, alpha=0.2 ) +
+        geom_density2d( color=I("firebrick") ) +
+        facet_wrap( ~ age.group )
+```
+
+
+```{r}
+table( d2$Collisionmanner ) %>% pander()
+
+d2$Collisionmanner <- recode( d2$Collisionmanner, 'ANGLE (Front To Side)(Other Than Left Turn)'="Angle" )
+
+# filter out cases with less than 300 occurances
+d3 <- 
+  d2 %>% 
+  group_by( Collisionmanner ) %>%
+  filter(n() > 300 ) %>%
+  ungroup()
+
+
+qmplot( Longitude, Latitude, data=d3, geom = "blank", 
+  zoom = 13, maptype = "toner-background", darken = .1, legend=F ) +
+  stat_density_2d( aes(fill = ..level..), geom = "polygon", alpha=0.3, color = NA) +
+  scale_fill_viridis() + 
+  facet_wrap( ~ Collisionmanner )
+```
+
+
+
+
+## Leaflet Maps
+
+The leaflet map operates a little differently. It is a dynamic map, so the user can zoom in or scroll to various positions on the map so you do not have to set a specific zoom level beforehand. 
+
+
+```{r}
+tempe <- leaflet( ) %>% 
+            addProviderTiles( "CartoDB.Positron" )  %>%
+            setView( lng=-111.9278, lat=33.39951, zoom=13 )
+
+addCircles( tempe, lng=d2$Longitude, lat=d2$Latitude,
+            fillColor="firebrick", fillOpacity=0.5, stroke=F, radius=20*point.size )
+```
+
+
+
+# Lab Instructions
+
+In this lab you will look for patterns in the data, and highlight those patterns either by creating side-by-side maps to compare data subsets, or else by color-coding specific cases and providing details of the crash as a pop-up window.
+
+
+
+
+<br><br>
+
+**PART 1: qmplot()** 
+
+**1) Compare two-car accidents to those involving pedestrians or bikers.** 
+
+Write a logical statement where TRUE specifies any accident that involves a pedestrian or cyclist. 
+
+Note that the variables "Unittype_One" and "Unittype_Two" report whether a pedestrian or cyclist was involved. 
+
+Use this new logical vector as the categorical variable in the facet_wrap() function to compare the location patterns of accidents involving cars to those involving pedestrians or cyclists.
+
+Include your maps and report whether location patterns differ. 
+
+
+**2) Compare accidents involving drugs and alcohol to those that don't.** 
+
+Similar to above, define a logical vector where TRUE represents an accident where either driver was under the influence of drugs or alcohol. Use facet_wrap() to compare the location of sober accidents to those where at least one driver was impaired.
+
+Include your maps and report whether location patterns differ. 
+
+
+<br><br>
+
+**PART 2: leaflet()** 
+
+This example demonstrates how to highlight accidents where fatalities occurred:
+
+```{r}
+
+# scale points by severity of code violations
+d2$fatal <- d2$Totalfatalities > 0
+col.vec <- ifelse( d2$fatal, "orange", "black" )
+opac <- ifelse( d2$fatal, 1, 0.2 )
+  
+# add details of crash as a popup:
+details <- paste0( "Time: ", d2$DateTime, "<br>",
+                   "Collision Manner: ", d2$Collisionmanner, "<br>",
+                   "Violation Issued: ", d2$Violation1_Drv1 )
+
+tempe <- leaflet( ) %>% 
+            addProviderTiles( "CartoDB.Positron" )  %>%
+            setView( lng=-111.9278, lat=33.39951, zoom=14 )
+
+addCircles( tempe, lng=d2$Longitude, lat=d2$Latitude,
+            fillColor=col.vec, fillOpacity=opac, 
+            stroke=F, radius=20*point.size,
+            popup=details )
+```
+
+
+<br>
+
+**1) Compare two-car accidents to those involving pedestrians or bikers.** 
+
+Similar to the leaflet example above, using a logical statement to identify all accidents involving pedastrians and cyclists. Highlight those cases with a bright color, and use some shade of gray for other accidents.
+
+<br>
+
+**2) Compare accidents involving drugs and alcohol to those that don't.** 
+
+Highlight cases that involve drugs and alcohol. Include the age of both drivers in the pop-up.
+
+
+<br><br>
+
+# Submission Instructions
+
+After you have completed your lab, knit your RMD file. Login to Canvas at <http://canvas.asu.edu> and navigate to the assignments tab in the course repository. Upload your RMD and your HTML files to the appropriate lab submission link.
+
+Remember to:
+
+* name your files according to the convention: **Lab-##-LastName.Rmd**
+* show your solution, include your code.
+* do not print excessive output (like a full data set).
+* follow appropriate style guidelines (spaces between arguments, etc.).
