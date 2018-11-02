@@ -168,12 +168,12 @@ qmplot( Longitude, Latitude, data=d2, geom="blank",
 
 The facet_wrap() option allows us to quickly create multiple plots with subsets of the data using a categorical variable in the dataset:
 
-```{r, fig.width=8}
+```{r, fig.width=10}
 qmplot( Longitude, Latitude, data=dat, geom = "blank", 
   zoom = 13, maptype = "toner-background", darken = .7 ) +
   stat_density_2d( aes(fill = ..level..), geom = "polygon", alpha=0.3, color = NA) +
   scale_fill_gradient2( low="white", mid="yellow", high="red", midpoint=100 ) + 
-  facet_wrap( ~ Unittype_One )
+  facet_wrap( ~ Unittype_One, nrow=1, ncol=4 )
 ```
 
 
@@ -288,7 +288,7 @@ addCircles( tempe, lng=d2$Longitude, lat=d2$Latitude,
 
 **1) Compare two-car accidents to those involving pedestrians or bikers.** 
 
-Similar to the leaflet example above, using a logical statement to identify all accidents involving pedastrians and cyclists. Highlight those cases with a bright color, and use some shade of gray for other accidents.
+Similar to the leaflet example above, use a logical statement to identify all accidents involving pedastrians and cyclists. Highlight those cases involving pedestrians or cyclists with a bright color, and use some shade of gray for other accidents.
 
 <br>
 
