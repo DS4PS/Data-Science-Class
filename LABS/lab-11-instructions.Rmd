@@ -112,7 +112,9 @@ qmplot( Longitude, Latitude, data=d2, maptype="toner-lite", zoom=14,
 
 
 
+### Bounding Box
 
+When using a static map we can focus on a specific part of the data using the **xlim=** and **ylim=** arguments.
 
 ```{r, fig.pos='beside', fig.width=4}
 
@@ -124,15 +126,17 @@ plot( d2$Longitude, d2$Latitude, pch=19,
       main="Traffic Accidents in Tempe, AZ",
       xlab="", ylab="",
       bty="n", axes=F,
-      xlim=c( -111.9515, -111.9051), ylim=c(33.38434, 33.44176) )
+      xlim=c( -111.9341, -111.9060), ylim=c(33.40904, 33.44192) )
 
 
 qmplot( Longitude, Latitude, data=d2, maptype="toner-lite", zoom=14, 
-        size=I(point.size), color=I("firebrick"), alpha = I(0.1), 
-        xlim=c( -111.9515, -111.9051), ylim=c(33.38434, 33.44176) )
+        size=I(1.5*point.size), color=I("firebrick"), alpha = I(0.2), 
+        xlim=c( -111.9341, -111.9060), ylim=c(33.40904, 33.44192) )
 
 ```
 
+
+### Heat Maps
 
 The qmplot() functions includes some nice features for summarizing dense point data to help find patterns. We will specifically look at the **heat map** features and the facet_wrap() option.
 
@@ -162,7 +166,9 @@ qmplot( Longitude, Latitude, data=d2, geom="blank",
 ```
 
 
-The facet_wrap() option allows us to quickly create multiple plots with subsets of the data using a categorical variable in the dataset:
+### Facet Wraps
+
+The **facet_wrap()** option allows us to quickly create multiple plots with subsets of the data using a categorical variable in the dataset:
 
 ```{r, fig.width=10}
 qmplot( Longitude, Latitude, data=dat, geom = "blank", 
@@ -184,7 +190,7 @@ qmplot( Longitude, Latitude, data=d2, maptype="toner-lite", zoom=13, geom="blank
 
 
 ```{r, fig.width=10, fig.height=14}
-table( d2$Collisionmanner ) %>% pander()
+d2 %>% count( Collisionmanner ) %>% arrange( -n ) %>% pander()
 
 d2$Collisionmanner <- recode( d2$Collisionmanner, 'ANGLE (Front To Side)(Other Than Left Turn)'="Angle" )
 
@@ -269,9 +275,9 @@ col.vec <- ifelse( d2$fatal, "orange", "black" )
 opac <- ifelse( d2$fatal, 1, 0.2 )
   
 # add details of crash as a popup:
-details <- paste0( "Time: ", d2$DateTime, "<br>",
-                   "Collision Manner: ", d2$Collisionmanner, "<br>",
-                   "Violation Issued: ", d2$Violation1_Drv1 )
+crash.details <- paste0( "<b>Time: </b>", d2$DateTime, "<br>",
+                   "<b>Collision Manner: </b>", d2$Collisionmanner, "<br>",
+                   "<b>Violation Issued: </b>", d2$Violation1_Drv1 )
 
 tempe <- leaflet( ) %>% 
             addProviderTiles( "CartoDB.Positron" )  %>%
@@ -280,7 +286,7 @@ tempe <- leaflet( ) %>%
 addCircles( tempe, lng=d2$Longitude, lat=d2$Latitude,
             fillColor=col.vec, fillOpacity=opac, 
             stroke=F, radius=20*point.size,
-            popup=details )
+            popup=crash.details )
 ```
 
 
