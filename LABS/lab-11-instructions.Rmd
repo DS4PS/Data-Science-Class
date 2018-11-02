@@ -172,7 +172,7 @@ The facet_wrap() option allows us to quickly create multiple plots with subsets 
 qmplot( Longitude, Latitude, data=dat, geom = "blank", 
   zoom = 13, maptype = "toner-background", darken = .7 ) +
   stat_density_2d( aes(fill = ..level..), geom = "polygon", alpha=0.3, color = NA) +
-  scale_fill_gradient2( low="white", mid="yellow", high="red", midpoint=100 ) + 
+  scale_fill_gradient2( low="white", mid="yellow", high="red",  midpoint=200 ) + 
   facet_wrap( ~ Unittype_One, nrow=1, ncol=4 )
 ```
 
