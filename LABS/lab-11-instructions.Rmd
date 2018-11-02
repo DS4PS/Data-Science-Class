@@ -230,6 +230,8 @@ addCircles( tempe, lng=d2$Longitude, lat=d2$Latitude,
 
 In this lab you will look for patterns in the data, and highlight those patterns either by creating side-by-side maps to compare data subsets, or else by color-coding specific cases and providing details of the crash as a pop-up window.
 
+All of the solutions will involve re-using code from the map examples above.
+
 
 
 
@@ -247,6 +249,7 @@ Use this new logical vector as the categorical variable in the facet_wrap() func
 
 Include your maps and report whether location patterns differ. 
 
+<br>
 
 **2) Compare accidents involving drugs and alcohol to those that don't.** 
 
@@ -259,7 +262,8 @@ Include your maps and report whether location patterns differ.
 
 **PART 2: leaflet()** 
 
-This example demonstrates how to highlight accidents where fatalities occurred:
+This example demonstrates how to highlight accidents where fatalities occurred. *Can you find the deadliest intersection in Tempe on this map?*
+
 
 ```{r}
 
@@ -282,6 +286,8 @@ addCircles( tempe, lng=d2$Longitude, lat=d2$Latitude,
             stroke=F, radius=20*point.size,
             popup=details )
 ```
+
+
 
 
 <br>
