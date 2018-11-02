@@ -9,11 +9,6 @@ output:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, message=F, warning=F, fig.align='center', fig.width=9 )
-library( dplyr )
-library( pander )
-library( ggmap )
-library( leaflet )
-library( viridis )
 ```
 
 #### [DS4PS](https://ds4ps.github.io/course_website/)
@@ -22,11 +17,12 @@ library( viridis )
 
 This lab demonstrates the use of base maps to provide context for geographic point data. We will utilize map tiles from the **ggmap** package and an interactive HTML map using the **leaflet** package.
 
-```{r, eval=F}
+```{r, eval=T}
 library( dplyr )
 library( pander )
 library( ggmap )
 library( leaflet )
+library( viridis )
 ```
 
 You can create a new RMarkdown file, or download the lab template: 
@@ -177,17 +173,17 @@ qmplot( Longitude, Latitude, data=dat, geom = "blank",
 ```
 
 
-```{r}
+```{r, fig.width=10, fig.height=14}
 d2$age.group <- cut( d2$Age_Drv1, breaks=c(0,25,45,65,150) )
 
 qmplot( Longitude, Latitude, data=d2, maptype="toner-lite", zoom=13, geom="blank" ) +
-        geom_point( color="steelblue", size=0.7*point.size, alpha=0.2 ) +
+        geom_point( color="steelblue", size=1.2*point.size, alpha=0.15 ) +
         geom_density2d( color=I("firebrick") ) +
         facet_wrap( ~ age.group )
 ```
 
 
-```{r}
+```{r, fig.width=10, fig.height=14}
 table( d2$Collisionmanner ) %>% pander()
 
 d2$Collisionmanner <- recode( d2$Collisionmanner, 'ANGLE (Front To Side)(Other Than Left Turn)'="Angle" )
