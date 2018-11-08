@@ -1849,11 +1849,6 @@ $(document).ready(function () {
 </tr>
 </tbody>
 </table>
-</div>
-<div id="packages" class="section level1">
-<h1>Packages</h1>
-<p><br><br></p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">library</span>( dplyr )</a></code></pre></div>
 <p><br><br></p>
 </div>
 <div id="layout" class="section level1">
@@ -1869,6 +1864,8 @@ output:
     smart: false
 runtime: shiny
 ---</code></pre>
+<p>Include the appropriate packages in your app.</p>
+<p><br><br></p>
 </div>
 <div id="part-1" class="section level1">
 <h1>Part 1</h1>
@@ -1883,6 +1880,7 @@ runtime: shiny
 </ul>
 <p>Place the widgets on a separate sidebar on the left-hand side.</p>
 <p>Using these input widgets, the user should be able to define a query that selects a specific time-period (weekends, afternoon rush-hour, etc.) and the map should display the correct data.</p>
+<p><br><br></p>
 </div>
 <div id="part-2" class="section level1">
 <h1>Part 2</h1>
@@ -1929,34 +1927,34 @@ runtime: shiny
 <h1>Part 3</h1>
 <p>Include a data table with the raw data that allows the users to filter and download the data they are interested in.</p>
 <p>Here is a suggested format:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="co"># library( DT )</span></a>
-<a class="sourceLine" id="cb3-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb3-3" data-line-number="3">these.buttons &lt;-<span class="st"> </span><span class="kw">c</span>( <span class="st">'copy'</span>, <span class="st">'csv'</span>, <span class="st">'excel'</span>, <span class="st">'pdf'</span>, <span class="st">'print'</span> )</a>
-<a class="sourceLine" id="cb3-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="kw">datatable</span>( dat,</a>
-<a class="sourceLine" id="cb3-6" data-line-number="6">           <span class="dt">filter=</span><span class="st">'bottom'</span>, <span class="dt">rownames=</span><span class="ot">FALSE</span>, </a>
-<a class="sourceLine" id="cb3-7" data-line-number="7">           <span class="co">#options=list( pageLength=5, autoWidth=TRUE ),</span></a>
-<a class="sourceLine" id="cb3-8" data-line-number="8">           <span class="dt">fillContainer=</span><span class="ot">TRUE</span>, </a>
-<a class="sourceLine" id="cb3-9" data-line-number="9">           <span class="dt">style=</span><span class="st">&quot;bootstrap&quot;</span>,</a>
-<a class="sourceLine" id="cb3-10" data-line-number="10">           <span class="dt">class=</span><span class="st">'table-condensed table-striped'</span>,</a>
-<a class="sourceLine" id="cb3-11" data-line-number="11">           <span class="dt">extensions =</span> <span class="st">'Buttons'</span>, </a>
-<a class="sourceLine" id="cb3-12" data-line-number="12">           <span class="dt">options=</span><span class="kw">list</span>( <span class="dt">dom=</span><span class="st">'Bfrtip'</span>, </a>
-<a class="sourceLine" id="cb3-13" data-line-number="13">                         <span class="dt">buttons=</span>these.buttons  )) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb3-14" data-line-number="14"><span class="st">  </span></a>
-<a class="sourceLine" id="cb3-15" data-line-number="15"><span class="st">  </span><span class="kw">formatStyle</span>( <span class="st">&quot;name&quot;</span>, <span class="st">&quot;white-space&quot;</span>=<span class="st">&quot;nowrap&quot;</span> )</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co"># library( DT )</span></a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb2-3" data-line-number="3">these.buttons &lt;-<span class="st"> </span><span class="kw">c</span>( <span class="st">'copy'</span>, <span class="st">'csv'</span>, <span class="st">'excel'</span>, <span class="st">'pdf'</span>, <span class="st">'print'</span> )</a>
+<a class="sourceLine" id="cb2-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="kw">datatable</span>( dat,</a>
+<a class="sourceLine" id="cb2-6" data-line-number="6">           <span class="dt">filter=</span><span class="st">'bottom'</span>, <span class="dt">rownames=</span><span class="ot">FALSE</span>, </a>
+<a class="sourceLine" id="cb2-7" data-line-number="7">           <span class="co">#options=list( pageLength=5, autoWidth=TRUE ),</span></a>
+<a class="sourceLine" id="cb2-8" data-line-number="8">           <span class="dt">fillContainer=</span><span class="ot">TRUE</span>, </a>
+<a class="sourceLine" id="cb2-9" data-line-number="9">           <span class="dt">style=</span><span class="st">&quot;bootstrap&quot;</span>,</a>
+<a class="sourceLine" id="cb2-10" data-line-number="10">           <span class="dt">class=</span><span class="st">'table-condensed table-striped'</span>,</a>
+<a class="sourceLine" id="cb2-11" data-line-number="11">           <span class="dt">extensions =</span> <span class="st">'Buttons'</span>, </a>
+<a class="sourceLine" id="cb2-12" data-line-number="12">           <span class="dt">options=</span><span class="kw">list</span>( <span class="dt">dom=</span><span class="st">'Bfrtip'</span>, </a>
+<a class="sourceLine" id="cb2-13" data-line-number="13">                         <span class="dt">buttons=</span>these.buttons  )) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-14" data-line-number="14"><span class="st">  </span></a>
+<a class="sourceLine" id="cb2-15" data-line-number="15"><span class="st">  </span><span class="kw">formatStyle</span>( <span class="st">&quot;name&quot;</span>, <span class="st">&quot;white-space&quot;</span>=<span class="st">&quot;nowrap&quot;</span> )</a></code></pre></div>
 <p><br><br></p>
 </div>
 <div id="part-4" class="section level1">
 <h1>Part 4</h1>
 <p>Include a description of the project including references for the data source, your team contact info, and the intended use of the dashboard.</p>
 <p>Include the data dictionary in this tab. The city of Tempe provides this file on the data download page. To add it to your RMD file in a nice format, just convert the CSV file into a markdown table or HTML table:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="co"># pseudo-code only</span></a>
-<a class="sourceLine" id="cb4-2" data-line-number="2">data.dictionary &lt;-<span class="st"> </span><span class="kw">read.csv</span>()</a>
-<a class="sourceLine" id="cb4-3" data-line-number="3">dd.simple &lt;-</a>
-<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="st">  </span>data.dictionary <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="st">  </span><span class="kw">select</span>( variableNames, variableDescriptions )</a>
-<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="kw">kable</span>( dd.simple )  <span class="co"># markdown table, from knitr package</span></a>
-<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="kw">pander</span>( dd.simple ) <span class="co"># html table, from pander package</span></a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="co"># pseudo-code only</span></a>
+<a class="sourceLine" id="cb3-2" data-line-number="2">data.dictionary &lt;-<span class="st"> </span><span class="kw">read.csv</span>()</a>
+<a class="sourceLine" id="cb3-3" data-line-number="3">dd.simple &lt;-</a>
+<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="st">  </span>data.dictionary <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="st">  </span><span class="kw">select</span>( variableNames, variableDescriptions )</a>
+<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="kw">kable</span>( dd.simple )  <span class="co"># markdown table, from knitr package</span></a>
+<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="kw">pander</span>( dd.simple ) <span class="co"># html table, from pander package</span></a></code></pre></div>
 <p><br><br></p>
 </div>
 <div id="shiny-advice" class="section level1">
@@ -1968,45 +1966,45 @@ runtime: shiny
 <li>Re-analyzing your data</li>
 </ul>
 <p>I suggest that you develop each analytical step outside of the dashboard, then add the code in the appropriate dashboard buckets. Start with static versions of your parameters.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="co"># parameters</span></a>
-<a class="sourceLine" id="cb5-2" data-line-number="2">days.of.week &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Sat&quot;</span>,<span class="st">&quot;Sun&quot;</span>)</a>
-<a class="sourceLine" id="cb5-3" data-line-number="3">start.time &lt;-<span class="st"> </span><span class="dv">3</span></a>
-<a class="sourceLine" id="cb5-4" data-line-number="4">end.time &lt;-<span class="st"> </span><span class="dv">6</span></a>
-<a class="sourceLine" id="cb5-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="co"># filter data</span></a>
-<a class="sourceLine" id="cb5-7" data-line-number="7">d2 &lt;-</a>
-<a class="sourceLine" id="cb5-8" data-line-number="8"><span class="st">  </span>dat <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb5-9" data-line-number="9"><span class="st">  </span><span class="kw">filter</span>( day <span class="op">%in%</span><span class="st"> </span>days.of.week, hour <span class="op">&gt;=</span><span class="st"> </span>start.time <span class="op">&amp;</span><span class="st"> </span>hour <span class="op">&lt;=</span><span class="st"> </span>end.time )</a>
-<a class="sourceLine" id="cb5-10" data-line-number="10"></a>
-<a class="sourceLine" id="cb5-11" data-line-number="11"><span class="co"># analyze data</span></a>
-<a class="sourceLine" id="cb5-12" data-line-number="12">d2 <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb5-13" data-line-number="13"><span class="st">  </span><span class="kw">count</span>( Collisionmanner ) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb5-14" data-line-number="14"><span class="st">  </span><span class="kw">arrange</span>( <span class="op">-</span>n ) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb5-15" data-line-number="15"><span class="st">  </span><span class="kw">pander</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="co"># parameters</span></a>
+<a class="sourceLine" id="cb4-2" data-line-number="2">days.of.week &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Sat&quot;</span>,<span class="st">&quot;Sun&quot;</span>)</a>
+<a class="sourceLine" id="cb4-3" data-line-number="3">start.time &lt;-<span class="st"> </span><span class="dv">3</span></a>
+<a class="sourceLine" id="cb4-4" data-line-number="4">end.time &lt;-<span class="st"> </span><span class="dv">6</span></a>
+<a class="sourceLine" id="cb4-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="co"># filter data</span></a>
+<a class="sourceLine" id="cb4-7" data-line-number="7">d2 &lt;-</a>
+<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="st">  </span>dat <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb4-9" data-line-number="9"><span class="st">  </span><span class="kw">filter</span>( day <span class="op">%in%</span><span class="st"> </span>days.of.week, hour <span class="op">&gt;=</span><span class="st"> </span>start.time <span class="op">&amp;</span><span class="st"> </span>hour <span class="op">&lt;=</span><span class="st"> </span>end.time )</a>
+<a class="sourceLine" id="cb4-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb4-11" data-line-number="11"><span class="co"># analyze data</span></a>
+<a class="sourceLine" id="cb4-12" data-line-number="12">d2 <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb4-13" data-line-number="13"><span class="st">  </span><span class="kw">count</span>( Collisionmanner ) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb4-14" data-line-number="14"><span class="st">  </span><span class="kw">arrange</span>( <span class="op">-</span>n ) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb4-15" data-line-number="15"><span class="st">  </span><span class="kw">pander</span>()</a></code></pre></div>
 <p>Now to link to your shiny widgets, you just need to grab the user inputs:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="co"># shiny widgets</span></a>
-<a class="sourceLine" id="cb6-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="kw">checkboxGroupInput</span>(<span class="st">&quot;days&quot;</span>, <span class="dt">label =</span> <span class="kw">h3</span>(<span class="st">&quot;Day of Week&quot;</span>), </a>
-<a class="sourceLine" id="cb6-4" data-line-number="4">    <span class="dt">choices =</span> <span class="kw">list</span>(<span class="st">&quot;Monday&quot;</span>    =<span class="st"> &quot;Mon&quot;</span>, </a>
-<a class="sourceLine" id="cb6-5" data-line-number="5">                   <span class="st">&quot;Tuesday&quot;</span>   =<span class="st"> &quot;Tue&quot;</span>, </a>
-<a class="sourceLine" id="cb6-6" data-line-number="6">                   <span class="st">&quot;Wednesday&quot;</span> =<span class="st"> &quot;Wed&quot;</span>, </a>
-<a class="sourceLine" id="cb6-7" data-line-number="7">                   <span class="st">&quot;Thursday&quot;</span>  =<span class="st"> &quot;Thu&quot;</span>,</a>
-<a class="sourceLine" id="cb6-8" data-line-number="8">                   <span class="st">&quot;Friday&quot;</span>    =<span class="st"> &quot;Fri&quot;</span>,</a>
-<a class="sourceLine" id="cb6-9" data-line-number="9">                   <span class="st">&quot;Saturday&quot;</span>  =<span class="st"> &quot;Sat&quot;</span>,</a>
-<a class="sourceLine" id="cb6-10" data-line-number="10">                   <span class="st">&quot;Sunday&quot;</span>    =<span class="st"> &quot;Sun&quot;</span> ),</a>
-<a class="sourceLine" id="cb6-11" data-line-number="11">    <span class="dt">selected =</span> <span class="kw">c</span>(<span class="st">&quot;Mon&quot;</span>,<span class="st">&quot;Tue&quot;</span>,<span class="st">&quot;Wed&quot;</span>,<span class="st">&quot;Thu&quot;</span>,<span class="st">&quot;Fri&quot;</span>,<span class="st">&quot;Sat&quot;</span>,<span class="st">&quot;Sun&quot;</span>),</a>
-<a class="sourceLine" id="cb6-12" data-line-number="12"></a>
-<a class="sourceLine" id="cb6-13" data-line-number="13"><span class="kw">sliderInput</span>(<span class="st">&quot;hour&quot;</span>, <span class="dt">label =</span> <span class="kw">h3</span>(<span class="st">&quot;Time of Day&quot;</span>), </a>
-<a class="sourceLine" id="cb6-14" data-line-number="14">            <span class="dt">min =</span> <span class="dv">0</span>, <span class="dt">max =</span> <span class="dv">23</span>, <span class="dt">value =</span> <span class="kw">c</span>(<span class="dv">6</span>, <span class="dv">12</span>))</a>
-<a class="sourceLine" id="cb6-15" data-line-number="15"></a>
-<a class="sourceLine" id="cb6-16" data-line-number="16"><span class="co"># parameters</span></a>
-<a class="sourceLine" id="cb6-17" data-line-number="17">days.of.week &lt;-<span class="st"> </span>input<span class="op">$</span>days    <span class="co"># vector will all checked values</span></a>
-<a class="sourceLine" id="cb6-18" data-line-number="18">start.time &lt;-<span class="st"> </span>input<span class="op">$</span>hour[<span class="dv">1</span>]   <span class="co"># sliderInput lower value</span></a>
-<a class="sourceLine" id="cb6-19" data-line-number="19">end.time  &lt;-<span class="st">  </span>input<span class="op">$</span>hour[<span class="dv">2</span>]   <span class="co"># sliderInput upper value</span></a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="co"># shiny widgets</span></a>
+<a class="sourceLine" id="cb5-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="kw">checkboxGroupInput</span>(<span class="st">&quot;days&quot;</span>, <span class="dt">label =</span> <span class="kw">h3</span>(<span class="st">&quot;Day of Week&quot;</span>), </a>
+<a class="sourceLine" id="cb5-4" data-line-number="4">    <span class="dt">choices =</span> <span class="kw">list</span>(<span class="st">&quot;Monday&quot;</span>    =<span class="st"> &quot;Mon&quot;</span>, </a>
+<a class="sourceLine" id="cb5-5" data-line-number="5">                   <span class="st">&quot;Tuesday&quot;</span>   =<span class="st"> &quot;Tue&quot;</span>, </a>
+<a class="sourceLine" id="cb5-6" data-line-number="6">                   <span class="st">&quot;Wednesday&quot;</span> =<span class="st"> &quot;Wed&quot;</span>, </a>
+<a class="sourceLine" id="cb5-7" data-line-number="7">                   <span class="st">&quot;Thursday&quot;</span>  =<span class="st"> &quot;Thu&quot;</span>,</a>
+<a class="sourceLine" id="cb5-8" data-line-number="8">                   <span class="st">&quot;Friday&quot;</span>    =<span class="st"> &quot;Fri&quot;</span>,</a>
+<a class="sourceLine" id="cb5-9" data-line-number="9">                   <span class="st">&quot;Saturday&quot;</span>  =<span class="st"> &quot;Sat&quot;</span>,</a>
+<a class="sourceLine" id="cb5-10" data-line-number="10">                   <span class="st">&quot;Sunday&quot;</span>    =<span class="st"> &quot;Sun&quot;</span> ),</a>
+<a class="sourceLine" id="cb5-11" data-line-number="11">    <span class="dt">selected =</span> <span class="kw">c</span>(<span class="st">&quot;Mon&quot;</span>,<span class="st">&quot;Tue&quot;</span>,<span class="st">&quot;Wed&quot;</span>,<span class="st">&quot;Thu&quot;</span>,<span class="st">&quot;Fri&quot;</span>,<span class="st">&quot;Sat&quot;</span>,<span class="st">&quot;Sun&quot;</span>),</a>
+<a class="sourceLine" id="cb5-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb5-13" data-line-number="13"><span class="kw">sliderInput</span>(<span class="st">&quot;hour&quot;</span>, <span class="dt">label =</span> <span class="kw">h3</span>(<span class="st">&quot;Time of Day&quot;</span>), </a>
+<a class="sourceLine" id="cb5-14" data-line-number="14">            <span class="dt">min =</span> <span class="dv">0</span>, <span class="dt">max =</span> <span class="dv">23</span>, <span class="dt">value =</span> <span class="kw">c</span>(<span class="dv">6</span>, <span class="dv">12</span>))</a>
+<a class="sourceLine" id="cb5-15" data-line-number="15"></a>
+<a class="sourceLine" id="cb5-16" data-line-number="16"><span class="co"># parameters</span></a>
+<a class="sourceLine" id="cb5-17" data-line-number="17">days.of.week &lt;-<span class="st"> </span>input<span class="op">$</span>days    <span class="co"># vector will all checked values</span></a>
+<a class="sourceLine" id="cb5-18" data-line-number="18">start.time &lt;-<span class="st"> </span>input<span class="op">$</span>hour[<span class="dv">1</span>]   <span class="co"># sliderInput lower value</span></a>
+<a class="sourceLine" id="cb5-19" data-line-number="19">end.time  &lt;-<span class="st">  </span>input<span class="op">$</span>hour[<span class="dv">2</span>]   <span class="co"># sliderInput upper value</span></a></code></pre></div>
 <p>Pay attention to the return values of each widget:</p>
 <p><a href="https://shiny.rstudio.com/gallery/widget-gallery.html">Shiny Widget Gallery</a></p>
 <p>They may be a single value or a vector, and they are typically characters, not numeric values, so you may need to recast as the correct value type to use in the filters. For example, if you use a check box for hours of the day, the return value will be a character and the greater than or less than operators would not work.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw">filter</span>( day <span class="op">%in%</span><span class="st"> </span>days.of.week, hour <span class="op">&gt;=</span><span class="st"> </span>start.time <span class="op">&amp;</span><span class="st"> </span>hour <span class="op">&lt;=</span><span class="st"> </span>end.time )</a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw">filter</span>( day <span class="op">%in%</span><span class="st"> </span>days.of.week, hour <span class="op">&gt;=</span><span class="st"> </span>start.time <span class="op">&amp;</span><span class="st"> </span>hour <span class="op">&lt;=</span><span class="st"> </span>end.time )</a></code></pre></div>
 <p><br><br></p>
 </div>
 <div id="submission-instructions" class="section level1">
