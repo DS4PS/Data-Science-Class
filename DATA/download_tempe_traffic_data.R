@@ -206,3 +206,208 @@ d4 <- filter( d, Injuryseverity == "Incapacitating Injury" )
 barplot( table(d4$hour ) )
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+###################
+
+
+library( ggmap )
+library( dplyr )
+
+dat <- readRDS( "C:/Users/jdlecy/Dropbox/02 - CLASSES/03 - PEDA/Data-Science-Class/DATA/TempeTrafficAccidents.rds" )
+d2 <- 
+  dat %>% 
+  filter( Totalinjuries > 0 | Totalfatalities > 0 ) %>%
+  mutate( tot.injuries.fatalities = Totalinjuries + Totalfatalities )
+
+# summary( d2$tot.injuries.fatalities )
+
+par( mar=c(0,0,4,0) )
+plot( d2$Longitude, d2$Latitude, pch=19, 
+      cex=0.25*d2$tot.injuries.fatalities, 
+      col=alpha( "firebrick", alpha=0.5),
+      main="Traffic Accidents in Tempe, AZ",
+      xlab="", ylab="",
+      bty="n", axes=F )
+
+title( main="(plot size relative to injuries and fatalities)", 
+       line=-0.3, cex.main=0.7 )
+
+
+
+
+d2$fatal <- ifelse( d2$Totalfatalities > 0, "firebrick", "gray" )
+par( mar=c(0,0,4,0) )
+plot( d2$Longitude, d2$Latitude, pch=19, 
+      cex=0.25*d2$tot.injuries.fatalities, 
+      col=alpha( d2$fatal, alpha=0.5),
+      main="Traffic Accidents in Tempe, AZ",
+      xlab="", ylab="",
+      bty="n", axes=F )
+
+title( main="(plot size relative to injuries and fatalities)", 
+       line=-0.3, cex.main=0.7 )
+
+
+
+
+map <- get_map( location="tempe az" )
+ggmap( map )
+
+
+us <- c(left = -125, bottom = 25.75, right = -67, top = 49)
+map <- get_stamenmap( "tempe az", zoom = 5, maptype = "toner-lite")
+ggmap(map)
+
+
+qmplot( lon, lat, data = violent_crimes, maptype = "toner-lite", color = I("red"))
+
+
+point.size <- 0.75*d2$tot.injuries.fatalities
+
+qmplot( Longitude, Latitude, data=d2, maptype="toner-lite", zoom=14, 
+        size=I(point.size), color=I("red"), alpha = I(0.1) ) + facet_wrap( ~ Collisionmanner ) ,
+        xlim=c( -111.9515, -111.9051), ylim=c(33.38434, 33.44176) )
+
+
+qmplot( Longitude, Latitude, data=d2, maptype="toner-lite", zoom=13, geom="density2d", 
+        color=I("red") ) 
+
+qmplot( Longitude, Latitude, data=d2, maptype="toner-lite", zoom=13, geom="density2d", 
+        color=I("red") ) 
+
+qmplot( Longitude, Latitude, data=d2, geom = "blank", 
+  zoom = 13, maptype = "toner-background", darken = .7, legend = "topleft" ) +
+  stat_density_2d( aes(fill = ..level..), geom = "polygon", alpha=0.3 ) , color = NA) +
+  scale_fill_gradient2( "Deaths &\nFatalities", low = "white", mid = "yellow", high = "red", midpoint = 200 )
+
+
+
+qmplot( Longitude, Latitude, data=d2, geom = "blank", 
+  zoom = 13, maptype = "toner-background", darken = .7, legend = "topleft" ) +
+  stat_density_2d( aes(fill = ..level..), geom = "polygon", alpha=0.3, color = NA) +
+  scale_fill_gradient2( low="white", mid="yellow", high="red" ) + 
+  facet_wrap( ~ AlcoholUse_Drv2 )
+
+
+
+d2$Unittype_One <- recode( d2$Unittype_One, Pedalcyclist="Ped", Pedestrian="Ped", Driver="Driver", .default = NA_character_ )
+
+
+d2$type <- d2$Unittype_One %in% c("Pedalcyclist","Pedestrian") | d2$Unittype_Two %in% c("Pedalcyclist","Pedestrian")
+
+qmplot( Longitude, Latitude, data=d2, geom = "blank", 
+  zoom = 13, maptype = "toner-background", darken = .7, legend = "topleft" ) +
+  stat_density_2d( aes(fill = ..level..), geom = "polygon", alpha=0.3, color = NA) +
+  scale_fill_gradient2( low="white", mid="yellow", high="red" ) + 
+  facet_wrap( ~ type )
+
+
+
+table( d2$Collisionmanner )
+
+
+d3 <- 
+  d2 %>% 
+  group_by( Collisionmanner ) %>%
+  filter(n() > 500 ) %>%
+  ungroup()
+
+
+qmplot( Longitude, Latitude, data=d3, geom = "blank", 
+  zoom = 13, maptype = "toner-background", darken = .7, legend = "topleft" ) +
+  stat_density_2d( aes(fill = ..level..), geom = "polygon", alpha=0.3, color = NA) +
+  scale_fill_gradient2( low="white", mid="yellow", high="red", midpoint=250 ) + 
+  facet_wrap( ~ Collisionmanner )
+
+
+d2$young <- d2$Age_Drv1 < 30
+d2$old <- d2$Age_Drv1 > 60
+
+d2$age.group <- cut( d2$Age_Drv1, breaks=c(0,25,45,65,150) )
+
+d2$fatal <- d2$Totalfatalities > 0 
+
+qmplot( Longitude, Latitude, data=d2, geom = "blank", 
+  zoom = 13, maptype = "toner-background", darken = .7, legend = "topleft" ) +
+  stat_density_2d( aes(fill = ..level..), geom = "polygon", alpha=0.3, color = NA) +
+  scale_fill_gradient2( low="white", mid="yellow", high="red", midpoint=100 ) + 
+  facet_wrap( ~ fatal )
+
+
+
+d2$fatal <- d2$Totalinjuries > 2 
+
+qmplot( Longitude, Latitude, data=d2, geom = "blank", 
+  zoom = 13, maptype = "toner-background", darken = .7, legend = "topleft" ) +
+  stat_density_2d( aes(fill = ..level..), geom = "polygon", alpha=0.3, color = NA) +
+  scale_fill_gradient2( low="white", mid="yellow", high="red", midpoint=100 ) + 
+  facet_wrap( ~ fatal )
+
+
+
+vec <- as.Date( d2$DateTime, format="%m/%d/%y %H:%M" )
+
+d2$DateTime <- as.character( d2$DateTime )
+vec <- as.Date( d2$DateTime, format="%m/%d/%y %H:%M" )
+
+
+d2$DateTime <- as.character( d2$DateTime )
+vec <- strptime( d2$DateTime, format="%m/%d/%y %H:%M" )
+
+head( vec )
+
+
+
+format( head( vec ), format="%H" )  # hour of day 0-23
+ 
+format( head( vec ), format="%m" )  # month 1-12
+
+format( head( vec ), format="%b" )  # abbreviated month Jan, Feb, etc
+
+format( head( vec ), format="%A" )  # day of the week Monday, Tuesday, etc.
+
+format( head( vec ), format="%a" )  # abbreviated day of the week Mon, Tue, etc.
+
+d2$day <- format( vec, format="%a" )
+
+
+d2$hour <- format( vec, format="%H" )  # hour of day 0-23
+
+level.order <- c("00", "01", "02", "03", "04", "05", "06", "07", "08", "09", 
+"10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", 
+"21", "22", "23")
+
+d2$hour <- factor( d2$hour, levels=level.order )
+
+
+d2$weekday <- format( vec, format="%a" )
+d2$weekday <- factor( d2$weekday, levels=c("Mon","Tue","Wed","Thu","Fri","Sat","Sun") )
+
+
+d4 <- filter( d2, type==FALSE )
+
+qmplot( Longitude, Latitude, data=d4, geom = "blank", 
+  zoom = 13, maptype = "toner-background", darken = .3, legend = "topleft" ) +
+  stat_density_2d( aes(fill = ..level..), geom = "polygon", alpha=0.4, color = NA ) +
+  scale_fill_viridis() +
+  facet_wrap( ~ hour, ncol=6, nrow=4 )
+
+library( viridis )
+
+
+
+

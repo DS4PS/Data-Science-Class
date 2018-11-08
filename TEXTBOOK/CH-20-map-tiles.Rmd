@@ -25,7 +25,7 @@ plot( d2$Latitude, d2$Longitude, pch=19,
 title( main="(plot size relative to injuries and fatalities)", 
        line=-0.3, cex.main=0.7 )
 
-map <- get_map( location="Tempe, AZ" )
+map <- get_map( location="tempe az" )
 ggmap( map )
 ```
 
