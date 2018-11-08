@@ -17,15 +17,11 @@ library( pander )
 
 <br>
 
-This document outlines the 
+This document outlines the instructions for your final project.
 
-```{r, eval=F}
-library( dplyr )
-```
 
-You can create a new RMarkdown file, or download the lab template: 
 
-[RMD Template](https://cdn.rawgit.com/DS4PS/Data-Science-Class/c464d527/TEMPLATES/MarkdownTemplateSimple.Rmd)
+
 
 <br><br>
 
@@ -77,139 +73,214 @@ The dataset contains the following variables:
 
 
 
-<br><br>
-
-# Lab Instructions
-
-
-Parts 1-4 are designed to give you practice acquiring data from an external site and reading it into R. Part 5 asks you to analyze the data to pick out some patterns.
+# Packages 
 
 <br><br>
 
-**PART 1:** 
-
-1. Download the dataset called "Crash Data" as a CSV file and save it to your computer. 
-2. Write a code chunk to import the dataset into R using **setwd()** and **read.csv()**.
-3. Show that you have correctly loaded the dataset by printing the variable names using the structure **str()** function. 
-
 ```{r, eval=F}
-setwd( "C:/Users/username/Downloads" )
-dat <- read.csv( "filename.csv" )
-str( dat )
-```
-
-Note that if you copy the working directory address from a Windows folder it will use backslashes, whereas R follows the Unix convention of forward slashes.
-
-Windows:
-
-`C:\Users\usename\Downloads`
-
-R:
-
-`C:/Users/username/Downloads`
-
-In R Studio you can set your working directory under Session --> Set Working Directory --> Choose Directory or using the shortcut Ctrl+Shift+H. Then get the correct R path by typing:
-
-```{r, eval=F}
-getwd()
-```
-
-<br><br>
-
-**PART 2:** 
-
-In the first step you are using what is called an "absolute path" reference. It is absolute because it gives the exact location (path) of the file on a specific machine. 
-
-```{r, eval=F}
-setwd( "C:/Users/JaneDoe/Downloads" )
-```
-
-Unfortunately, this causes problems if (1) you are collaborating with someone using a shared folder since their path will be different than your path, or (2) you are working on a project on both your laptop and your desktop and they have different usernames or directory structures for the project.  
-
-As a result, it is ALWAYS recommended to use "relative path" references. When using R Studio, if you try to load a dataset it will look for the data in the same folder as the RMD file. So one option is to save the dataset into your labs folder, then read it directly from there without setting the working directory:
-
-```{r, eval=F}
-dat <- read.csv( "filename.csv" )
-str( dat )
-```
-
-If you have lots of raw datasets (which is common in big projects) your folders quickly get cluttered. It is good to get into the habit of saving all of your data in a data folder to keep your project organized. You can always reference files inside of a folder using a partial path as follows:
-
-```
-CPP-591
-  ├── Labs
-  |   ├──Lab-09.Rmd
-  |   ├── data
-  |   |   ├──filename.csv
-```
-
-```{r, eval=F}
-dat <- read.csv( "data/filename.csv" )
-```
-
-Or else:
-
-```{r, eval=F}
-setwd( "data" )
-dat <- read.csv( "filename.csv" )
-```
-
-Conversely, if your data folder is not inside of the folder, you can navigate up one level using ..
-
-
-```
-CPP-591
-  ├── Labs
-  |   ├──Lab-09.RMD
-  ├── data
-  |   ├──filename.csv
-```
-
-```{r, eval=F}
-dat <- read.csv( "../data/filename.csv" )
-```
-
-
-Create a folder called "data" in your lab folder, and repeat PART 1 above WITHOUT the **setwd()** command by using a relative path. Read in the data file and print out variables using **str()**.
-
-<br><br>
-
-**PART 3:**
-
-Note that the open data site provides a URL for the dataset. If you want your code to be as general as possible, you can load the data directly from the web link instead of from a local file, and use **str()** to print out variable names.
-
-```{r, eval=F}
-URL <- "dataset_web_address_here"
-dat <- read.csv( URL )
-str( dat )
+library( dplyr )
 ```
 
 
 <br><br>
 
-**PART 4:**
 
-Note the variable classes in the previous steps. By default R tries to guess which variables are factors, and it doesn't often do a good job. Load the data again, but this time add the argument stringsAsFactors=FALSE to the **read.csv()** function, and re-print dataset names and classes using **str()**. What has changed? 
+# Layout
+
+Create a dashboard with four tabs, one for each part.
+
+Include an option to embed the source code in your dashboard for easy access, and make sure to include the runtime shiny argument. For example:
+
+```
+---
+title: "Crash Data: City of Tempe"
+output: 
+  flexdashboard::flex_dashboard:
+    theme: spacelab
+    source: embed
+    smart: false
+runtime: shiny
+---
+```
+
+
+# Part 1
+
+Your first tab will allow the user to explore traffic accidents in Tempe by time periods. It should include the following elements:
+
+* A leaftlet map with all accidents selected by the query color-coded to differentiate those with no injuries, injuries, and fatalities.
+* Informative pop-up info boxes that give crash details when you click on a crash.
+* A two-sided slider going from 0 to 23 hours for the time of day.
+* Shiny widget check boxes for days of the week. 
+* Shiny widget check boxes for the 12 months.
+* Shiny widget check boxes for each year of data.
+
+Place the widgets on a separate sidebar on the left-hand side.
+
+Using these input widgets, the user should be able to define a query that selects a specific time-period (weekends, afternoon rush-hour, etc.) and the map should display the correct data.
+
+
+# Part 2
+
+This tab will allow the user to explore the prevelance and severity of different types of accidents.
+
+You will again create a sidebar for shiny widgets. Organize it into two parts - drivers characteristics, causes, and accident outcomes. Select appropriate widget types.
+
+Driver characteristics:
+
+* Age
+* Gender
+* Driver, pedestrian, or cyclist
+
+
+Conditions:
+
+* Time of day 
+* Weather
+* Light
+* Surface
+* Junction
+* Alcohol or drugs
+
+
+Accident characteristics:
+
+* Type (Collisionmanner)
+* Violations issued
+
+*For time of day, define your own meaningful time periods such as rush hour, work day, school pick-up, etc.).*
+
+*Note that some categories like weather conditions are mutually exclusive and thus should be radio buttons, and others might be inclusive such as drugs and alcohol for driver 1 and driver 2, and could be operationalized with check-boxes.*
+
+The main window in this tab should include three tables or graphs:
+
+* Accidents by day of week, one column for counts, one column for count, two for injuries and fatalities.
+* Accidents summarized by collision type, one column for count, two for injuries and fatalities.
+* Accidents summarized by driver age (use smal number of meaningful categories), one column for count, two for injuries and fatalities.
+
+
+Add 4 [value boxes](https://rmarkdown.rstudio.com/flexdashboard/using.html#value_boxes) at the top of the page to report statistics for each user query:
+
+* Number of crashes
+* Rate of harm (at least one person injured or killed)
+* Total injuries
+* Total fatalities
+
 
 
 <br><br>
 
-**PART 5:**
+# Part 3
 
-You are an analyst employed by the City of Tempe. The Mayor's office sends a request for some information about the causes of injuries and fatalities in traffic accidents in the city. Use the Crash data and dplyr functions to answer the following questions:
+Include a data table with the raw data that allows the users to filter and download the data they are interested in.
 
-1. How many injuries and fatalities occured in 2017? 
-2. Historically, what proportion of car accidents in Tempe result in injuries or fatalities? 
-3. What sort of accident ("Collisionmanner") is most likely to result in an injury or fatality? 
-4. Of all of the accidents that result in injuries or fatalities, how often are alcohol and drugs involved?
-5. Do young drivers (25 or younger) or elderly drivers (65 or older) cause more accidents? Assume the first driver in the dataset caused the accident.  
-6. Are rates of injury or fatality different for those two groups? In other words, what proportion of accidents caused by each group result in injuries or fatalities? 
-7. What are the three most common types of accidents ("Collisionmanner") caused by each group? 
+Here is a suggested format:
+
+```{r, echo=T, eval=F}
+
+# library( DT )
+
+these.buttons <- c( 'copy', 'csv', 'excel', 'pdf', 'print' )
+
+datatable( dat,
+           filter='bottom', rownames=FALSE, 
+           #options=list( pageLength=5, autoWidth=TRUE ),
+           fillContainer=TRUE, 
+           style="bootstrap",
+           class='table-condensed table-striped',
+           extensions = 'Buttons', 
+           options=list( dom='Bfrtip', 
+                         buttons=these.buttons  )) %>%
+  
+  formatStyle( "name", "white-space"="nowrap" )
+
+```
+
+
+<br><br>
+
+# Part 4
+
+Include a description of the project including references for the data source, your team contact info, and the intended use of the dashboard. 
+
+Include the data dictionary in this tab. The city of Tempe provides this file on the data download page. To add it to your RMD file in a nice format, just convert the CSV file into a markdown table or HTML table:
+
+```{r, eval=F}
+# pseudo-code only
+data.dictionary <- read.csv()
+dd.simple <-
+  data.dictionary %>%
+  select( variableNames, variableDescriptions )
+kable( dd.simple )  # markdown table, from knitr package
+pander( dd.simple ) # html table, from pander package
+```
 
 
 
+<br><br>
+
+# Shiny Advice
+
+When developing your analysis using shiny widgets, each will entail three steps:
+
+* Defining parameters
+* Filtering data according to parameters
+* Re-analyzing your data
+
+I suggest that you develop each analytical step outside of the dashboard, then add the code in the appropriate dashboard buckets. Start with static versions of your parameters.
+
+```{r, eval=F}
+# parameters
+days.of.week <- c("Sat","Sun")
+start.time <- 3
+end.time <- 6
+
+# filter data
+d2 <-
+  dat %>%
+  filter( day %in% days.of.week, hour >= start.time & hour <= end.time )
+
+# analyze data
+d2 %>%
+  count( Collisionmanner ) %>%
+  arrange( -n ) %>%
+  pander()
+```
+
+Now to link to your shiny widgets, you just need to grab the user inputs:
+
+```{r, eval=F}
+# shiny widgets
+
+checkboxGroupInput("days", label = h3("Day of Week"), 
+    choices = list("Monday"    = "Mon", 
+                   "Tuesday"   = "Tue", 
+                   "Wednesday" = "Wed", 
+                   "Thursday"  = "Thu",
+                   "Friday"    = "Fri",
+                   "Saturday"  = "Sat",
+                   "Sunday"    = "Sun" ),
+    selected = c("Mon","Tue","Wed","Thu","Fri","Sat","Sun"),
+
+sliderInput("hour", label = h3("Time of Day"), 
+            min = 0, max = 23, value = c(6, 12))
+
+# parameters
+days.of.week <- input$days    # vector will all checked values
+start.time <- input$hour[1]   # sliderInput lower value
+end.time  <-  input$hour[2]   # sliderInput upper value
+```
+
+Pay attention to the return values of each widget:
+
+[Shiny Widget Gallery](https://shiny.rstudio.com/gallery/widget-gallery.html)
+
+They may be a single value or a vector, and they are typically characters, not numeric values, so you may need to recast as the correct value type to use in the filters. For example, if you use a check box for hours of the day, the return value will be a character and the greater than or less than operators would not work.
 
 
+```{r, eval=F}
+filter( day %in% days.of.week, hour >= start.time & hour <= end.time )
+```
 
 
 
@@ -218,14 +289,24 @@ You are an analyst employed by the City of Tempe. The Mayor's office sends a req
 
 # Submission Instructions
 
-After you have completed your lab, knit your RMD file.
+There are two steps to submitting your final project:
+
+**1) Upload RMD to Canvas**
+
+Login to Canvas at <http://canvas.asu.edu> and navigate to the assignments tab in the course repository. Upload your RMD file to the appropriate lab submission link.
+
+**2) Deploy your dashboard**
+
+Visit the [Shiny Apps platform](https://www.shinyapps.io/) hosted by R Studio, and create a free own account. 
+Upload your dashboard to your account (after you run your file you should see the option "Publish" at the top right - follow the commands). 
+
+Include the link to your dashboard in your submission comments on Canvas.
 
 
-Login to Canvas at <http://canvas.asu.edu> and navigate to the assignments tab in the course repository. Upload your RMD and your HTML files to the appropriate lab submission link.
 
 Remember to:
 
-* name your files according to the convention: **Lab-##-LastName.Rmd**
+* name your files according to the convention: **Final-Project-LastName.Rmd**
 * show your solution, include your code.
 * do not print excessive output (like a full data set).
 * follow appropriate style guidelines (spaces between arguments, etc.).

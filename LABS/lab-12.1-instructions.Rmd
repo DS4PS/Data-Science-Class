@@ -1,0 +1,279 @@
+---
+title: 'Lab 12 - Data Wrangling'
+output:
+  html_document:
+    theme: readable
+    df_print: paged
+    highlight: tango
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message=F, warning=F, fig.align='center', fig.width=9 )
+```
+
+
+<br><br>
+
+
+```{r, echo=F, fig.width=10, fig.height=12}
+library( dplyr )
+library( pander )
+library( ggmap )
+library( ggplot2 )
+library( leaflet )
+library( viridis )
+library( ggthemes )
+
+URL <- "https://github.com/DS4PS/Data-Science-Class/blob/master/DATA/TempeTrafficAccidents.rds?raw=true"
+dat <- readRDS(gzcon(url( URL )))
+
+dat$Age_Drv1[ dat$Age_Drv1 > 99 ] <- NA
+dat$Age_Drv1[ dat$Age_Drv1 < 16 ] <- NA
+dat$age <- cut( dat$Age_Drv1, breaks=c(16,18,25,35,45,55,65,75,100) )
+labz <- paste0( c(16,18,25,35,45,55,65,75), "-", c(18,25,35,45,55,65,75,100) )
+dat$age <- cut( dat$Age_Drv1, breaks=c(16,18,25,35,45,55,65,75,100), labels=labz )
+
+dat$Collisionmanner <- recode( dat$Collisionmanner, 
+                             "ANGLE (Front To Side)(Other Than Left Turn)"="Angle" )
+dat$Collisionmanner <- recode( dat$Collisionmanner, "Sideswipe Same Direction"="Lane Change" )
+drop.these <- c("Unknown","10","Rear To Side","Rear To Rear","Sideswipe Opposite Direction","Other")
+dat <- filter( dat, ! ( Collisionmanner %in% drop.these ) )
+dat$Collisionmanner <- factor( dat$Collisionmanner )
+
+date.vec <- strptime( dat$DateTime, format="%m/%d/%y %H:%M" )
+dat$hour   <- format( date.vec, format="%H" )
+dat$hour12   <- format( date.vec, format="%l %p" )
+dat$month  <- format( date.vec, format="%b" )
+dat$day    <- format( date.vec, format="%a" )
+dat$day365 <- format( date.vec, format="%j" )
+dat$week   <- format( date.vec, format="%V" )
+dat$day <- factor( dat$day, levels=c("Mon","Tue","Wed","Thu","Fri","Sat","Sun") )
+
+dat$hour12 <- factor( dat$hour12,
+                      levels=c( "12 AM", " 1 AM", " 2 AM", " 3 AM", " 4 AM", " 5 AM", 
+" 6 AM", " 7 AM", " 8 AM", " 9 AM", "10 AM", "11 AM", 
+"12 PM", " 1 PM", " 2 PM", " 3 PM", " 4 PM", " 5 PM", 
+" 6 PM", " 7 PM", " 8 PM", " 9 PM", "10 PM", "11 PM" ) )
+
+d5 <- filter( dat, !is.na(age) )
+d5$age <- paste0( "Age ", d5$age )
+
+qmplot( Longitude, Latitude, data=d5, geom = "blank", 
+  zoom = 13, maptype = "toner-background", darken = .1 ) + 
+  stat_density_2d( aes(fill = ..level..), geom = "polygon", alpha=0.2, color = NA) +
+  scale_fill_viridis( begin=0, end=1, option="C" ) + 
+  facet_wrap( ~ age, ncol=4 ) + 
+  theme_fivethirtyeight(  ) +
+  scale_x_continuous(breaks = NULL) +
+  scale_y_continuous(breaks = NULL) +
+  ggtitle("Crash Locations by Age Group")
+
+
+
+
+```
+
+<br><br>
+
+```{r, echo=F, fig.width=10, fig.height=12}
+qmplot( Longitude, Latitude, data=d5, geom = "blank", 
+  zoom = 13, maptype = "toner-background", darken = .1 ) + 
+  stat_density_2d( aes(fill = ..level..), geom = "polygon", alpha=0.2, color = NA) +
+  scale_fill_viridis( begin=0, end=1, option="C" ) + 
+  facet_wrap( ~ hour12, ncol=6 ) + 
+  theme_fivethirtyeight(  ) +
+  scale_x_continuous(breaks = NULL) +
+  scale_y_continuous(breaks = NULL) +
+  ggtitle("Crash Locations by Hour of Day")
+```
+
+
+<br><br>
+
+```{r, echo=F, fig.width=10, fig.height=6}
+
+dat$age <- factor( dat$age )
+
+d3 <- 
+  dat %>% 
+  count( hour, age )
+
+d3 <- na.omit( d3 )
+d3$age <- paste0( "Age ", d3$age )
+
+# ggplot( d3, aes( x=as.numeric(as.character(hour)), y=n, fill=age )) + 
+#     geom_area( position='fill' ) +
+#     scale_fill_brewer(  type="qual" ) +
+#     xlab("Time of Day (24hrs)") + ylab("Number of Accidents")
+
+qplot( data=d3, x=as.numeric(as.character(hour)), y=n ) + 
+  geom_line( size=0.8, color="firebrick4" ) + 
+  geom_point( size=3, color="darkred" ) + 
+  facet_wrap( ~ age, ncol=4 ) +
+  xlab("Time of Day (24hrs)") + 
+  ylab("Number of Accidents") +
+  ggtitle("Number of Accidents by Time and Age Group") +
+  # theme_minimal() 
+  theme_wsj( base_size=10, color="gray" )
+
+
+
+```
+
+
+<br> <br>
+
+```{r, echo=F, fig.width=10, fig.height=6}
+d3 <- 
+dat %>% 
+group_by( hour, age ) %>%
+summarize( harm = mean( Totalinjuries > 0 | Totalfatalities > 0 ) )
+
+d3 <- na.omit( d3 )
+d3$age <- paste0( "Age ", d3$age )
+
+
+# ggplot( d3, aes( x=as.numeric(as.character(hour)), y=harm, fill=age )) + 
+#     geom_area( position='fill' ) +
+#     xlab("Time of Day (24hrs)") + ylab("Rate of Harm")
+
+mean.harm <- mean( d3$harm )
+
+
+qplot( data=d3, x=as.numeric(as.character(hour)), y=harm ) + 
+  geom_line( color="steelblue", size=0.8 ) + 
+  geom_point( color="darkblue", size=3 ) + 
+  geom_hline( yintercept=mean.harm, color="black" ) + 
+  facet_wrap( ~ age, ncol=4 ) + 
+  xlab("Time of Day (24hrs)") + ylab("Rate of Harm") +
+  ggtitle("Proportion of Accidents Resulting in Harm") +
+  # theme_fivethirtyeight() 
+  theme_wsj( base_size=10, color="gray" )
+```
+
+
+
+<br><br>
+
+
+
+# Animations
+
+```{r}
+library( animation )
+
+
+d2 <- 
+  dat %>%
+  filter( Year==2016 )
+          
+tempe <- get_stamenmap( location="tempe arizona", zoom=8, maptype="toner-lite" )
+
+ggmap( tempe, extent="device" ) + 
+  geom_point( aes(x=Longitude, y=Latitude), data=d2, col="orange", alpha=0.5, size=5 ) +
+  geom_text( aes( x=-76.115, y=43.015, label="August"), size=13, col="orange"  )
+
+
+
+
+png("bedbugs%03d.png", width = 1000, height = 1000 )
+
+
+for( i in 1:(length(time.period)+4) )
+{
+
+    dat.sub.0 <- bb[ year.month == time.period[i] , ]
+
+    p <- ggmap( syr, extent="device" ) +
+    geom_point( aes(x=lon,y=lat), data=dat.sub.0, 
+                col="orange", alpha=0.5, size=20 ) +
+    geom_text( aes( x=-76.115, y=43.015, label=time.period[i] ), 
+               size=13, col="orange"  )
+
+   if( i > 1 )
+   { 
+      dat.sub.1 <- bb[ year.month == time.period[i-1] , ]
+
+      p <- p +  geom_point( aes(x=lon,y=lat), data=dat.sub.1, 
+                col="orange", alpha=0.4, size=16 )
+   }
+
+   if( i > 2 )
+   { 
+      dat.sub.2 <- bb[ year.month == time.period[i-2] , ]
+
+      p <- p +  geom_point( aes(x=lon,y=lat), data=dat.sub.2, 
+                col="orange", alpha=0.3, size=12 )
+   }
+
+   if( i > 3 )
+   { 
+      dat.sub.3 <- bb[ year.month == time.period[i-3] , ]
+
+      p <- p +  geom_point( aes(x=lon,y=lat), data=dat.sub.3, 
+                col="orange", alpha=0.2, size=8 )
+   }
+
+   if( i > 4 )
+   { 
+      dat.sub.4 <- bb[ year.month == time.period[i-4] , ]
+
+      p <- p +  geom_point( aes(x=lon,y=lat), data=dat.sub.4, 
+                col="orange", alpha=0.1, size=4 )
+   }
+
+   print( p )
+
+
+}
+
+dev.off()
+
+# ani.options( interval=1, ani.height=7, ani.width=7 )
+im.convert( "bedbugs*.png", output = "bb-animation1.gif" )
+```
+
+
+
+
+
+
+
+Calculate each of these four descriptive statistics above as a function of the 24 hours of the day, and either print a table with times and counts/rates, or plot a graph of the statistics as a function of time similar to the exaples above.
+
+
+```{r, eval=F}
+# example plotting code
+plot( as.numeric(d2$hour), d2$ave.num.injuries, pch=19, type="b", cex=2, bty="n",
+      xlab="Hour of the Day", ylab="Ave. Number of Passengers Hurt",
+      main="Average Injuries or Fatalities Per Harmful Crash")
+```
+
+
+<br><br>
+
+**PART 3: Most Dangerous Accidents** 
+
+Using at most two variables in the dataset to define your groups, identify the following:
+
+**1) The most dangerous accident to be involved in (highest rate of harm).**
+
+**2) The type of accident that hurts the most citizens.**
+
+For example, it could be teen-agers (group 1: age) that rear-end another driver (group 2: collision type), or drunk-drivers (group 1: alcohol) that hit pedestrians (group 2: driver type), or men (group 1: gender) on Labor Day (group 2: date). 
+
+You can use any variables from the dataset, but you are limit to groups constructed from two variables. Report your findings. There will be a prize for the individual that finds the most harmful types of accidents.
+
+
+<br><br>
+
+# Submission Instructions
+
+After you have completed your lab, knit your RMD file. Login to Canvas at <http://canvas.asu.edu> and navigate to the assignments tab in the course repository. Upload your RMD and your HTML files to the appropriate lab submission link.
+
+Remember to:
+
+* name your files according to the convention: **Lab-##-LastName.Rmd**
+* show your solution, include your code.
+* do not print excessive output (like a full data set).
+* follow appropriate style guidelines (spaces between arguments, etc.).
