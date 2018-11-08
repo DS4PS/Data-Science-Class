@@ -73,14 +73,6 @@ The dataset contains the following variables:
 
 
 
-# Packages 
-
-<br><br>
-
-```{r, eval=F}
-library( dplyr )
-```
-
 
 <br><br>
 
@@ -103,6 +95,11 @@ runtime: shiny
 ---
 ```
 
+Include the appropriate packages in your app.
+
+
+
+<br><br>
 
 # Part 1
 
@@ -119,6 +116,10 @@ Place the widgets on a separate sidebar on the left-hand side.
 
 Using these input widgets, the user should be able to define a query that selects a specific time-period (weekends, afternoon rush-hour, etc.) and the map should display the correct data.
 
+
+
+
+<br><br>
 
 # Part 2
 
