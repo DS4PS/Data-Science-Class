@@ -27,7 +27,7 @@ This document outlines the instructions for your final project.
 
 # Data
 
-In this lab you will use a traffic accidents dataset from the Tempe Open Data Portal, available at:
+You will use a traffic accidents dataset from the Tempe Open Data Portal, available at:
 
 https://data.tempe.gov/dataset/high-severity-traffic-crashes-1-08
 
