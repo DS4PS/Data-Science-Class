@@ -1,1 +1,3 @@
 # Labs
+
+Solutions available offline.
