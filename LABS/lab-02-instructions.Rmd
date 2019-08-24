@@ -17,11 +17,13 @@ library( pander )
 
 <br>
 
-*This lab offers practice with some basic R functions applied to vectors in order to ascertain basic information about the dataset or count and summarize things.*
+*This lab offers practice with some basic R functions for summarizing vectors.*
 
 I have provided you with an RMD template for this lab: 
 
-[RMD Template](https://cdn.rawgit.com/DS4PS/Data-Science-Class/a48d67a5/TEMPLATES/MarkdownTemplate.RMD)
+[RMD Template](https://www.dropbox.com/s/oc03bdo59tbwoiz/lab-02-template.Rmd?dl=1)
+
+
 
 
 <br><br>
