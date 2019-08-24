@@ -1,6 +1,6 @@
 ---
-title: "R Markdown Documents"
-author: "Jesse Lecy"
+title: "CPP 526 Lab-XX"
+author: "Your Name"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output:
   html_document:
@@ -8,7 +8,7 @@ output:
     theme: cerulean
     highlight: haddock
     toc: yes
-    toc_depth: 4
+    toc_depth: 2
     toc_float:
       collapsed: false
       smooth_scroll: true
@@ -33,6 +33,54 @@ mosaicplot( HairEyeColor, shade = TRUE)
 ```
 
 
+
+# MOST IMPORTANT CHUNK SETTING
+
+If you are working on labs, which have several questions, and you are stuck on one question then your code might not work properly. Markdown documents will not render if code has errors. 
+
+If you want credit for attempting the question, then you need to submit your broken code and note that it doesn't work. You can do this by telling R to include a code chunk, but not evaluate it. 
+
+
+````markdown
+`r ''````{r, eval=F}
+# code here
+`r ''````
+````
+
+This way you can still knit your file even if all of the code is not working. 
+
+
+# KNITTING
+
+When you **Knit** your RMD file, know that R Studio will start from a clean slate (a fresh R environment). 
+
+Students often run into a common problem. As you are developing solutions you might create a subset and save it as a new object:
+
+```
+dat.treated <- dat[ dat$study.group == "treatment" , ]
+```
+
+But you do this in the console (the bottom window) and not in a chunk in your RMD file. 
+
+Your RMD chunks work interactively because when you are running them in real time they use your current environment. But then you try to knit your file R will tell you it can't find specific object (`dat.treated` in this example). 
+
+This is because you never added the code to create the new object in a chunk. It only exists in your current local environment.
+
+Students will also paste the commands to load data for the lab into the console directly, then have similar problems with knitting. 
+
+If you get an error that an object can't be located, check to see if you have included the R code to create the object (load or alter datasets usually) in a chunk. 
+
+## Required Packages
+
+You need to load all libraries required for analysis inside a chunk. Otherwise you will run into the same problem as above. WHen you knit you will get an error message that R cannot find specific functions. It is because they live in a package that you loaded locally, but never added to your script. 
+
+```{r packages}
+
+library( dplyr )
+
+```
+
+**NOTE** that you load packages in an RMD document while knitting, but you cannot install a package while knitting (neither should you - you only need to install a library once then just load it after that).
 
 
 
@@ -91,12 +139,14 @@ The `opts_chunk$set()` function allows you to set options that impact all chunks
 
 ```{r setup, include=TRUE}
 
-knitr::opts_chunk$set(echo = TRUE, message=FALSE, warnings=FALSE, fig.width=8)
+knitr::opts_chunk$set( echo = TRUE, message=FALSE, warnings=FALSE, fig.width=8 )
 
 ```
 
+**Please turn your warning messages off before submitting labs!** These are usually not important (R lets you know that your package version is not the current one, for example), but they quickly clutter the assignments. 
 
-Otherwise you will customize options directly in each chunk. 
+
+You can also customize options directly in each chunk. 
 
 ```{md, eval=F}
 {r, message=FALSE, fig.width=10}
@@ -104,16 +154,6 @@ Otherwise you will customize options directly in each chunk.
 
 
 
-
-## Required Packages
-
-Load all libraries required for analysis in this document. Note that you cannot install a package in RMarkdown documents, you can only load them.
-
-```{r packages}
-
-library( dplyr )
-
-```
 
 
 ## Data
@@ -125,88 +165,12 @@ library( dplyr )
 ```
 
 
-## Custome Style Sheet
-
-If you want more control over the style of your document, you can include a CSS which allows you to control fonts and spacing. 
-
-```{css, echo=T, eval=T}
-
-/* Include a cascading style sheet chunk to cutomize fonts and spacing */
-/* {css, echo=T} */  
-  
-p {
-color: black;
-margin: 30px 0 20px 0;
-}
-
-td {
-    padding: 3px 10px 3px 10px;
-    text-align: center;
-}
-
-table
-{ 
-    margin-left: auto;
-    margin-right: auto;
-    margin-top:80px;
-    margin-bottom:100px;
-}
-
-h1, h2{
-  margin-top:100px;
-  margin-bottom:20px;
-}
-
-h3{
-  margin-top:50px;
-  margin-bottom:20px;
-}
-
-H5{
-    text-align: center;
-    color: gray;
-    font-size:0.8em;
-}
-
-img {
-    max-width: 90%;
-    display: block;
-    margin-right: auto;
-    margin-left: auto;
-    margin-top:30px;
-    margin-bottom:20px;
-}
-
-pre {
-  overflow-x: auto;
-}
-
-pre code {
-   display: block; 
-   padding: 0.5em;
-   margin-bottom:10px;
-}
-
-
-code {
-  font-size: 92%;
-  border: 10px solid light gray;
-  margin-bottom: 2px;
-}
-
-code[class] {
-  background-color: light gray;
-}
-
-
-
-```
 
 
 
 
 
-# FORMATTING RULES
+# MARKDOWN FORMATTING RULES
 
 Examples taken from [Adam Pritchard's Markdown Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Here-Cheatsheet).
 
@@ -575,6 +539,82 @@ For a list of document formats that R Markdown supports see the [R Markdown webs
 * Package Vignette	R package vignette (HTML)
 * Github Document	GitHub Flavored Markdown document.
 
+
+
+## Custome Style Sheets
+
+If you want more control over the style of your document, you can include a CSS which allows you to control fonts and spacing. 
+
+```{css, echo=T, eval=T}
+
+/* Include a cascading style sheet chunk to cutomize fonts and spacing */
+/* {css, echo=T} */  
+  
+p {
+color: black;
+margin: 30px 0 20px 0;
+}
+
+td {
+    padding: 3px 10px 3px 10px;
+    text-align: center;
+}
+
+table
+{ 
+    margin-left: auto;
+    margin-right: auto;
+    margin-top:80px;
+    margin-bottom:100px;
+}
+
+h1, h2{
+  margin-top:100px;
+  margin-bottom:20px;
+}
+
+h3{
+  margin-top:50px;
+  margin-bottom:20px;
+}
+
+H5{
+    text-align: center;
+    color: gray;
+    font-size:0.8em;
+}
+
+img {
+    max-width: 90%;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top:30px;
+    margin-bottom:20px;
+}
+
+pre {
+  overflow-x: auto;
+}
+
+pre code {
+   display: block; 
+   padding: 0.5em;
+   margin-bottom:10px;
+}
+
+
+code {
+  font-size: 92%;
+  border: 10px solid light gray;
+  margin-bottom: 2px;
+}
+
+code[class] {
+  background-color: light gray;
+}
+
+```
 
 
 

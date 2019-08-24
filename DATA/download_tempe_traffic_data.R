@@ -5,7 +5,9 @@ library( scales )
 
 d <- read.csv( "https://data.tempe.gov/dataset/7556b322-1b7d-4f65-87b8-598d11ef50fb/resource/6e542152-245b-4773-ba10-dc3223177e3b/download/crashdatareport.csv" )
 
-d <- read.csv( "", stringsAsFactors=F )
+URL <- "https://data.tempe.gov/dataset/7556b322-1b7d-4f65-87b8-598d11ef50fb/resource/6e542152-245b-4773-ba10-dc3223177e3b/download/crashdatareport.csv"
+
+d <- read.csv( URL, stringsAsFactors=F )
 
 d <- filter( d, Latitude > 33.3 )
 
