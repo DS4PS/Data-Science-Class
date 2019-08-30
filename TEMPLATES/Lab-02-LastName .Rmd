@@ -1,0 +1,126 @@
+---
+title: 'Lab 02 - Identifying Groups'
+author: "Your Name"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output:
+  html_document:
+    df_print: paged
+    theme: cerulean
+    highlight: haddock
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set( echo = TRUE, message=F, warning=F, fig.width=10, fig.height=12 )
+```
+
+
+
+# Data
+
+Data dictionary: [Syracuse city tax parcel data](https://ds4ps.github.io/Data-Science-Class/DATA/syr_parcels.html) 
+
+
+```{r}
+URL <- "https://raw.githubusercontent.com/DS4PS/Data-Science-Class/master/DATA/syr_parcels.csv"
+dat <- read.csv( URL, stringsAsFactors=FALSE )
+```
+
+```{r, echo=F}
+head( dat, 10 ) 
+```
+
+
+## Parcel Map Files
+
+```{r}
+# load the mapping libraries
+library( geojsonio )
+library( sp )
+library( rgdal )
+```
+
+```{r, cache=TRUE}
+# load the map files
+URL <- "https://raw.githubusercontent.com/DS4PS/Data-Science-Class/master/DATA/syr_parcels.geojson"
+syr <- geojson_read( URL, method="local", what="sp" )
+plot( syr,  border=NA, col="gray80" )
+```
+
+
+
+Highlight the selected group in red:
+
+```{r}
+these <- dat$acres > 1
+group.colors <- ifelse( these, "firebrick", "gray80" )
+plot( syr,  border=NA, col=group.colors )
+```
+
+
+```{r}
+these <- dat$land_use == "Single Family"
+group.colors <- ifelse( these, "firebrick", "gray80" )
+plot( syr,  border=NA, col=group.colors )
+```
+
+
+
+# Solutions
+
+
+## Question 1
+
+*How many Single Family homes are in Syracuse? Map your results.* 
+
+**ANSWER:** There are X single family homes in Syracuse. 
+
+
+```{r}
+# your code here
+```
+
+
+
+
+
+
+
+
+
+-----
+
+
+
+
+
+
+
+# Submission Instructions
+
+When you have completed your assignment, knit your RMD file to generate your rendered HTML file. **Submit both your RMD and HTML files with solutions.**
+
+Login to Canvas at <http://canvas.asu.edu> and navigate to the assignments tab in the course repository. Upload your solution files to the appropriate lab submission link.
+
+Remember to:
+
+* name your files according to the convention: **Lab-##-LastName.Rmd**
+* show your solution - include your code.
+* do not print excessive output (like a full data set or warning messages).
+* follow appropriate style guidelines (spaces between arguments, etc.).
+
+See [Google's R Style Guide](https://google.github.io/styleguide/Rguide.xml) for examples.
+
+## Problems Uploading Files
+
+Platforms like BlackBoard and Canvas may disallow you from submitting HTML files when there is embedded computer code (they sometimes think you are trying to upload a virus!). If this happens, create a zipped folder with both the RMD and HTML files and submit that instead.
+
+## Notes on Knitting
+
+Note that when you knit a file, it starts from a blank slate. You might have packages loaded or datasets active on your local machine, so you can run code chunks fine. But when you knit you might get errors that functions cannot be located or datasets don't exist. Be sure that you have included chunks to load these in your RMD file.
+
+Your RMD file will not knit if you have errors in your code. If you get stuck on a question, just add `eval=F` to the code chunk and it will be ignored when you knit your file. That way I can give you credit for attempting the question and provide guidance on fixing the problem.
+
+
+
+
+
