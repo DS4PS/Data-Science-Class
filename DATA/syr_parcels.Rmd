@@ -21,7 +21,7 @@ library( pander )
 
 This dataset represents approximately 42,000 tax parcels for the city of Syracuse, NY. Each row represents a unique parcel of land within city limits.
 
-The dataset is available in the [DataCuse OPEN DATA PORTAL](http://data.syrgov.net/datasets/parcel-data-august-2017).
+The dataset is available in the [DataCuse OPEN DATA PORTAL](http://data.syrgov.net/datasets/1b346804e1364a5eb85ccb53302e3c91_0).
 
 "Parcel dataset created by the Department of Neighborhood and Business Development. This dataset includes a large amount of information about each parcel (or area of land for properties) in the city."
 
