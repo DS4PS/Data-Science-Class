@@ -23,10 +23,10 @@
 
 
 <style type="text/css">code{white-space: pre;}</style>
-<style type="text/css" data-origin="pandoc">
+<style type="text/css">
 a.sourceLine { display: inline-block; line-height: 1.25; }
 a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; position: absolute; }
+a.sourceLine:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 div.sourceCode { margin: 1em 0; }
@@ -39,13 +39,11 @@ code.sourceCode { white-space: pre-wrap; }
 a.sourceLine { text-indent: -1em; padding-left: 1em; }
 }
 pre.numberSource a.sourceLine
-  { position: relative; }
-pre.numberSource a.sourceLine:empty
-  { position: absolute; }
+  { position: relative; left: -4em; }
 pre.numberSource a.sourceLine::before
   { content: attr(data-line-number);
-    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all;
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -86,29 +84,7 @@ code span.st { color: #4e9a06; } /* String */
 code span.va { color: #000000; } /* Variable */
 code span.vs { color: #4e9a06; } /* VerbatimString */
 code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
-
 </style>
-<script>
-// apply pandoc div.sourceCode style to pre.sourceCode instead
-(function() {
-  var sheets = document.styleSheets;
-  for (var i = 0; i < sheets.length; i++) {
-    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
-    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
-    for (var j = 0; j < rules.length; j++) {
-      var rule = rules[j];
-      // check if there is a div.sourceCode rule
-      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
-      var style = rule.style.cssText;
-      // check if color or background-color is set
-      if (rule.style.color === '' || rule.style.backgroundColor === '') continue;
-      // replace div.sourceCode by a pre.sourceCode rule
-      sheets[i].deleteRule(j);
-      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
-    }
-  }
-})();
-</script>
 <style type="text/css">
   pre:not([class]) {
     background-color: white;
@@ -145,7 +121,9 @@ h6 {
 
 <link rel="stylesheet" href="textbook.css" type="text/css" />
 
+</head>
 
+<body>
 
 <style type = "text/css">
 .main-container {
@@ -170,92 +148,22 @@ img {
 button.code-folding-btn:focus {
   outline: none;
 }
-summary {
-  display: list-item;
-}
 </style>
 
 
+
+<div class="container-fluid main-container">
 
 <!-- tabsets -->
-
-<style type="text/css">
-.tabset-dropdown > .nav-tabs {
-  display: inline-table;
-  max-height: 500px;
-  min-height: 44px;
-  overflow-y: auto;
-  background: white;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
-
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
-  font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "&#xe258;";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
-  font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
-}
-
-.tabset-dropdown > .nav-tabs > li.active {
-  display: block;
-}
-
-.tabset-dropdown > .nav-tabs > li > a,
-.tabset-dropdown > .nav-tabs > li > a:focus,
-.tabset-dropdown > .nav-tabs > li > a:hover {
-  border: none;
-  display: inline-block;
-  border-radius: 4px;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
-  display: block;
-  float: none;
-}
-
-.tabset-dropdown > .nav-tabs > li {
-  display: none;
-}
-</style>
-
 <script>
 $(document).ready(function () {
   window.buildTabsets("TOC");
-});
-
-$(document).ready(function () {
-  $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
-  });
 });
 </script>
 
 <!-- code folding -->
 
 
-
-
-</head>
-
-<body>
-
-
-<div class="container-fluid main-container">
 
 
 
@@ -268,12 +176,88 @@ $(document).ready(function () {
 
 </div>
 
+<div id="TOC">
+<ul>
+<li><a href="#about-this-data">About This Data:</a><ul>
+<li><a href="#data-dictionary">Data Dictionary</a></li>
+</ul></li>
+<li><a href="#data">Data</a></li>
+<li><a href="#models">Models</a></li>
+</ul>
+</div>
 
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">library</span>( dplyr )</a>
-<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw">library</span>( pander )</a></code></pre></div>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co"># setwd(&quot;C:/Users/jdlecy/Dropbox/00 - PEDA/00 - GITHUB/INSTRUCTOR-FILES-DATA-SCIENCE/Data-Science-Class/DATA&quot;)</span></a>
-<a class="sourceLine" id="cb2-2" data-line-number="2">dat &lt;-<span class="st"> </span><span class="kw">read.csv</span>( <span class="st">&quot;life-expectancy.csv&quot;</span>, <span class="dt">stringsAsFactors=</span>F )</a>
-<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="kw">head</span>( dat ) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">pander</span>()</a></code></pre></div>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw">library</span>( pander )</a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="kw">library</span>( stargazer )</a></code></pre></div>
+<div id="about-this-data" class="section level1">
+<h1>About This Data:</h1>
+<p>Dataset curated by Kumara Jarshi, acquired from <a href="https://www.kaggle.com/kumarajarshi/life-expectancy-who/version/1#">Kaggle</a></p>
+<p><em>The Global Health Observatory (GHO) data repository under World Health Organization (WHO) keeps track of the health status as well as many other related factors for all countries The datasets are made available to public for the purpose of health data analysis.</em></p>
+<p><em>The dataset related to life expectancy, health factors for 193 countries has been collected from the same WHO data repository website and its corresponding economic data was collected from United Nation website.</em></p>
+<p><em>Among all categories of health-related factors only those critical factors were chosen which are more representative. It has been observed that in the past 15 years , there has been a huge development in health sector resulting in improvement of human mortality rates especially in the developing nations in comparison to the past 30 years. Therefore, in this project we have considered data from year 2000-2015 for 193 countries for further analysis.</em></p>
+<p><em>The individual data files have been merged together into a single dataset. On initial visual inspection of the data showed some missing values. As the datasets were from WHO, we found no evident errors.</em></p>
+<p><em>Missing data was handled in R software by using Missmap command. The result indicated that most of the missing data was for population, Hepatitis B and GDP. The missing data were from less known countries like Vanuatu, Tonga, Togo,Cabo Verde etc. Finding all data for these countries was difficult and hence, it was decided that we exclude these countries from the final model dataset. The final merged file(final dataset) consists of 22 Columns and 2938 rows which meant 20 predicting variables.</em></p>
+<div id="data-dictionary" class="section level3">
+<h3>Data Dictionary</h3>
+<p>All predicting variables are divided into several broad categories: Immunization related factors, Mortality factors, Economical factors and Social factors.</p>
+<p>Country stats:</p>
+<ul>
+<li><strong>Country</strong> - Country<br />
+</li>
+<li><strong>Year</strong> - Year<br />
+</li>
+<li><strong>Population</strong> - Population of the country<br />
+</li>
+<li><strong>Life expectancy</strong> - Life Expectancy in age<br />
+</li>
+<li><strong>GDP</strong> - Gross Domestic Product per capita (in USD)<br />
+</li>
+<li><strong>Status</strong> - Developed or Developing status<br />
+</li>
+<li><strong>Schooling</strong> - Number of years of Schooling(years)<br />
+</li>
+<li><strong>ICR (Income composition of resources)</strong> - Human Development Index in terms of income composition of resources (index ranging from 0 to 1)</li>
+</ul>
+<p>Mortality factors:</p>
+<ul>
+<li><strong>Adult Mortality</strong> - Adult Mortality Rates of both sexes (probability of dying between 15 and 60 years per 1000 population)<br />
+</li>
+<li><strong>infant deaths</strong> - Number of Infant Deaths per 1000 population<br />
+</li>
+<li><strong>under-five deaths</strong> - Number of under-five deaths per 1000 population<br />
+</li>
+<li><strong>Alcohol</strong> - Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)<br />
+</li>
+<li><strong>HIV/AIDS</strong> - Deaths per 1 000 live births HIV/AIDS (0-4 years)<br />
+</li>
+<li><strong>Measles</strong> - Measles - number of reported cases per 1000 population</li>
+</ul>
+<p>Immunization factors:</p>
+<ul>
+<li><strong>Hepatitis B</strong> - Hepatitis B (HepB) immunization coverage among 1-year-olds (%)<br />
+</li>
+<li><strong>Polio</strong> - Polio (Pol3) immunization coverage among 1-year-olds (%)<br />
+</li>
+<li><strong>Diphtheria</strong> - Diphtheria tetanus toxoid and pertussis (DTP3) immunization coverage among 1-year-olds (%)</li>
+</ul>
+<p>Social policy factors:</p>
+<ul>
+<li><strong>Total expenditure</strong> - General government expenditure on health as a percentage of total government expenditure (%)<br />
+</li>
+<li><strong>percentage expenditure</strong> - Expenditure on health as a percentage of Gross Domestic Product per capita(%)<br />
+</li>
+<li><strong>thinness 1-19 years</strong> - Prevalence of thinness among children and adolescents for Age 10 to 19 (% )<br />
+</li>
+<li><strong>thinness 5-9 years</strong> - Prevalence of thinness among children for Age 5 to 9(%)<br />
+</li>
+<li><strong>BMI</strong> - Average Body Mass Index of entire population</li>
+</ul>
+</div>
+</div>
+<div id="data" class="section level1">
+<h1>Data</h1>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">dat &lt;-<span class="st"> </span><span class="kw">read.csv</span>( <span class="st">&quot;life-expectancy.csv&quot;</span>, <span class="dt">stringsAsFactors=</span>F )</a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="kw">head</span>( dat ) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">pander</span>()</a></code></pre></div>
 <table style="width:97%;">
 <caption>Table continues below</caption>
 <colgroup>
@@ -285,11 +269,11 @@ $(document).ready(function () {
 </colgroup>
 <thead>
 <tr class="header">
-<th align="center">Country</th>
-<th align="center">Year</th>
-<th align="center">Status</th>
-<th align="center">Life.expectancy</th>
-<th align="center">Adult.Mortality</th>
+<th align="center">country</th>
+<th align="center">year</th>
+<th align="center">status</th>
+<th align="center">life.expectancy</th>
+<th align="center">adult.mortality</th>
 </tr>
 </thead>
 <tbody>
@@ -344,15 +328,15 @@ $(document).ready(function () {
 <col width="13%" />
 <col width="33%" />
 <col width="18%" />
-<col width="12%" />
+<col width="13%" />
 </colgroup>
 <thead>
 <tr class="header">
 <th align="center">infant.deaths</th>
-<th align="center">Alcohol</th>
+<th align="center">alcohol</th>
 <th align="center">percentage.expenditure</th>
-<th align="center">Hepatitis.B</th>
-<th align="center">Measles</th>
+<th align="center">hepatitis.b</th>
+<th align="center">measles</th>
 </tr>
 </thead>
 <tbody>
@@ -400,24 +384,24 @@ $(document).ready(function () {
 </tr>
 </tbody>
 </table>
-<table style="width:100%;">
+<table>
 <caption>Table continues below</caption>
 <colgroup>
 <col width="8%" />
-<col width="25%" />
-<col width="10%" />
-<col width="25%" />
+<col width="24%" />
+<col width="9%" />
+<col width="24%" />
 <col width="16%" />
-<col width="12%" />
+<col width="16%" />
 </colgroup>
 <thead>
 <tr class="header">
-<th align="center">BMI</th>
+<th align="center">bmi</th>
 <th align="center">under.five.deaths</th>
-<th align="center">Polio</th>
-<th align="center">Total.expenditure</th>
-<th align="center">Diphtheria</th>
-<th align="center">HIV.AIDS</th>
+<th align="center">polio</th>
+<th align="center">total.expenditure</th>
+<th align="center">diphtheria</th>
+<th align="center">hiv.aids</th>
 </tr>
 </thead>
 <tbody>
@@ -471,20 +455,23 @@ $(document).ready(function () {
 </tr>
 </tbody>
 </table>
-<table style="width:89%;">
-<caption>Table continues below</caption>
+<table>
 <colgroup>
-<col width="11%" />
-<col width="18%" />
-<col width="31%" />
-<col width="27%" />
+<col width="9%" />
+<col width="15%" />
+<col width="26%" />
+<col width="25%" />
+<col width="9%" />
+<col width="14%" />
 </colgroup>
 <thead>
 <tr class="header">
-<th align="center">GDP</th>
-<th align="center">Population</th>
-<th align="center">thinness..1.19.years</th>
+<th align="center">gdp</th>
+<th align="center">population</th>
+<th align="center">thinness.1.19.years</th>
 <th align="center">thinness.5.9.years</th>
+<th align="center">icr</th>
+<th align="center">schooling</th>
 </tr>
 </thead>
 <tbody>
@@ -493,82 +480,419 @@ $(document).ready(function () {
 <td align="center">33736494</td>
 <td align="center">17.2</td>
 <td align="center">17.3</td>
+<td align="center">0.479</td>
+<td align="center">10.1</td>
 </tr>
 <tr class="even">
 <td align="center">612.7</td>
 <td align="center">327582</td>
 <td align="center">17.5</td>
 <td align="center">17.5</td>
+<td align="center">0.476</td>
+<td align="center">10</td>
 </tr>
 <tr class="odd">
 <td align="center">631.7</td>
 <td align="center">31731688</td>
 <td align="center">17.7</td>
 <td align="center">17.7</td>
+<td align="center">0.47</td>
+<td align="center">9.9</td>
 </tr>
 <tr class="even">
 <td align="center">670</td>
 <td align="center">3696958</td>
 <td align="center">17.9</td>
 <td align="center">18</td>
+<td align="center">0.463</td>
+<td align="center">9.8</td>
 </tr>
 <tr class="odd">
 <td align="center">63.54</td>
 <td align="center">2978599</td>
 <td align="center">18.2</td>
 <td align="center">18.2</td>
+<td align="center">0.454</td>
+<td align="center">9.5</td>
 </tr>
 <tr class="even">
 <td align="center">553.3</td>
 <td align="center">2883167</td>
 <td align="center">18.4</td>
 <td align="center">18.4</td>
-</tr>
-</tbody>
-</table>
-<table style="width:62%;">
-<colgroup>
-<col width="47%" />
-<col width="15%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th align="center">Income.composition.of.resources</th>
-<th align="center">Schooling</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="center">0.479</td>
-<td align="center">10.1</td>
-</tr>
-<tr class="even">
-<td align="center">0.476</td>
-<td align="center">10</td>
-</tr>
-<tr class="odd">
-<td align="center">0.47</td>
-<td align="center">9.9</td>
-</tr>
-<tr class="even">
-<td align="center">0.463</td>
-<td align="center">9.8</td>
-</tr>
-<tr class="odd">
-<td align="center">0.454</td>
-<td align="center">9.5</td>
-</tr>
-<tr class="even">
 <td align="center">0.448</td>
 <td align="center">9.2</td>
 </tr>
 </tbody>
 </table>
-<p><img src="life-expectancy-who_files/figure-html/unnamed-chunk-3-1.png" width="960" style="display: block; margin: auto;" /></p>
-<p>About This File:</p>
-<p><a href="https://www.kaggle.com/kumarajarshi/life-expectancy-who/version/1#" class="uri">https://www.kaggle.com/kumarajarshi/life-expectancy-who/version/1#</a></p>
-<p>The Global Health Observatory (GHO) data repository under World Health Organization (WHO) keeps track of the health status as well as many other related factors for all countries The datasets are made available to public for the purpose of health data analysis. The dataset related to life expectancy, health factors for 193 countries has been collected from the same WHO data repository website and its corresponding economic data was collected from United Nation website. Among all categories of health-related factors only those critical factors were chosen which are more representative. It has been observed that in the past 15 years , there has been a huge development in health sector resulting in improvement of human mortality rates especially in the developing nations in comparison to the past 30 years. Therefore, in this project we have considered data from year 2000-2015 for 193 countries for further analysis. The individual data files have been merged together into a single dataset. On initial visual inspection of the data showed some missing values. As the datasets were from WHO, we found no evident errors. Missing data was handled in R software by using Missmap command. The result indicated that most of the missing data was for population, Hepatitis B and GDP. The missing data were from less known countries like Vanuatu, Tonga, Togo,Cabo Verde etc. Finding all data for these countries was difficult and hence, it was decided that we exclude these countries from the final model dataset. The final merged file(final dataset) consists of 22 Columns and 2938 rows which meant 20 predicting variables. All predicting variables was then divided into several broad categories:Immunization related factors, Mortality factors, Economical factors and Social factors.</p>
-<p>CountryCountry YearYear StatusDeveloped or Developing status Life expectancy Life Expectancy in age Adult MortalityAdult Mortality Rates of both sexes (probability of dying between 15 and 60 years per 1000 population) infant deathsNumber of Infant Deaths per 1000 population AlcoholAlcohol, recorded per capita (15+) consumption (in litres of pure alcohol) percentage expenditureExpenditure on health as a percentage of Gross Domestic Product per capita(%) Hepatitis BHepatitis B (HepB) immunization coverage among 1-year-olds (%) Measles Measles - number of reported cases per 1000 population BMI Average Body Mass Index of entire population under-five deaths Number of under-five deaths per 1000 population PolioPolio (Pol3) immunization coverage among 1-year-olds (%) Total expenditureGeneral government expenditure on health as a percentage of total government expenditure (%) Diphtheria Diphtheria tetanus toxoid and pertussis (DTP3) immunization coverage among 1-year-olds (%) HIV/AIDSDeaths per 1 000 live births HIV/AIDS (0-4 years) GDPGross Domestic Product per capita (in USD) PopulationPopulation of the country thinness 1-19 yearsPrevalence of thinness among children and adolescents for Age 10 to 19 (% ) thinness 5-9 yearsPrevalence of thinness among children for Age 5 to 9(%) Income composition of resourcesHuman Development Index in terms of income composition of resources (index ranging from 0 to 1) SchoolingNumber of years of Schooling(years)</p>
+</div>
+<div id="models" class="section level1">
+<h1>Models</h1>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">m<span class="fl">.01</span> &lt;-<span class="st"> </span><span class="kw">lm</span>( life.expectancy <span class="op">~</span><span class="st"> </span><span class="kw">log</span>(gdp), <span class="dt">data=</span>dat )</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2">m<span class="fl">.02</span> &lt;-<span class="st"> </span><span class="kw">lm</span>( life.expectancy <span class="op">~</span><span class="st"> </span>schooling, <span class="dt">data=</span>dat )</a>
+<a class="sourceLine" id="cb3-3" data-line-number="3">m<span class="fl">.03</span> &lt;-<span class="st"> </span><span class="kw">lm</span>( life.expectancy <span class="op">~</span><span class="st"> </span><span class="kw">log</span>(gdp) <span class="op">+</span><span class="st"> </span>schooling, <span class="dt">data=</span>dat )</a>
+<a class="sourceLine" id="cb3-4" data-line-number="4">m<span class="fl">.04</span> &lt;-<span class="st"> </span><span class="kw">lm</span>( life.expectancy <span class="op">~</span><span class="st"> </span><span class="kw">log</span>(gdp) <span class="op">+</span><span class="st"> </span>schooling <span class="op">+</span><span class="st"> </span>hiv.aids, <span class="dt">data=</span>dat )</a>
+<a class="sourceLine" id="cb3-5" data-line-number="5">m<span class="fl">.05</span> &lt;-<span class="st"> </span><span class="kw">lm</span>( life.expectancy <span class="op">~</span><span class="st"> </span><span class="kw">log</span>(gdp) <span class="op">+</span><span class="st"> </span>schooling <span class="op">+</span><span class="st"> </span>hiv.aids <span class="op">+</span><span class="st"> </span>bmi, <span class="dt">data=</span>dat )</a>
+<a class="sourceLine" id="cb3-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="co"># m.05 &lt;- lm( life.expectancy ~ bmi, data=dat )</span></a>
+<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="co"># m.06 &lt;- lm( life.expectancy ~ hiv.aids, data=dat )</span></a>
+<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="co"># m.07 &lt;- lm( life.expectancy ~ bmi + hiv.aids, data=dat )</span></a>
+<a class="sourceLine" id="cb3-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb3-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb3-12" data-line-number="12"><span class="kw">stargazer</span>( m<span class="fl">.01</span>, m<span class="fl">.02</span>, m<span class="fl">.03</span>, m<span class="fl">.04</span>, m<span class="fl">.05</span>,</a>
+<a class="sourceLine" id="cb3-13" data-line-number="13">           <span class="dt">type =</span> <span class="st">&quot;html&quot;</span>, <span class="dt">digits=</span><span class="dv">2</span>,</a>
+<a class="sourceLine" id="cb3-14" data-line-number="14">           <span class="dt">dep.var.caption =</span> <span class="st">&quot;DV: Life Expectancy&quot;</span>,</a>
+<a class="sourceLine" id="cb3-15" data-line-number="15">           <span class="co"># dep.var.labels = &quot;&quot;,</span></a>
+<a class="sourceLine" id="cb3-16" data-line-number="16">           <span class="dt">dep.var.labels.include =</span> <span class="ot">FALSE</span>,</a>
+<a class="sourceLine" id="cb3-17" data-line-number="17">           <span class="dt">omit.stat =</span> <span class="kw">c</span>(<span class="st">&quot;rsq&quot;</span>,<span class="st">&quot;f&quot;</span>,<span class="st">&quot;ser&quot;</span>),</a>
+<a class="sourceLine" id="cb3-18" data-line-number="18">           <span class="dt">notes.label =</span> <span class="st">&quot;Standard errors in parentheses&quot;</span>)</a></code></pre></div>
+<table style="text-align:center">
+<tr>
+<td colspan="6" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td colspan="5">
+DV: Life Expectancy
+</td>
+</tr>
+<tr>
+<td>
+</td>
+<td colspan="5" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(1)
+</td>
+<td>
+(2)
+</td>
+<td>
+(3)
+</td>
+<td>
+(4)
+</td>
+<td>
+(5)
+</td>
+</tr>
+<tr>
+<td colspan="6" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+log(gdp)
+</td>
+<td>
+3.07<sup>***</sup>
+</td>
+<td>
+</td>
+<td>
+1.13<sup>***</sup>
+</td>
+<td>
+0.95<sup>***</sup>
+</td>
+<td>
+0.84<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(0.08)
+</td>
+<td>
+</td>
+<td>
+(0.08)
+</td>
+<td>
+(0.06)
+</td>
+<td>
+(0.06)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+schooling
+</td>
+<td>
+</td>
+<td>
+2.10<sup>***</sup>
+</td>
+<td>
+1.77<sup>***</sup>
+</td>
+<td>
+1.56<sup>***</sup>
+</td>
+<td>
+1.41<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+(0.04)
+</td>
+<td>
+(0.05)
+</td>
+<td>
+(0.04)
+</td>
+<td>
+(0.04)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+hiv.aids
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+-0.72<sup>***</sup>
+</td>
+<td>
+-0.70<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+(0.02)
+</td>
+<td>
+(0.02)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+bmi
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+0.06<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+(0.01)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Constant
+</td>
+<td>
+46.43<sup>***</sup>
+</td>
+<td>
+44.11<sup>***</sup>
+</td>
+<td>
+39.54<sup>***</sup>
+</td>
+<td>
+44.71<sup>***</sup>
+</td>
+<td>
+44.98<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(0.64)
+</td>
+<td>
+(0.44)
+</td>
+<td>
+(0.53)
+</td>
+<td>
+(0.43)
+</td>
+<td>
+(0.43)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td colspan="6" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Observations
+</td>
+<td>
+2,485
+</td>
+<td>
+2,768
+</td>
+<td>
+2,482
+</td>
+<td>
+2,482
+</td>
+<td>
+2,458
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Adjusted R<sup>2</sup>
+</td>
+<td>
+0.36
+</td>
+<td>
+0.57
+</td>
+<td>
+0.60
+</td>
+<td>
+0.76
+</td>
+<td>
+0.77
+</td>
+</tr>
+<tr>
+<td colspan="6" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Standard errors in parentheses
+</td>
+<td colspan="5" style="text-align:right">
+<sup><em></sup>p&lt;0.1; <sup><strong></sup>p&lt;0.05; <sup></strong></em></sup>p&lt;0.01
+</td>
+</tr>
+</table>
+<p><img src="life-expectancy-who_files/figure-html/unnamed-chunk-5-1.png" width="960" style="display: block; margin: auto;" /><img src="life-expectancy-who_files/figure-html/unnamed-chunk-5-2.png" width="960" style="display: block; margin: auto;" /></p>
+</div>
 
 
 
