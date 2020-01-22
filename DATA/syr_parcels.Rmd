@@ -149,36 +149,6 @@ for( i in nhoods )
 <br><br>
 
 
-
-## Downtown
-
-```{r}
-
-# sp package doesn't allow subsets when NAs present:
-# replace all NAs with blanks fields 
-
-syr$Nhood <- as.character(syr$Nhood)
-syr$Nhood[ is.na(syr$Nhood) ] <- ""
-
-downtown <- syr[ syr$Nhood == "Downtown" , ]
-plot( downtown )
-
-table( downtown$LandUse ) %>% pander()
-
-
-these <- downtown$Acres > 1                                    # define your group
-group.colors <- ifelse( these, "firebrick", "gray80" )         # don't change this
-par( mar=c(0,0,0,0) )
-plot( downtown,  border=NA, col=group.colors )                 # don't change this
-
-names(downtown) <- tolower( names(downtown) )
-
-# geojson_write( input=downtown,  geometry = "polygon", file="downtown-syr.geojson" )
-
-```
-
-
-
 ## Land Use
 
 ```{r, echo=F, fig.width=10, fig.height=12, eval=T}
