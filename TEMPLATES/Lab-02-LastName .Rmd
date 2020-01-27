@@ -10,7 +10,7 @@ output:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set( echo = TRUE, message=F, warning=F, fig.width=10, fig.height=12 )
+knitr::opts_chunk$set( echo = TRUE, message=F, warning=F, fig.width=10, fig.height=6 )
 ```
 
 
@@ -21,9 +21,14 @@ Data dictionary: [Syracuse city tax parcel data](https://ds4ps.github.io/Data-Sc
 
 
 ```{r}
+# data without maps
 URL <- "https://raw.githubusercontent.com/DS4PS/Data-Science-Class/master/DATA/syr_parcels.csv"
 dat <- read.csv( URL, stringsAsFactors=FALSE )
 ```
+
+
+
+
 
 ```{r, echo=F}
 head( dat, 10 ) 
@@ -39,11 +44,20 @@ library( sp )
 library( rgdal )
 ```
 
+```{r, cache=T, eval=F}
+# full parcel map -
+# warning, is large
+# not loaded unless you change to eval=T
+URL <- "https://raw.githubusercontent.com/DS4PS/Data-Science-Class/master/DATA/syr_parcels.geojson"
+syr <- geojson_read( URL, what="sp" )
+```
+
+
 ```{r, cache=TRUE}
 # load the map files
-URL <- "https://raw.githubusercontent.com/DS4PS/Data-Science-Class/master/DATA/syr_parcels.geojson"
-syr <- geojson_read( URL, method="local", what="sp" )
-plot( syr,  border=NA, col="gray80" )
+URL <- "https://raw.githubusercontent.com/DS4PS/Data-Science-Class/master/DATA/downtown-syr.geojson"
+downtown <- geojson_read( URL, what="sp" )
+plot( downtown,  border="gray60", col="gray80" )
 ```
 
 
@@ -51,16 +65,16 @@ plot( syr,  border=NA, col="gray80" )
 Highlight the selected group in red:
 
 ```{r}
-these <- dat$acres > 1
+these <- downtown$acres > 1
 group.colors <- ifelse( these, "firebrick", "gray80" )
-plot( syr,  border=NA, col=group.colors )
+plot( downtown,  border=NA, col=group.colors )
 ```
 
 
 ```{r}
-these <- dat$land_use == "Single Family"
+these <- downtown$landuse == "Single Family"
 group.colors <- ifelse( these, "firebrick", "gray80" )
-plot( syr,  border=NA, col=group.colors )
+plot( downtown,  border=NA, col=group.colors )
 ```
 
 
@@ -111,6 +125,8 @@ Remember to:
 See [Google's R Style Guide](https://google.github.io/styleguide/Rguide.xml) for examples.
 
 ## Problems Uploading Files
+
+> Please submit HTML and RMD files unzipped if the platform permits. 
 
 Platforms like BlackBoard and Canvas may disallow you from submitting HTML files when there is embedded computer code (they sometimes think you are trying to upload a virus!). If this happens, create a zipped folder with both the RMD and HTML files and submit that instead.
 
