@@ -1,37 +1,93 @@
 ---
-title: "Shiny Widgets Demo"
+title: "Widget Demo"
 author: "Jesse Lecy"
 runtime: shiny
 output: html_document
 ---
 
-Most graphics you create in R will be static graphs and figured used for reports. Sometimes you may wish to leverage dynamic graphics, those that can accept input from the user to filter the data by specific criteria or change arguments to change aesthetics of the graphs. 
-
-The primary package the allows you to create dynamic analysis is called **shiny**, and the input functions are called "shiny widgets". You can take a tour of many of these in the [Shiny Widgets Gallery](https://shiny.rstudio.com/gallery/widget-gallery.html).
-
-This short tutorial introduces you to the basics of shiny apps in R.
 
 
 ## Setup
 
-You will be using the **shiny** library in R, so it needs to be installed before you launch your R Markdown files with embedded shiny functions.
+Note that to use Shiny widgets as part of your document, you need to create a new R Markdown document, then select Shiny as the template.
 
-```{r, eval=F}
-install.packages( "shiny" )
+
+# My Investment Portfolio
+
+Track the financial performance of five stocks over 1,000 weeks:
+
+```{r}
+
+# data setup
+
+org1 <- cumsum( rnorm(1000) )
+org2 <- cumsum( rnorm(1000) )
+org3 <- cumsum( rnorm(1000) )
+org4 <- cumsum( rnorm(1000) )
+org5 <- cumsum( rnorm(1000) )
+
+dat <- data.frame( A=org1, B=org2, C=org3, D=org4, E=org5 )
+
+ymax <- max( dat )
+ymin <- min( dat )
+
+
+# create an empty plot with the correct dimensions
+plot.new()
+plot.window( xlim=c(0,1050), ylim=c(ymin,ymax) )
+
+points( dat$A, type="l", col="gray70" )
+points( dat$B, type="l", col="gray70" )
+points( dat$C, type="l", col="gray70" )
+points( dat$D, type="l", col="gray70" )
+points( dat$E, type="l", col="gray70" )
+
+axis( side=1, cex.axis=0.7, col="gray", col.axis="gray70" )
+
+title( main="Return on Investment", col.main="gray", cex=1.5 )
+
+text( 1000, dat$A[1000], "A", pos=4, col="gray" )
+text( 1000, dat$B[1000], "B", pos=4, col="gray" )
+text( 1000, dat$C[1000], "C", pos=4, col="gray" )
+text( 1000, dat$D[1000], "D", pos=4, col="gray" )
+text( 1000, dat$E[1000], "E", pos=4, col="gray" )
+
+
 ```
 
-Note, though, that you do not load the library in your RMD file like you do with other packages. Instead, you need to include the "runtime: shiny" argument in your YAML header:
 
-```{r, eval=F}
----
-output: html_document
-runtime: shiny
----
+# Highlight One Stock
+
+```{r}
+
+plot.new()
+plot.window( xlim=c(0,1050), ylim=c(ymin,ymax) )
+
+points( dat$A, type="l", col="gray70" )
+points( dat$B, type="l", col="gray70" )
+points( dat$C, type="l", col="gray70" )
+points( dat$D, type="l", col="gray70" )
+points( dat$E, type="l", col="gray70" )
+
+axis( side=1, cex.axis=0.7, col="gray", col.axis="gray70" )
+
+title( main="Return on Investment", col.main="gray", cex=1.5 )
+
+text( 1000, dat$A[1000], "A", pos=4, col="gray" )
+text( 1000, dat$B[1000], "B", pos=4, col="gray" )
+text( 1000, dat$C[1000], "C", pos=4, col="gray" )
+text( 1000, dat$D[1000], "D", pos=4, col="gray" )
+text( 1000, dat$E[1000], "E", pos=4, col="gray" )
+
+
+# highlight one organization
+
+this.one <- "E"
+
+points( dat[,this.one], type="l", col="darkred" )
+text( 1000, dat[1000,this.one], label=this.one, pos=4, col="darkred" )
+
 ```
-
-You can create a new R Markdown document and select "Shiny" from the list of templates, and it will have these options pre-set.
-
-
 
 
 
@@ -121,10 +177,7 @@ renderPlot({
 
 # Hide the Code
 
-We can embed shiny functions in our RMD reports to make some of the analysis dynamics. You still want the document to look pretty.
-
-Use the argument `echo=F` in your chunk header to hide the code when you render the widget in a markdown file. Your audience will only see the input widget and the rendered tables or plots:
-
+Use the argument `echo=F` in your chunk header to hide the code when you render the widget in a markdown document.  
 
 ```{r, echo=F}
 
@@ -161,99 +214,8 @@ renderPlot({
 
  
    
-
-
+# Generalize the Input 
  
- 
- 
-
-# Investment Tracker
-
-Now put it all together.
-
-## My Investment Portfolio
-
-In this example we will track the financial performance of five hypothetical stocks over 1,000 days:
-
-```{r}
-
-# data setup
-
-org1 <- cumsum( rnorm(1000) )
-org2 <- cumsum( rnorm(1000) )
-org3 <- cumsum( rnorm(1000) )
-org4 <- cumsum( rnorm(1000) )
-org5 <- cumsum( rnorm(1000) )
-
-dat <- data.frame( A=org1, B=org2, C=org3, D=org4, E=org5 )
-
-ymax <- max( dat )
-ymin <- min( dat )
-
-
-# create an empty plot with the correct dimensions
-plot.new()
-plot.window( xlim=c(0,1050), ylim=c(ymin,ymax) )
-
-points( dat$A, type="l", col="gray70" )
-points( dat$B, type="l", col="gray70" )
-points( dat$C, type="l", col="gray70" )
-points( dat$D, type="l", col="gray70" )
-points( dat$E, type="l", col="gray70" )
-
-axis( side=1, cex.axis=0.7, col="gray", col.axis="gray70" )
-
-title( main="Return on Investment", col.main="gray", cex=1.5 )
-
-text( 1000, dat$A[1000], "A", pos=4, col="gray" )
-text( 1000, dat$B[1000], "B", pos=4, col="gray" )
-text( 1000, dat$C[1000], "C", pos=4, col="gray" )
-text( 1000, dat$D[1000], "D", pos=4, col="gray" )
-text( 1000, dat$E[1000], "E", pos=4, col="gray" )
-
-
-```
-
-
-## Highlight One Stock
-
-```{r}
-
-plot.new()
-plot.window( xlim=c(0,1050), ylim=c(ymin,ymax) )
-
-points( dat$A, type="l", col="gray70" )
-points( dat$B, type="l", col="gray70" )
-points( dat$C, type="l", col="gray70" )
-points( dat$D, type="l", col="gray70" )
-points( dat$E, type="l", col="gray70" )
-
-axis( side=1, cex.axis=0.7, col="gray", col.axis="gray70" )
-
-title( main="Return on Investment", col.main="gray", cex=1.5 )
-
-text( 1000, dat$A[1000], "A", pos=4, col="gray" )
-text( 1000, dat$B[1000], "B", pos=4, col="gray" )
-text( 1000, dat$C[1000], "C", pos=4, col="gray" )
-text( 1000, dat$D[1000], "D", pos=4, col="gray" )
-text( 1000, dat$E[1000], "E", pos=4, col="gray" )
-
-
-# highlight one organization
-
-this.one <- "E"
-
-points( dat[,this.one], type="l", col="darkred" )
-text( 1000, dat[1000,this.one], label=this.one, pos=4, col="darkred" )
-
-```
-
-
-
-## Generalize the Input 
- 
-Now generalize this to allow for users to select the organization ID to highlight a specific stock value.
-
 Instead of writing a list of options manually, we can use R functions to generate an input list for us:
 
 * For character vectors:  `unique( var )`
@@ -289,7 +251,13 @@ renderPlot({
 
 ```
 
+ 
+ 
+ 
 
+# Investment Tracker
+
+Now put it all together.
 
 ```{r, eval=F}
 
@@ -326,7 +294,11 @@ renderPlot({
     # highlight one organization
     
     points( dat[,input$org2], type="l", col="darkred" )
-    text( 1000, dat[1000,input$org2], label=this.one, pos=4, col="darkred" )
+    text( 1000, dat[1000,input$org2], label=input$org2, 
+          pos=4, col="darkred" )
+    text( 50, ymax-5, 
+          paste("Return on Investment for Stock",input$org2), 
+          col="darkred", pos=4 )
 
 
 })
